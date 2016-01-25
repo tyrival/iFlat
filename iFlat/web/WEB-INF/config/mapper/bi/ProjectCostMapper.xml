@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bi.ProjectCost">
+
+    <insert id="insert" parameterType="com.iflat.bi.bean.ProjectCost">
+        INSERT INTO BiProjectCost
+        VALUES (#{id},#{projNo},#{type},#{salesRevenue},#{device},#{raw},#{foundry},#{casualLabor},#{salary},#{maintenance},#{power},#{outSourcing},#{design},#{survey},#{salesFee},#{salesAssCharge},#{purchaseAssCharge},#{colabouration},#{craftEquipment},#{seaTrial},#{other},#{warranty},#{reserve},#{matCstAdj},#{manuCstAdj},#{auxCstAdj},#{month},#{fixed},#{version})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO BiProjectCost
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.type},#{item.salesRevenue},#{item.device},#{item.raw},#{item.foundry},#{item.casualLabor},#{item.salary},#{item.maintenance},#{item.power},#{item.outSourcing},#{item.design},#{item.survey},#{item.salesFee},#{item.salesAssCharge},#{item.purchaseAssCharge},#{item.colabouration},#{item.craftEquipment},#{item.seaTrial},#{item.other},#{item.warranty},#{item.reserve},#{item.matCstAdj},#{item.manuCstAdj},#{item.auxCstAdj},#{item.month},#{item.fixed},#{item.version}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.bi.bean.ProjectCost">
+        UPDATE BiProjectCost
+        SET projNo=#{projNo},type=#{type},salesRevenue=#{salesRevenue},device=#{device},raw=#{raw},foundry=#{foundry},casualLabor=#{casualLabor},salary=#{salary},maintenance=#{maintenance},power=#{power},outSourcing=#{outSourcing},design=#{design},survey=#{survey},salesFee=#{salesFee},salesAssCharge=#{salesAssCharge},purchaseAssCharge=#{purchaseAssCharge},colabouration=#{colabouration},craftEquipment=#{craftEquipment},seaTrial=#{seaTrial},other=#{other},warranty=#{warranty},reserve=#{reserve},matCstAdj=#{matCstAdj},manuCstAdj=#{manuCstAdj},auxCstAdj=#{auxCstAdj},month=#{month},fixed=#{fixed},version=#{version}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.bi.bean.ProjectCost">
+        DELETE BiProjectCost
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.bi.bean.ProjectCost" resultMap="BiProjectCostResult">
+        SELECT id,projNo,type,salesRevenue,device,raw,foundry,casualLabor,salary,maintenance,power,outSourcing,design,survey,salesFee,salesAssCharge,purchaseAssCharge,colabouration,craftEquipment,seaTrial,other,warranty,reserve,matCstAdj,manuCstAdj,auxCstAdj,month,fixed,version
+        FROM BiProjectCost
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="type!=null">AND type=#{type}</if>
+        </where>
+    </select>
+
+    <resultMap type="com.iflat.bi.bean.ProjectCost" id="BiProjectCostResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="salesRevenue" column="salesRevenue" jdbcType="DOUBLE"/>
+        <result property="device" column="device" jdbcType="DOUBLE"/>
+        <result property="raw" column="raw" jdbcType="DOUBLE"/>
+        <result property="foundry" column="foundry" jdbcType="DOUBLE"/>
+        <result property="casualLabor" column="casualLabor" jdbcType="DOUBLE"/>
+        <result property="salary" column="salary" jdbcType="DOUBLE"/>
+        <result property="maintenance" column="maintenance" jdbcType="DOUBLE"/>
+        <result property="power" column="power" jdbcType="DOUBLE"/>
+        <result property="outSourcing" column="outSourcing" jdbcType="DOUBLE"/>
+        <result property="design" column="design" jdbcType="DOUBLE"/>
+        <result property="survey" column="survey" jdbcType="DOUBLE"/>
+        <result property="salesFee" column="salesFee" jdbcType="DOUBLE"/>
+        <result property="salesAssCharge" column="salesAssCharge" jdbcType="DOUBLE"/>
+        <result property="purchaseAssCharge" column="purchaseAssCharge" jdbcType="DOUBLE"/>
+        <result property="colabouration" column="colabouration" jdbcType="DOUBLE"/>
+        <result property="craftEquipment" column="craftEquipment" jdbcType="DOUBLE"/>
+        <result property="seaTrial" column="seaTrial" jdbcType="DOUBLE"/>
+        <result property="other" column="other" jdbcType="DOUBLE"/>
+        <result property="warranty" column="warranty" jdbcType="DOUBLE"/>
+        <result property="reserve" column="reserve" jdbcType="DOUBLE"/>
+        <result property="matCstAdj" column="matCstAdj" jdbcType="DOUBLE"/>
+        <result property="manuCstAdj" column="manuCstAdj" jdbcType="DOUBLE"/>
+        <result property="auxCstAdj" column="auxCstAdj" jdbcType="DOUBLE"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="fixed" column="fixed" jdbcType="DATE"/>
+        <result property="version" column="version" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

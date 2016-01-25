@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report.Cst.Shipbuilding.EstimateOfProject">
+
+    <select id="list" parameterType="com.iflat.report.entity.Parameter" resultMap="RptEstimateOfProjectResult">
+        SELECT (CASE WHEN a.month IS NOT NULL THEN a.month WHEN b.month IS NOT NULL THEN b.month ELSE c.month END) AS month,a.labour,b.material,c.reserve,((CASE WHEN a.labour IS NULL THEN 0 ELSE a.labour END)+(CASE WHEN b.material IS NULL THEN 0 ELSE b.material END)+(CASE WHEN c.reserve IS NULL THEN 0 ELSE c.reserve END)) AS summary
+        INTO #templist
+        FROM (
+            SELECT projectCode,month,SUM(amount) AS labour
+            FROM RptCstMonthlyLabour
+            WHERE month IS NOT NULL AND dept IS NOT NULL AND projectCode=#{projectCode}
+            GROUP BY projectCode,month
+        ) AS a
+        FULL OUTER JOIN (
+            SELECT projectCode,SUM(material) AS material,month
+            FROM RptCstMonthlyMaterial
+            WHERE month IS NOT NULL AND dept IS NOT NULL AND projectCode=#{projectCode}
+            GROUP BY projectCode,month
+        ) AS b ON a.projectCode=b.projectCode AND a.month=b.month
+        FULL OUTER JOIN (
+            SELECT projectCode,SUM(reserve) AS reserve,month
+            FROM RptCstMonthlyReserve
+            WHERE month IS NOT NULL AND dept IS NOT NULL AND projectCode=#{projectCode}
+            GROUP BY projectCode,month
+        ) AS c ON a.projectCode=c.projectCode AND a.month=c.month
+        SELECT CONVERT(varchar(7),dateadd(month,number,(SELECT MIN(month)+'-01' FROM #templist)),120) AS month
+        INTO #tempmonth
+        FROM [master].[dbo].[spt_values]
+        WHERE type='P' AND dateadd(month,number,(SELECT MIN(month)+'-01' FROM #templist)) &lt;= (SELECT MAX(month)+'-01' FROM #templist)
+        SELECT a.month,
+        (CASE WHEN b.labour IS NULL THEN 0 ELSE b.labour END) AS labour,
+        (CASE WHEN b.material IS NULL THEN 0 ELSE b.material END) AS material,
+        (CASE WHEN b.reserve IS NULL THEN 0 ELSE b.reserve END) AS reserve,
+        (SELECT SUM(summary) FROM #templist WHERE month &lt;= a.month) AS summary
+        FROM #tempmonth a
+        LEFT JOIN #templist b ON a.month=b.month
+        ORDER BY a.month
+        DROP TABLE #tempmonth
+        DROP TABLE #templist
+    </select>
+
+    <select id="listSumWithDept" parameterType="com.iflat.report.entity.Parameter" resultMap="RptEstimateOfProjectDeptResult">
+        SELECT (CASE WHEN a.dept IS NULL THEN b.dept ELSE a.dept END) AS dept,
+	            (CASE WHEN a.labour IS NULL THEN 0 ELSE a.labour END) AS labour,
+	            (CASE WHEN b.material IS NULL THEN 0 ELSE b.material END) AS material
+        FROM (
+              SELECT dept,SUM(amount) AS labour
+              FROM RptCstMonthlyLabour
+              WHERE month IS NOT NULL AND dept IS NOT NULL AND projectCode=#{projectCode}
+              GROUP BY dept
+              ) AS a
+        FULL OUTER JOIN (
+              SELECT dept,SUM(material) AS material
+              FROM RptCstMonthlyMaterial
+              WHERE month IS NOT NULL AND dept IS NOT NULL AND projectCode=#{projectCode}
+              GROUP BY dept
+        ) AS b ON a.dept=b.dept
+    </select>
+
+    <resultMap type="com.iflat.report.bean.cst.sb.EstimateOfProject" id="RptEstimateOfProjectResult">
+        <result property="month" column="month" jdbcType="VARCHAR"/>
+        <result property="labour" column="labour" jdbcType="DOUBLE"/>
+        <result property="material" column="material" jdbcType="DOUBLE"/>
+        <result property="reserve" column="reserve" jdbcType="DOUBLE"/>
+        <result property="summary" column="summary" jdbcType="DOUBLE"/>
+    </resultMap>
+    <resultMap type="com.iflat.report.bean.cst.sb.EstimateOfProjectDept" id="RptEstimateOfProjectDeptResult">
+        <result property="month" column="month" jdbcType="VARCHAR"/>
+        <result property="labour" column="labour" jdbcType="DOUBLE"/>
+        <result property="material" column="material" jdbcType="DOUBLE"/>
+        <result property="reserve" column="reserve" jdbcType="DOUBLE"/>
+        <result property="summary" column="summary" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

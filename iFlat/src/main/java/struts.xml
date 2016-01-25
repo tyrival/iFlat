@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 指定由spring负责action对象的创建 -->
+    <constant name="struts.objectFactory" value="spring" />
+    <!-- 所有匹配*.action的请求都由struts2处理 -->
+    <constant name="struts.action.extension" value="action" />
+    <!-- 是否启用开发模式 -->
+    <constant name="struts.devMode" value="false" />
+    <!-- struts配置文件改动后，是否重新加载 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <!-- 设置浏览器是否缓存静态内容 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 请求参数的编码方式 -->
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
+    <constant name="struts.i18n.reload" value="true" />
+    <!-- 文件上传最大值 -->
+    <constant name="struts.multipart.maxSize" value="104857600" />
+    <!-- 让struts2支持动态方法调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <!-- Action名称中是否还是用斜线 -->
+    <constant name="struts.enable.SlashesInActionNames" value="false" />
+    <!-- 允许标签中使用表达式语法 -->
+    <constant name="struts.tag.altSyntax" value="true" />
+    <!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
+    <constant name="struts.dispatcher.parametersWorkaround" value="false" />
+
+    <!-- 全局package定义，所有package注册必须 extends="global" -->
+    <package name="global" extends="struts-default,json-default">
+        <interceptors>
+            <!-- 注册Ajax拦截器 -->
+            <interceptor name="ajaxExceptionInterceptor" class="com.iflat.system.interceptor.AjaxExceptionInterceptor"/>
+            <!-- 注册权限拦截器 -->
+            <interceptor name="authorityInterceptor" class="com.iflat.system.interceptor.AuthorityInterceptor"/>
+            <!-- 注册日志拦截器 -->
+            <interceptor name="logInterceptor" class="com.iflat.system.interceptor.LogInterceptor"/>
+            <!-- 定义全局拦截器栈 -->
+            <interceptor-stack name="globalInterceptor">
+                <!-- Ajax拦截器 -->
+                <interceptor-ref name="ajaxExceptionInterceptor"/>
+                <!-- 权限验证拦截器 -->
+                <interceptor-ref name="authorityInterceptor"/>
+                <!-- 日志记录拦截器 -->
+                <!--<interceptor-ref name="logInterceptor"/>-->
+                <!-- 默认拦截器栈 -->
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- 注册全局拦截器栈 -->
+        <default-interceptor-ref name="globalInterceptor"/>
+
+        <!-- 全局Result映射 -->
+        <global-results>
+            <result name="login">index.jsp</result>
+            <result name="invalid.token">/WEB-INF/views/error.jsp</result>
+            <result name="error" type="redirect">/WEB-INF/views/error.jsp</result>
+        </global-results>
+
+        <!-- 全局异常映射 -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+    </package>
+
+    <package name="default" namespace="/" extends="global">
+        <!-- 登陆 -->
+        <action name="main" class="com.iflat.system.action.impl.LoginAction" method="login">
+            <result name="success">/WEB-INF/views/main.jsp</result>
+            <result name="input">index.jsp</result>
+        </action>
+        <!-- util -->
+        <action name="util_*" class="com.iflat.report.action.UtilAction" method="{1}">
+            <result name="paint">/WEB-INF/views/util/paint.jsp</result>
+            <result name="success">index.jsp</result>
+        </action>
+        <!-- system模块 -->
+        <action name="system_*" class="com.iflat.system.action.impl.SystemAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+            <result type="json" name="tree">
+                <param name="root">result.object</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+        <!-- bi模块 -->
+        <action name="bi_*" class="com.iflat.bi.action.BiAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+        <!-- sm模块 -->
+        <action name="sm_*" class="com.iflat.sm.action.SmAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+        <!-- code模块 -->
+        <action name="code_*" class="com.iflat.code.action.CodeAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+        <!-- report模块 -->
+        <action name="rpt_*" class="com.iflat.report.action.ReportAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+    </package>
+
+</struts>

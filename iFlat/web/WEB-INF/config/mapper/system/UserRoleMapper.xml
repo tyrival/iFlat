@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.UserRole">
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SysUserRole
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.account},#{item.roleId},#{item.sequence}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.system.bean.UserRole">
+        UPDATE SysUserRole
+        SET account=#{account},roleId=#{roleId},sequence=#{sequence}
+        WHERE account=#{account} AND roleId=#{roleId}
+    </update>
+
+    <delete id="deleteByAccount" parameterType="String">
+        DELETE SysUserRole
+        WHERE account=#{account}
+    </delete>
+
+    <delete id="deleteByRoleId" parameterType="String">
+        DELETE SysUserRole
+        WHERE roleId=#{roleId}
+    </delete>
+
+    <select id="listByRoleId" parameterType="String" resultMap="SysUserRoleResult">
+        SELECT account,roleId,sequence
+        FROM SysUserRole
+        WHERE roleId=#{roleId}
+        ORDER BY account
+    </select>
+
+    <select id="listByAccount" parameterType="String" resultMap="SysUserRoleResult">
+        SELECT account,roleId,sequence
+        FROM SysUserRole
+        WHERE account=#{account}
+        ORDER BY sequence
+    </select>
+
+    <select id="getByUR" parameterType="com.iflat.system.bean.UserRole" resultMap="SysUserRoleResult">
+        SELECT account,roleId,sequence
+        FROM SysUserRole
+        WHERE account=#{account} AND roleId=#{roleId}
+    </select>
+
+    <select id="listVo" parameterType="String" resultMap="SysUserRoleVoResult">
+        SELECT r.category,ur.account,r.roleId,ur.sequence,u.userName,r.roleName
+        FROM SysRole r
+        LEFT JOIN SysUserRole ur ON ur.roleId=r.roleId
+        LEFT JOIN SysUser u ON ur.account=u.account
+        ORDER BY r.category,r.roleName,ur.account
+    </select>
+
+    <select id="listVoByUser" parameterType="com.iflat.system.entity.UserInfoVo" resultMap="SysUserRoleVoResult">
+        SELECT account,userName,roleId,roleName,category,sequence
+        FROM V_SysUserRole
+        WHERE account=#{account}
+        ORDER BY (CASE roleId WHEN #{roleId} THEN 0 ELSE 1 END),sequence
+    </select>
+
+    <!-- 映射 -->
+    <resultMap type="com.iflat.system.bean.UserRole" id="SysUserRoleResult">
+        <result property="account" column="account" jdbcType="NVARCHAR"/>
+        <result property="roleId" column="roleId" jdbcType="VARCHAR"/>
+        <result property="sequence" column="sequence" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap type="com.iflat.system.entity.UserRoleVo" id="SysUserRoleVoResult">
+        <result property="account" column="account" jdbcType="NVARCHAR"/>
+        <result property="userName" column="userName" jdbcType="NVARCHAR"/>
+        <result property="roleId" column="roleId" jdbcType="VARCHAR"/>
+        <result property="roleName" column="roleName" jdbcType="VARCHAR"/>
+        <result property="category" column="category" jdbcType="VARCHAR"/>
+        <result property="sequence" column="sequence" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.TableView">
+
+    <insert id="insert" parameterType="com.iflat.system.bean.TableView">
+        INSERT INTO SysTableView
+        VALUES (#{tvId},#{nameSpace},#{moduleName},#{dbInstance},#{dbName},#{name},#{description})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.system.bean.TableView">
+        UPDATE SysTableView
+        <set>
+            <if test="nameSpace!=null">nameSpace=#{nameSpace},</if>
+            <if test="moduleName!=null">moduleName=#{moduleName},</if>
+            <if test="dbInstance!=null">dbInstance=#{dbInstance},</if>
+            <if test="dbName!=null">dbName=#{dbName},</if>
+            <if test="name!=null">name=#{name},</if>
+            <if test="description!=null">description=#{description}</if>
+        </set>
+        WHERE tvId=#{tvId}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.system.bean.TableView">
+        DELETE SysTableView
+        WHERE tvId=#{tvId}
+    </delete>
+
+    <select id="listByModule" parameterType="com.iflat.system.bean.TableView" resultMap="SysTableViewResult">
+        SELECT tvId,nameSpace,moduleName,dbInstance,dbName,name,description
+        FROM SysTableView
+        WHERE nameSpace=#{nameSpace} AND moduleName=#{moduleName}
+    </select>
+
+    <resultMap type="com.iflat.system.bean.TableView" id="SysTableViewResult">
+        <result property="tvId" column="tvId" jdbcType="CHAR"/>
+        <result property="nameSpace" column="nameSpace" jdbcType="VARCHAR"/>
+        <result property="moduleName" column="moduleName" jdbcType="VARCHAR"/>
+        <result property="dbInstance" column="dbInstance" jdbcType="VARCHAR"/>
+        <result property="dbName" column="dbName" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

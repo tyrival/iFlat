@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.QualityFine">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.QualityFine">
+        INSERT INTO SmQualityFine
+        VALUES (#{id},#{projNo},#{dept},#{team},#{group},#{personAcc},#{personName},#{date},#{profession},#{description},#{category},#{amount},#{comment},#{qc},#{attachment},#{creator},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmQualityFine
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.date},#{item.profession},#{item.description},#{item.category},#{item.amount},#{item.comment},#{item.qc},#{item.attachment},#{item.creator},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.QualityFine">
+        UPDATE SmQualityFine
+        <set>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="dept!=null">dept=#{dept},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="group!=null">[group]=#{group},</if>
+            <if test="personAcc!=null">personAcc=#{personAcc},</if>
+            <if test="personName!=null">personName=#{personName},</if>
+            <if test="date!=null">date=#{date},</if>
+            <if test="profession!=null">profession=#{profession},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="category!=null">category=#{category},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+            <if test="qc!=null">qc=#{qc},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.QualityFine">
+        DELETE SmQualityFine
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.QualityFine" resultMap="SmQualityFineResult">
+        SELECT id,projNo,dept,team,[group],personAcc,personName,date,profession,description,category,amount,comment,qc,attachment,creator,createTime
+        FROM SmQualityFine
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%' + #{team} + '%'</if>
+            <if test="group!=null and !&quot;&quot;.equals(group.trim())">AND [group]=#{group}</if>
+            <if test="personAcc!=null and !&quot;&quot;.equals(personAcc.trim())">AND personAcc=#{personAcc}</if>
+            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName=#{personName}</if>
+            <if test="date!=null">AND date=#{date}</if>
+            <if test="profession!=null and !&quot;&quot;.equals(profession.trim())">AND profession=#{profession}</if>
+            <if test="category!=null and !&quot;&quot;.equals(category.trim())">AND category=#{category}</if>
+            <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description LIKE '%' + #{description} + '%'</if>
+            <if test="qc!=null and !&quot;&quot;.equals(qc.trim())">AND qc=#{qc}</if>
+            <if test="creator!=null and !&quot;&quot;.equals(creator.trim())">AND creator=#{creator}</if>
+        </where>
+        ORDER BY projNo,profession,dept,team,[group],personName,date,qc,createTime
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.QualityFine" id="SmQualityFineResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="group" column="group" jdbcType="VARCHAR"/>
+        <result property="personAcc" column="personAcc" jdbcType="VARCHAR"/>
+        <result property="personName" column="personName" jdbcType="VARCHAR"/>
+        <result property="date" column="date" jdbcType="DATE"/>
+        <result property="profession" column="profession" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="category" column="category" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="qc" column="qc" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

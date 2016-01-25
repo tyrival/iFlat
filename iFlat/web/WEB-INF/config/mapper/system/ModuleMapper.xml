@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.Module">
+
+    <insert id="insert" parameterType="com.iflat.system.bean.Module">
+        INSERT INTO SysModule
+        VALUES (#{nodeId},#{nodeName},#{parentNodeId},#{nameSpace},#{moduleName},#{aweIcon},#{sequence},#{viewName},#{controller},#{url},#{status},#{createTime})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.system.bean.Module">
+        UPDATE SysModule
+        <set>
+            <if test="nodeName!=null">nodeName=#{nodeName},</if>
+            <if test="parentNodeId!=null and !&quot;&quot;.equals(parentNodeId.trim())">parentNodeId=#{parentNodeId},</if>
+            <if test="aweIcon!=null">aweIcon=#{aweIcon},</if>
+            <if test="moduleName!=null">moduleName=#{moduleName},</if>
+            <if test="sequence!=null">sequence=#{sequence},</if>
+            <if test="nameSpace!=null">nameSpace=#{nameSpace},</if>
+            <if test="viewName!=null">viewName=#{viewName},</if>
+            <if test="controller!=null">controller=#{controller},</if>
+            <if test="url!=null">url=#{url},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="createTime!=null">createTime=#{createTime}</if>
+        </set>
+        WHERE nodeId=#{nodeId}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        DELETE SysModule
+        WHERE nodeId=#{nodeId}
+    </delete>
+
+    <select id="get" parameterType="String" resultMap="SysModuleResult">
+        SELECT nodeId,nodeName,moduleName,parentNodeId,aweIcon,sequence,nameSpace,viewName,controller,url,status,createTime
+        FROM SysModule
+        WHERE nodeId = #{nodeId}
+    </select>
+
+    <select id="list" resultMap="SysModuleResult">
+        SELECT nodeId,nodeName,moduleName,parentNodeId,aweIcon,sequence,nameSpace,viewName,controller,url,status,createTime
+        FROM SysModule
+        ORDER BY sequence
+    </select>
+
+    <select id="listChildren" parameterType="String" resultMap="SysModuleResult">
+        SELECT nodeId,nodeName,moduleName,parentNodeId,aweIcon,sequence,nameSpace,viewName,controller,url,status,createTime
+        FROM SysModule
+        WHERE parentNodeId=#{nodeId}
+    </select>
+
+    <select id="listNavigationByUser" parameterType="com.iflat.system.entity.UserInfoVo" resultMap="SysModuleResult">
+        SELECT m.nodeId,m.nodeName,m.moduleName,m.parentNodeId,m.aweIcon,m.sequence,m.nameSpace,m.viewName,m.controller,m.url,m.status,m.createTime
+        FROM (
+            SELECT nameSpace,moduleName
+            FROM SysAuthModule
+            WHERE roleId=#{roleId}
+            AND amStatus='TRUE'
+            AND account IN (CASE WHEN (SELECT COUNT(account) FROM SysAuthModule WHERE account=#{account} AND amStatus='TRUE')>0 THEN #{account} ELSE '' END)
+        ) a
+        LEFT JOIN SysModule m ON a.nameSpace=m.nameSpace AND a.moduleName=m.moduleName
+        WHERE m.status='TRUE'
+        UNION ALL
+        SELECT '00000000-0000-0000-0000-000000000000','ROOT','',NULL,NULL,NULL,'ROOT',NULL,NULL,NULL,NULL,NULL
+        FROM SysModule
+        WHERE nodeId='00000000-0000-0000-0000-000000000000'
+    </select>
+
+    <!-- Module -->
+    <resultMap type="com.iflat.system.bean.Module" id="SysModuleResult">
+        <result property="nodeId" column="nodeId" jdbcType="VARCHAR"/>
+        <result property="nodeName" column="nodeName" jdbcType="VARCHAR"/>
+        <result property="moduleName" column="moduleName" jdbcType="VARCHAR"/>
+        <result property="parentNodeId" column="parentNodeId" jdbcType="VARCHAR"/>
+        <result property="aweIcon" column="aweIcon" jdbcType="VARCHAR"/>
+        <result property="sequence" column="sequence" jdbcType="VARCHAR"/>
+        <result property="nameSpace" column="nameSpace" jdbcType="VARCHAR"/>
+        <result property="viewName" column="viewName" jdbcType="VARCHAR"/>
+        <result property="controller" column="controller" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="BIT"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

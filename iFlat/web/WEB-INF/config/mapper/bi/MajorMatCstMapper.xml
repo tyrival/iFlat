@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bi.MajorMatCst">
+
+    <insert id="insert" parameterType="com.iflat.bi.bean.MajorMatCst">
+        INSERT INTO BiMajorMatCst
+        VALUES (#{id},#{projNo},#{type},#{steel},#{pipes},#{weldingMat},#{paint},#{cable},#{oil},#{month},#{fixed},#{version})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO BiMajorMatCst
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.type},#{item.steel},#{item.pipes},#{item.weldingMat},#{item.paint},#{item.cable},#{item.oil},#{item.month},#{item.fixed},#{item.version}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.bi.bean.MajorMatCst">
+        UPDATE BiMajorMatCst
+        SET projNo=#{projNo},type=#{type},steel=#{steel},pipes=#{pipes},weldingMat=#{weldingMat},paint=#{paint},cable=#{cable},oil=#{oil},month=#{month},fixed=#{fixed},version=#{version}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.bi.bean.MajorMatCst">
+        DELETE BiMajorMatCst
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.bi.bean.MajorMatCst" resultMap="BiMajorMatCstResult">
+        SELECT id,projNo,type,steel,pipes,weldingMat,paint,cable,oil,month,fixed,version
+        FROM BiMajorMatCst
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="type!=null">AND type=#{type}</if>
+        </where>
+    </select>
+
+    <resultMap type="com.iflat.bi.bean.MajorMatCst" id="BiMajorMatCstResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="steel" column="steel" jdbcType="DOUBLE"/>
+        <result property="pipes" column="pipes" jdbcType="DOUBLE"/>
+        <result property="weldingMat" column="weldingMat" jdbcType="DOUBLE"/>
+        <result property="paint" column="paint" jdbcType="DOUBLE"/>
+        <result property="cable" column="cable" jdbcType="DOUBLE"/>
+        <result property="oil" column="oil" jdbcType="DOUBLE"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="fixed" column="fixed" jdbcType="DATE"/>
+        <result property="version" column="version" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>
