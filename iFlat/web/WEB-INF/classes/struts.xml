@@ -97,8 +97,15 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
-        <!-- sm模块 -->
-        <action name="sm_*" class="com.iflat.sm.action.SmAction" method="{1}">
+        <!-- qm模块 -->
+        <action name="qm_*" class="com.iflat.qm.action.QmAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+        <!-- ss模块 -->
+        <action name="sm_*" class="com.iflat.ss.action.SsAction" method="{1}">
             <result type="json" name="success">
                 <param name="root">result</param>
                 <param name="excludeNullProperties">true</param>

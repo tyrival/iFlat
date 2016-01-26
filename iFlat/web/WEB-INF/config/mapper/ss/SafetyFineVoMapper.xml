@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.SafetyFineVo">
+
+    <select id="list" parameterType="com.iflat.ss.entity.SafetyFineVo" resultMap="SsSafetyFineVoResult">
+        SELECT id,projNo,projName,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,creator,createTime
+        FROM V_SsSafetyFine
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+            <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName LIKE '%' + #{projName} + '%'</if>
+            <if test="position!=null and !&quot;&quot;.equals(position.trim())">AND position LIKE '%' + #{position} + '%'</if>
+            <if test="place!=null and !&quot;&quot;.equals(place.trim())">AND place LIKE '%' + #{place} + '%'</if>
+            <if test="date!=null">AND date=#{date}</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%' + #{team} + '%'</if>
+            <if test="group!=null and !&quot;&quot;.equals(group.trim())">AND [group]=#{group}</if>
+            <if test="personAcc!=null and !&quot;&quot;.equals(personAcc.trim())">AND personAcc=#{personAcc}</if>
+            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName LIKE '%' + #{personName} + '%'</if>
+            <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description LIKE '%' + #{description} + '%'</if>
+            <if test="measure!=null and !&quot;&quot;.equals(measure.trim())">AND measure LIKE '%' + #{measure} + '%'</if>
+            <if test="deadline!=null and !&quot;&quot;.equals(deadline.trim())">AND deadline=#{deadline}</if>
+            <if test="feedback!=null and !&quot;&quot;.equals(feedback.trim())">AND feedback LIKE '%' + #{feedback} + '%'</if>
+            <if test="manager!=null and !&quot;&quot;.equals(manager.trim())">AND manager LIKE '%' + #{manager} + '%'</if>
+            <if test="mgrDept!=null and !&quot;&quot;.equals(mgrDept.trim())">AND mgrDept LIKE '%' + #{mgrDept} + '%'</if>
+            <if test="dangerType!=null and !&quot;&quot;.equals(dangerType.trim())">AND dangerType=#{dangerType}</if>
+            <if test="damageType!=null and !&quot;&quot;.equals(damageType.trim())">AND damageType=#{damageType}</if>
+            <if test="riskLevel!=null and !&quot;&quot;.equals(riskLevel.trim())">AND riskLevel=#{riskLevel}</if>
+            <if test="groupLeader!=null and !&quot;&quot;.equals(groupLeader.trim())">AND groupLeader LIKE '%' + #{groupLeader} + '%'</if>
+            <if test="inspectType!=null and !&quot;&quot;.equals(inspectType.trim())">AND inspectType=#{inspectType}</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
+            <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">AND issuer LIKE '%' + #{issuer} + '%'</if>
+        </where>
+        ORDER BY  (CASE WHEN personAcc IS NULL OR personAcc=='' THEN 0 ELSE 1 END),date DESC,projNo,type,dept,team,[group],personAcc,createTime
+    </select>
+
+    <resultMap type="com.iflat.ss.entity.SafetyFineVo" id="SsSafetyFineVoResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="position" column="position" jdbcType="VARCHAR"/>
+        <result property="place" column="place" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="date" column="date" jdbcType="DATE"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="group" column="group" jdbcType="VARCHAR"/>
+        <result property="personAcc" column="personAcc" jdbcType="VARCHAR"/>
+        <result property="personName" column="personName" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="measure" column="measure" jdbcType="VARCHAR"/>
+        <result property="deadline" column="deadline" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="feedback" column="feedback" jdbcType="VARCHAR"/>
+        <result property="manager" column="manager" jdbcType="VARCHAR"/>
+        <result property="mgrDept" column="mgrDept" jdbcType="VARCHAR"/>
+        <result property="dangerType" column="dangerType" jdbcType="VARCHAR"/>
+        <result property="damageType" column="damageType" jdbcType="VARCHAR"/>
+        <result property="riskLevel" column="riskLevel" jdbcType="VARCHAR"/>
+        <result property="groupLeader" column="groupLeader" jdbcType="VARCHAR"/>
+        <result property="inspectType" column="inspectType" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

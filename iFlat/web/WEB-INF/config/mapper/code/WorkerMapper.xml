@@ -13,12 +13,12 @@
             <if test="name!=null">AND name=#{name}</if>
             <if test="sex!=null">AND sex=#{sex}</if>
             <if test="workType!=null">AND workType=#{workType}</if>
-            <if test="deptCode!=null">AND deptCode=#{deptCode}</if>
-            <if test="deptName!=null">AND deptName=#{deptName}</if>
-            <if test="teamCode!=null">AND teamCode=#{teamCode}</if>
-            <if test="teamName!=null">AND teamName=#{teamName}</if>
-            <if test="groupCode!=null">AND groupCode=#{groupCode}</if>
-            <if test="groupName!=null">AND groupName=#{groupName}</if>
+            <if test="deptCode!=null and !&quot;&quot;.equals(deptCode.trim())">AND deptCode=#{deptCode}</if>
+            <if test="deptName!=null and !&quot;&quot;.equals(deptName.trim())">AND deptName=#{deptName}</if>
+            <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
+            <if test="teamName!=null and !&quot;&quot;.equals(teamName.trim())">AND teamName=#{teamName}</if>
+            <if test="groupCode!=null and !&quot;&quot;.equals(groupCode.trim())">AND groupCode=#{groupCode}</if>
+            <if test="groupName!=null and !&quot;&quot;.equals(groupName.trim())">AND groupName=#{groupName}</if>
             <if test="category!=null">AND category=#{category}</if>
             <if test="property!=null">AND property=#{property}</if>
         </where>
