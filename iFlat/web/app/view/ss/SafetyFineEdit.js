@@ -1,7 +1,7 @@
 Ext.define('iFlat.view.ss.SafetyFineEdit', {
     extend: 'Ext.window.Window',
     alias: 'widget.ss-safetyfineedit',
-    title: '质量奖惩',
+    title: '安全奖惩',
     layout: 'fit',
     modal: true,
 

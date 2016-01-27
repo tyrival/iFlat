@@ -85,7 +85,7 @@
             <if test="issuer!=null">AND issuer=#{issuer}</if>
             <if test="creator!=null">AND creator=#{creator}</if>
         </where>
-        ORDER BY  (CASE WHEN personAcc IS NULL OR personAcc=='' THEN 0 ELSE 1 END),date DESC,projNo,type,dept,team,[group],personName,qc,createTime
+        ORDER BY  (CASE WHEN personAcc IS NULL OR personAcc='' THEN 0 ELSE 1 END),date DESC,projNo,type,dept,team,[group],personName,qc,createTime
     </select>
 
     <resultMap type="com.iflat.ss.bean.SafetyFine" id="SsSafetyFineResult">

@@ -26,6 +26,25 @@ public class QualityFineVo {
     private Date createTime;  //录入日期
     private String attachment;  //附件
 
+    private Date fromDate;
+    private Date toDate;
+
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
     public String getAttachment() {
         return attachment;
     }

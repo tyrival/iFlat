@@ -22,6 +22,7 @@
             <if test="category!=null">AND category=#{category}</if>
             <if test="property!=null">AND property=#{property}</if>
         </where>
+        ORDER BY deptCode,teamCode,groupCode,account
     </select>
 
     <resultMap type="com.iflat.code.bean.Worker" id="codeWorkerResult">

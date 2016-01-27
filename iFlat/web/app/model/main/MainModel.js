@@ -4,7 +4,7 @@ Ext.define('iFlat.model.main.MainModel', {
 
     data: {
 
-        /* main */
+        /* 全局 main */
         title: {
             iconPath: 'resources/images/sencha-icon.png',
             name: ' 中船澄西信息化平台'
@@ -25,7 +25,6 @@ Ext.define('iFlat.model.main.MainModel', {
             sequence: '',
             loginTime: null,
         },
-
         month: ['2015-10','2015-11','2015-12',
             '2016-01','2016-02','2016-03','2016-04','2016-05','2016-06',
             '2016-07','2016-08','2016-09','2016-10','2016-11','2016-12',
@@ -57,10 +56,14 @@ Ext.define('iFlat.model.main.MainModel', {
         ],
         reason: ['业务不熟','系统不熟','新增需求','系统bug','系统优化'],
 
-        /* 工程结算 settlement management*/
+        /* 工程结算 settlement management */
         smDept: ['造船加工车间','造船船体车间','造船安装车间','造船模块车间','造船启东工程部','造船如皋工程部','扬州项目部制造部','扬州项目部总装部','扬州项目部搭载部','扬州项目部涂装部','修船冷作车间','修船坞修车间','修船舾装车间','修船机加工车间','修船机电修理车间','钢结构事业部','特涂公司（澄西）','特涂公司（启东）'],
+
+        /* 质量管理 quality managerment */
         qualityFineCategory: ['质量指标','工艺纪律','交验考核'],
         qualityFineProfession: ['船体','轮机','电气','内装','油漆'],
+
+        /* 安环保卫 safety & security */
         safetyFineType: ['安全隐患','行为规范','5S','事故'],
         safetyFineMgrDept: ['造船事业部','修船事业部','钢结构事业部'],
         safetyFineDeadline: ['立即整改','通知整改'],

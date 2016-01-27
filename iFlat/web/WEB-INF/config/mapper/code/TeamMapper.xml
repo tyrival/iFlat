@@ -13,6 +13,7 @@
             <if test="teamName!=null">AND teamName=#{teamName}</if>
         </where>
         GROUP BY deptCode,deptName,teamName
+        ORDER BY deptCode,deptName,teamName
     </select>
 
     <resultMap type="com.iflat.code.bean.Team" id="codeTeamResult">
