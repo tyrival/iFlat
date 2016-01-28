@@ -21,6 +21,7 @@ public class Result {
     private Map map;
     private Set set;
     private PageInfo page;
+    private String token;
 
     public Result() {
         this.flag = "";
@@ -129,4 +130,11 @@ public class Result {
         this.set = set;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

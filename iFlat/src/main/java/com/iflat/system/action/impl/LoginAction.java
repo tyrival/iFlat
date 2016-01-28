@@ -1,6 +1,7 @@
 package com.iflat.system.action.impl;
 
 import com.iflat.system.bean.User;
+import com.iflat.system.entity.Result;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.system.service.UserManager;
 import com.iflat.util.Application;
@@ -18,6 +19,7 @@ public class LoginAction extends ActionSupport {
     private UserManager userManager;
     //储存登录验证未通过的结果，供页面调用
     private String message;
+
     /**
      * 单点登录
      * http://localhost:8080/main.action

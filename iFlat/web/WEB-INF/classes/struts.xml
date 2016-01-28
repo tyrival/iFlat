@@ -74,11 +74,21 @@
             <result name="success">/WEB-INF/views/main.jsp</result>
             <result name="input">index.jsp</result>
         </action>
+
+        <!-- air模块 -->
+        <action name="login" class="com.iflat.air.action.LoginAction" method="login">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+
         <!-- util -->
         <action name="util_*" class="com.iflat.report.action.UtilAction" method="{1}">
             <result name="paint">/WEB-INF/views/util/paint.jsp</result>
             <result name="success">index.jsp</result>
         </action>
+
         <!-- system模块 -->
         <action name="system_*" class="com.iflat.system.action.impl.SystemAction" method="{1}">
             <result type="json" name="success">
@@ -90,6 +100,7 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
         <!-- bi模块 -->
         <action name="bi_*" class="com.iflat.bi.action.BiAction" method="{1}">
             <result type="json" name="success">
@@ -97,6 +108,7 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
         <!-- qm模块 -->
         <action name="qm_*" class="com.iflat.qm.action.QmAction" method="{1}">
             <result type="json" name="success">
@@ -104,6 +116,7 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
         <!-- ss模块 -->
         <action name="ss_*" class="com.iflat.ss.action.SsAction" method="{1}">
             <result type="json" name="success">
@@ -111,6 +124,7 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
         <!-- code模块 -->
         <action name="code_*" class="com.iflat.code.action.CodeAction" method="{1}">
             <result type="json" name="success">
@@ -118,6 +132,7 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
         <!-- lib模块 -->
         <action name="lib_*" class="com.iflat.lib.action.LibAction" method="{1}">
             <result type="json" name="success">
@@ -125,6 +140,7 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
         <!-- report模块 -->
         <action name="rpt_*" class="com.iflat.report.action.ReportAction" method="{1}">
             <result type="json" name="success">
