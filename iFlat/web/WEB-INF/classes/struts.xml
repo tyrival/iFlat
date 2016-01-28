@@ -105,7 +105,7 @@
             </result>
         </action>
         <!-- ss模块 -->
-        <action name="sm_*" class="com.iflat.ss.action.SsAction" method="{1}">
+        <action name="ss_*" class="com.iflat.ss.action.SsAction" method="{1}">
             <result type="json" name="success">
                 <param name="root">result</param>
                 <param name="excludeNullProperties">true</param>
@@ -113,6 +113,13 @@
         </action>
         <!-- code模块 -->
         <action name="code_*" class="com.iflat.code.action.CodeAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+        <!-- lib模块 -->
+        <action name="lib_*" class="com.iflat.lib.action.LibAction" method="{1}">
             <result type="json" name="success">
                 <param name="root">result</param>
                 <param name="excludeNullProperties">true</param>

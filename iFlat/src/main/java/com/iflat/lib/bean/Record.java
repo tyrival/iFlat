@@ -1,4 +1,4 @@
-package com.iflat.book.bean;
+package com.iflat.lib.bean;
 
 import java.util.Date;
 
@@ -8,10 +8,10 @@ import java.util.Date;
 public class Record {
 
     private String id;
-    private String bookId;
-    private String borrower;
-    private Date start;
-    private Date end;
+    private String bookId;  //书id
+    private String borrower;  //借阅人
+    private Date startDate;  //借阅时间
+    private Date endDate;  //归还时间
 
     public String getId() {
         return id;
@@ -37,19 +37,19 @@ public class Record {
         this.borrower = borrower;
     }
 
-    public Date getStart() {
-        return start;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStart(Date start) {
-        this.start = start;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnd() {
-        return end;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnd(Date end) {
-        this.end = end;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

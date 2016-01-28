@@ -118,6 +118,13 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+        <!-- lib模块 -->
+        <action name="lib_*" class="com.iflat.lib.action.LibAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
         <!-- report模块 -->
         <action name="rpt_*" class="com.iflat.report.action.ReportAction" method="{1}">
             <result type="json" name="success">

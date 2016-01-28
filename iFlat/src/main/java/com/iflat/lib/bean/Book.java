@@ -1,4 +1,4 @@
-package com.iflat.book.bean;
+package com.iflat.lib.bean;
 
 /**
  * Created by tyriv on 2016/1/6.
@@ -6,12 +6,11 @@ package com.iflat.book.bean;
 public class Book {
 
     private String id;
-    private String category;
-    private String name;
-    private String author;
-    private String publisher;
-    private String owner;
-    private int number;
+    private String category;  //分类
+    private String name;  //书名
+    private String author;  //作者
+    private String publisher;  //出版社
+    private int number;  //数量
 
     public int getNumber() {
         return number;
@@ -59,13 +58,5 @@ public class Book {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
     }
 }

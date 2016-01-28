@@ -1,4 +1,4 @@
-package com.iflat.book.service.impl;
+package com.iflat.lib.service.impl;
 
 import com.iflat.system.service.impl.IflatManagerSupport;
 

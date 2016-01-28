@@ -1,7 +1,7 @@
-package com.iflat.book.action;
+package com.iflat.lib.action;
 
-import com.iflat.book.bean.Book;
-import com.iflat.book.bean.Record;
+import com.iflat.lib.bean.Book;
+import com.iflat.lib.bean.Record;
 import com.iflat.system.action.ResultAware;
 import com.iflat.system.entity.Result;
 import com.iflat.system.service.IflatManager;
@@ -18,6 +18,22 @@ public class LibAction extends ActionSupport implements ResultAware {
     private Record record;
 
     private Result result;
+
+    /* book */
+    private String saveBook() throws Exception {
+        this.result.setObject(this.bookManager.save(this.book));
+        return SUCCESS;
+    }
+
+    private String deleteBook() throws Exception {
+        this.result.setObject(this.bookManager.delete(this.book));
+        return SUCCESS;
+    }
+
+    private String listBook() throws Exception {
+        this.result.setList(this.bookManager.list(this.book));
+        return SUCCESS;
+    }
 
     /* record */
     private String saveRecord() throws Exception {
