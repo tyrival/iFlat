@@ -1,4 +1,4 @@
-package com.iflat.lib.action;
+package com.iflat.air.action;
 
 import com.iflat.lib.bean.Book;
 import com.iflat.lib.bean.Record;
@@ -8,7 +8,7 @@ import com.iflat.system.service.IflatManager;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * Created by tyriv on 2016/1/6.
+ * Created by tyriv on 2016/2/1.
  */
 public class LibAction extends ActionSupport implements ResultAware {
 

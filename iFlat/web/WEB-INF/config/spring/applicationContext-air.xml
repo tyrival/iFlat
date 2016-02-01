@@ -10,4 +10,12 @@
         <property name="userManager" ref="userManager"></property>
     </bean>
 
+    <bean id="airLibAction" class="com.iflat.air.action.LibAction" scope="prototype">
+        <property name="result" ref="result"/>
+        <property name="bookManager" ref="bookManager"/>
+        <property name="book" ref="book"/>
+        <property name="recordManager" ref="recordManager"/>
+        <property name="record" ref="record"/>
+    </bean>
+
 </beans>

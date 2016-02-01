@@ -10,9 +10,12 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.config.entities.ActionConfig;
 import com.opensymphony.xwork2.interceptor.Interceptor;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by tyriv on 2015/8/17.
@@ -23,7 +26,6 @@ public class AuthorityInterceptor implements Interceptor {
 
     @Override
     public void init() {
-
     }
 
     @Override
@@ -32,10 +34,25 @@ public class AuthorityInterceptor implements Interceptor {
         ActionConfig actionConfig = actionInvocation.getProxy().getConfig();
         String className = actionConfig.getClassName();
         String method = actionConfig.getMethodName();
-        //如果是登陆action则不做拦截
-        if("com.iflat.system.action.impl.LoginAction".equals(className) && "login".equals(method)) {
-            return actionInvocation.invoke();
+
+        //获取web.xml中的例外参数
+        String param = Application.getContextParam("authorityInterceptor");
+        String[] exception = null;
+        if (param != null) {
+            exception = param.split("\\s*,\\s*\\s*|\t|\r|\n\\s*");
         }
+
+        //匹配例外列表，如果在匹配则不做拦截
+        if (exception != null) {
+            for (int i = 0; i < exception.length; i++) {
+                Pattern p = Pattern.compile(exception[i]);
+                Matcher m = p.matcher(className);
+                while (m.find()) {
+                    return actionInvocation.invoke();
+                }
+            }
+        }
+
         //检验是否存在session，或是否已被清除登陆状态，不存在session则跳转到登陆界面
         UserInfoVo session = Session.getUserInfo();
         if(session == null || !Application.isOnline()) {
@@ -46,10 +63,12 @@ public class AuthorityInterceptor implements Interceptor {
             ((ResultAware)action).setResult(result);
             return "success";
         }
+
         //生成功能树的action不拦截
         if("com.iflat.system.action.impl.SystemAction".equals(className) && "getNavigationTree".equals(method)) {
             return actionInvocation.invoke();
         }
+
         //获得条件并查询权限
         AuthOperatingVo authOperatingVo = new AuthOperatingVo();
         getInfoFromSession(authOperatingVo);

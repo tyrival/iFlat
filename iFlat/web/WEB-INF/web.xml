@@ -21,6 +21,7 @@
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
+
     <!-- 全局session监听器 -->
     <listener>
         <listener-class>com.iflat.system.listener.SessionListener</listener-class>
@@ -30,6 +31,7 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
     <!-- 配置Spring配置文件的位置 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -44,6 +46,15 @@
         <param-name>configRoot</param-name>
         <param-value>
             /WEB-INF/config/
+        </param-value>
+    </context-param>
+
+    <!-- 配置config配置文件的根目录 -->
+    <context-param>
+        <param-name>authorityInterceptor</param-name>
+        <param-value>
+            com.iflat.system.action.impl.LoginAction,
+            com.iflat.air.*,
         </param-value>
     </context-param>
 

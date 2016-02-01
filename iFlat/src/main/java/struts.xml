@@ -82,6 +82,12 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+        <action name="air_lib_*" class="com.iflat.air.action.LibAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
 
         <!-- util -->
         <action name="util_*" class="com.iflat.report.action.UtilAction" method="{1}">
