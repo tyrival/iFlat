@@ -30,6 +30,7 @@ public class LoginAction extends ActionSupport implements ResultAware, ModelDriv
             if(userInfoVo != null) {
 
                 result.setSuccess(true);
+                result.setObject(userInfoVo);
                 result.setToken("测试Token");
                 Session.putUserInfo(userInfoVo);
                 Application.addOnline(userInfoVo);

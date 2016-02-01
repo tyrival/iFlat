@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LibAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/interceptor/AuthorityInterceptor.class" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/interceptor/AuthorityInterceptor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/service/IflatManager.class" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/service/IflatManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/service/impl/IflatManagerSupport.class" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/service/impl/IflatManagerSupport.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/action/LibAction.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/action/LibAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/struts.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/java/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/struts.xml" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-air.xml" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-air.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LibAction.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LibAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/RecordManagerImpl.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/RecordManagerImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/IflatManager.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/IflatManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/impl/IflatManagerSupport.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/impl/IflatManagerSupport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/RecordMapper.xml" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/RecordMapper.xml" />
     </list>
     <ignored path="iFlat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +31,7 @@
     <favorites_list name="iFlat" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,9 +52,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/iFlat/web/app/view/safety/SafetyFine.js" />
-        <option value="$PROJECT_DIR$/iFlat/web/app/view/safety/SafetyFineController.js" />
-        <option value="$PROJECT_DIR$/iFlat/web/app/view/safety/SafetyFineEdit.js" />
         <option value="$PROJECT_DIR$/iFlat/web/app/store/ss/SafetyFine.js" />
         <option value="$PROJECT_DIR$/iFlat/web/app/model/ss/SafetyFine.js" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/ss/impl/SafetyFineDaoImpl.java" />
@@ -85,24 +82,27 @@
         <option value="$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorker.js" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/book/bean/Book.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/book/bean/Record.java" />
-        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/BookManagerImpl.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/bean/Record.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/bean/Book.java" />
         <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/BookMapper.xml" />
-        <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/RecordMapper.xml" />
         <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-lib.xml" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/action/impl/LoginAction.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/action/impl/AirAction.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/action/impl/AirLoginAction.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/AirLoginAction.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/entity/Result.java" />
-        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java" />
         <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/action/LibAction.java" />
-        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LibAction.java" />
         <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-air.xml" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/struts.xml" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/IflatManager.java" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/BookManagerImpl.java" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/impl/IflatManagerSupport.java" />
+        <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/RecordMapper.xml" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LibAction.java" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/RecordManagerImpl.java" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java" />
       </list>
     </option>
   </component>
@@ -156,125 +156,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Production">
           <PATH>
@@ -335,6 +216,99 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -835,7 +809,16 @@
       <workItem from="1454204851466" duration="217000" />
       <workItem from="1454238356619" duration="1190000" />
       <workItem from="1454239598023" duration="87000" />
-      <workItem from="1454285042575" duration="1932000" />
+      <workItem from="1454285042575" duration="2005000" />
+      <workItem from="1454290610074" duration="3878000" />
+      <workItem from="1454298407899" duration="59000" />
+      <workItem from="1454298725971" duration="211000" />
+      <workItem from="1454299319488" duration="1051000" />
+      <workItem from="1454301834302" duration="163000" />
+      <workItem from="1454302218077" duration="81000" />
+      <workItem from="1454305550445" duration="44000" />
+      <workItem from="1454307051310" duration="59000" />
+      <workItem from="1454307384420" duration="1691000" />
     </task>
     <task id="LOCAL-00001" summary="工程结算&#10;将质量、安全罚单拆分到质量模块和安全模块">
       <created>1453766845857</created>
@@ -861,11 +844,17 @@
       <option name="project" value="LOCAL" />
       <updated>1453968211298</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Android&#10;修改部分拦截器以适应移动端的请求">
+      <created>1454287036007</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1454287036007</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42877000" />
+    <option name="totallyTimeSpent" value="50187000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1040" height="1266" extended-state="6" />
@@ -919,15 +908,17 @@
     <MESSAGE value="报表&#10;增加了个人质量安全罚款查询报表" />
     <MESSAGE value="书籍管理&#10;后台开发完毕" />
     <MESSAGE value="Android&#10;增加了移动端登陆功能测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="Android&#10;增加了移动端登陆功能测试" />
+    <MESSAGE value="Android&#10;修改部分拦截器以适应移动端的请求" />
+    <option name="LAST_COMMIT_MESSAGE" value="Android&#10;修改部分拦截器以适应移动端的请求" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
         <watch expression="Application.getContextParam(&quot;authorityInterceptor&quot;)" language="JAVA" custom="" />
+        <watch expression="Session.getUserInfo()" language="JAVA" custom="" />
       </configuration>
     </watches-manager>
   </component>
@@ -936,55 +927,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/iFlat/web/app/model/main/MainModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.36107194">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/app/view/report/bi/AdditionalBillController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81241184">
-          <caret line="31" column="5" selection-start-line="24" selection-start-column="4" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/app/view/report/bi/AdditionalBill.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4315938">
-          <caret line="50" column="11" selection-start-line="47" selection-start-column="41" selection-end-line="50" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorkerController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6445698">
-          <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2538787">
-          <caret line="119" column="22" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/bi/bean/ProjectCost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/bi/bean/MajorMatCst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/bi/bean/MajorDevCst.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38404453">
@@ -999,31 +941,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/BookManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18367347">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/RecordManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.116883114">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/qm/QualityFineMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46197718">
           <caret line="22" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="110" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/RecordMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9244713">
-          <caret line="51" column="66" selection-start-line="51" selection-start-column="66" selection-end-line="51" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -1038,13 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44486693">
           <caret line="25" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/bean/Record.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20037106">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1088,13 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25698325">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04699739">
-          <caret line="15" column="88" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -1156,13 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8366762">
-          <caret line="21" column="66" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.71575344">
@@ -1178,27 +1078,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/AdditionalBillMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26666668">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <marker date="1453693034583" expanded="true" signature="278:460" placeholder="INSERT INTO BiAdditionalBill... " />
-            <marker date="1453693034583" expanded="true" signature="668:850" placeholder="SELECT #{it.... " />
-            <marker date="1453693034583" expanded="true" signature="967:1251" placeholder="UPDATE BiAdd... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/BookMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.89626557">
           <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
-          <folding>
-            <marker date="1453944717289" expanded="true" signature="260:355" placeholder="INSERT INTO LibBook... " />
-            <marker date="1453944717289" expanded="true" signature="444:1061" placeholder="UPDATE LibBo... " />
-            <marker date="1453944717289" expanded="true" signature="1300:2041" placeholder="SELECT id,ca... LibBook" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1206,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14419226">
           <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1214,7 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.9425901">
           <caret line="104" column="31" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,7 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34535366">
           <caret line="413" column="16" selection-start-line="413" selection-start-column="16" selection-end-line="413" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1230,7 +1110,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5742025">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1238,7 +1117,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45769763">
           <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1262,7 +1140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81708944">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1270,7 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.024032043">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1278,7 +1154,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9853138">
           <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1297,45 +1172,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1682243">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LibAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19225635">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1501#1502#0" expanded="true" />
-            <element signature="e#1535#1536#0" expanded="true" />
-            <element signature="e#1595#1596#0" expanded="true" />
-            <element signature="e#1641#1642#0" expanded="true" />
-            <element signature="e#1687#1688#0" expanded="true" />
-            <element signature="e#1723#1724#0" expanded="true" />
-            <element signature="e#1787#1788#0" expanded="true" />
-            <element signature="e#1837#1838#0" expanded="true" />
-            <element signature="e#1866#1867#0" expanded="true" />
-            <element signature="e#1893#1894#0" expanded="true" />
-            <element signature="e#1931#1932#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
-            <element signature="e#1996#1997#0" expanded="true" />
-            <element signature="e#2025#2026#0" expanded="true" />
-            <element signature="e#2069#2070#0" expanded="true" />
-            <element signature="e#2105#2106#0" expanded="true" />
-            <element signature="e#2163#2164#0" expanded="true" />
-            <element signature="e#2199#2200#0" expanded="true" />
-            <element signature="e#2232#2233#0" expanded="true" />
-            <element signature="e#2261#2262#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/impl/IflatManagerSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8371162">
-          <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1343,6 +1179,121 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.099585064">
           <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/action/impl/SystemAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.3625956">
+          <caret line="257" column="9" selection-start-line="257" selection-start-column="7" selection-end-line="257" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/dao/impl/IflatDaoSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.116883114">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/bean/Record.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.116883114">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/RecordMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23954372">
+          <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/AdditionalBillMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34220532">
+          <caret line="17" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/IflatManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28838453">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/dao/IflatDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1682243">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/BookManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1682243">
+          <caret line="7" column="58" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/iFlat/web/WEB-INF/lib/ognl-3.0.6.jar!/ognl/OgnlRuntime.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34535366">
+          <caret line="850" column="0" selection-start-line="850" selection-start-column="0" selection-end-line="850" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LibAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7690254">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/service/impl/IflatManagerSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7022697">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33244327">
+          <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/RecordManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3845127">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36048064">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/entity/UserInfoVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1682243">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/bi/action/BiAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.024032043">
+          <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
           <folding />
         </state>
       </provider>

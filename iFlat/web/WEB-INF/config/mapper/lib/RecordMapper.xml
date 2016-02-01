@@ -9,6 +9,13 @@
         VALUES (#{id},#{bookId},#{borrower},#{startDate},#{endDate})
     </insert>
 
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO LibRecord
+        <foreach collection="list" item="it" index="index" separator="UNION ALL">
+            SELECT #{it.id},#{it.bookId},#{it.borrower},#{it.startDate},#{it.endDate}
+        </foreach>
+    </insert>
+
     <update id="update" parameterType="com.iflat.lib.bean.Record">
         UPDATE LibRecord
         <set>

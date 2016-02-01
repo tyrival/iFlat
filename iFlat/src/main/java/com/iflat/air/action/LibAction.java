@@ -7,6 +7,8 @@ import com.iflat.system.entity.Result;
 import com.iflat.system.service.IflatManager;
 import com.opensymphony.xwork2.ActionSupport;
 
+import java.util.List;
+
 /**
  * Created by tyriv on 2016/2/1.
  */
@@ -16,6 +18,7 @@ public class LibAction extends ActionSupport implements ResultAware {
     private IflatManager recordManager;
     private Book book;
     private Record record;
+    private List<Record> recordList;
 
     private Result result;
 
@@ -38,6 +41,11 @@ public class LibAction extends ActionSupport implements ResultAware {
     /* record */
     public String saveRecord() throws Exception {
         this.result.setObject(this.recordManager.save(this.record));
+        return SUCCESS;
+    }
+
+    public String insertBatchRecord() throws Exception {
+        this.result.setList(this.recordManager.insertBatch(this.recordList));
         return SUCCESS;
     }
 
@@ -90,5 +98,13 @@ public class LibAction extends ActionSupport implements ResultAware {
 
     public Result getResult() {
         return result;
+    }
+
+    public List<Record> getRecordList() {
+        return recordList;
+    }
+
+    public void setRecordList(List<Record> recordList) {
+        this.recordList = recordList;
     }
 }

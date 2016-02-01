@@ -32,6 +32,8 @@ public abstract class IflatManagerSupport implements IflatManager {
     private Object saveObj;
     private Object deleteObj;
     private Object listParam;
+    private List insertBatchList;
+    private List deleteBatchList;
     private List list;
     private Page page;
     private boolean isPaging;
@@ -45,6 +47,12 @@ public abstract class IflatManagerSupport implements IflatManager {
 
     public void beforeList() throws Exception { };
     public void afterList() throws Exception { }
+
+    public void afterInsertBatch() throws Exception { }
+    public void beforeInsertBatch() throws Exception { }
+
+    public void afterDeleteBatch() throws Exception { }
+    public void beforeDeleteBatch() throws Exception { }
 
     public abstract void setImportExcelReader() throws Exception;
     public abstract void setImportProps() throws Exception;
@@ -85,6 +93,25 @@ public abstract class IflatManagerSupport implements IflatManager {
     }
 
     @Override
+    public List insertBatch(List list) throws Exception {
+
+        this.insertBatchList = list;
+        Object result;
+
+        this.beforeInsertBatch();
+
+        result = executeMethod(this.insertBatchList, "insertBatch");
+
+        this.afterInsertBatch();
+
+        //如果是增删改，dao层返回的是数值，此时改为返回参数对象
+        if(result instanceof Integer) {
+            this.insertBatchList = (int)result == this.insertBatchList.size() ? this.insertBatchList : null;
+        }
+        return this.insertBatchList;
+    }
+
+    @Override
     public Object delete(Object o) throws Exception {
 
         this.deleteObj = o;
@@ -99,6 +126,25 @@ public abstract class IflatManagerSupport implements IflatManager {
             result = (int)result > 0 ? this.deleteObj : null;
         }
         return result;
+    }
+
+    @Override
+    public List deleteBatch(List list) throws Exception {
+
+        this.deleteBatchList = list;
+        Object result;
+
+        this.beforeDeleteBatch();
+
+        result = executeMethod(this.deleteBatchList, "deleteBatch");
+
+        this.afterDeleteBatch();
+
+        //如果是增删改，dao层返回的是数值，此时改为返回参数对象
+        if(result instanceof Integer) {
+            this.deleteBatchList = (int)result == this.deleteBatchList.size() ? this.deleteBatchList : null;
+        }
+        return this.deleteBatchList;
     }
 
     @Override
@@ -314,4 +360,19 @@ public abstract class IflatManagerSupport implements IflatManager {
         this.page = page;
     }
 
+    public List getInsertBatchList() {
+        return insertBatchList;
+    }
+
+    public void setInsertBatchList(List insertBatchList) {
+        this.insertBatchList = insertBatchList;
+    }
+
+    public List getDeleteBatchList() {
+        return deleteBatchList;
+    }
+
+    public void setDeleteBatchList(List deleteBatchList) {
+        this.deleteBatchList = deleteBatchList;
+    }
 }
