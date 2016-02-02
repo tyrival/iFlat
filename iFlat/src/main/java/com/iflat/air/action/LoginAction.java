@@ -10,6 +10,8 @@ import com.iflat.util.Session;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import java.util.UUID;
+
 /**
  * Created by tyriv on 2016/1/28.
  */
@@ -29,11 +31,13 @@ public class LoginAction extends ActionSupport implements ResultAware, ModelDriv
 
             if(userInfoVo != null) {
 
+                String token = UUID.randomUUID().toString();
                 result.setSuccess(true);
                 result.setObject(userInfoVo);
-                result.setToken("测试Token");
+                result.setToken(token);
                 Session.putUserInfo(userInfoVo);
-                Application.addOnline(userInfoVo);
+                Application.removeOnlineAir(userInfoVo.getAccount());
+                Application.addOnlineAir(token, userInfoVo);
 
             } else {
                 this.result.setMessage("用户不存在可用的角色，或所在组织无效，请联系管理员。");
@@ -42,7 +46,6 @@ public class LoginAction extends ActionSupport implements ResultAware, ModelDriv
         } else {
             this.result.setMessage("用户名或密码错误。");
         }
-
         return SUCCESS;
     }
 

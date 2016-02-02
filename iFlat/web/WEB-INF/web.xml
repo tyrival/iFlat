@@ -49,11 +49,17 @@
         </param-value>
     </context-param>
 
-    <!-- 配置config配置文件的根目录 -->
+    <!-- 配置Authority拦截器的参数 -->
     <context-param>
-        <param-name>authorityInterceptor</param-name>
+        <param-name>noAuthority</param-name>
         <param-value>
             com.iflat.system.action.impl.LoginAction,
+            com.iflat.air.action.LoginAction,
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>airAuthority</param-name>
+        <param-value>
             com.iflat.air.*,
         </param-value>
     </context-param>

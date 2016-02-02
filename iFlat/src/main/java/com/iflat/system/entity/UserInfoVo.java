@@ -21,6 +21,10 @@ public class UserInfoVo {
     private int sequence;  //排序
     private Date loginTime;  //登录时间
 
+    public UserInfoVo() {
+        this.loginTime = new Date();
+    }
+
     public Date getLoginTime() {
         return loginTime;
     }

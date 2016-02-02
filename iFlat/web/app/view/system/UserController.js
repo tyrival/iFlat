@@ -14,6 +14,9 @@ Ext.define('iFlat.view.system.UserController', {
         sysUserOrgTreeStore.reload();
         sysRoleStore.reload();
         sysUserStore.reload();
+        if (Ext.getCmp('system-userroleedit')) {
+            sysRoleStore.reload();
+        }
     },
 
     addUserdRecord: function() {

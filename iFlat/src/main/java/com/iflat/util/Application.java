@@ -37,6 +37,11 @@ public class Application {
         return online != null;
     }
 
+    public static boolean isOnline(String account) throws Exception {
+        UserInfoVo online = getOnline().get(account);
+        return online != null;
+    }
+
     /**
      * 将user对象放入map中成为全局对象，key为account，value为user对象，
      * 当key=account存在时，新的user对象替换旧的
@@ -70,4 +75,44 @@ public class Application {
     public static Map getApplication() throws Exception {
         return ActionContext.getContext().getApplication();
     }
+
+    //将移动端的token放入全局对象
+    public static void addOnlineAir(String token, UserInfoVo userInfoVo) throws Exception {
+        Map<String, UserInfoVo> map = getOnlineAir();
+        if(map == null) {
+            map = new HashMap<String, UserInfoVo>();
+        }
+        map.put(token, userInfoVo);
+        getApplication().put("airOnline", map);
+    }
+
+    //根据token判断用户移动端是否在线
+    public static boolean isOnlineAir(String token) throws Exception {
+        UserInfoVo online = getOnlineAir().get(token);
+        return online != null;
+    }
+
+    //获得移动端在线token列表
+    public static Map<String, UserInfoVo> getOnlineAir() throws Exception {
+        return (Map<String, UserInfoVo>)getApplication().get("airOnline");
+    }
+
+    //获得移动端在线token列表
+    public static UserInfoVo getOnlineUserAir(String token) throws Exception {
+        return getOnlineAir().get(token);
+    }
+
+    //移除移动端在线的用户
+    public static void removeOnlineAir(String account) throws Exception {
+
+        Map<String, UserInfoVo> map = getOnlineAir();
+        if (map != null) {
+            for (Map.Entry<String, UserInfoVo> entry : map.entrySet()) {
+                if (account.equals(entry.getValue().getAccount())) {
+                    map.remove(entry.getKey());
+                }
+            }
+        }
+    }
+
 }

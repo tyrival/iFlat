@@ -10,10 +10,10 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.config.entities.ActionConfig;
 import com.opensymphony.xwork2.interceptor.Interceptor;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +23,16 @@ import java.util.regex.Pattern;
 public class AuthorityInterceptor implements Interceptor {
 
     private SqlSessionTemplate sqlSessionTemplateInterceptor;
+    private String noParam;
+    private String airParam;
+
+    private String className;
+    private String method;
+    private Action action;
+    private Result result;
+    private UserInfoVo session;
+
+    private String token;
 
     @Override
     public void init() {
@@ -32,61 +42,130 @@ public class AuthorityInterceptor implements Interceptor {
     public String intercept(ActionInvocation actionInvocation) throws Exception {
 
         ActionConfig actionConfig = actionInvocation.getProxy().getConfig();
-        String className = actionConfig.getClassName();
-        String method = actionConfig.getMethodName();
+        this.className = actionConfig.getClassName();
+        this.method = actionConfig.getMethodName();
 
-        //获取web.xml中的例外参数
-        String param = Application.getContextParam("authorityInterceptor");
+        this.action = (Action) actionInvocation.getAction();
+        this.result = new Result();
+
+        //获取web.xml中的参数，不拦截的条件
+        this.noParam = Application.getContextParam("noAuthority");
+        if (isIntercepted(noParam)) {
+            return actionInvocation.invoke();
+        }
+
+        //获取web.xml中的参数，Air拦截的条件
+        this.airParam = Application.getContextParam("airAuthority");
+        if (isIntercepted(airParam)) {
+
+            Map parameters = actionInvocation.getInvocationContext().getParameters();
+
+            String[] arr = (String[]) parameters.get("token");
+            this.token = arr[0];
+            UserInfoVo userInfoVo = airGetOnlineUser();
+
+            if (userInfoVo == null) {
+                this.result.setFlag("offline");
+                this.result.setToken("");
+                putResultInAction();
+                return "success";
+
+            } else {
+                return actionInvocation.invoke();
+            }
+        }
+
+        //检验是否存在session，或是否已被清除登陆状态，不存在session则跳转到登陆界面
+        this.session = Session.getUserInfo();
+        if (!sessionCheck()) {
+            String f = this.session == null ? "session" : "online";
+            this.result.setFlag(f);
+            putResultInAction();
+            return "success";
+        }
+
+        //生成菜单树的方法不拦截
+        if (isNavigation()) {
+            return actionInvocation.invoke();
+        }
+
+        //查询权限
+        if (authorityValidate()) {
+            return actionInvocation.invoke();
+        }
+
+        //当此模块的操作权限启用，且该操作被禁用时，则不继续操作返回结果。
+        this.result.setFlag("forbidden");
+        putResultInAction();
+        return "success";
+    }
+
+    private void putResultInAction() throws Exception {
+        if(this.action instanceof ResultAware) {
+            ((ResultAware)this.action).setResult(this.result);
+        }
+    }
+
+    private UserInfoVo airGetOnlineUser() throws Exception {
+
+        if (this.token == null || "".equals(this.token)) {
+            return null;
+        }
+        return Application.getOnlineUserAir(this.token);
+    }
+
+    private boolean authorityValidate() throws Exception {
+
+        AuthOperatingVo authOperatingVo = new AuthOperatingVo();
+        getInfoFromSession(authOperatingVo);
+        getNameSpace(authOperatingVo, this.className);
+        authOperatingVo.setMethod(this.method);
+
+        List<AuthOperatingVo> list = this.sqlSessionTemplateInterceptor.selectList("getVoByAuthOperatingVo", authOperatingVo);
+        authOperatingVo = list.size() == 0 ? null : list.get(0);
+
+        if(authOperatingVo != null
+                && authOperatingVo.getAoStatus()
+                && !authOperatingVo.getStatus()) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isIntercepted(String param) {
+
         String[] exception = null;
         if (param != null) {
             exception = param.split("\\s*,\\s*\\s*|\t|\r|\n\\s*");
         }
 
-        //匹配例外列表，如果在匹配则不做拦截
         if (exception != null) {
             for (int i = 0; i < exception.length; i++) {
-                Pattern p = Pattern.compile(exception[i]);
-                Matcher m = p.matcher(className);
+                String keyWord = exception[i];
+                Pattern p = Pattern.compile(keyWord);
+                Matcher m = p.matcher(this.className);
                 while (m.find()) {
-                    return actionInvocation.invoke();
+                    return true;
                 }
             }
         }
+        return false;
+    }
 
-        //检验是否存在session，或是否已被清除登陆状态，不存在session则跳转到登陆界面
-        UserInfoVo session = Session.getUserInfo();
-        if(session == null || !Application.isOnline()) {
-            Action action = (Action)actionInvocation.getAction();
-            Result result = new Result();
-            String f = session == null ? "session" : "online";
-            result.setFlag(f);
-            ((ResultAware)action).setResult(result);
-            return "success";
-        }
-
+    private boolean isNavigation() throws Exception {
         //生成功能树的action不拦截
-        if("com.iflat.system.action.impl.SystemAction".equals(className) && "getNavigationTree".equals(method)) {
-            return actionInvocation.invoke();
+        if ("com.iflat.system.action.impl.SystemAction".equals(this.className)
+                && "getNavigationTree".equals(this.method)) {
+            return true;
         }
+        return false;
+    }
 
-        //获得条件并查询权限
-        AuthOperatingVo authOperatingVo = new AuthOperatingVo();
-        getInfoFromSession(authOperatingVo);
-        getNameSpace(authOperatingVo, className);
-        authOperatingVo.setMethod(method);
-        List<AuthOperatingVo> list = this.sqlSessionTemplateInterceptor.selectList("getVoByAuthOperatingVo", authOperatingVo);
-        authOperatingVo = list.size() == 0 ? null : list.get(0);
-        if(authOperatingVo != null && authOperatingVo.getAoStatus() && !authOperatingVo.getStatus()) {
-            //当此模块的操作权限启用，且该操作被禁用时，则不继续操作返回结果。
-            Action action = (Action)actionInvocation.getAction();
-            if(action instanceof ResultAware) {
-                Result result = new Result();
-                result.setFlag("forbidden");
-                ((ResultAware)action).setResult(result);
-            }
-            return "success";
+    private boolean sessionCheck() throws Exception {
+        if (this.session != null && Application.isOnline()) {
+            return true;
         }
-        return actionInvocation.invoke();
+        return false;
     }
 
     private void getNameSpace(AuthOperatingVo authOperatingVo, String className) {
