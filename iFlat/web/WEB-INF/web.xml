@@ -11,8 +11,8 @@
 
     <context-param>
         <param-name>log4jConfigLocation</param-name>
-        <!--<param-value>WEB-INF/config/log4j.properties</param-value>-->
-        <param-value>/WEB-INF/config/log4j-dev.properties</param-value>
+        <!--<param-value>WEB-INF/classes/log4j.properties</param-value>-->
+        <param-value>/WEB-INF/classes/log4j-dev.properties</param-value>
     </context-param>
     <context-param>
         <param-name>log4jRefreshInterval</param-name>
@@ -36,8 +36,8 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            /WEB-INF/config/spring/spring.xml,
-            /WEB-INF/config/spring/applicationContext-*.xml
+            /WEB-INF/classes/spring/spring.xml,
+            /WEB-INF/classes/spring/applicationContext-*.xml
         </param-value>
     </context-param>
 
@@ -45,7 +45,7 @@
     <context-param>
         <param-name>configRoot</param-name>
         <param-value>
-            /WEB-INF/config/
+            /WEB-INF/classes/
         </param-value>
     </context-param>
 

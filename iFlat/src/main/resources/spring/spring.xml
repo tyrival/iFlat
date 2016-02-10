@@ -12,8 +12,8 @@
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location">
-            <value>/WEB-INF/config/database.properties</value>
-            <!--<value>/WEB-INF/config/database-dev.properties</value>-->
+            <value>/WEB-INF/classes/database.properties</value>
+            <!--<value>/WEB-INF/classes/database-dev.properties</value>-->
         </property>
     </bean>
 
@@ -32,8 +32,8 @@
     <!-- 配置mybatis SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="prototype">
         <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="/WEB-INF/config/mybatis/mybatis.xml" />
-        <property name="mapperLocations" value="/WEB-INF/config/mapper/**/*Mapper.xml" />
+        <property name="configLocation" value="/WEB-INF/classes/mybatis/mybatis.xml" />
+        <property name="mapperLocations" value="/WEB-INF/classes/mapper/**/*Mapper.xml" />
         <property name="plugins">
             <array>
                 <bean class="com.iflat.system.interceptor.DataAuthorityInterceptor">
@@ -41,7 +41,7 @@
                     <!-- 正则表达式，SQL的id匹配则拦截 -->
                     <property name="sqlId" value=".*(list|get)*"></property>
                     <!-- sql中函数替换的映射文件路径 -->
-                    <property name="sqlmapperPath" value="/config/sqlmapper.properties"></property>
+                    <property name="sqlmapperPath" value="/classes/sqlmapper.properties"></property>
                 </bean>
                 <bean class="com.github.pagehelper.PageHelper">
                     <property name="properties">
@@ -75,8 +75,8 @@
     <!-- 配置mybatis拦截器的SqlSessionFactoryBean -->
     <bean id="sqlSessionFactoryInterceptor" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="/WEB-INF/config/mybatis/mybatis.xml" />
-        <property name="mapperLocations" value="/WEB-INF/config/mapper/**/*Mapper.xml" />
+        <property name="configLocation" value="/WEB-INF/classes/mybatis/mybatis.xml" />
+        <property name="mapperLocations" value="/WEB-INF/classes/mapper/**/*Mapper.xml" />
     </bean>
 
     <!-- 配置SqlSessionTemplate

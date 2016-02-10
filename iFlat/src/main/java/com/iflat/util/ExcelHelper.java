@@ -30,7 +30,7 @@ import java.util.zip.DataFormatException;
 public class ExcelHelper {
 
     private final static String DEFAULT_DOCUMENT = "temp";
-    private final static String DEFAULT_TEMPLATE_PATH = "WEB-INF/config/template/excel/";
+    private final static String DEFAULT_TEMPLATE_PATH = "WEB-INF/classes/template/excel/";
     private final static String DEFAULT_OUTPUT_PATH = "template/excel/";
 
     public static String write(ExcelWriter excelWriter) throws Exception {

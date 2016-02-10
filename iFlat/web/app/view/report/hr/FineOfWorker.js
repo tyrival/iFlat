@@ -128,7 +128,7 @@ Ext.define('iFlat.view.report.hr.FineOfWorker', {
     items: [{
         xtype: 'grid',
         id: 'rpt-hr-fineofworker-grid1',
-        title: '质量罚款',
+        title: '质量奖惩',
         plugins: [{
             ptype: 'gridexporter'
         }],
@@ -204,7 +204,7 @@ Ext.define('iFlat.view.report.hr.FineOfWorker', {
     }, {
         xtype: 'grid',
         id: 'rpt-hr-fineofworker-grid2',
-        title: '安全罚款',
+        title: '安全奖惩',
         plugins: [{
             ptype: 'gridexporter'
         }],

@@ -1,14 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="">
+    <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="Android&#10;1.增加了拦截器&#10;2.增加了Application相关API&#10;3.增加了用户在线状态的存储&#10;后端&#10;重构了AuthorityInterceptor的代码，使其逻辑更清晰">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mybatis-generator.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/entity/UserInfoVo.class" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/entity/UserInfoVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/interceptor/AuthorityInterceptor.class" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/system/interceptor/AuthorityInterceptor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/util/Application.class" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/util/Application.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/util/ExcelHelper.class" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/classes/com/iflat/util/ExcelHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/iFlat.iml" afterPath="$PROJECT_DIR$/.idea/iFlat.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/entity/UserInfoVo.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/entity/UserInfoVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/Application.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/ExcelHelper.java" afterPath="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/ExcelHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/app/view/system/UserController.js" afterPath="$PROJECT_DIR$/iFlat/web/app/view/system/UserController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorker.js" afterPath="$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorker.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/database-dev.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/database-dev.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/database.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/database.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/exception/bi.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/exception/bi.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/exception/system.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/exception/system.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/log4j-dev.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/log4j-dev.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/log4j.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/log4j.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/AdditionalBillMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/AdditionalBillMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ContractMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ContractMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/DeptCstCtrlMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/DeptCstCtrlMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/MajorDevCstMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/MajorDevCstMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/MajorMatCstMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/MajorMatCstMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/MajorMatQtyMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/MajorMatQtyMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ProjectCostMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ProjectCostMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ProjectCstCtrlMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ProjectCstCtrlMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ProjectInProcessInfoMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ProjectInProcessInfoMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ProjectInProcessMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ProjectInProcessMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ProjectInfoMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ProjectInfoMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ProjectManHourMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ProjectManHourMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ProjectMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ProjectMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/ProjectScheduleMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/bi/ProjectScheduleMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/code/GroupMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/code/GroupMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/code/TeamMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/code/TeamMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/code/WorkerMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/code/WorkerMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/BookMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/lib/BookMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/RecordMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/lib/RecordMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/qm/QualityFineMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/qm/QualityFineMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/qm/QualityFineVoMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/qm/QualityFineVoMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/bi/DeptCstCtrlMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/bi/DeptCstCtrlMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/bi/ProjectCstCtrlMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/bi/ProjectCstCtrlMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/bi/ProjectMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/bi/ProjectMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/nm/NmProjectCostCmpsMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/nm/NmProjectCostCmpsMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/nm/NmProjectCostMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/nm/NmProjectCostMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/nm/NmProjectCostNodeMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/nm/NmProjectCostNodeMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/sb/EstimateOfProjectMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/sb/EstimateOfProjectMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/sb/SbProjectCostCmpsMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/sb/SbProjectCostCmpsMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/sb/SbProjectCostMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/sb/SbProjectCostMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/sb/SbProjectCostNodeMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/sb/SbProjectCostNodeMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/sr/SrProjectCostCmpsMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/sr/SrProjectCostCmpsMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/sr/SrProjectCostMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/sr/SrProjectCostMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/cst/sr/SrProjectCostNodeMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/cst/sr/SrProjectCostNodeMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/mm/MatQuatoMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/mm/MatQuatoMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/mm/PaintMRPMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/mm/PaintMRPMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/util/GraphMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/util/GraphMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/util/PaintMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/util/PaintMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/wip/manhour/DetailOfMiscWoMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/wip/manhour/DetailOfMiscWoMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/report/wip/manhour/WoStatusMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/report/wip/manhour/WoStatusMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/ss/SafetyFineMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/ss/SafetyFineMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/ss/SafetyFineVoMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/ss/SafetyFineVoMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/AuthDataMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/AuthDataMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/AuthModuleMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/AuthModuleMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/AuthOperatingMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/AuthOperatingMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/DataDictionaryMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/DataDictionaryMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/MemoMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/MemoMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/ModuleMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/ModuleMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/OperatingMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/OperatingMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/OrganizationMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/OrganizationMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/QuestionMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/QuestionMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/RoleMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/RoleMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/TableViewMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/TableViewMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/UserMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/UserMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/UserRoleMapper.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mapper/system/UserRoleMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/mybatis/mybatis.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/mybatis/mybatis.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/report/deptcstctrl.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/report/deptcstctrl.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/report/majordevcst.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/report/majordevcst.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/report/majormatcst.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/report/majormatcst.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/report/majormatqty.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/report/majormatqty.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/report/projectcost.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/report/projectcost.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/report/projectcstctrl.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/report/projectcstctrl.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/report/projectinprocessinfo.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/report/projectinprocessinfo.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-air.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/applicationContext-air.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-bi.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/applicationContext-bi.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-code.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/applicationContext-code.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-lib.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/applicationContext-lib.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-qm.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/applicationContext-qm.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-report.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/applicationContext-report.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-ss.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/applicationContext-ss.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-system.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/applicationContext-system.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/spring.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/spring/spring.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/sqlmapper.properties" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/sqlmapper.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/bi/AdditionalBill.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/bi/AdditionalBill.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/bi/DeptCstCtrl.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/bi/DeptCstCtrl.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/bi/MajorDevCst.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/bi/MajorDevCst.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/bi/MajorMatCst.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/bi/MajorMatCst.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/bi/MajorMatQty.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/bi/MajorMatQty.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/bi/ProjectCost.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/bi/ProjectCost.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/bi/ProjectCstCtrl.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/bi/ProjectCstCtrl.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/bi/ProjectInProcess.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/bi/ProjectInProcess.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/iFlat/web/WEB-INF/config/template/excel/example.xml" afterPath="$PROJECT_DIR$/iFlat/src/main/resources/template/excel/example.xml" />
     </list>
     <ignored path="iFlat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,14 +121,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AuthorityInterceptor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java">
+      <file leaf-file-name="mybatis-generator.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/mybatis-generator.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44592792">
-              <caret line="69" column="27" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.059210528">
+              <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,6 +138,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="mybatis-config" />
+        <option value="mybatis-generator-config" />
       </list>
     </option>
   </component>
@@ -63,10 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/qm/dao/impl/QualityFineDaoImpl.java" />
-        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/qm/service/impl/QualityFineManagerImpl.java" />
-        <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-qm.xml" />
-        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/ss/dao/impl/SafetyFineVoDaoImpl.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/ss/service/impl/SafetyFineVoManagerImpl.java" />
         <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-ss.xml" />
         <option value="$PROJECT_DIR$/iFlat/web/app/view/qm/QualityFineEdit.js" />
@@ -87,7 +174,6 @@
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/qm/entity/QualityFineVo.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/ss/entity/SafetyFineVo.java" />
         <option value="$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorkerController.js" />
-        <option value="$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorker.js" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/book/bean/Book.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/book/bean/Record.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/bean/Record.java" />
@@ -110,10 +196,15 @@
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/service/impl/RecordManagerImpl.java" />
         <option value="$PROJECT_DIR$/iFlat/web/app/view/system/UserController.js" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/entity/UserInfoVo.java" />
-        <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/air/action/LoginAction.java" />
         <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/Application.java" />
+        <option value="$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorker.js" />
+        <option value="$PROJECT_DIR$/iFlat/web/app.js" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/resources/mybatis-generator.xml" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/ExcelHelper.java" />
+        <option value="$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/iFlat/src/main/resources/spring/spring.xml" />
       </list>
     </option>
   </component>
@@ -139,8 +230,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1040" />
-    <option name="height" value="1266" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -154,7 +245,7 @@
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
+      <flattenPackages ProjectPane="false" />
       <showMembers />
       <showModules />
       <showLibraryContents />
@@ -167,6 +258,203 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Extensions" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.intellij.database" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyPsiNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Production">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat/src/main/java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat/src/main/java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/iflat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Changed Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Default">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat/web/app/view/report/hr">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="iFlat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Tests">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -243,7 +531,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,85 +621,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Production">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="iFlat">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Default">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="iFlat">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="iFlat">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="iFlat">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="iFlat">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Tests">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.20726307" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -372,15 +637,18 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Workspace\iFlat\iFlat" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.iflat.air.action" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\iFlat\iFlat" />
+      <recent name="D:\Workspace\iFlat\iFlat\src\main\resources" />
       <recent name="D:\Workspace\iFlat\iFlat\web\app\store\report\ss" />
       <recent name="D:\Workspace\iFlat\iFlat\web\app\store\report\qm" />
       <recent name="D:\Workspace\iFlat\iFlat\web\app\store\report" />
-      <recent name="D:\Workspace\iFlat\iFlat\web\app\model\report" />
-      <recent name="D:\Workspace\iFlat\iFlat\src\main\java\com\iflat\ss\service\impl" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.iflat">
@@ -751,6 +1019,7 @@
     <configuration default="false" name="iflat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.22" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER" value="false" />
       <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="iFlat:war exploded">
           <settings>
@@ -816,6 +1085,7 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <method>
+        <option name="Make" enabled="false" />
         <option name="BuildArtifacts" enabled="true">
           <artifact name="iFlat:war exploded" />
         </option>
@@ -871,7 +1141,21 @@
       <workItem from="1454385392328" duration="352000" />
       <workItem from="1454385792701" duration="163000" />
       <workItem from="1454385991654" duration="502000" />
-      <workItem from="1454389772618" duration="12953000" />
+      <workItem from="1454389772618" duration="13177000" />
+      <workItem from="1454462588655" duration="241000" />
+      <workItem from="1454467002356" duration="208000" />
+      <workItem from="1454932766617" duration="163000" />
+      <workItem from="1454933194923" duration="648000" />
+      <workItem from="1454934711079" duration="28000" />
+      <workItem from="1455067737502" duration="21000" />
+      <workItem from="1455107508390" duration="427000" />
+      <workItem from="1455108176107" duration="574000" />
+      <workItem from="1455108783975" duration="21000" />
+      <workItem from="1455108850861" duration="45000" />
+      <workItem from="1455110134106" duration="131000" />
+      <workItem from="1455110304743" duration="34000" />
+      <workItem from="1455110378766" duration="5758000" />
+      <workItem from="1455116187864" duration="235000" />
     </task>
     <task id="LOCAL-00001" summary="工程结算&#10;将质量、安全罚单拆分到质量模块和安全模块">
       <created>1453766845857</created>
@@ -909,22 +1193,28 @@
       <option name="project" value="LOCAL" />
       <updated>1454309382658</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Android&#10;1.增加了拦截器&#10;2.增加了Application相关API&#10;3.增加了用户在线状态的存储&#10;后端&#10;重构了AuthorityInterceptor的代码，使其逻辑更清晰">
+      <created>1454402950605</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1454402950606</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66572000" />
+    <option name="totallyTimeSpent" value="75330000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="1266" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32659933" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.4969743" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2830018" sideWeight="0.50714284" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28282827" sideWeight="0.50714284" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730561" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -932,14 +1222,14 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26020408" sideWeight="0.47826087" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22239032" sideWeight="0.5217391" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25642964" sideWeight="0.47058824" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25945538" sideWeight="0.5294118" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22390318" sideWeight="0.52402747" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2965642" sideWeight="0.49285713" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25945538" sideWeight="0.5294118" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3956229" sideWeight="0.49285713" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -969,7 +1259,8 @@
     <MESSAGE value="Android&#10;增加了移动端登陆功能测试" />
     <MESSAGE value="Android&#10;修改部分拦截器以适应移动端的请求" />
     <MESSAGE value="Android&#10;LoginAction返回值中增加了用户信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="Android&#10;LoginAction返回值中增加了用户信息" />
+    <MESSAGE value="Android&#10;1.增加了拦截器&#10;2.增加了Application相关API&#10;3.增加了用户在线状态的存储&#10;后端&#10;重构了AuthorityInterceptor的代码，使其逻辑更清晰" />
+    <option name="LAST_COMMIT_MESSAGE" value="Android&#10;1.增加了拦截器&#10;2.增加了Application相关API&#10;3.增加了用户在线状态的存储&#10;后端&#10;重构了AuthorityInterceptor的代码，使其逻辑更清晰" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -990,190 +1281,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/bean/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1777151">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/action/ResultAware.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3423913">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/action/impl/LoginAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25698325">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-system.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3193278">
-          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/PageInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27478755">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/DataAuthorityInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2193211">
-          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/iFlat/web/WEB-INF/lib/spring-core-4.1.7.RELEASE.jar!/org/springframework/core/io/Resource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30422536">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/iFlat/web/WEB-INF/lib/mybatis-spring-1.2.3.jar!/org/mybatis/spring/SqlSessionFactoryBean.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.283077">
-          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/spring.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21568628">
-          <caret line="35" column="39" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/iFlat/web/WEB-INF/lib/struts2-core-2.3.24.jar!/org/apache/struts2/ServletActionContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6978193">
-          <caret line="59" column="33" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/iFlat/web/WEB-INF/lib/servlet-api.jar!/javax/servlet/ServletContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3613707">
-          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/qm/action/QmAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8745583">
-          <caret line="40" column="33" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/BookMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.89626557">
-          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/LogFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14419226">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/iFlat/web/WEB-INF/lib/struts2-core-2.3.24.jar!/org/apache/struts2/dispatcher/Dispatcher.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34535366">
-          <caret line="413" column="16" selection-start-line="413" selection-start-column="16" selection-end-line="413" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/iFlat/web/WEB-INF/lib/struts2-core-2.3.24.jar!/org/apache/struts2/impl/StrutsActionProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5742025">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-report.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0912864">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-lib.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62240666">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/action/LibAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9853138">
-          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/dao/impl/BookDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1682243">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/spring/applicationContext-air.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.099585064">
-          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/action/impl/SystemAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.3625956">
-          <caret line="257" column="9" selection-start-line="257" selection-start-column="7" selection-end-line="257" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/dao/impl/IflatDaoSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.116883114">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/lib/bean/Record.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.116883114">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/lib/RecordMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23954372">
-          <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/bi/AdditionalBillMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34220532">
-          <caret line="17" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1237,7 +1348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08348794">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1245,7 +1355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.16883117">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1253,23 +1362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08348794">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AjaxExceptionInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81708944">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/listener/AjaxExceptionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61548734">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1277,7 +1369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3845127">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1285,27 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5914553">
           <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/config/mapper/system/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="5" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="5" />
-          <folding>
-            <marker date="1453693034615" expanded="true" signature="266:499" placeholder="INSERT INTO SysUser... " />
-            <marker date="1453693034615" expanded="true" signature="591:1790" placeholder="UPDATE SysUs... " />
-            <marker date="1453693034615" expanded="true" signature="1891:3030" placeholder="UPDATE SysUs... " />
-            <marker date="1453693034615" expanded="true" signature="3142:3242" placeholder="UPDATE SysUs... " />
-            <marker date="1453693034615" expanded="true" signature="3560:3727" placeholder="SELECT userI... SysUser" />
-            <marker date="1453693034615" expanded="true" signature="3830:4026" placeholder="SELECT userI... SysUser" />
-            <marker date="1453693034615" expanded="true" signature="4121:4321" placeholder="SELECT userI... SysUser" />
-            <marker date="1453693034615" expanded="true" signature="4425:4627" placeholder="SELECT userI... SysUser" />
-            <marker date="1453693034615" expanded="true" signature="4743:4971" placeholder="SELECT userI... SysUser" />
-            <marker date="1453693034615" expanded="true" signature="6536:6725" placeholder="SELECT accou... V_SysUserInfo" />
-            <marker date="1453693034615" expanded="true" signature="6861:7171" placeholder="SELECT accou... V_SysUserInfo" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1313,33 +1383,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57676905">
           <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-          <folding>
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#812#813#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/struts.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5974026">
-          <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3195021">
-          <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1347,7 +1390,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34535366">
           <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1355,7 +1397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36048064">
           <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1363,17 +1404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36199722">
           <caret line="850" column="0" selection-start-line="850" selection-start-column="0" selection-end-line="850" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.90387183">
-          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1381,17 +1411,247 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52069426">
           <caret line="38" column="67" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/web/app/view/report/hr/FineOfWorker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69959944">
+          <caret line="206" column="20" selection-start-line="206" selection-start-column="20" selection-end-line="206" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/code/bean/Department.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/code/bean/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1590106">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/struts.xml">
+      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5323591">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/LogInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/PageInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/exception/bi.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/exception/system.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/FileHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0761062">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9044248">
+          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/ExtTreeHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22300886">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/PropertiesUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/ReportHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3333335">
+          <caret line="114" column="32" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22300886">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/web/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4141593">
+          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/util/ExcelHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="32" column="72" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/listener/AjaxExceptionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9">
+          <caret line="119" column="27" selection-start-line="119" selection-start-column="21" selection-end-line="119" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/UserListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15833333">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/DataAuthorityInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2777778">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44592792">
-          <caret line="69" column="27" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
+        <state vertical-scroll-proportion="-3.3333333">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/interceptor/AjaxExceptionInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.3">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/java/com/iflat/system/listener/SessionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15833333">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/spring/spring.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23901099">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1145#1161#0" expanded="true" />
+            <element signature="e#1199#1212#0" expanded="true" />
+            <element signature="e#1255#1269#0" expanded="true" />
+            <element signature="e#1312#1325#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/mybatis/mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6291209">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/web/WEB-INF/classes/struts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.8901099">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/database-dev.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/log4j-dev.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/sqlmapper.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16363636">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iFlat/src/main/resources/mybatis-generator.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.059210528">
+          <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1414,7 +1674,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Detection</last-edited>
+          <last-edited>Web (iFlat)|Web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1455,6 +1715,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
