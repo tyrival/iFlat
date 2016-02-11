@@ -38,7 +38,7 @@ import org.mybatis.spring.SqlSessionTemplate;
  * 根据模块名，视图名，表名查询用户权限
  * 根据权限改写原始sql
  */
-@Intercepts({    @Signature(
+@Intercepts({@Signature(
         type = Executor.class,
         method = "query",
         args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}
@@ -57,17 +57,17 @@ public class DataAuthorityInterceptor implements Interceptor {
         //获取用户和角色
         UserInfoVo userInfoVo = getUserInfoFromSession();
         //admin不作过滤
-        if(userInfoVo != null && !"admin".equals(userInfoVo.getAccount())) {
+        if (userInfoVo != null && !"admin".equals(userInfoVo.getAccount())) {
 
             Object[] args = invocation.getArgs();
             //获取MappedStatement
-            MappedStatement mappedStatement = (MappedStatement)args[0];
+            MappedStatement mappedStatement = (MappedStatement) args[0];
             //获取*Mapper.xml中，sql语句的id
             String id = mappedStatement.getId();
             //System命名空间的语句不作处理
             String[] module = id.split("\\.");
-            if(!"System".equals(module[0])) {
-                if(id.matches(this.sqlId)) {
+            if (!"System".equals(module[0])) {
+                if (id.matches(this.sqlId)) {
                     //解析sql
                     try {
                         //获得BoundSql
@@ -78,14 +78,14 @@ public class DataAuthorityInterceptor implements Interceptor {
                         //反射newMs获得类
                         MetaObject msObject = SystemMetaObject.forObject(newMs);
                         //获取原始sql
-                        String sql = (String)msObject.getValue("sqlSource.boundSql.sql");
+                        String sql = (String) msObject.getValue("sqlSource.boundSql.sql");
                         Statement stmt = CCJSqlParserUtil.parse(sql);
                         Select select = (Select) stmt;
                         SelectBody selectBody = select.getSelectBody();
                         //根据session、模块信息、表名，获取数据权限信息
                         AuthDataVo authDataVo = getAuthDataVo(userInfoVo, module, selectBody);
                         //数据权限存在，并且状态为启用时
-                        if(authDataVo != null && authDataVo.getAdStatus()) {
+                        if (authDataVo != null && authDataVo.getAdStatus()) {
                             //根据权限改写sql
                             processSelectBody(selectBody, authDataVo, userInfoVo);
                         }
@@ -109,7 +109,7 @@ public class DataAuthorityInterceptor implements Interceptor {
         return invocation.proceed();
     }
 
-    private void processSelectBody(SelectBody selectBody, AuthDataVo authDataVo, UserInfoVo userInfoVo) throws Exception{
+    private void processSelectBody(SelectBody selectBody, AuthDataVo authDataVo, UserInfoVo userInfoVo) throws Exception {
         //只处理常规语句: select * from tableName where ...
         if (selectBody instanceof PlainSelect) {
             processPlainSelect(selectBody, authDataVo, userInfoVo);
@@ -119,10 +119,10 @@ public class DataAuthorityInterceptor implements Interceptor {
     private void processPlainSelect(SelectBody selectBody, AuthDataVo authDataVo, UserInfoVo userInfoVo) throws Exception {
         List<AuthFieldVo> list = null;
         //解析字段权限
-        list = authDataVo.getField() != "" ? (List<AuthFieldVo>)JSONHelper.jsonToList(authDataVo.getField(), "com.iflat.system.entity.AuthFieldVo") : null;
+        list = authDataVo.getField() != "" ? (List<AuthFieldVo>) JSONHelper.jsonToList(authDataVo.getField(), "com.iflat.system.entity.AuthFieldVo") : null;
         String fields = "";
-        if(list != null) {
-            for(int i = 0; i < list.size(); i++) {
+        if (list != null) {
+            for (int i = 0; i < list.size(); i++) {
                 fields += list.get(i).getField() + ",";
             }
             fields = fields.substring(0, fields.length() - 1);
@@ -132,7 +132,7 @@ public class DataAuthorityInterceptor implements Interceptor {
         //根据数据权限，构成具体的查询语句
         StringBuilder sqlAuth = new StringBuilder("select ").append(fields).append(" from ").append(authDataVo.getTableName());
         //存在数据过滤时，附加where条件
-        if(!"".equals(authDataVo.getFilter())) {
+        if (!"".equals(authDataVo.getFilter())) {
             sqlAuth.append(" where (").append(this.globalVariableMapping(authDataVo.getFilter(), userInfoVo)).append(")");
         }
         //解析
@@ -143,7 +143,7 @@ public class DataAuthorityInterceptor implements Interceptor {
         ((PlainSelect) selectBody).setSelectItems(((PlainSelect) selectBodyAuth).getSelectItems());
         //根据原始sql和新sql生成新的where条件，并替换where条件
         Expression where = null;
-        if(((PlainSelect) selectBody).getWhere() == null) {
+        if (((PlainSelect) selectBody).getWhere() == null) {
             where = ((PlainSelect) selectBodyAuth).getWhere();
         } else {
             where = new AndExpression(((PlainSelect) selectBody).getWhere(), ((PlainSelect) selectBodyAuth).getWhere());
@@ -157,7 +157,7 @@ public class DataAuthorityInterceptor implements Interceptor {
         authDataVo.setRoleId(userInfoVo.getRoleId());
         authDataVo.setAccount(userInfoVo.getAccount());
         String ns = "";
-        for(int i = 0; i < module.length - 2; i ++) {
+        for (int i = 0; i < module.length - 2; i++) {
             ns += module[i] + ".";
         }
         ns = ns.substring(0, ns.length() - 1);
@@ -176,14 +176,14 @@ public class DataAuthorityInterceptor implements Interceptor {
 
     //解析sql语句，将其中的表/视图名转化为数据库实例名、数据库名、表名
     private String[] getTableInfoFromSelectBody(SelectBody selectBody) {
-        String[] array = new String[]{"","",""};
+        String[] array = new String[]{"", "", ""};
         String[] temp = ((PlainSelect) selectBody).getFromItem().toString().split("\\.");
-        if(temp.length < 3) {
+        if (temp.length < 3) {
             array[2] = removeBracket(temp[temp.length - 1]);
-        } else if(temp.length == 3) {
+        } else if (temp.length == 3) {
             array[1] = removeBracket(temp[0]);
             array[2] = removeBracket(temp[2]);
-        } else if(temp.length == 4) {
+        } else if (temp.length == 4) {
             array[0] = removeBracket(temp[0]);
             array[1] = removeBracket(temp[1]);
             array[2] = removeBracket(temp[3]);
@@ -203,9 +203,11 @@ public class DataAuthorityInterceptor implements Interceptor {
 
     private class BoundSqlSqlSource implements SqlSource {
         BoundSql boundSql;
+
         public BoundSqlSqlSource(BoundSql boundSql) {
             this.boundSql = boundSql;
         }
+
         public BoundSql getBoundSql(Object parameterObject) {
             return boundSql;
         }
@@ -259,12 +261,12 @@ public class DataAuthorityInterceptor implements Interceptor {
         Properties prop = new Properties();
         try {
             InputStream in = readConfig();
-            if(in != null) {
-                BufferedReader bf = new BufferedReader(new InputStreamReader(in,"UTF-8"));
+            if (in != null) {
+                BufferedReader bf = new BufferedReader(new InputStreamReader(in, "UTF-8"));
                 prop.load(bf);
                 Set set = prop.keySet();
-                for (Iterator it = set.iterator(); it.hasNext();) {
-                    String key = (String)it.next();
+                for (Iterator it = set.iterator(); it.hasNext(); ) {
+                    String key = (String) it.next();
                     sql = sql.replaceAll(key, prop.getProperty(key));
                 }
             }
@@ -280,13 +282,14 @@ public class DataAuthorityInterceptor implements Interceptor {
     private InputStream readConfig() {
         return getClass().getResourceAsStream(this.sqlmapperPath);  //读取文件
     }
+
     /**
      * 拦截方法，判断是否是Executor类，
      * 是则将方法和代理打包，返回一个代理；
      * 不是则不进行代理
      */
     public Object plugin(Object arg0) {
-        return arg0 instanceof Executor?Plugin.wrap(arg0, this):arg0;
+        return arg0 instanceof Executor ? Plugin.wrap(arg0, this) : arg0;
     }
 
     @Override

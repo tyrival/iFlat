@@ -22,7 +22,7 @@ public class LogFile {
     }
 
     private static String getDir(String logDocName) throws Exception {
-        String local = ((ServletContext)ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT)).getRealPath("/");
+        String local = Application.getWebRootPath();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
         Date date = new Date();
         String subPath = sdf.format(date);
@@ -61,13 +61,6 @@ public class LogFile {
         BufferedWriter writer = new BufferedWriter(write);
         writer.write(writeLog);
         writer.close();
-        /*
-        RandomAccessFile mm = null;
-        mm = new RandomAccessFile(filename, "rw");
-        mm.writeBytes(writeLog);
-        if (mm != null) {
-            mm.close();
-        }*/
     }
 
     /**

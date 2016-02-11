@@ -101,8 +101,8 @@ public class AuthorityInterceptor implements Interceptor {
     }
 
     private void putResultInAction() throws Exception {
-        if(this.action instanceof ResultAware) {
-            ((ResultAware)this.action).setResult(this.result);
+        if (this.action instanceof ResultAware) {
+            ((ResultAware) this.action).setResult(this.result);
         }
     }
 
@@ -121,10 +121,11 @@ public class AuthorityInterceptor implements Interceptor {
         getNameSpace(authOperatingVo, this.className);
         authOperatingVo.setMethod(this.method);
 
-        List<AuthOperatingVo> list = this.sqlSessionTemplateInterceptor.selectList("getVoByAuthOperatingVo", authOperatingVo);
+        List<AuthOperatingVo> list = this.sqlSessionTemplateInterceptor
+                .selectList("getVoByAuthOperatingVo", authOperatingVo);
         authOperatingVo = list.size() == 0 ? null : list.get(0);
 
-        if(authOperatingVo != null
+        if (authOperatingVo != null
                 && authOperatingVo.getAoStatus()
                 && !authOperatingVo.getStatus()) {
             return false;
@@ -174,7 +175,7 @@ public class AuthorityInterceptor implements Interceptor {
         authOperatingVo.setNameSpace(className.substring(secondDot + 1, thirdDot));
     }
 
-    private void getInfoFromSession(AuthOperatingVo authOperatingVo) throws Exception{
+    private void getInfoFromSession(AuthOperatingVo authOperatingVo) throws Exception {
         UserInfoVo userInfoVo = Session.getUserInfo();
         authOperatingVo.setRoleId(userInfoVo.getRoleId());
         authOperatingVo.setAccount(userInfoVo.getAccount());

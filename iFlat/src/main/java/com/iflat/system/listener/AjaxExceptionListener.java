@@ -161,14 +161,14 @@ public class AjaxExceptionListener implements PreResultListener {
     //读取配置文件
     private InputStream readConfig(ActionInvocation invocation) throws Exception {
 
-        String webRoot = "../../../../../..";
+        String webRoot = Application.getWebRootPath();
         String pathConfig = webRoot + Application.getContextParam("configRoot") + "exception/";
         String className = invocation.getProxy().getConfig().getClassName();
         int secondDot = className.indexOf(".", className.indexOf(".") + 1);
         int thirdDot = className.indexOf(".", secondDot + 1);
         String moduleName = className.substring(secondDot + 1, thirdDot); //获取模块名
         String fileName = pathConfig + moduleName + ".properties";
-        return getClass().getResourceAsStream(fileName);  //读取文件
+        return new FileInputStream(fileName);  //读取文件
     }
 
     //解析value字符串为message和time

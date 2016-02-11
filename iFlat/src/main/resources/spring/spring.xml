@@ -13,7 +13,6 @@
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location">
             <value>/WEB-INF/classes/database.properties</value>
-            <!--<value>/WEB-INF/classes/database-dev.properties</value>-->
         </property>
     </bean>
 
@@ -41,7 +40,7 @@
                     <!-- 正则表达式，SQL的id匹配则拦截 -->
                     <property name="sqlId" value=".*(list|get)*"></property>
                     <!-- sql中函数替换的映射文件路径 -->
-                    <property name="sqlmapperPath" value="/classes/sqlmapper.properties"></property>
+                    <property name="sqlmapperPath" value="/classes/sqlmapper/sqlmapper.properties"></property>
                 </bean>
                 <bean class="com.github.pagehelper.PageHelper">
                     <property name="properties">
