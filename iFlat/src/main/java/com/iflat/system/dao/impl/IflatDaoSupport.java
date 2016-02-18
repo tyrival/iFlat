@@ -32,13 +32,31 @@ public class IflatDaoSupport implements IflatDao {
     }
 
     @Override
+    public int updateBatch(List list) throws Exception {
+        Object o = list != null && list.size() > 0 ? list.get(0) : null;
+        return o != null ? this.sqlSessionTemplate.update(getNameSpace(o) + ".updateBatch", list) : null;
+    }
+
+    @Override
     public int delete(Object o) throws Exception {
         return this.sqlSessionTemplate.delete(getNameSpace(o) + ".delete", o);
     }
 
     @Override
+    public int deleteBatch(List list) throws Exception {
+        Object o = list != null && list.size() > 0 ? list.get(0) : null;
+        return o != null ? this.sqlSessionTemplate.delete(getNameSpace(o) + ".updateBatch", list) : null;
+    }
+
+    @Override
     public List list(Object o) throws Exception {
         return this.sqlSessionTemplate.selectList(getNameSpace(o) + ".list", o);
+    }
+
+    @Override
+    public List listBatch(List list) throws Exception {
+        Object o = list != null && list.size() > 0 ? list.get(0) : null;
+        return o != null ? this.sqlSessionTemplate.selectList(getNameSpace(o) + ".listBatch", list) : null;
     }
 
     public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {

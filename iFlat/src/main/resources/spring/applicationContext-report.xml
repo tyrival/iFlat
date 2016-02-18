@@ -18,6 +18,7 @@
         <property name="rptDeptCstCtrlManager" ref="rptDeptCstCtrlManager"/>
         <property name="rptProjectManager" ref="rptProjectManager"/>
         <property name="rptProject" ref="rptProject"/>
+        <property name="rptCostItemManager" ref="rptCostItemManager"/>
         <!-- cst.sb -->
         <property name="detailOfMiscWo" ref="detailOfMiscWoManager"/>
         <property name="estimateOfProject" ref="estimateOfProjectManager"/>
@@ -52,6 +53,12 @@
     </bean>
 
     <!-- bi -->
+    <bean id="rptCostItemManager" class="com.iflat.report.service.impl.bi.CostItemManagerImpl">
+    </bean>
+    <bean id="rptCostItemDao" class="com.iflat.report.dao.impl.bi.CostItemDaoImpl">
+    </bean>
+    <bean id="costItem" class="com.iflat.report.bean.bi.CostItem" scope="prototype"/>
+
     <bean id="rptProjectManager" class="com.iflat.report.service.impl.bi.ProjectManagerImpl">
     </bean>
     <bean id="rptProjectDao" class="com.iflat.report.dao.impl.bi.ProjectDaoImpl">

@@ -62,11 +62,13 @@
     </bean>
 
     <bean id="majorDevCstManager" class="com.iflat.bi.service.impl.MajorDevCstManagerImpl">
+        <property name="iflatManager" ref="projectInfoManager"/>
     </bean>
     <bean id="majorDevCstDao" class="com.iflat.bi.dao.impl.MajorDevCstDaoImpl">
     </bean>
 
     <bean id="majorMatCstManager" class="com.iflat.bi.service.impl.MajorMatCstManagerImpl">
+        <property name="iflatManager" ref="projectInfoManager"/>
     </bean>
     <bean id="majorMatCstDao" class="com.iflat.bi.dao.impl.MajorMatCstDaoImpl">
     </bean>
@@ -82,6 +84,7 @@
     </bean>
 
     <bean id="projectCostManager" class="com.iflat.bi.service.impl.ProjectCostManagerImpl">
+        <property name="iflatManager" ref="projectInfoManager"/>
     </bean>
     <bean id="projectCostDao" class="com.iflat.bi.dao.impl.ProjectCostDaoImpl">
     </bean>

@@ -1,6 +1,8 @@
 package com.iflat.bi.service.impl;
 
 import com.iflat.bi.bean.MajorMatQty;
+import com.iflat.bi.entity.ProjectInfo;
+import com.iflat.system.service.IflatManager;
 import com.iflat.system.service.impl.IflatManagerSupport;
 import org.springframework.oxm.ValidationFailureException;
 

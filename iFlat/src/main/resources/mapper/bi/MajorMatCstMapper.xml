@@ -4,6 +4,24 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Bi.MajorMatCst">
 
+    <insert id="generate" parameterType="com.iflat.bi.bean.MajorMatCst">
+        INSERT INTO BiProjectCost
+        SELECT newid() AS id,
+            #{projNo} AS projNo,
+            '实际' AS type,
+            SUM(CASE WHEN mbcbbh LIKE 'C01%' THEN je ELSE 0 END) AS steel,
+            SUM(CASE WHEN mbcbbh LIKE 'C02%' THEN je ELSE 0 END) AS pipes,
+            SUM(CASE WHEN mbcbbh LIKE 'C03%' THEN je ELSE 0 END) AS weldingMat,
+            SUM(CASE WHEN mbcbbh LIKE 'C04%' THEN je ELSE 0 END) AS paint,
+            SUM(CASE WHEN mbcbbh LIKE 'C05%' THEN je ELSE 0 END) AS cable,
+            SUM(CASE WHEN mbcbbh LIKE 'C10%' THEN je ELSE 0 END) AS oil,
+            #{month} AS month,
+            NULL AS fixed,
+            1 AS version
+        FROM V_BiCostItem
+        WHERE gcbh=#{projNo}
+    </insert>
+
     <insert id="insert" parameterType="com.iflat.bi.bean.MajorMatCst">
         INSERT INTO BiMajorMatCst
         VALUES (#{id},#{projNo},#{type},#{steel},#{pipes},#{weldingMat},#{paint},#{cable},#{oil},#{month},#{fixed},#{version})

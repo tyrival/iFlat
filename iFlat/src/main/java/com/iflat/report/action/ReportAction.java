@@ -20,6 +20,8 @@ import com.iflat.system.entity.Result;
 import com.iflat.system.service.IflatManager;
 import com.opensymphony.xwork2.ActionSupport;
 
+import java.util.List;
+
 /**
  * Created by tyriv on 2015/11/12.
  */
@@ -38,6 +40,8 @@ public class ReportAction extends ActionSupport implements ResultAware {
     private ReportManager rptDeptCstCtrlManager;
     private IflatManager rptProjectManager;
     private Project rptProject;
+    private IflatManager rptCostItemManager;
+    private List costItemList;
     /* cst.sb */
     private ReportManager detailOfMiscWo;
     private ReportManager estimateOfProject;
@@ -118,6 +122,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
 
     public String listAdditionalBill() throws Exception {
         this.result.setList(this.rptAdditionalBillManager.query(this.parameter));
+        return SUCCESS;
+    }
+
+    public String listBatchCostItem() throws Exception {
+        this.result.setList(this.rptCostItemManager.listBatch(this.costItemList));
         return SUCCESS;
     }
 
@@ -503,5 +512,21 @@ public class ReportAction extends ActionSupport implements ResultAware {
 
     public void setPaintMRP(PaintMRP paintMRP) {
         this.paintMRP = paintMRP;
+    }
+
+    public IflatManager getRptCostItemManager() {
+        return rptCostItemManager;
+    }
+
+    public void setRptCostItemManager(IflatManager rptCostItemManager) {
+        this.rptCostItemManager = rptCostItemManager;
+    }
+
+    public List getCostItemList() {
+        return costItemList;
+    }
+
+    public void setCostItemList(List costItemList) {
+        this.costItemList = costItemList;
     }
 }

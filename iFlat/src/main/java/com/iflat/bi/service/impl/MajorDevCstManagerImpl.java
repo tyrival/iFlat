@@ -1,6 +1,8 @@
 package com.iflat.bi.service.impl;
 
 import com.iflat.bi.bean.MajorDevCst;
+import com.iflat.bi.entity.ProjectInfo;
+import com.iflat.system.service.IflatManager;
 import com.iflat.system.service.impl.IflatManagerSupport;
 import org.springframework.oxm.ValidationFailureException;
 
@@ -13,6 +15,31 @@ import java.util.UUID;
  */
 public class MajorDevCstManagerImpl extends IflatManagerSupport {
 
+    private IflatManager iflatManager;
+
+    @Override
+    public Object generate(Object o) throws Exception {
+
+        MajorDevCst majorDevCst = (MajorDevCst) o;
+
+        ProjectInfo projectInfo = new ProjectInfo();
+        projectInfo.setAnalyseDate(majorDevCst.getMonth());
+        List<ProjectInfo> list = this.iflatManager.list(projectInfo);
+
+        if (list != null) {
+
+            for (int i = 0; i < list.size(); i++) {
+                ProjectInfo info = list.get(i);
+
+                MajorDevCst cost = new MajorDevCst();
+                cost.setProjNo(info.getProjNo());
+                cost.setMonth(majorDevCst.getMonth());
+
+                this.executeMethod(cost, "generate");
+            }
+        }
+        return o;
+    }
     @Override
     public void setImportExcelReader() throws Exception {
         super.getExcelReader().setClassName("com.iflat.bi.bean.MajorDevCst");
@@ -39,5 +66,13 @@ public class MajorDevCstManagerImpl extends IflatManagerSupport {
                 throw new ValidationFailureException("第" + (i + 1) + "行工号为空");
             }
         }
+    }
+
+    public IflatManager getIflatManager() {
+        return iflatManager;
+    }
+
+    public void setIflatManager(IflatManager iflatManager) {
+        this.iflatManager = iflatManager;
     }
 }

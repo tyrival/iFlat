@@ -4,6 +4,41 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Bi.ProjectCost">
 
+    <insert id="generate" parameterType="com.iflat.bi.bean.ProjectCost">
+        INSERT INTO BiProjectCost
+        SELECT newid() AS id,
+            #{projNo} AS projNo,
+            '实际' AS type,
+            0 AS salesRevenue,
+            SUM(CASE WHEN mbcbbh LIKE 'S%' THEN je ELSE 0 END) AS device,
+            SUM(CASE WHEN mbcbbh LIKE 'C%' THEN je ELSE 0 END) AS raw,
+            0 AS foundry,
+            SUM(CASE WHEN mbcbbh LIKE 'Z20-01%' THEN je ELSE 0 END) AS casualLabor,
+            SUM(CASE WHEN mbcbbh LIKE 'Z20-02%' THEN je ELSE 0 END) AS salary,
+            SUM(CASE WHEN mbcbbh LIKE 'Z20-03%' THEN je ELSE 0 END) AS maintenance,
+            SUM(CASE WHEN mbcbbh LIKE 'Z20-04%' THEN je ELSE 0 END) AS power,
+            SUM(CASE WHEN mbcbbh LIKE 'Z20-05%' THEN je ELSE 0 END) AS outSourcing,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-01%' THEN je ELSE 0 END) AS design,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-02%' THEN je ELSE 0 END) AS survey,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-03%' THEN je ELSE 0 END) AS salesFee,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-05%' THEN je ELSE 0 END) AS salesAssCharge,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-04%' THEN je ELSE 0 END) AS purchaseAssCharge,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-06%' THEN je ELSE 0 END) AS colabouration,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-07%' THEN je ELSE 0 END) AS craftEquipment,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-08%' THEN je ELSE 0 END) AS seaTrial,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-09%' THEN je ELSE 0 END) AS other,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-10%' THEN je ELSE 0 END) AS warranty,
+            0 AS reserve,
+            SUM(CASE WHEN mbcbbh LIKE 'S%' OR mbcbbh LIKE 'C%' THEN je ELSE 0 END) AS matCstAdj,
+            SUM(CASE WHEN mbcbbh LIKE 'Z20-01%' OR mbcbbh LIKE 'Z20-02%' OR mbcbbh LIKE 'Z20-03%' OR mbcbbh LIKE 'Z20-04%' OR mbcbbh LIKE 'Z20-05%' THEN je ELSE 0 END) AS manuCstAdj,
+            SUM(CASE WHEN mbcbbh LIKE 'Z30-01%' OR mbcbbh LIKE 'Z30-02%' OR mbcbbh LIKE 'Z30-03%' OR mbcbbh LIKE 'Z30-04%' OR mbcbbh LIKE 'Z30-05%' OR mbcbbh LIKE 'Z30-06%' OR mbcbbh LIKE 'Z30-07%' OR mbcbbh LIKE 'Z30-08%' OR mbcbbh LIKE 'Z30-09%' OR mbcbbh LIKE 'Z30-10%' THEN je ELSE 0 END) AS auxCstAdj,
+            #{month} AS month,
+            NULL AS fixed,
+            1 AS version
+        FROM V_BiCostItem
+        WHERE gcbh=#{projNo}
+    </insert>
+
     <insert id="insert" parameterType="com.iflat.bi.bean.ProjectCost">
         INSERT INTO BiProjectCost
         VALUES (#{id},#{projNo},#{type},#{salesRevenue},#{device},#{raw},#{foundry},#{casualLabor},#{salary},#{maintenance},#{power},#{outSourcing},#{design},#{survey},#{salesFee},#{salesAssCharge},#{purchaseAssCharge},#{colabouration},#{craftEquipment},#{seaTrial},#{other},#{warranty},#{reserve},#{matCstAdj},#{manuCstAdj},#{auxCstAdj},#{month},#{fixed},#{version})

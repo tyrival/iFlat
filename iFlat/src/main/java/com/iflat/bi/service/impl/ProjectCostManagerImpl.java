@@ -1,6 +1,8 @@
 package com.iflat.bi.service.impl;
 
 import com.iflat.bi.bean.ProjectCost;
+import com.iflat.bi.entity.ProjectInfo;
+import com.iflat.system.service.IflatManager;
 import com.iflat.system.service.impl.IflatManagerSupport;
 import org.springframework.oxm.ValidationFailureException;
 
@@ -12,6 +14,32 @@ import java.util.UUID;
  * Created by tyriv on 2015/11/27.
  */
 public class ProjectCostManagerImpl extends IflatManagerSupport {
+
+    private IflatManager iflatManager;
+
+    @Override
+    public Object generate(Object o) throws Exception {
+
+        ProjectCost projectCost = (ProjectCost) o;
+
+        ProjectInfo projectInfo = new ProjectInfo();
+        projectInfo.setAnalyseDate(projectCost.getMonth());
+        List<ProjectInfo> list = this.iflatManager.list(projectInfo);
+
+        if (list != null) {
+
+            for (int i = 0; i < list.size(); i++) {
+                ProjectInfo info = list.get(i);
+
+                ProjectCost cost = new ProjectCost();
+                cost.setProjNo(info.getProjNo());
+                cost.setMonth(projectCost.getMonth());
+
+                this.executeMethod(cost, "generate");
+            }
+        }
+        return o;
+    }
 
     @Override
     public void setImportExcelReader() throws Exception {
@@ -39,5 +67,13 @@ public class ProjectCostManagerImpl extends IflatManagerSupport {
                 throw new ValidationFailureException("第" + (i + 1) + "行工号为空");
             }
         }
+    }
+
+    public IflatManager getIflatManager() {
+        return iflatManager;
+    }
+
+    public void setIflatManager(IflatManager iflatManager) {
+        this.iflatManager = iflatManager;
     }
 }

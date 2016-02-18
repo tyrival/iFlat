@@ -33,34 +33,62 @@ public abstract class IflatManagerSupport implements IflatManager {
     private Object deleteObj;
     private Object listParam;
     private List insertBatchList;
+    private List updateBatchList;
     private List deleteBatchList;
     private List list;
+    private List listBatchList;
     private Page page;
     private boolean isPaging;
 
-    public void beforeInsert() throws Exception { };
-    public void beforeUpdate() throws Exception { };
-    public void afterSave() throws Exception { }
+    protected void beforeGenerate() throws Exception { };
+    protected void afterGenerate() throws Exception { };
 
-    public void beforeDelete() throws Exception { };
-    public void afterDelete() throws Exception { }
+    protected void beforeInsert() throws Exception { };
+    protected void beforeUpdate() throws Exception { };
+    protected void afterSave() throws Exception { }
 
-    public void beforeList() throws Exception { };
-    public void afterList() throws Exception { }
+    protected void afterUpdateBatch() throws Exception { };
+    protected void beforeUpdateBatch() throws Exception { };
 
-    public void afterInsertBatch() throws Exception { }
-    public void beforeInsertBatch() throws Exception { }
+    protected void beforeDelete() throws Exception { };
+    protected void afterDelete() throws Exception { }
 
-    public void afterDeleteBatch() throws Exception { }
-    public void beforeDeleteBatch() throws Exception { }
+    protected void beforeList() throws Exception { };
+    protected void afterList() throws Exception { }
 
-    public abstract void setImportExcelReader() throws Exception;
-    public abstract void setImportProps() throws Exception;
-    public abstract void importValidate() throws Exception;
+    protected void beforeListBatch() throws Exception { };
+    protected void afterListBatch() throws Exception { };
+
+    protected void beforeInsertBatch() throws Exception { }
+    protected void afterInsertBatch() throws Exception { }
+
+    protected void afterDeleteBatch() throws Exception { }
+    protected void beforeDeleteBatch() throws Exception { }
+
+    protected abstract void setImportExcelReader() throws Exception;
+    protected abstract void setImportProps() throws Exception;
+    protected abstract void importValidate() throws Exception;
+
 
     public IflatManagerSupport() {
         this.excelReader = new ExcelReader();
         this.isPaging = false;
+    }
+
+    @Override
+    public Object generate(Object o) throws Exception {
+
+        this.saveObj = o;
+        Object result;
+
+        this.beforeGenerate();
+        result = executeMethod(this.saveObj, "generate");
+        this.afterGenerate();
+
+        if(result instanceof Integer) {
+            result = (int)result > 0 ? this.saveObj : null;
+        }
+        return result;
     }
 
     @Override
@@ -70,16 +98,15 @@ public abstract class IflatManagerSupport implements IflatManager {
         GSReflectHelper obj = new GSReflectHelper(this.saveObj);
         Object id = obj.getMethodValue("id");
         Object result;
+
         if(id == null || "".equals(id.toString())) {
 
             this.beforeInsert();
-
             obj.setMethodValue("id", UUID.randomUUID().toString());
             result = executeMethod(this.saveObj, "insert");
+
         } else {
-
             this.beforeUpdate();
-
             result = executeMethod(this.saveObj, "update");
         }
 
@@ -99,9 +126,7 @@ public abstract class IflatManagerSupport implements IflatManager {
         Object result;
 
         this.beforeInsertBatch();
-
         result = executeMethod(this.insertBatchList, "insertBatch");
-
         this.afterInsertBatch();
 
         //如果是增删改，dao层返回的是数值，此时改为返回参数对象
@@ -112,14 +137,28 @@ public abstract class IflatManagerSupport implements IflatManager {
     }
 
     @Override
+    public List updateBatch(List list) throws Exception {
+
+        this.updateBatchList = list;
+        Object result;
+
+        this.beforeUpdateBatch();
+        result = executeMethod(this.updateBatchList, "updateBatch");
+        this.afterUpdateBatch();
+
+        if(result instanceof Integer) {
+            this.updateBatchList = (int)result == this.updateBatchList.size() ? this.updateBatchList : null;
+        }
+        return this.updateBatchList;
+    }
+
+    @Override
     public Object delete(Object o) throws Exception {
 
         this.deleteObj = o;
 
         this.beforeDelete();
-
         Object result = executeMethod(this.deleteObj, "delete");
-
         this.afterDelete();
 
         if(result instanceof Integer) {
@@ -135,9 +174,7 @@ public abstract class IflatManagerSupport implements IflatManager {
         Object result;
 
         this.beforeDeleteBatch();
-
         result = executeMethod(this.deleteBatchList, "deleteBatch");
-
         this.afterDeleteBatch();
 
         //如果是增删改，dao层返回的是数值，此时改为返回参数对象
@@ -153,10 +190,23 @@ public abstract class IflatManagerSupport implements IflatManager {
         this.listParam = o;
 
         this.beforeList();
-        this.list = (List)executeMethod(this.listParam, "list");
+        this.list = (List) executeMethod(this.listParam, "list");
         this.afterList();
 
         return this.list;
+    }
+
+    @Override
+    public List listBatch(List list) throws Exception {
+
+        this.listBatchList = list;
+        Object result;
+
+        this.beforeListBatch();
+        this.listBatchList = (List) executeMethod(this.listBatchList, "listBatch");
+        this.afterListBatch();
+
+        return this.listBatchList;
     }
 
     @Override
@@ -374,5 +424,21 @@ public abstract class IflatManagerSupport implements IflatManager {
 
     public void setDeleteBatchList(List deleteBatchList) {
         this.deleteBatchList = deleteBatchList;
+    }
+
+    public List getUpdateBatchList() {
+        return updateBatchList;
+    }
+
+    public void setUpdateBatchList(List updateBatchList) {
+        this.updateBatchList = updateBatchList;
+    }
+
+    public List getListBatchList() {
+        return listBatchList;
+    }
+
+    public void setListBatchList(List listBatchList) {
+        this.listBatchList = listBatchList;
     }
 }
