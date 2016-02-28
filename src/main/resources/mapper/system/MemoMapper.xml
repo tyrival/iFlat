@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.Memo">
+
+    <insert id="insert" parameterType="com.iflat.system.bean.Memo">
+        INSERT INTO SysMemo
+        VALUES (#{account},#{note})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.system.bean.Memo">
+        UPDATE SysMemo
+        SET note=#{note}
+        WHERE account=#{account}
+    </update>
+
+    <select id="get" parameterType="String" resultMap="SysMemoResult">
+        SELECT account,note
+        FROM SysMemo
+        WHERE account = #{account}
+    </select>
+
+    <!-- Module -->
+    <resultMap type="com.iflat.system.bean.Memo" id="SysMemoResult">
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="note" column="note" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.AuthData">
+
+    <insert id="insert" parameterType="com.iflat.system.bean.AuthData">
+        INSERT INTO SysAuthData
+        VALUES (#{adId},#{roleId},#{account},#{nameSpace},#{moduleName},#{dbInstance},#{dbName},#{tableName},#{field},#{filter})
+    </insert>
+
+    <insert id="insertDuplicate" parameterType="java.util.List">
+        INSERT INTO SysAuthData
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT NEWID(),#{item.toRoleId},#{item.toAccount},nameSpace,moduleName,dbInstance,dbName,tableName,field,filter
+            FROM SysAuthData
+            <where>
+                <if test="item.fromRoleId!=null">roleId=#{item.fromRoleId}</if>
+                <if test="item.fromAccount!=null">AND account=#{item.fromAccount}</if>
+                <if test="item.nameSpace!=null and !item.dupAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.dupAll">AND moduleName=#{item.moduleName}</if>
+            </where>
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.system.bean.AuthData">
+        UPDATE SysAuthData
+        <set>
+            <if test="roleId!=null">roleId=#{roleId},</if>
+            <if test="account!=null">account=#{account},</if>
+            <if test="nameSpace!=null">nameSpace=#{nameSpace},</if>
+            <if test="moduleName!=null">moduleName=#{moduleName},</if>
+            <if test="dbInstance!=null">dbInstance=#{dbInstance},</if>
+            <if test="dbName!=null">dbName=#{dbName},</if>
+            <if test="tableName!=null">tableName=#{tableName},</if>
+            <if test="field!=null">field=#{field},</if>
+            <if test="filter!=null">filter=#{filter},</if>
+        </set>
+        WHERE adId=#{adId}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        DELETE SysAuthData
+        WHERE adId=#{adId}
+    </delete>
+
+    <delete id="deleteByDuplicate" parameterType="java.util.List">
+        DELETE SysAuthData
+        <where>
+            <foreach collection="list" item="item" index="index" separator="OR">
+                (roleId=#{item.toRoleId} AND account=#{item.toAccount}
+                <if test="item.nameSpace!=null and !item.dupAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.dupAll">AND moduleName=#{item.moduleName}</if>
+                )
+            </foreach>
+        </where>
+    </delete>
+
+    <delete id="deleteByClear" parameterType="java.util.List">
+        DELETE SysAuthData
+        <where>
+            <foreach collection="list" item="item" index="index" separator="OR">
+                (roleId=#{item.roleId} AND account=#{item.account}
+                <if test="item.nameSpace!=null and !item.clearAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.clearAll">AND moduleName=#{item.moduleName}</if>
+                )
+            </foreach>
+        </where>
+    </delete>
+
+    <select id="get" parameterType="com.iflat.system.bean.AuthData" resultMap="SysAuthDataResult">
+        SELECT adId,roleId,account,nameSpace,moduleName,dbInstance,dbName,tableName,field,filter
+        FROM SysAuthData
+        <where>
+            <if test="adId!=null">adId=#{adId}</if>
+            <if test="roleId!=null">AND roleId=#{roleId}</if>
+            <if test="account!=null">AND account=#{account}</if>
+            <if test="nameSpace!=null">AND nameSpace=#{nameSpace}</if>
+            <if test="moduleName!=null">AND moduleName=#{moduleName}</if>
+            <if test="dbInstance!=null">AND dbInstance=#{dbInstance}</if>
+            <if test="dbName!=null">AND dbName=#{dbName}</if>
+            <if test="tableName!=null">AND tableName=#{tableName}</if>
+            <if test="field!=null">AND field=#{field}</if>
+            <if test="filter!=null">AND filter=#{filter}</if>
+        </where>
+    </select>
+
+    <select id="getVo" parameterType="com.iflat.system.entity.AuthDataVo" resultMap="SysAuthDataVoResult">
+        SELECT d.roleId,d.account,d.nameSpace,d.moduleName,d.dbInstance,d.dbName,d.tableName,d.field,d.filter,m.adStatus
+        FROM
+        (SELECT roleId,account,nameSpace,moduleName,dbInstance,dbName,tableName,field,filter
+        FROM SysAuthData
+        WHERE roleId=#{roleId}
+        AND (account=#{account} OR account='')
+        AND nameSpace=#{nameSpace}
+        AND moduleName=#{moduleName}
+        AND dbInstance=#{dbInstance}
+        AND dbName=#{dbName}
+        AND tableName=#{tableName}
+        ) d
+        LEFT JOIN
+        (SELECT roleId,account,nameSpace,moduleName,adStatus
+        FROM SysAuthModule
+        WHERE roleId=#{roleId}
+        AND (account=#{account} OR account='')
+        AND nameSpace=#{nameSpace}
+        AND moduleName=#{moduleName}
+        ) m
+        ON d.roleId=m.roleId AND d.account=m.account AND d.nameSpace=m.nameSpace AND d.moduleName=m.moduleName
+        ORDER BY (CASE WHEN d.account!='' THEN 0 ELSE 1 END)
+    </select>
+
+    <select id="listVoOfModuleByUser" parameterType="com.iflat.system.bean.AuthData" resultMap="SysAuthDataVoResult">
+        SELECT adId,roleId,account,nameSpace,moduleName,dbInstance,dbName,tableName,field,filter,adStatus
+        FROM V_SysAuthData
+        WHERE nameSpace=#{nameSpace}
+        AND moduleName=#{moduleName}
+        AND roleId=#{roleId}
+        AND adStatus='TRUE'
+        AND account IN (CASE WHEN (SELECT COUNT(account) FROM V_SysAuthData WHERE account=#{account} AND adStatus='TRUE')>0 THEN #{account} ELSE '' END)
+    </select>
+
+    <resultMap type="com.iflat.system.bean.AuthData" id="SysAuthDataResult">
+        <result property="adId" column="adId" jdbcType="CHAR"/>
+        <result property="roleId" column="roleId" jdbcType="CHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="nameSpace" column="nameSpace" jdbcType="VARCHAR"/>
+        <result property="moduleName" column="moduleName" jdbcType="VARCHAR"/>
+        <result property="dbInstance" column="dbInstance" jdbcType="VARCHAR"/>
+        <result property="dbName" column="dbName" jdbcType="VARCHAR"/>
+        <result property="tableName" column="tableName" jdbcType="VARCHAR"/>
+        <result property="field" column="field" jdbcType="VARCHAR"/>
+        <result property="filter" column="filter" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap type="com.iflat.system.entity.AuthDataVo" id="SysAuthDataVoResult">
+        <result property="adId" column="adId" jdbcType="CHAR"/>
+        <result property="roleId" column="roleId" jdbcType="CHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="nameSpace" column="nameSpace" jdbcType="VARCHAR"/>
+        <result property="moduleName" column="moduleName" jdbcType="VARCHAR"/>
+        <result property="dbInstance" column="dbInstance" jdbcType="VARCHAR"/>
+        <result property="dbName" column="dbName" jdbcType="VARCHAR"/>
+        <result property="tableName" column="tableName" jdbcType="VARCHAR"/>
+        <result property="field" column="field" jdbcType="VARCHAR"/>
+        <result property="filter" column="filter" jdbcType="VARCHAR"/>
+        <result property="adStatus" column="adStatus" jdbcType="BIT"/>
+    </resultMap>
+</mapper>

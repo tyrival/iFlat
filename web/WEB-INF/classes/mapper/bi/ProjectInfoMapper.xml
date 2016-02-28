@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bi.ProjectInfo">
+
+    <select id="list" parameterType="com.iflat.bi.entity.ProjectInfo" resultMap="BiProjectInfoResult">
+        SELECT projNo,code,name,shortName,plannedPlace,actualPlace,materialPct,manufacturingPct,auxiliaryPct,owner,surveyor,deliveryDate,amount,currency,contractRate,usd,actualRate,cny,usdAdd,cnyAdd,commissionPct,commencePln,commenceAct,shipwayPln,shipwayAct,launchPln,launchAct,seaTrialPln,seaTrialAct,deliveryPln,deliveryAct,analyseDate
+        FROM V_BiProjectInfo
+        <where>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="analyseDate!=null">AND DATEDIFF(MONTH,#{analyseDate},analyseDate)=0</if>
+        </where>
+    </select>
+
+    <resultMap type="com.iflat.bi.entity.ProjectInfo" id="BiProjectInfoResult">
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="shortName" column="shortName" jdbcType="VARCHAR"/>
+        <result property="plannedPlace" column="plannedPlace" jdbcType="VARCHAR"/>
+        <result property="actualPlace" column="actualPlace" jdbcType="VARCHAR"/>
+        <result property="materialPct" column="materialPct" jdbcType="DOUBLE"/>
+        <result property="manufacturingPct" column="manufacturingPct" jdbcType="DOUBLE"/>
+        <result property="auxiliaryPct" column="auxiliaryPct" jdbcType="DOUBLE"/>
+        <result property="owner" column="owner" jdbcType="VARCHAR"/>
+        <result property="surveyor" column="surveyor" jdbcType="VARCHAR"/>
+        <result property="deliveryDate" column="deliveryDate" jdbcType="DATE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="currency" column="currency" jdbcType="VARCHAR"/>
+        <result property="contractRate" column="contractRate" jdbcType="DOUBLE"/>
+        <result property="usd" column="usd" jdbcType="DOUBLE"/>
+        <result property="actualRate" column="actualRate" jdbcType="DOUBLE"/>
+        <result property="cny" column="cny" jdbcType="DOUBLE"/>
+        <result property="usdAdd" column="usdAdd" jdbcType="DOUBLE"/>
+        <result property="cnyAdd" column="cnyAdd" jdbcType="DOUBLE"/>
+        <result property="commissionPct" column="commissionPct" jdbcType="DOUBLE"/>
+        <result property="commencePln" column="commencePln" jdbcType="DATE"/>
+        <result property="commenceAct" column="commenceAct" jdbcType="DATE"/>
+        <result property="shipwayPln" column="shipwayPln" jdbcType="DATE"/>
+        <result property="shipwayAct" column="shipwayAct" jdbcType="DATE"/>
+        <result property="launchPln" column="launchPln" jdbcType="DATE"/>
+        <result property="launchAct" column="launchAct" jdbcType="DATE"/>
+        <result property="seaTrialPln" column="seaTrialPln" jdbcType="DATE"/>
+        <result property="seaTrialAct" column="seaTrialAct" jdbcType="DATE"/>
+        <result property="deliveryPln" column="deliveryPln" jdbcType="DATE"/>
+        <result property="deliveryAct" column="deliveryAct" jdbcType="DATE"/>
+        <result property="analyseDate" column="analyseDate" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

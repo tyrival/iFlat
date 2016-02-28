@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bi.DeptCstCtrl">
+
+    <insert id="insert" parameterType="com.iflat.bi.bean.DeptCstCtrl">
+        INSERT INTO BiDeptCstCtrl
+        VALUES (#{id},#{dept},#{type},#{budget},#{actual},#{comment},#{month},#{fixed},#{version})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO BiDeptCstCtrl
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.dept},#{item.type},#{item.budget},#{item.actual},#{item.comment},#{item.month},#{item.fixed},#{item.version}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.bi.bean.DeptCstCtrl">
+        UPDATE BiDeptCstCtrl
+        SET dept=#{dept},type=#{type},budget=#{budget},actual=#{actual},comment=#{comment},month=#{month},fixed=#{fixed},version=#{version}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.bi.bean.DeptCstCtrl">
+        DELETE BiDeptCstCtrl
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.bi.bean.DeptCstCtrl" resultMap="BiDeptCstCtrlResult">
+        SELECT id,dept,type,budget,actual,comment,month,fixed,version
+        FROM BiDeptCstCtrl
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="dept!=null">AND dept=#{dept}</if>
+            <if test="type!=null">AND type=#{type}</if>
+            <if test="month!=null">AND DATEDIFF(MONTH,#{month},month)=0</if>
+        </where>
+    </select>
+
+    <resultMap type="com.iflat.bi.bean.DeptCstCtrl" id="BiDeptCstCtrlResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="budget" column="budget" jdbcType="DOUBLE"/>
+        <result property="actual" column="actual" jdbcType="DOUBLE"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="fixed" column="fixed" jdbcType="DATE"/>
+        <result property="version" column="version" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

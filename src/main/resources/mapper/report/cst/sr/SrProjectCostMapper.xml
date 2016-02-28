@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report.Cst.Sr.SrProjectCost">
+
+    <select id="list" parameterType="com.iflat.report.bean.cst.sr.SrProjectCost" resultMap="RptCstSrSrProjectCostResult">
+        SELECT gcbh AS projNo,'合同价格' as type,xsjg as amount,xsjg as estimate
+        FROM [192.168.0.99\cb].[cbxt].[dbo].[Uv_OuterCode_CPDM]
+        WHERE cpbh = #{projNo}
+        UNION ALL
+        SELECT d3.gcbh AS projNo,'实际成本' AS type,sum(d3.je) AS amount, d4.xsjg AS estimate
+        FROM [192.168.0.99\cb].[cbxt].[dbo].[uv_getcb_ini] d3
+        CROSS JOIN (SELECT top 1 xsjg FROM [192.168.0.99\cb].[cbxt].[dbo].[Uv_OuterCode_CPDM] WHERE cpbh = #{projNo}) d4
+        WHERE gcbh IN (SELECT gcbh FROM [192.168.0.99\cb].[cbxt].[dbo].[uv_outercode_gcdm] WHERE cpbh = #{projNo})
+        GROUP BY d3.gcbh,d4.xsjg
+    </select>
+
+    <resultMap type="com.iflat.report.bean.cst.sr.SrProjectCost" id="RptCstSrSrProjectCostResult">
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="estimate" column="estimate" jdbcType="DOUBLE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

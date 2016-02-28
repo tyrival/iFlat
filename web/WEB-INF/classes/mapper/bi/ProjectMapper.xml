@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bi.Project">
+
+    <insert id="insert" parameterType="com.iflat.bi.bean.Project">
+        INSERT INTO BiProject
+        VALUES (#{id},#{projNo},#{code},#{name},#{shortName},#{plannedPlace},#{actualPlace},#{materialPct},#{manufacturingPct},#{auxiliaryPct},#{analyseDate})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.bi.bean.Project">
+        UPDATE BiProject
+        SET projNo=#{projNo},code=#{code},name=#{name},shortName=#{shortName},plannedPlace=#{plannedPlace},actualPlace=#{actualPlace},materialPct=#{materialPct},manufacturingPct=#{manufacturingPct},auxiliaryPct=#{auxiliaryPct},analyseDate=#{analyseDate}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.bi.bean.Project">
+        DELETE BiProject
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.bi.bean.Project" resultMap="BiProjectResult">
+        SELECT id,projNo,code,name,shortName,plannedPlace,actualPlace,materialPct,manufacturingPct,auxiliaryPct,analyseDate
+        FROM BiProject
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="code!=null">AND code=#{code}</if>
+            <if test="name!=null">AND name=#{name}</if>
+            <if test="shortName!=null">AND shortName=#{shortName}</if>
+            <if test="plannedPlace!=null">AND plannedPlace=#{plannedPlace}</if>
+            <if test="actualPlace!=null">AND actualPlace=#{actualPlace}</if>
+        </where>
+    </select>
+
+    <resultMap type="com.iflat.bi.bean.Project" id="BiProjectResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="shortName" column="shortName" jdbcType="VARCHAR"/>
+        <result property="plannedPlace" column="plannedPlace" jdbcType="VARCHAR"/>
+        <result property="actualPlace" column="actualPlace" jdbcType="VARCHAR"/>
+        <result property="materialPct" column="materialPct" jdbcType="DOUBLE"/>
+        <result property="manufacturingPct" column="manufacturingPct" jdbcType="DOUBLE"/>
+        <result property="auxiliaryPct" column="auxiliaryPct" jdbcType="DOUBLE"/>
+        <result property="analyseDate" column="analyseDate" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

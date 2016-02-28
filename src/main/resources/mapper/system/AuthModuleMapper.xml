@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.AuthModule">
+
+    <insert id="insert" parameterType="com.iflat.system.bean.AuthModule">
+        INSERT INTO SysAuthModule
+        VALUES (#{amId},#{roleId},#{account},#{nameSpace},#{moduleName},#{amStatus},#{aoStatus},#{adStatus})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SysAuthModule
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.amId},#{item.roleId},#{item.account},#{item.nameSpace},#{item.moduleName},#{item.amStatus},#{item.aoStatus},#{item.adStatus}
+        </foreach>
+    </insert>
+
+    <insert id="insertDuplicate" parameterType="java.util.List">
+        INSERT INTO SysAuthModule
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT NEWID(),#{item.toRoleId},#{item.toAccount},nameSpace,moduleName,amStatus,aoStatus,adStatus
+            FROM SysAuthModule
+            <where>
+                <if test="item.fromRoleId!=null">roleId=#{item.fromRoleId}</if>
+                <if test="item.fromAccount!=null">AND account=#{item.fromAccount}</if>
+                <if test="item.nameSpace!=null and !item.dupAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.dupAll">AND moduleName=#{item.moduleName}</if>
+            </where>
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.system.bean.AuthModule">
+        UPDATE SysAuthModule
+        <set>
+            <if test="roleId!=null">roleId=#{roleId},</if>
+            <if test="account!=null">account=#{account},</if>
+            <if test="nameSpace!=null">nameSpace=#{nameSpace},</if>
+            <if test="moduleName!=null">moduleName=#{moduleName},</if>
+            <if test="amStatus!=null">amStatus=#{amStatus},</if>
+            <if test="aoStatus!=null">aoStatus=#{aoStatus},</if>
+            <if test="adStatus!=null">adStatus=#{adStatus},</if>
+        </set>
+        WHERE amId=#{amId}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE SysAuthModule SET amId=a.amId,roleId=a.roleId,account=a.account,nameSpace=a.nameSpace,moduleName=a.moduleName,amStatus=a.amStatus,aoStatus=a.aoStatus,adStatus=a.adStatus
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.amId} as amId,#{item.roleId} as roleId,#{item.account} as account,#{item.nameSpace} as
+            nameSpace,#{item.moduleName} as moduleName,#{item.amStatus} as amStatus,#{item.aoStatus} as
+            aoStatus,#{item.adStatus} as adStatus
+        </foreach>
+        ) AS a
+        WHERE SysAuthModule.amId=a.amId
+    </update>
+
+    <delete id="deleteByDuplicate" parameterType="java.util.List">
+        DELETE SysAuthModule
+        <where>
+            <foreach collection="list" item="item" index="index" separator="OR">
+                (roleId=#{item.toRoleId} AND account=#{item.toAccount}
+                <if test="item.nameSpace!=null and !item.dupAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.dupAll">AND moduleName=#{item.moduleName}</if>
+                )
+            </foreach>
+        </where>
+    </delete>
+
+    <delete id="deleteByClear" parameterType="java.util.List">
+        DELETE SysAuthModule
+        <where>
+            <foreach collection="list" item="item" index="index" separator="OR">
+                (roleId=#{item.roleId} AND account=#{item.account}
+                <if test="item.nameSpace!=null and !item.clearAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.clearAll">AND moduleName=#{item.moduleName}</if>
+                )
+            </foreach>
+        </where>
+    </delete>
+
+    <select id="list" parameterType="com.iflat.system.bean.AuthModule" resultMap="SysAuthModuleResult">
+        SELECT amId,roleId,account,nameSpace,moduleName,amStatus,aoStatus,adStatus
+        FROM SysAuthModule
+        <where>
+            <if test="amId!=null">amId=#{amId}</if>
+            <if test="roleId!=null">AND roleId=#{roleId}</if>
+            <if test="account!=null">AND account=#{account}</if>
+            <if test="nameSpace!=null">AND nameSpace=#{nameSpace}</if>
+            <if test="moduleName!=null">AND moduleName=#{moduleName}</if>
+        </where>
+    </select>
+
+    <!-- 映射 -->
+    <resultMap type="com.iflat.system.bean.AuthModule" id="SysAuthModuleResult">
+        <result property="amId" column="amId" jdbcType="CHAR"/>
+        <result property="roleId" column="roleId" jdbcType="CHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="nameSpace" column="nameSpace" jdbcType="VARCHAR"/>
+        <result property="moduleName" column="moduleName" jdbcType="VARCHAR"/>
+        <result property="amStatus" column="amStatus" jdbcType="BIT"/>
+        <result property="aoStatus" column="aoStatus" jdbcType="BIT"/>
+        <result property="adStatus" column="adStatus" jdbcType="BIT"/>
+    </resultMap>
+</mapper>

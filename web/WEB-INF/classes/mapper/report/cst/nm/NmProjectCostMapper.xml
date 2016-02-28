@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report.Cst.Nm.NmProjectCost">
+
+    <select id="list" parameterType="com.iflat.report.bean.cst.nm.NmProjectCost" resultMap="RptCstNmNmProjectCostResult">
+        SELECT gcbh AS projNo,'合同价格' as type,xsjg as amount,xsjg as estimate
+        FROM [192.168.0.99\cb].[cbxt].[dbo].[Uv_OuterCode_CPDM]
+        WHERE cpbh = #{projNo}
+        UNION ALL
+        SELECT b3.cpbh AS projNo,'报价成本' AS type,sum(b3.jezj) AS amount,b4.xsjg AS estimate
+        FROM (SELECT b1.cpbh,b1.mbcbbh,b1.jezj,b2.mjbz
+        FROM [192.168.0.99\cb].[cbxt].[dbo].[bjcb] b1
+        LEFT JOIN [192.168.0.99\cb].[cbxt].[dbo].[mbcbdm] b2
+        ON b1.mbcbbh=b2.mbcbbh
+        WHERE cpbh = #{projNo} AND isnull(mjbz,'0') = '1') b3
+        CROSS JOIN (SELECT top 1 xsjg FROM [192.168.0.99\cb].[cbxt].[dbo].[Uv_OuterCode_CPDM] WHERE cpbh = #{projNo}) b4
+        GROUP BY b3.cpbh,b4.xsjg
+        UNION ALL
+        SELECT c3.cpbh AS projNo,'目标成本' AS type,sum(c3.je) AS amount,c4.xsjg AS estimate
+        FROM (SELECT c1.cpbh,c1.mbcbbh,c1.je,c2.mjbz
+        FROM [192.168.0.99\cb].[cbxt].[dbo].[mbcb] c1
+        LEFT JOIN [192.168.0.99\cb].[cbxt].[dbo].[mbcbdm] c2
+        ON c1.mbcbbh = c2.mbcbbh
+        WHERE c1.cpbh = #{projNo} AND isnull(c2.mjbz,'0') = '1') c3
+        CROSS JOIN (SELECT top 1 xsjg FROM [192.168.0.99\cb].[cbxt].[dbo].[Uv_OuterCode_CPDM] WHERE cpbh = #{projNo}) c4
+        GROUP BY c3.cpbh,c4.xsjg
+        UNION ALL
+        SELECT d3.gcbh AS projNo,'实际成本' AS type,sum(d3.je) AS amount, d4.xsjg AS estimate
+        FROM [192.168.0.99\cb].[cbxt].[dbo].[uv_getcb_ini] d3
+        CROSS JOIN (SELECT top 1 xsjg FROM [192.168.0.99\cb].[cbxt].[dbo].[Uv_OuterCode_CPDM] WHERE cpbh = #{projNo}) d4
+        WHERE gcbh IN (SELECT gcbh FROM [192.168.0.99\cb].[cbxt].[dbo].[uv_outercode_gcdm] WHERE cpbh = #{projNo})
+        GROUP BY d3.gcbh,d4.xsjg
+    </select>
+
+    <resultMap type="com.iflat.report.bean.cst.nm.NmProjectCost" id="RptCstNmNmProjectCostResult">
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="estimate" column="estimate" jdbcType="DOUBLE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

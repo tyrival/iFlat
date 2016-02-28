@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report.Wip.Manhour.WoStatus">
+
+    <select id="list" parameterType="com.iflat.report.bean.wip.manhour.WoStatus" resultMap="RptWipManhourWoStatusResult">
+SELECT e.projNo,e.type,e.name,e.woNo,e.description,e.createTime,e.dept,e.team,e.[group],e.createUser,e.mgrConfirm,e.balConfirm,e.hasComplete,e.hasQuota,e.quota,e.hasActual,e.printed,e.finalConfirm
+FROM (
+<if test="type!=null and &quot;结构&quot;.equals(type)">
+    SELECT d1.gh AS projNo, '结构' AS type, a1.gcmc AS name, a1.pgdbh AS woNo,
+            a1.pgdms AS description, a1.sjkgsj AS createTime, a1.sgbm AS dept,
+            a1.sglwd AS team, a1.sgbz AS [group], a1.kdry AS createUser, NULL AS mgrConfirm,
+           (CASE WHEN a1.spbz=1 OR (a1.spbz IS NULL AND a1.sglwd LIKE '%本工%') THEN 'TRUE' WHEN a1.spbz=2 THEN 'FALSE' ELSE NULL END) AS balConfirm,
+           (CASE WHEN a1.sjwgsj IS NULL THEN 'FALSE' ELSE 'TRUE' END) AS hasComplete,
+           (CASE WHEN a1.mbgs IS NULL OR a1.mbgs=0 THEN 'FALSE' ELSE 'TRUE' END) AS hasQuota,
+           ISNULL(a1.mbgs,0) AS quota, b1.hasActual,
+           (CASE WHEN c1.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed,
+           (CASE WHEN c1.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    FROM V_Wh_WoStandard a1
+    LEFT JOIN (SELECT gcbh, pgdbh, (CASE WHEN COUNT(1)>0 THEN 'TRUE' ELSE 'FALSE' END) AS hasActual
+               FROM V_Wh_WhFeedback
+               GROUP BY gcbh,pgdbh) b1 ON a1.gcbh=b1.gcbh AND a1.pgdbh=b1.pgdbh
+    LEFT JOIN V_Wh_WoHullPrinted c1 ON a1.gcbh=c1.gcbh AND a1.pgdbh=c1.pgdbh
+    LEFT JOIN V_Wh_Project d1 ON a1.gcbh=d1.gcbh
+    <where>
+        (a1.zymc = '船体' or a1.zgzmc ='管子制作') AND d1.gh=#{projNo}
+        <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
+          AND a1.pgdbh LIKE '%' + #{woNo} + '%'
+        </if>
+    </where>
+</if>
+<if test="type!=null and &quot;舾装安装&quot;.equals(type)">
+    SELECT d2.gh AS projNo, '舾装安装' AS type, a2.gcmc AS name, a2.pgdbh AS woNo, b2.sgnr AS description, b2.djsj AS createTime, a2.sgbm AS dept, a2.sglwd AS team, a2.sgbz AS [group], b2.djry AS createUser, NULL AS mgrConfirm,
+           (CASE WHEN b2.shbz=1 OR (b2.shbz IS NULL AND a2.sglwd LIKE '%本工%') THEN 'TRUE' WHEN b2.shbz=2 THEN 'FALSE' ELSE NULL END) AS balConfirm,
+           NULL AS hasComplete, (CASE WHEN b2.degs IS NOT NULL OR b2.degs=0 THEN 'TRUE' ELSE 'FALSE' END) AS hasQuota, ISNULL(b2.degs,0) AS quota,
+           NULL AS hasActual,
+           (CASE WHEN c2.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed,
+           (CASE WHEN c2.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    FROM V_Wh_WoOutfittingDetail b2
+    LEFT JOIN V_Wh_WoStandard a2 ON a2.ppk_varcode=b2.zbid
+    LEFT JOIN V_Wh_WoOutfittingPrinted c2 ON a2.gcbh=c2.gcbh AND a2.pgdms=c2.pgdms AND b2.djsj=c2.djsj
+    LEFT JOIN V_Wh_Project d2 ON a2.gcbh=d2.gcbh
+    <where>
+        a2.zymc='舾装安装' AND d2.gh=#{projNo}
+        <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
+            AND a2.pgdbh LIKE '%' + #{woNo} + '%'
+        </if>
+    </where>
+</if>
+<if test="type!=null and &quot;舾装制作&quot;.equals(type)">
+    SELECT d3.gh AS projNo, '舾装制作' AS type, a3.gcmc AS name, a3.pgdbh AS woNo, b3.sgnr AS description, b3.djsj AS createTime, a3.sgbm AS dept, a3.sglwd AS team, a3.sgbz AS [group], b3.djry AS createUser, NULL AS mgrConfirm,
+           (CASE WHEN b3.spbz=1 OR (b3.spbz IS NULL AND a3.sglwd LIKE '%本工%') THEN 'TRUE' WHEN b3.spbz=3 THEN 'FALSE' ELSE NULL END) AS balConfirm,
+           NULL AS hasComplete, (CASE WHEN b3.degs IS NOT NULL OR b3.degs=0 THEN 'TRUE' ELSE 'FALSE' END) AS hasQuota, ISNULL(b3.degs,0) AS quota,
+           NULL AS hasActual,
+           (CASE WHEN c3.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed,
+           (CASE WHEN c3.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    FROM V_Wh_WoFittingMakingDetail b3
+    LEFT JOIN V_Wh_WoStandard a3 ON a3.ppk_varcode=b3.zbid
+    LEFT JOIN V_Wh_WoFittingMakingPrinted c3 ON a3.gcbh=c3.gcbh AND a3.pgdms=c3.pgdms AND b3.djsj=c3.djsj
+    LEFT JOIN V_Wh_Project d3 ON a3.gcbh=d3.gcbh
+    <where>
+        a3.zymc='舾装制作' AND d3.gh=#{projNo}
+        <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
+            AND a3.pgdbh LIKE '%' + #{woNo} + '%'
+        </if>
+    </where>
+</if>
+<if test="type!=null and &quot;杂项&quot;.equals(type)">
+    SELECT d4.gh AS projNo, '杂项' AS type, a4.gcmc AS name, a4.pgdbh AS woNo, b4.sgnr AS description, b4.djsj AS createTime, a4.sgbm AS dept, a4.sgdw AS team, a4.sgbz AS [group], a4.kdry AS createUser, NULL AS mgrConfirm, (CASE WHEN b4.spbz=1 OR (b4.spbz IS NULL AND a4.sgdw LIKE '%本工%') THEN 'TRUE' WHEN b4.spbz=2 THEN 'FALSE' ELSE NULL END) AS balConfirm, NULL AS hasComplete, (CASE WHEN b4.degs IS NULL OR b4.degs=0 THEN 'FALSE' ELSE 'TRUE' END) AS hasQuota, ISNULL(b4.degs,0) AS quota,NULL AS hasActual, (CASE WHEN c4.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed, (CASE WHEN c4.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    FROM V_Wh_WoMiscDetail b4
+    LEFT JOIN V_Wh_WoMisc a4 ON a4.ppk_varcode=b4.zbid
+    LEFT JOIN V_Wh_WoMiscPrinted c4 ON a4.gcbh=c4.gcbh AND a4.pgdbh=c4.pgdbh AND b4.djsj=c4.djsj
+    LEFT JOIN V_Wh_Project d4 ON a4.gcbh=d4.gcbh
+    <where>
+        b4.sgnr NOT LIKE '%厚度:%' AND d4.gh=#{projNo}
+        <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
+            AND a4.pgdbh LIKE '%' + #{woNo} + '%'
+        </if>
+    </where>
+</if>
+<if test="type!=null and &quot;修改&quot;.equals(type)">
+    SELECT d5.gh AS projNo, '修改' AS type, a5.gcmc AS name, a5.xgdbh AS woNo, b5.xgxm + ' ' + b5.xgnr + ' 数量：' + CONVERT(VARCHAR(20),b5.wlgs) AS description, b5.djsj AS createTime, a5.sgbm AS dept, a5.sgdw AS team, a5.sgbz AS [group], b5.djry AS createUser, NULL AS mgrConfirm, (CASE WHEN b5.shbz=1 OR (b5.shbz IS NULL AND a5.sgdw LIKE '%本工%') THEN 'TRUE' WHEN b5.shbz=5 THEN 'FALSE' ELSE NULL END) AS balConfirm, NULL AS hasComplete, (CASE WHEN b5.degs IS NOT NULL OR b5.degs=0 THEN 'TRUE' ELSE 'FALSE' END) AS hasQuota, ISNULL(b5.degs,0) AS quota,
+           NULL AS hasActual,
+           (CASE WHEN c5.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed,
+           (CASE WHEN c5.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    FROM V_Wh_WoModifyDetail b5
+    LEFT JOIN V_Wh_WoModify a5 ON a5.ppk_varcode = b5.zbid
+    LEFT JOIN V_Wh_WoModifyPrinted c5 ON CAST(b5.xgnr as varchar(max))= cast(c5.sgnr as varchar(max)) and c5.gcmc = a5.gcmc and c5.xgdbh = b5.xgdh
+    LEFT JOIN V_Wh_Project d5 ON a5.gcbh=d5.gcbh
+    <where>
+        d5.gh=#{projNo}
+        <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
+            AND a5.xgdbh LIKE '%' + #{woNo} + '%'
+        </if>
+    </where>
+</if>
+<if test="type!=null and &quot;通用件&quot;.equals(type)">
+    SELECT d6.gh AS projNo, '通用件' AS type, a6.gcmc AS name, a6.pgdbh AS woNo, b6.sgxm + ' ' + b6.ggxh + ' 数量：' + CONVERT(VARCHAR(20),b6.sl) AS description, b6.djsj AS createTime, a6.sgbm AS dept, a6.sgdw AS team, a6.sgbz AS [group], b6.djry AS createUser, NULL AS mgrConfirm, (CASE WHEN b6.shbz=1 OR (b6.shbz IS NULL AND a6.sgdw LIKE '%本工%') THEN 'TRUE' WHEN b6.shbz=6 THEN 'FALSE' ELSE NULL END) AS balConfirm, NULL AS hasComplete, (CASE WHEN b6.degs IS NOT NULL OR b6.degs=0 THEN 'TRUE' ELSE 'FALSE' END) AS hasQuota, ISNULL(b6.degs,0) AS quota,NULL AS hasActual,
+           (CASE WHEN c6.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed,
+           (CASE WHEN c6.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    FROM V_Wh_WoCommonDetail b6
+    LEFT JOIN V_Wh_WoCommon a6 ON a6.ppk_varcode = b6.zbid
+    LEFT JOIN V_Wh_WoCommonPrinted c6 ON a6.pgdbh=c6.pgdbh AND b6.sgxm=c6.sgxm AND b6.ggxh=c6.ggxh AND b6.djsj=c6.djsj
+    LEFT JOIN V_Wh_Project d6 ON a6.gcbh=d6.gcbh
+    <where>
+        d6.gh=#{projNo}
+        <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
+            AND a6.pgdbh LIKE '%' + #{woNo} + '%'
+        </if>
+    </where>
+</if>
+<if test="type!=null and &quot;自测样管&quot;.equals(type)">
+    SELECT d8.gh AS projNo, '杂项' AS type, a8.gcmc AS name, a8.pgdbh AS woNo, b8.sgnr AS description, b8.djsj AS createTime, a8.sgbm AS dept, a8.sgdw AS team, a8.sgbz AS [group], a8.kdry AS createUser, NULL AS mgrConfirm, (CASE WHEN b8.spbz=1 OR (b8.spbz IS NULL AND a8.sgdw LIKE '%本工%') THEN 'TRUE' WHEN b8.spbz=2 THEN 'FALSE' ELSE NULL END) AS balConfirm, NULL AS hasComplete, (CASE WHEN b8.degs IS NULL OR b8.degs=0 THEN 'FALSE' ELSE 'TRUE' END) AS hasQuota, ISNULL(b8.degs,0) AS quota,NULL AS hasActual, (CASE WHEN c8.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed, (CASE WHEN c8.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    FROM V_Wh_WoMiscDetail b8
+    LEFT JOIN V_Wh_WoMisc a8 ON a8.ppk_varcode=b8.zbid
+    LEFT JOIN V_Wh_WoPipePrinted c8 ON b8.ygid=c8.mxbz
+    LEFT JOIN V_Wh_Project d8 ON a8.gcbh=d8.gcbh
+    <where>
+        b8.sgnr LIKE '%厚度:%' AND d8.gh=#{projNo}
+        <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
+            AND a8.pgdbh LIKE '%' + #{woNo} + '%'
+        </if>
+    </where>
+</if>
+<if test="type!=null and &quot;工程&quot;.equals(type)">
+    SELECT d7.gh AS projNo, '工程' AS type, a7.gcmc AS name, a7.pgdbh AS woNo, b7.sgnr AS description, b7.djsj AS createTime, a7.sgbm AS dept, a7.sgdw AS team, a7.sgbz AS [group], b7.djry AS createUser,(CASE WHEN b7.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS mgrConfirm,
+    (CASE WHEN b7.spbz=1 OR (b7.spbz IS NULL AND a7.sgdw LIKE '%本工%') THEN 'TRUE' WHEN b7.spbz=7 THEN 'FALSE' ELSE NULL END) AS balConfirm, NULL AS hasComplete, (CASE WHEN b7.degs IS NOT NULL OR b7.degs=0 THEN 'TRUE' ELSE 'FALSE' END) AS hasQuota, ISNULL(b7.degs,0) AS quota, NULL AS hasActual, (CASE WHEN c7.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed, (CASE WHEN c7.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    FROM V_Wh_WoExtraDetail b7
+    LEFT JOIN V_Wh_WoExtra a7 ON a7.ppk_varcode = b7.zbid
+    LEFT JOIN V_Wh_WoExtraPrinted c7 ON a7.gcbh=c7.gcbh AND b7.sgnr=CONVERT(VARCHAR(500),c7.sgnr) AND b7.djsj=c7.djsj
+    LEFT JOIN V_Wh_Project d7 ON a7.gcbh=d7.gcbh
+    <where>
+        d7.gh=#{projNo}
+        <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
+            AND a7.pgdbh LIKE '%' + #{woNo} + '%'
+        </if>
+    </where>
+</if>
+) e
+ORDER BY e.woNo,e.createTime
+    </select>
+
+    <resultMap type="com.iflat.report.bean.wip.manhour.WoStatus" id="RptWipManhourWoStatusResult">
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="woNo" column="woNo" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="group" column="group" jdbcType="VARCHAR"/>
+        <result property="createUser" column="createUser" jdbcType="VARCHAR"/>
+        <result property="mgrConfirm" column="mgrConfirm" jdbcType="BIT"/>
+        <result property="hasComplete" column="hasComplete" jdbcType="BIT"/>
+        <result property="hasQuota" column="hasQuota" jdbcType="BIT"/>
+        <result property="quota" column="quota" jdbcType="DOUBLE"/>
+        <result property="hasActual" column="hasActual" jdbcType="BIT"/>
+        <result property="balConfirm" column="balConfirm" jdbcType="BIT"/>
+        <result property="printed" column="printed" jdbcType="BIT"/>
+        <result property="finalConfirm" column="finalConfirm" jdbcType="BIT"/>
+    </resultMap>
+</mapper>

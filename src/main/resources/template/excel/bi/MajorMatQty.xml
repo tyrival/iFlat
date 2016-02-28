@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="majorDevCst" code="majorDevCst" name="主要设备费用">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+        <col index="G" width='17em'></col>
+        <col index="H" width='17em'></col>
+        <col index="I" width='17em'></col>
+        <col index="J" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="10" value="主要设备费用" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="工号" />
+            <th value="类型" />
+            <th value="钢板" />
+            <th value="型钢" />
+            <th value="其他钢材" />
+            <th value="钢管" />
+            <th value="焊丝" />
+            <th value="进口油漆" />
+            <th value="国产油漆" />
+            <th value="船用电缆" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="1">
+            <td type="string" isnullable="false" maxlength="30" />
+            <td type="enum" format="设计,订货,实际" isnullable="false" maxlength="1000" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+        </tr>
+    </tbody>
+</excel>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Code.Worker">
+
+    <select id="list" parameterType="com.iflat.code.bean.Worker" resultMap="codeWorkerResult">
+        SELECT id,account,name,sex,workType,deptCode,deptName,teamCode,teamName,groupCode,groupName,category,property
+        FROM CodeWorker
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="account!=null">AND account=#{account}</if>
+            <if test="name!=null">AND name=#{name}</if>
+            <if test="sex!=null">AND sex=#{sex}</if>
+            <if test="workType!=null">AND workType=#{workType}</if>
+            <if test="deptCode!=null and !&quot;&quot;.equals(deptCode.trim())">AND deptCode=#{deptCode}</if>
+            <if test="deptName!=null and !&quot;&quot;.equals(deptName.trim())">AND deptName=#{deptName}</if>
+            <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
+            <if test="teamName!=null and !&quot;&quot;.equals(teamName.trim())">AND teamName=#{teamName}</if>
+            <if test="groupCode!=null and !&quot;&quot;.equals(groupCode.trim())">AND groupCode=#{groupCode}</if>
+            <if test="groupName!=null and !&quot;&quot;.equals(groupName.trim())">AND groupName=#{groupName}</if>
+            <if test="category!=null">AND category=#{category}</if>
+            <if test="property!=null">AND property=#{property}</if>
+        </where>
+        ORDER BY deptCode,teamCode,groupCode,account
+    </select>
+
+    <resultMap type="com.iflat.code.bean.Worker" id="codeWorkerResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="workType" column="workType" jdbcType="VARCHAR"/>
+        <result property="deptCode" column="deptCode" jdbcType="VARCHAR"/>
+        <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
+        <result property="teamCode" column="teamCode" jdbcType="DATE"/>
+        <result property="teamName" column="teamName" jdbcType="VARCHAR"/>
+        <result property="groupCode" column="groupCode" jdbcType="VARCHAR"/>
+        <result property="groupName" column="groupName" jdbcType="VARCHAR"/>
+        <result property="category" column="category" jdbcType="DOUBLE"/>
+        <result property="property" column="property" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

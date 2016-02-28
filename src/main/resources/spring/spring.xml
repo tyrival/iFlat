@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--配置数据源属性文件  -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>/WEB-INF/classes/database.properties</value>
+        </property>
+    </bean>
+
+    <!--配置数据源 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.pwd}"/>
+    </bean>
+
+    <!-- 配置SqlSessionTemplate -->
+    <bean id="sqlSessionTemplate"  class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean>
+    <!-- 配置mybatis SqlSessionFactoryBean -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="prototype">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="/WEB-INF/classes/mybatis/mybatis.xml" />
+        <property name="mapperLocations" value="/WEB-INF/classes/mapper/**/*Mapper.xml" />
+        <property name="plugins">
+            <array>
+                <bean class="com.iflat.system.interceptor.DataAuthorityInterceptor">
+                    <property name="sqlSessionTemplateInterceptor" ref="sqlSessionTemplateInterceptor"></property>
+                    <!-- 正则表达式，SQL的id匹配则拦截 -->
+                    <property name="sqlId" value=".*(list|get)*"></property>
+                    <!-- sql中函数替换的映射文件路径 -->
+                    <property name="sqlmapperPath" value="/classes/sqlmapper/sqlmapper.properties"></property>
+                </bean>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <value>
+                            dialect=sqlserver
+                            <!-- 该参数默认为false -->
+                            <!-- 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 -->
+                            <!-- 和startPage中的pageNum效果一样-->
+                            offsetAsPageNum=true
+                            <!-- 该参数默认为false -->
+                            <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+                            rowBoundsWithCount=true
+                            <!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+                            <!-- （相当于没有执行分页查询，但是返回结果仍然是Page类型）-->
+                            pageSizeZero=true
+                            <!-- 3.3.0版本可用 - 分页参数合理化，默认false禁用 -->
+                            <!-- 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页 -->
+                            <!-- 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据 -->
+                            reasonable=false
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <!-- 配置mybatis拦截器的SqlSessionTemplate -->
+    <bean id="sqlSessionTemplateInterceptor"  class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactoryInterceptor" />
+    </bean>
+    <!-- 配置mybatis拦截器的SqlSessionFactoryBean -->
+    <bean id="sqlSessionFactoryInterceptor" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="/WEB-INF/classes/mybatis/mybatis.xml" />
+        <property name="mapperLocations" value="/WEB-INF/classes/mapper/**/*Mapper.xml" />
+    </bean>
+
+    <!-- 配置SqlSessionTemplate
+    <bean id="sqlSession"  class="org.mapper.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+        <constructor-arg index="1" value="BATCH" />
+    </bean>-->
+
+    <!-- spring 事务管理 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- 使用annotation注解方式配置事务
+    <tx:annotation-driven transaction-manager="transactionManager"/>-->
+    <!--  配置事务传播特性 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="list*" read-only="true"/>
+            <tx:method name="load*" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--  配置参与事务的类 -->
+    <aop:config>
+        <aop:pointcut id="allServiceMethod" expression="execution(* com.iflat.*.*(..))"/>
+        <aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
+    </aop:config>
+</beans>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.Question">
+
+    <insert id="insert" parameterType="com.iflat.system.bean.Question">
+        INSERT INTO SysQuestion
+        VALUES (#{quId},#{sysName},#{quContent},#{quAttachment},#{askAccount},#{askUserName},#{askOrgId},#{askOrgName},#{askContact},NULL,NULL,NULL,NULL,NULL,NULL,#{status},#{createAccount},#{createUserName},#{createTime},NULL)
+    </insert>
+
+    <update id="update" parameterType="com.iflat.system.bean.Question">
+        UPDATE SysQuestion
+        <set>
+            <if test="sysName!=null">sysName=#{sysName},</if>
+            <if test="quContent!=null">quContent=#{quContent},</if>
+            <if test="quAttachment!=null">quAttachment=#{quAttachment},</if>
+            <if test="askAccount!=null">askAccount=#{askAccount},</if>
+            <if test="askUserName!=null">askUserName=#{askUserName},</if>
+            <if test="askOrgId!=null">askOrgId=#{askOrgId},</if>
+            <if test="askOrgName!=null">askOrgName=#{askOrgName},</if>
+            <if test="askContact!=null">askContact=#{askContact},</if>
+            <if test="reason!=null">reason=#{reason},</if>
+            <if test="ansContent!=null">ansContent=#{ansContent},</if>
+            <if test="ansAttachment!=null">ansAttachment=#{ansAttachment},</if>
+            <if test="ansAccount!=null">ansAccount=#{ansAccount},</if>
+            <if test="ansUserName!=null">ansUserName=#{ansUserName},</if>
+            <if test="workload!=null">workload=#{workload},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="createAccount!=null">createAccount=#{createAccount},</if>
+            <if test="createUserName!=null">createUserName=#{createUserName},</if>
+            <if test="completeTime!=null">completeTime=#{completeTime}</if>
+        </set>
+        WHERE quId=#{quId}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        DELETE SysQuestion
+        WHERE quId=#{quId}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.system.bean.Question" resultMap="SysQuestionResult">
+        SELECT quId,sysName,quContent,quAttachment,askAccount,askUserName,askOrgId,askOrgName,askContact,reason,ansContent,ansAttachment,ansAccount,ansUserName,workload,status,createAccount,createUserName,createTime,completeTime
+        FROM SysQuestion
+        <where>
+            <if test="quId!=null">quId=#{quId},</if>
+            <if test="sysName!=null">sysName=#{sysName},</if>
+            <if test="quContent!=null">quContent=#{quContent},</if>
+            <if test="quAttachment!=null">quAttachment=#{quAttachment},</if>
+            <if test="askAccount!=null">askAccount=#{askAccount},</if>
+            <if test="askUserName!=null">askUserName=#{askUserName},</if>
+            <if test="askOrgId!=null">askOrgId=#{askOrgId},</if>
+            <if test="askOrgName!=null">askOrgName=#{askOrgName},</if>
+            <if test="askContact!=null">askContact=#{askContact},</if>
+            <if test="reason!=null">reason=#{reason},</if>
+            <if test="ansContent!=null">ansContent=#{ansContent},</if>
+            <if test="ansAttachment!=null">ansAttachment=#{ansAttachment},</if>
+            <if test="ansAccount!=null">ansAccount=#{ansAccount},</if>
+            <if test="ansUserName!=null">ansUserName=#{ansUserName},</if>
+            <if test="workload!=null">workload=#{workload},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="createAccount!=null">createAccount=#{createAccount},</if>
+            <if test="createUserName!=null">createUserName=#{createUserName},</if>
+        </where>
+        ORDER BY
+        <if test="ansAccount!=null or askAccount!=null">
+            (CASE
+            <if test="ansAccount!=null">WHEN ansAccount=#{ansAccount} THEN 0</if>
+            <if test="askAccount!=null">WHEN ansAccount=#{askAccount} THEN 1</if>
+            ELSE 2 END),
+        </if>
+        createTime
+    </select>
+
+    <!-- Question -->
+    <resultMap type="com.iflat.system.bean.Question" id="SysQuestionResult">
+        <result property="quId" column="quId" jdbcType="VARCHAR"/>
+        <result property="sysName" column="sysName" jdbcType="VARCHAR"/>
+        <result property="quContent" column="quContent" jdbcType="VARCHAR"/>
+        <result property="quAttachment" column="quAttachment" jdbcType="VARCHAR"/>
+        <result property="askAccount" column="askAccount" jdbcType="VARCHAR"/>
+        <result property="askUserName" column="askUserName" jdbcType="VARCHAR"/>
+        <result property="askOrgId" column="askOrgId" jdbcType="VARCHAR"/>
+        <result property="askOrgName" column="askOrgName" jdbcType="VARCHAR"/>
+        <result property="askContact" column="askContact" jdbcType="VARCHAR"/>
+        <result property="reason" column="reason" jdbcType="VARCHAR"/>
+        <result property="ansContent" column="ansContent" jdbcType="VARCHAR"/>
+        <result property="ansAttachment" column="ansAttachment" jdbcType="VARCHAR"/>
+        <result property="ansAccount" column="ansAccount" jdbcType="VARCHAR"/>
+        <result property="ansUserName" column="ansUserName" jdbcType="VARCHAR"/>
+        <result property="workload" column="workload" jdbcType="DOUBLE"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createAccount" column="createAccount" jdbcType="VARCHAR"/>
+        <result property="createUserName" column="createUserName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="completeTime" column="completeTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

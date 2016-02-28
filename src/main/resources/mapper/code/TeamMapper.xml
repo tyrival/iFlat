@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Code.Team">
+
+    <select id="list" parameterType="com.iflat.code.bean.Team" resultMap="codeTeamResult">
+        SELECT DISTINCT deptCode,deptName,teamName
+        FROM CodeTeam
+        <where>
+            <if test="deptCode!=null">AND deptCode=#{deptCode}</if>
+            <if test="deptName!=null">AND deptName=#{deptName}</if>
+            <if test="teamName!=null">AND teamName=#{teamName}</if>
+        </where>
+        GROUP BY deptCode,deptName,teamName
+        ORDER BY deptCode,deptName,teamName
+    </select>
+
+    <resultMap type="com.iflat.code.bean.Team" id="codeTeamResult">
+        <result property="deptCode" column="deptCode" jdbcType="VARCHAR"/>
+        <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
+        <result property="teamName" column="teamName" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.DataDictionary">
+
+    <insert id="insertByGenerate" parameterType="java.util.List" statementType="STATEMENT">
+        DELETE SysDataDictionary
+        INSERT INTO SysDataDictionary
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT '${item.instance}' AS dbInstance,'${item.name}' AS dbName,
+                CONVERT(varchar(50),d.name) AS tableName,
+                CONVERT(varchar(60),a.name) AS fieldName,
+                CONVERT(varchar(80),a.name) AS alias,
+                CONVERT(varchar(20),b.name) AS type,
+                CONVERT(varchar(10),a.length) AS length
+        FROM ${item.database}[sys].[syscolumns] a
+        LEFT JOIN ${item.database}[sys].[systypes] b ON a.xtype=b.xusertype
+        INNER JOIN ${item.database}[sys].[sysobjects] d ON a.id=d.id AND d.name!='dtproperties'
+        WHERE (d.type='U' OR d.type='V')
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.system.bean.DataDictionary">
+        UPDATE SysDataDictionary
+        <set>
+            <if test="dbInstance!=null">dbInstance=#{dbInstance},</if>
+            <if test="dbName!=null">dbName=#{dbName},</if>
+            <if test="tableName!=null">tableName=#{tableName},</if>
+            <if test="fieldName!=null">fieldName=#{fieldName},</if>
+            <if test="alias!=null">alias=#{alias},</if>
+            <if test="type!=null">type=#{type},</if>
+            <if test="length!=null">length=#{length}</if>
+        </set>
+        <where>
+            <if test="dbInstance!=null">dbInstance=#{dbInstance}</if>
+            <if test="dbName!=null">AND dbName=#{dbName}</if>
+            <if test="tableName!=null">AND tableName=#{tableName}</if>
+            <if test="fieldName!=null">AND fieldName=#{fieldName}</if>
+            <if test="alias!=null">AND alias=#{alias}</if>
+            <if test="type!=null">AND type=#{type}</if>
+        </where>
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE SysDataDictionary SET dbInstance=a.dbInstance,dbName=a.dbName,tableName=a.tableName,fieldName=a.fieldName,alias=a.alias,type=a.type,length=a.length
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.dbInstance} as dbInstance,#{item.dbName} as dbName,#{item.tableName} as tableName,#{item.fieldName} as fieldName,#{item.alias} as
+            alias,#{item.type} as type,#{item.length} length operating
+        </foreach>
+        ) AS a
+        WHERE SysDataDictionary.dbInstance=a.dbInstance AND SysDataDictionary.dbName=a.dbName AND SysDataDictionary.tableName=a.tableName ANDSysDataDictionary.fieldName=a.fieldName
+    </update>
+
+    <select id="list" parameterType="com.iflat.system.bean.DataDictionary" resultMap="SysDataDictionaryResult">
+        SELECT dbInstance,dbName,tableName,fieldName,alias,type,length
+        FROM SysDataDictionary
+        <where>
+            <if test="dbInstance!=null">dbInstance=#{dbInstance}</if>
+            <if test="dbName!=null">AND dbName=#{dbName}</if>
+            <if test="tableName!=null">AND tableName=#{tableName}</if>
+            <if test="fieldName!=null">AND fieldName=#{fieldName}</if>
+            <if test="alias!=null">AND alias=#{alias}</if>
+            <if test="type!=null">AND type=#{type}</if>
+        </where>
+    </select>
+
+    <resultMap type="com.iflat.system.bean.DataDictionary" id="SysDataDictionaryResult">
+        <result property="dbInstance" column="dbInstance" jdbcType="VARCHAR"/>
+        <result property="dbName" column="dbName" jdbcType="VARCHAR"/>
+        <result property="tableName" column="tableName" jdbcType="VARCHAR"/>
+        <result property="fieldName" column="fieldName" jdbcType="VARCHAR"/>
+        <result property="alias" column="alias" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="length" column="length" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

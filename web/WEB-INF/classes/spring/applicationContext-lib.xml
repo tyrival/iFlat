@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="libAction" class="com.iflat.lib.action.LibAction" scope="prototype">
+        <property name="result" ref="result"/>
+        <property name="bookManager" ref="bookManager"/>
+        <property name="book" ref="book"/>
+        <property name="recordManager" ref="recordManager"/>
+        <property name="record" ref="record"/>
+    </bean>
+
+    <bean id="bookManager" class="com.iflat.lib.service.impl.BookManagerImpl">
+    </bean>
+    <bean id="bookDao" class="com.iflat.lib.dao.impl.BookDaoImpl">
+    </bean>
+
+    <bean id="recordManager" class="com.iflat.lib.service.impl.RecordManagerImpl">
+    </bean>
+    <bean id="recordDao" class="com.iflat.lib.dao.impl.RecordDaoImpl">
+    </bean>
+    <bean id="book" class="com.iflat.lib.bean.Book" scope="prototype"/>
+    <bean id="record" class="com.iflat.lib.bean.Record" scope="prototype"/>
+</beans>

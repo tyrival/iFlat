@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report.Cst.Nm.NmProjectCostNode">
+
+    <select id="list" parameterType="com.iflat.report.bean.cst.nm.NmProjectCostNode" resultMap="RptCstNmNmProjectCostNodeResult">
+        SELECT projNo,id,parentId,text
+        FROM V_RptCstNmProjectCostNode
+        ORDER BY sequence
+    </select>
+
+    <resultMap type="com.iflat.report.bean.cst.nm.NmProjectCostNode" id="RptCstNmNmProjectCostNodeResult">
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="parentId" column="parentId" jdbcType="VARCHAR"/>
+        <result property="text" column="text" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

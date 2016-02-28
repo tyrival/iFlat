@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="qmAction" class="com.iflat.qm.action.QmAction" scope="prototype">
+        <property name="result" ref="result"/>
+        <property name="qualityFineManager" ref="qualityFineManager"/>
+        <property name="qualityFine" ref="qualityFine"/>
+        <property name="qualityFineVoManager" ref="qualityFineVoManager"/>
+        <property name="qualityFineVo" ref="qualityFineVo"/>
+    </bean>
+
+    <bean id="qualityFineManager" class="com.iflat.qm.service.impl.QualityFineManagerImpl">
+    </bean>
+    <bean id="qualityFineDao" class="com.iflat.qm.dao.impl.QualityFineDaoImpl">
+    </bean>
+
+    <bean id="qualityFineVoManager" class="com.iflat.qm.service.impl.QualityFineVoManagerImpl">
+    </bean>
+    <bean id="qualityFineVoDao" class="com.iflat.qm.dao.impl.QualityFineVoDaoImpl">
+    </bean>
+
+    <bean id="qualityFine" class="com.iflat.qm.bean.QualityFine" scope="prototype"/>
+    <bean id="qualityFineVo" class="com.iflat.qm.entity.QualityFineVo" scope="prototype"/>
+</beans>

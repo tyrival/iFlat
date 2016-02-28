@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report.Mm.MatQuato">
+
+    <select id="list" parameterType="com.iflat.report.bean.mm.MatQuato" resultMap="RptMmMatQuatoResult">
+        select gcbh,wzfl,jldw,tpxe,bcxe,sjyy,wzyy,sgyy,cdjz,wxyy,qlj,cldy,lysl,xesl from (
+        select gcbh,wzfl,jldw,sum(tpxe) tpxe,sum(bcxe) bcxe,sum(sjyy) sjyy,sum(wzyy) wzyy,sum(sgyy) sgyy,
+        sum(cdjz) cdjz,sum(wxyy) wxyy,sum(qlj) qlj,sum(cldy) cldy,sum(lysl) lysl,sum(xesl) xesl,
+        wzflbh =(case wzfl when '板材' then '00'
+                   when '型材' then '01'
+                   when '管材' then '02'
+                   when '油漆' then '03'
+                   when '电缆' then '04'
+                   when '焊材' then '05'
+                    else '99' end)
+         from (
+        select gcbh,wzfl,jldw,case when define00 ='托盘限额' then xesl else 0 end as tpxe,
+        case when define00 ='补充限额' then xesl else 0 end as bcxe,
+        case when define00 in ('A类设计错误','B类设计错误','详设原因','补充设计') then xesl else 0 end as sjyy,
+        case when define00 ='设备错误' then xesl else 0 end as wzyy,
+        case when define00 ='施工原因' then xesl else 0 end as sgyy,
+        case when define00 ='船东加帐' then xesl else 0 end as cdjz,
+        case when define00 ='外协原因' then xesl else 0 end as wxyy,
+        case when define00 ='缺料件' then xesl else 0 end as qlj,
+        case when define00 ='材料代用' then xesl else 0 end as cldy,lysl,xesl
+        from (
+            select gcbh,gcmc,wzfl,xelx,wzbh,wzmc,wzms,jldw,define00,xesl,
+            isnull((select sum(sfs) from V_Mat_MatRequisition where xeid =xeb.id),0) lysl
+            from V_Mat_MatQuato
+            where gcbh =#{projNo})A
+        )B
+        group by wzfl,jldw,gcbh
+        )C
+        where tpxe+bcxe+sjyy+wzyy+sgyy+cdjz+wxyy+qlj>0
+        order by wzflbh
+    </select>
+
+    <resultMap type="com.iflat.report.bean.mm.MatQuato" id="RptMmMatQuatoResult">
+        <result property="projNo" column="gcbh" jdbcType="VARCHAR"/>
+        <result property="category" column="wzfl" jdbcType="VARCHAR"/>
+        <result property="unit" column="jldw" jdbcType="VARCHAR"/>
+        <result property="palletQuato" column="tpxe" jdbcType="DOUBLE"/>
+        <result property="additionalQuato" column="bcxe" jdbcType="DOUBLE"/>
+        <result property="design" column="sjyy" jdbcType="DOUBLE"/>
+        <result property="material" column="wzyy" jdbcType="DOUBLE"/>
+        <result property="construction" column="sgyy" jdbcType="DOUBLE"/>
+        <result property="shipowner" column="cdjz" jdbcType="DOUBLE"/>
+        <result property="outSourcing" column="wxyy" jdbcType="DOUBLE"/>
+        <result property="lack" column="qlj" jdbcType="DOUBLE"/>
+        <result property="subsitution" column="cldy" jdbcType="DOUBLE"/>
+        <result property="totalQuato" column="xesl" jdbcType="DOUBLE"/>
+        <result property="requisition" column="lysl" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

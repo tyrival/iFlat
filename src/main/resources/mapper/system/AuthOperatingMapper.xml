@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.AuthOperating">
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SysAuthOperating
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.aoId},#{item.roleId},#{item.account},#{item.nameSpace},#{item.moduleName},#{item.operating},#{item.status}
+        </foreach>
+    </insert>
+
+    <insert id="insertDuplicate" parameterType="java.util.List">
+        INSERT INTO SysAuthOperating
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT NEWID(),#{item.toRoleId},#{item.toAccount},nameSpace,moduleName,operating,status
+            FROM SysAuthOperating
+            <where>
+                <if test="item.fromRoleId!=null">roleId=#{item.fromRoleId}</if>
+                <if test="item.fromAccount!=null">AND account=#{item.fromAccount}</if>
+                <if test="item.nameSpace!=null and !item.dupAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.dupAll">AND moduleName=#{item.moduleName}</if>
+            </where>
+        </foreach>
+    </insert>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE SysAuthOperating SET aoId=a.aoId,roleId=a.roleId,account=a.account,nameSpace=a.nameSpace,moduleName=a.moduleName,operating=a.operating,status=a.status
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.aoId} as aoId,#{item.roleId} as roleId,#{item.account} as account,#{item.nameSpace} as
+            nameSpace,#{item.moduleName} as moduleName,#{item.operating} as operating,#{item.status} as
+            status
+        </foreach>
+        ) AS a
+        WHERE SysAuthOperating.aoId=a.aoId
+    </update>
+
+    <delete id="deleteByDuplicate" parameterType="java.util.List">
+        DELETE SysAuthOperating
+        <where>
+            <foreach collection="list" item="item" index="index" separator="OR">
+                (roleId=#{item.toRoleId} AND account=#{item.toAccount}
+                <if test="item.nameSpace!=null and !item.dupAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.dupAll">AND moduleName=#{item.moduleName}</if>
+                )
+            </foreach>
+        </where>
+    </delete>
+
+    <delete id="deleteByClear" parameterType="java.util.List">
+        DELETE SysAuthOperating
+        <where>
+            <foreach collection="list" item="item" index="index" separator="OR">
+                (roleId=#{item.roleId} AND account=#{item.account}
+                <if test="item.nameSpace!=null and !item.clearAll">AND nameSpace=#{item.nameSpace}</if>
+                <if test="item.moduleName!=null and !item.clearAll">AND moduleName=#{item.moduleName}</if>
+                )
+            </foreach>
+        </where>
+    </delete>
+
+    <!-- 还需要代入变量测试sql语句 -->
+    <select id="getVoByAuthOperatingVo" parameterType="com.iflat.system.entity.AuthOperatingVo" resultMap="SysAuthOperatingVoResult">
+        SELECT u.aoId,u.roleId,u.account,o.nameSpace,o.moduleName,o.operating,o.alias,o.method,
+                LOWER(o.nameSpace + '-' + o.moduleName + '-' + o.operating) AS pageId,
+                o.sequence,
+                (CASE u.status WHEN 'true' THEN 'true' ELSE 'false' END) AS status,
+                (CASE a.aoStatus WHEN 'true' THEN 'true' ELSE 'false' END) AS aoStatus
+        FROM (SELECT *
+               FROM SysOperating
+               WHERE method=#{method}) o
+        LEFT JOIN (SELECT aoId,roleId,account,nameSpace,moduleName,status,operating
+                    FROM SysAuthOperating
+                    WHERE roleId=#{roleId}
+                    AND (account=#{account} OR account='')
+                    AND nameSpace=#{nameSpace}) u
+        ON u.nameSpace=o.nameSpace AND u.moduleName=o.moduleName AND u.operating=o.operating
+        LEFT JOIN (SELECT roleId,account,nameSpace,moduleName,aoStatus
+                    FROM SysAuthModule
+                    WHERE roleId=#{roleId}
+                    AND (account=#{account} OR account='')
+                    AND nameSpace=#{nameSpace}) a
+        ON u.roleId=a.roleId AND u.account=a.account AND u.nameSpace=a.nameSpace AND u.moduleName=a.moduleName
+        ORDER BY (CASE WHEN u.account!='' THEN 0 ELSE 1 END)
+    </select>
+
+    <select id="listVoByAuthOperatingVo" parameterType="com.iflat.system.entity.AuthOperatingVo" resultMap="SysAuthOperatingVoResult">
+        SELECT aoId,roleId,account,nameSpace,moduleName,operating,alias,method,pageId,sequence,status,aoStatus
+        FROM V_SysAuthOperating
+        <where>
+            <if test="roleId!=null">roleId=#{roleId}</if>
+            <if test="account!=null">AND account=#{account}</if>
+            <if test="nameSpace!=null">AND nameSpace=#{nameSpace}</if>
+            <if test="moduleName!=null">AND moduleName=#{moduleName}</if>
+        </where>
+        ORDER BY sequence
+    </select>
+
+    <select id="listVoOfModuleByUser" parameterType="com.iflat.system.entity.AuthOperatingVo" resultMap="SysAuthOperatingVoResult">
+        SELECT aoId,roleId,account,nameSpace,moduleName,operating,alias,method,pageId,sequence,status,aoStatus
+        FROM V_SysAuthOperating
+        WHERE nameSpace=#{nameSpace}
+        AND moduleName=#{moduleName}
+        AND roleId=#{roleId}
+        AND aoStatus='TRUE'
+        AND account IN (CASE WHEN (SELECT COUNT(account) FROM V_SysAuthOperating WHERE account=#{account} AND aoStatus='TRUE')>0 THEN #{account} ELSE '' END)
+    </select>
+
+    <resultMap type="com.iflat.system.bean.AuthOperating" id="SysAuthOperatingResult">
+        <result property="aoId" column="aoId" jdbcType="CHAR"/>
+        <result property="roleId" column="roleId" jdbcType="CHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="nameSpace" column="nameSpace" jdbcType="VARCHAR"/>
+        <result property="moduleName" column="moduleName" jdbcType="VARCHAR"/>
+        <result property="operating" column="operating" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="BIT"/>
+    </resultMap>
+    <resultMap type="com.iflat.system.entity.AuthOperatingVo" id="SysAuthOperatingVoResult">
+        <result property="aoId" column="aoId" jdbcType="CHAR"/>
+        <result property="roleId" column="roleId" jdbcType="CHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="nameSpace" column="nameSpace" jdbcType="VARCHAR"/>
+        <result property="moduleName" column="moduleName" jdbcType="VARCHAR"/>
+        <result property="operating" column="operating" jdbcType="VARCHAR"/>
+        <result property="alias" column="alias" jdbcType="VARCHAR"/>
+        <result property="method" column="method" jdbcType="VARCHAR"/>
+        <result property="pageId" column="pageId" jdbcType="VARCHAR"/>
+        <result property="sequence" column="sequence" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="BIT"/>
+        <result property="aoStatus" column="aoStatus" jdbcType="BIT"/>
+    </resultMap>
+</mapper>

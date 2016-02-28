@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bi.MajorDevCst">
+
+    <insert id="generate" parameterType="com.iflat.bi.bean.MajorDevCst">
+        INSERT INTO BiMajorDevCst
+        SELECT newid() AS id,
+        #{projNo} AS projNo,
+        '实际' AS type,
+        SUM(CASE WHEN mbcbbh LIKE 'S01-01%' OR mbcbbh = 'S01-07-01' OR mbcbbh = 'S01-07-04' THEN je ELSE 0 END) AS mainEngine,
+        SUM(CASE WHEN mbcbbh = 'S01-04-01' THEN je ELSE 0 END) AS genset,
+        SUM(CASE WHEN mbcbbh = 'S05-02-11' THEN je ELSE 0 END) AS steeringGear,
+        SUM(CASE WHEN mbcbbh = 'S02-04-09' THEN je ELSE 0 END) AS ballastWaterTrtmt,
+        SUM(CASE WHEN mbcbbh = 'S05-01-04' THEN je ELSE 0 END) AS hatchCoverSys,
+        SUM(CASE WHEN mbcbbh = 'S03-01-01' THEN je ELSE 0 END) AS distributionSys,
+        SUM(CASE WHEN mbcbbh = 'S03-14-01' THEN je ELSE 0 END) AS navigationSys,
+        SUM(CASE WHEN mbcbbh LIKE 'S01-11%' THEN je ELSE 0 END) AS boiler,
+        SUM(CASE WHEN mbcbbh = 'S05-02-01' THEN je ELSE 0 END) AS windlass,
+        SUM(CASE WHEN mbcbbh = 'S05-02-55' OR mbcbbh = 'S05-02-17' THEN je ELSE 0 END) AS crane,
+        #{month} AS month,
+        NULL AS fixed,
+        1 AS version
+        FROM V_Cst_BiCostItem
+        WHERE gcbh=#{projNo}
+    </insert>
+
+    <insert id="insert" parameterType="com.iflat.bi.bean.MajorDevCst">
+        INSERT INTO BiMajorDevCst
+        VALUES (#{id},#{projNo},#{type},#{mainEngine},#{genset},#{steeringGear},#{ballastWaterTrtmt},#{hatchCoverSys},#{distributionSys},#{navigationSys},#{boiler},#{windlass},#{crane},#{month},#{fixed},#{version})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO BiMajorDevCst
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.type},#{item.mainEngine},#{item.genset},#{item.steeringGear},#{item.ballastWaterTrtmt},#{item.hatchCoverSys},#{item.distributionSys},#{item.navigationSys},#{item.boiler},#{item.windlass},#{item.crane},#{item.month},#{item.fixed},#{item.version}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.bi.bean.MajorDevCst">
+        UPDATE BiMajorDevCst
+        SET projNo=#{projNo},type=#{type},mainEngine=#{mainEngine},genset=#{genset},steeringGear=#{steeringGear},ballastWaterTrtmt=#{ballastWaterTrtmt},hatchCoverSys=#{hatchCoverSys},distributionSys=#{distributionSys},navigationSys=#{navigationSys},boiler=#{boiler},windlass=#{windlass},crane=#{crane},month=#{month},fixed=#{fixed},version=#{version}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.bi.bean.MajorDevCst">
+        DELETE BiMajorDevCst
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.bi.bean.MajorDevCst" resultMap="BiMajorDevCstResult">
+        SELECT id,projNo,type,mainEngine,genset,steeringGear,ballastWaterTrtmt,hatchCoverSys,distributionSys,navigationSys,boiler,windlass,crane,month,fixed,version
+        FROM BiMajorDevCst
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="type!=null">AND type=#{type}</if>
+        </where>
+    </select>
+
+    <resultMap type="com.iflat.bi.bean.MajorDevCst" id="BiMajorDevCstResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="mainEngine" column="mainEngine" jdbcType="DOUBLE"/>
+        <result property="genset" column="genset" jdbcType="DOUBLE"/>
+        <result property="steeringGear" column="steeringGear" jdbcType="DOUBLE"/>
+        <result property="ballastWaterTrtmt" column="ballastWaterTrtmt" jdbcType="DOUBLE"/>
+        <result property="hatchCoverSys" column="hatchCoverSys" jdbcType="DOUBLE"/>
+        <result property="distributionSys" column="distributionSys" jdbcType="DOUBLE"/>
+        <result property="navigationSys" column="navigationSys" jdbcType="DOUBLE"/>
+        <result property="boiler" column="boiler" jdbcType="DOUBLE"/>
+        <result property="windlass" column="windlass" jdbcType="DOUBLE"/>
+        <result property="crane" column="crane" jdbcType="DOUBLE"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="fixed" column="fixed" jdbcType="DATE"/>
+        <result property="version" column="version" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>
