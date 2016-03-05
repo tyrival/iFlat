@@ -62,7 +62,7 @@ Ext.define('iFlat.view.report.bi.ProjectInProcess', {
         selModel: {
             type: 'spreadsheet'
         },
-
+        flex: 1,
         border: true,
         collapsible: false,
         viewLayoutType: 'outline',
@@ -77,6 +77,7 @@ Ext.define('iFlat.view.report.bi.ProjectInProcess', {
             dataIndex: 'value',
             align: 'right',
             width: 110,
+            flex: true,
             renderer: function(a, b, c, d, e) {
                 a = financeFormat(a, 2);
                 //b.style = 'font-size: 14px;' + b.style;

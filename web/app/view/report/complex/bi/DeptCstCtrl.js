@@ -1,11 +1,11 @@
-Ext.define('iFlat.view.report.bi.DeptCstCtrl', {
+Ext.define('iFlat.view.report.complex.bi.DeptCstCtrl', {
     extend: 'Ext.panel.Panel',
 
-    controller: 'rpt-bi-deptcstctrl',
+    controller: 'rpt-complex-bi-deptcstctrl',
 
     requires: [
         'Ext.pivot.Grid',
-        'Ext.pivot.plugin.Exporter'
+        'iFlat.view.report.complex.bi.DeptCstCtrlController'
     ],
 
     layout: {
@@ -13,40 +13,20 @@ Ext.define('iFlat.view.report.bi.DeptCstCtrl', {
         align: 'stretch'
     },
 
-    tbar: [{
-        xtype: 'datefield',
-        id: 'rpt-bi-deptcstctrl-date',
-        allowBlank: false,
-        editable: false,
-        forceSelection : true,
-        format: 'Y-m',
-        width: 250,
-        fieldLabel: '时间',
-        labelAlign: 'right',
-        labelWidth: 40
-    }, {
-        text: '查询',
-        handler: 'search'
-    }, {
-        xtype: 'label',
-        text: '金额单位： 万元',
-        style: 'font-size: 16px'
-    },'->',{
-        text: '导出',
-        handler: 'exportToExcel'
-    }, {
-        text: '刷新',
-        handler: 'refresh'
-    }],
+    listeners: {
+        render: 'init',
+    },
 
     items: [{
+        xtype: 'datefield',
+        id: 'rpt-complex-bi-deptcstctrl-period',
+        hidden: true,
+        listeners: {
+            change: 'reload'
+        }
+    }, {
         xtype: 'pivotgrid',
-        id: 'rpt-bi-deptcstctrl-grid',
-        plugins: [{
-            ptype: 'pivotexporter'
-        }],
-        store: rptBiDeptCstCtrlGridStore = Ext.create('iFlat.store.report.bi.DeptCstCtrl'),
-
+        store: rptComplexBiDeptCstCtrlGridStore = Ext.create('iFlat.store.report.bi.DeptCstCtrl'),
         selModel: {
             type: 'cellmodel'
         },
@@ -68,7 +48,6 @@ Ext.define('iFlat.view.report.bi.DeptCstCtrl', {
             flex: true,
             renderer: function(a, b, c, d, e) {
                 a = financeFormat(a, 2);
-                //b.style = 'font-size: 15px;' + b.style;
                 if(e % 3 == 2 && a) {
                     if(a > 0) {
                         b.style = 'color:#FF0000;' + b.style;

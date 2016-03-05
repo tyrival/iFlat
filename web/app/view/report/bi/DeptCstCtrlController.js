@@ -14,6 +14,7 @@ Ext.define('iFlat.view.report.bi.DeptCstCtrlController', {
                 message: '请先选择时间。',
             });
         } else {
+            debugger
             rptBiDeptCstCtrlGridStore.getProxy().extraParams['parameter.date'] = date;
             rptBiDeptCstCtrlGridStore.reload();
         }

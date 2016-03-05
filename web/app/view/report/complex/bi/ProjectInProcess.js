@@ -1,11 +1,11 @@
-Ext.define('iFlat.view.report.bi.DeptCstCtrl', {
+Ext.define('iFlat.view.report.complex.bi.ProjectInProcess', {
     extend: 'Ext.panel.Panel',
 
-    controller: 'rpt-bi-deptcstctrl',
+    controller: 'rpt-complex-bi-projectinprocess',
 
     requires: [
         'Ext.pivot.Grid',
-        'Ext.pivot.plugin.Exporter'
+        'iFlat.view.report.complex.bi.ProjectInProcessController'
     ],
 
     layout: {
@@ -13,42 +13,52 @@ Ext.define('iFlat.view.report.bi.DeptCstCtrl', {
         align: 'stretch'
     },
 
+    listeners: {
+        render: 'init',
+    },
+
     tbar: [{
-        xtype: 'datefield',
-        id: 'rpt-bi-deptcstctrl-date',
+        xtype: 'combo',
+        id: 'rpt-complex-bi-projectinprocess-combo-stage',
+        bind: {
+            store: '{projectInProcessStage}'
+        },
+        queryMode: 'local',
         allowBlank: false,
         editable: false,
         forceSelection : true,
-        format: 'Y-m',
+        displayField: 'name',
+        valueField: 'projNo',
         width: 250,
-        fieldLabel: '时间',
+        fieldLabel: '阶段',
         labelAlign: 'right',
-        labelWidth: 40
-    }, {
-        text: '查询',
-        handler: 'search'
-    }, {
-        xtype: 'label',
-        text: '金额单位： 万元',
-        style: 'font-size: 16px'
-    },'->',{
-        text: '导出',
-        handler: 'exportToExcel'
-    }, {
-        text: '刷新',
-        handler: 'refresh'
-    }],
+        labelWidth: 40,
+        listeners: {
+            change: 'selectionChange'
+        }
+    },],
 
     items: [{
+        xtype: 'datefield',
+        id: 'rpt-complex-bi-projectinprocess-period',
+        hidden: true,
+        listeners: {
+            change: 'reload'
+        }
+    }, {
+        xtype: 'textfield',
+        id: 'rpt-complex-bi-projectinprocess-stage',
+        hidden: true,
+        listeners: {
+            change: 'reload'
+        }
+    }, {
         xtype: 'pivotgrid',
-        id: 'rpt-bi-deptcstctrl-grid',
-        plugins: [{
-            ptype: 'pivotexporter'
-        }],
-        store: rptBiDeptCstCtrlGridStore = Ext.create('iFlat.store.report.bi.DeptCstCtrl'),
+        id: 'rpt-complex-bi-projectinprocess-grid',
+        store: rptComplexBiProjectInProcessGridStore = Ext.create('iFlat.store.report.bi.ProjectInProcess'),
 
         selModel: {
-            type: 'cellmodel'
+            type: 'spreadsheet'
         },
         flex: 1,
         border: true,
@@ -68,7 +78,7 @@ Ext.define('iFlat.view.report.bi.DeptCstCtrl', {
             flex: true,
             renderer: function(a, b, c, d, e) {
                 a = financeFormat(a, 2);
-                //b.style = 'font-size: 15px;' + b.style;
+                //b.style = 'font-size: 14px;' + b.style;
                 if(e % 3 == 2 && a) {
                     if(a > 0) {
                         b.style = 'color:#FF0000;' + b.style;
@@ -81,8 +91,8 @@ Ext.define('iFlat.view.report.bi.DeptCstCtrl', {
 
         leftAxis: [{
             dataIndex: 'left',
-            header: '部门',
-            width: 180,
+            header: '船名',
+            width: 300,
             align: 'center',
         }],
 

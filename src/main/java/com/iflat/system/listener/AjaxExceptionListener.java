@@ -87,7 +87,7 @@ public class AjaxExceptionListener implements PreResultListener {
                             if(e instanceof  java.util.regex.PatternSyntaxException) {
                                 localMsg = "ajaxException.properties中,key值为不合法正则表达式，请与管理员联系。";
                             } else if(e instanceof  IOException) {
-                                localMsg = "ajaxException.properties中读取错误，请与管理员联系。";
+                                localMsg = "AjaxException.properties中未读取到错误解释。原始错误信息为：" + message;
                             } else {
                                 localMsg = "AjaxExceptionListener异常，请联系管理员。异常信息：" + e.getMessage();
                             }
@@ -108,6 +108,7 @@ public class AjaxExceptionListener implements PreResultListener {
                 }
 
                 //赋值message
+                result.setSuccess(true);
                 result.setMessage(localMsg);
                 result.setTime(delayTime);
                 ((ResultAware)action).setResult(result);

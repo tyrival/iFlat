@@ -29,4 +29,19 @@
     <artifactId>iFlat</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--<repositories>
+        <repository>
+            <id>Alfresco Maven Repository</id>
+            <url>https://maven.alfresco.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>-->
+
+    <dependencies>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+            <version>5.19.0.2</version>
+        </dependency>
+    </dependencies>
+
 </project>

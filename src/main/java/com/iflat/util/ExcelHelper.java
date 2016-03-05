@@ -30,7 +30,6 @@ import java.util.zip.DataFormatException;
 public class ExcelHelper {
 
     private final static String DEFAULT_DOCUMENT = "temp";
-    private final static String DEFAULT_TEMPLATE_PATH = "WEB-INF/classes/template/excel/";
     private final static String DEFAULT_OUTPUT_PATH = "template/excel/";
 
     public static String write(ExcelWriter excelWriter) throws Exception {
@@ -246,7 +245,7 @@ public class ExcelHelper {
         String fileName = excelTemplate.getName();
         fileName = fileName.endsWith(".xml") ? fileName : fileName + ".xml";
         //获取完整的相对路径
-        String relativePath = DEFAULT_TEMPLATE_PATH + categoryPath + fileName;
+        String relativePath = Application.getContextParam("configRoot") + DEFAULT_OUTPUT_PATH + categoryPath + fileName;
         //获取完整绝对路径
         String path = rootPath + relativePath;
 
@@ -368,32 +367,39 @@ public class ExcelHelper {
      * @param td
      */
     private static void setType(HSSFWorkbook wb, HSSFCell cell, Element td) {
+
         Attribute typeAttr = td.getAttribute("type");
         String type = typeAttr.getValue();
         HSSFDataFormat format = wb.createDataFormat();
         HSSFCellStyle cellStyle = wb.createCellStyle();
+
         if("NUMERIC".equalsIgnoreCase(type)){
             cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
             Attribute formatAttr = td.getAttribute("format");
             String formatValue = formatAttr.getValue();
             formatValue = StringUtils.isNotBlank(formatValue)? formatValue : "#,##0.00";
             cellStyle.setDataFormat(format.getFormat(formatValue));
+
         }else if("STRING".equalsIgnoreCase(type)){
             cell.setCellValue("");
             cell.setCellType(HSSFCell.CELL_TYPE_STRING);
             cellStyle.setDataFormat(format.getFormat("@"));
+
         }else if("DATE".equalsIgnoreCase(type)){
             cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
             cellStyle.setDataFormat(format.getFormat("yyyy-m-d"));
+
         }else if("ENUM".equalsIgnoreCase(type)){
             CellRangeAddressList regions =
                     new CellRangeAddressList(cell.getRowIndex(), cell.getRowIndex(),
                             cell.getColumnIndex(), cell.getColumnIndex());
+
             Attribute enumAttr = td.getAttribute("format");
             String enumValue = enumAttr.getValue();
             //加载下拉列表内容
             DVConstraint constraint =
                     DVConstraint.createExplicitListConstraint(enumValue.split(","));
+
             //数据有效性对象
             HSSFDataValidation dataValidation = new HSSFDataValidation(regions, constraint);
             wb.getSheetAt(0).addValidationData(dataValidation);
@@ -407,15 +413,19 @@ public class ExcelHelper {
      * @param colgroup
      */
     private static void setColumnWidth(HSSFSheet sheet, Element colgroup) {
+
         List<Element> cols = colgroup.getChildren("col");
         for (int i = 0; i < cols.size(); i++) {
+
             Element col = cols.get(i);
             Attribute width = col.getAttribute("width");
             String unit = width.getValue().replaceAll("[0-9,\\.]", "");
             String value = width.getValue().replaceAll(unit, "");
+
             int v=0;
             if(StringUtils.isBlank(unit) || "px".endsWith(unit)){
                 v = Math.round(Float.parseFloat(value) * 37F);
+
             }else if ("em".endsWith(unit)){
                 v = Math.round(Float.parseFloat(value) * 267.5F);
             }
