@@ -4,7 +4,7 @@ import com.iflat.lib.bean.Book;
 import com.iflat.lib.bean.Record;
 import com.iflat.system.action.ResultAware;
 import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatManager;
+import com.iflat.system.service.IflatService;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -12,8 +12,8 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class LibAction extends ActionSupport implements ResultAware {
 
-    private IflatManager bookManager;
-    private IflatManager recordManager;
+    private IflatService bookService;
+    private IflatService recordService;
     private Book book;
     private Record record;
 
@@ -21,50 +21,50 @@ public class LibAction extends ActionSupport implements ResultAware {
 
     /* book */
     public String saveBook() throws Exception {
-        this.result.setObject(this.bookManager.save(this.book));
+        this.result.setObject(this.bookService.save(this.book));
         return SUCCESS;
     }
 
     public String deleteBook() throws Exception {
-        this.result.setObject(this.bookManager.delete(this.book));
+        this.result.setObject(this.bookService.delete(this.book));
         return SUCCESS;
     }
 
     public String listBook() throws Exception {
-        this.result.setList(this.bookManager.list(this.book));
+        this.result.setList(this.bookService.list(this.book));
         return SUCCESS;
     }
 
     /* record */
     public String saveRecord() throws Exception {
-        this.result.setObject(this.recordManager.save(this.record));
+        this.result.setObject(this.recordService.save(this.record));
         return SUCCESS;
     }
 
     public String deleteRecord() throws Exception {
-        this.result.setObject(this.recordManager.delete(this.record));
+        this.result.setObject(this.recordService.delete(this.record));
         return SUCCESS;
     }
 
     public String listRecord() throws Exception {
-        this.result.setList(this.recordManager.list(this.record));
+        this.result.setList(this.recordService.list(this.record));
         return SUCCESS;
     }
 
-    public IflatManager getBookManager() {
-        return bookManager;
+    public IflatService getBookService() {
+        return bookService;
     }
 
-    public void setBookManager(IflatManager bookManager) {
-        this.bookManager = bookManager;
+    public void setBookService(IflatService bookService) {
+        this.bookService = bookService;
     }
 
-    public IflatManager getRecordManager() {
-        return recordManager;
+    public IflatService getRecordService() {
+        return recordService;
     }
 
-    public void setRecordManager(IflatManager recordManager) {
-        this.recordManager = recordManager;
+    public void setRecordService(IflatService recordService) {
+        this.recordService = recordService;
     }
 
     public Book getBook() {

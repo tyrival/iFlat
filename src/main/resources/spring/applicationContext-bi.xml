@@ -6,105 +6,105 @@
 
     <bean id="biAction" class="com.iflat.bi.action.BiAction" scope="prototype">
         <property name="result" ref="result"/>
-        <property name="additionalBillManager" ref="additionalBillManager"/>
+        <property name="additionalBillService" ref="additionalBillService"/>
         <property name="additionalBill" ref="additionalBill"/>
-        <property name="contractManager" ref="contractManager"/>
+        <property name="contractService" ref="contractService"/>
         <property name="contract" ref="contract"/>
-        <property name="deptCstCtrlManager" ref="deptCstCtrlManager"/>
+        <property name="deptCstCtrlService" ref="deptCstCtrlService"/>
         <property name="deptCstCtrl" ref="deptCstCtrl"/>
-        <property name="majorDevCstManager" ref="majorDevCstManager"/>
+        <property name="majorDevCstService" ref="majorDevCstService"/>
         <property name="majorDevCst" ref="majorDevCst"/>
-        <property name="majorMatCstManager" ref="majorMatCstManager"/>
+        <property name="majorMatCstService" ref="majorMatCstService"/>
         <property name="majorMatCst" ref="majorMatCst"/>
-        <property name="majorMatQtyManager" ref="majorMatQtyManager"/>
+        <property name="majorMatQtyService" ref="majorMatQtyService"/>
         <property name="majorMatQty" ref="majorMatQty"/>
-        <property name="projectManager" ref="projectManager"/>
+        <property name="projectService" ref="projectService"/>
         <property name="project" ref="project"/>
-        <property name="projectCostManager" ref="projectCostManager"/>
+        <property name="projectCostService" ref="projectCostService"/>
         <property name="projectCost" ref="projectCost"/>
-        <property name="projectCstCtrlManager" ref="projectScheduleManager"/>
+        <property name="projectCstCtrlService" ref="projectScheduleService"/>
         <property name="projectCstCtrl" ref="projectCstCtrl"/>
-        <property name="projectInProcessManager" ref="projectInProcessManager"/>
+        <property name="projectInProcessService" ref="projectInProcessService"/>
         <property name="projectInProcess" ref="projectInProcess"/>
-        <property name="projectManHourManager" ref="projectManHourManager"/>
+        <property name="projectManHourService" ref="projectManHourService"/>
         <property name="projectManHour" ref="projectManHour"/>
-        <property name="projectScheduleManager" ref="projectScheduleManager"/>
+        <property name="projectScheduleService" ref="projectScheduleService"/>
         <property name="projectSchedule" ref="projectSchedule"/>
-        <property name="projectInfoManager" ref="projectInfoManager"/>
+        <property name="projectInfoService" ref="projectInfoService"/>
         <property name="projectInfo" ref="projectInfo"/>
-        <property name="projectInProcessInfoManager" ref="projectInProcessInfoManager"/>
+        <property name="projectInProcessInfoService" ref="projectInProcessInfoService"/>
         <property name="projectInProcessInfo" ref="projectInProcessInfo"/>
     </bean>
 
-    <bean id="projectInProcessInfoManager" class="com.iflat.bi.service.impl.ProjectInProcessInfoManagerImpl">
+    <bean id="projectInProcessInfoService" class="com.iflat.bi.service.impl.ProjectInProcessInfoServiceImpl">
     </bean>
     <bean id="projectInProcessInfoDao" class="com.iflat.bi.dao.impl.ProjectInProcessInfoDaoImpl">
     </bean>
 
-    <bean id="projectInfoManager" class="com.iflat.bi.service.impl.ProjectInfoManagerImpl">
+    <bean id="projectInfoService" class="com.iflat.bi.service.impl.ProjectInfoServiceImpl">
     </bean>
     <bean id="projectInfoDao" class="com.iflat.bi.dao.impl.ProjectInfoDaoImpl">
     </bean>
 
-    <bean id="additionalBillManager" class="com.iflat.bi.service.impl.AdditionalBillManagerImpl">
+    <bean id="additionalBillService" class="com.iflat.bi.service.impl.AdditionalBillServiceImpl">
     </bean>
     <bean id="additionalBillDao" class="com.iflat.bi.dao.impl.AdditionalBillDaoImpl">
     </bean>
 
-    <bean id="contractManager" class="com.iflat.bi.service.impl.ContractManagerImpl">
+    <bean id="contractService" class="com.iflat.bi.service.impl.ContractServiceImpl">
     </bean>
     <bean id="contractDao" class="com.iflat.bi.dao.impl.ContractDaoImpl">
     </bean>
 
-    <bean id="deptCstCtrlManager" class="com.iflat.bi.service.impl.DeptCstCtrlManagerImpl">
+    <bean id="deptCstCtrlService" class="com.iflat.bi.service.impl.DeptCstCtrlServiceImpl">
     </bean>
     <bean id="deptCstCtrlDao" class="com.iflat.bi.dao.impl.DeptCstCtrlDaoImpl">
     </bean>
 
-    <bean id="majorDevCstManager" class="com.iflat.bi.service.impl.MajorDevCstManagerImpl">
-        <property name="iflatManager" ref="projectInfoManager"/>
+    <bean id="majorDevCstService" class="com.iflat.bi.service.impl.MajorDevCstServiceImpl">
+        <property name="iflatService" ref="projectInfoService"/>
     </bean>
     <bean id="majorDevCstDao" class="com.iflat.bi.dao.impl.MajorDevCstDaoImpl">
     </bean>
 
-    <bean id="majorMatCstManager" class="com.iflat.bi.service.impl.MajorMatCstManagerImpl">
-        <property name="iflatManager" ref="projectInfoManager"/>
+    <bean id="majorMatCstService" class="com.iflat.bi.service.impl.MajorMatCstServiceImpl">
+        <property name="iflatService" ref="projectInfoService"/>
     </bean>
     <bean id="majorMatCstDao" class="com.iflat.bi.dao.impl.MajorMatCstDaoImpl">
     </bean>
 
-    <bean id="majorMatQtyManager" class="com.iflat.bi.service.impl.MajorMatQtyManagerImpl">
+    <bean id="majorMatQtyService" class="com.iflat.bi.service.impl.MajorMatQtyServiceImpl">
     </bean>
     <bean id="majorMatQtyDao" class="com.iflat.bi.dao.impl.MajorMatQtyDaoImpl">
     </bean>
 
-    <bean id="projectManager" class="com.iflat.bi.service.impl.ProjectManagerImpl">
+    <bean id="projectService" class="com.iflat.bi.service.impl.ProjectServiceImpl">
     </bean>
     <bean id="projectDao" class="com.iflat.bi.dao.impl.ProjectDaoImpl">
     </bean>
 
-    <bean id="projectCostManager" class="com.iflat.bi.service.impl.ProjectCostManagerImpl">
-        <property name="iflatManager" ref="projectInfoManager"/>
+    <bean id="projectCostService" class="com.iflat.bi.service.impl.ProjectCostServiceImpl">
+        <property name="iflatService" ref="projectInfoService"/>
     </bean>
     <bean id="projectCostDao" class="com.iflat.bi.dao.impl.ProjectCostDaoImpl">
     </bean>
 
-    <bean id="projectCstCtrlManager" class="com.iflat.bi.service.impl.ProjectCstCtrlManagerImpl">
+    <bean id="projectCstCtrlService" class="com.iflat.bi.service.impl.ProjectCstCtrlServiceImpl">
     </bean>
     <bean id="projectCstCtrlDao" class="com.iflat.bi.dao.impl.ProjectCstCtrlDaoImpl">
     </bean>
 
-    <bean id="projectInProcessManager" class="com.iflat.bi.service.impl.ProjectInProcessManagerImpl">
+    <bean id="projectInProcessService" class="com.iflat.bi.service.impl.ProjectInProcessServiceImpl">
     </bean>
     <bean id="projectInProcessDao" class="com.iflat.bi.dao.impl.ProjectInProcessDaoImpl">
     </bean>
 
-    <bean id="projectManHourManager" class="com.iflat.bi.service.impl.ProjectManHourManagerImpl">
+    <bean id="projectManHourService" class="com.iflat.bi.service.impl.ProjectManHourServiceImpl">
     </bean>
     <bean id="projectManHourDao" class="com.iflat.bi.dao.impl.ProjectManHourDaoImpl">
     </bean>
 
-    <bean id="projectScheduleManager" class="com.iflat.bi.service.impl.ProjectScheduleManagerImpl">
+    <bean id="projectScheduleService" class="com.iflat.bi.service.impl.ProjectScheduleServiceImpl">
     </bean>
     <bean id="projectScheduleDao" class="com.iflat.bi.dao.impl.ProjectScheduleDaoImpl">
     </bean>

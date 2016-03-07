@@ -6,25 +6,25 @@
 
     <bean id="codeAction" class="com.iflat.code.action.CodeAction" scope="prototype">
         <property name="result" ref="result"/>
-        <property name="workerManager" ref="workerManager"/>
+        <property name="workerService" ref="workerService"/>
         <property name="worker" ref="worker"/>
-        <property name="teamManager" ref="teamManager"/>
+        <property name="teamService" ref="teamService"/>
         <property name="team" ref="team"/>
-        <property name="groupManager" ref="groupManager"/>
+        <property name="groupService" ref="groupService"/>
         <property name="group" ref="group"/>
     </bean>
 
-    <bean id="groupManager" class="com.iflat.code.service.impl.GroupManagerImpl">
+    <bean id="groupService" class="com.iflat.code.service.impl.GroupServiceImpl">
     </bean>
     <bean id="groupDao" class="com.iflat.code.dao.impl.GroupDaoImpl">
     </bean>
 
-    <bean id="workerManager" class="com.iflat.code.service.impl.WorkerManagerImpl">
+    <bean id="workerService" class="com.iflat.code.service.impl.WorkerServiceImpl">
     </bean>
     <bean id="workerDao" class="com.iflat.code.dao.impl.WorkerDaoImpl">
     </bean>
 
-    <bean id="teamManager" class="com.iflat.code.service.impl.TeamManagerImpl">
+    <bean id="teamService" class="com.iflat.code.service.impl.TeamServiceImpl">
     </bean>
     <bean id="teamDao" class="com.iflat.code.dao.impl.TeamDaoImpl">
     </bean>

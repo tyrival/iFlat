@@ -1,9 +1,8 @@
 package com.iflat.system.action.impl;
 
 import com.iflat.system.bean.User;
-import com.iflat.system.entity.Result;
 import com.iflat.system.entity.UserInfoVo;
-import com.iflat.system.service.UserManager;
+import com.iflat.system.service.UserService;
 import com.iflat.util.Application;
 import com.iflat.util.Session;
 import com.opensymphony.xwork2.ActionSupport;
@@ -15,8 +14,8 @@ public class LoginAction extends ActionSupport {
 
     //接收注入页面提交的账号密码
     private User user;
-    //接收注入userManager对象
-    private UserManager userManager;
+    //接收注入userService对象
+    private UserService userService;
     //储存登录验证未通过的结果，供页面调用
     private String message;
 
@@ -37,8 +36,8 @@ public class LoginAction extends ActionSupport {
             this.user.setAccount(this.account);
             this.user.setPassword(this.password);
         }
-        if(userManager.loginCheck(this.user)) {
-            UserInfoVo userInfoVo = this.userManager.getUserInfoByAccount(this.user.getAccount());
+        if(userService.loginCheck(this.user)) {
+            UserInfoVo userInfoVo = this.userService.getUserInfoByAccount(this.user.getAccount());
             if(userInfoVo != null) {
                 result = SUCCESS;
                 Session.putUserInfo(userInfoVo);
@@ -52,12 +51,12 @@ public class LoginAction extends ActionSupport {
         return result;
     }
 
-    public UserManager getUserManager() {
-        return userManager;
+    public UserService getUserService() {
+        return userService;
     }
 
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     public User getUser() {

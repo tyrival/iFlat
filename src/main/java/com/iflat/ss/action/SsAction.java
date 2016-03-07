@@ -5,7 +5,7 @@ import com.iflat.ss.entity.SafetyFineVo;
 import com.iflat.system.action.ResultAware;
 import com.iflat.system.entity.Page;
 import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatManager;
+import com.iflat.system.service.IflatService;
 import com.iflat.util.FileHelper;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -16,8 +16,8 @@ public class SsAction extends ActionSupport implements ResultAware, ModelDriven<
 
     private Result result;
 
-    private IflatManager safetyFineManager;
-    private IflatManager safetyFineVoManager;
+    private IflatService safetyFineService;
+    private IflatService safetyFineVoService;
 
     private SafetyFine safetyFine;
     private SafetyFineVo safetyFineVo;
@@ -29,32 +29,32 @@ public class SsAction extends ActionSupport implements ResultAware, ModelDriven<
 
     /* SafetyFine */
     public String saveSafetyFine() throws Exception {
-        this.result.setObject(this.safetyFineManager.save(this.safetyFine));
+        this.result.setObject(this.safetyFineService.save(this.safetyFine));
         return SUCCESS;
     }
 
     public String deleteSafetyFine() throws Exception {
-        this.result.setObject(this.safetyFineManager.delete(this.safetyFine));
+        this.result.setObject(this.safetyFineService.delete(this.safetyFine));
         return SUCCESS;
     }
 
     public String listSafetyFine() throws Exception {
-        this.result.setList(this.safetyFineManager.list(this.safetyFine));
+        this.result.setList(this.safetyFineService.list(this.safetyFine));
         return SUCCESS;
     }
 
     public String listSafetyFineVo() throws Exception {
-        this.result.setList(this.safetyFineVoManager.list(this.safetyFineVo));
+        this.result.setList(this.safetyFineVoService.list(this.safetyFineVo));
         return SUCCESS;
     }
 
     public String listPageSafetyFineVo() throws Exception {
-        this.result.setObject(this.safetyFineVoManager.listPage(this.safetyFineVo, this.page));
+        this.result.setObject(this.safetyFineVoService.listPage(this.safetyFineVo, this.page));
         return SUCCESS;
     }
 
     public String uploadSafetyFine() throws Exception {
-        this.result.setObject(this.safetyFineManager.uploadFile(upload, uploadFileName));
+        this.result.setObject(this.safetyFineService.uploadFile(upload, uploadFileName));
         return SUCCESS;
     }
 
@@ -79,12 +79,12 @@ public class SsAction extends ActionSupport implements ResultAware, ModelDriven<
         this.result = result;
     }
 
-    public IflatManager getSafetyFineManager() {
-        return safetyFineManager;
+    public IflatService getSafetyFineService() {
+        return safetyFineService;
     }
 
-    public void setSafetyFineManager(IflatManager safetyFineManager) {
-        this.safetyFineManager = safetyFineManager;
+    public void setSafetyFineService(IflatService safetyFineService) {
+        this.safetyFineService = safetyFineService;
     }
 
     public SafetyFine getSafetyFine() {
@@ -95,12 +95,12 @@ public class SsAction extends ActionSupport implements ResultAware, ModelDriven<
         this.safetyFine = safetyFine;
     }
 
-    public IflatManager getSafetyFineVoManager() {
-        return safetyFineVoManager;
+    public IflatService getSafetyFineVoService() {
+        return safetyFineVoService;
     }
 
-    public void setSafetyFineVoManager(IflatManager safetyFineVoManager) {
-        this.safetyFineVoManager = safetyFineVoManager;
+    public void setSafetyFineVoService(IflatService safetyFineVoService) {
+        this.safetyFineVoService = safetyFineVoService;
     }
 
     public SafetyFineVo getSafetyFineVo() {

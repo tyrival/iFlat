@@ -1,7 +1,7 @@
 package com.iflat.report.action;
 
-import com.iflat.report.service.impl.util.GraphManager;
-import com.iflat.report.service.impl.util.PaintManager;
+import com.iflat.report.service.impl.util.GraphService;
+import com.iflat.report.service.impl.util.PaintService;
 import com.iflat.system.action.ResultAware;
 import com.iflat.system.entity.Result;
 import com.iflat.util.Session;
@@ -14,8 +14,8 @@ public class UtilAction extends ActionSupport implements ResultAware {
 
     private Result result;
 
-    private GraphManager graphManager;
-    private PaintManager paintManager;
+    private GraphService graphService;
+    private PaintService paintService;
 
     /* 画图板 */
     public String paint() throws Exception {
@@ -37,19 +37,19 @@ public class UtilAction extends ActionSupport implements ResultAware {
         this.result = result;
     }
 
-    public GraphManager getGraphManager() {
-        return graphManager;
+    public GraphService getGraphService() {
+        return graphService;
     }
 
-    public void setGraphManager(GraphManager graphManager) {
-        this.graphManager = graphManager;
+    public void setGraphService(GraphService graphService) {
+        this.graphService = graphService;
     }
 
-    public PaintManager getPaintManager() {
-        return paintManager;
+    public PaintService getPaintService() {
+        return paintService;
     }
 
-    public void setPaintManager(PaintManager paintManager) {
-        this.paintManager = paintManager;
+    public void setPaintService(PaintService paintService) {
+        this.paintService = paintService;
     }
 }

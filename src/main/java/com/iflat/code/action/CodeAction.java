@@ -5,7 +5,7 @@ import com.iflat.code.bean.Team;
 import com.iflat.code.bean.Worker;
 import com.iflat.system.action.ResultAware;
 import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatManager;
+import com.iflat.system.service.IflatService;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -16,24 +16,24 @@ public class CodeAction extends ActionSupport implements ResultAware {
     private Result result;
 
     private Team team;
-    private IflatManager teamManager;
+    private IflatService teamService;
     private Worker worker;
-    private IflatManager workerManager;
+    private IflatService workerService;
     private Group group;
-    private IflatManager groupManager;
+    private IflatService groupService;
 
     public String listWorker() throws Exception {
-        this.result.setList(this.workerManager.list(this.worker));
+        this.result.setList(this.workerService.list(this.worker));
         return SUCCESS;
     }
 
     public String listTeam() throws Exception {
-        this.result.setList(this.teamManager.list(this.team));
+        this.result.setList(this.teamService.list(this.team));
         return SUCCESS;
     }
 
     public String listGroup() throws Exception {
-        this.result.setList(this.groupManager.list(this.group));
+        this.result.setList(this.groupService.list(this.group));
         return SUCCESS;
     }
 
@@ -45,12 +45,12 @@ public class CodeAction extends ActionSupport implements ResultAware {
         this.group = group;
     }
 
-    public IflatManager getGroupManager() {
-        return groupManager;
+    public IflatService getGroupService() {
+        return groupService;
     }
 
-    public void setGroupManager(IflatManager groupManager) {
-        this.groupManager = groupManager;
+    public void setGroupService(IflatService groupService) {
+        this.groupService = groupService;
     }
 
     public Team getTeam() {
@@ -61,12 +61,12 @@ public class CodeAction extends ActionSupport implements ResultAware {
         this.team = team;
     }
 
-    public IflatManager getTeamManager() {
-        return teamManager;
+    public IflatService getTeamService() {
+        return teamService;
     }
 
-    public void setTeamManager(IflatManager teamManager) {
-        this.teamManager = teamManager;
+    public void setTeamService(IflatService teamService) {
+        this.teamService = teamService;
     }
 
     public Worker getWorker() {
@@ -77,12 +77,12 @@ public class CodeAction extends ActionSupport implements ResultAware {
         this.worker = worker;
     }
 
-    public IflatManager getWorkerManager() {
-        return workerManager;
+    public IflatService getWorkerService() {
+        return workerService;
     }
 
-    public void setWorkerManager(IflatManager workerManager) {
-        this.workerManager = workerManager;
+    public void setWorkerService(IflatService workerService) {
+        this.workerService = workerService;
     }
 
     @Override

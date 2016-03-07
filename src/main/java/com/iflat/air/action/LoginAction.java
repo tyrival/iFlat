@@ -4,7 +4,7 @@ import com.iflat.system.action.ResultAware;
 import com.iflat.system.bean.User;
 import com.iflat.system.entity.Result;
 import com.iflat.system.entity.UserInfoVo;
-import com.iflat.system.service.UserManager;
+import com.iflat.system.service.UserService;
 import com.iflat.util.Application;
 import com.iflat.util.Session;
 import com.opensymphony.xwork2.ActionSupport;
@@ -20,14 +20,14 @@ public class LoginAction extends ActionSupport implements ResultAware, ModelDriv
     private Result result;
 
     private User user;
-    private UserManager userManager;
+    private UserService userService;
 
     public String login() throws Exception {
 
         this.result.setSuccess(false);
-        if(userManager.loginCheck(this.user)) {
+        if(userService.loginCheck(this.user)) {
 
-            UserInfoVo userInfoVo = this.userManager.getUserInfoByAccount(this.user.getAccount());
+            UserInfoVo userInfoVo = this.userService.getUserInfoByAccount(this.user.getAccount());
 
             if(userInfoVo != null) {
 
@@ -73,11 +73,11 @@ public class LoginAction extends ActionSupport implements ResultAware, ModelDriv
         this.user = user;
     }
 
-    public UserManager getUserManager() {
-        return userManager;
+    public UserService getUserService() {
+        return userService;
     }
 
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

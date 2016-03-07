@@ -6,18 +6,18 @@
 
     <bean id="ssAction" class="com.iflat.ss.action.SsAction" scope="prototype">
         <property name="result" ref="result"/>
-        <property name="safetyFineManager" ref="safetyFineManager"/>
+        <property name="safetyFineService" ref="safetyFineService"/>
         <property name="safetyFine" ref="safetyFine"/>
-        <property name="safetyFineVoManager" ref="safetyFineVoManager"/>
+        <property name="safetyFineVoService" ref="safetyFineVoService"/>
         <property name="safetyFineVo" ref="safetyFineVo"/>
     </bean>
 
-    <bean id="safetyFineManager" class="com.iflat.ss.service.impl.SafetyFineManagerImpl">
+    <bean id="safetyFineService" class="com.iflat.ss.service.impl.SafetyFineServiceImpl">
     </bean>
     <bean id="safetyFineDao" class="com.iflat.ss.dao.impl.SafetyFineDaoImpl">
     </bean>
 
-    <bean id="safetyFineVoManager" class="com.iflat.ss.service.impl.SafetyFineVoManagerImpl">
+    <bean id="safetyFineVoService" class="com.iflat.ss.service.impl.SafetyFineVoServiceImpl">
     </bean>
     <bean id="safetyFineVoDao" class="com.iflat.ss.dao.impl.SafetyFineVoDaoImpl">
     </bean>

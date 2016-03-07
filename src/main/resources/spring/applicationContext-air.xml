@@ -7,14 +7,14 @@
     <bean id="airLoginAction" class="com.iflat.air.action.LoginAction" scope="prototype">
         <property name="result" ref="result"></property>
         <property name="user" ref="user"></property>
-        <property name="userManager" ref="userManager"></property>
+        <property name="userService" ref="userService"></property>
     </bean>
 
     <bean id="airLibAction" class="com.iflat.air.action.LibAction" scope="prototype">
         <property name="result" ref="result"/>
-        <property name="bookManager" ref="bookManager"/>
+        <property name="bookService" ref="bookService"/>
         <property name="book" ref="book"/>
-        <property name="recordManager" ref="recordManager"/>
+        <property name="recordService" ref="recordService"/>
         <property name="record" ref="record"/>
     </bean>
 

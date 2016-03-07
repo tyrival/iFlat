@@ -11,48 +11,48 @@
         <property name="passwordChange" ref="passwordChange"></property>
         <!-- 模块 -->
         <property name="module" ref="module"></property>
-        <property name="moduleManager" ref="moduleManager"></property>
+        <property name="moduleService" ref="moduleService"></property>
         <!-- 组织 -->
         <property name="organization" ref="organization"></property>
-        <property name="organizationManager" ref="organizationManager"></property>
+        <property name="organizationService" ref="organizationService"></property>
         <!-- 人员-->
         <property name="user" ref="user"></property>
-        <property name="userManager" ref="userManager"></property>
+        <property name="userService" ref="userService"></property>
         <property name="orgId" value=""></property>
         <!-- 角色-->
         <property name="role" ref="role"></property>
-        <property name="roleManager" ref="roleManager"></property>
+        <property name="roleService" ref="roleService"></property>
         <!-- 用户角色 -->
         <property name="userRole" ref="userRole"></property>
-        <property name="userRoleManager" ref="userRoleManager"></property>
+        <property name="userRoleService" ref="userRoleService"></property>
         <property name="itemselector" value=""></property>
         <!-- 模块权限 -->
         <property name="authModule" ref="authModule"></property>
-        <property name="authModuleManager" ref="authModuleManager"></property>
+        <property name="authModuleService" ref="authModuleService"></property>
         <property name="authModuleVoList" value=""></property>
         <!-- 操作权限 -->
-        <property name="authOperatingManager" ref="authOperatingManager"></property>
+        <property name="authOperatingService" ref="authOperatingService"></property>
         <property name="authOperatingVo" ref="authOperatingVo"></property>
         <property name="authOperatingVoList" value=""></property>
         <property name="authDuplicateVo" ref="authDuplicateVo"></property>
         <property name="authBatchList" value=""></property>
         <!-- 数据权限 -->
         <property name="authData" ref="authData"></property>
-        <property name="authDataManager" ref="authDataManager"></property>
+        <property name="authDataService" ref="authDataService"></property>
         <!-- 数据字典 -->
-        <property name="dataDictionaryManager" ref="dataDictionaryManager"></property>
+        <property name="dataDictionaryService" ref="dataDictionaryService"></property>
         <property name="dataDictionary" ref="dataDictionary"></property>
         <!-- 模块表/视图 -->
-        <property name="tableViewManager" ref="tableViewManager"></property>
+        <property name="tableViewService" ref="tableViewService"></property>
         <property name="tableView" ref="tableView"></property>
         <!-- 操作 -->
-        <property name="operatingManager" ref="operatingManager"></property>
+        <property name="operatingService" ref="operatingService"></property>
         <property name="operating" ref="operating"></property>
         <!-- 速记本 -->
-        <property name="memoManager" ref="memoManager"></property>
+        <property name="memoService" ref="memoService"></property>
         <property name="memo" ref="memo"></property>
         <!-- 问题处理 -->
-        <property name="questionManager" ref="questionManager"></property>
+        <property name="questionService" ref="questionService"></property>
         <property name="question" ref="question"></property>
     </bean>
 
@@ -61,13 +61,13 @@
     <!-- 登录 -->
     <bean id="loginAction" class="com.iflat.system.action.impl.LoginAction" scope="prototype">
         <property name="user" ref="user"></property>
-        <property name="userManager" ref="userManager"></property>
+        <property name="userService" ref="userService"></property>
         <property name="account" value=""></property>
         <property name="password" value=""></property>
     </bean>
 
     <!-- Question -->
-    <bean id="questionManager" class="com.iflat.system.service.impl.QuestionManagerImpl">
+    <bean id="questionService" class="com.iflat.system.service.impl.QuestionServiceImpl">
         <property name="questionDao" ref="questionDao"></property>
     </bean>
     <bean id="questionDao" class="com.iflat.system.dao.impl.QuestionDaoImpl">
@@ -75,7 +75,7 @@
     </bean>
 
     <!-- Memo -->
-    <bean id="memoManager" class="com.iflat.system.service.impl.MemoManagerImpl">
+    <bean id="memoService" class="com.iflat.system.service.impl.MemoServiceImpl">
         <property name="memoDao" ref="memoDao"></property>
     </bean>
     <bean id="memoDao" class="com.iflat.system.dao.impl.MemoDaoImpl">
@@ -83,7 +83,7 @@
     </bean>
 
     <!-- TableView -->
-    <bean id="tableViewManager" class="com.iflat.system.service.impl.TableViewManagerImpl">
+    <bean id="tableViewService" class="com.iflat.system.service.impl.TableViewServiceImpl">
         <property name="tableViewDao" ref="tableViewDao"></property>
     </bean>
     <bean id="tableViewDao" class="com.iflat.system.dao.impl.TableViewDaoImpl">
@@ -91,7 +91,7 @@
     </bean>
 
     <!-- Operating -->
-    <bean id="operatingManager" class="com.iflat.system.service.impl.OperatingManagerImpl">
+    <bean id="operatingService" class="com.iflat.system.service.impl.OperatingServiceImpl">
         <property name="operatingDao" ref="operatingDao"></property>
     </bean>
     <bean id="operatingDao" class="com.iflat.system.dao.impl.OperatingDaoImpl">
@@ -99,7 +99,7 @@
     </bean>
 
     <!-- User -->
-    <bean id="userManager" class="com.iflat.system.service.impl.UserManagerImpl">
+    <bean id="userService" class="com.iflat.system.service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao"></property>
         <property name="userRoleDao" ref="userRoleDao"></property>
     </bean>
@@ -108,7 +108,7 @@
     </bean>
 
     <!-- Role -->
-    <bean id="roleManager" class="com.iflat.system.service.impl.RoleManagerImpl">
+    <bean id="roleService" class="com.iflat.system.service.impl.RoleServiceImpl">
         <property name="roleDao" ref="roleDao"></property>
         <property name="userRoleDao" ref="userRoleDao"></property>
     </bean>
@@ -117,7 +117,7 @@
     </bean>
 
     <!-- UserRole -->
-    <bean id="userRoleManager" class="com.iflat.system.service.impl.UserRoleManagerImpl">
+    <bean id="userRoleService" class="com.iflat.system.service.impl.UserRoleServiceImpl">
         <property name="userRoleDao" ref="userRoleDao"></property>
     </bean>
     <bean id="userRoleDao" class="com.iflat.system.dao.impl.UserRoleDaoImpl">
@@ -125,7 +125,7 @@
     </bean>
 
     <!-- Organization -->
-    <bean id="organizationManager" class="com.iflat.system.service.impl.OrganizationManagerImpl">
+    <bean id="organizationService" class="com.iflat.system.service.impl.OrganizationServiceImpl">
         <property name="orgDao" ref="organizationDao"></property>
         <property name="userDao" ref="userDao"></property>
     </bean>
@@ -134,7 +134,7 @@
     </bean>
 
     <!-- Module -->
-    <bean id="moduleManager" class="com.iflat.system.service.impl.ModuleManagerImpl">
+    <bean id="moduleService" class="com.iflat.system.service.impl.ModuleServiceImpl">
         <property name="moduleDao" ref="moduleDao"></property>
     </bean>
     <bean id="moduleDao" class="com.iflat.system.dao.impl.ModuleDaoImpl">
@@ -142,7 +142,7 @@
     </bean>
 
     <!-- DataDictionary -->
-    <bean id="dataDictionaryManager" class="com.iflat.system.service.impl.DataDictionaryManagerImpl">
+    <bean id="dataDictionaryService" class="com.iflat.system.service.impl.DataDictionaryServiceImpl">
         <property name="dataDictionaryDao" ref="dataDictionaryDao"></property>
         <property name="path" value="../../../../../../config/database.properties"></property>
     </bean>
@@ -151,7 +151,7 @@
     </bean>
 
     <!-- Authority -->
-    <bean id="authModuleManager" class="com.iflat.system.service.impl.AuthModuleManagerImpl">
+    <bean id="authModuleService" class="com.iflat.system.service.impl.AuthModuleServiceImpl">
         <property name="authModuleDao" ref="authModuleDao"></property>
         <property name="authDataDao" ref="authDataDao"></property>
         <property name="authOperatingDao" ref="authOperatingDao"></property>
@@ -159,14 +159,14 @@
     <bean id="authModuleDao" class="com.iflat.system.dao.impl.AuthModuleDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
     </bean>
-    <bean id="authDataManager" class="com.iflat.system.service.impl.AuthDataManagerImpl">
+    <bean id="authDataService" class="com.iflat.system.service.impl.AuthDataServiceImpl">
         <property name="authDataDao" ref="authDataDao"></property>
         <property name="dataDictionaryDao" ref="dataDictionaryDao"></property>
     </bean>
     <bean id="authDataDao" class="com.iflat.system.dao.impl.AuthDataDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
     </bean>
-    <bean id="authOperatingManager" class="com.iflat.system.service.impl.AuthOperatingManagerImpl">
+    <bean id="authOperatingService" class="com.iflat.system.service.impl.AuthOperatingServiceImpl">
         <property name="authOperatingDao" ref="authOperatingDao"></property>
     </bean>
     <bean id="authOperatingDao" class="com.iflat.system.dao.impl.AuthOperatingDaoImpl">
@@ -194,7 +194,7 @@
     <bean id="operating" class="com.iflat.system.bean.Operating" scope="prototype"></bean>
 
     <!-- interface, support-->
-    <bean id="iflatManagerSupport" class="com.iflat.system.service.impl.IflatManagerSupport" scope="prototype">
+    <bean id="iflatServiceSupport" class="com.iflat.system.service.impl.IflatServiceSupport" scope="prototype">
     </bean>
     <bean id="iflatDaoSupport" class="com.iflat.system.dao.impl.IflatDaoSupport" scope="prototype">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>

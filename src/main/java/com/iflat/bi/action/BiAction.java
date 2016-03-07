@@ -6,7 +6,7 @@ import com.iflat.bi.entity.ProjectInfo;
 import com.iflat.system.action.ResultAware;
 import com.iflat.system.entity.ExcelTemplate;
 import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatManager;
+import com.iflat.system.service.IflatService;
 import com.iflat.util.ExcelHelper;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -16,20 +16,20 @@ public class BiAction extends ActionSupport implements ResultAware {
 
     private Result result;
 
-    private IflatManager additionalBillManager;
-    private IflatManager contractManager;
-    private IflatManager deptCstCtrlManager;
-    private IflatManager majorDevCstManager;
-    private IflatManager majorMatCstManager;
-    private IflatManager majorMatQtyManager;
-    private IflatManager projectManager;
-    private IflatManager projectCostManager;
-    private IflatManager projectCstCtrlManager;
-    private IflatManager projectInProcessManager;
-    private IflatManager projectManHourManager;
-    private IflatManager projectScheduleManager;
-    private IflatManager projectInfoManager;
-    private IflatManager projectInProcessInfoManager;
+    private IflatService additionalBillService;
+    private IflatService contractService;
+    private IflatService deptCstCtrlService;
+    private IflatService majorDevCstService;
+    private IflatService majorMatCstService;
+    private IflatService majorMatQtyService;
+    private IflatService projectService;
+    private IflatService projectCostService;
+    private IflatService projectCstCtrlService;
+    private IflatService projectInProcessService;
+    private IflatService projectManHourService;
+    private IflatService projectScheduleService;
+    private IflatService projectInfoService;
+    private IflatService projectInProcessInfoService;
 
     private AdditionalBill additionalBill;
     private Contract contract;
@@ -51,13 +51,13 @@ public class BiAction extends ActionSupport implements ResultAware {
 
     /* ProjectInProcessInfo */
     public String listProjectInProcessInfo() throws Exception {
-        this.result.setList(this.projectInProcessInfoManager.list(this.projectInProcessInfo));
+        this.result.setList(this.projectInProcessInfoService.list(this.projectInProcessInfo));
         return SUCCESS;
     }
 
     /* ProjectInfo */
     public String listProjectInfo() throws Exception {
-        this.result.setList(this.projectInfoManager.list(this.projectInfo));
+        this.result.setList(this.projectInfoService.list(this.projectInfo));
         return SUCCESS;
     }
 
@@ -70,22 +70,22 @@ public class BiAction extends ActionSupport implements ResultAware {
     }
 
     public String importDeptCstCtrl() throws Exception {
-        this.result.setList(this.deptCstCtrlManager.importExcel(this.upload, this.uploadFileName));
+        this.result.setList(this.deptCstCtrlService.importExcel(this.upload, this.uploadFileName));
         return SUCCESS;
     }
 
     public String listDeptCstCtrl() throws Exception {
-        this.result.setList(this.deptCstCtrlManager.list(this.deptCstCtrl));
+        this.result.setList(this.deptCstCtrlService.list(this.deptCstCtrl));
         return SUCCESS;
     }
 
     public String saveDeptCstCtrl() throws Exception {
-        this.result.setObject(this.deptCstCtrlManager.save(this.deptCstCtrl));
+        this.result.setObject(this.deptCstCtrlService.save(this.deptCstCtrl));
         return SUCCESS;
     }
 
     public String deleteDeptCstCtrl() throws Exception {
-        this.result.setObject(this.deptCstCtrlManager.delete(this.deptCstCtrl));
+        this.result.setObject(this.deptCstCtrlService.delete(this.deptCstCtrl));
         return SUCCESS;
     }
 
@@ -98,38 +98,38 @@ public class BiAction extends ActionSupport implements ResultAware {
     }
 
     public String importProjectInProcess() throws Exception {
-        this.result.setList(this.projectInProcessManager.importExcel(this.upload, this.uploadFileName));
+        this.result.setList(this.projectInProcessService.importExcel(this.upload, this.uploadFileName));
         return SUCCESS;
     }
 
     public String listProjectInProcess() throws Exception {
-        this.result.setList(this.projectInProcessManager.list(this.projectInProcess));
+        this.result.setList(this.projectInProcessService.list(this.projectInProcess));
         return SUCCESS;
     }
 
     public String saveProjectInProcess() throws Exception {
-        this.result.setObject(this.projectInProcessManager.save(this.projectInProcess));
+        this.result.setObject(this.projectInProcessService.save(this.projectInProcess));
         return SUCCESS;
     }
 
     public String deleteProjectInProcess() throws Exception {
-        this.result.setObject(this.projectInProcessManager.delete(this.projectInProcess));
+        this.result.setObject(this.projectInProcessService.delete(this.projectInProcess));
         return SUCCESS;
     }
 
     /* ProjectSchedule */
     public String listProjectSchedule() throws Exception {
-        this.result.setList(this.projectScheduleManager.list(this.projectSchedule));
+        this.result.setList(this.projectScheduleService.list(this.projectSchedule));
         return SUCCESS;
     }
 
     public String saveProjectSchedule() throws Exception {
-        this.result.setObject(this.projectScheduleManager.save(this.projectSchedule));
+        this.result.setObject(this.projectScheduleService.save(this.projectSchedule));
         return SUCCESS;
     }
 
     public String deleteProjectSchedule() throws Exception {
-        this.result.setObject(this.projectScheduleManager.delete(this.projectSchedule));
+        this.result.setObject(this.projectScheduleService.delete(this.projectSchedule));
         return SUCCESS;
     }
 
@@ -142,22 +142,22 @@ public class BiAction extends ActionSupport implements ResultAware {
     }
 
     public String importProjectCstCtrl() throws Exception {
-        this.result.setList(this.projectCstCtrlManager.importExcel(this.upload, this.uploadFileName));
+        this.result.setList(this.projectCstCtrlService.importExcel(this.upload, this.uploadFileName));
         return SUCCESS;
     }
 
     public String listProjectCstCtrl() throws Exception {
-        this.result.setList(this.projectCstCtrlManager.list(this.projectCstCtrl));
+        this.result.setList(this.projectCstCtrlService.list(this.projectCstCtrl));
         return SUCCESS;
     }
 
     public String saveProjectCstCtrl() throws Exception {
-        this.result.setObject(this.projectCstCtrlManager.save(this.projectCstCtrl));
+        this.result.setObject(this.projectCstCtrlService.save(this.projectCstCtrl));
         return SUCCESS;
     }
 
     public String deleteProjectCstCtrl() throws Exception {
-        this.result.setObject(this.projectCstCtrlManager.delete(this.projectCstCtrl));
+        this.result.setObject(this.projectCstCtrlService.delete(this.projectCstCtrl));
         return SUCCESS;
     }
 
@@ -170,22 +170,22 @@ public class BiAction extends ActionSupport implements ResultAware {
     }
 
     public String importAdditionalBill() throws Exception {
-        this.result.setList(this.additionalBillManager.importExcel(this.upload, this.uploadFileName));
+        this.result.setList(this.additionalBillService.importExcel(this.upload, this.uploadFileName));
         return SUCCESS;
     }
 
     public String listAdditionalBill() throws Exception {
-        this.result.setList(this.additionalBillManager.list(this.additionalBill));
+        this.result.setList(this.additionalBillService.list(this.additionalBill));
         return SUCCESS;
     }
 
     public String saveAdditionalBill() throws Exception {
-        this.result.setObject(this.additionalBillManager.save(this.additionalBill));
+        this.result.setObject(this.additionalBillService.save(this.additionalBill));
         return SUCCESS;
     }
 
     public String deleteAdditionalBill() throws Exception {
-        this.result.setObject(this.additionalBillManager.delete(this.additionalBill));
+        this.result.setObject(this.additionalBillService.delete(this.additionalBill));
         return SUCCESS;
     }
 
@@ -198,28 +198,28 @@ public class BiAction extends ActionSupport implements ResultAware {
     }
 
     public String importMajorMatQty() throws Exception {
-        this.result.setList(this.majorMatQtyManager.importExcel(this.upload, this.uploadFileName));
+        this.result.setList(this.majorMatQtyService.importExcel(this.upload, this.uploadFileName));
         return SUCCESS;
     }
 
     public String listMajorMatQty() throws Exception {
-        this.result.setList(this.majorMatQtyManager.list(this.majorMatQty));
+        this.result.setList(this.majorMatQtyService.list(this.majorMatQty));
         return SUCCESS;
     }
 
     public String saveMajorMatQty() throws Exception {
-        this.result.setObject(this.majorMatQtyManager.save(this.majorMatQty));
+        this.result.setObject(this.majorMatQtyService.save(this.majorMatQty));
         return SUCCESS;
     }
 
     public String deleteMajorMatQty() throws Exception {
-        this.result.setObject(this.majorMatQtyManager.delete(this.majorMatQty));
+        this.result.setObject(this.majorMatQtyService.delete(this.majorMatQty));
         return SUCCESS;
     }
 
     /* MajorMatCst */
     public String generateMajorMatCst() throws Exception {
-        this.result.setObject(this.majorMatCstManager.generate(this.majorMatCst));
+        this.result.setObject(this.majorMatCstService.generate(this.majorMatCst));
         return SUCCESS;
     }
 
@@ -231,28 +231,28 @@ public class BiAction extends ActionSupport implements ResultAware {
     }
 
     public String importMajorMatCst() throws Exception {
-        this.result.setList(this.majorMatCstManager.importExcel(this.upload, this.uploadFileName));
+        this.result.setList(this.majorMatCstService.importExcel(this.upload, this.uploadFileName));
         return SUCCESS;
     }
 
     public String listMajorMatCst() throws Exception {
-        this.result.setList(this.majorMatCstManager.list(this.majorMatCst));
+        this.result.setList(this.majorMatCstService.list(this.majorMatCst));
         return SUCCESS;
     }
 
     public String saveMajorMatCst() throws Exception {
-        this.result.setObject(this.majorMatCstManager.save(this.majorMatCst));
+        this.result.setObject(this.majorMatCstService.save(this.majorMatCst));
         return SUCCESS;
     }
 
     public String deleteMajorMatCst() throws Exception {
-        this.result.setObject(this.majorMatCstManager.delete(this.majorMatCst));
+        this.result.setObject(this.majorMatCstService.delete(this.majorMatCst));
         return SUCCESS;
     }
 
     /* MajorDevCst */
     public String generateMajorDevCst() throws Exception {
-        this.result.setObject(this.majorDevCstManager.generate(this.majorDevCst));
+        this.result.setObject(this.majorDevCstService.generate(this.majorDevCst));
         return SUCCESS;
     }
 
@@ -264,28 +264,28 @@ public class BiAction extends ActionSupport implements ResultAware {
     }
 
     public String importMajorDevCst() throws Exception {
-        this.result.setList(this.majorDevCstManager.importExcel(this.upload, this.uploadFileName));
+        this.result.setList(this.majorDevCstService.importExcel(this.upload, this.uploadFileName));
         return SUCCESS;
     }
 
     public String listMajorDevCst() throws Exception {
-        this.result.setList(this.majorDevCstManager.list(this.majorDevCst));
+        this.result.setList(this.majorDevCstService.list(this.majorDevCst));
         return SUCCESS;
     }
 
     public String saveMajorDevCst() throws Exception {
-        this.result.setObject(this.majorDevCstManager.save(this.majorDevCst));
+        this.result.setObject(this.majorDevCstService.save(this.majorDevCst));
         return SUCCESS;
     }
 
     public String deleteMajorDevCst() throws Exception {
-        this.result.setObject(this.majorDevCstManager.delete(this.majorDevCst));
+        this.result.setObject(this.majorDevCstService.delete(this.majorDevCst));
         return SUCCESS;
     }
 
     /* ProjectCost */
     public String generateProjectCost() throws Exception {
-        this.result.setObject(this.projectCostManager.generate(this.projectCost));
+        this.result.setObject(this.projectCostService.generate(this.projectCost));
         return SUCCESS;
     }
 
@@ -297,54 +297,54 @@ public class BiAction extends ActionSupport implements ResultAware {
     }
 
     public String importProjectCost() throws Exception {
-        this.result.setList(this.projectCostManager.importExcel(this.upload, this.uploadFileName));
+        this.result.setList(this.projectCostService.importExcel(this.upload, this.uploadFileName));
         return SUCCESS;
     }
 
     public String listProjectCost() throws Exception {
-        this.result.setList(this.projectCostManager.list(this.projectCost));
+        this.result.setList(this.projectCostService.list(this.projectCost));
         return SUCCESS;
     }
 
     public String saveProjectCost() throws Exception {
-        this.result.setObject(this.projectCostManager.save(this.projectCost));
+        this.result.setObject(this.projectCostService.save(this.projectCost));
         return SUCCESS;
     }
 
     public String deleteProjectCost() throws Exception {
-        this.result.setObject(this.projectCostManager.delete(this.projectCost));
+        this.result.setObject(this.projectCostService.delete(this.projectCost));
         return SUCCESS;
     }
 
     /* Contract */
     public String listContract() throws Exception {
-        this.result.setList(this.contractManager.list(this.contract));
+        this.result.setList(this.contractService.list(this.contract));
         return SUCCESS;
     }
 
     public String saveContract() throws Exception {
-        this.result.setObject(this.contractManager.save(this.contract));
+        this.result.setObject(this.contractService.save(this.contract));
         return SUCCESS;
     }
 
     public String deleteContract() throws Exception {
-        this.result.setObject(this.contractManager.delete(this.contract));
+        this.result.setObject(this.contractService.delete(this.contract));
         return SUCCESS;
     }
 
     /* Project */
     public String listProject() throws Exception {
-        this.result.setList(this.projectManager.list(this.project));
+        this.result.setList(this.projectService.list(this.project));
         return SUCCESS;
     }
 
     public String saveProject() throws Exception {
-        this.result.setObject(this.projectManager.save(this.project));
+        this.result.setObject(this.projectService.save(this.project));
         return SUCCESS;
     }
 
     public String deleteProject() throws Exception {
-        this.result.setObject(this.projectManager.delete(this.project));
+        this.result.setObject(this.projectService.delete(this.project));
         return SUCCESS;
     }
 
@@ -356,20 +356,20 @@ public class BiAction extends ActionSupport implements ResultAware {
         this.result = result;
     }
 
-    public IflatManager getAdditionalBillManager() {
-        return additionalBillManager;
+    public IflatService getAdditionalBillService() {
+        return additionalBillService;
     }
 
-    public void setAdditionalBillManager(IflatManager additionalBillManager) {
-        this.additionalBillManager = additionalBillManager;
+    public void setAdditionalBillService(IflatService additionalBillService) {
+        this.additionalBillService = additionalBillService;
     }
 
-    public IflatManager getProjectCostManager() {
-        return projectCostManager;
+    public IflatService getProjectCostService() {
+        return projectCostService;
     }
 
-    public void setProjectCostManager(IflatManager projectCostManager) {
-        this.projectCostManager = projectCostManager;
+    public void setProjectCostService(IflatService projectCostService) {
+        this.projectCostService = projectCostService;
     }
 
     public ProjectCost getProjectCost() {
@@ -388,84 +388,84 @@ public class BiAction extends ActionSupport implements ResultAware {
         this.additionalBill = additionalBill;
     }
 
-    public IflatManager getContractManager() {
-        return contractManager;
+    public IflatService getContractService() {
+        return contractService;
     }
 
-    public void setContractManager(IflatManager contractManager) {
-        this.contractManager = contractManager;
+    public void setContractService(IflatService contractService) {
+        this.contractService = contractService;
     }
 
-    public IflatManager getDeptCstCtrlManager() {
-        return deptCstCtrlManager;
+    public IflatService getDeptCstCtrlService() {
+        return deptCstCtrlService;
     }
 
-    public void setDeptCstCtrlManager(IflatManager deptCstCtrlManager) {
-        this.deptCstCtrlManager = deptCstCtrlManager;
+    public void setDeptCstCtrlService(IflatService deptCstCtrlService) {
+        this.deptCstCtrlService = deptCstCtrlService;
     }
 
-    public IflatManager getMajorDevCstManager() {
-        return majorDevCstManager;
+    public IflatService getMajorDevCstService() {
+        return majorDevCstService;
     }
 
-    public void setMajorDevCstManager(IflatManager majorDevCstManager) {
-        this.majorDevCstManager = majorDevCstManager;
+    public void setMajorDevCstService(IflatService majorDevCstService) {
+        this.majorDevCstService = majorDevCstService;
     }
 
-    public IflatManager getMajorMatCstManager() {
-        return majorMatCstManager;
+    public IflatService getMajorMatCstService() {
+        return majorMatCstService;
     }
 
-    public void setMajorMatCstManager(IflatManager majorMatCstManager) {
-        this.majorMatCstManager = majorMatCstManager;
+    public void setMajorMatCstService(IflatService majorMatCstService) {
+        this.majorMatCstService = majorMatCstService;
     }
 
-    public IflatManager getMajorMatQtyManager() {
-        return majorMatQtyManager;
+    public IflatService getMajorMatQtyService() {
+        return majorMatQtyService;
     }
 
-    public void setMajorMatQtyManager(IflatManager majorMatQtyManager) {
-        this.majorMatQtyManager = majorMatQtyManager;
+    public void setMajorMatQtyService(IflatService majorMatQtyService) {
+        this.majorMatQtyService = majorMatQtyService;
     }
 
-    public IflatManager getProjectManager() {
-        return projectManager;
+    public IflatService getProjectService() {
+        return projectService;
     }
 
-    public void setProjectManager(IflatManager projectManager) {
-        this.projectManager = projectManager;
+    public void setProjectService(IflatService projectService) {
+        this.projectService = projectService;
     }
 
-    public IflatManager getProjectCstCtrlManager() {
-        return projectCstCtrlManager;
+    public IflatService getProjectCstCtrlService() {
+        return projectCstCtrlService;
     }
 
-    public void setProjectCstCtrlManager(IflatManager projectCstCtrlManager) {
-        this.projectCstCtrlManager = projectCstCtrlManager;
+    public void setProjectCstCtrlService(IflatService projectCstCtrlService) {
+        this.projectCstCtrlService = projectCstCtrlService;
     }
 
-    public IflatManager getProjectInProcessManager() {
-        return projectInProcessManager;
+    public IflatService getProjectInProcessService() {
+        return projectInProcessService;
     }
 
-    public void setProjectInProcessManager(IflatManager projectInProcessManager) {
-        this.projectInProcessManager = projectInProcessManager;
+    public void setProjectInProcessService(IflatService projectInProcessService) {
+        this.projectInProcessService = projectInProcessService;
     }
 
-    public IflatManager getProjectManHourManager() {
-        return projectManHourManager;
+    public IflatService getProjectManHourService() {
+        return projectManHourService;
     }
 
-    public void setProjectManHourManager(IflatManager projectManHourManager) {
-        this.projectManHourManager = projectManHourManager;
+    public void setProjectManHourService(IflatService projectManHourService) {
+        this.projectManHourService = projectManHourService;
     }
 
-    public IflatManager getProjectScheduleManager() {
-        return projectScheduleManager;
+    public IflatService getProjectScheduleService() {
+        return projectScheduleService;
     }
 
-    public void setProjectScheduleManager(IflatManager projectScheduleManager) {
-        this.projectScheduleManager = projectScheduleManager;
+    public void setProjectScheduleService(IflatService projectScheduleService) {
+        this.projectScheduleService = projectScheduleService;
     }
 
     public Contract getContract() {
@@ -548,12 +548,12 @@ public class BiAction extends ActionSupport implements ResultAware {
         this.projectSchedule = projectSchedule;
     }
 
-    public IflatManager getProjectInfoManager() {
-        return projectInfoManager;
+    public IflatService getProjectInfoService() {
+        return projectInfoService;
     }
 
-    public void setProjectInfoManager(IflatManager projectInfoManager) {
-        this.projectInfoManager = projectInfoManager;
+    public void setProjectInfoService(IflatService projectInfoService) {
+        this.projectInfoService = projectInfoService;
     }
 
     public ProjectInfo getProjectInfo() {
@@ -564,12 +564,12 @@ public class BiAction extends ActionSupport implements ResultAware {
         this.projectInfo = projectInfo;
     }
 
-    public IflatManager getProjectInProcessInfoManager() {
-        return projectInProcessInfoManager;
+    public IflatService getProjectInProcessInfoService() {
+        return projectInProcessInfoService;
     }
 
-    public void setProjectInProcessInfoManager(IflatManager projectInProcessInfoManager) {
-        this.projectInProcessInfoManager = projectInProcessInfoManager;
+    public void setProjectInProcessInfoService(IflatService projectInProcessInfoService) {
+        this.projectInProcessInfoService = projectInProcessInfoService;
     }
 
     public ProjectInProcessInfo getProjectInProcessInfo() {

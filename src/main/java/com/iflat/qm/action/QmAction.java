@@ -5,7 +5,7 @@ import com.iflat.qm.entity.QualityFineVo;
 import com.iflat.system.action.ResultAware;
 import com.iflat.system.entity.Page;
 import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatManager;
+import com.iflat.system.service.IflatService;
 import com.iflat.util.FileHelper;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -16,8 +16,8 @@ public class QmAction extends ActionSupport implements ResultAware, ModelDriven<
 
     private Result result;
 
-    private IflatManager qualityFineManager;
-    private IflatManager qualityFineVoManager;
+    private IflatService qualityFineService;
+    private IflatService qualityFineVoService;
 
     private QualityFine qualityFine;
     private QualityFineVo qualityFineVo;
@@ -29,37 +29,37 @@ public class QmAction extends ActionSupport implements ResultAware, ModelDriven<
 
     /* QualityFine */
     public String saveQualityFine() throws Exception {
-        this.result.setObject(this.qualityFineManager.save(this.qualityFine));
+        this.result.setObject(this.qualityFineService.save(this.qualityFine));
         return SUCCESS;
     }
 
     public String deleteQualityFine() throws Exception {
-        this.result.setObject(this.qualityFineManager.delete(this.qualityFine));
+        this.result.setObject(this.qualityFineService.delete(this.qualityFine));
         return SUCCESS;
     }
 
     public String listQualityFine() throws Exception {
-        this.result.setList(this.qualityFineManager.list(this.qualityFine));
+        this.result.setList(this.qualityFineService.list(this.qualityFine));
         return SUCCESS;
     }
 
     public String listPageQualityFine() throws Exception {
-        this.result.setObject(this.qualityFineManager.listPage(this.qualityFine, this.page));
+        this.result.setObject(this.qualityFineService.listPage(this.qualityFine, this.page));
         return SUCCESS;
     }
 
     public String listQualityFineVo() throws Exception {
-        this.result.setList(this.qualityFineVoManager.list(this.qualityFineVo));
+        this.result.setList(this.qualityFineVoService.list(this.qualityFineVo));
         return SUCCESS;
     }
 
     public String listPageQualityFineVo() throws Exception {
-        this.result.setObject(this.qualityFineVoManager.listPage(this.qualityFineVo, this.page));
+        this.result.setObject(this.qualityFineVoService.listPage(this.qualityFineVo, this.page));
         return SUCCESS;
     }
 
     public String uploadQualityFine() throws Exception {
-        this.result.setObject(this.qualityFineManager.uploadFile(upload, uploadFileName));
+        this.result.setObject(this.qualityFineService.uploadFile(upload, uploadFileName));
         return SUCCESS;
     }
 
@@ -84,12 +84,12 @@ public class QmAction extends ActionSupport implements ResultAware, ModelDriven<
         this.result = result;
     }
 
-    public IflatManager getQualityFineManager() {
-        return qualityFineManager;
+    public IflatService getQualityFineService() {
+        return qualityFineService;
     }
 
-    public void setQualityFineManager(IflatManager qualityFineManager) {
-        this.qualityFineManager = qualityFineManager;
+    public void setQualityFineService(IflatService qualityFineService) {
+        this.qualityFineService = qualityFineService;
     }
 
     public QualityFine getQualityFine() {
@@ -100,12 +100,12 @@ public class QmAction extends ActionSupport implements ResultAware, ModelDriven<
         this.qualityFine = qualityFine;
     }
 
-    public IflatManager getQualityFineVoManager() {
-        return qualityFineVoManager;
+    public IflatService getQualityFineVoService() {
+        return qualityFineVoService;
     }
 
-    public void setQualityFineVoManager(IflatManager qualityFineVoManager) {
-        this.qualityFineVoManager = qualityFineVoManager;
+    public void setQualityFineVoService(IflatService qualityFineVoService) {
+        this.qualityFineVoService = qualityFineVoService;
     }
 
     public QualityFineVo getQualityFineVo() {

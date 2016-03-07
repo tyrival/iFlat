@@ -6,18 +6,18 @@
 
     <bean id="libAction" class="com.iflat.lib.action.LibAction" scope="prototype">
         <property name="result" ref="result"/>
-        <property name="bookManager" ref="bookManager"/>
+        <property name="bookService" ref="bookService"/>
         <property name="book" ref="book"/>
-        <property name="recordManager" ref="recordManager"/>
+        <property name="recordService" ref="recordService"/>
         <property name="record" ref="record"/>
     </bean>
 
-    <bean id="bookManager" class="com.iflat.lib.service.impl.BookManagerImpl">
+    <bean id="bookService" class="com.iflat.lib.service.impl.BookServiceImpl">
     </bean>
     <bean id="bookDao" class="com.iflat.lib.dao.impl.BookDaoImpl">
     </bean>
 
-    <bean id="recordManager" class="com.iflat.lib.service.impl.RecordManagerImpl">
+    <bean id="recordService" class="com.iflat.lib.service.impl.RecordServiceImpl">
     </bean>
     <bean id="recordDao" class="com.iflat.lib.dao.impl.RecordDaoImpl">
     </bean>

@@ -6,18 +6,18 @@
 
     <bean id="qmAction" class="com.iflat.qm.action.QmAction" scope="prototype">
         <property name="result" ref="result"/>
-        <property name="qualityFineManager" ref="qualityFineManager"/>
+        <property name="qualityFineService" ref="qualityFineService"/>
         <property name="qualityFine" ref="qualityFine"/>
-        <property name="qualityFineVoManager" ref="qualityFineVoManager"/>
+        <property name="qualityFineVoService" ref="qualityFineVoService"/>
         <property name="qualityFineVo" ref="qualityFineVo"/>
     </bean>
 
-    <bean id="qualityFineManager" class="com.iflat.qm.service.impl.QualityFineManagerImpl">
+    <bean id="qualityFineService" class="com.iflat.qm.service.impl.QualityFineServiceImpl">
     </bean>
     <bean id="qualityFineDao" class="com.iflat.qm.dao.impl.QualityFineDaoImpl">
     </bean>
 
-    <bean id="qualityFineVoManager" class="com.iflat.qm.service.impl.QualityFineVoManagerImpl">
+    <bean id="qualityFineVoService" class="com.iflat.qm.service.impl.QualityFineVoServiceImpl">
     </bean>
     <bean id="qualityFineVoDao" class="com.iflat.qm.dao.impl.QualityFineVoDaoImpl">
     </bean>

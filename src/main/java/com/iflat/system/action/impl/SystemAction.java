@@ -9,7 +9,6 @@ import com.iflat.util.Session;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.io.File;
-import java.util.UUID;
 
 /**
  * Created by tyriv on 2015/9/6.
@@ -21,50 +20,50 @@ public class SystemAction extends ActionSupport implements ResultAware {
     private Result result;
     //模块管理
     private Module module;
-    private ModuleManager moduleManager;
+    private ModuleService moduleService;
     //组织管理
     private Organization organization;
-    private OrganizationManager organizationManager;
+    private OrganizationService organizationService;
     //用户管理
     private User user;
-    private UserManager userManager;
+    private UserService userService;
     private String orgId;
     private PasswordChange passwordChange;
     //角色管理
     private Role role;
-    private RoleManager roleManager;
+    private RoleService roleService;
     //用户角色关系
     private UserRole userRole;
-    private UserRoleManager userRoleManager;
+    private UserRoleService userRoleService;
     private String itemselector;
     //权限管理
-    private AuthModuleManager authModuleManager;
+    private AuthModuleService authModuleService;
     private AuthModule authModule;
     private String authModuleVoList;
     private AuthDuplicateVo authDuplicateVo;
     private String authBatchList;
     //操作权限
-    private AuthOperatingManager authOperatingManager;
+    private AuthOperatingService authOperatingService;
     private AuthOperatingVo authOperatingVo;
     private String authOperatingVoList;
     //数据权限
-    private AuthDataManager authDataManager;
+    private AuthDataService authDataService;
     private AuthData authData;
     //数据字典
-    private DataDictionaryManager dataDictionaryManager;
+    private DataDictionaryService dataDictionaryService;
     private DataDictionary dataDictionary;
     //模块表/视图
-    private TableViewManager tableViewManager;
+    private TableViewService tableViewService;
     private TableView tableView;
     //模块操作
     private Operating operating;
-    private OperatingManager operatingManager;
+    private OperatingService operatingService;
     //速记本
     private Memo memo;
-    private MemoManager memoManager;
+    private MemoService memoService;
     //问题处理
     private Question question;
-    private QuestionManager questionManager;
+    private QuestionService questionService;
     /* 文件上传 */
     private File upload;
     private String uploadContentType;
@@ -86,27 +85,27 @@ public class SystemAction extends ActionSupport implements ResultAware {
     }
 
     public String submitQuestion() throws Exception {
-        this.result.setObject(this.questionManager.save(this.question));
+        this.result.setObject(this.questionService.save(this.question));
         return SUCCESS;
     }
 
     public String modifyQuestion() throws Exception {
-        this.result.setObject(this.questionManager.save(this.question));
+        this.result.setObject(this.questionService.save(this.question));
         return SUCCESS;
     }
 
     public String deleteQuestion() throws Exception {
-        this.result.setObject(this.questionManager.delete(this.question.getQuId()));
+        this.result.setObject(this.questionService.delete(this.question.getQuId()));
         return SUCCESS;
     }
 
     public String solveQuestion() throws Exception {
-        this.result.setObject(this.questionManager.solve(this.question));
+        this.result.setObject(this.questionService.solve(this.question));
         return SUCCESS;
     }
 
     public String listQuestion() throws Exception {
-        this.result.setList(this.questionManager.list(this.question));
+        this.result.setList(this.questionService.list(this.question));
         return SUCCESS;
     }
 
@@ -115,12 +114,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
      * 数据权限
      */
     public String saveAuthData() throws Exception {
-        this.result.setObject(this.authDataManager.save(this.authData));
+        this.result.setObject(this.authDataService.save(this.authData));
         return SUCCESS;
     }
 
     public String listTableViewByModule() throws Exception {
-        this.result.setList(this.tableViewManager.listByModule(this.tableView));
+        this.result.setList(this.tableViewService.listByModule(this.tableView));
         return SUCCESS;
     }
 
@@ -128,22 +127,22 @@ public class SystemAction extends ActionSupport implements ResultAware {
      * 数据字典
      */
     public String listFieldAuthority() throws Exception {
-        this.result.setList(this.authDataManager.listAuthDataFieldStatus(this.authData));
+        this.result.setList(this.authDataService.listAuthDataFieldStatus(this.authData));
         return SUCCESS;
     }
 
     public String generateDataDictionary() throws Exception {
-        this.dataDictionaryManager.generateDataDictionary();
+        this.dataDictionaryService.generateDataDictionary();
         return SUCCESS;
     }
 
     public String listDataDictionary() throws Exception {
-        this.result.setList(this.dataDictionaryManager.list(this.dataDictionary));
+        this.result.setList(this.dataDictionaryService.list(this.dataDictionary));
         return SUCCESS;
     }
 
     public String saveDataDictionary() throws Exception {
-        this.result.setObject(this.dataDictionaryManager.save(this.dataDictionary));
+        this.result.setObject(this.dataDictionaryService.save(this.dataDictionary));
         return SUCCESS;
     }
 
@@ -152,13 +151,13 @@ public class SystemAction extends ActionSupport implements ResultAware {
      */
     public String listAuthOperatingVoByAuthOperatingVo() throws Exception {
 
-        this.result.setList(this.authOperatingManager.listVoByAuthOperatingVo(this.authOperatingVo));
+        this.result.setList(this.authOperatingService.listVoByAuthOperatingVo(this.authOperatingVo));
         return SUCCESS;
     }
 
     public String saveBatchAuthOperating() throws Exception {
 
-        this.result.setObject(this.authOperatingManager.saveBatch(this.authOperatingVoList));
+        this.result.setObject(this.authOperatingService.saveBatch(this.authOperatingVoList));
         return SUCCESS;
     }
 
@@ -166,36 +165,36 @@ public class SystemAction extends ActionSupport implements ResultAware {
      * 模块权限
      */
     public String duplicateAuthority() throws Exception {
-        this.result.setObject(this.authModuleManager.duplicateAuthority(this.authBatchList));
+        this.result.setObject(this.authModuleService.duplicateAuthority(this.authBatchList));
         return SUCCESS;
     }
 
     public String clearAuthority() throws Exception {
-        this.result.setObject(this.authModuleManager.clearAuthority(this.authBatchList));
+        this.result.setObject(this.authModuleService.clearAuthority(this.authBatchList));
         return SUCCESS;
     }
 
     public String saveBatchAuthModule() throws Exception {
 
-        this.result.setObject(this.authModuleManager.saveBatch(this.authModuleVoList));
+        this.result.setObject(this.authModuleService.saveBatch(this.authModuleVoList));
         return SUCCESS;
     }
 
     public String saveAuthModule() throws Exception {
 
-        this.result.setObject(this.authModuleManager.save(this.authModule));
+        this.result.setObject(this.authModuleService.save(this.authModule));
         return SUCCESS;
     }
 
     public String listAuthModule() throws Exception {
 
-        this.result.setList(this.authModuleManager.list(this.authModule));
+        this.result.setList(this.authModuleService.list(this.authModule));
         return SUCCESS;
     }
 
     public String listUserRoleNode() throws Exception {
 
-        this.result.setList(this.userRoleManager.listNode());
+        this.result.setList(this.userRoleService.listNode());
         return SUCCESS;
     }
     /**
@@ -203,19 +202,19 @@ public class SystemAction extends ActionSupport implements ResultAware {
      */
     public String listUserRoleInfoByUser() throws Exception {
 
-        this.result.setList(this.userRoleManager.listVoByUser());
+        this.result.setList(this.userRoleService.listVoByUser());
         return SUCCESS;
     }
 
     public String listDefaultRoleInfoByAccount() throws Exception {
 
-        this.result.setList(this.userRoleManager.listVoByAccount());
+        this.result.setList(this.userRoleService.listVoByAccount());
         return SUCCESS;
     }
 
     public String listUserRoleAsString() throws Exception {
 
-        this.result.setObject(this.userRoleManager.listAsString(this.userRole));
+        this.result.setObject(this.userRoleService.listAsString(this.userRole));
         return SUCCESS;
     }
 
@@ -223,7 +222,7 @@ public class SystemAction extends ActionSupport implements ResultAware {
 
         this.userRole.setAccount(this.user.getAccount());
         this.userRole.setRoleId(this.role.getRoleId());
-        this.result.setObject(this.userRoleManager.saveUserRole(this.userRole, itemselector));
+        this.result.setObject(this.userRoleService.saveUserRole(this.userRole, itemselector));
         return SUCCESS;
     }
 
@@ -232,25 +231,25 @@ public class SystemAction extends ActionSupport implements ResultAware {
      */
     public String listRole() throws Exception {
 
-        this.result.setList(this.roleManager.list());
+        this.result.setList(this.roleService.list());
         return SUCCESS;
     }
 
     public String saveRole() throws Exception {
 
-        this.result.setObject(this.roleManager.save(this.role));
+        this.result.setObject(this.roleService.save(this.role));
         return SUCCESS;
     }
 
     public String activeRole() throws Exception {
 
-        this.result.setObject(this.roleManager.save(this.role));
+        this.result.setObject(this.roleService.save(this.role));
         return SUCCESS;
     }
 
     public String deleteRole() throws Exception {
 
-        this.result.setObject(this.roleManager.delete(this.role.getRoleId()));
+        this.result.setObject(this.roleService.delete(this.role.getRoleId()));
         return SUCCESS;
     }
 
@@ -259,32 +258,32 @@ public class SystemAction extends ActionSupport implements ResultAware {
      */
     public String listUserByOrg() throws Exception {
 
-        this.result.setList(this.userManager.listByOrgId(this.orgId));
+        this.result.setList(this.userService.listByOrgId(this.orgId));
         return SUCCESS;
     }
 
     public String saveUser() throws Exception {
-        this.result.setObject(this.userManager.save(this.user));
+        this.result.setObject(this.userService.save(this.user));
         return SUCCESS;
     }
 
     public String activeUser() throws Exception {
-        this.result.setObject(this.userManager.save(this.user));
+        this.result.setObject(this.userService.save(this.user));
         return SUCCESS;
     }
 
     public String editUserInfo() throws Exception {
-        this.result.setObject(this.userManager.save(this.user));
+        this.result.setObject(this.userService.save(this.user));
         return SUCCESS;
     }
 
     public String resetPassword() throws Exception {
-        this.result.setObject(this.userManager.save(this.user));
+        this.result.setObject(this.userService.save(this.user));
         return SUCCESS;
     }
 
     public String deleteUser() throws Exception {
-        this.result.setObject(this.userManager.deleteByAccount(this.user.getAccount()));
+        this.result.setObject(this.userService.deleteByAccount(this.user.getAccount()));
         return SUCCESS;
     }
 
@@ -293,37 +292,37 @@ public class SystemAction extends ActionSupport implements ResultAware {
      */
     public String listOrganizationVo() throws Exception {
 
-        this.result.setList(this.organizationManager.listVo());
+        this.result.setList(this.organizationService.listVo());
         return SUCCESS;
     }
 
     public String listOrganization() throws Exception {
 
-        this.result.setList(this.organizationManager.list());
+        this.result.setList(this.organizationService.list());
         return SUCCESS;
     }
 
     public String saveOrganization() throws Exception {
 
-        this.result.setObject(this.organizationManager.save(this.organization));
+        this.result.setObject(this.organizationService.save(this.organization));
         return SUCCESS;
     }
 
     public String activeOrganization() throws Exception {
 
-        this.result.setObject(this.organizationManager.save(this.organization));
+        this.result.setObject(this.organizationService.save(this.organization));
         return SUCCESS;
     }
 
     public String deleteOrganization() throws Exception {
 
-        this.result.setObject(this.organizationManager.delete(this.organization.getOrgId()));
+        this.result.setObject(this.organizationService.delete(this.organization.getOrgId()));
         return SUCCESS;
     }
 
     public String listOrganizationNode() throws Exception {
 
-        this.result.setList(this.organizationManager.listNode());
+        this.result.setList(this.organizationService.listNode());
         return SUCCESS;
     }
 
@@ -331,65 +330,65 @@ public class SystemAction extends ActionSupport implements ResultAware {
      * 模块管理
      */
     public String saveOperating() throws Exception {
-        this.result.setObject(this.operatingManager.save(this.operating));
+        this.result.setObject(this.operatingService.save(this.operating));
         return SUCCESS;
     }
 
     public String deleteOperating() throws Exception {
-        this.result.setObject(this.operatingManager.delete(this.operating));
+        this.result.setObject(this.operatingService.delete(this.operating));
         return SUCCESS;
     }
 
     public String listOperatingOfModule() throws Exception {
-        this.result.setList(this.operatingManager.listOfModule(this.operating));
+        this.result.setList(this.operatingService.listOfModule(this.operating));
         return SUCCESS;
     }
 
     public String deleteTableView() throws Exception {
 
-        this.result.setObject(this.tableViewManager.delete(this.tableView));
+        this.result.setObject(this.tableViewService.delete(this.tableView));
         return SUCCESS;
     }
 
     public String saveTableView() throws Exception {
 
-        this.result.setObject(this.tableViewManager.save(this.tableView));
+        this.result.setObject(this.tableViewService.save(this.tableView));
         return SUCCESS;
     }
 
     public String listTableViewOfModule() throws Exception {
-        this.result.setList(this.tableViewManager.listByModule(this.tableView));
+        this.result.setList(this.tableViewService.listByModule(this.tableView));
         return SUCCESS;
     }
 
     public String listModuleNode() throws Exception {
 
-        this.result.setList(this.moduleManager.listNode());
+        this.result.setList(this.moduleService.listNode());
         return SUCCESS;
     }
 
     public String listModule() throws Exception {
 
-        this.result.setList(this.moduleManager.list());
+        this.result.setList(this.moduleService.list());
         return SUCCESS;
     }
 
     public String saveModule() throws Exception {
 
-        this.result.setObject(this.moduleManager.save(this.module));
+        this.result.setObject(this.moduleService.save(this.module));
         return SUCCESS;
     }
 
     public String activeModule() throws Exception {
 
-        this.result.setObject(this.moduleManager.save(this.module));
+        this.result.setObject(this.moduleService.save(this.module));
         return SUCCESS;
     }
 
     //删除Module
     public String deleteModule() throws Exception {
 
-        this.result.setObject(this.moduleManager.delete(this.module.getNodeId()));
+        this.result.setObject(this.moduleService.delete(this.module.getNodeId()));
         return SUCCESS;
     }
 
@@ -398,42 +397,42 @@ public class SystemAction extends ActionSupport implements ResultAware {
      */
     public String saveProfile() throws Exception {
 
-        this.result.setObject(this.userManager.saveProfile(this.user));
+        this.result.setObject(this.userService.saveProfile(this.user));
         return SUCCESS;
     }
 
     public String getProfile() throws Exception {
 
-        this.result.setObject(this.userManager.getProfile());
+        this.result.setObject(this.userService.getProfile());
         return SUCCESS;
     }
 
     public String saveDefaultRole() throws Exception {
-        this.result.setObject(this.userRoleManager.saveDefaultRole(this.userRole));
+        this.result.setObject(this.userRoleService.saveDefaultRole(this.userRole));
         return SUCCESS;
     }
 
     public String changePassword() throws Exception {
 
-        this.result.setObject(this.userManager.changePassword(this.passwordChange));
+        this.result.setObject(this.userService.changePassword(this.passwordChange));
         return SUCCESS;
     }
 
     public String getNavigationTree() throws Exception {
 
-        this.result.setObject(this.moduleManager.getNavigationTree());
+        this.result.setObject(this.moduleService.getNavigationTree());
         return TREE;
     }
 
     public String getOperatingAuthority() throws Exception {
 
-        this.result.setList(this.authOperatingManager.listVoOfModuleByUser(this.authOperatingVo));
+        this.result.setList(this.authOperatingService.listVoOfModuleByUser(this.authOperatingVo));
         return SUCCESS;
     }
 
     public String getDataAuthority() throws Exception {
 
-        this.result.setList(this.authDataManager.listVoOfModuleByUser(this.authData));
+        this.result.setList(this.authDataService.listVoOfModuleByUser(this.authData));
         return SUCCESS;
     }
 
@@ -448,17 +447,17 @@ public class SystemAction extends ActionSupport implements ResultAware {
     }
 
     public String switchRole() throws Exception {
-        this.result.setObject(this.userManager.switchRole(this.userRole.getRoleId()));
+        this.result.setObject(this.userService.switchRole(this.userRole.getRoleId()));
         return SUCCESS;
     }
 
     public String getMemoNote() throws Exception {
-        this.result.setObject(this.memoManager.get());
+        this.result.setObject(this.memoService.get());
         return SUCCESS;
     }
 
     public String saveMemo() throws Exception {
-        this.result.setObject(this.memoManager.save(this.memo));
+        this.result.setObject(this.memoService.save(this.memo));
         return SUCCESS;
     }
 
@@ -470,12 +469,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.result = result;
     }
 
-    public ModuleManager getModuleManager() {
-        return moduleManager;
+    public ModuleService getModuleService() {
+        return moduleService;
     }
 
-    public void setModuleManager(ModuleManager moduleManager) {
-        this.moduleManager = moduleManager;
+    public void setModuleService(ModuleService moduleService) {
+        this.moduleService = moduleService;
     }
 
     public Module getModule() {
@@ -494,12 +493,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.organization = organization;
     }
 
-    public OrganizationManager getOrganizationManager() {
-        return organizationManager;
+    public OrganizationService getOrganizationService() {
+        return organizationService;
     }
 
-    public void setOrganizationManager(OrganizationManager organizationManager) {
-        this.organizationManager = organizationManager;
+    public void setOrganizationService(OrganizationService organizationService) {
+        this.organizationService = organizationService;
     }
 
     public User getUser() {
@@ -510,12 +509,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.user = user;
     }
 
-    public UserManager getUserManager() {
-        return userManager;
+    public UserService getUserService() {
+        return userService;
     }
 
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     public Role getRole() {
@@ -526,12 +525,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.role = role;
     }
 
-    public RoleManager getRoleManager() {
-        return roleManager;
+    public RoleService getRoleService() {
+        return roleService;
     }
 
-    public void setRoleManager(RoleManager roleManager) {
-        this.roleManager = roleManager;
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
     }
 
     public UserRole getUserRole() {
@@ -542,12 +541,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.userRole = userRole;
     }
 
-    public UserRoleManager getUserRoleManager() {
-        return userRoleManager;
+    public UserRoleService getUserRoleService() {
+        return userRoleService;
     }
 
-    public void setUserRoleManager(UserRoleManager userRoleManager) {
-        this.userRoleManager = userRoleManager;
+    public void setUserRoleService(UserRoleService userRoleService) {
+        this.userRoleService = userRoleService;
     }
 
     public String getOrgId() {
@@ -566,28 +565,28 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.itemselector = itemselector;
     }
 
-    public AuthModuleManager getAuthModuleManager() {
-        return authModuleManager;
+    public AuthModuleService getAuthModuleService() {
+        return authModuleService;
     }
 
-    public void setAuthModuleManager(AuthModuleManager authModuleManager) {
-        this.authModuleManager = authModuleManager;
+    public void setAuthModuleService(AuthModuleService authModuleService) {
+        this.authModuleService = authModuleService;
     }
 
-    public AuthDataManager getAuthDataManager() {
-        return authDataManager;
+    public AuthDataService getAuthDataService() {
+        return authDataService;
     }
 
-    public void setAuthDataManager(AuthDataManager authDataManager) {
-        this.authDataManager = authDataManager;
+    public void setAuthDataService(AuthDataService authDataService) {
+        this.authDataService = authDataService;
     }
 
-    public AuthOperatingManager getAuthOperatingManager() {
-        return authOperatingManager;
+    public AuthOperatingService getAuthOperatingService() {
+        return authOperatingService;
     }
 
-    public void setAuthOperatingManager(AuthOperatingManager authOperatingManager) {
-        this.authOperatingManager = authOperatingManager;
+    public void setAuthOperatingService(AuthOperatingService authOperatingService) {
+        this.authOperatingService = authOperatingService;
     }
 
     public AuthData getAuthData() {
@@ -630,12 +629,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.authOperatingVoList = authOperatingVoList;
     }
 
-    public DataDictionaryManager getDataDictionaryManager() {
-        return dataDictionaryManager;
+    public DataDictionaryService getDataDictionaryService() {
+        return dataDictionaryService;
     }
 
-    public void setDataDictionaryManager(DataDictionaryManager dataDictionaryManager) {
-        this.dataDictionaryManager = dataDictionaryManager;
+    public void setDataDictionaryService(DataDictionaryService dataDictionaryService) {
+        this.dataDictionaryService = dataDictionaryService;
     }
 
     public DataDictionary getDataDictionary() {
@@ -670,12 +669,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.tableView = tableView;
     }
 
-    public TableViewManager getTableViewManager() {
-        return tableViewManager;
+    public TableViewService getTableViewService() {
+        return tableViewService;
     }
 
-    public void setTableViewManager(TableViewManager tableViewManager) {
-        this.tableViewManager = tableViewManager;
+    public void setTableViewService(TableViewService tableViewService) {
+        this.tableViewService = tableViewService;
     }
 
     public PasswordChange getPasswordChange() {
@@ -690,12 +689,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.memo = memo;
     }
 
-    public MemoManager getMemoManager() {
-        return memoManager;
+    public MemoService getMemoService() {
+        return memoService;
     }
 
-    public void setMemoManager(MemoManager memoManager) {
-        this.memoManager = memoManager;
+    public void setMemoService(MemoService memoService) {
+        this.memoService = memoService;
     }
 
     public Memo getMemo() {
@@ -710,12 +709,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.question = question;
     }
 
-    public QuestionManager getQuestionManager() {
-        return questionManager;
+    public QuestionService getQuestionService() {
+        return questionService;
     }
 
-    public void setQuestionManager(QuestionManager questionManager) {
-        this.questionManager = questionManager;
+    public void setQuestionService(QuestionService questionService) {
+        this.questionService = questionService;
     }
 
     public Operating getOperating() {
@@ -726,12 +725,12 @@ public class SystemAction extends ActionSupport implements ResultAware {
         this.operating = operating;
     }
 
-    public OperatingManager getOperatingManager() {
-        return operatingManager;
+    public OperatingService getOperatingService() {
+        return operatingService;
     }
 
-    public void setOperatingManager(OperatingManager operatingManager) {
-        this.operatingManager = operatingManager;
+    public void setOperatingService(OperatingService operatingService) {
+        this.operatingService = operatingService;
     }
 
 

@@ -14,10 +14,10 @@ import com.iflat.report.bean.mm.MatQuato;
 import com.iflat.report.bean.mm.PaintMRP;
 import com.iflat.report.bean.wip.manhour.WoStatus;
 import com.iflat.report.entity.Parameter;
-import com.iflat.report.service.ReportManager;
+import com.iflat.report.service.ReportService;
 import com.iflat.system.action.ResultAware;
 import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatManager;
+import com.iflat.system.service.IflatService;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.List;
@@ -30,119 +30,119 @@ public class ReportAction extends ActionSupport implements ResultAware {
     private Result result;
     private Parameter parameter;
     /* bi */
-    private ReportManager rptProjectCostManager;
-    private ReportManager rptMajorDevCstManager;
-    private ReportManager rptMajorMatCstManager;
-    private ReportManager rptMajorMatQtyManager;
-    private ReportManager rptAdditionalBillManager;
-    private ReportManager rptProjectCstCtrlManager;
-    private ReportManager rptProjectInProcessInfoManager;
-    private ReportManager rptDeptCstCtrlManager;
-    private IflatManager rptProjectManager;
+    private ReportService rptProjectCostService;
+    private ReportService rptMajorDevCstService;
+    private ReportService rptMajorMatCstService;
+    private ReportService rptMajorMatQtyService;
+    private ReportService rptAdditionalBillService;
+    private ReportService rptProjectCstCtrlService;
+    private ReportService rptProjectInProcessInfoService;
+    private ReportService rptDeptCstCtrlService;
+    private IflatService rptProjectService;
     private Project rptProject;
-    private IflatManager rptCostItemManager;
+    private IflatService rptCostItemService;
     private List costItemList;
     /* cst.sb */
-    private ReportManager detailOfMiscWo;
-    private ReportManager estimateOfProject;
-    private IflatManager rptSbProjectCostManager;
+    private ReportService detailOfMiscWo;
+    private ReportService estimateOfProject;
+    private IflatService rptSbProjectCostService;
     private SbProjectCost sbProjectCost;
-    private IflatManager rptSbProjectCostCmpsManager;
+    private IflatService rptSbProjectCostCmpsService;
     private SbProjectCostCmps sbProjectCostCmps;
-    private IflatManager rptSbProjectCostNodeManager;
+    private IflatService rptSbProjectCostNodeService;
     private SbProjectCostNode sbProjectCostNode;
     /* cst.nm */
-    private IflatManager rptNmProjectCostManager;
+    private IflatService rptNmProjectCostService;
     private NmProjectCost nmProjectCost;
-    private IflatManager rptNmProjectCostCmpsManager;
+    private IflatService rptNmProjectCostCmpsService;
     private NmProjectCostCmps nmProjectCostCmps;
-    private IflatManager rptNmProjectCostNodeManager;
+    private IflatService rptNmProjectCostNodeService;
     private NmProjectCostNode nmProjectCostNode;
     /* cst.sr */
-    private IflatManager rptSrProjectCostManager;
+    private IflatService rptSrProjectCostService;
     private SrProjectCost srProjectCost;
-    private IflatManager rptSrProjectCostCmpsManager;
+    private IflatService rptSrProjectCostCmpsService;
     private SrProjectCostCmps srProjectCostCmps;
-    private IflatManager rptSrProjectCostNodeManager;
+    private IflatService rptSrProjectCostNodeService;
     private SrProjectCostNode srProjectCostNode;
     /* mm */
-    private IflatManager rptMmMatQuatoManager;
+    private IflatService rptMmMatQuatoService;
     private MatQuato matQuato;
-    private IflatManager rptMmPaintMRPManager;
+    private IflatService rptMmPaintMRPService;
     private PaintMRP paintMRP;
     /* wip */
-    private IflatManager rptWipManhourWoStatusManager;
+    private IflatService rptWipManhourWoStatusService;
     private WoStatus woStatus;
 
     /* bi */
     public String listProject() throws Exception {
-        this.result.setList(this.rptProjectManager.list(this.rptProject));
+        this.result.setList(this.rptProjectService.list(this.rptProject));
         return SUCCESS;
     }
 
     public String listDeptCstCtrl() throws Exception {
-        this.result.setList(this.rptDeptCstCtrlManager.query(this.parameter));
+        this.result.setList(this.rptDeptCstCtrlService.query(this.parameter));
         return SUCCESS;
     }
 
     public String listProjectInProcess() throws Exception {
-        this.result.setList(this.rptProjectInProcessInfoManager.query(this.parameter));
+        this.result.setList(this.rptProjectInProcessInfoService.query(this.parameter));
         return SUCCESS;
     }
 
     public String listProjectCstCtrl() throws Exception {
-        this.result.setList(this.rptProjectCstCtrlManager.query(this.parameter));
+        this.result.setList(this.rptProjectCstCtrlService.query(this.parameter));
         return SUCCESS;
     }
 
     public String listBalanceOfProjectCost() throws Exception {
-        this.result.setList(this.rptProjectCostManager.query(this.parameter));
+        this.result.setList(this.rptProjectCostService.query(this.parameter));
         return SUCCESS;
     }
 
     public String listProjectCost() throws Exception {
-        this.result.setList(this.rptProjectCostManager.queryList(this.parameter));
+        this.result.setList(this.rptProjectCostService.queryList(this.parameter));
         return SUCCESS;
     }
 
     public String listMajorDevCstBalance() throws Exception {
-        this.result.setList(this.rptMajorDevCstManager.query(this.parameter));
+        this.result.setList(this.rptMajorDevCstService.query(this.parameter));
         return SUCCESS;
     }
 
     public String listMajorMatCstBalance() throws Exception {
-        this.result.setList(this.rptMajorMatCstManager.query(this.parameter));
+        this.result.setList(this.rptMajorMatCstService.query(this.parameter));
         return SUCCESS;
     }
 
     public String listMajorMatQtyBalance() throws Exception {
-        this.result.setList(this.rptMajorMatQtyManager.query(this.parameter));
+        this.result.setList(this.rptMajorMatQtyService.query(this.parameter));
         return SUCCESS;
     }
 
     public String listAdditionalBill() throws Exception {
-        this.result.setList(this.rptAdditionalBillManager.query(this.parameter));
+        this.result.setList(this.rptAdditionalBillService.query(this.parameter));
         return SUCCESS;
     }
 
     public String listBatchCostItem() throws Exception {
-        this.result.setList(this.rptCostItemManager.listBatch(this.costItemList));
+        this.result.setList(this.rptCostItemService.listBatch(this.costItemList));
         return SUCCESS;
     }
 
     /* cst.sb */
     public String listSbProjectCostCmps() throws Exception {
-        this.result.setList(this.rptSbProjectCostCmpsManager.list(this.sbProjectCostCmps));
+        this.result.setList(this.rptSbProjectCostCmpsService.list(this.sbProjectCostCmps));
         return SUCCESS;
     }
 
     public String listSbProjectCost() throws Exception {
-        this.result.setList(this.rptSbProjectCostManager.list(this.sbProjectCost));
+        this.result.setList(this.rptSbProjectCostService.list(this.sbProjectCost));
         return SUCCESS;
     }
 
     public String listSbProjectCostNode() throws Exception {
-        this.result.setList(this.rptSbProjectCostNodeManager.list(this.sbProjectCostNode));
+        this.result.setList(this.rptSbProjectCostNodeService.list(this.sbProjectCostNode));
         return SUCCESS;
     }
 
@@ -157,50 +157,50 @@ public class ReportAction extends ActionSupport implements ResultAware {
 
     /* cst.nm */
     public String listNmProjectCostCmps() throws Exception {
-        this.result.setList(this.rptNmProjectCostCmpsManager.list(this.nmProjectCostCmps));
+        this.result.setList(this.rptNmProjectCostCmpsService.list(this.nmProjectCostCmps));
         return SUCCESS;
     }
 
     public String listNmProjectCost() throws Exception {
-        this.result.setList(this.rptNmProjectCostManager.list(this.nmProjectCost));
+        this.result.setList(this.rptNmProjectCostService.list(this.nmProjectCost));
         return SUCCESS;
     }
 
     public String listNmProjectCostNode() throws Exception {
-        this.result.setList(this.rptNmProjectCostNodeManager.list(this.nmProjectCostNode));
+        this.result.setList(this.rptNmProjectCostNodeService.list(this.nmProjectCostNode));
         return SUCCESS;
     }
 
     /* cst.sr */
     public String listSrProjectCostCmps() throws Exception {
-        this.result.setList(this.rptSrProjectCostCmpsManager.list(this.srProjectCostCmps));
+        this.result.setList(this.rptSrProjectCostCmpsService.list(this.srProjectCostCmps));
         return SUCCESS;
     }
 
     public String listSrProjectCost() throws Exception {
-        this.result.setList(this.rptSrProjectCostManager.list(this.srProjectCost));
+        this.result.setList(this.rptSrProjectCostService.list(this.srProjectCost));
         return SUCCESS;
     }
 
     public String listSrProjectCostNode() throws Exception {
-        this.result.setList(this.rptSrProjectCostNodeManager.list(this.srProjectCostNode));
+        this.result.setList(this.rptSrProjectCostNodeService.list(this.srProjectCostNode));
         return SUCCESS;
     }
 
     /* mm */
     public String listMatQuato() throws Exception {
-        this.result.setList(this.rptMmMatQuatoManager.list(this.matQuato));
+        this.result.setList(this.rptMmMatQuatoService.list(this.matQuato));
         return SUCCESS;
     }
 
     public String listPaintMRP() throws Exception {
-        this.result.setList(this.rptMmPaintMRPManager.list(this.paintMRP));
+        this.result.setList(this.rptMmPaintMRPService.list(this.paintMRP));
         return SUCCESS;
     }
 
     /* wip */
     public String listWoStatus() throws Exception {
-        this.result.setList(this.rptWipManhourWoStatusManager.list(this.woStatus));
+        this.result.setList(this.rptWipManhourWoStatusService.list(this.woStatus));
         return SUCCESS;
     }
 
@@ -226,92 +226,92 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.parameter = parameter;
     }
 
-    public ReportManager getDetailOfMiscWo() {
+    public ReportService getDetailOfMiscWo() {
         return detailOfMiscWo;
     }
 
-    public void setDetailOfMiscWo(ReportManager detailOfMiscWo) {
+    public void setDetailOfMiscWo(ReportService detailOfMiscWo) {
         this.detailOfMiscWo = detailOfMiscWo;
     }
 
-    public ReportManager getEstimateOfProject() {
+    public ReportService getEstimateOfProject() {
         return estimateOfProject;
     }
 
-    public void setEstimateOfProject(ReportManager estimateOfProject) {
+    public void setEstimateOfProject(ReportService estimateOfProject) {
         this.estimateOfProject = estimateOfProject;
     }
 
-    public ReportManager getRptProjectCostManager() {
-        return rptProjectCostManager;
+    public ReportService getRptProjectCostService() {
+        return rptProjectCostService;
     }
 
-    public void setRptProjectCostManager(ReportManager rptProjectCostManager) {
-        this.rptProjectCostManager = rptProjectCostManager;
+    public void setRptProjectCostService(ReportService rptProjectCostService) {
+        this.rptProjectCostService = rptProjectCostService;
     }
 
-    public ReportManager getRptMajorDevCstManager() {
-        return rptMajorDevCstManager;
+    public ReportService getRptMajorDevCstService() {
+        return rptMajorDevCstService;
     }
 
-    public void setRptMajorDevCstManager(ReportManager rptMajorDevCstManager) {
-        this.rptMajorDevCstManager = rptMajorDevCstManager;
+    public void setRptMajorDevCstService(ReportService rptMajorDevCstService) {
+        this.rptMajorDevCstService = rptMajorDevCstService;
     }
 
-    public ReportManager getRptMajorMatCstManager() {
-        return rptMajorMatCstManager;
+    public ReportService getRptMajorMatCstService() {
+        return rptMajorMatCstService;
     }
 
-    public void setRptMajorMatCstManager(ReportManager rptMajorMatCstManager) {
-        this.rptMajorMatCstManager = rptMajorMatCstManager;
+    public void setRptMajorMatCstService(ReportService rptMajorMatCstService) {
+        this.rptMajorMatCstService = rptMajorMatCstService;
     }
 
-    public ReportManager getRptMajorMatQtyManager() {
-        return rptMajorMatQtyManager;
+    public ReportService getRptMajorMatQtyService() {
+        return rptMajorMatQtyService;
     }
 
-    public void setRptMajorMatQtyManager(ReportManager rptMajorMatQtyManager) {
-        this.rptMajorMatQtyManager = rptMajorMatQtyManager;
+    public void setRptMajorMatQtyService(ReportService rptMajorMatQtyService) {
+        this.rptMajorMatQtyService = rptMajorMatQtyService;
     }
 
-    public ReportManager getRptAdditionalBillManager() {
-        return rptAdditionalBillManager;
+    public ReportService getRptAdditionalBillService() {
+        return rptAdditionalBillService;
     }
 
-    public void setRptAdditionalBillManager(ReportManager rptAdditionalBillManager) {
-        this.rptAdditionalBillManager = rptAdditionalBillManager;
+    public void setRptAdditionalBillService(ReportService rptAdditionalBillService) {
+        this.rptAdditionalBillService = rptAdditionalBillService;
     }
 
-    public ReportManager getRptProjectCstCtrlManager() {
-        return rptProjectCstCtrlManager;
+    public ReportService getRptProjectCstCtrlService() {
+        return rptProjectCstCtrlService;
     }
 
-    public void setRptProjectCstCtrlManager(ReportManager rptProjectCstCtrlManager) {
-        this.rptProjectCstCtrlManager = rptProjectCstCtrlManager;
+    public void setRptProjectCstCtrlService(ReportService rptProjectCstCtrlService) {
+        this.rptProjectCstCtrlService = rptProjectCstCtrlService;
     }
 
-    public ReportManager getRptProjectInProcessInfoManager() {
-        return rptProjectInProcessInfoManager;
+    public ReportService getRptProjectInProcessInfoService() {
+        return rptProjectInProcessInfoService;
     }
 
-    public void setRptProjectInProcessInfoManager(ReportManager rptProjectInProcessInfoManager) {
-        this.rptProjectInProcessInfoManager = rptProjectInProcessInfoManager;
+    public void setRptProjectInProcessInfoService(ReportService rptProjectInProcessInfoService) {
+        this.rptProjectInProcessInfoService = rptProjectInProcessInfoService;
     }
 
-    public ReportManager getRptDeptCstCtrlManager() {
-        return rptDeptCstCtrlManager;
+    public ReportService getRptDeptCstCtrlService() {
+        return rptDeptCstCtrlService;
     }
 
-    public void setRptDeptCstCtrlManager(ReportManager rptDeptCstCtrlManager) {
-        this.rptDeptCstCtrlManager = rptDeptCstCtrlManager;
+    public void setRptDeptCstCtrlService(ReportService rptDeptCstCtrlService) {
+        this.rptDeptCstCtrlService = rptDeptCstCtrlService;
     }
 
-    public IflatManager getRptMmMatQuatoManager() {
-        return rptMmMatQuatoManager;
+    public IflatService getRptMmMatQuatoService() {
+        return rptMmMatQuatoService;
     }
 
-    public void setRptMmMatQuatoManager(IflatManager rptMmMatQuatoManager) {
-        this.rptMmMatQuatoManager = rptMmMatQuatoManager;
+    public void setRptMmMatQuatoService(IflatService rptMmMatQuatoService) {
+        this.rptMmMatQuatoService = rptMmMatQuatoService;
     }
 
     public MatQuato getMatQuato() {
@@ -322,12 +322,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.matQuato = matQuato;
     }
 
-    public IflatManager getRptProjectManager() {
-        return rptProjectManager;
+    public IflatService getRptProjectService() {
+        return rptProjectService;
     }
 
-    public void setRptProjectManager(IflatManager rptProjectManager) {
-        this.rptProjectManager = rptProjectManager;
+    public void setRptProjectService(IflatService rptProjectService) {
+        this.rptProjectService = rptProjectService;
     }
 
     public Project getRptProject() {
@@ -338,12 +338,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.rptProject = rptProject;
     }
 
-    public IflatManager getRptSbProjectCostManager() {
-        return rptSbProjectCostManager;
+    public IflatService getRptSbProjectCostService() {
+        return rptSbProjectCostService;
     }
 
-    public void setRptSbProjectCostManager(IflatManager rptSbProjectCostManager) {
-        this.rptSbProjectCostManager = rptSbProjectCostManager;
+    public void setRptSbProjectCostService(IflatService rptSbProjectCostService) {
+        this.rptSbProjectCostService = rptSbProjectCostService;
     }
 
     public SbProjectCost getSbProjectCost() {
@@ -354,12 +354,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.sbProjectCost = sbProjectCost;
     }
 
-    public IflatManager getRptSbProjectCostNodeManager() {
-        return rptSbProjectCostNodeManager;
+    public IflatService getRptSbProjectCostNodeService() {
+        return rptSbProjectCostNodeService;
     }
 
-    public void setRptSbProjectCostNodeManager(IflatManager rptSbProjectCostNodeManager) {
-        this.rptSbProjectCostNodeManager = rptSbProjectCostNodeManager;
+    public void setRptSbProjectCostNodeService(IflatService rptSbProjectCostNodeService) {
+        this.rptSbProjectCostNodeService = rptSbProjectCostNodeService;
     }
 
     public SbProjectCostNode getSbProjectCostNode() {
@@ -370,12 +370,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.sbProjectCostNode = sbProjectCostNode;
     }
 
-    public IflatManager getRptSbProjectCostCmpsManager() {
-        return rptSbProjectCostCmpsManager;
+    public IflatService getRptSbProjectCostCmpsService() {
+        return rptSbProjectCostCmpsService;
     }
 
-    public void setRptSbProjectCostCmpsManager(IflatManager rptSbProjectCostCmpsManager) {
-        this.rptSbProjectCostCmpsManager = rptSbProjectCostCmpsManager;
+    public void setRptSbProjectCostCmpsService(IflatService rptSbProjectCostCmpsService) {
+        this.rptSbProjectCostCmpsService = rptSbProjectCostCmpsService;
     }
 
     public SbProjectCostCmps getSbProjectCostCmps() {
@@ -386,12 +386,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.sbProjectCostCmps = sbProjectCostCmps;
     }
 
-    public IflatManager getRptWipManhourWoStatusManager() {
-        return rptWipManhourWoStatusManager;
+    public IflatService getRptWipManhourWoStatusService() {
+        return rptWipManhourWoStatusService;
     }
 
-    public void setRptWipManhourWoStatusManager(IflatManager rptWipManhourWoStatusManager) {
-        this.rptWipManhourWoStatusManager = rptWipManhourWoStatusManager;
+    public void setRptWipManhourWoStatusService(IflatService rptWipManhourWoStatusService) {
+        this.rptWipManhourWoStatusService = rptWipManhourWoStatusService;
     }
 
     public WoStatus getWoStatus() {
@@ -402,12 +402,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.woStatus = woStatus;
     }
 
-    public IflatManager getRptNmProjectCostManager() {
-        return rptNmProjectCostManager;
+    public IflatService getRptNmProjectCostService() {
+        return rptNmProjectCostService;
     }
 
-    public void setRptNmProjectCostManager(IflatManager rptNmProjectCostManager) {
-        this.rptNmProjectCostManager = rptNmProjectCostManager;
+    public void setRptNmProjectCostService(IflatService rptNmProjectCostService) {
+        this.rptNmProjectCostService = rptNmProjectCostService;
     }
 
     public NmProjectCost getNmProjectCost() {
@@ -418,12 +418,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.nmProjectCost = nmProjectCost;
     }
 
-    public IflatManager getRptNmProjectCostCmpsManager() {
-        return rptNmProjectCostCmpsManager;
+    public IflatService getRptNmProjectCostCmpsService() {
+        return rptNmProjectCostCmpsService;
     }
 
-    public void setRptNmProjectCostCmpsManager(IflatManager rptNmProjectCostCmpsManager) {
-        this.rptNmProjectCostCmpsManager = rptNmProjectCostCmpsManager;
+    public void setRptNmProjectCostCmpsService(IflatService rptNmProjectCostCmpsService) {
+        this.rptNmProjectCostCmpsService = rptNmProjectCostCmpsService;
     }
 
     public NmProjectCostCmps getNmProjectCostCmps() {
@@ -434,12 +434,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.nmProjectCostCmps = nmProjectCostCmps;
     }
 
-    public IflatManager getRptNmProjectCostNodeManager() {
-        return rptNmProjectCostNodeManager;
+    public IflatService getRptNmProjectCostNodeService() {
+        return rptNmProjectCostNodeService;
     }
 
-    public void setRptNmProjectCostNodeManager(IflatManager rptNmProjectCostNodeManager) {
-        this.rptNmProjectCostNodeManager = rptNmProjectCostNodeManager;
+    public void setRptNmProjectCostNodeService(IflatService rptNmProjectCostNodeService) {
+        this.rptNmProjectCostNodeService = rptNmProjectCostNodeService;
     }
 
     public NmProjectCostNode getNmProjectCostNode() {
@@ -450,12 +450,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.nmProjectCostNode = nmProjectCostNode;
     }
 
-    public IflatManager getRptSrProjectCostManager() {
-        return rptSrProjectCostManager;
+    public IflatService getRptSrProjectCostService() {
+        return rptSrProjectCostService;
     }
 
-    public void setRptSrProjectCostManager(IflatManager rptSrProjectCostManager) {
-        this.rptSrProjectCostManager = rptSrProjectCostManager;
+    public void setRptSrProjectCostService(IflatService rptSrProjectCostService) {
+        this.rptSrProjectCostService = rptSrProjectCostService;
     }
 
     public SrProjectCost getSrProjectCost() {
@@ -466,12 +466,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.srProjectCost = srProjectCost;
     }
 
-    public IflatManager getRptSrProjectCostCmpsManager() {
-        return rptSrProjectCostCmpsManager;
+    public IflatService getRptSrProjectCostCmpsService() {
+        return rptSrProjectCostCmpsService;
     }
 
-    public void setRptSrProjectCostCmpsManager(IflatManager rptSrProjectCostCmpsManager) {
-        this.rptSrProjectCostCmpsManager = rptSrProjectCostCmpsManager;
+    public void setRptSrProjectCostCmpsService(IflatService rptSrProjectCostCmpsService) {
+        this.rptSrProjectCostCmpsService = rptSrProjectCostCmpsService;
     }
 
     public SrProjectCostCmps getSrProjectCostCmps() {
@@ -482,12 +482,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.srProjectCostCmps = srProjectCostCmps;
     }
 
-    public IflatManager getRptSrProjectCostNodeManager() {
-        return rptSrProjectCostNodeManager;
+    public IflatService getRptSrProjectCostNodeService() {
+        return rptSrProjectCostNodeService;
     }
 
-    public void setRptSrProjectCostNodeManager(IflatManager rptSrProjectCostNodeManager) {
-        this.rptSrProjectCostNodeManager = rptSrProjectCostNodeManager;
+    public void setRptSrProjectCostNodeService(IflatService rptSrProjectCostNodeService) {
+        this.rptSrProjectCostNodeService = rptSrProjectCostNodeService;
     }
 
     public SrProjectCostNode getSrProjectCostNode() {
@@ -498,12 +498,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.srProjectCostNode = srProjectCostNode;
     }
 
-    public IflatManager getRptMmPaintMRPManager() {
-        return rptMmPaintMRPManager;
+    public IflatService getRptMmPaintMRPService() {
+        return rptMmPaintMRPService;
     }
 
-    public void setRptMmPaintMRPManager(IflatManager rptMmPaintMRPManager) {
-        this.rptMmPaintMRPManager = rptMmPaintMRPManager;
+    public void setRptMmPaintMRPService(IflatService rptMmPaintMRPService) {
+        this.rptMmPaintMRPService = rptMmPaintMRPService;
     }
 
     public PaintMRP getPaintMRP() {
@@ -514,12 +514,12 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.paintMRP = paintMRP;
     }
 
-    public IflatManager getRptCostItemManager() {
-        return rptCostItemManager;
+    public IflatService getRptCostItemService() {
+        return rptCostItemService;
     }
 
-    public void setRptCostItemManager(IflatManager rptCostItemManager) {
-        this.rptCostItemManager = rptCostItemManager;
+    public void setRptCostItemService(IflatService rptCostItemService) {
+        this.rptCostItemService = rptCostItemService;
     }
 
     public List getCostItemList() {
