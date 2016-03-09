@@ -12,7 +12,7 @@
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location">
-            <value>/WEB-INF/classes/database.properties</value>
+            <value>classpath:database.properties</value>
         </property>
     </bean>
 
@@ -31,8 +31,8 @@
     <!-- 配置mybatis SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="prototype">
         <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="/WEB-INF/classes/mybatis/mybatis.xml" />
-        <property name="mapperLocations" value="/WEB-INF/classes/mapper/**/*Mapper.xml" />
+        <property name="configLocation" value="classpath:mybatis/mybatis.xml" />
+        <property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml" />
         <property name="plugins">
             <array>
                 <bean class="com.iflat.system.interceptor.DataAuthorityInterceptor">
@@ -74,8 +74,8 @@
     <!-- 配置mybatis拦截器的SqlSessionFactoryBean -->
     <bean id="sqlSessionFactoryInterceptor" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="/WEB-INF/classes/mybatis/mybatis.xml" />
-        <property name="mapperLocations" value="/WEB-INF/classes/mapper/**/*Mapper.xml" />
+        <property name="configLocation" value="classpath:mybatis/mybatis.xml" />
+        <property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml" />
     </bean>
 
     <!-- 配置SqlSessionTemplate
@@ -94,10 +94,10 @@
     <!--  配置事务传播特性 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="get*" read-only="true"/>
-            <tx:method name="list*" read-only="true"/>
-            <tx:method name="load*" read-only="true"/>
-            <tx:method name="*" propagation="REQUIRED"/>
+            <tx:method name="save*" read-only="false"/>
+            <tx:method name="update*" read-only="false"/>
+            <tx:method name="delete*" read-only="false"/>
+            <tx:method name="*" propagation="REQUIRED" read-only="true"/>
         </tx:attributes>
     </tx:advice>
 
@@ -106,4 +106,39 @@
         <aop:pointcut id="allServiceMethod" expression="execution(* com.iflat.*.*(..))"/>
         <aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
     </aop:config>
+
+    <!-- Activiti -->
+    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource" />
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="databaseSchemaUpdate" value="true" />
+        <property name="jobExecutorActivate" value="true" />
+        <property name="enableDatabaseEventLogging" value="true" />
+        <property name="customSessionFactories">
+            <list>
+                <bean class="com.iflat.workflow.service.GroupServiceFactory">
+                    <property name="groupEntityManager">
+                        <bean class="com.iflat.workflow.service.GroupService"/>
+                    </property>
+                </bean>
+                <bean class="com.iflat.workflow.service.UserServiceFactory">
+                    <property name="userEntityManager">
+                        <bean class="com.iflat.workflow.service.UserService"/>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+    </bean>
+
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService" />
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />
+    <bean id="formService" factory-bean="processEngine" factory-method="getFormService" />
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService" />
+    <bean id="identityService" factory-bean="processEngine" factory-method="getIdentityService" />
 </beans>

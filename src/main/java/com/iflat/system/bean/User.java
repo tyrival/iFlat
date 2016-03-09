@@ -35,14 +35,6 @@ public class User {
         this.orgId = orgId;
     }
 
-    public String getName() {
-        return userName;
-    }
-
-    public void setName(String userName) {
-        this.userName = userName;
-    }
-
     public String getAccount() {
         return account;
     }

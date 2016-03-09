@@ -145,6 +145,13 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
+    public List<UserRoleVo> listVoByAccount(String account) throws Exception {
+        UserInfoVo userInfoVo = new UserInfoVo();
+        userInfoVo.setAccount(account);
+        return this.userRoleDao.listVoByUser(userInfoVo);
+    }
+
+    @Override
     public List<UserRoleNode> listNode() throws Exception {
 
         List<UserRoleVo> list = this.userRoleDao.listVo();

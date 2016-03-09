@@ -28,5 +28,7 @@ public interface UserRoleService {
 
     public List<UserRoleVo> listVoByAccount() throws Exception;
 
+    public List<UserRoleVo> listVoByAccount(String account) throws Exception;
+
     public List<UserRoleNode> listNode() throws Exception;
 }
