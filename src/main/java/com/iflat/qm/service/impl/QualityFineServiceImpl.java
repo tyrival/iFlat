@@ -1,7 +1,7 @@
 package com.iflat.qm.service.impl;
 
 import com.iflat.qm.bean.QualityFine;
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 import com.iflat.util.Session;
 import org.springframework.oxm.ValidationFailureException;
 
@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2016/1/7.
  */
-public class QualityFineServiceImpl extends IflatServiceSupport {
+public class QualityFineServiceImpl extends BaseServiceSupport {
 
     @Override
     public void beforeInsert() throws Exception {

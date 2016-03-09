@@ -1,8 +1,8 @@
 package com.iflat.system.interceptor;
 
-import com.iflat.system.action.ResultAware;
+import com.iflat.base.action.ResultAware;
+import com.iflat.base.entity.Result;
 import com.iflat.system.entity.AuthOperatingVo;
-import com.iflat.system.entity.Result;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.Application;
 import com.iflat.util.Session;
@@ -155,7 +155,7 @@ public class AuthorityInterceptor implements Interceptor {
 
     private boolean isNavigation() throws Exception {
         //生成功能树的action不拦截
-        if ("com.iflat.system.action.impl.SystemAction".equals(this.className)
+        if ("com.iflat.system.action.SystemAction".equals(this.className)
                 && "getNavigationTree".equals(this.method)) {
             return true;
         }

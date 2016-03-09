@@ -1,11 +1,11 @@
 package com.iflat.report.service.impl.cst.sr;
 
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 
 /**
  * Created by tyriv on 2015/12/23.
  */
-public class SrProjectCostNodeServiceImpl extends IflatServiceSupport {
+public class SrProjectCostNodeServiceImpl extends BaseServiceSupport {
 
     @Override
     public void setImportExcelReader() throws Exception {

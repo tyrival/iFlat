@@ -3,7 +3,7 @@ package com.iflat.report.service.impl.bi;
 import com.iflat.bi.bean.MajorMatCst;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
-import com.iflat.system.service.IflatService;
+import com.iflat.base.service.BaseService;
 import com.iflat.util.ReportHelper;
 
 import java.util.List;
@@ -13,13 +13,13 @@ import java.util.List;
  */
 public class MajorMatCstServiceImpl implements ReportService {
 
-    private IflatService iflatService;
+    private BaseService baseService;
 
     @Override
     public List query(Parameter parameter) throws Exception {
         MajorMatCst majorMatCst = new MajorMatCst();
         majorMatCst.setProjNo(parameter.getProjectNo());
-        return ReportHelper.convertBalance(this.iflatService.list(majorMatCst));
+        return ReportHelper.convertBalance(this.baseService.list(majorMatCst));
     }
 
     @Override
@@ -67,11 +67,11 @@ public class MajorMatCstServiceImpl implements ReportService {
         return null;
     }
 
-    public IflatService getIflatService() {
-        return iflatService;
+    public BaseService getBaseService() {
+        return baseService;
     }
 
-    public void setIflatService(IflatService iflatService) {
-        this.iflatService = iflatService;
+    public void setBaseService(BaseService baseService) {
+        this.baseService = baseService;
     }
 }

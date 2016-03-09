@@ -1,11 +1,11 @@
-package com.iflat.system.service.impl;
+package com.iflat.base.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.iflat.system.dao.impl.IflatDaoSupport;
-import com.iflat.system.entity.ExcelReader;
-import com.iflat.system.entity.Page;
-import com.iflat.system.service.IflatService;
+import com.iflat.base.dao.impl.BaseDaoSupport;
+import com.iflat.base.entity.ExcelReader;
+import com.iflat.base.entity.Page;
+import com.iflat.base.service.BaseService;
 import com.iflat.util.ExcelHelper;
 import com.iflat.util.FileHelper;
 import com.iflat.util.GSReflectHelper;
@@ -24,20 +24,20 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2015/11/27.
  */
-public abstract class IflatServiceSupport implements IflatService {
+public abstract class BaseServiceSupport implements BaseService {
 
-    private ExcelReader excelReader;
-    private List importList;
-    private Object saveObj;
-    private Object deleteObj;
-    private Object listParam;
-    private List insertBatchList;
-    private List updateBatchList;
-    private List deleteBatchList;
-    private List list;
-    private List listBatchList;
-    private Page page;
-    private boolean isPaging;
+    protected ExcelReader excelReader;
+    protected List importList;
+    protected Object saveObj;
+    protected Object deleteObj;
+    protected Object listParam;
+    protected List insertBatchList;
+    protected List updateBatchList;
+    protected List deleteBatchList;
+    protected List list;
+    protected List listBatchList;
+    protected Page page;
+    protected boolean isPaging;
 
     protected void beforeGenerate() throws Exception { };
     protected void afterGenerate() throws Exception { };
@@ -69,7 +69,7 @@ public abstract class IflatServiceSupport implements IflatService {
     protected abstract void importValidate() throws Exception;
 
 
-    public IflatServiceSupport() {
+    public BaseServiceSupport() {
         this.excelReader = new ExcelReader();
         this.isPaging = false;
     }
@@ -250,7 +250,7 @@ public abstract class IflatServiceSupport implements IflatService {
         //由子类设置excelReader的属性
         this.setImportExcelReader();
         if(this.excelReader.getClassName() == null || this.excelReader.getProps() == null){
-            throw new ClassNotFoundException("IflatServiceSupport错误：未找到文件内容对应的类，或未定义列与属性的对应关系");
+            throw new ClassNotFoundException("BaseServiceSupport错误：未找到文件内容对应的类，或未定义列与属性的对应关系");
         }
 
         //读取excel
@@ -262,7 +262,7 @@ public abstract class IflatServiceSupport implements IflatService {
         try{
             this.importValidate();
         } catch (Exception e) {
-            throw new ValidationFailureException("IflatServiceSupport未通过数据校验：" + e.getMessage());
+            throw new ValidationFailureException("BaseServiceSupport未通过数据校验：" + e.getMessage());
         }
 
         //批量插入数据
@@ -306,16 +306,16 @@ public abstract class IflatServiceSupport implements IflatService {
 
             //如果找不到方法，则抛出异常
             if(m == null) {
-                throw new Exception("IflatServiceSupport错误：未能找到JavaBean < " + name + " > 对应的 < " + dao + "> 类的 [ " + methodName + " ] 方法，请联系管理员。");
+                throw new Exception("BaseServiceSupport错误：未能找到JavaBean < " + name + " > 对应的 < " + dao + "> 类的 [ " + methodName + " ] 方法，请联系管理员。");
             }
 
             /* 实例化dao层对象，并执行method */
             Object ins = cls.newInstance();
 
             //对此对象的SqlSessionTemplate属性进行赋值
-            if("class com.iflat.system.dao.impl.IflatDaoSupport".equals(cls.getSuperclass().toString())) {
+            if("class com.iflat.base.dao.impl.BaseDaoSupport".equals(cls.getSuperclass().toString())) {
 
-                IflatDaoSupport i = (IflatDaoSupport) ins;
+                BaseDaoSupport i = (BaseDaoSupport) ins;
                 ApplicationContext ac = WebApplicationContextUtils
                         .getRequiredWebApplicationContext(ServletActionContext
                                 .getServletContext());
@@ -332,7 +332,7 @@ public abstract class IflatServiceSupport implements IflatService {
             result = m.invoke(ins, o);
 
         } catch (ClassNotFoundException e) {
-            throw new Exception("IflatServiceSupport错误：未能成功找到JavaBean < "
+            throw new Exception("BaseServiceSupport错误：未能成功找到JavaBean < "
                     + name + " > 对应的 < " + dao + "> 类，请联系管理员。");
 
         } catch (Exception e) {
@@ -344,7 +344,7 @@ public abstract class IflatServiceSupport implements IflatService {
                     || e instanceof IllegalAccessException
                     || e instanceof IllegalAccessException
                     || e instanceof IllegalArgumentException) {
-                throw new Exception("IflatServiceSupport错误：未能成功执行JavaBean < "
+                throw new Exception("BaseServiceSupport错误：未能成功执行JavaBean < "
                         + name + " > 对应的 < " + dao + "> 类的 [ "
                         + methodName + " ] 方法，请联系管理员。错误信息："
                         + e.getMessage());

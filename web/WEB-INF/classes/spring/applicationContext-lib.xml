@@ -5,7 +5,6 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="libAction" class="com.iflat.lib.action.LibAction" scope="prototype">
-        <property name="result" ref="result"/>
         <property name="bookService" ref="bookService"/>
         <property name="book" ref="book"/>
         <property name="recordService" ref="recordService"/>

@@ -1,7 +1,7 @@
 package com.iflat.lib.service.impl;
 
 import com.iflat.lib.bean.Record;
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 import com.iflat.util.Session;
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2016/1/6.
  */
-public class RecordServiceImpl extends IflatServiceSupport {
+public class RecordServiceImpl extends BaseServiceSupport {
 
     @Override
     public void beforeInsertBatch() throws Exception {

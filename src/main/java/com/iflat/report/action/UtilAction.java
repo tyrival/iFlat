@@ -1,18 +1,14 @@
 package com.iflat.report.action;
 
+import com.iflat.base.action.impl.BaseAction;
 import com.iflat.report.service.impl.util.GraphService;
 import com.iflat.report.service.impl.util.PaintService;
-import com.iflat.system.action.ResultAware;
-import com.iflat.system.entity.Result;
 import com.iflat.util.Session;
-import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * Created by tyriv on 2015/11/23.
  */
-public class UtilAction extends ActionSupport implements ResultAware {
-
-    private Result result;
+public class UtilAction extends BaseAction {
 
     private GraphService graphService;
     private PaintService paintService;
@@ -24,17 +20,6 @@ public class UtilAction extends ActionSupport implements ResultAware {
         } else {
             return SUCCESS;
         }
-    }
-
-
-
-    public Result getResult() {
-        return result;
-    }
-
-    @Override
-    public void setResult(Result result) {
-        this.result = result;
     }
 
     public GraphService getGraphService() {

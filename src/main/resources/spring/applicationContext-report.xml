@@ -5,7 +5,6 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="reportAction" class="com.iflat.report.action.ReportAction" scope="prototype">
-        <property name="result" ref="result"/>
         <property name="parameter" ref="parameter"/>
         <!-- bi -->
         <property name="rptProjectCostService" ref="rptProjectCostService"/>
@@ -66,28 +65,28 @@
     <bean id="rptProject" class="com.iflat.report.bean.bi.Project" scope="prototype"/>
 
     <bean id="rptDeptCstCtrlService" class="com.iflat.report.service.impl.bi.DeptCstCtrlServiceImpl">
-        <property name="iflatService" ref="deptCstCtrlService"/>
+        <property name="baseService" ref="deptCstCtrlService"/>
     </bean>
     <bean id="rptProjectInProcessInfoService" class="com.iflat.report.service.impl.bi.ProjectInProcessInfoServiceImpl">
-        <property name="iflatService" ref="projectInProcessInfoService"/>
+        <property name="baseService" ref="projectInProcessInfoService"/>
     </bean>
     <bean id="rptProjectCstCtrlService" class="com.iflat.report.service.impl.bi.ProjectCstCtrlServiceImpl">
-        <property name="iflatService" ref="projectCstCtrlService"/>
+        <property name="baseService" ref="projectCstCtrlService"/>
     </bean>
     <bean id="rptAdditionalBillService" class="com.iflat.report.service.impl.bi.AdditionalBillServiceImpl">
-        <property name="iflatService" ref="additionalBillService"/>
+        <property name="baseService" ref="additionalBillService"/>
     </bean>
     <bean id="rptProjectCostService" class="com.iflat.report.service.impl.bi.ProjectCostServiceImpl">
-        <property name="iflatService" ref="projectCostService"/>
+        <property name="baseService" ref="projectCostService"/>
     </bean>
     <bean id="rptMajorDevCstService" class="com.iflat.report.service.impl.bi.MajorDevCstServiceImpl">
-        <property name="iflatService" ref="majorDevCstService"/>
+        <property name="baseService" ref="majorDevCstService"/>
     </bean>
     <bean id="rptMajorMatCstService" class="com.iflat.report.service.impl.bi.MajorMatCstServiceImpl">
-        <property name="iflatService" ref="majorMatCstService"/>
+        <property name="baseService" ref="majorMatCstService"/>
     </bean>
     <bean id="rptMajorMatQtyService" class="com.iflat.report.service.impl.bi.MajorMatQtyServiceImpl">
-        <property name="iflatService" ref="majorMatQtyService"/>
+        <property name="baseService" ref="majorMatQtyService"/>
     </bean>
     <!-- cst.sb -->
     <bean id="rptSbProjectCostNodeService" class="com.iflat.report.service.impl.cst.sb.SbProjectCostNodeServiceImpl">
@@ -97,7 +96,7 @@
     <bean id="sbProjectCostNode" class="com.iflat.report.bean.cst.sb.SbProjectCostNode" scope="prototype"/>
 
     <bean id="rptSbProjectCostCmpsService" class="com.iflat.report.service.impl.cst.sb.SbProjectCostCmpsServiceImpl">
-        <property name="iflatDao" ref="sbProjectCostCmpsDao"/>
+        <property name="baseDao" ref="sbProjectCostCmpsDao"/>
     </bean>
     <bean id="sbProjectCostCmpsDao" class="com.iflat.report.dao.impl.cst.sb.SbProjectCostCmpsDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
@@ -132,7 +131,7 @@
     <bean id="srProjectCostNode" class="com.iflat.report.bean.cst.sr.SrProjectCostNode" scope="prototype"/>
 
     <bean id="rptSrProjectCostCmpsService" class="com.iflat.report.service.impl.cst.sr.SrProjectCostCmpsServiceImpl">
-        <property name="iflatDao" ref="srProjectCostCmpsDao"/>
+        <property name="baseDao" ref="srProjectCostCmpsDao"/>
     </bean>
     <bean id="srProjectCostCmpsDao" class="com.iflat.report.dao.impl.cst.sr.SrProjectCostCmpsDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
@@ -153,7 +152,7 @@
     <bean id="nmProjectCostNode" class="com.iflat.report.bean.cst.nm.NmProjectCostNode" scope="prototype"/>
 
     <bean id="rptNmProjectCostCmpsService" class="com.iflat.report.service.impl.cst.nm.NmProjectCostCmpsServiceImpl">
-        <property name="iflatDao" ref="nmProjectCostCmpsDao"/>
+        <property name="baseDao" ref="nmProjectCostCmpsDao"/>
     </bean>
     <bean id="nmProjectCostCmpsDao" class="com.iflat.report.dao.impl.cst.nm.NmProjectCostCmpsDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>

@@ -1,23 +1,22 @@
-package com.iflat.system.action.impl;
+package com.iflat.system.action;
 
-import com.iflat.system.action.ResultAware;
+import com.iflat.base.action.impl.BaseAction;
 import com.iflat.system.bean.*;
-import com.iflat.system.entity.*;
+import com.iflat.system.entity.AuthDuplicateVo;
+import com.iflat.system.entity.AuthOperatingVo;
+import com.iflat.system.entity.PasswordChange;
 import com.iflat.system.service.*;
 import com.iflat.util.FileHelper;
 import com.iflat.util.Session;
-import com.opensymphony.xwork2.ActionSupport;
 
 import java.io.File;
 
 /**
  * Created by tyriv on 2015/9/6.
  */
-public class SystemAction extends ActionSupport implements ResultAware {
+public class SystemAction extends BaseAction {
 
     private final static String TREE = "tree";
-    //结果集
-    private Result result;
     //模块管理
     private Module module;
     private ModuleService moduleService;
@@ -459,14 +458,6 @@ public class SystemAction extends ActionSupport implements ResultAware {
     public String saveMemo() throws Exception {
         this.result.setObject(this.memoService.save(this.memo));
         return SUCCESS;
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
     }
 
     public ModuleService getModuleService() {

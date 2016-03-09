@@ -1,23 +1,19 @@
 package com.iflat.qm.action;
 
+import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.entity.Page;
+import com.iflat.base.service.BaseService;
 import com.iflat.qm.bean.QualityFine;
 import com.iflat.qm.entity.QualityFineVo;
-import com.iflat.system.action.ResultAware;
-import com.iflat.system.entity.Page;
-import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatService;
 import com.iflat.util.FileHelper;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import java.io.File;
 
-public class QmAction extends ActionSupport implements ResultAware, ModelDriven<Page> {
+public class QmAction extends BaseAction implements ModelDriven<Page> {
 
-    private Result result;
-
-    private IflatService qualityFineService;
-    private IflatService qualityFineVoService;
+    private BaseService qualityFineService;
+    private BaseService qualityFineVoService;
 
     private QualityFine qualityFine;
     private QualityFineVo qualityFineVo;
@@ -76,19 +72,11 @@ public class QmAction extends ActionSupport implements ResultAware, ModelDriven<
         this.filePath = filePath;
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public IflatService getQualityFineService() {
+    public BaseService getQualityFineService() {
         return qualityFineService;
     }
 
-    public void setQualityFineService(IflatService qualityFineService) {
+    public void setQualityFineService(BaseService qualityFineService) {
         this.qualityFineService = qualityFineService;
     }
 
@@ -100,11 +88,11 @@ public class QmAction extends ActionSupport implements ResultAware, ModelDriven<
         this.qualityFine = qualityFine;
     }
 
-    public IflatService getQualityFineVoService() {
+    public BaseService getQualityFineVoService() {
         return qualityFineVoService;
     }
 
-    public void setQualityFineVoService(IflatService qualityFineVoService) {
+    public void setQualityFineVoService(BaseService qualityFineVoService) {
         this.qualityFineVoService = qualityFineVoService;
     }
 

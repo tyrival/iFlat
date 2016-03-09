@@ -1,11 +1,11 @@
 package com.iflat.report.service.impl.wip.manhour;
 
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 
 /**
  * Created by tyriv on 2015/12/21.
  */
-public class WoStatusServiceImpl extends IflatServiceSupport {
+public class WoStatusServiceImpl extends BaseServiceSupport {
 
     @Override
     public void setImportExcelReader() throws Exception {

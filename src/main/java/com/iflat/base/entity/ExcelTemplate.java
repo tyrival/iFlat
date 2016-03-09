@@ -1,4 +1,4 @@
-package com.iflat.system.entity;
+package com.iflat.base.entity;
 
 import java.io.File;
 

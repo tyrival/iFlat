@@ -1,21 +1,21 @@
 package com.iflat.report.service.impl.cst.nm;
 
 import com.iflat.report.bean.cst.nm.NmProjectCostCmps;
-import com.iflat.system.dao.IflatDao;
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.dao.BaseDao;
+import com.iflat.base.service.impl.BaseServiceSupport;
 
 import java.util.List;
 
 /**
  * Created by tyriv on 2015/12/23.
  */
-public class NmProjectCostCmpsServiceImpl extends IflatServiceSupport {
+public class NmProjectCostCmpsServiceImpl extends BaseServiceSupport {
 
-    public IflatDao iflatDao;
+    public BaseDao baseDao;
 
     @Override
     public List list(Object o) throws Exception {
-        List<NmProjectCostCmps> list = (List<NmProjectCostCmps>)this.iflatDao.list(o);
+        List<NmProjectCostCmps> list = (List<NmProjectCostCmps>)this.baseDao.list(o);
         Double target = 0.0;
         Double actual = 0.0;
         if(list != null) {
@@ -47,11 +47,11 @@ public class NmProjectCostCmpsServiceImpl extends IflatServiceSupport {
     public void importValidate() throws Exception {
     }
 
-    public IflatDao getIflatDao() {
-        return iflatDao;
+    public BaseDao getBaseDao() {
+        return baseDao;
     }
 
-    public void setIflatDao(IflatDao iflatDao) {
-        this.iflatDao = iflatDao;
+    public void setBaseDao(BaseDao baseDao) {
+        this.baseDao = baseDao;
     }
 }

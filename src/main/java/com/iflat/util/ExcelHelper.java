@@ -1,8 +1,8 @@
 package com.iflat.util;
 
-import com.iflat.system.entity.ExcelReader;
-import com.iflat.system.entity.ExcelTemplate;
-import com.iflat.system.entity.ExcelWriter;
+import com.iflat.base.entity.ExcelReader;
+import com.iflat.base.entity.ExcelTemplate;
+import com.iflat.base.entity.ExcelWriter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.reflection.ReflectionException;

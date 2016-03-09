@@ -1,7 +1,7 @@
 package com.iflat.bi.service.impl;
 
 import com.iflat.bi.bean.DeptCstCtrl;
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 
 import java.util.List;
 import java.util.UUID;
@@ -9,7 +9,7 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2015/11/29.
  */
-public class DeptCstCtrlServiceImpl extends IflatServiceSupport {
+public class DeptCstCtrlServiceImpl extends BaseServiceSupport {
 
     @Override
     public void setImportExcelReader() throws Exception {

@@ -1,26 +1,22 @@
 package com.iflat.code.action;
 
+import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.service.BaseService;
 import com.iflat.code.bean.Group;
 import com.iflat.code.bean.Team;
 import com.iflat.code.bean.Worker;
-import com.iflat.system.action.ResultAware;
-import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatService;
-import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * Created by tyriv on 2016/1/18.
  */
-public class CodeAction extends ActionSupport implements ResultAware {
-
-    private Result result;
+public class CodeAction extends BaseAction {
 
     private Team team;
-    private IflatService teamService;
+    private BaseService teamService;
     private Worker worker;
-    private IflatService workerService;
+    private BaseService workerService;
     private Group group;
-    private IflatService groupService;
+    private BaseService groupService;
 
     public String listWorker() throws Exception {
         this.result.setList(this.workerService.list(this.worker));
@@ -45,11 +41,11 @@ public class CodeAction extends ActionSupport implements ResultAware {
         this.group = group;
     }
 
-    public IflatService getGroupService() {
+    public BaseService getGroupService() {
         return groupService;
     }
 
-    public void setGroupService(IflatService groupService) {
+    public void setGroupService(BaseService groupService) {
         this.groupService = groupService;
     }
 
@@ -61,11 +57,11 @@ public class CodeAction extends ActionSupport implements ResultAware {
         this.team = team;
     }
 
-    public IflatService getTeamService() {
+    public BaseService getTeamService() {
         return teamService;
     }
 
-    public void setTeamService(IflatService teamService) {
+    public void setTeamService(BaseService teamService) {
         this.teamService = teamService;
     }
 
@@ -77,20 +73,11 @@ public class CodeAction extends ActionSupport implements ResultAware {
         this.worker = worker;
     }
 
-    public IflatService getWorkerService() {
+    public BaseService getWorkerService() {
         return workerService;
     }
 
-    public void setWorkerService(IflatService workerService) {
+    public void setWorkerService(BaseService workerService) {
         this.workerService = workerService;
-    }
-
-    @Override
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public Result getResult() {
-        return result;
     }
 }

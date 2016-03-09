@@ -5,7 +5,6 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="codeAction" class="com.iflat.code.action.CodeAction" scope="prototype">
-        <property name="result" ref="result"/>
         <property name="workerService" ref="workerService"/>
         <property name="worker" ref="worker"/>
         <property name="teamService" ref="teamService"/>

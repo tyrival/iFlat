@@ -1,4 +1,4 @@
-package com.iflat.system.entity;
+package com.iflat.base.entity;
 
 /**
  * Created by tyriv on 2015/11/18.

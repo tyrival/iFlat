@@ -1,11 +1,11 @@
 package com.iflat.report.service.impl.cst.nm;
 
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 
 /**
  * Created by tyriv on 2015/12/23.
  */
-public class NmProjectCostNodeServiceImpl extends IflatServiceSupport {
+public class NmProjectCostNodeServiceImpl extends BaseServiceSupport {
 
     @Override
     public void setImportExcelReader() throws Exception {

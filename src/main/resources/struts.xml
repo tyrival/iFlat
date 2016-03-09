@@ -70,7 +70,7 @@
 
     <package name="default" namespace="/" extends="global">
         <!-- 登陆 -->
-        <action name="main" class="com.iflat.system.action.impl.LoginAction" method="login">
+        <action name="main" class="com.iflat.system.action.LoginAction" method="login">
             <result name="success">/WEB-INF/views/main.jsp</result>
             <result name="input">index.jsp</result>
         </action>
@@ -96,7 +96,7 @@
         </action>
 
         <!-- system模块 -->
-        <action name="system_*" class="com.iflat.system.action.impl.SystemAction" method="{1}">
+        <action name="system_*" class="com.iflat.system.action.SystemAction" method="{1}">
             <result type="json" name="success">
                 <param name="root">result</param>
                 <param name="excludeNullProperties">true</param>
@@ -149,6 +149,14 @@
 
         <!-- report模块 -->
         <action name="rpt_*" class="com.iflat.report.action.ReportAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+
+        <!-- workflow模块 -->
+        <action name="workflow_*" class="com.iflat.workflow.action.WorkflowAction" method="{1}">
             <result type="json" name="success">
                 <param name="root">result</param>
                 <param name="excludeNullProperties">true</param>

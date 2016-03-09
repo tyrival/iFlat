@@ -1,9 +1,9 @@
 package com.iflat.lib.dao.impl;
 
-import com.iflat.system.dao.impl.IflatDaoSupport;
+import com.iflat.base.dao.impl.BaseDaoSupport;
 
 /**
  * Created by tyriv on 2016/1/6.
  */
-public class BookDaoImpl extends IflatDaoSupport {
+public class BookDaoImpl extends BaseDaoSupport {
 }

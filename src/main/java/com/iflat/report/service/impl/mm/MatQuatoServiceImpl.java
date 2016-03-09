@@ -1,11 +1,11 @@
 package com.iflat.report.service.impl.mm;
 
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 
 /**
  * Created by tyriv on 2015/12/14.
  */
-public class MatQuatoServiceImpl extends IflatServiceSupport {
+public class MatQuatoServiceImpl extends BaseServiceSupport {
 
     @Override
     public void setImportExcelReader() throws Exception {

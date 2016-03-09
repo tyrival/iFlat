@@ -5,7 +5,6 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="biAction" class="com.iflat.bi.action.BiAction" scope="prototype">
-        <property name="result" ref="result"/>
         <property name="additionalBillService" ref="additionalBillService"/>
         <property name="additionalBill" ref="additionalBill"/>
         <property name="contractService" ref="contractService"/>
@@ -62,13 +61,11 @@
     </bean>
 
     <bean id="majorDevCstService" class="com.iflat.bi.service.impl.MajorDevCstServiceImpl">
-        <property name="iflatService" ref="projectInfoService"/>
     </bean>
     <bean id="majorDevCstDao" class="com.iflat.bi.dao.impl.MajorDevCstDaoImpl">
     </bean>
 
     <bean id="majorMatCstService" class="com.iflat.bi.service.impl.MajorMatCstServiceImpl">
-        <property name="iflatService" ref="projectInfoService"/>
     </bean>
     <bean id="majorMatCstDao" class="com.iflat.bi.dao.impl.MajorMatCstDaoImpl">
     </bean>
@@ -84,7 +81,6 @@
     </bean>
 
     <bean id="projectCostService" class="com.iflat.bi.service.impl.ProjectCostServiceImpl">
-        <property name="iflatService" ref="projectInfoService"/>
     </bean>
     <bean id="projectCostDao" class="com.iflat.bi.dao.impl.ProjectCostDaoImpl">
     </bean>

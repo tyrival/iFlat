@@ -1,7 +1,7 @@
 package com.iflat.bi.service.impl;
 
+import com.iflat.base.service.impl.BaseServiceSupport;
 import com.iflat.bi.bean.AdditionalBill;
-import com.iflat.system.service.impl.IflatServiceSupport;
 import org.springframework.oxm.ValidationFailureException;
 
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2015/11/27.
  */
-public class AdditionalBillServiceImpl extends IflatServiceSupport {
+public class AdditionalBillServiceImpl extends BaseServiceSupport {
 
     @Override
     public void setImportExcelReader() throws Exception {

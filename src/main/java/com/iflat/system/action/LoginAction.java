@@ -1,4 +1,4 @@
-package com.iflat.system.action.impl;
+package com.iflat.system.action;
 
 import com.iflat.system.bean.User;
 import com.iflat.system.entity.UserInfoVo;
@@ -8,7 +8,7 @@ import com.iflat.util.Session;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * Created by tyriv on 2015/8/18.
+ * Created by tyriv on 2016/3/9.
  */
 public class LoginAction extends ActionSupport {
 

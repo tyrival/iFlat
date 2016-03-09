@@ -1,11 +1,11 @@
-package com.iflat.system.dao;
+package com.iflat.base.dao;
 
 import java.util.List;
 
 /**
  * Created by tyriv on 2015/11/27.
  */
-public interface IflatDao {
+public interface BaseDao {
 
     public int insert(Object o) throws Exception;
     public int insertBatch(List list) throws Exception;

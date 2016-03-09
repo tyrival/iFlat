@@ -53,7 +53,7 @@
     <context-param>
         <param-name>noAuthority</param-name>
         <param-value>
-            com.iflat.system.action.impl.LoginAction,
+            com.iflat.system.action.LoginAction,
             com.iflat.air.action.LoginAction,
         </param-value>
     </context-param>

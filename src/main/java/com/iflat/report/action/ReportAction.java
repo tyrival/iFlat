@@ -1,5 +1,7 @@
 package com.iflat.report.action;
 
+import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.service.BaseService;
 import com.iflat.report.bean.bi.Project;
 import com.iflat.report.bean.cst.nm.NmProjectCost;
 import com.iflat.report.bean.cst.nm.NmProjectCostCmps;
@@ -15,19 +17,14 @@ import com.iflat.report.bean.mm.PaintMRP;
 import com.iflat.report.bean.wip.manhour.WoStatus;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
-import com.iflat.system.action.ResultAware;
-import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatService;
-import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.List;
 
 /**
  * Created by tyriv on 2015/11/12.
  */
-public class ReportAction extends ActionSupport implements ResultAware {
+public class ReportAction extends BaseAction {
 
-    private Result result;
     private Parameter parameter;
     /* bi */
     private ReportService rptProjectCostService;
@@ -38,40 +35,40 @@ public class ReportAction extends ActionSupport implements ResultAware {
     private ReportService rptProjectCstCtrlService;
     private ReportService rptProjectInProcessInfoService;
     private ReportService rptDeptCstCtrlService;
-    private IflatService rptProjectService;
+    private BaseService rptProjectService;
     private Project rptProject;
-    private IflatService rptCostItemService;
+    private BaseService rptCostItemService;
     private List costItemList;
     /* cst.sb */
     private ReportService detailOfMiscWo;
     private ReportService estimateOfProject;
-    private IflatService rptSbProjectCostService;
+    private BaseService rptSbProjectCostService;
     private SbProjectCost sbProjectCost;
-    private IflatService rptSbProjectCostCmpsService;
+    private BaseService rptSbProjectCostCmpsService;
     private SbProjectCostCmps sbProjectCostCmps;
-    private IflatService rptSbProjectCostNodeService;
+    private BaseService rptSbProjectCostNodeService;
     private SbProjectCostNode sbProjectCostNode;
     /* cst.nm */
-    private IflatService rptNmProjectCostService;
+    private BaseService rptNmProjectCostService;
     private NmProjectCost nmProjectCost;
-    private IflatService rptNmProjectCostCmpsService;
+    private BaseService rptNmProjectCostCmpsService;
     private NmProjectCostCmps nmProjectCostCmps;
-    private IflatService rptNmProjectCostNodeService;
+    private BaseService rptNmProjectCostNodeService;
     private NmProjectCostNode nmProjectCostNode;
     /* cst.sr */
-    private IflatService rptSrProjectCostService;
+    private BaseService rptSrProjectCostService;
     private SrProjectCost srProjectCost;
-    private IflatService rptSrProjectCostCmpsService;
+    private BaseService rptSrProjectCostCmpsService;
     private SrProjectCostCmps srProjectCostCmps;
-    private IflatService rptSrProjectCostNodeService;
+    private BaseService rptSrProjectCostNodeService;
     private SrProjectCostNode srProjectCostNode;
     /* mm */
-    private IflatService rptMmMatQuatoService;
+    private BaseService rptMmMatQuatoService;
     private MatQuato matQuato;
-    private IflatService rptMmPaintMRPService;
+    private BaseService rptMmPaintMRPService;
     private PaintMRP paintMRP;
     /* wip */
-    private IflatService rptWipManhourWoStatusService;
+    private BaseService rptWipManhourWoStatusService;
     private WoStatus woStatus;
 
     /* bi */
@@ -209,15 +206,6 @@ public class ReportAction extends ActionSupport implements ResultAware {
         return SUCCESS;
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    @Override
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
     public Parameter getParameter() {
         return parameter;
     }
@@ -306,11 +294,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.rptDeptCstCtrlService = rptDeptCstCtrlService;
     }
 
-    public IflatService getRptMmMatQuatoService() {
+    public BaseService getRptMmMatQuatoService() {
         return rptMmMatQuatoService;
     }
 
-    public void setRptMmMatQuatoService(IflatService rptMmMatQuatoService) {
+    public void setRptMmMatQuatoService(BaseService rptMmMatQuatoService) {
         this.rptMmMatQuatoService = rptMmMatQuatoService;
     }
 
@@ -322,11 +310,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.matQuato = matQuato;
     }
 
-    public IflatService getRptProjectService() {
+    public BaseService getRptProjectService() {
         return rptProjectService;
     }
 
-    public void setRptProjectService(IflatService rptProjectService) {
+    public void setRptProjectService(BaseService rptProjectService) {
         this.rptProjectService = rptProjectService;
     }
 
@@ -338,11 +326,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.rptProject = rptProject;
     }
 
-    public IflatService getRptSbProjectCostService() {
+    public BaseService getRptSbProjectCostService() {
         return rptSbProjectCostService;
     }
 
-    public void setRptSbProjectCostService(IflatService rptSbProjectCostService) {
+    public void setRptSbProjectCostService(BaseService rptSbProjectCostService) {
         this.rptSbProjectCostService = rptSbProjectCostService;
     }
 
@@ -354,11 +342,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.sbProjectCost = sbProjectCost;
     }
 
-    public IflatService getRptSbProjectCostNodeService() {
+    public BaseService getRptSbProjectCostNodeService() {
         return rptSbProjectCostNodeService;
     }
 
-    public void setRptSbProjectCostNodeService(IflatService rptSbProjectCostNodeService) {
+    public void setRptSbProjectCostNodeService(BaseService rptSbProjectCostNodeService) {
         this.rptSbProjectCostNodeService = rptSbProjectCostNodeService;
     }
 
@@ -370,11 +358,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.sbProjectCostNode = sbProjectCostNode;
     }
 
-    public IflatService getRptSbProjectCostCmpsService() {
+    public BaseService getRptSbProjectCostCmpsService() {
         return rptSbProjectCostCmpsService;
     }
 
-    public void setRptSbProjectCostCmpsService(IflatService rptSbProjectCostCmpsService) {
+    public void setRptSbProjectCostCmpsService(BaseService rptSbProjectCostCmpsService) {
         this.rptSbProjectCostCmpsService = rptSbProjectCostCmpsService;
     }
 
@@ -386,11 +374,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.sbProjectCostCmps = sbProjectCostCmps;
     }
 
-    public IflatService getRptWipManhourWoStatusService() {
+    public BaseService getRptWipManhourWoStatusService() {
         return rptWipManhourWoStatusService;
     }
 
-    public void setRptWipManhourWoStatusService(IflatService rptWipManhourWoStatusService) {
+    public void setRptWipManhourWoStatusService(BaseService rptWipManhourWoStatusService) {
         this.rptWipManhourWoStatusService = rptWipManhourWoStatusService;
     }
 
@@ -402,11 +390,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.woStatus = woStatus;
     }
 
-    public IflatService getRptNmProjectCostService() {
+    public BaseService getRptNmProjectCostService() {
         return rptNmProjectCostService;
     }
 
-    public void setRptNmProjectCostService(IflatService rptNmProjectCostService) {
+    public void setRptNmProjectCostService(BaseService rptNmProjectCostService) {
         this.rptNmProjectCostService = rptNmProjectCostService;
     }
 
@@ -418,11 +406,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.nmProjectCost = nmProjectCost;
     }
 
-    public IflatService getRptNmProjectCostCmpsService() {
+    public BaseService getRptNmProjectCostCmpsService() {
         return rptNmProjectCostCmpsService;
     }
 
-    public void setRptNmProjectCostCmpsService(IflatService rptNmProjectCostCmpsService) {
+    public void setRptNmProjectCostCmpsService(BaseService rptNmProjectCostCmpsService) {
         this.rptNmProjectCostCmpsService = rptNmProjectCostCmpsService;
     }
 
@@ -434,11 +422,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.nmProjectCostCmps = nmProjectCostCmps;
     }
 
-    public IflatService getRptNmProjectCostNodeService() {
+    public BaseService getRptNmProjectCostNodeService() {
         return rptNmProjectCostNodeService;
     }
 
-    public void setRptNmProjectCostNodeService(IflatService rptNmProjectCostNodeService) {
+    public void setRptNmProjectCostNodeService(BaseService rptNmProjectCostNodeService) {
         this.rptNmProjectCostNodeService = rptNmProjectCostNodeService;
     }
 
@@ -450,11 +438,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.nmProjectCostNode = nmProjectCostNode;
     }
 
-    public IflatService getRptSrProjectCostService() {
+    public BaseService getRptSrProjectCostService() {
         return rptSrProjectCostService;
     }
 
-    public void setRptSrProjectCostService(IflatService rptSrProjectCostService) {
+    public void setRptSrProjectCostService(BaseService rptSrProjectCostService) {
         this.rptSrProjectCostService = rptSrProjectCostService;
     }
 
@@ -466,11 +454,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.srProjectCost = srProjectCost;
     }
 
-    public IflatService getRptSrProjectCostCmpsService() {
+    public BaseService getRptSrProjectCostCmpsService() {
         return rptSrProjectCostCmpsService;
     }
 
-    public void setRptSrProjectCostCmpsService(IflatService rptSrProjectCostCmpsService) {
+    public void setRptSrProjectCostCmpsService(BaseService rptSrProjectCostCmpsService) {
         this.rptSrProjectCostCmpsService = rptSrProjectCostCmpsService;
     }
 
@@ -482,11 +470,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.srProjectCostCmps = srProjectCostCmps;
     }
 
-    public IflatService getRptSrProjectCostNodeService() {
+    public BaseService getRptSrProjectCostNodeService() {
         return rptSrProjectCostNodeService;
     }
 
-    public void setRptSrProjectCostNodeService(IflatService rptSrProjectCostNodeService) {
+    public void setRptSrProjectCostNodeService(BaseService rptSrProjectCostNodeService) {
         this.rptSrProjectCostNodeService = rptSrProjectCostNodeService;
     }
 
@@ -498,11 +486,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.srProjectCostNode = srProjectCostNode;
     }
 
-    public IflatService getRptMmPaintMRPService() {
+    public BaseService getRptMmPaintMRPService() {
         return rptMmPaintMRPService;
     }
 
-    public void setRptMmPaintMRPService(IflatService rptMmPaintMRPService) {
+    public void setRptMmPaintMRPService(BaseService rptMmPaintMRPService) {
         this.rptMmPaintMRPService = rptMmPaintMRPService;
     }
 
@@ -514,11 +502,11 @@ public class ReportAction extends ActionSupport implements ResultAware {
         this.paintMRP = paintMRP;
     }
 
-    public IflatService getRptCostItemService() {
+    public BaseService getRptCostItemService() {
         return rptCostItemService;
     }
 
-    public void setRptCostItemService(IflatService rptCostItemService) {
+    public void setRptCostItemService(BaseService rptCostItemService) {
         this.rptCostItemService = rptCostItemService;
     }
 

@@ -1,23 +1,19 @@
 package com.iflat.ss.action;
 
+import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.entity.Page;
+import com.iflat.base.service.BaseService;
 import com.iflat.ss.bean.SafetyFine;
 import com.iflat.ss.entity.SafetyFineVo;
-import com.iflat.system.action.ResultAware;
-import com.iflat.system.entity.Page;
-import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatService;
 import com.iflat.util.FileHelper;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import java.io.File;
 
-public class SsAction extends ActionSupport implements ResultAware, ModelDriven<Page> {
+public class SsAction extends BaseAction implements ModelDriven<Page> {
 
-    private Result result;
-
-    private IflatService safetyFineService;
-    private IflatService safetyFineVoService;
+    private BaseService safetyFineService;
+    private BaseService safetyFineVoService;
 
     private SafetyFine safetyFine;
     private SafetyFineVo safetyFineVo;
@@ -71,19 +67,11 @@ public class SsAction extends ActionSupport implements ResultAware, ModelDriven<
         this.filePath = filePath;
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public IflatService getSafetyFineService() {
+    public BaseService getSafetyFineService() {
         return safetyFineService;
     }
 
-    public void setSafetyFineService(IflatService safetyFineService) {
+    public void setSafetyFineService(BaseService safetyFineService) {
         this.safetyFineService = safetyFineService;
     }
 
@@ -95,11 +83,11 @@ public class SsAction extends ActionSupport implements ResultAware, ModelDriven<
         this.safetyFine = safetyFine;
     }
 
-    public IflatService getSafetyFineVoService() {
+    public BaseService getSafetyFineVoService() {
         return safetyFineVoService;
     }
 
-    public void setSafetyFineVoService(IflatService safetyFineVoService) {
+    public void setSafetyFineVoService(BaseService safetyFineVoService) {
         this.safetyFineVoService = safetyFineVoService;
     }
 

@@ -1,35 +1,31 @@
 package com.iflat.bi.action;
 
+import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.service.BaseService;
 import com.iflat.bi.bean.*;
 import com.iflat.bi.entity.ProjectInProcessInfo;
 import com.iflat.bi.entity.ProjectInfo;
-import com.iflat.system.action.ResultAware;
-import com.iflat.system.entity.ExcelTemplate;
-import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatService;
+import com.iflat.base.entity.ExcelTemplate;
 import com.iflat.util.ExcelHelper;
-import com.opensymphony.xwork2.ActionSupport;
 
 import java.io.File;
 
-public class BiAction extends ActionSupport implements ResultAware {
+public class BiAction extends BaseAction {
 
-    private Result result;
-
-    private IflatService additionalBillService;
-    private IflatService contractService;
-    private IflatService deptCstCtrlService;
-    private IflatService majorDevCstService;
-    private IflatService majorMatCstService;
-    private IflatService majorMatQtyService;
-    private IflatService projectService;
-    private IflatService projectCostService;
-    private IflatService projectCstCtrlService;
-    private IflatService projectInProcessService;
-    private IflatService projectManHourService;
-    private IflatService projectScheduleService;
-    private IflatService projectInfoService;
-    private IflatService projectInProcessInfoService;
+    private BaseService additionalBillService;
+    private BaseService contractService;
+    private BaseService deptCstCtrlService;
+    private BaseService majorDevCstService;
+    private BaseService majorMatCstService;
+    private BaseService majorMatQtyService;
+    private BaseService projectService;
+    private BaseService projectCostService;
+    private BaseService projectCstCtrlService;
+    private BaseService projectInProcessService;
+    private BaseService projectManHourService;
+    private BaseService projectScheduleService;
+    private BaseService projectInfoService;
+    private BaseService projectInProcessInfoService;
 
     private AdditionalBill additionalBill;
     private Contract contract;
@@ -348,27 +344,19 @@ public class BiAction extends ActionSupport implements ResultAware {
         return SUCCESS;
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public IflatService getAdditionalBillService() {
+    public BaseService getAdditionalBillService() {
         return additionalBillService;
     }
 
-    public void setAdditionalBillService(IflatService additionalBillService) {
+    public void setAdditionalBillService(BaseService additionalBillService) {
         this.additionalBillService = additionalBillService;
     }
 
-    public IflatService getProjectCostService() {
+    public BaseService getProjectCostService() {
         return projectCostService;
     }
 
-    public void setProjectCostService(IflatService projectCostService) {
+    public void setProjectCostService(BaseService projectCostService) {
         this.projectCostService = projectCostService;
     }
 
@@ -388,83 +376,83 @@ public class BiAction extends ActionSupport implements ResultAware {
         this.additionalBill = additionalBill;
     }
 
-    public IflatService getContractService() {
+    public BaseService getContractService() {
         return contractService;
     }
 
-    public void setContractService(IflatService contractService) {
+    public void setContractService(BaseService contractService) {
         this.contractService = contractService;
     }
 
-    public IflatService getDeptCstCtrlService() {
+    public BaseService getDeptCstCtrlService() {
         return deptCstCtrlService;
     }
 
-    public void setDeptCstCtrlService(IflatService deptCstCtrlService) {
+    public void setDeptCstCtrlService(BaseService deptCstCtrlService) {
         this.deptCstCtrlService = deptCstCtrlService;
     }
 
-    public IflatService getMajorDevCstService() {
+    public BaseService getMajorDevCstService() {
         return majorDevCstService;
     }
 
-    public void setMajorDevCstService(IflatService majorDevCstService) {
+    public void setMajorDevCstService(BaseService majorDevCstService) {
         this.majorDevCstService = majorDevCstService;
     }
 
-    public IflatService getMajorMatCstService() {
+    public BaseService getMajorMatCstService() {
         return majorMatCstService;
     }
 
-    public void setMajorMatCstService(IflatService majorMatCstService) {
+    public void setMajorMatCstService(BaseService majorMatCstService) {
         this.majorMatCstService = majorMatCstService;
     }
 
-    public IflatService getMajorMatQtyService() {
+    public BaseService getMajorMatQtyService() {
         return majorMatQtyService;
     }
 
-    public void setMajorMatQtyService(IflatService majorMatQtyService) {
+    public void setMajorMatQtyService(BaseService majorMatQtyService) {
         this.majorMatQtyService = majorMatQtyService;
     }
 
-    public IflatService getProjectService() {
+    public BaseService getProjectService() {
         return projectService;
     }
 
-    public void setProjectService(IflatService projectService) {
+    public void setProjectService(BaseService projectService) {
         this.projectService = projectService;
     }
 
-    public IflatService getProjectCstCtrlService() {
+    public BaseService getProjectCstCtrlService() {
         return projectCstCtrlService;
     }
 
-    public void setProjectCstCtrlService(IflatService projectCstCtrlService) {
+    public void setProjectCstCtrlService(BaseService projectCstCtrlService) {
         this.projectCstCtrlService = projectCstCtrlService;
     }
 
-    public IflatService getProjectInProcessService() {
+    public BaseService getProjectInProcessService() {
         return projectInProcessService;
     }
 
-    public void setProjectInProcessService(IflatService projectInProcessService) {
+    public void setProjectInProcessService(BaseService projectInProcessService) {
         this.projectInProcessService = projectInProcessService;
     }
 
-    public IflatService getProjectManHourService() {
+    public BaseService getProjectManHourService() {
         return projectManHourService;
     }
 
-    public void setProjectManHourService(IflatService projectManHourService) {
+    public void setProjectManHourService(BaseService projectManHourService) {
         this.projectManHourService = projectManHourService;
     }
 
-    public IflatService getProjectScheduleService() {
+    public BaseService getProjectScheduleService() {
         return projectScheduleService;
     }
 
-    public void setProjectScheduleService(IflatService projectScheduleService) {
+    public void setProjectScheduleService(BaseService projectScheduleService) {
         this.projectScheduleService = projectScheduleService;
     }
 
@@ -548,11 +536,11 @@ public class BiAction extends ActionSupport implements ResultAware {
         this.projectSchedule = projectSchedule;
     }
 
-    public IflatService getProjectInfoService() {
+    public BaseService getProjectInfoService() {
         return projectInfoService;
     }
 
-    public void setProjectInfoService(IflatService projectInfoService) {
+    public void setProjectInfoService(BaseService projectInfoService) {
         this.projectInfoService = projectInfoService;
     }
 
@@ -564,11 +552,11 @@ public class BiAction extends ActionSupport implements ResultAware {
         this.projectInfo = projectInfo;
     }
 
-    public IflatService getProjectInProcessInfoService() {
+    public BaseService getProjectInProcessInfoService() {
         return projectInProcessInfoService;
     }
 
-    public void setProjectInProcessInfoService(IflatService projectInProcessInfoService) {
+    public void setProjectInProcessInfoService(BaseService projectInProcessInfoService) {
         this.projectInProcessInfoService = projectInProcessInfoService;
     }
 

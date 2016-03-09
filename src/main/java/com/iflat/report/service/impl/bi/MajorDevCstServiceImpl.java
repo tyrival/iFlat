@@ -3,7 +3,7 @@ package com.iflat.report.service.impl.bi;
 import com.iflat.bi.bean.MajorDevCst;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
-import com.iflat.system.service.IflatService;
+import com.iflat.base.service.BaseService;
 import com.iflat.util.ReportHelper;
 
 import java.util.List;
@@ -13,13 +13,13 @@ import java.util.List;
  */
 public class MajorDevCstServiceImpl implements ReportService {
 
-    private IflatService iflatService;
+    private BaseService baseService;
 
     @Override
     public List query(Parameter parameter) throws Exception {
         MajorDevCst majorDevCst = new MajorDevCst();
         majorDevCst.setProjNo(parameter.getProjectNo());
-        return ReportHelper.convertBalance(this.iflatService.list(majorDevCst));
+        return ReportHelper.convertBalance(this.baseService.list(majorDevCst));
     }
 
     @Override
@@ -67,11 +67,11 @@ public class MajorDevCstServiceImpl implements ReportService {
         return null;
     }
 
-    public IflatService getIflatService() {
-        return iflatService;
+    public BaseService getBaseService() {
+        return baseService;
     }
 
-    public void setIflatService(IflatService iflatService) {
-        this.iflatService = iflatService;
+    public void setBaseService(BaseService baseService) {
+        this.baseService = baseService;
     }
 }

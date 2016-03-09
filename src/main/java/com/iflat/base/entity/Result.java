@@ -1,14 +1,16 @@
-package com.iflat.system.entity;
+package com.iflat.base.entity;
 
 import com.github.pagehelper.PageInfo;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 /**
- * Created by tyriv on 2015/9/8.
+ * Created by tyriv on 2016/3/9.
  */
 public class Result {
-
     private String uuid;
     private String flag;
     private boolean success;

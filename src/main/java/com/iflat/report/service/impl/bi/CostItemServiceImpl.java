@@ -1,11 +1,11 @@
 package com.iflat.report.service.impl.bi;
 
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 
 /**
  * Created by tyriv on 2016/2/18.
  */
-public class CostItemServiceImpl extends IflatServiceSupport {
+public class CostItemServiceImpl extends BaseServiceSupport {
     @Override
     protected void setImportExcelReader() throws Exception {
 

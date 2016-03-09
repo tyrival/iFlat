@@ -2,8 +2,8 @@ package com.iflat.bi.service.impl;
 
 import com.iflat.bi.bean.ProjectCost;
 import com.iflat.bi.entity.ProjectInfo;
-import com.iflat.system.service.IflatService;
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.BaseService;
+import com.iflat.base.service.impl.BaseServiceSupport;
 import org.springframework.oxm.ValidationFailureException;
 
 import java.util.Date;
@@ -13,9 +13,9 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2015/11/27.
  */
-public class ProjectCostServiceImpl extends IflatServiceSupport {
+public class ProjectCostServiceImpl extends BaseServiceSupport {
 
-    private IflatService iflatService;
+    private BaseService baseService;
 
     @Override
     public Object generate(Object o) throws Exception {
@@ -24,7 +24,7 @@ public class ProjectCostServiceImpl extends IflatServiceSupport {
 
         ProjectInfo projectInfo = new ProjectInfo();
         projectInfo.setAnalyseDate(projectCost.getMonth());
-        List<ProjectInfo> list = this.iflatService.list(projectInfo);
+        List<ProjectInfo> list = this.baseService.list(projectInfo);
 
         if (list != null) {
 
@@ -69,11 +69,11 @@ public class ProjectCostServiceImpl extends IflatServiceSupport {
         }
     }
 
-    public IflatService getIflatService() {
-        return iflatService;
+    public BaseService getBaseService() {
+        return baseService;
     }
 
-    public void setIflatService(IflatService iflatService) {
-        this.iflatService = iflatService;
+    public void setBaseService(BaseService baseService) {
+        this.baseService = baseService;
     }
 }

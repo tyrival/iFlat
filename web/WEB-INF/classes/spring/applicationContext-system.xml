@@ -5,8 +5,7 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- system -->
-    <bean id="systemAction" class="com.iflat.system.action.impl.SystemAction" scope="prototype">
-        <property name="result" ref="result"></property>
+    <bean id="systemAction" class="com.iflat.system.action.SystemAction" scope="prototype">
         <!-- 修改密码 -->
         <property name="passwordChange" ref="passwordChange"></property>
         <!-- 模块 -->
@@ -59,7 +58,7 @@
     <bean id="authModuleVo" class="com.iflat.system.entity.AuthModuleVo"></bean>
 
     <!-- 登录 -->
-    <bean id="loginAction" class="com.iflat.system.action.impl.LoginAction" scope="prototype">
+    <bean id="loginAction" class="com.iflat.system.action.LoginAction" scope="prototype">
         <property name="user" ref="user"></property>
         <property name="userService" ref="userService"></property>
         <property name="account" value=""></property>
@@ -175,7 +174,6 @@
 
     <!-- bean、entity-->
     <bean id="module" class="com.iflat.system.bean.Module" scope="prototype"></bean>
-    <bean id="result" class="com.iflat.system.entity.Result" scope="prototype"></bean>
     <bean id="organization" class="com.iflat.system.bean.Organization" scope="prototype"></bean>
     <bean id="user" class="com.iflat.system.bean.User" scope="prototype"></bean>
     <bean id="role" class="com.iflat.system.bean.Role" scope="prototype"></bean>
@@ -193,11 +191,4 @@
     <bean id="question" class="com.iflat.system.bean.Question" scope="prototype"></bean>
     <bean id="operating" class="com.iflat.system.bean.Operating" scope="prototype"></bean>
 
-    <!-- interface, support-->
-    <bean id="iflatServiceSupport" class="com.iflat.system.service.impl.IflatServiceSupport" scope="prototype">
-    </bean>
-    <bean id="iflatDaoSupport" class="com.iflat.system.dao.impl.IflatDaoSupport" scope="prototype">
-        <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
-        <!--<constructor-arg name="sqlSessionTemplate" ref="sqlSessionTemplate"/>-->
-    </bean>
 </beans>

@@ -1,7 +1,7 @@
 package com.iflat.bi.service.impl;
 
 import com.iflat.bi.bean.ProjectInProcess;
-import com.iflat.system.service.impl.IflatServiceSupport;
+import com.iflat.base.service.impl.BaseServiceSupport;
 import org.springframework.oxm.ValidationFailureException;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2015/11/29.
  */
-public class ProjectInProcessServiceImpl extends IflatServiceSupport {
+public class ProjectInProcessServiceImpl extends BaseServiceSupport {
 
     @Override
     public void setImportExcelReader() throws Exception {

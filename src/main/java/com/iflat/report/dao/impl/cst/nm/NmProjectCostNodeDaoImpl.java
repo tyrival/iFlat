@@ -1,9 +1,9 @@
 package com.iflat.report.dao.impl.cst.nm;
 
-import com.iflat.system.dao.impl.IflatDaoSupport;
+import com.iflat.base.dao.impl.BaseDaoSupport;
 
 /**
  * Created by tyriv on 2015/12/23.
  */
-public class NmProjectCostNodeDaoImpl extends IflatDaoSupport {
+public class NmProjectCostNodeDaoImpl extends BaseDaoSupport {
 }

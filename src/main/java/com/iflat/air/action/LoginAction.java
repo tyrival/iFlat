@@ -1,13 +1,11 @@
 package com.iflat.air.action;
 
-import com.iflat.system.action.ResultAware;
+import com.iflat.base.action.impl.BaseAction;
 import com.iflat.system.bean.User;
-import com.iflat.system.entity.Result;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.system.service.UserService;
 import com.iflat.util.Application;
 import com.iflat.util.Session;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import java.util.UUID;
@@ -15,9 +13,7 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2016/1/28.
  */
-public class LoginAction extends ActionSupport implements ResultAware, ModelDriven<User> {
-
-    private Result result;
+public class LoginAction extends BaseAction implements ModelDriven<User> {
 
     private User user;
     private UserService userService;
@@ -47,14 +43,6 @@ public class LoginAction extends ActionSupport implements ResultAware, ModelDriv
             this.result.setMessage("用户名或密码错误。");
         }
         return SUCCESS;
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
     }
 
     @Override

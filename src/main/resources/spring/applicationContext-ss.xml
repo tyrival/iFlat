@@ -5,7 +5,6 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="ssAction" class="com.iflat.ss.action.SsAction" scope="prototype">
-        <property name="result" ref="result"/>
         <property name="safetyFineService" ref="safetyFineService"/>
         <property name="safetyFine" ref="safetyFine"/>
         <property name="safetyFineVoService" ref="safetyFineVoService"/>

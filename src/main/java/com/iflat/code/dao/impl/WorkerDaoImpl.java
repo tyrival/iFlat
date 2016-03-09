@@ -1,9 +1,9 @@
 package com.iflat.code.dao.impl;
 
-import com.iflat.system.dao.impl.IflatDaoSupport;
+import com.iflat.base.dao.impl.BaseDaoSupport;
 
 /**
  * Created by tyriv on 2016/1/18.
  */
-public class WorkerDaoImpl extends IflatDaoSupport {
+public class WorkerDaoImpl extends BaseDaoSupport {
 }

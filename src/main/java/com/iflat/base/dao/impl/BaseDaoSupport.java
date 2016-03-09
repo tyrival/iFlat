@@ -1,6 +1,6 @@
-package com.iflat.system.dao.impl;
+package com.iflat.base.dao.impl;
 
-import com.iflat.system.dao.IflatDao;
+import com.iflat.base.dao.BaseDao;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import java.util.List;
@@ -8,11 +8,11 @@ import java.util.List;
 /**
  * Created by tyriv on 2015/11/27.
  */
-public class IflatDaoSupport implements IflatDao {
+public class BaseDaoSupport implements BaseDao {
 
-    private SqlSessionTemplate sqlSessionTemplate;
+    protected SqlSessionTemplate sqlSessionTemplate;
 
-    public IflatDaoSupport() {
+    public BaseDaoSupport() {
     }
 
     @Override
@@ -61,6 +61,10 @@ public class IflatDaoSupport implements IflatDao {
 
     public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
         this.sqlSessionTemplate = sqlSessionTemplate;
+    }
+
+    public SqlSessionTemplate getSqlSessionTemplate() {
+        return sqlSessionTemplate;
     }
 
     private String getNameSpace(Object o) throws Exception {

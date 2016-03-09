@@ -1,7 +1,7 @@
 package com.iflat.system.listener;
 
-import com.iflat.system.action.ResultAware;
-import com.iflat.system.entity.Result;
+import com.iflat.base.action.ResultAware;
+import com.iflat.base.entity.Result;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.Application;
 import com.iflat.util.LogFile;

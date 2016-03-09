@@ -1,6 +1,6 @@
 package com.iflat.system.interceptor;
 
-import com.iflat.system.entity.Page;
+import com.iflat.base.entity.Page;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;

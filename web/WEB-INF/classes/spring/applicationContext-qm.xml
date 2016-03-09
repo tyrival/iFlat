@@ -5,7 +5,6 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="qmAction" class="com.iflat.qm.action.QmAction" scope="prototype">
-        <property name="result" ref="result"/>
         <property name="qualityFineService" ref="qualityFineService"/>
         <property name="qualityFine" ref="qualityFine"/>
         <property name="qualityFineVoService" ref="qualityFineVoService"/>

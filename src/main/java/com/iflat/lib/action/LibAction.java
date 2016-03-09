@@ -1,23 +1,19 @@
 package com.iflat.lib.action;
 
+import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.service.BaseService;
 import com.iflat.lib.bean.Book;
 import com.iflat.lib.bean.Record;
-import com.iflat.system.action.ResultAware;
-import com.iflat.system.entity.Result;
-import com.iflat.system.service.IflatService;
-import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * Created by tyriv on 2016/1/6.
  */
-public class LibAction extends ActionSupport implements ResultAware {
+public class LibAction extends BaseAction {
 
-    private IflatService bookService;
-    private IflatService recordService;
+    private BaseService bookService;
+    private BaseService recordService;
     private Book book;
     private Record record;
-
-    private Result result;
 
     /* book */
     public String saveBook() throws Exception {
@@ -51,19 +47,19 @@ public class LibAction extends ActionSupport implements ResultAware {
         return SUCCESS;
     }
 
-    public IflatService getBookService() {
+    public BaseService getBookService() {
         return bookService;
     }
 
-    public void setBookService(IflatService bookService) {
+    public void setBookService(BaseService bookService) {
         this.bookService = bookService;
     }
 
-    public IflatService getRecordService() {
+    public BaseService getRecordService() {
         return recordService;
     }
 
-    public void setRecordService(IflatService recordService) {
+    public void setRecordService(BaseService recordService) {
         this.recordService = recordService;
     }
 
@@ -81,14 +77,5 @@ public class LibAction extends ActionSupport implements ResultAware {
 
     public void setRecord(Record record) {
         this.record = record;
-    }
-
-    @Override
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public Result getResult() {
-        return result;
     }
 }

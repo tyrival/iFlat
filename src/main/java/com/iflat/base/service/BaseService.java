@@ -1,8 +1,7 @@
-package com.iflat.system.service;
+package com.iflat.base.service;
 
 import com.github.pagehelper.PageInfo;
-import com.iflat.system.entity.Page;
-import com.iflat.system.entity.Result;
+import com.iflat.base.entity.Page;
 
 import java.io.File;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 /**
  * Created by tyriv on 2015/11/27.
  */
-public interface IflatService {
+public interface BaseService {
 
     public Object save(Object o) throws Exception;
     public List insertBatch(List list) throws Exception;

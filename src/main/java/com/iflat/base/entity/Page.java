@@ -1,10 +1,9 @@
-package com.iflat.system.entity;
+package com.iflat.base.entity;
 
 /**
- * Created by tyriv on 2015/8/19.
+ * Created by tyriv on 2016/3/9.
  */
 public class Page {
-
     private int page;  //页码，默认是第一页
     private int limit;  //每页显示的记录数，默认是20
     private long start;  //起始记录索引
