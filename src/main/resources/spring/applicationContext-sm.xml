@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sbRequestAction" class="com.iflat.sm.action.SbRequestAction" scope="prototype">
+        <property name="sbRequestService" ref="sbRequestService"/>
+        <property name="sbRequest" ref="sbRequest"/>
+    </bean>
+    <bean id="sbRequestService" class="com.iflat.sm.service.impl.SbRequestServiceImpl">
+    </bean>
+    <bean id="sbRequestDao" class="com.iflat.sm.dao.impl.SbRequestDaoImpl">
+    </bean>
+    <bean id="sbRequest" class="com.iflat.sm.bean.SbRequest" scope="prototype"/>
+</beans>

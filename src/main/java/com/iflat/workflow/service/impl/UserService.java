@@ -1,7 +1,7 @@
-package com.iflat.workflow.service;
+package com.iflat.workflow.service.impl;
 
 import com.iflat.system.service.UserRoleService;
-import com.iflat.workflow.util.ActivitiUtils;
+import com.iflat.workflow.util.ActivitiAdapter;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.identity.User;
 import org.activiti.engine.impl.persistence.entity.UserEntityManager;
@@ -20,7 +20,7 @@ public class UserService extends UserEntityManager {
     public User findUserById(String userId) {
 
         try {
-            return ActivitiUtils.convertUser(userService.getUserInfoByAccount(userId));
+            return ActivitiAdapter.convertUser(userService.getUserInfoByAccount(userId));
         } catch (Exception e) {
             return null;
         }
@@ -30,7 +30,7 @@ public class UserService extends UserEntityManager {
     public List<Group> findGroupsByUser(String userId) {
 
         try {
-            return ActivitiUtils.convertRoleList(userRoleService.listVoByAccount(userId));
+            return ActivitiAdapter.convertRoleList(userRoleService.listVoByAccount(userId));
         } catch (Exception e) {
             return null;
         }

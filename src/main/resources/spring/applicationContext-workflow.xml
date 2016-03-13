@@ -5,9 +5,12 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="workflowAction" class="com.iflat.workflow.action.WorkflowAction" scope="prototype">
-
-
+        <property name="workflowService" ref="workflowService"/>
     </bean>
 
-
+    <bean id="workflowService" class="com.iflat.workflow.service.impl.WorkflowServiceImpl">
+        <property name="repositoryService" ref="repositoryService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+    </bean>
 </beans>

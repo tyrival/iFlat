@@ -6,9 +6,8 @@ import com.iflat.base.dao.impl.BaseDaoSupport;
 import com.iflat.base.entity.ExcelReader;
 import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
-import com.iflat.util.ExcelHelper;
-import com.iflat.util.FileHelper;
-import com.iflat.util.GSReflectHelper;
+import com.iflat.util.*;
+import org.activiti.engine.RuntimeService;
 import org.apache.struts2.ServletActionContext;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.ApplicationContext;
@@ -18,13 +17,15 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
  * Created by tyriv on 2015/11/27.
  */
-public abstract class BaseServiceSupport implements BaseService {
+public class BaseServiceSupport implements BaseService {
 
     protected ExcelReader excelReader;
     protected List importList;
@@ -38,6 +39,13 @@ public abstract class BaseServiceSupport implements BaseService {
     protected List listBatchList;
     protected Page page;
     protected boolean isPaging;
+
+    protected RuntimeService runtimeService;
+    protected Object processObj;
+    protected Map<String, Object> processMap;
+    protected GSReflectHelper reflectProcessObj;
+    protected String processKey;
+    protected String processBusinessKey;
 
     protected void beforeGenerate() throws Exception { };
     protected void afterGenerate() throws Exception { };
@@ -64,14 +72,67 @@ public abstract class BaseServiceSupport implements BaseService {
     protected void afterDeleteBatch() throws Exception { }
     protected void beforeDeleteBatch() throws Exception { }
 
-    protected abstract void setImportExcelReader() throws Exception;
-    protected abstract void setImportProps() throws Exception;
-    protected abstract void importValidate() throws Exception;
+    protected void setImportExcelReader() throws Exception { }
+    protected void setImportProps() throws Exception { }
+    protected void importValidate() throws Exception { }
 
+    protected void beforeStartProcess() throws Exception { }
+    protected void afterStartProcess() throws Exception { }
 
     public BaseServiceSupport() {
         this.excelReader = new ExcelReader();
         this.isPaging = false;
+        this.processMap = new HashMap<>();
+    }
+
+    /**
+     * 获取流程key，用于定位流程定义，从而常见流程实例
+     */
+    protected void generateProcessKey() {
+        String key = this.processObj.getClass().getName()
+                .replace("com.iflat.", "")
+                .replace("bean.", "")
+                .replace("entity.", "");
+        this.processKey = StringHelper.UpperCaseFirstChar(key);
+    }
+
+    /**
+     * 设置businessKey
+     * 储存从业务对象实例查找流程实例的变量
+     */
+    protected void generateBusinessKey() throws Exception {
+        this.processBusinessKey = this.processObj.getClass().getName()
+                + ":" + this.reflectProcessObj.getMethodValue("id").toString();
+    }
+
+    @Override
+    public void startProcess(Object object) throws Exception {
+
+        this.processObj = object;
+        this.reflectProcessObj = new GSReflectHelper(this.processObj);
+
+        this.generateProcessKey();
+        this.generateBusinessKey();
+
+        /**
+         * 设置流程变量
+         * 储存从流程实例查找业务对象的变量
+         * className储存流程关联的是哪个对象类型
+         * id储存流程关联的对象实例的id
+         */
+        processMap.put("className", object.getClass().getName());
+        processMap.put("id", reflectProcessObj.getMethodValue("id").toString());
+
+        this.beforeStartProcess();
+        // 启动流程
+        if (this.runtimeService == null) {
+            ApplicationContext ac = WebApplicationContextUtils
+                    .getRequiredWebApplicationContext(ServletActionContext.getServletContext());
+            this.runtimeService = (RuntimeService) ac.getBean("runtimeService");
+        }
+        this.runtimeService.startProcessInstanceByKey(this.processKey, this.processBusinessKey, this.processMap);
+
+        this.afterStartProcess();
     }
 
     @Override
@@ -439,5 +500,53 @@ public abstract class BaseServiceSupport implements BaseService {
 
     public void setListBatchList(List listBatchList) {
         this.listBatchList = listBatchList;
+    }
+
+    public Object getProcessObj() {
+        return processObj;
+    }
+
+    public void setProcessObj(Object processObj) {
+        this.processObj = processObj;
+    }
+
+    public GSReflectHelper getReflectProcessObj() {
+        return reflectProcessObj;
+    }
+
+    public void setReflectProcessObj(GSReflectHelper reflectProcessObj) {
+        this.reflectProcessObj = reflectProcessObj;
+    }
+
+    public RuntimeService getRuntimeService() {
+        return runtimeService;
+    }
+
+    public void setRuntimeService(RuntimeService runtimeService) {
+        this.runtimeService = runtimeService;
+    }
+
+    public Map<String, Object> getProcessMap() {
+        return processMap;
+    }
+
+    public void setProcessMap(Map<String, Object> processMap) {
+        this.processMap = processMap;
+    }
+
+    public String getProcessKey() {
+        return processKey;
+    }
+
+    public void setProcessKey(String processKey) {
+        this.processKey = processKey;
+    }
+
+    public String getProcessBusinessKey() {
+        return processBusinessKey;
+    }
+
+    public void setProcessBusinessKey(String processBusinessKey) {
+        this.processBusinessKey = processBusinessKey;
     }
 }

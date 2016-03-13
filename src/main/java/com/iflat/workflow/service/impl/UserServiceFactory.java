@@ -1,4 +1,4 @@
-package com.iflat.workflow.service;
+package com.iflat.workflow.service.impl;
 
 import org.activiti.engine.impl.interceptor.Session;
 import org.activiti.engine.impl.interceptor.SessionFactory;

@@ -89,6 +89,9 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+    <!-- BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入 -->
+    <bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
     <!-- 使用annotation注解方式配置事务
     <tx:annotation-driven transaction-manager="transactionManager"/>-->
     <!--  配置事务传播特性 -->
@@ -116,14 +119,14 @@
         <property name="enableDatabaseEventLogging" value="true" />
         <property name="customSessionFactories">
             <list>
-                <bean class="com.iflat.workflow.service.GroupServiceFactory">
+                <bean class="com.iflat.workflow.service.impl.GroupServiceFactory">
                     <property name="groupEntityManager">
-                        <bean class="com.iflat.workflow.service.GroupService"/>
+                        <bean class="com.iflat.workflow.service.impl.GroupService"/>
                     </property>
                 </bean>
-                <bean class="com.iflat.workflow.service.UserServiceFactory">
+                <bean class="com.iflat.workflow.service.impl.UserServiceFactory">
                     <property name="userEntityManager">
-                        <bean class="com.iflat.workflow.service.UserService"/>
+                        <bean class="com.iflat.workflow.service.impl.UserService"/>
                     </property>
                 </bean>
             </list>

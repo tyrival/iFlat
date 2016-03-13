@@ -3,10 +3,12 @@ package com.iflat.workflow.util;
 import com.iflat.system.bean.UserRole;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.system.entity.UserRoleVo;
+import com.iflat.workflow.entity.ProcessDefinitionVo;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.impl.GroupQueryImpl;
 import org.activiti.engine.impl.persistence.entity.GroupEntity;
 import org.activiti.engine.impl.persistence.entity.UserEntity;
+import org.activiti.engine.repository.ProcessDefinition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,8 @@ import java.util.List;
 /**
  * Created by tyriv on 2016/3/8.
  */
-public class ActivitiUtils {
+public class ActivitiAdapter {
+
 
     public static UserEntity convertUser(UserInfoVo userInfoVo) {
 

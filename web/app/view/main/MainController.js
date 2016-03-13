@@ -38,15 +38,17 @@ Ext.define('iFlat.view.main.MainController', {
         };
         Ext.require(arr, function(){
             //回调函数打开tab或url
-            createTabpanel();
+            createTabpanel(viewName);
         });
-        function createTabpanel() {
+        function createTabpanel(viewName) {
             //view属性存在时
             if (node && node.get('viewName')) {
                 //获取 id:main-view-tabpanel 控件
                 var tabPanel = Ext.getCmp('main-view-tabpanel');
                 //获取routeId属性，用于item的itemId，由于html元素id必须为字母开头，所以加上tab前缀
-                var nodeId = 'tab' + node.get('nodeId');
+                //var nodeId = 'tab' + node.get('nodeId');
+                var nodeId = 'tab_' + node.get('nameSpace') + '_' + node.get('viewName');
+                nodeId = nodeId.replace('\.', '_');
                 //获取标签页的所有nodeId
                 var itemList = tabPanel.items.keys;
                 var hasExisted = false;

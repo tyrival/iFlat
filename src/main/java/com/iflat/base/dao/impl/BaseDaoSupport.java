@@ -1,6 +1,7 @@
 package com.iflat.base.dao.impl;
 
 import com.iflat.base.dao.BaseDao;
+import com.iflat.util.StringHelper;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import java.util.List;
@@ -73,18 +74,11 @@ public class BaseDaoSupport implements BaseDao {
         String[] array = module.split("\\.");
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < array.length; i++) {
-            String j = this.firstCharUpperCase(array[i]);
+            String j = StringHelper.UpperCaseFirstChar(array[i]);
             sb.append(j).append(".");
         }
         String result = sb.toString();
         result = result.substring(0, result.length() - 1);
         return result;
-    }
-
-    private String firstCharUpperCase(String str) throws Exception {
-        if(Character.isUpperCase(str.charAt(0)))
-            return str;
-        else
-            return (new StringBuilder()).append(Character.toUpperCase(str.charAt(0))).append(str.substring(1)).toString();
     }
 }
