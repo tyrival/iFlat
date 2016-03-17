@@ -43,7 +43,7 @@ public class BaseServiceSupport implements BaseService {
     protected RuntimeService runtimeService;
     protected Object processObj;
     protected Map<String, Object> processMap;
-    protected GSReflectHelper reflectProcessObj;
+    protected GSReflectUtil reflectProcessObj;
     protected String processKey;
     protected String processBusinessKey;
 
@@ -93,7 +93,7 @@ public class BaseServiceSupport implements BaseService {
                 .replace("com.iflat.", "")
                 .replace("bean.", "")
                 .replace("entity.", "");
-        this.processKey = StringHelper.UpperCaseFirstChar(key);
+        this.processKey = StringUtil.UpperCaseFirstChar(key);
     }
 
     /**
@@ -109,7 +109,7 @@ public class BaseServiceSupport implements BaseService {
     public void startProcess(Object object) throws Exception {
 
         this.processObj = object;
-        this.reflectProcessObj = new GSReflectHelper(this.processObj);
+        this.reflectProcessObj = new GSReflectUtil(this.processObj);
 
         this.generateProcessKey();
         this.generateBusinessKey();
@@ -155,7 +155,7 @@ public class BaseServiceSupport implements BaseService {
     public Object save(Object o) throws Exception {
 
         this.saveObj = o;
-        GSReflectHelper obj = new GSReflectHelper(this.saveObj);
+        GSReflectUtil obj = new GSReflectUtil(this.saveObj);
         Object id = obj.getMethodValue("id");
         Object result;
 
@@ -297,13 +297,13 @@ public class BaseServiceSupport implements BaseService {
                 .replace("ServiceImpl", "")
                 .replace(".", "/") + "/";
 
-        return FileHelper.upload(file, fileName, document);
+        return FileUtil.upload(file, fileName, document);
     }
 
     @Override
     public List importExcel(File file, String fileName) throws Exception {
 
-        String filePath = FileHelper.upload(file, fileName, "temp/");
+        String filePath = FileUtil.upload(file, fileName, "temp/");
         //设置excel文件位置和起始行默认值
         this.excelReader.setFilePath(filePath);
         this.excelReader.setStartRow(1);
@@ -315,7 +315,7 @@ public class BaseServiceSupport implements BaseService {
         }
 
         //读取excel
-        this.importList = ExcelHelper.read(this.excelReader);
+        this.importList = ExcelUtil.read(this.excelReader);
         //对象的属性中，除了由excel表导入的值外，还需设置由系统生成的属性值
         this.setImportProps();
 
@@ -336,7 +336,7 @@ public class BaseServiceSupport implements BaseService {
             result = (int)res > 0 ? importList : null;
         }
         //删除excel文件
-        FileHelper.delete(excelReader.getFilePath());
+        FileUtil.delete(excelReader.getFilePath());
         return result;
     }
 
@@ -510,11 +510,11 @@ public class BaseServiceSupport implements BaseService {
         this.processObj = processObj;
     }
 
-    public GSReflectHelper getReflectProcessObj() {
+    public GSReflectUtil getReflectProcessObj() {
         return reflectProcessObj;
     }
 
-    public void setReflectProcessObj(GSReflectHelper reflectProcessObj) {
+    public void setReflectProcessObj(GSReflectUtil reflectProcessObj) {
         this.reflectProcessObj = reflectProcessObj;
     }
 

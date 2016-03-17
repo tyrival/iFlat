@@ -27,4 +27,13 @@ public interface WorkflowService {
     ProcessInstance listProcessInstanceByBusinessKey(String businessKey);
 
     List<Task> listPersonalTask(String assignee);
+
+    void completeTask(String taskId, Map<String, Object> map);
+
+    void completeTask(String taskId, String outGoingName);
+
+    void completeTask(String taskId, String outGoingName, Map<String, Object> map);
+
+    // 获取Task的出口名称集合
+    List<String> listOutGoingName(String task);
 }

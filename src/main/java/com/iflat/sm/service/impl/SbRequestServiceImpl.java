@@ -17,5 +17,6 @@ public class SbRequestServiceImpl extends BaseServiceSupport {
         this.save(sbRequest);
 
         processMap.put("submitUser", Session.getUserInfo().getAccount());;
+        processMap.put("id", sbRequest.getId());;
     }
 }

@@ -4,6 +4,8 @@ import com.iflat.system.bean.User;
 import com.iflat.system.entity.UserInfoVo;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletContext;
 import java.util.HashMap;
@@ -14,12 +16,25 @@ import java.util.Map;
  */
 public class Application {
 
-    public static String getWebRootPath() throws Exception {
-        return ((ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT)).getRealPath("/");
+    public static Map getApplication() throws Exception {
+        return ActionContext.getContext().getApplication();
+    }
+
+    public static ServletContext getServletContext() {
+        return ServletActionContext.getServletContext();
+    }
+
+    public static ApplicationContext getSpringContext() {
+        return WebApplicationContextUtils
+                .getRequiredWebApplicationContext(getServletContext());
     }
 
     public static String getContextParam(String param) throws Exception {
-        return ServletActionContext.getServletContext().getInitParameter(param);
+        return getServletContext().getInitParameter(param);
+    }
+
+    public static String getWebRootPath() throws Exception {
+        return ((ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT)).getRealPath("/");
     }
 
     public static boolean isOnline() throws Exception {
@@ -32,13 +47,13 @@ public class Application {
         return flag;
     }
 
-    public static boolean isOnline(User user) throws Exception {
-        UserInfoVo online = getOnline().get(user.getAccount());
+    public static boolean isOnline(String account) throws Exception {
+        UserInfoVo online = getOnline().get(account);
         return online != null;
     }
 
-    public static boolean isOnline(String account) throws Exception {
-        UserInfoVo online = getOnline().get(account);
+    public static boolean isOnline(User user) throws Exception {
+        UserInfoVo online = getOnline().get(user.getAccount());
         return online != null;
     }
 
@@ -70,10 +85,6 @@ public class Application {
 
     public static Map<String, UserInfoVo> getOnline() throws Exception {
         return (Map<String, UserInfoVo>)getApplication().get("online");
-    }
-
-    public static Map getApplication() throws Exception {
-        return ActionContext.getContext().getApplication();
     }
 
     //将移动端的token放入全局对象

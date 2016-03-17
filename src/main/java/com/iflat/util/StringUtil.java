@@ -3,7 +3,7 @@ package com.iflat.util;
 /**
  * Created by tyriv on 2016/3/12.
  */
-public class StringHelper {
+public class StringUtil {
 
     public static String UpperCaseFirstChar(String str) {
 
@@ -12,5 +12,9 @@ public class StringHelper {
             cs[0] -= 32;
         }
         return String.valueOf(cs);
+    }
+
+    public static boolean isBlank(String string) {
+        return string == null || "".equals(string);
     }
 }
