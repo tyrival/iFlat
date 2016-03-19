@@ -1,6 +1,8 @@
 package com.iflat.system.service;
 
 import com.iflat.system.bean.AuthOperating;
+import com.iflat.system.bean.Module;
+import com.iflat.system.bean.Operating;
 import com.iflat.system.bean.UserRole;
 import com.iflat.system.entity.AuthOperatingVo;
 
@@ -17,4 +19,7 @@ public interface AuthOperatingService {
 
     public List<AuthOperatingVo> listVoOfModuleByUser(AuthOperatingVo authOperatingVo) throws Exception;
 
+    int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
+
+    int updateCascadeWithOperatingChange(Operating old, Operating operating) throws Exception;
 }

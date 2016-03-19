@@ -20,7 +20,7 @@ public class GraphDaoImpl implements GraphDao {
 
     @Override
     public int insertBatch(List<Graph> list) throws Exception {
-        return getSqlSessionTemplate().insert("Report.util.Graph.insertBatch", list);
+        return getSqlSessionTemplate().insert("Report.util.Graph.insertBatchVo", list);
     }
 
     @Override

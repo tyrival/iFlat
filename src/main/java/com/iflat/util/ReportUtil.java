@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * Created by tyriv on 2015/12/3.
  */
-public class ReportHelper {
+public class ReportUtil {
 
     public static List convertPivot(List list) throws Exception {
 
@@ -22,7 +22,7 @@ public class ReportHelper {
 
             //建立反射对象
             Object object = list.get(i);
-            GSReflectHelper reflectHelper = new GSReflectHelper(object);
+            ReflectUtil reflectHelper = new ReflectUtil(object);
 
             //获取配置文件及按序获取keylist
             PropertiesUtil prop = getPropSequence(object);
@@ -76,7 +76,7 @@ public class ReportHelper {
         Map map = new HashMap<>();
         for(int i = 0; i < list.size(); i++) {
             Object object = list.get(i);
-            GSReflectHelper reflectHelper = new GSReflectHelper(object);
+            ReflectUtil reflectHelper = new ReflectUtil(object);
 
             Object type = reflectHelper.getMethodValue("type");
             if(type == null || "".equals(type.toString())) {
@@ -89,7 +89,7 @@ public class ReportHelper {
         return map;
     }
 
-    private static Map getPropMap(GSReflectHelper reflectHelper) throws Exception {
+    private static Map getPropMap(ReflectUtil reflectHelper) throws Exception {
         //通过反射获取对象的各个属性，并放入fieldMap中
         Map fieldMap = new HashMap<>();
 

@@ -4,7 +4,7 @@ import com.iflat.report.bean.bi.ProjectCstCtrl;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
 import com.iflat.base.service.BaseService;
-import com.iflat.util.ReportHelper;
+import com.iflat.util.ReportUtil;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class ProjectCstCtrlServiceImpl implements ReportService {
     public List query(Parameter parameter) throws Exception {
         ProjectCstCtrl projectCstCtrl = new ProjectCstCtrl();
         projectCstCtrl.setProjNo(parameter.getProjectNo());
-        return ReportHelper.convertPivot(this.baseService.list(projectCstCtrl));
+        return ReportUtil.convertPivot(this.baseService.list(projectCstCtrl));
     }
 
     @Override

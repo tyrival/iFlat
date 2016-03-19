@@ -6,7 +6,7 @@ import com.iflat.system.entity.AuthDuplicateVo;
 import com.iflat.system.entity.AuthOperatingVo;
 import com.iflat.system.entity.PasswordChange;
 import com.iflat.system.service.*;
-import com.iflat.util.FileHelper;
+import com.iflat.util.FileUtil;
 import com.iflat.util.Session;
 
 import java.io.File;
@@ -73,13 +73,13 @@ public class SystemAction extends BaseAction {
      */
     public String uploadAnsAttachment() throws Exception {
 
-        this.result.setObject(FileHelper.upload(this.upload, this.uploadFileName, "question"));
+        this.result.setObject(FileUtil.upload(this.upload, this.uploadFileName, "question"));
         return SUCCESS;
     }
 
     public String uploadQuAttachment() throws Exception {
 
-        this.result.setObject(FileHelper.upload(this.upload, this.uploadFileName, "question"));
+        this.result.setObject(FileUtil.upload(this.upload, this.uploadFileName, "question"));
         return SUCCESS;
     }
 

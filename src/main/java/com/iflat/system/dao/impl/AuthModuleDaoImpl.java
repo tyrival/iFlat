@@ -25,7 +25,7 @@ public class AuthModuleDaoImpl implements AuthModuleDao {
     }
 
     @Override
-    public int insertBatch(List<AuthModuleVo> list) throws Exception {
+    public int insertBatchVo(List<AuthModuleVo> list) throws Exception {
 
         return getSqlSessionTemplate().insert("System.AuthModule.insertBatch", list);
     }
@@ -44,9 +44,15 @@ public class AuthModuleDaoImpl implements AuthModuleDao {
     }
 
     @Override
-    public int updateBatch(List<AuthModuleVo> list) throws Exception {
+    public int updateBatch(List<AuthModule> list) throws Exception {
 
-        return getSqlSessionTemplate().update("System.AuthModule.updateBatch", list);
+        return getSqlSessionTemplate().update("System.AuthModule.updateBatchVo", list);
+    }
+
+    @Override
+    public int updateBatchVo(List<AuthModuleVo> list) throws Exception {
+
+        return getSqlSessionTemplate().update("System.AuthModule.updateBatchVo", list);
     }
 
     @Override

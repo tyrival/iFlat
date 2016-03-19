@@ -2,6 +2,7 @@ package com.iflat.system.service.impl;
 
 import com.iflat.system.bean.AuthData;
 import com.iflat.system.bean.DataDictionary;
+import com.iflat.system.bean.Module;
 import com.iflat.system.dao.AuthDataDao;
 import com.iflat.system.dao.DataDictionaryDao;
 import com.iflat.system.entity.AuthDataFieldVo;
@@ -9,7 +10,7 @@ import com.iflat.system.entity.AuthDataVo;
 import com.iflat.system.entity.AuthFieldVo;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.system.service.AuthDataService;
-import com.iflat.util.JSONHelper;
+import com.iflat.util.JSONUtil;
 import com.iflat.util.Session;
 
 import java.util.*;
@@ -59,7 +60,7 @@ public class AuthDataServiceImpl implements AuthDataService {
             }
             if(!"".equals(field)) {
                 //将权限信息由String转为List
-                List<AuthFieldVo> authFieldVoList = (List<AuthFieldVo>)JSONHelper.jsonToList(field, "com.iflat.system.entity.AuthFieldVo");
+                List<AuthFieldVo> authFieldVoList = (List<AuthFieldVo>) JSONUtil.jsonToList(field, "com.iflat.system.entity.AuthFieldVo");
                 //遍历列表
                 if(authFieldVoList != null && authFieldVoList.size() != 0) {
                     for(int m = 0; m < authFieldVoList.size(); m++) {
@@ -90,6 +91,22 @@ public class AuthDataServiceImpl implements AuthDataService {
         authData.setRoleId(userInfoVo.getRoleId());
         authData.setAccount(userInfoVo.getAccount());
         return this.authDataDao.listVoOfModuleByUser(authData);
+    }
+
+    @Override
+    public int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
+        AuthData authData = new AuthData();
+        authData.setNameSpace(oldModule.getNameSpace());
+        authData.setModuleName(oldModule.getModuleName());
+        List<AuthData> list = new ArrayList<>();
+        list = authDataDao.list(authData);
+        if (list.size() > 0) {
+            for (AuthData auth : list) {
+                auth.setNameSpace(newModule.getNameSpace());
+                auth.setModuleName(newModule.getModuleName());
+            }
+        }
+        return authDataDao.updateBatch(list);
     }
 
     public AuthDataDao getAuthDataDao() {

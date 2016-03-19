@@ -1,10 +1,13 @@
 package com.iflat.system.service.impl;
 
+import com.iflat.system.bean.AuthOperating;
+import com.iflat.system.bean.Module;
+import com.iflat.system.bean.Operating;
 import com.iflat.system.dao.AuthOperatingDao;
 import com.iflat.system.entity.AuthOperatingVo;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.system.service.AuthOperatingService;
-import com.iflat.util.JSONHelper;
+import com.iflat.util.JSONUtil;
 import com.iflat.util.Session;
 
 import java.util.ArrayList;
@@ -22,7 +25,7 @@ public class AuthOperatingServiceImpl implements AuthOperatingService {
     public int saveBatch(String authOperatingVoList) throws Exception {
 
         //获取所有前台传递的数据
-        List<AuthOperatingVo> list = (List<AuthOperatingVo>) JSONHelper.jsonToList(authOperatingVoList, "com.iflat.system.entity.AuthOperatingVo");
+        List<AuthOperatingVo> list = (List<AuthOperatingVo>) JSONUtil.jsonToList(authOperatingVoList, "com.iflat.system.entity.AuthOperatingVo");
         List<AuthOperatingVo> createList = new ArrayList<AuthOperatingVo>();
         List<AuthOperatingVo> updateList = new ArrayList<AuthOperatingVo>();
         //将数据按照amId是否为空，分为新增或修改两个list
@@ -37,7 +40,7 @@ public class AuthOperatingServiceImpl implements AuthOperatingService {
         int result = 0;
         //对两个list分别执行批量新增和修改操作
         result = createList.size() != 0 ? result + this.authOperatingDao.insertBatch(createList) : result;
-        result = updateList.size() != 0 ? result + this.authOperatingDao.updateBatch(updateList) : result;
+        result = updateList.size() != 0 ? result + this.authOperatingDao.updateBatchVo(updateList) : result;
         return result;
     }
 
@@ -53,6 +56,40 @@ public class AuthOperatingServiceImpl implements AuthOperatingService {
         authOperatingVo.setRoleId(userInfoVo.getRoleId());
         authOperatingVo.setAccount(userInfoVo.getAccount());
         return this.authOperatingDao.listVoOfModuleByUser(authOperatingVo);
+    }
+
+    @Override
+    public int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
+        AuthOperating authOperating = new AuthOperating();
+        authOperating.setNameSpace(oldModule.getNameSpace());
+        authOperating.setModuleName(oldModule.getModuleName());
+        List<AuthOperating> list = new ArrayList<>();
+        list = authOperatingDao.list(authOperating);
+        if (list.size() > 0) {
+            for (AuthOperating auth : list) {
+                auth.setNameSpace(newModule.getNameSpace());
+                auth.setModuleName(newModule.getModuleName());
+            }
+        }
+        return authOperatingDao.updateBatch(list);
+    }
+
+    @Override
+    public int updateCascadeWithOperatingChange(Operating old, Operating operating) throws Exception {
+        AuthOperating authOperating = new AuthOperating();
+        authOperating.setNameSpace(old.getNameSpace());
+        authOperating.setModuleName(old.getModuleName());
+        authOperating.setOperating(old.getOperating());
+        List<AuthOperating> list = new ArrayList<>();
+        list = authOperatingDao.list(authOperating);
+        if (list.size() > 0) {
+            for (AuthOperating auth : list) {
+                auth.setNameSpace(operating.getNameSpace());
+                auth.setModuleName(operating.getModuleName());
+                auth.setOperating(operating.getOperating());
+            }
+        }
+        return authOperatingDao.updateBatch(list);
     }
 
     public AuthOperatingDao getAuthOperatingDao() {

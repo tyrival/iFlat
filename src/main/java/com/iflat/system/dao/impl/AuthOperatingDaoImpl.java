@@ -1,5 +1,6 @@
 package com.iflat.system.dao.impl;
 
+import com.iflat.system.bean.AuthOperating;
 import com.iflat.system.dao.AuthOperatingDao;
 import com.iflat.system.entity.AuthClearVo;
 import com.iflat.system.entity.AuthDuplicateVo;
@@ -17,7 +18,7 @@ public class AuthOperatingDaoImpl implements AuthOperatingDao {
 
     @Override
     public int insertBatch(List<AuthOperatingVo> authOperatingVoList) throws Exception {
-        return getSqlSessionTemplate().insert("System.AuthOperating.insertBatch", authOperatingVoList);
+        return getSqlSessionTemplate().insert("System.AuthOperating.insertBatchVo", authOperatingVoList);
     }
 
     @Override
@@ -26,7 +27,12 @@ public class AuthOperatingDaoImpl implements AuthOperatingDao {
     }
 
     @Override
-    public int updateBatch(List<AuthOperatingVo> authOperatingVoList) throws Exception {
+    public int updateBatch(List<AuthOperating> authOperatingList) throws Exception {
+        return getSqlSessionTemplate().update("System.AuthOperating.updateBatch", authOperatingList);
+    }
+
+    @Override
+    public int updateBatchVo(List<AuthOperatingVo> authOperatingVoList) throws Exception {
         return getSqlSessionTemplate().update("System.AuthOperating.updateBatch", authOperatingVoList);
     }
 
@@ -46,6 +52,11 @@ public class AuthOperatingDaoImpl implements AuthOperatingDao {
     public List<AuthOperatingVo> listVoByAuthOperatingVo(AuthOperatingVo authOperatingVo) throws Exception {
 
         return getSqlSessionTemplate().selectList("System.AuthOperating.listVoByAuthOperatingVo", authOperatingVo);
+    }
+
+    @Override
+    public List<AuthOperating> list(AuthOperating authOperating) throws Exception {
+        return getSqlSessionTemplate().selectList("System.AuthOperating.list", authOperating);
     }
 
     @Override

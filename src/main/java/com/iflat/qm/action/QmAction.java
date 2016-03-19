@@ -5,7 +5,7 @@ import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
 import com.iflat.qm.bean.QualityFine;
 import com.iflat.qm.entity.QualityFineVo;
-import com.iflat.util.FileHelper;
+import com.iflat.util.FileUtil;
 import com.opensymphony.xwork2.ModelDriven;
 
 import java.io.File;
@@ -60,7 +60,7 @@ public class QmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String deleteFile() throws Exception {
-        this.result.setObject(FileHelper.delete(this.filePath));
+        this.result.setObject(FileUtil.delete(this.filePath));
         return SUCCESS;
     }
 

@@ -9,9 +9,8 @@ import java.util.*;
 import com.iflat.system.entity.AuthDataVo;
 import com.iflat.system.entity.AuthFieldVo;
 import com.iflat.system.entity.UserInfoVo;
-import com.iflat.util.JSONHelper;
+import com.iflat.util.JSONUtil;
 import com.iflat.util.Session;
-import com.opensymphony.xwork2.ActionContext;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.operators.conditional.AndExpression;
@@ -119,7 +118,7 @@ public class DataAuthorityInterceptor implements Interceptor {
     private void processPlainSelect(SelectBody selectBody, AuthDataVo authDataVo, UserInfoVo userInfoVo) throws Exception {
         List<AuthFieldVo> list = null;
         //解析字段权限
-        list = authDataVo.getField() != "" ? (List<AuthFieldVo>) JSONHelper.jsonToList(authDataVo.getField(), "com.iflat.system.entity.AuthFieldVo") : null;
+        list = authDataVo.getField() != "" ? (List<AuthFieldVo>) JSONUtil.jsonToList(authDataVo.getField(), "com.iflat.system.entity.AuthFieldVo") : null;
         String fields = "";
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {

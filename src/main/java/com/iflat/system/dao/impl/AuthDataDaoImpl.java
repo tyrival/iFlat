@@ -38,6 +38,11 @@ public class AuthDataDaoImpl implements AuthDataDao {
     }
 
     @Override
+    public int updateBatch(List<AuthData> list) throws Exception {
+        return getSqlSessionTemplate().update("System.AuthData.updateBatch", list);
+    }
+
+    @Override
     public int delete(String amId) throws Exception {
 
         return getSqlSessionTemplate().delete("System.AuthData.delete", amId);
@@ -56,7 +61,12 @@ public class AuthDataDaoImpl implements AuthDataDao {
 
     @Override
     public AuthData get(AuthData authData) throws Exception {
-        return getSqlSessionTemplate().selectOne("System.AuthData.get", authData);
+        return getSqlSessionTemplate().selectOne("System.AuthData.list", authData);
+    }
+
+    @Override
+    public List<AuthData> list(AuthData authData) throws Exception {
+        return getSqlSessionTemplate().selectList("System.AuthData.list", authData);
     }
 
     @Override

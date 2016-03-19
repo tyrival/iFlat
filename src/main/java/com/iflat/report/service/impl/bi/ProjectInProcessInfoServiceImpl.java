@@ -4,7 +4,7 @@ import com.iflat.bi.entity.ProjectInProcessInfo;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
 import com.iflat.base.service.BaseService;
-import com.iflat.util.ReportHelper;
+import com.iflat.util.ReportUtil;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class ProjectInProcessInfoServiceImpl implements ReportService {
         ProjectInProcessInfo projectInProcessInfo = new ProjectInProcessInfo();
         projectInProcessInfo.setType(parameter.getCategory());
         projectInProcessInfo.setMonth(parameter.getDate());
-        return ReportHelper.convertPivot(this.baseService.list(projectInProcessInfo));
+        return ReportUtil.convertPivot(this.baseService.list(projectInProcessInfo));
     }
 
     @Override

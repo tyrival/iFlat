@@ -27,7 +27,7 @@ import java.util.zip.DataFormatException;
 /**
  * Created by tyriv on 2015/11/18.
  */
-public class ExcelHelper {
+public class ExcelUtil {
 
     private final static String DEFAULT_DOCUMENT = "temp";
     private final static String DEFAULT_OUTPUT_PATH = "template/excel/";
@@ -49,7 +49,7 @@ public class ExcelHelper {
         String[] thead = null;
         List dataSource = excelWriter.getDataSource();
         if(dataSource != null) {
-            GSReflectHelper gsReflectHelper = new GSReflectHelper(dataSource.get(0));
+            ReflectUtil gsReflectHelper = new ReflectUtil(dataSource.get(0));
             thead = gsReflectHelper.getProps();
         }
         sheet.addMergedRegion(new CellRangeAddress(rownum, rownum, 0, thead.length + startColumn - 1));
@@ -79,7 +79,7 @@ public class ExcelHelper {
         if(dataSource != null) {
             //追加数据
             for(int i = 0; i < dataSource.size(); i++) {
-                GSReflectHelper gsReflectHelper = new GSReflectHelper(dataSource.get(i));
+                ReflectUtil gsReflectHelper = new ReflectUtil(dataSource.get(i));
                 HSSFRow tbodyRow = sheet.createRow(rownum);
                 //序号
                 if(withSerial) {
@@ -175,7 +175,7 @@ public class ExcelHelper {
 
             //建立GSReflectHelper对象，通过传入属性名，执行其对应的setter方法
             Object obj = cls.newInstance();
-            GSReflectHelper gsReflectHelper = new GSReflectHelper(obj);
+            ReflectUtil gsReflectHelper = new ReflectUtil(obj);
 
             //获取最后一列列号
             int lastCellNum = row.getLastCellNum();

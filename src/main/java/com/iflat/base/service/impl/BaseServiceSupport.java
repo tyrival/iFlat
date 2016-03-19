@@ -43,7 +43,7 @@ public class BaseServiceSupport implements BaseService {
     protected RuntimeService runtimeService;
     protected Object processObj;
     protected Map<String, Object> processMap;
-    protected GSReflectUtil reflectProcessObj;
+    protected ReflectUtil reflectProcessObj;
     protected String processKey;
     protected String processBusinessKey;
 
@@ -109,7 +109,7 @@ public class BaseServiceSupport implements BaseService {
     public void startProcess(Object object) throws Exception {
 
         this.processObj = object;
-        this.reflectProcessObj = new GSReflectUtil(this.processObj);
+        this.reflectProcessObj = new ReflectUtil(this.processObj);
 
         this.generateProcessKey();
         this.generateBusinessKey();
@@ -155,7 +155,7 @@ public class BaseServiceSupport implements BaseService {
     public Object save(Object o) throws Exception {
 
         this.saveObj = o;
-        GSReflectUtil obj = new GSReflectUtil(this.saveObj);
+        ReflectUtil obj = new ReflectUtil(this.saveObj);
         Object id = obj.getMethodValue("id");
         Object result;
 
@@ -186,7 +186,7 @@ public class BaseServiceSupport implements BaseService {
         Object result;
 
         this.beforeInsertBatch();
-        result = executeMethod(this.insertBatchList, "insertBatch");
+        result = executeMethod(this.insertBatchList, "insertBatchVo");
         this.afterInsertBatch();
 
         //如果是增删改，dao层返回的是数值，此时改为返回参数对象
@@ -203,7 +203,7 @@ public class BaseServiceSupport implements BaseService {
         Object result;
 
         this.beforeUpdateBatch();
-        result = executeMethod(this.updateBatchList, "updateBatch");
+        result = executeMethod(this.updateBatchList, "updateBatchVo");
         this.afterUpdateBatch();
 
         if(result instanceof Integer) {
@@ -330,7 +330,7 @@ public class BaseServiceSupport implements BaseService {
         List result = null;
         Object res = null;
         if(this.importList.size() > 0) {
-            res = executeMethod(this.importList, "insertBatch");
+            res = executeMethod(this.importList, "insertBatchVo");
         }
         if(res instanceof Integer) {
             result = (int)res > 0 ? importList : null;
@@ -510,11 +510,11 @@ public class BaseServiceSupport implements BaseService {
         this.processObj = processObj;
     }
 
-    public GSReflectUtil getReflectProcessObj() {
+    public ReflectUtil getReflectProcessObj() {
         return reflectProcessObj;
     }
 
-    public void setReflectProcessObj(GSReflectUtil reflectProcessObj) {
+    public void setReflectProcessObj(ReflectUtil reflectProcessObj) {
         this.reflectProcessObj = reflectProcessObj;
     }
 

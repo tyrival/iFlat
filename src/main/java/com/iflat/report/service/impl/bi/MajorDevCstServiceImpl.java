@@ -4,7 +4,7 @@ import com.iflat.bi.bean.MajorDevCst;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
 import com.iflat.base.service.BaseService;
-import com.iflat.util.ReportHelper;
+import com.iflat.util.ReportUtil;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class MajorDevCstServiceImpl implements ReportService {
     public List query(Parameter parameter) throws Exception {
         MajorDevCst majorDevCst = new MajorDevCst();
         majorDevCst.setProjNo(parameter.getProjectNo());
-        return ReportHelper.convertBalance(this.baseService.list(majorDevCst));
+        return ReportUtil.convertBalance(this.baseService.list(majorDevCst));
     }
 
     @Override

@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by tyriv on 2016/3/8.
  */
-public class ActivitiAdapter {
+public class DataAdapter {
 
 
     public static UserEntity convertUser(UserInfoVo userInfoVo) {

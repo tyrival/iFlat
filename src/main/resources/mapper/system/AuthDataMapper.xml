@@ -39,6 +39,18 @@
         WHERE adId=#{adId}
     </update>
 
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE SysAuthData SET adId=a.adId,roleId=a.roleId,account=a.account,nameSpace=a.nameSpace,moduleName=a.moduleName,dbInstance=a.dbInstance,dbName=a.dbName,tableName=a.tableName,field=a.field,filter=a.filter
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.adId} as adId,#{item.roleId} as roleId,#{item.account} as account,#{item.nameSpace} as
+            nameSpace,#{item.moduleName} as moduleName,#{item.dbInstance} as dbInstance,#{item.dbInstance} as
+            dbInstance,#{item.dbName} as dbName,#{item.tableName} as tableName,#{item.field} as field,#{item.filter} as filter
+        </foreach>
+        ) AS a
+        WHERE SysAuthData.adId=a.adId
+    </update>
+
     <delete id="delete" parameterType="String">
         DELETE SysAuthData
         WHERE adId=#{adId}
@@ -68,7 +80,7 @@
         </where>
     </delete>
 
-    <select id="get" parameterType="com.iflat.system.bean.AuthData" resultMap="SysAuthDataResult">
+    <select id="list" parameterType="com.iflat.system.bean.AuthData" resultMap="SysAuthDataResult">
         SELECT adId,roleId,account,nameSpace,moduleName,dbInstance,dbName,tableName,field,filter
         FROM SysAuthData
         <where>

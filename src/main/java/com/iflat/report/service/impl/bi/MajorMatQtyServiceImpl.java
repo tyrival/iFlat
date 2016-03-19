@@ -4,7 +4,7 @@ import com.iflat.bi.bean.MajorMatQty;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
 import com.iflat.base.service.BaseService;
-import com.iflat.util.ReportHelper;
+import com.iflat.util.ReportUtil;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class MajorMatQtyServiceImpl implements ReportService {
     public List query(Parameter parameter) throws Exception {
         MajorMatQty majorMatQty = new MajorMatQty();
         majorMatQty.setProjNo(parameter.getProjectNo());
-        return ReportHelper.convertBalanceQty(this.baseService.list(majorMatQty));
+        return ReportUtil.convertBalanceQty(this.baseService.list(majorMatQty));
     }
 
     @Override

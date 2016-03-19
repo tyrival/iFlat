@@ -12,6 +12,7 @@ public interface OperatingDao {
     public int insert(Operating operating) throws Exception;
     public int update(Operating operating) throws Exception;
     public int delete(Operating operating) throws Exception;
-    public List listOfModule(Operating operating) throws Exception;
+    public Operating get(String id) throws Exception;
+    public List list(Operating operating) throws Exception;
 
 }

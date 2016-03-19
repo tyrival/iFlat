@@ -4,7 +4,7 @@ import com.iflat.report.bean.bi.DeptCstCtrl;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
 import com.iflat.base.service.BaseService;
-import com.iflat.util.ReportHelper;
+import com.iflat.util.ReportUtil;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class DeptCstCtrlServiceImpl implements ReportService {
     public List query(Parameter parameter) throws Exception {
         DeptCstCtrl deptCstCtrl = new DeptCstCtrl();
         deptCstCtrl.setMonth(parameter.getDate());
-        return ReportHelper.convertPivot(this.baseService.list(deptCstCtrl));
+        return ReportUtil.convertPivot(this.baseService.list(deptCstCtrl));
     }
 
     @Override

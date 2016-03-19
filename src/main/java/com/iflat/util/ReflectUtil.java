@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Created by tyriv on 2015/11/18.
  */
-public class GSReflectHelper {
+public class ReflectUtil {
     private Class cls;
     /**
      * 传过来的对象
@@ -35,7 +35,7 @@ public class GSReflectHelper {
      *
      * @param o 目标对象
      */
-    public GSReflectHelper(Object o) {
+    public ReflectUtil(Object o) {
         obj = o;
         initMethods();
     }

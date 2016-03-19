@@ -2,6 +2,7 @@ package com.iflat.system.service.impl;
 
 import com.iflat.system.bean.Operating;
 import com.iflat.system.dao.OperatingDao;
+import com.iflat.system.service.AuthOperatingService;
 import com.iflat.system.service.OperatingService;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.UUID;
 public class OperatingServiceImpl implements OperatingService {
 
     private OperatingDao operatingDao;
+    private AuthOperatingService authOperatingService;
 
     @Override
     public Operating save(Operating operating) throws Exception {
@@ -20,11 +22,25 @@ public class OperatingServiceImpl implements OperatingService {
         int i = 0;
         if(operating.getOpId() != null && !"".equals(operating.getOpId())) {
             i = this.operatingDao.update(operating);
+
+            Operating old = operatingDao.get(operating.getOpId());
+            if (isKeyChanged(old, operating)) {
+                authOperatingService.updateCascadeWithOperatingChange(old, operating);
+            }
         } else {
             operating.setOpId(UUID.randomUUID().toString());
             i = this.operatingDao.insert(operating);
         }
         return i > 0 ? operating : null;
+    }
+
+    private boolean isKeyChanged(Operating oldOperating, Operating newOperating) {
+        if (oldOperating.getNameSpace() != newOperating.getNameSpace()
+                || oldOperating.getModuleName() != newOperating.getModuleName()
+                || oldOperating.getOperating() != newOperating.getOperating()) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -35,7 +51,7 @@ public class OperatingServiceImpl implements OperatingService {
 
     @Override
     public List listOfModule(Operating operating) throws Exception {
-        return this.operatingDao.listOfModule(operating);
+        return this.operatingDao.list(operating);
     }
 
     public OperatingDao getOperatingDao() {
@@ -44,5 +60,9 @@ public class OperatingServiceImpl implements OperatingService {
 
     public void setOperatingDao(OperatingDao operatingDao) {
         this.operatingDao = operatingDao;
+    }
+
+    public void setAuthOperatingService(AuthOperatingService authOperatingService) {
+        this.authOperatingService = authOperatingService;
     }
 }

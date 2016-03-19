@@ -14,13 +14,14 @@ public interface AuthModuleDao {
 
     public AuthModule insert(AuthModule authModule) throws Exception;
 
-    public int insertBatch(List<AuthModuleVo> list) throws Exception;
+    public int insertBatchVo(List<AuthModuleVo> list) throws Exception;
 
     public int insertDuplicate(List<AuthDuplicateVo> list) throws Exception;
 
     public AuthModule update(AuthModule authModule) throws Exception;
 
-    public int updateBatch(List<AuthModuleVo> list) throws Exception;
+    public int updateBatch(List<AuthModule> list) throws Exception;
+    public int updateBatchVo(List<AuthModuleVo> list) throws Exception;
 
     public int deleteByDuplicate(List<AuthDuplicateVo> list) throws Exception;
 

@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Created by tyriv on 2015/8/31.
  */
-public class ExtTreeHelper {
+public class ExtTreeUtil {
 
     public static NavigationNode formatNavigationTree(List<Module> list) {
 

@@ -29,8 +29,13 @@ public class OperatingDaoImpl implements OperatingDao {
     }
 
     @Override
-    public List listOfModule(Operating operating) throws Exception {
-        return getSqlSessionTemplate().selectList("System.Operating.listOfModule", operating);
+    public Operating get(String id) throws Exception {
+        return getSqlSessionTemplate().selectOne("System.Operating.get", id);
+    }
+
+    @Override
+    public List list(Operating operating) throws Exception {
+        return getSqlSessionTemplate().selectList("System.Operating.list", operating);
     }
 
     public SqlSessionTemplate getSqlSessionTemplate() {

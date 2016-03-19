@@ -4,7 +4,7 @@ import com.iflat.bi.bean.ProjectCost;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
 import com.iflat.base.service.BaseService;
-import com.iflat.util.ReportHelper;
+import com.iflat.util.ReportUtil;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class ProjectCostServiceImpl implements ReportService {
 
         ProjectCost projectCost = new ProjectCost();
         projectCost.setProjNo(parameter.getProjectNo());
-        return ReportHelper.convertBalance(this.baseService.list(projectCost));
+        return ReportUtil.convertBalance(this.baseService.list(projectCost));
     }
 
     @Override

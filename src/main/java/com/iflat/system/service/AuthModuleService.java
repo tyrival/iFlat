@@ -1,6 +1,7 @@
 package com.iflat.system.service;
 
 import com.iflat.system.bean.AuthModule;
+import com.iflat.system.bean.Module;
 import com.iflat.system.bean.UserRole;
 
 import java.util.List;
@@ -10,13 +11,15 @@ import java.util.List;
  */
 public interface AuthModuleService {
 
-    public AuthModule save(AuthModule authModule) throws Exception;
+    AuthModule save(AuthModule authModule) throws Exception;
 
-    public int saveBatch(String authModuleVoList) throws Exception;
+    int saveBatch(String authModuleVoList) throws Exception;
 
-    public List<AuthModule> list(AuthModule authModule) throws Exception;
+    List<AuthModule> list(AuthModule authModule) throws Exception;
 
-    public int duplicateAuthority(String authDuplicateList) throws Exception;
+    int duplicateAuthority(String authDuplicateList) throws Exception;
 
-    public int clearAuthority(String authClearList) throws Exception;
+    int clearAuthority(String authClearList) throws Exception;
+
+    int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
 }

@@ -28,7 +28,7 @@
         from (
             select gcbh,gcmc,wzfl,xelx,wzbh,wzmc,wzms,jldw,define00,xesl,
             isnull((select sum(sfs) from V_Mat_MatRequisition where xeid =xeb.id),0) lysl
-            from V_Mat_MatQuato
+            from V_Mat_MatQuato xeb
             where gcbh =#{projNo})A
         )B
         group by wzfl,jldw,gcbh

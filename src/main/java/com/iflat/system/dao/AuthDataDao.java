@@ -18,6 +18,8 @@ public interface AuthDataDao {
 
     public AuthData update(AuthData authData) throws Exception;
 
+    public int updateBatch(List<AuthData> list) throws Exception;
+
     public int delete(String adId) throws Exception;
 
     public int deleteByDuplicate(List<AuthDuplicateVo> list) throws Exception;
@@ -25,6 +27,8 @@ public interface AuthDataDao {
     public int deleteByClear(List<AuthClearVo> list) throws Exception;
 
     public AuthData get(AuthData authData) throws Exception;
+
+    public List<AuthData> list(AuthData authData) throws Exception;
 
     public List<AuthDataVo> listVoOfModuleByUser(AuthData authData) throws Exception;
 }

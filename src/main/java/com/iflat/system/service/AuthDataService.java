@@ -1,6 +1,7 @@
 package com.iflat.system.service;
 
 import com.iflat.system.bean.AuthData;
+import com.iflat.system.bean.Module;
 import com.iflat.system.bean.UserRole;
 import com.iflat.system.entity.AuthDataFieldVo;
 import com.iflat.system.entity.AuthDataVo;
@@ -17,4 +18,6 @@ public interface AuthDataService {
     public List<AuthDataFieldVo> listAuthDataFieldStatus(AuthData authData) throws Exception;
 
     public List<AuthDataVo> listVoOfModuleByUser(AuthData authData) throws Exception;
+
+    int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
 }

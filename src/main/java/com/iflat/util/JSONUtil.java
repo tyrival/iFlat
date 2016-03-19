@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * Created by tyriv on 2015/10/10.
  */
-public class JSONHelper {
+public class JSONUtil {
 
     public static List<?> jsonToList(String jsonString, String className) throws Exception {
 

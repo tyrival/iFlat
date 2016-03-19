@@ -6,7 +6,7 @@ import com.iflat.bi.bean.*;
 import com.iflat.bi.entity.ProjectInProcessInfo;
 import com.iflat.bi.entity.ProjectInfo;
 import com.iflat.base.entity.ExcelTemplate;
-import com.iflat.util.ExcelHelper;
+import com.iflat.util.ExcelUtil;
 
 import java.io.File;
 
@@ -60,7 +60,7 @@ public class BiAction extends BaseAction {
     /* DeptCstCtrl */
     public String templateDeptCstCtrl() throws Exception {
         ExcelTemplate excelTemplate = new ExcelTemplate("bi", "DeptCstCtrl");
-        excelTemplate = ExcelHelper.template(excelTemplate);
+        excelTemplate = ExcelUtil.template(excelTemplate);
         this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
@@ -88,7 +88,7 @@ public class BiAction extends BaseAction {
     /* ProjectInProcess */
     public String templateProjectInProcess() throws Exception {
         ExcelTemplate excelTemplate = new ExcelTemplate("bi", "ProjectInProcess");
-        excelTemplate = ExcelHelper.template(excelTemplate);
+        excelTemplate = ExcelUtil.template(excelTemplate);
         this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
@@ -132,7 +132,7 @@ public class BiAction extends BaseAction {
     /* ProjectCstCtrl */
     public String templateProjectCstCtrl() throws Exception {
         ExcelTemplate excelTemplate = new ExcelTemplate("bi", "ProjectCstCtrl");
-        excelTemplate = ExcelHelper.template(excelTemplate);
+        excelTemplate = ExcelUtil.template(excelTemplate);
         this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
@@ -160,7 +160,7 @@ public class BiAction extends BaseAction {
     /* AdditionalBill */
     public String templateAdditionalBill() throws Exception {
         ExcelTemplate excelTemplate = new ExcelTemplate("bi", "AdditionalBill");
-        excelTemplate = ExcelHelper.template(excelTemplate);
+        excelTemplate = ExcelUtil.template(excelTemplate);
         this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
@@ -188,7 +188,7 @@ public class BiAction extends BaseAction {
     /* MajorMatQty */
     public String templateMajorMatQty() throws Exception {
         ExcelTemplate excelTemplate = new ExcelTemplate("bi", "MajorMatQty");
-        excelTemplate = ExcelHelper.template(excelTemplate);
+        excelTemplate = ExcelUtil.template(excelTemplate);
         this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
@@ -221,7 +221,7 @@ public class BiAction extends BaseAction {
 
     public String templateMajorMatCst() throws Exception {
         ExcelTemplate excelTemplate = new ExcelTemplate("bi", "MajorMatCst");
-        excelTemplate = ExcelHelper.template(excelTemplate);
+        excelTemplate = ExcelUtil.template(excelTemplate);
         this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
@@ -254,7 +254,7 @@ public class BiAction extends BaseAction {
 
     public String templateMajorDevCst() throws Exception {
         ExcelTemplate excelTemplate = new ExcelTemplate("bi", "MajorDevCst");
-        excelTemplate = ExcelHelper.template(excelTemplate);
+        excelTemplate = ExcelUtil.template(excelTemplate);
         this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
@@ -287,7 +287,7 @@ public class BiAction extends BaseAction {
 
     public String templateProjectCost() throws Exception {
         ExcelTemplate excelTemplate = new ExcelTemplate("bi", "ProjectCost");
-        excelTemplate = ExcelHelper.template(excelTemplate);
+        excelTemplate = ExcelUtil.template(excelTemplate);
         this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }

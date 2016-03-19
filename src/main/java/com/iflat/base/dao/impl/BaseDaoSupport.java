@@ -24,7 +24,7 @@ public class BaseDaoSupport implements BaseDao {
     @Override
     public int insertBatch(List list) throws Exception {
         Object o = list != null && list.size() > 0 ? list.get(0) : null;
-        return o != null ? this.sqlSessionTemplate.insert(getNameSpace(o) + ".insertBatch", list) : null;
+        return o != null ? this.sqlSessionTemplate.insert(getNameSpace(o) + ".insertBatchVo", list) : null;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class BaseDaoSupport implements BaseDao {
     @Override
     public int updateBatch(List list) throws Exception {
         Object o = list != null && list.size() > 0 ? list.get(0) : null;
-        return o != null ? this.sqlSessionTemplate.update(getNameSpace(o) + ".updateBatch", list) : null;
+        return o != null ? this.sqlSessionTemplate.update(getNameSpace(o) + ".updateBatchVo", list) : null;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class BaseDaoSupport implements BaseDao {
     @Override
     public int deleteBatch(List list) throws Exception {
         Object o = list != null && list.size() > 0 ? list.get(0) : null;
-        return o != null ? this.sqlSessionTemplate.delete(getNameSpace(o) + ".updateBatch", list) : null;
+        return o != null ? this.sqlSessionTemplate.delete(getNameSpace(o) + ".updateBatchVo", list) : null;
     }
 
     @Override

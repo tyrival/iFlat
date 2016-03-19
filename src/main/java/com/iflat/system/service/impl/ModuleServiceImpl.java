@@ -5,8 +5,11 @@ import com.iflat.system.dao.ModuleDao;
 import com.iflat.system.entity.ModuleNode;
 import com.iflat.system.entity.NavigationNode;
 import com.iflat.system.entity.UserInfoVo;
+import com.iflat.system.service.AuthDataService;
+import com.iflat.system.service.AuthModuleService;
+import com.iflat.system.service.AuthOperatingService;
 import com.iflat.system.service.ModuleService;
-import com.iflat.util.ExtTreeHelper;
+import com.iflat.util.ExtTreeUtil;
 import com.iflat.util.ListSort;
 import com.iflat.util.Session;
 
@@ -18,12 +21,23 @@ import java.util.*;
 public class ModuleServiceImpl implements ModuleService {
 
     private ModuleDao moduleDao;
+    private AuthModuleService authModuleService;
+    private AuthOperatingService authOperatingService;
+    private AuthDataService authDataService;
 
     @Override
     public Module save(Module module) throws Exception {
 
         if(module.getNodeId() != null && !"".equals(module.getNodeId())) {
             module = this.moduleDao.update(module);
+
+            Module old = moduleDao.get(module.getNodeId());
+
+            if (isKeyChanged(old, module)) {
+                authModuleService.updateCascadeWithModuleChange(old, module);
+                authOperatingService.updateCascadeWithModuleChange(old, module);
+                authDataService.updateCascadeWithModuleChange(old, module);
+            }
 
         } else {
             module.setNodeId(UUID.randomUUID().toString());
@@ -61,7 +75,7 @@ public class ModuleServiceImpl implements ModuleService {
         } else {
             list = this.moduleDao.listNavigationByUser(userInfoVo);
         }
-        return ExtTreeHelper.formatNavigationTree(list);
+        return ExtTreeUtil.formatNavigationTree(list);
     }
 
     @Override
@@ -127,11 +141,31 @@ public class ModuleServiceImpl implements ModuleService {
         return result;
     }
 
+    private boolean isKeyChanged(Module oldModule, Module newModule) {
+        if (oldModule.getNameSpace() != newModule.getNameSpace()
+                || oldModule.getModuleName() != newModule.getModuleName()) {
+            return true;
+        }
+        return false;
+    }
+
     public ModuleDao getModuleDao() {
         return moduleDao;
     }
 
     public void setModuleDao(ModuleDao moduleDao) {
         this.moduleDao = moduleDao;
+    }
+
+    public void setAuthModuleService(AuthModuleService authModuleService) {
+        this.authModuleService = authModuleService;
+    }
+
+    public void setAuthOperatingService(AuthOperatingService authOperatingService) {
+        this.authOperatingService = authOperatingService;
+    }
+
+    public void setAuthDataService(AuthDataService authDataService) {
+        this.authDataService = authDataService;
     }
 }

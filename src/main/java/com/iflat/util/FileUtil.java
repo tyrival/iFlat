@@ -10,7 +10,7 @@ import java.util.UUID;
 /**
  * Created by tyriv on 2015/11/16.
  */
-public class FileHelper {
+public class FileUtil {
 
     public static String delete(String filePath) throws Exception {
         File f = new File(Application.getWebRootPath() + filePath);

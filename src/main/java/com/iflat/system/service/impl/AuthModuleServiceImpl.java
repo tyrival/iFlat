@@ -1,6 +1,7 @@
 package com.iflat.system.service.impl;
 
 import com.iflat.system.bean.AuthModule;
+import com.iflat.system.bean.Module;
 import com.iflat.system.dao.AuthDataDao;
 import com.iflat.system.dao.AuthModuleDao;
 import com.iflat.system.dao.AuthOperatingDao;
@@ -8,7 +9,7 @@ import com.iflat.system.entity.AuthClearVo;
 import com.iflat.system.entity.AuthDuplicateVo;
 import com.iflat.system.entity.AuthModuleVo;
 import com.iflat.system.service.AuthModuleService;
-import com.iflat.util.JSONHelper;
+import com.iflat.util.JSONUtil;
 
 import java.util.*;
 
@@ -37,7 +38,7 @@ public class AuthModuleServiceImpl implements AuthModuleService {
     public int saveBatch(String authModuleVoList) throws Exception {
 
         //获取所有前台传递的数据
-        List<AuthModuleVo> list = (List<AuthModuleVo>)JSONHelper.jsonToList(authModuleVoList, "com.iflat.system.entity.AuthModuleVo");
+        List<AuthModuleVo> list = (List<AuthModuleVo>) JSONUtil.jsonToList(authModuleVoList, "com.iflat.system.entity.AuthModuleVo");
         List<AuthModuleVo> createList = new ArrayList<AuthModuleVo>();
         List<AuthModuleVo> updateList = new ArrayList<AuthModuleVo>();
         //将数据按照amId是否为空，分为新增或修改两个list
@@ -51,8 +52,8 @@ public class AuthModuleServiceImpl implements AuthModuleService {
         }
         int result = 0;
         //对两个list分别执行批量新增和修改操作
-        result = createList.size() != 0 ? result + this.authModuleDao.insertBatch(createList) : result;
-        result = updateList.size() != 0 ? result + this.authModuleDao.updateBatch(updateList) : result;
+        result = createList.size() != 0 ? result + this.authModuleDao.insertBatchVo(createList) : result;
+        result = updateList.size() != 0 ? result + this.authModuleDao.updateBatchVo(updateList) : result;
         return result;
     }
 
@@ -64,7 +65,7 @@ public class AuthModuleServiceImpl implements AuthModuleService {
 
     @Override
     public int duplicateAuthority(String authDuplicateList) throws Exception {
-        List<AuthDuplicateVo> list = (List<AuthDuplicateVo>)JSONHelper.jsonToList(authDuplicateList, "com.iflat.system.entity.AuthDuplicateVo");
+        List<AuthDuplicateVo> list = (List<AuthDuplicateVo>) JSONUtil.jsonToList(authDuplicateList, "com.iflat.system.entity.AuthDuplicateVo");
         this.authModuleDao.deleteByDuplicate(list);
         this.authOperatingDao.deleteByDuplicate(list);
         this.authDataDao.deleteByDuplicate(list);
@@ -77,12 +78,28 @@ public class AuthModuleServiceImpl implements AuthModuleService {
 
     @Override
     public int clearAuthority(String authClearList) throws Exception {
-        List<AuthClearVo> list = (List<AuthClearVo>)JSONHelper.jsonToList(authClearList, "com.iflat.system.entity.AuthClearVo");
+        List<AuthClearVo> list = (List<AuthClearVo>) JSONUtil.jsonToList(authClearList, "com.iflat.system.entity.AuthClearVo");
         int result = 0;
         result += this.authOperatingDao.deleteByClear(list);
         result += this.authDataDao.deleteByClear(list);
         result += this.authDataDao.deleteByClear(list);
         return result;
+    }
+
+    @Override
+    public int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
+        AuthModule authModule = new AuthModule();
+        authModule.setNameSpace(oldModule.getNameSpace());
+        authModule.setModuleName(oldModule.getModuleName());
+        List<AuthModule> list = new ArrayList<>();
+        list = authModuleDao.list(authModule);
+        if (list.size() > 0) {
+            for (AuthModule auth : list) {
+                auth.setNameSpace(newModule.getNameSpace());
+                auth.setModuleName(newModule.getModuleName());
+            }
+        }
+        return authModuleDao.updateBatch(list);
     }
 
     public AuthModuleDao getAuthModuleDao() {

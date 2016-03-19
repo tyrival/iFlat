@@ -2,7 +2,7 @@ package com.iflat.workflow.service.impl;
 
 import com.iflat.system.service.RoleService;
 import com.iflat.system.service.UserRoleService;
-import com.iflat.workflow.util.ActivitiAdapter;
+import com.iflat.workflow.util.DataAdapter;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.impl.GroupQueryImpl;
 import org.activiti.engine.impl.Page;
@@ -22,7 +22,7 @@ public class GroupService extends GroupEntityManager {
     public List<Group> findGroupsByUser(String userId) {
 
         try {
-            return ActivitiAdapter.convertRoleList(userRoleService.listVoByAccount(userId));
+            return DataAdapter.convertRoleList(userRoleService.listVoByAccount(userId));
         } catch (Exception e) {
             return null;
         }
