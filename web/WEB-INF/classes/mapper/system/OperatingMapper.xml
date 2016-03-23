@@ -27,11 +27,22 @@
         WHERE opId=#{opId}
     </delete>
 
-    <select id="listOfModule" parameterType="com.iflat.system.bean.Operating" resultMap="SysOperatingResult">
+    <select id="get" parameterType="String" resultMap="SysOperatingResult">
+        SELECT opId,operating,alias,method,sequence,nameSpace,moduleName
+        FROM SysOperating
+        WHERE opId=#{opId}
+    </select>
+
+    <select id="list" parameterType="com.iflat.system.bean.Operating" resultMap="SysOperatingResult">
         SELECT opId,operating,alias,method,sequence,nameSpace,moduleName
         FROM SysOperating
         <where>
-            <if test="nameSpace!=null">nameSpace=#{nameSpace}</if>
+            <if test="opId!=null">opId=#{opId}</if>
+            <if test="operating!=null">AND operating=#{operating}</if>
+            <if test="alias!=null">AND alias=#{alias}</if>
+            <if test="method!=null">AND method=#{method}</if>
+            <if test="sequence!=null">AND sequence=#{sequence}</if>
+            <if test="nameSpace!=null">AND nameSpace=#{nameSpace}</if>
             <if test="moduleName!=null">AND moduleName=#{moduleName}</if>
         </where>
         ORDER BY sequence

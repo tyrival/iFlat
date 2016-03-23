@@ -17,7 +17,7 @@ Ext.define('iFlat.view.bi.ProjectCostController', {
                             if(data.success) {
                                 biProjectCostStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -59,10 +59,10 @@ Ext.define('iFlat.view.bi.ProjectCostController', {
                 if(bean == 'ProjectCost') {
                     biProjectCostStore.reload();
                 }
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             }
         });
 
@@ -161,10 +161,10 @@ Ext.define('iFlat.view.bi.ProjectCostController', {
                         waitMsg: '正在导入......',
                         success: function (fp, o) {
                             biProjectCostStore.reload();
-                            tip(o.response.responseText);
+                            Flat.util.tip(o.response.responseText);
                         },
                         failure: function (fp, o) {
-                            tip(o.response.responseText);
+                            Flat.util.tip(o.response.responseText);
                         }
                     })
                 }
@@ -202,7 +202,7 @@ Ext.define('iFlat.view.bi.ProjectCostController', {
     },
 
     renderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.financeFormat(value,2);
         return value;
     },
 })

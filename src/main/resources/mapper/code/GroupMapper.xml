@@ -5,10 +5,9 @@
 <mapper namespace="Code.Group">
 
     <select id="list" parameterType="com.iflat.code.bean.Group" resultMap="codeGroupResult">
-        SELECT id,deptCode,deptName,teamName,groupName
-        FROM CodeTeam
+        SELECT deptCode,deptName,teamName,groupName
+        FROM code.dbo.V_Group
         <where>
-            <if test="id!=null">id=#{id}</if>
             <if test="deptCode!=null">AND deptCode=#{deptCode}</if>
             <if test="deptName!=null">AND deptName=#{deptName}</if>
             <if test="teamName!=null">AND teamName=#{teamName}</if>
@@ -18,7 +17,6 @@
     </select>
 
     <resultMap type="com.iflat.code.bean.Group" id="codeGroupResult">
-        <result property="id" column="id" jdbcType="CHAR"/>
         <result property="deptCode" column="deptCode" jdbcType="VARCHAR"/>
         <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
         <result property="teamName" column="teamName" jdbcType="VARCHAR"/>

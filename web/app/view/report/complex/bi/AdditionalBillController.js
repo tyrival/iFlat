@@ -3,12 +3,12 @@ Ext.define('iFlat.view.report.complex.bi.AdditionalBillController', {
     alias: 'controller.rpt-complex-bi-additionalbill',
 
     renderer: function (value, summaryData) {
-        return financeFormat(value, 4);
+        return Flat.util.financeFormat(value, 4);
     },
 
     summaryRenderer: function (value, summaryData, dataIndex) {
         value = dataIndex == 'additionalBill.item' ? '合计' : value;
-        return '<span style="font-size:15px;font-weight:bold">' + financeFormat(value, 4) + '</span>';
+        return '<span style="font-size:15px;font-weight:bold">' + Flat.util.financeFormat(value, 4) + '</span>';
     },
 
     reload: function (text, newValue, oldValue, eOpts) {

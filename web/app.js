@@ -48,28 +48,51 @@ Ext.Ajax.on('requestcomplete',function(conn,response,options) {
         });
     }
 });
-function tip(result) {
-    result = Ext.JSON.decode(result);
-    Ext.example.msg(result.title, result.message, result.time);
-};
-function financeFormat(strNum, decimal){
-    if(!parseFloat(strNum)) {
-        return strNum;
+var Flat = {
+    util: {
+        tip: function (result) {
+            result = Ext.JSON.decode(result);
+            Ext.example.msg(result.title, result.message, result.time);
+        },
+        financeFormat: function (strNum, decimal){
+            if (!parseFloat(strNum)) {
+                return strNum;
+            }
+            if (decimal && parseInt(decimal)) {
+                strNum = strNum.toFixed(parseInt(decimal));
+            }
+            if (strNum.length <= 3) {
+                return strNum;
+            }
+            if (!/^(\+|-)?(\d+)(\.\d+)?$/.test(strNum)) {
+                return strNum;
+            }
+            var a = RegExp.$1, b = RegExp.$2, c = RegExp.$3;
+            var re = new RegExp();
+            re.compile("(\\d)(\\d{3})(,|$)");
+            while (re.test(b)) {
+                b = b.replace(re, "$1,$2$3");
+            }
+            return  a + "" + b + "" + c;
+        },
+        arrayToUrlParamList: function (array, paramName, isExtRecord) {
+            if (!array instanceof Array) {
+                return null;
+            }
+            var result = new Object();
+            for (var i = 0; i < array.length; i++) {
+                var obj;
+                if (isExtRecord === true) {
+                    obj = array[i].getData();
+                } else {
+                    obj = array[i];
+                }
+                var attribute;
+                for (attribute in obj) {
+                    result[paramName + "[" + i + "]." + attribute] = obj[attribute];
+                }
+            }
+            return result;
+        }
     }
-    if(decimal && parseInt(decimal)) {
-        strNum = strNum.toFixed(parseInt(decimal));
-    }
-    if (strNum.length <= 3) {
-        return strNum;
-    }
-    if (!/^(\+|-)?(\d+)(\.\d+)?$/.test(strNum)) {
-        return strNum;
-    }
-    var a = RegExp.$1, b = RegExp.$2, c = RegExp.$3;
-    var re = new RegExp();
-    re.compile("(\\d)(\\d{3})(,|$)");
-    while (re.test(b)) {
-        b = b.replace(re, "$1,$2$3");
-    }
-    return  a + "" + b + "" + c;
-}
+}; 

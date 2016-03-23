@@ -3,7 +3,7 @@ Ext.define('iFlat.view.report.complex.bi.AuxCstComposeController', {
     alias: 'controller.rpt-complex-bi-auxcstcompose',
 
     cellWindowRenderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         var record = metaData.record;
         var name = record.get('name');
         if(name == '专项费.') {

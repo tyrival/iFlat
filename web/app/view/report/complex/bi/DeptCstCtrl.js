@@ -47,7 +47,7 @@ Ext.define('iFlat.view.report.complex.bi.DeptCstCtrl', {
             width: 110,
             flex: true,
             renderer: function(a, b, c, d, e) {
-                a = financeFormat(a, 2);
+                a = Flat.util.financeFormat(a, 2);
                 if(e % 3 == 2 && a) {
                     if(a > 0) {
                         b.style = 'color:#FF0000;' + b.style;

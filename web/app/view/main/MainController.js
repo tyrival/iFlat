@@ -249,7 +249,7 @@ Ext.define('iFlat.view.main.MainController', {
                         home.nextSibling().close();
                     }
                 } else {
-                    tip(action.response.responseText);
+                    Flat.util.tip(action.response.responseText);
                 }
             },
         });
@@ -262,11 +262,11 @@ Ext.define('iFlat.view.main.MainController', {
             url :'system_saveDefaultRole.action',
             success: function(form, action) {
                 win.hide();
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
                 defaultRoleStore.reload();
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
         });
     },
@@ -277,12 +277,12 @@ Ext.define('iFlat.view.main.MainController', {
         form.submit({
             url :'system_changePassword.action',
             success: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
                 win.hide();
                 clearFields(win);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
                 clearFields(win);
             },
         });
@@ -309,10 +309,10 @@ Ext.define('iFlat.view.main.MainController', {
             url :'system_saveProfile.action',
             success: function(form, action) {
                 win.hide();
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
         });
     },
@@ -333,10 +333,10 @@ Ext.define('iFlat.view.main.MainController', {
             url :'system_saveMemo.action',
             success: function(form, action) {
                 win.hide();
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
         });
     },

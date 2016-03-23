@@ -55,10 +55,10 @@ Ext.define('iFlat.view.system.ModuleController', {
                 win.hide();
                 sysModuleStore.reload();
                 sysModuleEditStore.reload();
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             }
         });
 
@@ -76,10 +76,10 @@ Ext.define('iFlat.view.system.ModuleController', {
             url: 'system_active·Module.action?module.nodeId=' + id + '&module.status=' + checked,
             success: function(response, opts) {
                 //赋值给main-view-popmessage，弹出提示窗
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         })
     },
@@ -100,12 +100,12 @@ Ext.define('iFlat.view.system.ModuleController', {
                     method: 'get',
                     success: function(response, opts) {
                         //赋值给main-view-popmessage，弹出提示窗
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                         Ext.getCmp('system-module').getStore().reload();
                         Ext.getCmp('system-module-edit').getStore().reload();
                     },
                     failure: function(response, opts) {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                         Ext.getCmp('system-module').getStore().reload();
                         Ext.getCmp('system-module-edit').getStore().reload();
                     }
@@ -161,7 +161,7 @@ Ext.define('iFlat.view.system.ModuleController', {
                             if(data.success) {
                                 sysTableViewEditStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -176,7 +176,7 @@ Ext.define('iFlat.view.system.ModuleController', {
             method: 'post',
             params: record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
                     sysTableViewEditStore.remove(record);
@@ -186,7 +186,7 @@ Ext.define('iFlat.view.system.ModuleController', {
                 }
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -205,7 +205,7 @@ Ext.define('iFlat.view.system.ModuleController', {
             method: 'post',
             params: record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
                     sysOperatingEditStore.remove(record);
@@ -215,7 +215,7 @@ Ext.define('iFlat.view.system.ModuleController', {
                 }
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -267,7 +267,7 @@ Ext.define('iFlat.view.system.ModuleController', {
                         if(data.success) {
                             sysOperatingEditStore.remove(record);
                         }
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                     },
                 })
             };

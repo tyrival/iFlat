@@ -17,7 +17,7 @@ Ext.define('iFlat.view.bi.AdditionalBillController', {
             params: context.record.data,
             success: function(response, opts) {
                 debugger;
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
                     biAdditionalBillStore.remove(record);
@@ -27,7 +27,7 @@ Ext.define('iFlat.view.bi.AdditionalBillController', {
                 }
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -47,7 +47,7 @@ Ext.define('iFlat.view.bi.AdditionalBillController', {
                             if(data.success) {
                                 biAdditionalBillStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -75,10 +75,10 @@ Ext.define('iFlat.view.bi.AdditionalBillController', {
                 waitMsg: '正在导入......',
                 success: function (fp, o) {
                     biAdditionalBillStore.reload();
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                 },
                 failure: function (fp, o) {
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                 }
             })
         }

@@ -17,7 +17,7 @@ Ext.define('iFlat.view.bi.ContractController', {
                             if(data.success) {
                                 biContractStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -54,10 +54,10 @@ Ext.define('iFlat.view.bi.ContractController', {
             success: function(form, action) {
                 win.hide();
                 biContractStore.reload();
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             }
         });
 

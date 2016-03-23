@@ -39,10 +39,10 @@ Ext.define('iFlat.view.system.OrganizationController', {
             method: 'post',
             params: context.record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -53,10 +53,10 @@ Ext.define('iFlat.view.system.OrganizationController', {
             url: 'system_activeOrganization.action?organization.orgId=' + id + '&organization.status=' + checked,
             success: function(response, opts) {
                 //赋值给main-view-popmessage，弹出提示窗
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         })
     },
@@ -72,12 +72,12 @@ Ext.define('iFlat.view.system.OrganizationController', {
                         url: 'system_deleteOrganization.action?organization.orgId=' + id,
                         method: 'get',
                         success: function(response, opts) {
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                             Ext.getCmp('system-organization').getStore().reload();
                             Ext.getCmp('system-organization-select').getStore().reload();
                         },
                         failure: function(response, opts) {
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                             Ext.getCmp('system-organization').getStore().reload();
                             Ext.getCmp('system-organization-select').getStore().reload();
                         }

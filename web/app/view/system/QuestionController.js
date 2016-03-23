@@ -22,7 +22,7 @@ Ext.define('iFlat.view.system.QuestionController', {
                 var result = Ext.JSON.decode(action.response.responseText);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             }
         });
 /*        Ext.Ajax.request({
@@ -35,7 +35,7 @@ Ext.define('iFlat.view.system.QuestionController', {
                 if(data.success){
 
                 }
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         })*/
     }

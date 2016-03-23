@@ -17,7 +17,7 @@ Ext.define('iFlat.view.bi.ProjectScheduleController', {
             params: context.record.data,
             success: function(response, opts) {
                 debugger;
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
                     biProjectScheduleStore.remove(record);
@@ -27,7 +27,7 @@ Ext.define('iFlat.view.bi.ProjectScheduleController', {
                 }
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -47,7 +47,7 @@ Ext.define('iFlat.view.bi.ProjectScheduleController', {
                             if(data.success) {
                                 biProjectScheduleStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };

@@ -54,7 +54,7 @@ Ext.define('iFlat.view.report.bi.ProjectAuxCostController', {
     },
 
     cellWindowRenderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         var record = metaData.record;
         var name = record.get('name');
         if(name == '专项费.') {
@@ -72,7 +72,7 @@ Ext.define('iFlat.view.report.bi.ProjectAuxCostController', {
     },
 
     cellRenderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         metaData.style = 'font-size:14px';
         if(metaData.record.get('name') == '专项费占比.' && value != "专项费占比.") {
             value = value + "%";

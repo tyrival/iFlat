@@ -6,7 +6,7 @@
 
     <select id="list" parameterType="com.iflat.code.bean.Team" resultMap="codeTeamResult">
         SELECT DISTINCT deptCode,deptName,teamName
-        FROM CodeTeam
+        FROM code.dbo.V_Team
         <where>
             <if test="deptCode!=null">AND deptCode=#{deptCode}</if>
             <if test="deptName!=null">AND deptName=#{deptName}</if>

@@ -16,7 +16,7 @@ Ext.define('iFlat.view.bi.DeptCstCtrlController', {
             method: 'post',
             params: context.record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
                     biDeptCstCtrlStore.remove(record);
@@ -26,7 +26,7 @@ Ext.define('iFlat.view.bi.DeptCstCtrlController', {
                 }
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -46,7 +46,7 @@ Ext.define('iFlat.view.bi.DeptCstCtrlController', {
                             if(data.success) {
                                 biDeptCstCtrlStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -74,10 +74,10 @@ Ext.define('iFlat.view.bi.DeptCstCtrlController', {
                 waitMsg: '正在导入......',
                 success: function (fp, o) {
                     biDeptCstCtrlStore.reload();
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                 },
                 failure: function (fp, o) {
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                 }
             })
         }

@@ -33,7 +33,7 @@ Ext.define('iFlat.view.report.complex.bi.MajorMatQtyController', {
             value = null;
         }
 
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
 
         if(name == '钢材' || name == '管材' || name == '焊材' || name == '油漆' || name == '电缆') {
             metaData.style = 'font-weight:bold;font-size:14px;background-color:#EEEEEE';

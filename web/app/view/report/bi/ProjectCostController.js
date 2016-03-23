@@ -60,7 +60,7 @@ Ext.define('iFlat.view.report.bi.ProjectCostController', {
         var record = metaData.record;
         var name = record.get('name');
         if(metaData.columnIndex > 0) {
-            value = financeFormat(value, 2);
+            value = Flat.util.financeFormat(value, 2);
         }
         if(name == '销售收入' || name == '总成本' || name == '毛利' || name == '毛利率') {
             metaData.style = 'font-weight:bold;font-size:14px;';

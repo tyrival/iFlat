@@ -7,7 +7,7 @@ Ext.define('iFlat.view.system.DataDictionaryController', {
             url: 'system_generateDataDictionary.action',
             method: 'post',
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
         });
     },
@@ -19,7 +19,7 @@ Ext.define('iFlat.view.system.DataDictionaryController', {
             method: 'post',
             params: record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
         });
     },

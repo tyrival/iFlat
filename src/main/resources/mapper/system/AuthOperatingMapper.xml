@@ -108,7 +108,7 @@
         AND account IN (CASE WHEN (SELECT COUNT(account) FROM V_SysAuthOperating WHERE account=#{account} AND aoStatus='TRUE')>0 THEN #{account} ELSE '' END)
     </select>
 
-    <select id="list" parameterType="com.iflat.system.entity.AuthOperating" resultMap="SysAuthOperatingResult">
+    <select id="list" parameterType="com.iflat.system.bean.AuthOperating" resultMap="SysAuthOperatingResult">
         SELECT aoId,roleId,account,nameSpace,moduleName,operating,status
         FROM SysAuthOperating
         <where>

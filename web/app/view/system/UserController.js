@@ -45,7 +45,7 @@ Ext.define('iFlat.view.system.UserController', {
             method: 'post',
             params: record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
                     sysUserStore.remove(record);
@@ -55,7 +55,7 @@ Ext.define('iFlat.view.system.UserController', {
                 }
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -65,10 +65,10 @@ Ext.define('iFlat.view.system.UserController', {
         Ext.Ajax.request({
             url: 'system_activeUser.action?user.userId=' + id + '&user.status=' + checked,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         })
     },
@@ -78,10 +78,10 @@ Ext.define('iFlat.view.system.UserController', {
         Ext.Ajax.request({
             url: 'system_resetPassword.action?user.userId=' + id + '&user.password=123',
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         })
     },
@@ -101,7 +101,7 @@ Ext.define('iFlat.view.system.UserController', {
                             if(data.success) {
                                 sysUserStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -125,11 +125,11 @@ Ext.define('iFlat.view.system.UserController', {
             url :'system_editUserInfo.action',
             success: function(form, action) {
                 win.hide();
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
                 sysUserStore.reload();
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             }
         });
     },
@@ -158,10 +158,10 @@ Ext.define('iFlat.view.system.UserController', {
             success: function(form, action) {
                 Ext.getCmp('system-userroleedit-itemselector').setValue("");
                 win.hide();
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             }
         });
     },

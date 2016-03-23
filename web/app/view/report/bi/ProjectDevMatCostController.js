@@ -53,7 +53,7 @@ Ext.define('iFlat.view.report.bi.ProjectDevMatCostController', {
     },
 
     cellWindowRenderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         if(value > 0 && metaData.columnIndex >= 4) {
             metaData.style = 'color:#FF0000;' + metaData.style;
         }
@@ -78,7 +78,7 @@ Ext.define('iFlat.view.report.bi.ProjectDevMatCostController', {
             value = null;
         }
 
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
 
         if(name == '钢材' || name == '管材' || name == '焊材' || name == '油漆' || name == '电缆') {
             metaData.style = 'font-weight:bold;font-size:14px;background-color:#EEEEEE';
@@ -111,7 +111,7 @@ Ext.define('iFlat.view.report.bi.ProjectDevMatCostController', {
     },
 
     cellRenderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         metaData.style = 'font-size:14px';
          if(metaData.record.get('name') == '器材费占比.' && value != "器材费占比.") {
             value = value + "%";

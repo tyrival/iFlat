@@ -1,7 +1,6 @@
 package com.iflat.workflow.listener.sm;
 
 import com.iflat.base.service.BaseService;
-import com.iflat.sm.bean.SbRequest;
 import com.iflat.util.Application;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.ExecutionListener;
@@ -14,7 +13,7 @@ public class SbRequestExecutionHandler implements ExecutionListener {
     @Override
     public void notify(DelegateExecution execution) throws Exception {
 
-        // 获取业务单据id
+        /*// 获取业务单据id
         String id = (String) execution.getVariable("id");
 
         // 获取业务对象，将其状态置为完成，并保存
@@ -25,6 +24,6 @@ public class SbRequestExecutionHandler implements ExecutionListener {
         if (sbRequest != null) {
             sbRequest.setStatus(2);
             baseService.save(sbRequest);
-        }
+        }*/
     }
 }

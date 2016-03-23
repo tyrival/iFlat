@@ -92,6 +92,7 @@
     <!-- Operating -->
     <bean id="operatingService" class="com.iflat.system.service.impl.OperatingServiceImpl">
         <property name="operatingDao" ref="operatingDao"></property>
+        <property name="authOperatingService" ref="authOperatingService"/>
     </bean>
     <bean id="operatingDao" class="com.iflat.system.dao.impl.OperatingDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
@@ -135,6 +136,9 @@
     <!-- Module -->
     <bean id="moduleService" class="com.iflat.system.service.impl.ModuleServiceImpl">
         <property name="moduleDao" ref="moduleDao"></property>
+        <property name="authDataService" ref="authDataService"/>
+        <property name="authModuleService" ref="authModuleService"/>
+        <property name="authOperatingService" ref="authOperatingService"/>
     </bean>
     <bean id="moduleDao" class="com.iflat.system.dao.impl.ModuleDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>

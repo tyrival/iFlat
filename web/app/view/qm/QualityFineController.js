@@ -17,7 +17,7 @@ Ext.define('iFlat.view.qm.QualityFineController', {
                             if(data.success) {
                                 qmQualityFineStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -81,10 +81,10 @@ Ext.define('iFlat.view.qm.QualityFineController', {
             success: function(form, action) {
                 win.hide();
                 qmQualityFineStore.reload();
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             },
             failure: function(form, action) {
-                tip(action.response.responseText);
+                Flat.util.tip(action.response.responseText);
             }
         });
 
@@ -161,7 +161,7 @@ Ext.define('iFlat.view.qm.QualityFineController', {
                     Ext.getCmp('qm-qualityfineedit-attachment').setValue(path);
                 },
                 failure: function (fp, o) {
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                 }
             })
         }
@@ -173,7 +173,7 @@ Ext.define('iFlat.view.qm.QualityFineController', {
                 Ext.Ajax.request({
                     url: 'qm_deleteFile.action?filePath=' + Ext.getCmp('qm-qualityfineedit-attachment').getValue(),
                     success: function (response, opts) {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                     },
                 })
                 Ext.getCmp('qm-qualityfineedit-attachment').setValue('');

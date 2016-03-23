@@ -164,7 +164,7 @@
         </action>
 
         <!-- sm模块 -->
-        <action name="sbrequest_*" class="com.iflat.sm.action.SbRequestAction" method="{1}">
+        <action name="sm_*" class="com.iflat.sm.action.SmAction" method="{1}">
             <result type="json" name="success">
                 <param name="root">result</param>
                 <param name="excludeNullProperties">true</param>

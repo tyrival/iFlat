@@ -44,7 +44,7 @@ Ext.define('iFlat.view.report.complex.bi.ProjectDevMatCostController', {
     },
 
     cellRenderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         metaData.style = 'font-size:14px';
          if(metaData.record.get('name') == '器材费占比.' && value != "器材费占比.") {
             value = value + "%";

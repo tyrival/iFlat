@@ -77,7 +77,7 @@ Ext.define('iFlat.view.report.complex.bi.ProjectInProcess', {
             width: 110,
             flex: true,
             renderer: function(a, b, c, d, e) {
-                a = financeFormat(a, 2);
+                a = Flat.util.financeFormat(a, 2);
                 //b.style = 'font-size: 14px;' + b.style;
                 if(e % 3 == 2 && a) {
                     if(a > 0) {

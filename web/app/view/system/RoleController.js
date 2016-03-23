@@ -27,7 +27,7 @@ Ext.define('iFlat.view.system.RoleController', {
         Ext.Ajax.request({
             url: 'system_activeRole.action?role.roleId=' + id + '&role.status=' + checked,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
         })
     },
@@ -46,7 +46,7 @@ Ext.define('iFlat.view.system.RoleController', {
                             if(data.success) {
                                 sysRoleStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -59,7 +59,7 @@ Ext.define('iFlat.view.system.RoleController', {
             method: 'post',
             params: context.record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
                     sysRoleStore.remove(record);
@@ -69,7 +69,7 @@ Ext.define('iFlat.view.system.RoleController', {
                 }
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     }

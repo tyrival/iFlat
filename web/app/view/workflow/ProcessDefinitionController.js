@@ -15,11 +15,11 @@ Ext.define('iFlat.view.workflow.ProcessDefinitionController', {
                     url: 'workflow_deleteProcessDefinition.action?deploymentId=' + id,
                     method: 'POST',
                     success: function(response, opts) {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                         workflowProcessDefinitionStore.reload();
                     },
                     failure: function(response, opts) {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                         workflowProcessDefinitionStore.reload();
                     }
                 })
@@ -35,11 +35,11 @@ Ext.define('iFlat.view.workflow.ProcessDefinitionController', {
                 method: 'POST',
                 waitMsg: '正在上传......',
                 success: function (fp, o) {
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                     workflowProcessDefinitionStore.reload();
                 },
                 failure: function (fp, o) {
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                     workflowProcessDefinitionStore.reload();
                 }
             })

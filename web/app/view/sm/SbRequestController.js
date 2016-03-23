@@ -15,11 +15,11 @@ Ext.define('iFlat.view.sm.SbRequestController', {
                     url: 'sm_deleteSbRequest.action?deploymentId=' + id,
                     method: 'POST',
                     success: function(response, opts) {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                         smSbRequestStore.reload();
                     },
                     failure: function(response, opts) {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                         smSbRequestStore.reload();
                     }
                 })
@@ -35,11 +35,11 @@ Ext.define('iFlat.view.sm.SbRequestController', {
                     params: record.getData(),
                     method: 'POST',
                     success: function(response, opts) {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                         smSbRequestStore.reload();
                     },
                     failure: function(response, opts) {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                         smSbRequestStore.reload();
                     }
                 })

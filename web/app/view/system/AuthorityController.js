@@ -19,7 +19,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
                     if(data.success){
                         record.set('adStatus',newValue);
                     }
-                    tip(response.responseText);
+                    Flat.util.tip(response.responseText);
                 },
             })
         }
@@ -105,7 +105,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
                         sysAuthorityModuleStore.byIdMap[id].set('amId',list[i].amId);
                     }
                 } else {
-                    tip(response.responseText);
+                    Flat.util.tip(response.responseText);
                 }
             },
         })
@@ -128,7 +128,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
     saveAuthModule: function() {
         sysAuthorityModuleStore.sync({
             callback: function(batch, options) {
-                tip(batch.getOperations()[0].getResponse().responseText);
+                Flat.util.tip(batch.getOperations()[0].getResponse().responseText);
             }
         });
     },
@@ -167,7 +167,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
                             showAuthDataModal();
                         }
                     } else {
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                     }
                 },
             })
@@ -210,7 +210,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
     submitAuthOperating: function (button) {
         sysAuthorityOperatingStore.sync({
             callback: function(batch, options) {
-                tip(batch.getOperations()[0].getResponse().responseText);
+                Flat.util.tip(batch.getOperations()[0].getResponse().responseText);
             }
         });
         var win = button.up('window');
@@ -231,7 +231,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
                     record.set('aoStatus',aoStatus);
                     win.hide();
                 } else {
-                    tip(response.responseText);
+                    Flat.util.tip(response.responseText);
                 }
             },
         })
@@ -332,7 +332,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
                 'authData.field': Ext.JSON.encode(array),
             },
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
         })
     },
@@ -425,7 +425,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
                     },
                     success: function(response, opts) {
                         Ext.getCmp('system-authduplicateedit').hide();
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                     },
                 })
             };
@@ -475,7 +475,7 @@ Ext.define('iFlat.view.system.AuthorityController', {
                     },
                     success: function(response, opts) {
                         Ext.getCmp('system-authclearedit').hide();
-                        tip(response.responseText);
+                        Flat.util.tip(response.responseText);
                     },
                 })
             };

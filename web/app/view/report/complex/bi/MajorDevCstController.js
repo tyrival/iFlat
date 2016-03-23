@@ -19,7 +19,7 @@ Ext.define('iFlat.view.report.complex.bi.MajorDevCstController', {
     },
 
     cellWindowRenderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         if(value > 0 && metaData.columnIndex >= 4) {
             metaData.style = 'color:#FF0000;' + metaData.style;
         }

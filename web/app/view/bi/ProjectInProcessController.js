@@ -16,7 +16,7 @@ Ext.define('iFlat.view.bi.ProjectInProcessController', {
             method: 'post',
             params: context.record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
                     biProjectInProcessStore.remove(record);
@@ -26,7 +26,7 @@ Ext.define('iFlat.view.bi.ProjectInProcessController', {
                 }
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -46,7 +46,7 @@ Ext.define('iFlat.view.bi.ProjectInProcessController', {
                             if(data.success) {
                                 biProjectInProcessStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
@@ -76,10 +76,10 @@ Ext.define('iFlat.view.bi.ProjectInProcessController', {
                 success: function (fp, o) {
                     biProjectInProcessStore.reload();
                     biProjectInProcessProjectStore.reload();
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                 },
                 failure: function (fp, o) {
-                    tip(o.response.responseText);
+                    Flat.util.tip(o.response.responseText);
                 }
             })
         }

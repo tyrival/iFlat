@@ -69,7 +69,7 @@ Ext.define('iFlat.view.report.bi.ProjectCstCtrl', {
                 if(value > 0 && metaData.columnIndex == 4) {
                     metaData.style = 'color:#FF0000;' + metaData.style;
                 }
-                return financeFormat(value, 2);
+                return Flat.util.financeFormat(value, 2);
             }
         }],
 

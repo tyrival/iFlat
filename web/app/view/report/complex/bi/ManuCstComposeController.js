@@ -3,7 +3,7 @@ Ext.define('iFlat.view.report.complex.bi.ManuCstComposeController', {
     alias: 'controller.rpt-complex-bi-manucstcompose',
 
     cellWindowRenderer: function(value, metaData) {
-        value = financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         var record = metaData.record;
         var name = record.get('name');
         if(name == '加工费.') {

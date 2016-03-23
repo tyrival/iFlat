@@ -15,10 +15,10 @@ Ext.define('iFlat.view.bi.ProjectController', {
             method: 'post',
             params: context.record.data,
             success: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             },
             failure: function(response, opts) {
-                tip(response.responseText);
+                Flat.util.tip(response.responseText);
             }
         });
     },
@@ -38,7 +38,7 @@ Ext.define('iFlat.view.bi.ProjectController', {
                             if(data.success) {
                                 biProjectStore.remove(record);
                             }
-                            tip(response.responseText);
+                            Flat.util.tip(response.responseText);
                         },
                     })
                 };
