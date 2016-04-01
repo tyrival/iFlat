@@ -94,7 +94,7 @@ public class AuthDataServiceImpl implements AuthDataService {
     }
 
     @Override
-    public int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
+    public void updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
         AuthData authData = new AuthData();
         authData.setNameSpace(oldModule.getNameSpace());
         authData.setModuleName(oldModule.getModuleName());
@@ -105,8 +105,8 @@ public class AuthDataServiceImpl implements AuthDataService {
                 auth.setNameSpace(newModule.getNameSpace());
                 auth.setModuleName(newModule.getModuleName());
             }
+            authDataDao.updateBatch(list);
         }
-        return authDataDao.updateBatch(list);
     }
 
     public AuthDataDao getAuthDataDao() {

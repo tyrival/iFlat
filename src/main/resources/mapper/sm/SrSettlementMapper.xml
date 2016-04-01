@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.SrSettlement">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlement">
+        INSERT INTO SmSrSettlement
+        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmSrSettlement
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.SrSettlement">
+        UPDATE SmSrSettlement
+        <set>
+            <if test="type!=null">type=#{type},</if>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="deptName!=null">deptName=#{deptName},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="laborAmount!=null">laborAmount=#{laborAmount},</if>
+            <if test="consumableAmount!=null">consumableAmount=#{consumableAmount},</if>
+            <if test="performanceAmount!=null">performanceAmount=#{performanceAmount},</if>
+            <if test="materialAmount!=null">materialAmount=#{materialAmount},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+            <if test="status!=null">status=#{status},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.SrSettlement">
+        DELETE SmSrSettlement
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.SrSettlement" resultMap="SmSrSettlementResult">
+        SELECT id,type,projNo,projName,deptName,team,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime
+        FROM SmSrSettlement
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="type!=null">type</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="projName!=null">AND projName=#{projName}</if>
+            <if test="deptName!=null">AND deptName=#{deptName}</if>
+            <if test="status!=null">AND status=#{status}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%' + #{team} + '%'</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+        </where>
+        ORDER BY projNo,deptName,type,team,createTime,id
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.SrSettlement" id="SmSrSettlementResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="laborAmount" column="laborAmount" jdbcType="DOUBLE"/>
+        <result property="consumableAmount" column="consumableAmount" jdbcType="DOUBLE"/>
+        <result property="performanceAmount" column="performanceAmount" jdbcType="DOUBLE"/>
+        <result property="materialAmount" column="materialAmount" jdbcType="DOUBLE"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

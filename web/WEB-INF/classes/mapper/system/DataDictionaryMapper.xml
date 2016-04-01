@@ -5,20 +5,28 @@
 <mapper namespace="System.DataDictionary">
 
     <insert id="insertByGenerate" parameterType="java.util.List" statementType="STATEMENT">
-        DELETE SysDataDictionary
+        /*DELETE SysDataDictionary*/
         INSERT INTO SysDataDictionary
+        SELECT * FROM (
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-        SELECT '${item.instance}' AS dbInstance,'${item.name}' AS dbName,
+            SELECT '${item.instance}' AS dbInstance,
+                '${item.name}' AS dbName,
                 CONVERT(varchar(50),d.name) AS tableName,
                 CONVERT(varchar(60),a.name) AS fieldName,
                 CONVERT(varchar(80),a.name) AS alias,
                 CONVERT(varchar(20),b.name) AS type,
                 CONVERT(varchar(10),a.length) AS length
-        FROM ${item.database}[sys].[syscolumns] a
-        LEFT JOIN ${item.database}[sys].[systypes] b ON a.xtype=b.xusertype
-        INNER JOIN ${item.database}[sys].[sysobjects] d ON a.id=d.id AND d.name!='dtproperties'
-        WHERE (d.type='U' OR d.type='V')
+            FROM ${item.database}[sys].[syscolumns] a
+            LEFT JOIN ${item.database}[sys].[systypes] b ON a.xtype=b.xusertype
+            INNER JOIN ${item.database}[sys].[sysobjects] d ON a.id=d.id AND d.name!='dtproperties'
+            WHERE (d.type='U' OR d.type='V')
         </foreach>
+        ) t
+        WHERE NOT EXISTS (SELECT 1
+                           FROM SysDataDictionary o
+                           WHERE t.dbInstance=o.dbInstance
+                           AND t.tableName=o.tableName
+                           AND t.fieldName=o.fieldName)
     </insert>
 
     <update id="update" parameterType="com.iflat.system.bean.DataDictionary">
@@ -37,7 +45,6 @@
             <if test="dbName!=null">AND dbName=#{dbName}</if>
             <if test="tableName!=null">AND tableName=#{tableName}</if>
             <if test="fieldName!=null">AND fieldName=#{fieldName}</if>
-            <if test="alias!=null">AND alias=#{alias}</if>
             <if test="type!=null">AND type=#{type}</if>
         </where>
     </update>

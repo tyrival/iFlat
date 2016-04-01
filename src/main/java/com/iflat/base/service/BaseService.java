@@ -11,18 +11,21 @@ import java.util.List;
  */
 public interface BaseService {
 
-    public Object save(Object o) throws Exception;
-    public List insertBatch(List list) throws Exception;
-    public List updateBatch(List list) throws Exception;
-    public List list(Object o) throws Exception;
-    public List listBatch(List list) throws Exception;
-    public Object delete(Object o) throws Exception;
-    public List deleteBatch(List list) throws Exception;
-    public PageInfo listPage(Object o, Page page) throws Exception;
-    public String uploadFile(File file, String fileName) throws Exception;
-    public List importExcel(File file, String fileName) throws Exception;
-    public Object generate(Object o) throws Exception;
+    Object save(Object o) throws Exception;
+    List insertBatch(List list) throws Exception;
+    List updateBatch(List list) throws Exception;
+    List list(Object o) throws Exception;
+    List listBatch(List list) throws Exception;
+    Object delete(Object o) throws Exception;
+    List deleteBatch(List list) throws Exception;
+    PageInfo listPage(Object o, Page page) throws Exception;
+    String uploadFile(File file, String fileName) throws Exception;
+    List importExcel(File file, String fileName) throws Exception;
+    Object generate(Object o) throws Exception;
 
     // 流程相关
-    public void startProcess(Object object) throws Exception;
+    void startProcess(Object object) throws Exception;
+    void deleteProcessInstance(Object object) throws Exception;
+    // 根据对象获取businessKey
+    String getBusinessKey(Object object) throws Exception;
 }

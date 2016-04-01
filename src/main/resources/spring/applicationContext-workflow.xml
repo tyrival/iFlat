@@ -12,5 +12,6 @@
         <property name="repositoryService" ref="repositoryService"/>
         <property name="runtimeService" ref="runtimeService"/>
         <property name="taskService" ref="taskService"/>
+        <property name="historyService" ref="historyService"/>
     </bean>
 </beans>

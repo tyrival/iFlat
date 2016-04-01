@@ -5,7 +5,7 @@
 <mapper namespace="Qm.QualityFineVo">
 
     <select id="list" parameterType="com.iflat.qm.entity.QualityFineVo" resultMap="QmQualityFineVoResult">
-        SELECT id,projNo,projName,dept,team,[group],personAcc,personName,date,profession,description,category,amount,comment,qc,attachment,creator,createTime
+        SELECT id,projNo,projName,dept,team,[group],personAcc,personName,date,profession,description,category,amount,comment,qc,attachment,creator,createTime,source
         FROM V_QmQualityFine
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -46,6 +46,9 @@
             <if test="creator!=null and !&quot;&quot;.equals(creator.trim())">
                 AND creator=#{creator}
             </if>
+            <if test="source!=null and !&quot;&quot;.equals(source.trim())">
+                AND source=#{source}
+            </if>
             <if test="fromDate!=null">
                 AND date &gt;= #{fromDate}
             </if>
@@ -75,5 +78,6 @@
         <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="source" column="source" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

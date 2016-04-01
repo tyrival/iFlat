@@ -48,7 +48,7 @@ Ext.define('iFlat.view.main.MainController', {
                 //获取routeId属性，用于item的itemId，由于html元素id必须为字母开头，所以加上tab前缀
                 //var nodeId = 'tab' + node.get('nodeId');
                 var nodeId = 'tab_' + node.get('nameSpace') + '_' + node.get('viewName');
-                nodeId = nodeId.replace('\.', '_');
+                nodeId = nodeId.replace(/\./g, '_');
                 //获取标签页的所有nodeId
                 var itemList = tabPanel.items.keys;
                 var hasExisted = false;
@@ -117,12 +117,17 @@ Ext.define('iFlat.view.main.MainController', {
      * 所以，取消激活该节点，改为激活其父节点
      */
     onTabPanelRemoveComponent: function(tabpanel, component, eOpts) {
+        debugger
         //获取导航菜单
         var tree = navigationTree;
         //获取当前激活的节点
         var selectedNode = tree.getSelection();
         //判断标签的itemId和节点的routeId是否相等
-        if(component.itemId == 'tab' + selectedNode.get('nodeId')){
+        var nodeId = 'tab_' 
+            + selectedNode.get('nameSpace') 
+            + '_' + selectedNode.get('viewName');
+        nodeId = nodeId.replace(/\./g, '_');
+        if (component.itemId == nodeId) {
             //激活该节点的父节点
             tree.setSelection(selectedNode.parentNode);
         };

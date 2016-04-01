@@ -21,7 +21,6 @@ Ext.define('iFlat.model.main.MainModel', {
             porgId: '',
             porgCode: '',
             porgName: '',
-            porgName: '',
             sequence: '',
             loginTime: null,
         },
@@ -57,7 +56,10 @@ Ext.define('iFlat.model.main.MainModel', {
         reason: ['业务不熟','系统不熟','新增需求','系统bug','系统优化'],
 
         /* 工程结算 settlement management */
-        smDept: ['造船加工车间','造船船体车间','造船安装车间','造船模块车间','造船启东工程部','造船如皋工程部','扬州分公司制造部','扬州分公司总装部','扬州分公司搭载部','扬州分公司涂装部','修船冷作车间','修船坞修车间','修船舾装车间','修船机加工车间','修船机电修理车间','钢结构事业部','特涂公司（澄西）','特涂公司（启东）'],
+        smDept: ['造船加工车间','造船船体车间','造船安装车间','造船模块车间','修船冷作车间','修船坞修车间','修船舾装车间','修船机电修理车间','钢结构事业部'],
+        smSbDept: ['造船加工车间','造船船体车间','造船安装车间','造船模块车间'],
+        smSrDept: ['修船冷作车间','修船坞修车间','修船舾装车间','修船机电修理车间'],
+        smScDept: ['钢结构事业部'],
 
         /* 质量管理 quality managerment */
         qualityFineCategory: ['质量指标','工艺纪律','交验考核'],
@@ -68,7 +70,7 @@ Ext.define('iFlat.model.main.MainModel', {
         safetyFineMgrDept: ['造船事业部','修船事业部','钢结构事业部'],
         safetyFineDeadline: ['立即整改','通知整改'],
         safetyFineInspectType: ['日常检查','节前检查'],
-        safetyFineDangerType: ['设备设施','明火作业'],
+        safetyFineDangerType: ['设备设施','明火作业','个人行为'],
         safetyFineDamageType: ['火灾','物体打击','触电','高处坠落','燃爆','其他伤害'],
         safetyFineRiskLevel: ['轻微','严重'],
 

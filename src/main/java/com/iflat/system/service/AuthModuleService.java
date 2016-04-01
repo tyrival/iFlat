@@ -2,7 +2,6 @@ package com.iflat.system.service;
 
 import com.iflat.system.bean.AuthModule;
 import com.iflat.system.bean.Module;
-import com.iflat.system.bean.UserRole;
 
 import java.util.List;
 
@@ -21,5 +20,5 @@ public interface AuthModuleService {
 
     int clearAuthority(String authClearList) throws Exception;
 
-    int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
+    void updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
 }

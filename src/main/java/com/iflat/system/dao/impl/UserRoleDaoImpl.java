@@ -18,7 +18,7 @@ public class UserRoleDaoImpl implements UserRoleDao {
     @Override
     public int insertBatch(List<UserRole> list) throws Exception {
 
-        return getSqlSessionTemplate().insert("System.UserRole.insertBatchVo", list);
+        return getSqlSessionTemplate().insert("System.UserRole.insertBatch", list);
     }
 
     @Override

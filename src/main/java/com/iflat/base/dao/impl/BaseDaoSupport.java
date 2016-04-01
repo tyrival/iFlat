@@ -74,7 +74,7 @@ public class BaseDaoSupport implements BaseDao {
         String[] array = module.split("\\.");
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < array.length; i++) {
-            String j = StringUtil.UpperCaseFirstChar(array[i]);
+            String j = StringUtil.upperCaseFirstChar(array[i]);
             sb.append(j).append(".");
         }
         String result = sb.toString();

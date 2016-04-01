@@ -13,11 +13,11 @@ import java.util.List;
  */
 public interface AuthDataService {
 
-    public AuthData save(AuthData authData) throws Exception;
+    AuthData save(AuthData authData) throws Exception;
 
-    public List<AuthDataFieldVo> listAuthDataFieldStatus(AuthData authData) throws Exception;
+    List<AuthDataFieldVo> listAuthDataFieldStatus(AuthData authData) throws Exception;
 
-    public List<AuthDataVo> listVoOfModuleByUser(AuthData authData) throws Exception;
+    List<AuthDataVo> listVoOfModuleByUser(AuthData authData) throws Exception;
 
-    int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
+    void updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
 }

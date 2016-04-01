@@ -17,7 +17,7 @@ public class SafetyFineServiceImpl extends BaseServiceSupport {
 
     @Override
     public void beforeInsert() throws Exception {
-        ((SafetyFine)this.getSaveObj()).setPurpose(generatePurpose());
+        ((SafetyFine)this.getSaveObj()).setSource(Session.getUserInfo().getPorgName());
         ((SafetyFine)this.getSaveObj()).setCreator(Session.getUserInfo().getAccount());
         ((SafetyFine)this.getSaveObj()).setCreateTime(new Date());
     }
@@ -34,7 +34,7 @@ public class SafetyFineServiceImpl extends BaseServiceSupport {
         for(int i = 0; i < list.size(); i++) {
             SafetyFine o = (SafetyFine)list.get(i);
             o.setId(UUID.randomUUID().toString());
-            o.setPurpose(generatePurpose());
+            o.setSource(Session.getUserInfo().getPorgName());
             o.setCreator(Session.getUserInfo().getAccount());
             o.setCreateTime(new Date());
         }
@@ -51,10 +51,4 @@ public class SafetyFineServiceImpl extends BaseServiceSupport {
         }
     }
 
-    private String generatePurpose() throws Exception {
-        UserInfoVo userInfoVo = Session.getUserInfo();
-        String dept = userInfoVo.getPorgName();
-        String group = userInfoVo.getOrgName();
-        return "安环保卫部".equals(dept)  || "安环保卫部".equals(group) ? "0" : "1";
-    }
 }

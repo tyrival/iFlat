@@ -43,7 +43,7 @@ Ext.define('iFlat.view.system.RoleController', {
                         url: 'system_deleteRole.action?role.roleId=' + id,
                         success: function (response, opts) {
                             var data = Ext.JSON.decode(response.responseText);
-                            if(data.success) {
+                            if(data['object']) {
                                 sysRoleStore.remove(record);
                             }
                             Flat.util.tip(response.responseText);
@@ -54,10 +54,11 @@ Ext.define('iFlat.view.system.RoleController', {
         }
     },
     updateRoleRecord: function(editor, context, eOpts) {
+        var record = context.record;
         Ext.Ajax.request({
             url: 'system_saveRole.action',
             method: 'post',
-            params: context.record.data,
+            params: record.data,
             success: function(response, opts) {
                 Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);

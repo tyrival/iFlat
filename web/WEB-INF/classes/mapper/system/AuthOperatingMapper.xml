@@ -29,9 +29,7 @@
         UPDATE SysAuthOperating SET aoId=a.aoId,roleId=a.roleId,account=a.account,nameSpace=a.nameSpace,moduleName=a.moduleName,operating=a.operating,status=a.status
         FROM (
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.aoId} as aoId,#{item.roleId} as roleId,#{item.account} as account,#{item.nameSpace} as
-            nameSpace,#{item.moduleName} as moduleName,#{item.operating} as operating,#{item.status} as
-            status
+            SELECT #{item.aoId} as aoId,#{item.roleId} as roleId,#{item.account} as account,#{item.nameSpace} as nameSpace,#{item.moduleName} as moduleName,#{item.operating} as operating,#{item.status} as status
         </foreach>
         ) AS a
         WHERE SysAuthOperating.aoId=a.aoId

@@ -25,9 +25,18 @@ public class QualityFineVo {
     private String creator;  //录入人
     private Date createTime;  //录入日期
     private String attachment;  //附件
+    private String source;  //使用目的
 
     private Date fromDate;
     private Date toDate;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public Date getFromDate() {
         return fromDate;

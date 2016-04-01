@@ -87,7 +87,7 @@ public class AuthModuleServiceImpl implements AuthModuleService {
     }
 
     @Override
-    public int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
+    public void updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
         AuthModule authModule = new AuthModule();
         authModule.setNameSpace(oldModule.getNameSpace());
         authModule.setModuleName(oldModule.getModuleName());
@@ -98,8 +98,8 @@ public class AuthModuleServiceImpl implements AuthModuleService {
                 auth.setNameSpace(newModule.getNameSpace());
                 auth.setModuleName(newModule.getModuleName());
             }
+            authModuleDao.updateBatch(list);
         }
-        return authModuleDao.updateBatch(list);
     }
 
     public AuthModuleDao getAuthModuleDao() {

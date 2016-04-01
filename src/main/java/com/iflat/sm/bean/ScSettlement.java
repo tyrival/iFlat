@@ -18,13 +18,12 @@ public class ScSettlement {
     private String team;
     private String attachment;
     private String comment;
-    private int status;  // 流程状态 0申请 1已提交审批 2结束
+    private String status;
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
 
     public ScSettlement() {
-        this.status = 0;
         this.createTime = new Date();
     }
 
@@ -92,11 +91,11 @@ public class ScSettlement {
         this.attachment = attachment;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

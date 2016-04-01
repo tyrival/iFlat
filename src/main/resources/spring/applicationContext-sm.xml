@@ -4,13 +4,24 @@
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--<bean id="sbRequestAction" class="com.iflat.sm.action.SbRequestAction" scope="prototype">
-        <property name="sbRequestService" ref="sbRequestService"/>
-        <property name="sbRequest" ref="sbRequest"/>
+    <bean id="smAction" class="com.iflat.sm.action.SmAction" scope="prototype">
+        <property name="sbSettlement" ref="sbSettlement"/>
+        <property name="sbSettlementService" ref="sbSettlementService"/>
+        <property name="sbSettlementDetail" ref="sbSettlementDetail"/>
+        <property name="sbSettlementDetailService" ref="sbSettlementDetailService"/>
+        <property name="workflowService" ref="workflowService"/>
     </bean>
-    <bean id="sbRequestService" class="com.iflat.sm.service.impl.SbRequestServiceImpl">
+
+    <bean id="sbSettlementService" class="com.iflat.sm.service.impl.SbSettlementServiceImpl">
+        <property name="workflowService" ref="workflowService"/>
+        <property name="userService" ref="userService"/>
     </bean>
-    <bean id="sbRequestDao" class="com.iflat.sm.dao.impl.SbRequestDaoImpl">
+    <bean id="sbSettlementDao" class="com.iflat.sm.dao.impl.SbSettlementDaoImpl"/>
+    <bean id="sbSettlement" class="com.iflat.sm.bean.SbSettlement" scope="prototype"/>
+
+    <bean id="sbSettlementDetailService" class="com.iflat.sm.service.impl.SbSettlementDetailServiceImpl">
     </bean>
-    <bean id="sbRequest" class="com.iflat.sm.bean.SbRequest" scope="prototype"/>-->
+    <bean id="sbSettlementDetailDao" class="com.iflat.sm.dao.impl.SbSettlementDetailDaoImpl"/>
+    <bean id="sbSettlementDetail" class="com.iflat.sm.bean.SbSettlementDetail" scope="prototype"/>
+
 </beans>

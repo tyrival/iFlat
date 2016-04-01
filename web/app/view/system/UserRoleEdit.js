@@ -42,7 +42,7 @@ Ext.define('iFlat.view.system.UserRoleEdit', {
             width: 500,
             height: 400,
             imagePath: '../ux/images/',
-            store: sysRoleStore = Ext.create('iFlat.store.system.Role'),
+            store: sysUserRoleStore = Ext.create('iFlat.store.system.Role'),
             displayField: 'roleName',
             valueField: 'roleId',
             value: [],

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.ScSettlement">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.ScSettlement">
+        INSERT INTO SmScSettlement
+        VALUES (#{id},#{projNo},#{projName},#{month},#{deptName},#{team},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmScSettlement
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.month},#{item.deptName},#{item.team},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.ScSettlement">
+        UPDATE SmScSettlement
+        <set>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="month!=null">month=#{month},</if>
+            <if test="deptName!=null">deptName=#{deptName},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+            <if test="status!=null">status=#{status},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.ScSettlement">
+        DELETE SmScSettlement
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.ScSettlement" resultMap="SmScSettlementResult">
+        SELECT id,projNo,projName,month,deptName,team,attachment,comment,status,creatorAcc,creatorName,createTime
+        FROM SmScSettlement
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="projName!=null">AND projName=#{projName}</if>
+            <if test="month!=null">AND DATEDIFF(MONTH,#{month},month)=0</if>
+            <if test="deptName!=null">AND deptName=#{deptName}</if>
+            <if test="status!=null">AND status=#{status}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%' + #{team} + '%'</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+        </where>
+        ORDER BY projNo,deptName,team,month,status,id
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.ScSettlement" id="SmScSettlementResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

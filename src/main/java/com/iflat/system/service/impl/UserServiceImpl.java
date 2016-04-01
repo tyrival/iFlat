@@ -96,6 +96,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserInfoVo> listVoByVo(UserInfoVo userInfoVo) throws Exception {
+        return this.userDao.listVoByVo(userInfoVo);
+    }
+
+    @Override
     public User save(User user) throws Exception {
 
         if(user.getUserId() != null && !"".equals(user.getUserId())) {

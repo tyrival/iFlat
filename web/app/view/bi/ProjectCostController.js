@@ -202,7 +202,7 @@ Ext.define('iFlat.view.bi.ProjectCostController', {
     },
 
     renderer: function(value, metaData) {
-        value = Flat.financeFormat(value,2);
+        value = Flat.util.financeFormat(value,2);
         return value;
     },
 })

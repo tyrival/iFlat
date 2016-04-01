@@ -24,6 +24,15 @@ public class QualityFine {
     private String creator;  //录入人
     private Date createTime;  //录入日期
     private String attachment;  //附件
+    private String source;  //来源
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public String getAttachment() {
         return attachment;

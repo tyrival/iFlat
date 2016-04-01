@@ -116,7 +116,7 @@ Ext.define('iFlat.view.qm.QualityFineEdit', {
                 width: 300,
                 fieldLabel: '部门',
                 bind: {
-                    store: '{smDept}'
+                    store: '{smSbDept}'
                 },
                 listeners: {
                     select: 'onTeamInfoChange',

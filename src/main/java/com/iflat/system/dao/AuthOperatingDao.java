@@ -16,7 +16,7 @@ public interface AuthOperatingDao {
 
     public int insertDuplicate(List<AuthDuplicateVo> list) throws Exception;
 
-    public int updateBatch(List<AuthOperating> authOperatingVoList) throws Exception;
+    public int updateBatch(List<AuthOperating> authOperatingList) throws Exception;
     public int updateBatchVo(List<AuthOperatingVo> authOperatingVoList) throws Exception;
 
     public int deleteByDuplicate(List<AuthDuplicateVo> list) throws Exception;

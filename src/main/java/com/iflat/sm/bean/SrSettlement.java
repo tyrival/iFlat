@@ -7,26 +7,34 @@ import java.util.Date;
  */
 public class SrSettlement {
 
-    protected String id;
-    protected String type;  // 主体/零杂/机电
-    protected String projNo;
-    protected String projName;
-    protected String deptName;
-    protected String team;
-    protected double laborAmount;
-    protected double consumableAmount;
-    protected double performanceAmount;
-    protected double materialAmount;
-    protected double summaryAmount;
-    protected String attachment;
-    protected String comment;
-    protected String status;
-    protected String creatorAcc;
-    protected String creatorName;
-    protected Date createTime;
+    private String id;
+    private String type;  // 主体/零杂/机电
+    private String projNo;
+    private String projName;
+    private String deptName;
+    private String team;
+    private double laborAmount;
+    private double consumableAmount;
+    private double performanceAmount;
+    private double materialAmount;
+    private double summaryAmount;
+    private String attachment;
+    private String comment;
+    private String status;
+    private String creatorAcc;
+    private String creatorName;
+    private Date createTime;
 
     public SrSettlement() {
         this.createTime = new Date();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getAttachment() {
@@ -125,7 +133,7 @@ public class SrSettlement {
         return summaryAmount;
     }
 
-    protected void setSummaryAmount() {
+    private void setSummaryAmount() {
         this.summaryAmount = this.laborAmount + this.consumableAmount + this.performanceAmount - this.materialAmount;
     }
 

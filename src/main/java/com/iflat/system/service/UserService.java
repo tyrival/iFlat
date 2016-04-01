@@ -28,4 +28,6 @@ public interface UserService {
     public boolean changePassword(PasswordChange password) throws Exception;
 
     public User getProfile() throws Exception;
+
+    List<UserInfoVo> listVoByVo(UserInfoVo userInfoVo) throws Exception;
 }

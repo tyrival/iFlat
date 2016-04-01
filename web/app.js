@@ -50,9 +50,17 @@ Ext.Ajax.on('requestcomplete',function(conn,response,options) {
 });
 var Flat = {
     util: {
+        isEmpty: function (str) {
+            if (str === undefined || str === null || str ==='') {
+                return true;
+            }
+            return false;
+        },
         tip: function (result) {
-            result = Ext.JSON.decode(result);
-            Ext.example.msg(result.title, result.message, result.time);
+            if (result) {
+                result = Ext.JSON.decode(result);
+                Ext.example.msg(result.title, result.message, result.time);
+            }
         },
         financeFormat: function (strNum, decimal){
             if (!parseFloat(strNum)) {

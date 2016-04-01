@@ -5,9 +5,7 @@ import com.iflat.system.dao.DataDictionaryDao;
 import com.iflat.system.entity.DataBase;
 import com.iflat.system.service.DataDictionaryService;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -59,8 +57,9 @@ public class DataDictionaryServiceImpl implements DataDictionaryService {
     }
 
     //读取配置文件
-    private InputStream readConfig() {
-        return getClass().getResourceAsStream(this.path);  //读取文件
+    private InputStream readConfig() throws Exception {
+        // 读取文件，路径以/开头，则从classpath根目录读取，如果不以/开头，则读取本包下
+        return getClass().getResourceAsStream(this.path);
     }
 
     //解析value字符串为message和time

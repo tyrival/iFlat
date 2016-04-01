@@ -59,7 +59,7 @@ public class AuthOperatingServiceImpl implements AuthOperatingService {
     }
 
     @Override
-    public int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
+    public void updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception {
         AuthOperating authOperating = new AuthOperating();
         authOperating.setNameSpace(oldModule.getNameSpace());
         authOperating.setModuleName(oldModule.getModuleName());
@@ -70,12 +70,12 @@ public class AuthOperatingServiceImpl implements AuthOperatingService {
                 auth.setNameSpace(newModule.getNameSpace());
                 auth.setModuleName(newModule.getModuleName());
             }
+            authOperatingDao.updateBatch(list);
         }
-        return authOperatingDao.updateBatch(list);
     }
 
     @Override
-    public int updateCascadeWithOperatingChange(Operating old, Operating operating) throws Exception {
+    public void updateCascadeWithOperatingChange(Operating old, Operating operating) throws Exception {
         AuthOperating authOperating = new AuthOperating();
         authOperating.setNameSpace(old.getNameSpace());
         authOperating.setModuleName(old.getModuleName());
@@ -88,8 +88,8 @@ public class AuthOperatingServiceImpl implements AuthOperatingService {
                 auth.setModuleName(operating.getModuleName());
                 auth.setOperating(operating.getOperating());
             }
+            authOperatingDao.updateBatch(list);
         }
-        return authOperatingDao.updateBatch(list);
     }
 
     public AuthOperatingDao getAuthOperatingDao() {

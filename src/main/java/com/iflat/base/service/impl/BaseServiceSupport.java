@@ -6,8 +6,11 @@ import com.iflat.base.dao.impl.BaseDaoSupport;
 import com.iflat.base.entity.ExcelReader;
 import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
+import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.*;
+import com.iflat.workflow.service.WorkflowService;
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.apache.struts2.ServletActionContext;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.ApplicationContext;
@@ -17,10 +20,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by tyriv on 2015/11/27.
@@ -41,6 +41,7 @@ public class BaseServiceSupport implements BaseService {
     protected boolean isPaging;
 
     protected RuntimeService runtimeService;
+    protected WorkflowService workflowService;
     protected Object processObj;
     protected Map<String, Object> processMap;
     protected ReflectUtil reflectProcessObj;
@@ -51,7 +52,9 @@ public class BaseServiceSupport implements BaseService {
     protected void afterGenerate() throws Exception { };
 
     protected void beforeInsert() throws Exception { };
+    protected void afterInsert() throws Exception { };
     protected void beforeUpdate() throws Exception { };
+    protected void afterUpdate() throws Exception { };
     protected void afterSave() throws Exception { }
 
     protected void afterUpdateBatch() throws Exception { };
@@ -93,7 +96,7 @@ public class BaseServiceSupport implements BaseService {
                 .replace("com.iflat.", "")
                 .replace("bean.", "")
                 .replace("entity.", "");
-        this.processKey = StringUtil.UpperCaseFirstChar(key);
+        this.processKey = StringUtil.upperCaseFirstChar(key);
     }
 
     /**
@@ -101,18 +104,27 @@ public class BaseServiceSupport implements BaseService {
      * 储存从业务对象实例查找流程实例的变量
      */
     protected void generateBusinessKey() throws Exception {
-        this.processBusinessKey = this.processObj.getClass().getName()
-                + ":" + this.reflectProcessObj.getMethodValue("id").toString();
+        this.processBusinessKey
+                = this.processObj.getClass().getName()
+                + ":"
+                + this.reflectProcessObj.getMethodValue("id").toString();
     }
 
     @Override
     public void startProcess(Object object) throws Exception {
 
+        object = this.list(object).get(0);
         this.processObj = object;
         this.reflectProcessObj = new ReflectUtil(this.processObj);
 
         this.generateProcessKey();
         this.generateBusinessKey();
+
+        // 将流程发起人和发起时间信息置入流程变量
+        UserInfoVo userInfoVo = Session.getUserInfo();
+        processMap.put("creatorAcc", userInfoVo.getAccount());
+        processMap.put("creatorName", userInfoVo.getUserName());
+        processMap.put("createTime", new Date());
 
         /**
          * 设置流程变量
@@ -126,13 +138,35 @@ public class BaseServiceSupport implements BaseService {
         this.beforeStartProcess();
         // 启动流程
         if (this.runtimeService == null) {
-            ApplicationContext ac = WebApplicationContextUtils
-                    .getRequiredWebApplicationContext(ServletActionContext.getServletContext());
+            ApplicationContext ac
+                    = WebApplicationContextUtils.getRequiredWebApplicationContext(
+                            ServletActionContext.getServletContext());
             this.runtimeService = (RuntimeService) ac.getBean("runtimeService");
         }
-        this.runtimeService.startProcessInstanceByKey(this.processKey, this.processBusinessKey, this.processMap);
+        this.runtimeService.startProcessInstanceByKey(
+                this.processKey, this.processBusinessKey, this.processMap);
 
         this.afterStartProcess();
+    }
+
+    @Override
+    public void deleteProcessInstance(Object object) throws Exception {
+        String businessKey = getBusinessKey(object);
+        ProcessInstance processInstance = runtimeService
+                .createProcessInstanceQuery()
+                .processInstanceBusinessKey(businessKey)
+                .singleResult();
+        runtimeService.deleteProcessInstance(
+                processInstance.getProcessInstanceId(), "");
+    }
+
+    @Override
+    public String getBusinessKey(Object object) throws Exception {
+
+        this.processObj = object;
+        this.reflectProcessObj = new ReflectUtil(this.processObj);
+        generateBusinessKey();
+        return this.processBusinessKey;
     }
 
     @Override
@@ -164,10 +198,12 @@ public class BaseServiceSupport implements BaseService {
             this.beforeInsert();
             obj.setMethodValue("id", UUID.randomUUID().toString());
             result = executeMethod(this.saveObj, "insert");
+            this.afterInsert();
 
         } else {
             this.beforeUpdate();
             result = executeMethod(this.saveObj, "update");
+            this.afterUpdate();
         }
 
         this.afterSave();
@@ -548,5 +584,13 @@ public class BaseServiceSupport implements BaseService {
 
     public void setProcessBusinessKey(String processBusinessKey) {
         this.processBusinessKey = processBusinessKey;
+    }
+
+    public WorkflowService getWorkflowService() {
+        return workflowService;
+    }
+
+    public void setWorkflowService(WorkflowService workflowService) {
+        this.workflowService = workflowService;
     }
 }

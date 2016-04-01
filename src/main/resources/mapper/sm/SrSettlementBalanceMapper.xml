@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.SrSettlementBalance">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlementBalance">
+        INSERT INTO SmSrSettlementBalance
+        VALUES (#{id},#{deptName},#{amount})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmSrSettlementBalance
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.deptName},#{item.amount}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.SrSettlementBalance">
+        UPDATE SmSrSettlementBalance
+        SET amount=CONVERT(DECIMAL(38,6), (#{amount}-#{adjustment}))
+        WHERE deptName=#{deptName}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.SrSettlementBalance">
+        DELETE SmSrSettlementBalance
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.SrSettlementBalance" resultMap="SmSrSettlementBalanceResult">
+        SELECT id,deptName,amount
+        FROM SmSrSettlementBalance
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="deptName!=null">AND deptName=#{deptName}</if>
+        </where>
+        ORDER BY deptName,id
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.SrSettlementBalance" id="SmSrSettlementBalanceResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

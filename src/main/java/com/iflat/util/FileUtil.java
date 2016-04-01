@@ -3,7 +3,7 @@ package com.iflat.util;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
-import java.io.File;
+import java.io.*;
 import java.util.Calendar;
 import java.util.UUID;
 
@@ -11,6 +11,20 @@ import java.util.UUID;
  * Created by tyriv on 2015/11/16.
  */
 public class FileUtil {
+
+    public static File inputStreamToFile(InputStream inputStream, String fileName) throws Exception {
+
+        File file = new File(fileName);
+        OutputStream outputStream = new FileOutputStream(file);
+        int bytesRead = 0;
+        byte[] buffer = new byte[8192];
+        while ((bytesRead = inputStream.read(buffer, 0, 8192)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+        outputStream.close();
+        inputStream.close();
+        return file;
+    }
 
     public static String delete(String filePath) throws Exception {
         File f = new File(Application.getWebRootPath() + filePath);

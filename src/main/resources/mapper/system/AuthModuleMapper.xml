@@ -56,6 +56,18 @@
         WHERE SysAuthModule.amId=a.amId
     </update>
 
+    <update id="updateBatchVo" parameterType="java.util.List">
+        UPDATE SysAuthModule SET amId=a.amId,roleId=a.roleId,account=a.account,nameSpace=a.nameSpace,moduleName=a.moduleName,amStatus=a.amStatus,aoStatus=a.aoStatus,adStatus=a.adStatus
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.amId} as amId,#{item.roleId} as roleId,#{item.account} as account,#{item.nameSpace} as
+            nameSpace,#{item.moduleName} as moduleName,#{item.amStatus} as amStatus,#{item.aoStatus} as
+            aoStatus,#{item.adStatus} as adStatus
+        </foreach>
+        ) AS a
+        WHERE SysAuthModule.amId=a.amId
+    </update>
+
     <delete id="deleteByDuplicate" parameterType="java.util.List">
         DELETE SysAuthModule
         <where>

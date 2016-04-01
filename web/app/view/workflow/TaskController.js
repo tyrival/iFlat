@@ -2,7 +2,6 @@ Ext.define('iFlat.view.workflow.TaskController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.workflow-task',
 
-    //刷新
     refresh: function() {
         workflowTaskStore.reload();
     },
@@ -32,5 +31,13 @@ Ext.define('iFlat.view.workflow.TaskController', {
         };
         tabPanel.getLayout().setActiveItem(nodeId);
     },
-
+    
+    showImage: function() {
+        var win = Ext.getCmp('workflow-processimage');
+        if(!win) {
+            win = Ext.create('iFlat.view.workflow.ProcessImage');
+        }
+        Ext.getCmp('workflow-processimage-taskid').setValue("111");
+        win.show();
+    }
 })

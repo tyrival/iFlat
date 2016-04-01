@@ -2,6 +2,7 @@ package com.iflat.qm.service.impl;
 
 import com.iflat.qm.bean.QualityFine;
 import com.iflat.base.service.impl.BaseServiceSupport;
+import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.Session;
 import org.springframework.oxm.ValidationFailureException;
 
@@ -16,6 +17,7 @@ public class QualityFineServiceImpl extends BaseServiceSupport {
 
     @Override
     public void beforeInsert() throws Exception {
+        ((QualityFine)this.getSaveObj()).setSource(Session.getUserInfo().getPorgName());
         ((QualityFine)this.getSaveObj()).setCreator(Session.getUserInfo().getAccount());
         ((QualityFine)this.getSaveObj()).setCreateTime(new Date());
     }
@@ -32,6 +34,7 @@ public class QualityFineServiceImpl extends BaseServiceSupport {
         for(int i = 0; i < list.size(); i++) {
             QualityFine o = (QualityFine)list.get(i);
             o.setId(UUID.randomUUID().toString());
+            o.setSource(Session.getUserInfo().getPorgName());
             o.setCreator(Session.getUserInfo().getAccount());
             o.setCreateTime(new Date());
         }

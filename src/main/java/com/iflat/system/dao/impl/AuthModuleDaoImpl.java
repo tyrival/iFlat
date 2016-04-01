@@ -46,7 +46,7 @@ public class AuthModuleDaoImpl implements AuthModuleDao {
     @Override
     public int updateBatch(List<AuthModule> list) throws Exception {
 
-        return getSqlSessionTemplate().update("System.AuthModule.updateBatchVo", list);
+        return getSqlSessionTemplate().update("System.AuthModule.updateBatch", list);
     }
 
     @Override

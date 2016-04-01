@@ -13,7 +13,7 @@ public class ReflectUtil {
     /**
      * 传过来的对象
      */
-    private Object obj;
+    private Object object;
 
     private String[] props;
 
@@ -36,7 +36,7 @@ public class ReflectUtil {
      * @param o 目标对象
      */
     public ReflectUtil(Object o) {
-        obj = o;
+        object = o;
         initMethods();
     }
 
@@ -47,7 +47,7 @@ public class ReflectUtil {
     public void initMethods() {
         getMethods = new Hashtable<String, Method>();
         setMethods = new Hashtable<String, Method>();
-        cls = obj.getClass();
+        cls = object.getClass();
         Field[] fields = cls.getDeclaredFields();
         props = new String[fields.length];
         for(int i = 0; i < fields.length; i++) {
@@ -85,7 +85,7 @@ public class ReflectUtil {
         if (m != null) {
             try {
                 // 调用目标类的setter函数
-                m.invoke(obj, value);
+                m.invoke(object, value);
                 return true;
             } catch (Exception ex) {
                 throw new Exception("对象的[" + property + "]属性的setter方法执行时报错。");
@@ -102,12 +102,16 @@ public class ReflectUtil {
         if (m != null) {
             try {
                 // 调用目标类的getter函数
-                Object o = m.invoke(obj);
+                Object o = m.invoke(object);
                 return o;
             } catch (Exception ex) {
                 throw new Exception("对象的[" + property + "]属性的getter方法执行时报错。");
             }
         }
         throw new Exception("未查询到对象的[" + property + "]属性的getter方法。");
+    }
+
+    public Object getObject() {
+        return object;
     }
 }

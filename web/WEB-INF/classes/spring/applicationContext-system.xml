@@ -147,7 +147,7 @@
     <!-- DataDictionary -->
     <bean id="dataDictionaryService" class="com.iflat.system.service.impl.DataDictionaryServiceImpl">
         <property name="dataDictionaryDao" ref="dataDictionaryDao"></property>
-        <property name="path" value="../../../../../../config/database.properties"></property>
+        <property name="path" value="/database.properties"></property>
     </bean>
     <bean id="dataDictionaryDao" class="com.iflat.system.dao.impl.DataDictionaryDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>

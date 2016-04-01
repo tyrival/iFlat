@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.SrSettlementDetlSecond">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlementDetlSecond">
+        INSERT INTO SmSrSettlementDetlSecond
+        VALUES (#{id},#{pid},#{content},#{type},#{qty1},#{qty2},#{qty3},#{qty4},#{qty5},#{qty6},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{confirmAcc},#{confirmName},#{confirmTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmSrSettlementDetlSecond
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.content},#{item.type},#{item.qty1},#{item.qty2},#{item.qty3},#{item.qty4},#{item.qty5},#{item.qty6},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.confirmAcc},#{item.confirmName},#{item.confirmTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.SrSettlementDetlSecond">
+        UPDATE SmSrSettlementDetlSecond
+        <set>
+            <if test="pid!=null">pid=#{pid},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="qty1!=null">qty1=#{qty1},</if>
+            <if test="qty2!=null">qty2=#{qty2},</if>
+            <if test="qty3!=null">qty3=#{qty3},</if>
+            <if test="qty4!=null">qty4=#{qty4},</if>
+            <if test="qty5!=null">qty5=#{qty5},</if>
+            <if test="qty6!=null">qty6=#{qty6},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="comment!=null">comment=#{comment}</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE SmSrSettlementDetlSecond SET id=a.id,pid=a.pid,content=a.content,type=a.type,qty1=a.qty1,qty2=a.qty2,qty3=a.qty3,qty4=a.qty4,qty5=a.qty5,qty6=a.qty6,amount=a.amount,attachment=a.attachment,comment=a.comment
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id} as id,#{item.pid} as pid,#{item.content} as content,#{item.type} as type,#{item.qty1} as qty1,#{item.qty2} as qty2,#{item.qty3} as qty3,#{item.qty4} as qty4,#{item.qty5} as qty5,#{item.qty6} as qty6,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment
+        </foreach>
+        ) AS a
+        WHERE SmSrSettlementDetlSecond.id=a.id
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.SbSettlementDetail">
+        DELETE SmSrSettlementDetlSecond
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.SrSettlementDetlSecond" resultMap="SrSettlementDetlSecondResult">
+        SELECT id,pid,content,type,qty1,qty2,qty3,qty4,qty5,qty6,amount,attachment,comment,creatorAcc,creatorName,createTime
+        FROM SmSrSettlementDetlSecond
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pid!=null">AND pid=#{pid}</if>
+            <if test="type!=null ">AND type=#{type}</if>
+            <if test="content!=null and !&quot;&quot;.equals(content.trim())">AND content LIKE '%' + #{content} + '%'</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+        </where>
+        ORDER BY pid,createTime,content,amount,id
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.SrSettlementDetlSecond" id="SrSettlementDetlSecondResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pid" column="pid" jdbcType="CHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="qty1" column="qty1" jdbcType="DOUBLE"/>
+        <result property="qty2" column="qty2" jdbcType="DOUBLE"/>
+        <result property="qty3" column="qty3" jdbcType="DOUBLE"/>
+        <result property="qty4" column="qty4" jdbcType="DOUBLE"/>
+        <result property="qty5" column="qty5" jdbcType="DOUBLE"/>
+        <result property="qty6" column="qty6" jdbcType="DOUBLE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

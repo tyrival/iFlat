@@ -12,10 +12,10 @@ Ext.define('iFlat.view.system.UserController', {
     refreshList: function() {
         sysUserStore.proxy.extraParams.orgId = "";
         sysUserOrgTreeStore.reload();
-        sysRoleStore.reload();
+        //sysRoleStore.reload();
         sysUserStore.reload();
         if (Ext.getCmp('system-userroleedit')) {
-            sysRoleStore.reload();
+            sysUserRoleStore.reload();
         }
     },
 

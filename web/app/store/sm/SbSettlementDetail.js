@@ -1,13 +1,13 @@
-Ext.define('iFlat.store.sm.SbRequest', {
+Ext.define('iFlat.store.sm.SbSettlementDetail', {
     extend: 'Ext.data.Store',
 
-    autoLoad: true,
-    model: 'iFlat.model.sm.SbRequest',
+    autoLoad: false,
+    model: 'iFlat.model.sm.SbSettlementDetail',
 
     pageSize: 0,
     proxy: {
         type: 'ajax',
-        url: 'sbrequest_list.action',
+        url: 'sm_listSbSettlementDetail.action',
         reader: {
             type: 'json',
             rootProperty: 'list',

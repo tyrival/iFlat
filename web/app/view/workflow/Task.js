@@ -3,7 +3,7 @@ Ext.define('iFlat.view.workflow.Task', {
     alias: 'widget.workflow-task',
 
     require: [
-        'iFlat.view.workflow.TaskController'
+        'iFlat.view.workflow.TaskController',
     ],
 
     controller: 'workflow-task',
@@ -23,20 +23,23 @@ Ext.define('iFlat.view.workflow.Task', {
     }, {
         header: '任务名',
         dataIndex: 'task.name',
+        width: 150
     }, {
         header: '创建时间',
         dataIndex: 'task.createTime',
-        formatter: 'date("Y-m-d H:i:s")'
+        formatter: 'date("Y-m-d H:i")',
+        width: 150
     }, {
         header: '任务描述',
         flex: true,
-        dataIndex: 'task.desctiption',
+        dataIndex: 'task.description',
     }, {
         header: '办理者',
         dataIndex: 'task.assignee',
     }, {
         header: 'FormKey',
         dataIndex: 'task.formKey',
+        hidden: true,
     }, {
         header: '流程定义ID',
         dataIndex: 'task.processDefinitionId',
@@ -49,7 +52,7 @@ Ext.define('iFlat.view.workflow.Task', {
         xtype: 'actioncolumn',
         tooltip: '处理',
         align: 'center',
-        iconCls: 'x-fa fa-link',
+        iconCls: 'x-fa fa-level-up',
         handler: 'deal',
         editor: {
             xtype: 'label',

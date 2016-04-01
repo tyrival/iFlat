@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/test" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/1999/XPath" id="m1458630755253" name="" targetNamespace="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema">
   <process id="Sm.ScSettlement" isClosed="false" isExecutable="true" name="ScSettlement" processType="None">
-    <startEvent id="_2" name="StartEvent"/>
+    <startEvent id="_2" name="StartEvent">
+      <extensionElements>
+        <activiti:executionListener event="end"/>
+      </extensionElements>
+    </startEvent>
     <endEvent id="_3" name="EndEvent"/>
-    <userTask activiti:exclusive="true" id="_4" name="Submit"/>
+    <userTask activiti:exclusive="true" id="_4" name="Submit">
+      <extensionElements>
+        <activiti:taskListener event="create"/>
+      </extensionElements>
+    </userTask>
     <userTask activiti:exclusive="true" id="_5" name="Business&#10;Division&#10;Approve"/>
     <userTask activiti:exclusive="true" id="_6" name="HR Audit"/>
     <userTask activiti:exclusive="true" id="_7" name="HR Director&#10;Approve"/>

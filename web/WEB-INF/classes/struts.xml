@@ -99,11 +99,11 @@
         <action name="system_*" class="com.iflat.system.action.SystemAction" method="{1}">
             <result type="json" name="success">
                 <param name="root">result</param>
-                <param name="excludeNullProperties">true</param>
+                <param name="excludeNullProperties">false</param>
             </result>
             <result type="json" name="tree">
                 <param name="root">result.object</param>
-                <param name="excludeNullProperties">true</param>
+                <param name="excludeNullProperties">false</param>
             </result>
         </action>
 

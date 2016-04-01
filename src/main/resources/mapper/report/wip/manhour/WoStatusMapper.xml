@@ -80,10 +80,23 @@ FROM (
     </where>
 </if>
 <if test="type!=null and &quot;修改&quot;.equals(type)">
-    SELECT d5.gh AS projNo, '修改' AS type, a5.gcmc AS name, a5.xgdbh AS woNo, b5.xgxm + ' ' + b5.xgnr + ' 数量：' + CONVERT(VARCHAR(20),b5.wlgs) AS description, b5.djsj AS createTime, a5.sgbm AS dept, a5.sgdw AS team, a5.sgbz AS [group], b5.djry AS createUser, NULL AS mgrConfirm, (CASE WHEN b5.shbz=1 OR (b5.shbz IS NULL AND a5.sgdw LIKE '%本工%') THEN 'TRUE' WHEN b5.shbz=5 THEN 'FALSE' ELSE NULL END) AS balConfirm, NULL AS hasComplete, (CASE WHEN b5.degs IS NOT NULL OR b5.degs=0 THEN 'TRUE' ELSE 'FALSE' END) AS hasQuota, ISNULL(b5.degs,0) AS quota,
-           NULL AS hasActual,
-           (CASE WHEN c5.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed,
-           (CASE WHEN c5.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
+    SELECT d5.gh AS projNo,
+    '修改' AS type,
+    a5.gcmc AS name,
+    a5.xgdbh AS woNo,
+    b5.xgxm + ' ' + CAST(b5.xgnr as varchar(max)) + ' 数量：' + CONVERT(VARCHAR(20),b5.wlgs) AS description,
+    b5.djsj AS createTime,
+    a5.sgbm AS dept,
+    a5.sgdw AS team,
+    a5.sgbz AS [group],
+    b5.djry AS createUser,
+    NULL AS mgrConfirm,
+    (CASE WHEN b5.shbz=1 OR (b5.shbz IS NULL AND a5.sgdw LIKE '%本工%') THEN 'TRUE' WHEN b5.shbz=5 THEN 'FALSE' ELSE NULL END) AS balConfirm,
+    NULL AS hasComplete,
+    (CASE WHEN b5.degs IS NOT NULL OR b5.degs=0 THEN 'TRUE' ELSE 'FALSE' END) AS hasQuota, ISNULL(b5.degs,0) AS quota,
+    NULL AS hasActual,
+    (CASE WHEN c5.dybz=1 THEN 'TRUE' ELSE 'FALSE' END) AS printed,
+    (CASE WHEN c5.shbz=1 THEN 'TRUE' ELSE 'FALSE' END) AS finalConfirm
     FROM V_Wh_WoModifyDetail b5
     LEFT JOIN V_Wh_WoModify a5 ON a5.ppk_varcode = b5.zbid
     LEFT JOIN V_Wh_WoModifyPrinted c5 ON CAST(b5.xgnr as varchar(max))= cast(c5.sgnr as varchar(max)) and c5.gcmc = a5.gcmc and c5.xgdbh = b5.xgdh

@@ -5,7 +5,7 @@
 <mapper namespace="Ss.SafetyFineVo">
 
     <select id="list" parameterType="com.iflat.ss.entity.SafetyFineVo" resultMap="SsSafetyFineVoResult">
-        SELECT id,projNo,projName,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,purpose,creator,createTime
+        SELECT id,projNo,projName,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime
         FROM V_SsSafetyFine
         <where>
             <if test="id!=null">
@@ -56,14 +56,14 @@
                 AND comment LIKE '%' + #{comment} + '%'</if>
             <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">
                 AND issuer LIKE '%' + #{issuer} + '%'</if>
-            <if test="purpose!=null and !&quot;&quot;.equals(purpose.trim())">
-                AND purpose=#{purpose}</if>
+            <if test="source!=null and !&quot;&quot;.equals(source.trim())">
+                AND source=#{source}</if>
             <if test="fromDate!=null">
                 AND date &gt;= #{fromDate}</if>
             <if test="toDate!=null">
                 AND date &lt; DATEADD(day,1,#{toDate})</if>
         </where>
-        ORDER BY  (CASE WHEN personAcc IS NULL OR personAcc='' THEN 0 ELSE 1 END),date DESC,projNo,type,dept,team,[group],personAcc,createTime,purpose
+        ORDER BY  (CASE WHEN personAcc IS NULL OR personAcc='' THEN 0 ELSE 1 END),date DESC,projNo,type,dept,team,[group],personAcc,createTime,source
     </select>
 
     <resultMap type="com.iflat.ss.entity.SafetyFineVo" id="SsSafetyFineVoResult">
@@ -94,7 +94,7 @@
         <result property="comment" column="comment" jdbcType="VARCHAR"/>
         <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
         <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
-        <result property="purpose" column="purpose" jdbcType="VARCHAR"/>
+        <result property="source" column="source" jdbcType="VARCHAR"/>
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
     </resultMap>

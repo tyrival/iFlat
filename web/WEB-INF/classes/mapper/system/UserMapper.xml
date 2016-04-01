@@ -138,7 +138,16 @@
         FROM V_SysUserInfo
         <where>
             <if test="account!=null">account=#{account}</if>
+            <if test="userName!=null">AND userName=#{userName}</if>
+            <if test="title!=null">AND title=#{title}</if>
             <if test="roleId!=null">AND roleId=#{roleId}</if>
+            <if test="roleName!=null">AND roleName=#{roleName}</if>
+            <if test="orgId!=null">AND orgId=#{orgId}</if>
+            <if test="orgCode!=null">AND orgCode=#{orgCode}</if>
+            <if test="orgName!=null">AND orgName=#{orgName}</if>
+            <if test="porgId!=null">AND porgId=#{porgId}</if>
+            <if test="porgCode!=null">AND porgCode=#{porgCode}</if>
+            <if test="porgName!=null">AND porgName=#{porgName}</if>
         </where>
         ORDER BY sequence
     </select>

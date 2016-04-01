@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.SrSettlementDetlFirst">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlementDetlFirst">
+        INSERT INTO SmSrSettlementDetlFirst
+        VALUES (#{id},#{pid},#{specs},#{applyContent},#{applyQty1},#{applyQty2},#{applyQty3},#{applyQty4},#{applyQty5},#{applyQty6},#{adjustContent},#{adjustQty1},#{adjustQty2},#{adjustQty3},#{adjustQty4},#{adjustQty5},#{adjustQty6},#{settleQty1},#{settleQty2},#{settleQty3},#{settleQty4},#{settleQty5},#{settleQty6},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{confirmAcc},#{confirmName},#{confirmTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmSrSettlementDetlFirst
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.specs},#{item.applyContent},#{item.applyQty1},#{item.applyQty2},#{item.applyQty3},#{item.applyQty4},#{item.applyQty5},#{item.applyQty6},#{item.adjustContent},#{item.adjustQty1},#{item.adjustQty2},#{item.adjustQty3},#{item.adjustQty4},#{item.adjustQty5},#{item.adjustQty6},#{item.settleQty1},#{item.settleQty2},#{item.settleQty3},#{item.settleQty4},#{item.settleQty5},#{item.settleQty6},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.confirmAcc},#{item.confirmName},#{item.confirmTime}
+        </foreach>
+    </insert>
+    
+    <update id="update" parameterType="com.iflat.sm.bean.SrSettlementDetlFirst">
+        UPDATE SmSrSettlementDetlFirst
+        <set>
+            <if test="pid!=null">pid=#{pid},</if>
+            <if test="spec!=null">spec=#{spec},</if>
+            <if test="applyContent!=null">applyContent=#{applyContent},</if>
+            <if test="applyQty1!=null">applyQty1=#{applyQty1},</if>
+            <if test="applyQty2!=null">applyQty2=#{applyQty2},</if>
+            <if test="applyQty3!=null">applyQty3=#{applyQty3},</if>
+            <if test="applyQty4!=null">applyQty4=#{applyQty4},</if>
+            <if test="applyQty5!=null">applyQty5=#{applyQty5},</if>
+            <if test="applyQty6!=null">applyQty6=#{applyQty6},</if>
+            <if test="adjustContent!=null">adjustContent=#{adjustContent},</if>
+            <if test="adjustQty1!=null">adjustQty1=#{adjustQty1},</if>
+            <if test="adjustQty2!=null">adjustQty2=#{adjustQty2},</if>
+            <if test="adjustQty3!=null">adjustQty3=#{adjustQty3},</if>
+            <if test="adjustQty4!=null">adjustQty4=#{adjustQty4},</if>
+            <if test="adjustQty5!=null">adjustQty5=#{adjustQty5},</if>
+            <if test="adjustQty6!=null">adjustQty6=#{adjustQty6},</if>
+            <if test="settleQty1!=null">settleQty1=#{settleQty1},</if>
+            <if test="settleQty2!=null">settleQty2=#{settleQty2},</if>
+            <if test="settleQty3!=null">settleQty3=#{settleQty3},</if>
+            <if test="settleQty4!=null">settleQty4=#{settleQty4},</if>
+            <if test="settleQty5!=null">settleQty5=#{settleQty5},</if>
+            <if test="settleQty6!=null">settleQty6=#{settleQty6},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+            <if test="confirmAcc!=null">confirmAcc=#{confirmAcc},</if>
+            <if test="confirmName!=null">confirmName=#{confirmName},</if>
+            <if test="confirmTime!=null">confirmTime=#{confirmTime},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE SmSrSettlementDetlFirst SET id=a.id,pid=a.pid,spec=a.spec,applyContent=a.applyContent,applyQty1=a.applyQty1,applyQty2=a.applyQty2,applyQty3=a.applyQty3,applyQty4=a.applyQty4,applyQty5=a.applyQty5,applyQty6=a.applyQty6,adjustContent=a.adjustContent,adjustQty1=a.adjustQty1,adjustQty2=a.adjustQty2,adjustQty3=a.adjustQty3,adjustQty4=a.adjustQty4,adjustQty5=a.adjustQty5,adjustQty6=a.adjustQty6,settleQty1=a.settleQty1,settleQty2=a.settleQty2,settleQty3=a.settleQty3,settleQty4=a.settleQty4,settleQty5=a.settleQty5,settleQty6=a.settleQty6,amount=a.amount,attachment=a.attachment,comment=a.comment,confirmAcc=a.confirmAcc,confirmName=a.confirmName,confirmTime=a.confirmTime
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id} as id,#{item.pid} as pid,#{item.spec} as spec,#{item.applyContent} as applyContent,#{item.applyQty1} as applyQty1,#{item.applyQty2} as applyQty2,#{item.applyQty3} as applyQty3,#{item.applyQty4} as applyQty4,#{item.applyQty5} as applyQty5,#{item.applyQty6} as applyQty6,#{item.adjustContent} as adjustContent,#{item.adjustQty1} as adjustQty1,#{item.adjustQty2} as adjustQty2,#{item.adjustQty3} as adjustQty3,#{item.adjustQty4} as adjustQty4,#{item.adjustQty5} as adjustQty5,#{item.adjustQty6} as adjustQty6,#{item.settleQty1} as settleQty1,#{item.settleQty2} as settleQty2,#{item.settleQty3} as settleQty3,#{item.settleQty4} as settleQty4,#{item.settleQty5} as settleQty5,#{item.settleQty6} as settleQty6,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment,#{item.confirmAcc} as confirmAcc,#{item.confirmName} as confirmName,#{item.confirmTime} as confirmTime
+        </foreach>
+        ) AS a
+        WHERE SmSrSettlementDetlFirst.id=a.id
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.SbSettlementDetail">
+        DELETE SmSrSettlementDetlFirst
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.SrSettlementDetlFirst" resultMap="SrSettlementDetlFirstResult">
+        SELECT id,pid,spec,applyContent,applyQty1,applyQty2,applyQty3,applyQty4,applyQty5,applyQty6,adjustContent,adjustQty1,adjustQty2,adjustQty3,adjustQty4,adjustQty5,adjustQty6,settleQty1,settleQty2,settleQty3,settleQty4,settleQty5,settleQty6,amount,attachment,comment,creatorAcc,creatorName,createTime,confirmAcc,confirmName,confirmTime
+        FROM SmSrSettlementDetlFirst
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pid!=null">AND pid=#{pid}</if>
+            <if test="specs!=null ">AND specs=#{specs}</if>
+            <if test="applyContent!=null and !&quot;&quot;.equals(applyContent.trim())">AND applyContent LIKE '%' + #{applyContent} + '%'</if>
+            <if test="adjustContent!=null and !&quot;&quot;.equals(adjustContent.trim())">AND adjustContent LIKE '%' + #{adjustContent} + '%'</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+            <if test="confirmAcc!=null ">AND confirmAcc=#{confirmAcc}</if>
+        </where>
+        ORDER BY pid,createTime,id
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.SrSettlementDetlFirst" id="SrSettlementDetlFirstResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pid" column="pid" jdbcType="CHAR"/>
+        <result property="specs" column="specs" jdbcType="VARCHAR"/>
+        <result property="applyContent" column="applyContent" jdbcType="VARCHAR"/>
+        <result property="applyQty1" column="applyQty1" jdbcType="DOUBLE"/>
+        <result property="applyQty2" column="applyQty2" jdbcType="DOUBLE"/>
+        <result property="applyQty3" column="applyQty3" jdbcType="DOUBLE"/>
+        <result property="applyQty4" column="applyQty4" jdbcType="DOUBLE"/>
+        <result property="applyQty5" column="applyQty5" jdbcType="DOUBLE"/>
+        <result property="applyQty6" column="applyQty6" jdbcType="DOUBLE"/>
+        <result property="adjustContent" column="adjustContent" jdbcType="VARCHAR"/>
+        <result property="adjustQty1" column="adjustQty1" jdbcType="DOUBLE"/>
+        <result property="adjustQty2" column="adjustQty2" jdbcType="DOUBLE"/>
+        <result property="adjustQty3" column="adjustQty3" jdbcType="DOUBLE"/>
+        <result property="adjustQty4" column="adjustQty4" jdbcType="DOUBLE"/>
+        <result property="adjustQty5" column="adjustQty5" jdbcType="DOUBLE"/>
+        <result property="adjustQty6" column="adjustQty6" jdbcType="DOUBLE"/>
+        <result property="settleQty1" column="settleQty1" jdbcType="DOUBLE"/>
+        <result property="settleQty2" column="settleQty2" jdbcType="DOUBLE"/>
+        <result property="settleQty3" column="settleQty3" jdbcType="DOUBLE"/>
+        <result property="settleQty4" column="settleQty4" jdbcType="DOUBLE"/>
+        <result property="settleQty5" column="settleQty5" jdbcType="DOUBLE"/>
+        <result property="settleQty6" column="settleQty6" jdbcType="DOUBLE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="confirmAcc" column="confirmAcc" jdbcType="VARCHAR"/>
+        <result property="confirmName" column="confirmName" jdbcType="VARCHAR"/>
+        <result property="confirmTime" column="confirmTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

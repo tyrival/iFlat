@@ -29,15 +29,15 @@ public class ModuleServiceImpl implements ModuleService {
     public Module save(Module module) throws Exception {
 
         if(module.getNodeId() != null && !"".equals(module.getNodeId())) {
-            module = this.moduleDao.update(module);
 
             Module old = moduleDao.get(module.getNodeId());
-
             if (isKeyChanged(old, module)) {
                 authModuleService.updateCascadeWithModuleChange(old, module);
                 authOperatingService.updateCascadeWithModuleChange(old, module);
                 authDataService.updateCascadeWithModuleChange(old, module);
             }
+
+            module = this.moduleDao.update(module);
 
         } else {
             module.setNodeId(UUID.randomUUID().toString());
@@ -142,11 +142,11 @@ public class ModuleServiceImpl implements ModuleService {
     }
 
     private boolean isKeyChanged(Module oldModule, Module newModule) {
-        if (oldModule.getNameSpace() != newModule.getNameSpace()
-                || oldModule.getModuleName() != newModule.getModuleName()) {
-            return true;
+        if (oldModule.getNameSpace().equals(newModule.getNameSpace())
+                && oldModule.getModuleName().equals(newModule.getModuleName())) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public ModuleDao getModuleDao() {

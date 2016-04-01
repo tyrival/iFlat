@@ -36,17 +36,17 @@ public class SafetyFineVo {
     private String creator;  //录入人
     private Date createTime;  //录入日期
     private String attachment;  //附件
-    private String purpose;  //用途，安保部签发0，车间内部签发1
+    private String source;  //用途，安保部签发0，车间内部签发1
 
     private Date fromDate;
     private Date toDate;
 
-    public String getPurpose() {
-        return purpose;
+    public String getSource() {
+        return source;
     }
 
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public Date getFromDate() {

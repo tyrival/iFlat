@@ -19,7 +19,7 @@ public interface AuthOperatingService {
 
     public List<AuthOperatingVo> listVoOfModuleByUser(AuthOperatingVo authOperatingVo) throws Exception;
 
-    int updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
+    void updateCascadeWithModuleChange(Module oldModule, Module newModule) throws Exception;
 
-    int updateCascadeWithOperatingChange(Operating old, Operating operating) throws Exception;
+    void updateCascadeWithOperatingChange(Operating old, Operating operating) throws Exception;
 }
