@@ -20,9 +20,7 @@ import java.util.Map;
  */
 public class SbSettlementServiceImpl extends BaseServiceSupport implements SbSettlementService {
 
-    private UserService userService;
     private WorkflowService workflowService;
-
 
     /**
      * 创建对象前，生成对象的创建人等属性
@@ -72,10 +70,6 @@ public class SbSettlementServiceImpl extends BaseServiceSupport implements SbSet
             throw new Exception("此项目无法重复提交");
         }
         workflowService.completeTaskByBusinessKey(this.getBusinessKey(sbSettlement));
-    }
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
     }
 
     public void setWorkflowService(WorkflowService workflowService) {

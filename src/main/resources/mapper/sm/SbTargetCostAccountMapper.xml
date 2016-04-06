@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.SbTargetCostAccount">
+
+    <select id="list" parameterType="com.iflat.sm.bean.SbTargetCostAccount" resultMap="SmSbTargetCostAccountResult">
+        SELECT code,name
+        FROM V_Cst_SmSbTargetCostAccount
+        <where>
+            <if test="code!=null">code=#{code}</if>
+            <if test="name!=null">AND name=#{name}</if>
+        </where>
+        ORDER BY code
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.SbTargetCostAccount" id="SmSbTargetCostAccountResult">
+        <result property="code" column="code" jdbcType="CHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

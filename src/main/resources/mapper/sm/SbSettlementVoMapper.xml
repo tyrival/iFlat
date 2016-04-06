@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.SbSettlementVo">
+
+    <select id="list" parameterType="com.iflat.sm.entity.SbSettlementVo" resultMap="SmSbSettlementVoResult">
+        SELECT a.id,a.projNo,a.projName,a.month,a.deptName,a.team,a.attachment,a.comment,a.status,a.creatorAcc,a.creatorName,a.createTime,b.id AS idDetl,b.account AS accountDetl,b.content AS contentDetl,b.matQty AS matQtyDetl,b.spec AS specDetl,b.unit AS unitDetl,b.price AS priceDetl,b.amount AS amountDetl,b.attachment AS attachmentDetl,b.comment AS commentDetl,b.creatorAcc AS creatorAccDetl,b.creatorName AS creatorNameDetl,b.createTime AS createTimeDetl
+        FROM SmSbSettlementDetail b
+        LEFT JOIN SmSbSettlement a ON a.id=b.pid
+        <where>
+            <if test="id!=null">a.id=#{id}</if>
+            <if test="projNo!=null">AND a.projNo=#{projNo}</if>
+            <if test="projName!=null">AND a.projName=#{projName}</if>
+            <if test="month!=null">AND DATEDIFF(MONTH,#{month},a.month)=0</if>
+            <if test="deptName!=null">AND a.deptName=#{deptName}</if>
+            <if test="status!=null">AND a.status=#{status}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND a.team LIKE '%' + #{team} + '%'</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND a.comment LIKE '%' + #{comment} + '%'</if>
+            <if test="creatorAcc!=null">AND a.creatorAcc=#{creatorAcc}</if>
+            <if test="idDetl!=null">AND b.idDetl=#{idDetl}</if>
+            <if test="accountDetl!=null ">AND b.account=#{accountDetl}</if>
+            <if test="specDetl!=null">AND b.spec=#{specDetl}</if>
+            <if test="unitDetl!=null">AND b.unit=#{unitDetl}</if>
+            <if test="commentDetl!=null and !&quot;&quot;.equals(commentDetl.trim())">AND b.comment LIKE '%' + #{commentDetl} + '%'</if>
+            <if test="creatorAccDetl!=null">AND b.creatorAcc=#{creatorAccDetl}</if>
+        </where>
+        ORDER BY a.month DESC,a.projNo,a.deptName,a.team,b.account,b.createTime
+    </select>
+
+    <resultMap type="com.iflat.sm.entity.SbSettlementVo" id="SmSbSettlementVoResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

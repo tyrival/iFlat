@@ -236,10 +236,17 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     iconCls: 'x-fa fa-close',
                     handler: 'deleteDetail',
                 }, {
-                    header: '类型',
+                    header: '成本科目',
                     dataIndex: 'sbSettlementDetail.account',
                     editor: {
+                        xtype: 'combo',
                         allowBlank: false,
+                        store: smSbSettlementDetailComboStore = Ext.create('iFlat.store.sm.SbTargetCostAccount'),
+                        queryMode: 'local',
+                        editable: true,
+                        forceSelection : true,
+                        valueField : 'name',
+                        displayField : 'name',
                     }
                 }, {
                     header: '内容',

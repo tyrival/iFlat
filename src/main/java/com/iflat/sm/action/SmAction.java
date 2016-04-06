@@ -2,16 +2,13 @@ package com.iflat.sm.action;
 
 import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.service.BaseService;
-import com.iflat.sm.bean.SbSettlement;
-import com.iflat.sm.bean.SbSettlementDetail;
+import com.iflat.sm.bean.*;
 import com.iflat.sm.service.SbSettlementDetailService;
 import com.iflat.sm.service.SbSettlementService;
-import com.iflat.util.FileUtil;
+import com.iflat.sm.service.SbTargetCostSplitService;
 import com.iflat.workflow.service.WorkflowService;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by tyriv on 2016/3/22.
@@ -25,6 +22,13 @@ public class SmAction extends BaseAction {
     private SbSettlementDetailService sbSettlementDetailService;
     private SbSettlement sbSettlement;
     private SbSettlementDetail sbSettlementDetail;
+
+    private BaseService sbTargetCostService;
+    private SbTargetCost sbTargetCost;
+    private SbTargetCostSplitService sbTargetCostSplitService;
+    private SbTargetCostSplit sbTargetCostSplit;
+    private SbTargetCostAccount sbTargetCostAccount;
+    private BaseService sbTargetCostAccountService;
 
     private WorkflowService workflowService;
     private String taskId;
@@ -100,6 +104,43 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
+    /* SbTargetCostAccount */
+    public String listSbTargetCostAccount() throws Exception {
+        this.result.setList(this.sbTargetCostAccountService.list(this.sbTargetCostAccount));
+        return SUCCESS;
+    }
+
+    /* SbTargetCost & SbTargetCostSplit */
+    public String saveSbTargetCost() throws Exception {
+        this.result.setObject(this.sbTargetCostService.save(this.sbTargetCost));
+        return SUCCESS;
+    }
+
+    public String deleteSbTargetCost() throws Exception {
+        this.result.setObject(this.sbTargetCostService.delete(this.sbTargetCost));
+        return SUCCESS;
+    }
+
+    public String listSbTargetCost() throws Exception {
+        this.result.setList(this.sbTargetCostService.list(this.sbTargetCost));
+        return SUCCESS;
+    }
+
+    public String saveSbTargetCostSplit() throws Exception {
+        this.result.setObject(this.sbTargetCostSplitService.save(this.sbTargetCostSplit));
+        return SUCCESS;
+    }
+
+    public String deleteSbTargetCostSplit() throws Exception {
+        this.result.setObject(this.sbTargetCostSplitService.delete(this.sbTargetCostSplit));
+        return SUCCESS;
+    }
+
+    public String listSbTargetCostSplit() throws Exception {
+        this.result.setList(this.sbTargetCostSplitService.list(this.sbTargetCostSplit));
+        return SUCCESS;
+    }
+
     public File getUpload() {
         return upload;
     }
@@ -170,5 +211,61 @@ public class SmAction extends BaseAction {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public void setSbTargetCostService(BaseService sbTargetCostService) {
+        this.sbTargetCostService = sbTargetCostService;
+    }
+
+    public void setSbTargetCost(SbTargetCost sbTargetCost) {
+        this.sbTargetCost = sbTargetCost;
+    }
+
+    public void setSbTargetCostSplitService(SbTargetCostSplitService sbTargetCostSplitService) {
+        this.sbTargetCostSplitService = sbTargetCostSplitService;
+    }
+
+    public BaseService getSbTargetCostService() {
+        return sbTargetCostService;
+    }
+
+    public SbTargetCost getSbTargetCost() {
+        return sbTargetCost;
+    }
+
+    public SbTargetCostSplitService getSbTargetCostSplitService() {
+        return sbTargetCostSplitService;
+    }
+
+    public SbTargetCostSplit getSbTargetCostSplit() {
+        return sbTargetCostSplit;
+    }
+
+    public void setSbTargetCostSplit(SbTargetCostSplit sbTargetCostSplit) {
+        this.sbTargetCostSplit = sbTargetCostSplit;
+    }
+
+    public String getOutGoingName() {
+        return outGoingName;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public SbTargetCostAccount getSbTargetCostAccount() {
+        return sbTargetCostAccount;
+    }
+
+    public void setSbTargetCostAccount(SbTargetCostAccount sbTargetCostAccount) {
+        this.sbTargetCostAccount = sbTargetCostAccount;
+    }
+
+    public BaseService getSbTargetCostAccountService() {
+        return sbTargetCostAccountService;
+    }
+
+    public void setSbTargetCostAccountService(BaseService sbTargetCostAccountService) {
+        this.sbTargetCostAccountService = sbTargetCostAccountService;
     }
 }

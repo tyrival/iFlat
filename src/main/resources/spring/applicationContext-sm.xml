@@ -9,19 +9,45 @@
         <property name="sbSettlementService" ref="sbSettlementService"/>
         <property name="sbSettlementDetail" ref="sbSettlementDetail"/>
         <property name="sbSettlementDetailService" ref="sbSettlementDetailService"/>
+        <property name="sbTargetCost" ref="sbTargetCost"/>
+        <property name="sbTargetCostService" ref="sbTargetCostService"/>
+        <property name="sbTargetCostSplit" ref="sbTargetCostSplit"/>
+        <property name="sbTargetCostSplitService" ref="sbTargetCostSplitService"/>
+        <property name="sbTargetCostAccount" ref="sbTargetCostAccount"/>
+        <property name="sbTargetCostAccountService" ref="sbTargetCostAccountService"/>
         <property name="workflowService" ref="workflowService"/>
     </bean>
 
     <bean id="sbSettlementService" class="com.iflat.sm.service.impl.SbSettlementServiceImpl">
         <property name="workflowService" ref="workflowService"/>
-        <property name="userService" ref="userService"/>
     </bean>
     <bean id="sbSettlementDao" class="com.iflat.sm.dao.impl.SbSettlementDaoImpl"/>
     <bean id="sbSettlement" class="com.iflat.sm.bean.SbSettlement" scope="prototype"/>
 
+    <bean id="sbSettlementVoService" class="com.iflat.sm.service.impl.SbSettlementVoServiceImpl"/>
+    <bean id="sbSettlementVoDao" class="com.iflat.sm.dao.impl.SbSettlementVoDaoImpl"/>
+    <bean id="sbSettlementVo" class="com.iflat.sm.entity.SbSettlementVo" scope="prototype"/>
+
     <bean id="sbSettlementDetailService" class="com.iflat.sm.service.impl.SbSettlementDetailServiceImpl">
+        <property name="sbSettlementService" ref="sbSettlementService"/>
+        <property name="sbTargetCostSplitService" ref="sbTargetCostSplitService"/>
+        <property name="sbSettlementVoService" ref="sbSettlementVoService"/>
     </bean>
     <bean id="sbSettlementDetailDao" class="com.iflat.sm.dao.impl.SbSettlementDetailDaoImpl"/>
     <bean id="sbSettlementDetail" class="com.iflat.sm.bean.SbSettlementDetail" scope="prototype"/>
 
+    <bean id="sbTargetCostService" class="com.iflat.sm.service.impl.SbTargetCostServiceImpl"/>
+    <bean id="sbTargetCostDao" class="com.iflat.sm.dao.impl.SbTargetCostDaoImpl"/>
+    <bean id="sbTargetCost" class="com.iflat.sm.bean.SbTargetCost" scope="prototype"/>
+
+    <bean id="sbTargetCostAccountService" class="com.iflat.sm.service.impl.SbTargetCostAccountServiceImpl"/>
+    <bean id="sbTargetCosAccounttDao" class="com.iflat.sm.dao.impl.SbTargetCostAccountDaoImpl"/>
+    <bean id="sbTargetCostAccount" class="com.iflat.sm.bean.SbTargetCostAccount" scope="prototype"/>
+
+    <bean id="sbTargetCostSplitService" class="com.iflat.sm.service.impl.SbTargetCostSplitServiceImpl">
+        <property name="sbTargetCostService" ref="sbTargetCostService"/>
+        <property name="sbSettlementVoService" ref="sbSettlementVoService"/>
+    </bean>
+    <bean id="sbTargetCostSplitDao" class="com.iflat.sm.dao.impl.SbTargetCostSplitDaoImpl"/>
+    <bean id="sbTargetCostSplit" class="com.iflat.sm.bean.SbTargetCostSplit" scope="prototype"/>
 </beans>
