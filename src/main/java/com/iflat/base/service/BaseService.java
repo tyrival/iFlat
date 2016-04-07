@@ -2,6 +2,7 @@ package com.iflat.base.service;
 
 import com.github.pagehelper.PageInfo;
 import com.iflat.base.entity.Page;
+import org.activiti.engine.impl.persistence.entity.CommentEntity;
 
 import java.io.File;
 import java.util.List;
@@ -28,4 +29,7 @@ public interface BaseService {
     void deleteProcessInstance(Object object) throws Exception;
     // 根据对象获取businessKey
     String getBusinessKey(Object object) throws Exception;
+
+    // 根据businessKey获取Comments清单
+    List<CommentEntity> listComment(Object object) throws Exception;
 }

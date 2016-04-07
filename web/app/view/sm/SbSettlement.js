@@ -43,6 +43,14 @@ Ext.define('iFlat.view.sm.SbSettlement', {
         iconCls: 'x-fa fa-edit',
         handler: 'edit',
     }, {
+        text: '批注',
+        width: 50,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        align: 'center',
+        iconCls: 'x-fa fa-tags',
+        handler: 'info',
+    }, {
         header: '状态',
         width: 80,
         dataIndex: 'sbSettlement.status',

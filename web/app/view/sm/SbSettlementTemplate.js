@@ -9,13 +9,8 @@ Ext.define('iFlat.view.sm.SbSettlementTemplate', {
 
     controller: 'sm-sbsettlementtemplate',
 
-    tbar: [{
-        xtype: 'button',
-        text: '新增',
-        ui: 'orig-blue',
-        id: 'sm-sbsettlementtemplate-add',
-        handler: 'edit'
-    }, '->', {
+    id: 'sm-sbsettlementtemplate',
+    tbar: ['->', {
         text: '刷新',
         id: 'sm-sbsettlementtemplate-refresh',
         handler: 'refresh',
@@ -38,7 +33,7 @@ Ext.define('iFlat.view.sm.SbSettlementTemplate', {
         dataIndex: 'sbSettlement.projNo',
     }, {
         header: '船名',
-        width: 150,
+        flex: true,
         dataIndex: 'sbSettlement.projName',
     }, {
         header: '部门',

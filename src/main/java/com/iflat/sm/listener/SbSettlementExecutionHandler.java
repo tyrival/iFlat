@@ -39,7 +39,7 @@ public class SbSettlementExecutionHandler extends WorkflowExecutionListener {
         setStatus(execution, SbStatus.STATUS_HR_DIRECTOR_APPROVE);
     }
 
-    public void leadApprove(DelegateExecution execution) throws Exception {
+    public void leaderApprove(DelegateExecution execution) throws Exception {
         setStatus(execution, SbStatus.STATUS_LEADER_APPROVE);
     }
 

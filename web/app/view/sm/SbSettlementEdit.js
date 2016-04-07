@@ -43,6 +43,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 }, {
                     xtype: 'combo',
                     name: 'sbSettlement.projNo',
+                    id: 'sm-sbsettlementedit-projno',
                     store: smSbSettlementEditComboStore = Ext.create('iFlat.store.bi.Project'),
                     queryMode: 'local',
                     allowBlank: false,
@@ -140,6 +141,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 items: [{
                     xtype: 'textfield',
                     name: 'sbSettlement.comment',
+                    id: 'sm-sbsettlementedit-comment',
                     fieldLabel: '备注',
                     width: 800,
                 }]
@@ -234,9 +236,14 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     xtype: 'actioncolumn',
                     align: 'center',
                     iconCls: 'x-fa fa-close',
+                    id: 'sm-sbsettlementedit-detail-delete',
                     handler: 'deleteDetail',
+                    editor: {
+                        xtype: 'label'
+                    }
                 }, {
                     header: '成本科目',
+                    width: 200,
                     dataIndex: 'sbSettlementDetail.account',
                     editor: {
                         xtype: 'combo',

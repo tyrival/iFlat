@@ -11,25 +11,26 @@ Ext.define('iFlat.view.workflow.TaskController', {
         var arr = formKey.split(':');
         var viewName = 'iFlat.view.' + arr[1];
         var text = arr[0];
-        var nodeId = 'tab_' + arr[1].replace(/\./g, '_');
-
-        var tabPanel = Ext.getCmp('main-view-tabpanel');
-        var itemList = tabPanel.items.keys;
-        var hasExisted = false;
-        for(var i = 0; i < itemList.length; i++) {
-            if(nodeId == itemList[i]) {
-                hasExisted = true;
-            }
-        };
-        if(!hasExisted) {
-            var item = Ext.create(viewName, {
-                title: text,
-                itemId: nodeId,
-                closable: true,
+        var id = 'win-' + text;
+        var win = Ext.getCmp(id);
+        if(!win) {
+            win = Ext.create('Ext.window.Window', {
+                title: '审批',
+                closeAction: 'hide',
+                id: id,
+                layout: 'fit',
+                modal: true,
+                height: '95%',
+                width: '95%',
+                items: [Ext.create(viewName)],
+                listeners: {
+                    close: function () {
+                        workflowTaskStore.reload();
+                    }
+                }
             });
-            tabPanel.add(item);
         };
-        tabPanel.getLayout().setActiveItem(nodeId);
+        win.show();
     },
     
     showImage: function() {

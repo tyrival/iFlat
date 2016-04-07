@@ -17,6 +17,18 @@ Ext.define('iFlat.view.workflow.Task', {
     }],
 
     columns: [{
+        text: '办理',
+        id: 'workflow-task-deal',
+        width: 50,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        align: 'center',
+        iconCls: 'x-fa fa-paw',
+        handler: 'deal',
+        editor: {
+            xtype: 'label',
+        }
+    }, {
         header: 'ID',
         dataIndex: 'task.id',
         hidden: true
@@ -44,18 +56,5 @@ Ext.define('iFlat.view.workflow.Task', {
         header: '流程定义ID',
         dataIndex: 'task.processDefinitionId',
         hidden: true
-    }, {
-        text: '处理',
-        id: 'workflow-task-deal',
-        width: 50,
-        menuDisabled: true,
-        xtype: 'actioncolumn',
-        tooltip: '处理',
-        align: 'center',
-        iconCls: 'x-fa fa-level-up',
-        handler: 'deal',
-        editor: {
-            xtype: 'label',
-        }
     }],
 })

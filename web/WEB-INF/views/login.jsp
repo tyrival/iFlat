@@ -57,7 +57,7 @@
         <form action="main.action" method="post" class="am-form" data-am-validator>
             <fieldset>
                 <h5 id="message" class="am-text-danger">${message}</h5>
-                <input type="text" id="account" name="user.account" minlength="4" maxlength="10" placeholder="用户名">
+                <input type="text" id="account" name="user.account" minlength="2" maxlength="10" placeholder="用户名">
                 <br/>
                 <input type="password" id="password" name="user.password" placeholder="密码" required>
                 <br/>

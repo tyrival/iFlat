@@ -5,6 +5,20 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
     refresh: function () {
         smSbSettlementStore.reload();
     },
+    
+    info: function (grid, rowIndex, colIndex, item, e, record, row) {
+        var win = Ext.getCmp('workflow-comment');
+        if (!win) {
+            win = Ext.create('iFlat.view.workflow.Comment');
+        }
+        win.down('grid').setStore(Ext.create('iFlat.store.workflow.Comment', {
+            proxy: {
+                url: 'sm_listSbSettlementComment.action',
+                extraParams: record.getData()
+            }
+        }))
+        win.show();
+    },
 
     /**
      * 新增或编辑时，弹出窗口，装载数据
@@ -23,6 +37,25 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             });
             smSbSettlementStore.insert(0, record);
         }
+
+        if (record.get('sbSettlement.status') != '未提交') {
+            smSbSettlementDetailRowEditing.disable();
+            Ext.getCmp('sm-sbsettlementedit-detail-delete').setDisabled(true);
+            Ext.getCmp('sm-sbsettlementedit-time').disable();
+            Ext.getCmp('sm-sbsettlementedit-projno').disable();
+            Ext.getCmp('sm-sbsettlementedit-team').disable();
+            Ext.getCmp('sm-sbsettlementedit-comment').disable();
+            Ext.getCmp('sm-sbsettlementedit-detail-add').setDisabled(true);
+        } else {
+            smSbSettlementDetailRowEditing.enable();
+            Ext.getCmp('sm-sbsettlementedit-detail-delete').setDisabled(false);
+            Ext.getCmp('sm-sbsettlementedit-time').enable();
+            Ext.getCmp('sm-sbsettlementedit-projno').enable();
+            Ext.getCmp('sm-sbsettlementedit-team').enable();
+            Ext.getCmp('sm-sbsettlementedit-comment').enable();
+            Ext.getCmp('sm-sbsettlementedit-detail-add').setDisabled(false);
+        }
+        
         Ext.getCmp('sm-sbsettlementedit-form').loadRecord(record);
         var month = record.get('sbSettlement.month');
         if (month) {
@@ -204,9 +237,12 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                     Flat.util.tip(response.responseText);
                     if (Flat.util.isEmpty(recordDetail.get('sbSettlementDetail.id'))) {
                         var result = Ext.JSON.decode(response.responseText);
-                        recordDetail.set(
-                            'sbSettlementDetail.id', result['object']['id']);
-                        smSbSettlementDetailStore.insert(0, recordDetail);
+                        var id = result['object']['id'];
+                        if (id) {
+                            recordDetail.set(
+                                'sbSettlementDetail.id', id);
+                            smSbSettlementDetailStore.insert(0, recordDetail);
+                        }
                     }
                 },
                 failure: function(response, opts) {
@@ -325,17 +361,4 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             };
         })
     },
-
-    /**
-     * 看下outGoingName怎么获取和放入流程变量
-     * 写一个Task监听器，功能如下：
-     * 1、根据节点名称，判断下个节点的审批人
-     * 2、根据outGoingName判断流程走向的监听器（也许不需要，只要有outGoingName值就可以）
-     * 配置在流程图中，重新发布流程，测试
-     *
-     第一个审批界面开发，审批界面应该显示task列表，考虑要不要把task和业务对象关联显示，或者能不
-     能把业务对象的提纲放到task说明中，通过task或者execution监听器
-     添加批注功能
-     查看批注的窗口开发
-     */
 });

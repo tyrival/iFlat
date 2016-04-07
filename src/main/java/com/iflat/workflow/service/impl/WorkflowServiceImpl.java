@@ -1,9 +1,6 @@
 package com.iflat.workflow.service.impl;
 
-import com.iflat.util.Application;
-import com.iflat.util.FileUtil;
-import com.iflat.util.Session;
-import com.iflat.util.StringUtil;
+import com.iflat.util.*;
 import com.iflat.workflow.service.WorkflowService;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
@@ -132,7 +129,8 @@ public class WorkflowServiceImpl implements WorkflowService {
         }
         // 添加批注
         if (comment != null) {
-            Authentication.setAuthenticatedUserId(Session.getUserInfo().getUserName());
+            String userName = Session.getUserInfo().getUserName();
+            Authentication.setAuthenticatedUserId(userName);
             Task task = getTaskById(taskId);
             String processInstanceId = task.getProcessInstanceId();
             taskService.addComment(taskId, processInstanceId, comment);
@@ -321,6 +319,14 @@ public class WorkflowServiceImpl implements WorkflowService {
             list.addAll(taskService.getTaskComments(historicTaskInstance.getId()));
         }
         return list;
+    }
+
+    @Override
+    public List<Comment> listProcessInstanceCommentsByBusinessKey(String businessKey) throws Exception {
+        String processInstanceId
+                = getProcessInstanceByBusinessKey(businessKey)
+                .getProcessInstanceId();
+        return listProcessInstanceComments(processInstanceId);
     }
 
     /**

@@ -2,6 +2,22 @@ Ext.define('iFlat.view.sm.SbSettlementTemplateController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.sm-sbsettlementtemplate',
 
+    comment: function (grid, rowIndex, colIndex, item, e, record, row) {
+        var win = Ext.getCmp('workflow-comment');
+        if (!win) {
+            win = Ext.create('iFlat.view.workflow.Comment');
+        }
+        win.down('grid').setStore(Ext.create('iFlat.store.workflow.Comment', {
+            proxy: {
+                url: 'sm_listSbSettlementComment.action',
+                extraParams: {
+                    'sbSettlement.id': Ext.getCmp('sm-sbsettlementinfotemplate-id').getValue()
+                }
+            }
+        }))
+        win.show();
+    },
+
     refresh: function (btn) {
         // 刷新列表的store
         btn.up('grid').getStore().reload()
@@ -68,10 +84,12 @@ Ext.define('iFlat.view.sm.SbSettlementTemplateController', {
                 },
                 success: function(response, opts) {
                     Flat.util.tip(response.responseText);
+                    Ext.getCmp('sm-sbsettlementtemplate').getStore().reload()
                     Ext.getCmp('sm-sbsettlementinfotemplate').hide();
                 },
                 failure: function(response, opts) {
                     Flat.util.tip(response.responseText);
+                    Ext.getCmp('sm-sbsettlementtemplate').getStore().reload()
                     Ext.getCmp('sm-sbsettlementinfotemplate').hide();
                 }
             });

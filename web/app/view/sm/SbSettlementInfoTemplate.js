@@ -12,6 +12,7 @@ Ext.define('iFlat.view.sm.SbSettlementInfoTemplate', {
     controller: 'sm-sbsettlementtemplate',
     id: 'sm-sbsettlementinfotemplate',
     closeAction: 'hide',
+
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
@@ -137,7 +138,8 @@ Ext.define('iFlat.view.sm.SbSettlementInfoTemplate', {
                         border: true,
                         columnLines: true,
                         columns: [{
-                            header: '类型',
+                            header: '成本科目',
+                            width: 200,
                             dataIndex: 'sbSettlementDetail.account',
                         }, {
                             header: '内容',
@@ -189,10 +191,15 @@ Ext.define('iFlat.view.sm.SbSettlementInfoTemplate', {
         id: 'sm-sbsettlementinfotemplate-toolbar',
         items: [{
             xtype: 'button',
+            text: '历史意见',
+            ui: 'gray',
+            handler: 'comment',
+        }, '->', {
+            xtype: 'button',
             text: '通过',
             width: 100,
             handler: 'completeTask',
-        }, '->', {
+        }, {
             xtype: 'button',
             ui: 'soft-red',
             text: '退回',
@@ -200,11 +207,4 @@ Ext.define('iFlat.view.sm.SbSettlementInfoTemplate', {
             handler: 'completeTask',
         }]
     }],
-
-    listeners: {
-        close: function () {
-            Ext.getCmp('main-view-tabpanel').getActiveTab()
-                .down('grid').getStore().reload();
-        }
-    }
 });

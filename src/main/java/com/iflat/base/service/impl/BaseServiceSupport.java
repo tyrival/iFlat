@@ -10,7 +10,9 @@ import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.*;
 import com.iflat.workflow.service.WorkflowService;
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.impl.persistence.entity.CommentEntity;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Comment;
 import org.apache.struts2.ServletActionContext;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.ApplicationContext;
@@ -137,13 +139,7 @@ public class BaseServiceSupport implements BaseService {
 
         this.beforeStartProcess();
         // 启动流程
-        if (this.runtimeService == null) {
-            ApplicationContext ac
-                    = WebApplicationContextUtils.getRequiredWebApplicationContext(
-                            ServletActionContext.getServletContext());
-            this.runtimeService = (RuntimeService) ac.getBean("runtimeService");
-        }
-        this.runtimeService.startProcessInstanceByKey(
+        getRuntimeService().startProcessInstanceByKey(
                 this.processKey, this.processBusinessKey, this.processMap);
 
         this.afterStartProcess();
@@ -167,6 +163,12 @@ public class BaseServiceSupport implements BaseService {
         this.reflectProcessObj = new ReflectUtil(this.processObj);
         generateBusinessKey();
         return this.processBusinessKey;
+    }
+
+    @Override
+    public List<CommentEntity> listComment(Object object) throws Exception {
+        String businessKey = getBusinessKey(object);
+        return (List<CommentEntity>) (List) getWorkflowService().listProcessInstanceCommentsByBusinessKey(businessKey);
     }
 
     @Override
@@ -555,6 +557,10 @@ public class BaseServiceSupport implements BaseService {
     }
 
     public RuntimeService getRuntimeService() {
+        if (runtimeService == null) {
+            runtimeService = Application.getSpringContext()
+                    .getBean("runtimeService", RuntimeService.class);
+        }
         return runtimeService;
     }
 
@@ -587,6 +593,11 @@ public class BaseServiceSupport implements BaseService {
     }
 
     public WorkflowService getWorkflowService() {
+
+        if (workflowService == null) {
+            workflowService = Application.getSpringContext()
+                    .getBean("workflowService", WorkflowService.class);
+        }
         return workflowService;
     }
 

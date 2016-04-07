@@ -62,6 +62,11 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
+    public String listSbSettlementComment() throws Exception {
+        this.result.setList(this.sbSettlementService.listComment(this.sbSettlement));
+        return SUCCESS;
+    }
+
     /**
      * 提交SbSettlement审批
      * @return

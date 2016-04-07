@@ -7,43 +7,43 @@
         <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="end"/>
       </extensionElements>
     </endEvent>
-    <userTask activiti:exclusive="true" activiti:formKey="SbSettlement:sm.SbSettlement" id="_4" name="Submit">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SbSettlement" id="_4" name="Submit">
       <extensionElements>
         <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="SbWorkshopApprove:sm.SbWorkshopApprove" id="_5" name="Workshop&#10;Approve">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SbWorkshopApprove" id="_5" name="Workshop&#10;Approve">
       <extensionElements>
         <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="SbBusinessDivisionAudit:sm.SbBusinessDivisionAudit" id="_6" name="Business&#10;Division&#10;Audit">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SbBusinessDivisionAudit" id="_6" name="Business&#10;Division&#10;Audit">
       <extensionElements>
         <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="SbBusinessDivisionDirectorApprove:sm.BusinessDivisionDirectorApprove" id="_7" name="Business&#10;Division&#10;Director&#10;Approve">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SbBusinessDivisionDirectorApprove" id="_7" name="Business&#10;Division&#10;Director&#10;Approve">
       <extensionElements>
         <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="SbHRAutit:sm.SbHRAudit" id="_8" name="Hr Audit">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SbHrAudit" id="_8" name="Hr Audit">
       <extensionElements>
         <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="SbHRDirectorApprove:sm.SbHRDirectorApprove" id="_9" name="Hr Director Approve">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SbHrDirectorApprove" id="_9" name="Hr Director Approve">
       <extensionElements>
         <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="start"/>
         <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="SbLeaderApprove:sm.SbLeaderApprove" id="_10" name="Leader Approve">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SbLeaderApprove" id="_10" name="Leader Approve">
       <extensionElements>
         <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="start"/>
