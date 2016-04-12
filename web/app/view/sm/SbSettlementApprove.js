@@ -1,18 +1,18 @@
-Ext.define('iFlat.view.sm.SbSettlementTemplate', {
+Ext.define('iFlat.view.sm.SbSettlementApprove', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.sm-sbsettlementtemplate',
-    xtype: 'sm-sbsettlementtemplate',
+    alias: 'widget.sm-sbsettlementapprove',
+    xtype: 'sm-sbsettlementapprove',
 
     requires: [
-        'iFlat.view.sm.SbSettlementTemplateController'
+        'iFlat.view.sm.SbSettlementApproveController'
     ],
 
-    controller: 'sm-sbsettlementtemplate',
+    controller: 'sm-sbsettlementapprove',
 
-    id: 'sm-sbsettlementtemplate',
+    id: 'sm-sbsettlementapprove',
     tbar: ['->', {
         text: '刷新',
-        id: 'sm-sbsettlementtemplate-refresh',
+        id: 'sm-sbsettlementapprove-refresh',
         handler: 'refresh',
     }],
 

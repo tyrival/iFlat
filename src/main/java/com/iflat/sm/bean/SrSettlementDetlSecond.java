@@ -11,6 +11,7 @@ public class SrSettlementDetlSecond {
     private String pid;
     private String content;
     private String type;
+    private String specs;
     private double qty1;
     private double qty2;
     private double qty3;
@@ -23,6 +24,14 @@ public class SrSettlementDetlSecond {
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
+
+    public String getSpecs() {
+        return specs;
+    }
+
+    public void setSpecs(String specs) {
+        this.specs = specs;
+    }
 
     public SrSettlementDetlSecond() {
         this.createTime = new Date();

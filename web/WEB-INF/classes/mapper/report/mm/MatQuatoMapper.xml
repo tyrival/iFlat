@@ -27,12 +27,12 @@
         case when define00 ='材料代用' then xesl else 0 end as cldy,lysl,xesl
         from (
             select gcbh,gcmc,wzfl,xelx,wzbh,wzmc,wzms,jldw,define00,xesl,
-            isnull((select sum(sfs) from V_Mat_MatRequisition where xeid =xeb.id),0) lysl
-            from V_Mat_MatQuato
-            where gcbh =#{projNo})A
-        )B
+            isnull((select sum(sfs) from V_Mat_MatRequisition y where xeid =x.id),0) lysl
+            from V_Mat_MatQuato x
+            where gcbh =#{projNo}) A
+        ) B
         group by wzfl,jldw,gcbh
-        )C
+        ) C
         where tpxe+bcxe+sjyy+wzyy+sgyy+cdjz+wxyy+qlj>0
         order by wzflbh
     </select>

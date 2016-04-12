@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/test" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/1999/XPath" id="m1458630755253" name="" targetNamespace="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema">
-  <process id="Sm.ScSettlement" isClosed="false" isExecutable="true" name="ScSettlement" processType="None">
+  <process id="Sm.ScSettlement" isClosed="false" isExecutable="true" name="ScSettlementProcess" processType="None">
     <startEvent id="_2" name="StartEvent">
       <extensionElements>
         <activiti:executionListener event="end"/>
       </extensionElements>
     </startEvent>
-    <endEvent id="_3" name="EndEvent"/>
-    <userTask activiti:exclusive="true" id="_4" name="Submit">
+    <endEvent id="_3" name="EndEvent">
+      <extensionElements>
+        <activiti:executionListener class="com.iflat.sm.listener.ScSettlementExecutionHandler" event="start"/>
+      </extensionElements>
+    </endEvent>
+    <userTask activiti:exclusive="true" activiti:formKey="sm.ScSettlement" id="_4" name="Submit">
       <extensionElements>
         <activiti:taskListener event="create"/>
+        <activiti:taskListener class="com.iflat.sm.listener.ScSettlementTaskHandler" event="create"/>
+        <activiti:executionListener class="com.iflat.sm.listener.ScSettlementExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" id="_5" name="Business&#10;Division&#10;Approve"/>
-    <userTask activiti:exclusive="true" id="_6" name="HR Audit"/>
-    <userTask activiti:exclusive="true" id="_7" name="HR Director&#10;Approve"/>
-    <userTask activiti:exclusive="true" id="_8" name="Leader&#10;Approve"/>
+    <userTask activiti:exclusive="true" activiti:formKey="sm.ScSettlementBusinessDivisionApprove" id="_5" name="Business&#10;Division&#10;Approve">
+      <extensionElements>
+        <activiti:taskListener class="com.iflat.sm.listener.ScSettlementTaskHandler" event="create"/>
+        <activiti:executionListener class="com.iflat.sm.listener.ScSettlementExecutionHandler" event="start"/>
+      </extensionElements>
+    </userTask>
+    <userTask activiti:exclusive="true" activiti:formKey="sm.ScSettlementHrAudit" id="_6" name="Hr Audit">
+      <extensionElements>
+        <activiti:taskListener class="com.iflat.sm.listener.ScSettlementTaskHandler" event="create"/>
+        <activiti:executionListener class="com.iflat.sm.listener.ScSettlementExecutionHandler" event="start"/>
+      </extensionElements>
+    </userTask>
+    <userTask activiti:exclusive="true" activiti:formKey="sm.ScSettlementHrDirectorApprove" id="_7" name="Hr Director Approve">
+      <extensionElements>
+        <activiti:taskListener class="com.iflat.sm.listener.ScSettlementTaskHandler" event="create"/>
+        <activiti:executionListener class="com.iflat.sm.listener.ScSettlementExecutionHandler" event="start"/>
+      </extensionElements>
+    </userTask>
+    <userTask activiti:exclusive="true" activiti:formKey="sm.ScSettlementLeaderApprove" id="_8" name="Leader&#10;Approve">
+      <extensionElements>
+        <activiti:taskListener class="com.iflat.sm.listener.ScSettlementTaskHandler" event="create"/>
+        <activiti:executionListener class="com.iflat.sm.listener.ScSettlementExecutionHandler" event="start"/>
+      </extensionElements>
+    </userTask>
     <sequenceFlow id="_9" sourceRef="_2" targetRef="_4"/>
     <sequenceFlow id="_10" sourceRef="_4" targetRef="_5">
       <conditionExpression xsi:type="tFormalExpression"/>
@@ -90,14 +116,14 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_13" id="BPMNEdge__13" sourceElement="_7" targetElement="_8">
-        <omgdi:waypoint x="157.5" y="400.0"/>
+        <omgdi:waypoint x="157.5" y="415.0"/>
         <omgdi:waypoint x="157.5" y="445.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_12" id="BPMNEdge__12" sourceElement="_6" targetElement="_7">
-        <omgdi:waypoint x="157.5" y="305.0"/>
+        <omgdi:waypoint x="157.5" y="320.0"/>
         <omgdi:waypoint x="157.5" y="345.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
@@ -119,7 +145,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_17" id="BPMNEdge__17" sourceElement="_7" targetElement="_6">
-        <omgdi:waypoint x="200.0" y="372.5"/>
+        <omgdi:waypoint x="215.0" y="372.5"/>
         <omgdi:waypoint x="245.0" y="325.0"/>
         <omgdi:waypoint x="200.0" y="277.5"/>
         <bpmndi:BPMNLabel>
@@ -127,7 +153,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_16" id="BPMNEdge__16" sourceElement="_6" targetElement="_4">
-        <omgdi:waypoint x="115.0" y="277.5"/>
+        <omgdi:waypoint x="100.0" y="277.5"/>
         <omgdi:waypoint x="70.0" y="185.0"/>
         <omgdi:waypoint x="115.0" y="92.5"/>
         <bpmndi:BPMNLabel>
@@ -135,7 +161,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_19" id="BPMNEdge__19" sourceElement="_8" targetElement="_6">
-        <omgdi:waypoint x="200.0" y="472.5"/>
+        <omgdi:waypoint x="215.0" y="472.5"/>
         <omgdi:waypoint x="245.0" y="375.0"/>
         <omgdi:waypoint x="200.0" y="277.5"/>
         <bpmndi:BPMNLabel>
@@ -150,7 +176,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_11" id="BPMNEdge__11" sourceElement="_5" targetElement="_6">
-        <omgdi:waypoint x="157.5" y="215.0"/>
+        <omgdi:waypoint x="157.5" y="230.0"/>
         <omgdi:waypoint x="157.5" y="250.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>

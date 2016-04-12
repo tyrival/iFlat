@@ -1,6 +1,6 @@
-Ext.define('iFlat.view.sm.SbSettlementTemplateController', {
+Ext.define('iFlat.view.sm.SbSettlementApproveController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.sm-sbsettlementtemplate',
+    alias: 'controller.sm-sbsettlementapprove',
 
     comment: function (grid, rowIndex, colIndex, item, e, record, row) {
         var win = Ext.getCmp('workflow-comment');
@@ -11,7 +11,7 @@ Ext.define('iFlat.view.sm.SbSettlementTemplateController', {
             proxy: {
                 url: 'sm_listSbSettlementComment.action',
                 extraParams: {
-                    'sbSettlement.id': Ext.getCmp('sm-sbsettlementinfotemplate-id').getValue()
+                    'sbSettlement.id': Ext.getCmp('sm-sbsettlementapproveinfo-id').getValue()
                 }
             }
         }))
@@ -24,9 +24,9 @@ Ext.define('iFlat.view.sm.SbSettlementTemplateController', {
     },
     
     info: function (grid, rowIndex, colIndex, item, e, record, row) {
-        var win = Ext.getCmp('sm-sbsettlementinfotemplate');
+        var win = Ext.getCmp('sm-sbsettlementapproveinfo');
         if (!win) {
-            win = Ext.create('iFlat.view.sm.SbSettlementInfoTemplate');
+            win = Ext.create('iFlat.view.sm.SbSettlementApproveInfo');
         }
         var form = win.down('form');
         form.loadRecord(record);
@@ -37,16 +37,16 @@ Ext.define('iFlat.view.sm.SbSettlementTemplateController', {
      * 自动更新明细行数据
      */
     loadDetail: function (field, newValue, oldValue, eOpts) {
-        smSbSettlementInfoTemplateDetailStore.getProxy()
+        smSbSettlementApproveInfoDetailStore.getProxy()
             .extraParams['sbSettlementDetail.pid'] = newValue;
-        smSbSettlementInfoTemplateDetailStore.reload();
+        smSbSettlementApproveInfoDetailStore.reload();
     },
     
     /**
      * 上传附件时触发显示附件下载和删除按钮
      */
     onAttachmentChange: function(field, newValue, oldValue, eOpts) {
-        var btnDown = Ext.getCmp('sm-sbsettlementinfotemplate-down');
+        var btnDown = Ext.getCmp('sm-sbsettlementapproveinfo-down');
         btnDown.setHref(newValue);
         if (!Flat.util.isEmpty(newValue)) {
             btnDown.show();
@@ -64,7 +64,7 @@ Ext.define('iFlat.view.sm.SbSettlementTemplateController', {
     },
     
     completeTask: function (btn) {
-        var comment = Ext.getCmp('sm-sbsettlementinfotemplate-comment').getValue();
+        var comment = Ext.getCmp('sm-sbsettlementapproveinfo-comment').getValue();
         if (Flat.util.isEmpty(comment)) {
             Ext.Msg.show({
                 title:'警告',
@@ -77,20 +77,20 @@ Ext.define('iFlat.view.sm.SbSettlementTemplateController', {
                 url: 'sm_approveSbSettlement.action',
                 method: 'post',
                 params: {
-                    'sbSettlement.id': Ext.getCmp('sm-sbsettlementinfotemplate-id')
+                    'sbSettlement.id': Ext.getCmp('sm-sbsettlementapproveinfo-id')
                         .getValue(),
                     'outGoingName': text,
                     'comment': comment,
                 },
                 success: function(response, opts) {
                     Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-sbsettlementtemplate').getStore().reload()
-                    Ext.getCmp('sm-sbsettlementinfotemplate').hide();
+                    Ext.getCmp('sm-sbsettlementapprove').getStore().reload()
+                    Ext.getCmp('sm-sbsettlementapproveinfo').hide();
                 },
                 failure: function(response, opts) {
                     Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-sbsettlementtemplate').getStore().reload()
-                    Ext.getCmp('sm-sbsettlementinfotemplate').hide();
+                    Ext.getCmp('sm-sbsettlementapprove').getStore().reload()
+                    Ext.getCmp('sm-sbsettlementapproveinfo').hide();
                 }
             });
         }

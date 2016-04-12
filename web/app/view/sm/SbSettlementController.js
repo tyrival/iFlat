@@ -213,12 +213,16 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                 url: 'sm_saveSbSettlement.action',
                 success: function(form, action) {
                     var result = Ext.JSON.decode(action.response.responseText);
-                    var id = result['object']['id'];
-                    // 将edit界面的id值设置为返回id
-                    Ext.getCmp('sm-sbsettlementedit-id').setValue(id);
-                    // 将明细项的pid设置为返回id值
-                    rec.set('sbSettlementDetail.pid', id);
-                    saveDetail(rec);
+                    if (result['object']['id']) {
+                        var id = result['object']['id'];
+                        // 将edit界面的id值设置为返回id
+                        Ext.getCmp('sm-sbsettlementedit-id').setValue(id);
+                        // 将明细项的pid设置为返回id值
+                        rec.set('sbSettlementDetail.pid', id);
+                        saveDetail(rec);
+                    } else {
+                        Flat.util.tip(action.response.responseText);
+                    }
                 },
                 failure: function(form, action) {
                     Flat.util.tip(action.response.responseText);
@@ -288,10 +292,10 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             }
         });
     },
-
-    /**
+/*
+    /!**
      * 保存SbSettlementDetail内容
-     */
+     *!/
     saveSbSettlementDetail: function (recordDetail) {
         Ext.Ajax.request({
             url: 'sm_saveSbSettlementDetail.action',
@@ -310,7 +314,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                 Flat.util.tip(response.responseText);
             }
         });
-    },
+    },*/
 
     /**
      * 删除结算申请

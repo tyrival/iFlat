@@ -9,9 +9,11 @@ public class SrSettlementDetlFirst {
 
     private String id;
     private String pid;
-    private String specs;
-    // 工程内容
-    private String applyContent;
+    private String specs;  //规格
+    private String type;  //类型
+
+    // 申请内容
+    private String applyContent;  // 施工内容
     private double applyQty1;
     private double applyQty2;
     private double applyQty3;
@@ -45,6 +47,14 @@ public class SrSettlementDetlFirst {
     private String confirmAcc;
     private String confirmName;
     private Date confirmTime;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public SrSettlementDetlFirst() {
         this.createTime = new Date();

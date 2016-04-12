@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BPMNEditorStateService">
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn">
-      <view grid="false" />
-    </stateFile>
     <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/ScSettlement.bpmn">
       <view grid="false" />
     </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrDetailSettlement.bpmn">
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementSys.bpmn">
+      <view grid="false" />
+    </stateFile>
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMisc.bpmn">
+      <view grid="false" />
+    </stateFile>
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementSys.bpmn">
+      <view grid="false" />
+    </stateFile>
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMisc.bpmn">
+      <view grid="false" />
+    </stateFile>
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMain.bpmn">
       <view grid="false" />
     </stateFile>
     <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn">
       <view grid="false" />
     </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrMiscSettlement.bpmn">
-      <view grid="false" />
-    </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn">
-      <view grid="false" />
-    </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrMainSettlement.bpmn">
-      <view grid="false" />
-    </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn">
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMain.bpmn">
       <view grid="false" />
     </stateFile>
   </component>

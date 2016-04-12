@@ -24,6 +24,8 @@
         <!-- 用户角色 -->
         <property name="userRole" ref="userRole"></property>
         <property name="userRoleService" ref="userRoleService"></property>
+        <property name="userRoleVo" ref="userRoleVo"></property>
+        <property name="userRoleVoService" ref="userRoleVoService"></property>
         <property name="itemselector" value=""></property>
         <!-- 模块权限 -->
         <property name="authModule" ref="authModule"></property>
@@ -123,7 +125,9 @@
     <bean id="userRoleDao" class="com.iflat.system.dao.impl.UserRoleDaoImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
     </bean>
-
+    <bean id="userRoleVoService" class="com.iflat.system.service.impl.UserRoleVoServiceImpl"/>
+    <bean id="userRoleVoDao" class="com.iflat.system.dao.impl.UserRoleVoDaoImpl"/>
+    <bean id="userRoleVo" class="com.iflat.system.entity.UserRoleVo"/>
     <!-- Organization -->
     <bean id="organizationService" class="com.iflat.system.service.impl.OrganizationServiceImpl">
         <property name="orgDao" ref="organizationDao"></property>

@@ -1,10 +1,12 @@
 package com.iflat.system.action;
 
 import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.service.BaseService;
 import com.iflat.system.bean.*;
 import com.iflat.system.entity.AuthDuplicateVo;
 import com.iflat.system.entity.AuthOperatingVo;
 import com.iflat.system.entity.PasswordChange;
+import com.iflat.system.entity.UserRoleVo;
 import com.iflat.system.service.*;
 import com.iflat.util.FileUtil;
 import com.iflat.util.Session;
@@ -35,6 +37,8 @@ public class SystemAction extends BaseAction {
     private UserRole userRole;
     private UserRoleService userRoleService;
     private String itemselector;
+    private UserRoleVo userRoleVo;
+    private BaseService userRoleVoService;
     //权限管理
     private AuthModuleService authModuleService;
     private AuthModule authModule;
@@ -199,6 +203,11 @@ public class SystemAction extends BaseAction {
     /**
      * 用户-角色关系管理
      */
+    public String listUserRoleVo() throws Exception {
+        this.result.setList(this.userRoleVoService.list(this.userRoleVo));
+        return SUCCESS;
+    }
+
     public String listUserRoleInfoByUser() throws Exception {
 
         this.result.setList(this.userRoleService.listVoByUser());
@@ -747,5 +756,21 @@ public class SystemAction extends BaseAction {
 
     public void setUploadFileName(String uploadFileName) {
         this.uploadFileName = uploadFileName;
+    }
+
+    public UserRoleVo getUserRoleVo() {
+        return userRoleVo;
+    }
+
+    public void setUserRoleVo(UserRoleVo userRoleVo) {
+        this.userRoleVo = userRoleVo;
+    }
+
+    public BaseService getUserRoleVoService() {
+        return userRoleVoService;
+    }
+
+    public void setUserRoleVoService(BaseService userRoleVoService) {
+        this.userRoleVoService = userRoleVoService;
     }
 }

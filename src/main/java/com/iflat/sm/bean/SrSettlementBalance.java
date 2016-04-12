@@ -1,7 +1,7 @@
 package com.iflat.sm.bean;
 
 /**
- * Created by tyriv on 2016/3/21.
+ * 工费结余
  */
 public class SrSettlementBalance {
 

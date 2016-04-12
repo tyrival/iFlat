@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlementDetlSecond">
         INSERT INTO SmSrSettlementDetlSecond
-        VALUES (#{id},#{pid},#{content},#{type},#{qty1},#{qty2},#{qty3},#{qty4},#{qty5},#{qty6},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{confirmAcc},#{confirmName},#{confirmTime})
+        VALUES (#{id},#{pid},#{content},#{type},#{specs},#{qty1},#{qty2},#{qty3},#{qty4},#{qty5},#{qty6},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{confirmAcc},#{confirmName},#{confirmTime})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlementDetlSecond
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.pid},#{item.content},#{item.type},#{item.qty1},#{item.qty2},#{item.qty3},#{item.qty4},#{item.qty5},#{item.qty6},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.confirmAcc},#{item.confirmName},#{item.confirmTime}
+            SELECT #{item.id},#{item.pid},#{item.content},#{item.type},#{item.specs},#{item.qty1},#{item.qty2},#{item.qty3},#{item.qty4},#{item.qty5},#{item.qty6},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.confirmAcc},#{item.confirmName},#{item.confirmTime}
         </foreach>
     </insert>
 
@@ -21,6 +21,8 @@
         <set>
             <if test="pid!=null">pid=#{pid},</if>
             <if test="content!=null">content=#{content},</if>
+            <if test="type!=null">type=#{type},</if>
+            <if test="specs!=null">specs=#{specs},</if>
             <if test="qty1!=null">qty1=#{qty1},</if>
             <if test="qty2!=null">qty2=#{qty2},</if>
             <if test="qty3!=null">qty3=#{qty3},</if>
@@ -35,10 +37,10 @@
     </update>
 
     <update id="updateBatch" parameterType="java.util.List">
-        UPDATE SmSrSettlementDetlSecond SET id=a.id,pid=a.pid,content=a.content,type=a.type,qty1=a.qty1,qty2=a.qty2,qty3=a.qty3,qty4=a.qty4,qty5=a.qty5,qty6=a.qty6,amount=a.amount,attachment=a.attachment,comment=a.comment
+        UPDATE SmSrSettlementDetlSecond SET id=a.id,pid=a.pid,content=a.content,type=a.type,specs=a.specs,qty1=a.qty1,qty2=a.qty2,qty3=a.qty3,qty4=a.qty4,qty5=a.qty5,qty6=a.qty6,amount=a.amount,attachment=a.attachment,comment=a.comment
         FROM (
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id} as id,#{item.pid} as pid,#{item.content} as content,#{item.type} as type,#{item.qty1} as qty1,#{item.qty2} as qty2,#{item.qty3} as qty3,#{item.qty4} as qty4,#{item.qty5} as qty5,#{item.qty6} as qty6,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment
+            SELECT #{item.id} as id,#{item.pid} as pid,#{item.content} as content,#{item.type} as type,#{item.specs} as specs,#{item.qty1} as qty1,#{item.qty2} as qty2,#{item.qty3} as qty3,#{item.qty4} as qty4,#{item.qty5} as qty5,#{item.qty6} as qty6,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment
         </foreach>
         ) AS a
         WHERE SmSrSettlementDetlSecond.id=a.id
@@ -50,7 +52,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SrSettlementDetlSecond" resultMap="SrSettlementDetlSecondResult">
-        SELECT id,pid,content,type,qty1,qty2,qty3,qty4,qty5,qty6,amount,attachment,comment,creatorAcc,creatorName,createTime
+        SELECT id,pid,content,type,specs,qty1,qty2,qty3,qty4,qty5,qty6,amount,attachment,comment,creatorAcc,creatorName,createTime
         FROM SmSrSettlementDetlSecond
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -68,6 +70,7 @@
         <result property="pid" column="pid" jdbcType="CHAR"/>
         <result property="content" column="content" jdbcType="VARCHAR"/>
         <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="specs" column="specs" jdbcType="VARCHAR"/>
         <result property="qty1" column="qty1" jdbcType="DOUBLE"/>
         <result property="qty2" column="qty2" jdbcType="DOUBLE"/>
         <result property="qty3" column="qty3" jdbcType="DOUBLE"/>

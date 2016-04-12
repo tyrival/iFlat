@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="System.UserRoleVo">
+
+    <select id="list" parameterType="com.iflat.system.entity.UserRoleVo" resultMap="SysUserRoleVoResult">
+        SELECT account,userName,roleId,roleName,category,sequence
+        FROM V_SysUserRole
+        <where>
+            <if test="account!=null">account=#{account}</if>
+            <if test="userName!=null">AND userName=#{userName}</if>
+            <if test="roleId!=null">AND roleId=#{roleId}</if>
+            <if test="roleName!=null">AND roleName=#{roleName}</if>
+            <if test="category!=null">AND category=#{category}</if>
+        </where>
+        ORDER BY roleName,sequence,Account DESC
+    </select>
+
+    <resultMap type="com.iflat.system.entity.UserRoleVo" id="SysUserRoleVoResult">
+        <result property="account" column="account" jdbcType="NVARCHAR"/>
+        <result property="userName" column="userName" jdbcType="NVARCHAR"/>
+        <result property="roleId" column="roleId" jdbcType="VARCHAR"/>
+        <result property="roleName" column="roleName" jdbcType="VARCHAR"/>
+        <result property="category" column="category" jdbcType="VARCHAR"/>
+        <result property="sequence" column="sequence" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

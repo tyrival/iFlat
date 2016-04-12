@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlement">
         INSERT INTO SmSrSettlement
-        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime})
+        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{professionalMgrAcc})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlement
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},,#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.professionalMgrAcc}
         </foreach>
     </insert>
 
@@ -20,6 +20,7 @@
         UPDATE SmSrSettlement
         <set>
             <if test="type!=null">type=#{type},</if>
+            <if test="progress!=null">progress=#{progress},</if>
             <if test="projNo!=null">projNo=#{projNo},</if>
             <if test="projName!=null">projName=#{projName},</if>
             <if test="deptName!=null">deptName=#{deptName},</if>
@@ -31,6 +32,7 @@
             <if test="attachment!=null">attachment=#{attachment},</if>
             <if test="comment!=null">comment=#{comment},</if>
             <if test="status!=null">status=#{status},</if>
+            <if test="professionalMgrAcc!=null">professionalMgrAcc=#{professionalMgrAcc},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -41,11 +43,11 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SrSettlement" resultMap="SmSrSettlementResult">
-        SELECT id,type,projNo,projName,deptName,team,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime
+        SELECT id,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime,professionalMgrAcc
         FROM SmSrSettlement
         <where>
             <if test="id!=null">id=#{id}</if>
-            <if test="type!=null">type</if>
+            <if test="type!=null">AND type=#{type}</if>
             <if test="projNo!=null">AND projNo=#{projNo}</if>
             <if test="projName!=null">AND projName=#{projName}</if>
             <if test="deptName!=null">AND deptName=#{deptName}</if>
@@ -53,6 +55,7 @@
             <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%' + #{team} + '%'</if>
             <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+            <if test="professionalMgrAcc!=null">AND professionalMgrAcc=#{professionalMgrAcc}</if>
         </where>
         ORDER BY projNo,deptName,type,team,createTime,id
     </select>
@@ -60,6 +63,7 @@
     <resultMap type="com.iflat.sm.bean.SrSettlement" id="SmSrSettlementResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="progress" column="progress" jdbcType="DOUBLE"/>
         <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
         <result property="projName" column="projName" jdbcType="VARCHAR"/>
         <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
@@ -74,5 +78,6 @@
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="professionalMgrAcc" column="professionalMgrAcc" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

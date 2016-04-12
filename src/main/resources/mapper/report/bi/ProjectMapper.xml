@@ -5,10 +5,12 @@
 <mapper namespace="Report.Bi.Project">
 
     <select id="list" parameterType="com.iflat.report.bean.bi.Project" resultMap="RptBiProjectResult">
-        SELECT projNo,category,code,name,shortName,status,completeTime
+        SELECT projNo,category,code,name,shortName,status,completeTime,type
         FROM V_BiProject
         <where>
             <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="category!=null">AND category=#{category}</if>
+            <if test="type!=null">AND type=#{type}</if>
             <if test="status!=null">AND status=#{status}</if>
         </where>
         ORDER BY projNo
@@ -22,5 +24,6 @@
         <result property="shortName" column="shortName" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="CHAR"/>
         <result property="completeTime" column="completeTime" jdbcType="DATE"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

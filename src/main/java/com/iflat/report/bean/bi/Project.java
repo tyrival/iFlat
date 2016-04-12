@@ -14,6 +14,15 @@ public class Project {
     private String shortName;  //简称
     private String status;  //状态
     private Date completeTime;  //完工时间
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getProjNo() {
         return projNo;

@@ -4,7 +4,7 @@ Ext.define('iFlat.store.system.UserRoleVo', {
     autoLoad: true,
     model: 'iFlat.model.system.UserRoleVo',
 
-    groupField: 'roleName',
+    groupField: 'userRoleVo.roleName',
     pageSize: 0,
     proxy: {
         type: 'ajax',

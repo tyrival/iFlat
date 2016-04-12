@@ -66,6 +66,9 @@ public class SbSettlementServiceImpl extends BaseServiceSupport implements SbSet
     @Override
     public void submit(SbSettlement sbSettlement) throws Exception {
 
+        SbSettlement param = new SbSettlement();
+        param.setId(sbSettlement.getId());
+        sbSettlement = (SbSettlement) list(sbSettlement).get(0);
         if (!"未提交".equals(sbSettlement.getStatus())) {
             throw new Exception("此项目无法重复提交");
         }

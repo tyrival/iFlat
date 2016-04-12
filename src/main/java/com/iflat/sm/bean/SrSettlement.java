@@ -8,15 +8,16 @@ import java.util.Date;
 public class SrSettlement {
 
     private String id;
-    private String type;  // 主体/零杂/机电
+    private String type;  // 主体/零星/机电
+    private Double progress;  // 工程进度
     private String projNo;
     private String projName;
     private String deptName;
-    private String team;
-    private double laborAmount;
-    private double consumableAmount;
-    private double performanceAmount;
-    private double materialAmount;
+    private String team;  // 机电修理填写
+    private double laborAmount;  // 人工费
+    private double consumableAmount;  // 易耗品补贴
+    private double performanceAmount;  // 绩效
+    private double materialAmount;  // 材料费
     private double summaryAmount;
     private String attachment;
     private String comment;
@@ -24,6 +25,23 @@ public class SrSettlement {
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
+    private String professionalMgrAcc;  // 主修
+
+    public String getProfessionalMgrAcc() {
+        return professionalMgrAcc;
+    }
+
+    public void setProfessionalMgrAcc(String professionalMgrAcc) {
+        this.professionalMgrAcc = professionalMgrAcc;
+    }
+
+    public Double getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Double progress) {
+        this.progress = progress;
+    }
 
     public SrSettlement() {
         this.createTime = new Date();

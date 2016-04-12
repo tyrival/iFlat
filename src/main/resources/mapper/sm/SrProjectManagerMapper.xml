@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.SrProjectManager">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.SrProjectManager">
+        INSERT INTO SmSrProjectManager
+        VALUES (#{id},#{projNo},#{projName},#{account},#{name})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmSrProjectManager
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.account},#{item.name}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.SrProjectManager">
+        UPDATE SmSrProjectManager
+        <set>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="account!=null">account=#{account},</if>
+            <if test="name!=null">name=#{name}</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.SrProjectManager">
+        DELETE SmSrProjectManager
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.SrProjectManager" resultMap="SmSrProjectManagerResult">
+        SELECT id,projNo,projName,account,name
+        FROM SmSrProjectManager
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="projName!=null">AND projName=#{projName}</if>
+            <if test="account!=null">AND account=#{account}</if>
+            <if test="name!=null">AND name=#{name}</if>
+        </where>
+        ORDER BY projNo DESC
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.SrProjectManager" id="SmSrProjectManagerResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

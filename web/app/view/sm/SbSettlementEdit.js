@@ -44,7 +44,14 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     xtype: 'combo',
                     name: 'sbSettlement.projNo',
                     id: 'sm-sbsettlementedit-projno',
-                    store: smSbSettlementEditComboStore = Ext.create('iFlat.store.bi.Project'),
+                    store: smSbSettlementEditComboStore = Ext.create('iFlat.store.report.bi.Project', {
+                        proxy: {
+                            extraParams: {
+                                'rptProject.type': '造船',
+                                'rptProject.status': 0
+                            }
+                        }
+                    }),
                     queryMode: 'local',
                     allowBlank: false,
                     editable: true,
@@ -292,6 +299,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     header: '附件',
                     dataIndex: 'sbSettlementDetail.attachment',
                     renderer: 'renderAttachment',
+                    hidden: true,
                     editor: {
                     }
                 }, {

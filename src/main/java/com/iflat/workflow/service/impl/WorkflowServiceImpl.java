@@ -89,9 +89,8 @@ public class WorkflowServiceImpl implements WorkflowService {
 
     @Override
     public List<Task> listPersonalTask(String assignee) {
-        return taskService
-                .createTaskQuery()
-                .taskAssignee(assignee)
+        return taskService.createTaskQuery()
+                .taskCandidateOrAssigned(assignee)
                 .orderByTaskCreateTime().desc()
                 .list();
     }

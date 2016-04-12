@@ -1,5 +1,5 @@
 Ext.define('iFlat.view.sm.SbHrDirectorApprove', {
-    extend: 'iFlat.view.sm.SbSettlementTemplate',
+    extend: 'iFlat.view.sm.SbSettlementApprove',
     alias: 'widget.sm-sbhrdirectorapprove',
 
     store: smSbWorkshopApproveStore = Ext.create('iFlat.store.sm.SbSettlement', {

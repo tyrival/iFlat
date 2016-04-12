@@ -15,6 +15,16 @@
         <property name="sbTargetCostSplitService" ref="sbTargetCostSplitService"/>
         <property name="sbTargetCostAccount" ref="sbTargetCostAccount"/>
         <property name="sbTargetCostAccountService" ref="sbTargetCostAccountService"/>
+        <property name="srProjectManagerService" ref="srProjectManagerService"/>
+        <property name="srProjectManager" ref="srProjectManager"/>
+        <property name="srSettlementService" ref="srSettlementService"/>
+        <property name="srSettlement" ref="srSettlement"/>
+        <property name="srSettlementDetlFirstService" ref="srSettlementDetlFirstService"/>
+        <property name="srSettlementDetlFirst" ref="srSettlementDetlFirst"/>
+        <property name="srSettlementDetlSecondService" ref="srSettlementDetlSecondService"/>
+        <property name="srSettlementDetlSecond" ref="srSettlementDetlSecond"/>
+        <property name="srSettlementBalanceService" ref="srSettlementBalanceService"/>
+        <property name="srSettlementBalance" ref="srSettlementBalance"/>
         <property name="workflowService" ref="workflowService"/>
     </bean>
 
@@ -50,4 +60,26 @@
     </bean>
     <bean id="sbTargetCostSplitDao" class="com.iflat.sm.dao.impl.SbTargetCostSplitDaoImpl"/>
     <bean id="sbTargetCostSplit" class="com.iflat.sm.bean.SbTargetCostSplit" scope="prototype"/>
+
+    <bean id="srSettlementService" class="com.iflat.sm.service.impl.SrSettlementServiceImpl">
+        <property name="workflowService" ref="workflowService"/>
+    </bean>
+    <bean id="srSettlementDao" class="com.iflat.sm.dao.impl.SrSettlementDaoImpl"/>
+    <bean id="srSettlement" class="com.iflat.sm.bean.SrSettlement" scope="prototype"/>
+
+    <bean id="srSettlementDetlFirstService" class="com.iflat.sm.service.impl.SrSettlementDetlFirstServiceImpl"/>
+    <bean id="srSettlementDetlFirstDao" class="com.iflat.sm.dao.impl.SrSettlementDetlFirstDaoImpl"/>
+    <bean id="srSettlementDetlFirst" class="com.iflat.sm.bean.SrSettlementDetlFirst" scope="prototype"/>
+
+    <bean id="srSettlementDetlSecondService" class="com.iflat.sm.service.impl.SrSettlementDetlSecondServiceImpl"/>
+    <bean id="srSettlementDetlSecondDao" class="com.iflat.sm.dao.impl.SrSettlementDetlSecondDaoImpl"/>
+    <bean id="srSettlementDetlSecond" class="com.iflat.sm.bean.SrSettlementDetlSecond" scope="prototype"/>
+
+    <bean id="srSettlementBalanceService" class="com.iflat.sm.service.impl.SrSettlementBalanceServiceImpl"/>
+    <bean id="srSettlementBalanceDao" class="com.iflat.sm.dao.impl.SrSettlementBalanceDaoImpl"/>
+    <bean id="srSettlementBalance" class="com.iflat.sm.bean.SrSettlementBalance" scope="prototype"/>
+
+    <bean id="srProjectManagerService" class="com.iflat.sm.service.impl.SrProjectManagerServiceImpl"/>
+    <bean id="srProjectManagerDao" class="com.iflat.sm.dao.impl.SrProjectManagerDaoImpl"/>
+    <bean id="srProjectManager" class="com.iflat.sm.bean.SrProjectManager" scope="prototype"/>
 </beans>
