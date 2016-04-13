@@ -20,7 +20,7 @@
         UPDATE SmSrSettlementDetlFirst
         <set>
             <if test="pid!=null">pid=#{pid},</if>
-            <if test="spec!=null">spec=#{spec},</if>
+            <if test="specs!=null">specs=#{specs},</if>
             <if test="type!=null">type=#{type},</if>
             <if test="applyContent!=null">applyContent=#{applyContent},</if>
             <if test="adjustContent!=null">adjustContent=#{adjustContent},</if>
@@ -53,10 +53,10 @@
     </update>
 
     <update id="updateBatch" parameterType="java.util.List">
-        UPDATE SmSrSettlementDetlFirst SET id=a.id,pid=a.pid,spec=a.spec,type=a.type,applyContent=a.applyContent,adjustContent=a.adjustContent,applyQty1=a.applyQty1,applyQty2=a.applyQty2,applyQty3=a.applyQty3,applyQty4=a.applyQty4,applyQty5=a.applyQty5,applyQty6=a.applyQty6,adjustQty1=a.adjustQty1,adjustQty2=a.adjustQty2,adjustQty3=a.adjustQty3,adjustQty4=a.adjustQty4,adjustQty5=a.adjustQty5,adjustQty6=a.adjustQty6,settleQty1=a.settleQty1,settleQty2=a.settleQty2,settleQty3=a.settleQty3,settleQty4=a.settleQty4,settleQty5=a.settleQty5,settleQty6=a.settleQty6,amount=a.amount,attachment=a.attachment,comment=a.comment,confirmAcc=a.confirmAcc,confirmName=a.confirmName,confirmTime=a.confirmTime
+        UPDATE SmSrSettlementDetlFirst SET id=a.id,pid=a.pid,specs=a.specs,type=a.type,applyContent=a.applyContent,adjustContent=a.adjustContent,applyQty1=a.applyQty1,applyQty2=a.applyQty2,applyQty3=a.applyQty3,applyQty4=a.applyQty4,applyQty5=a.applyQty5,applyQty6=a.applyQty6,adjustQty1=a.adjustQty1,adjustQty2=a.adjustQty2,adjustQty3=a.adjustQty3,adjustQty4=a.adjustQty4,adjustQty5=a.adjustQty5,adjustQty6=a.adjustQty6,settleQty1=a.settleQty1,settleQty2=a.settleQty2,settleQty3=a.settleQty3,settleQty4=a.settleQty4,settleQty5=a.settleQty5,settleQty6=a.settleQty6,amount=a.amount,attachment=a.attachment,comment=a.comment,confirmAcc=a.confirmAcc,confirmName=a.confirmName,confirmTime=a.confirmTime
         FROM (
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id} as id,#{item.pid} as pid,#{item.spec} as spec,#{item.type} as type,#{item.applyContent} as applyContent,#{item.adjustContent} as adjustContent,#{item.applyQty1} as applyQty1,#{item.applyQty2} as applyQty2,#{item.applyQty3} as applyQty3,#{item.applyQty4} as applyQty4,#{item.applyQty5} as applyQty5,#{item.applyQty6} as applyQty6,#{item.adjustQty1} as adjustQty1,#{item.adjustQty2} as adjustQty2,#{item.adjustQty3} as adjustQty3,#{item.adjustQty4} as adjustQty4,#{item.adjustQty5} as adjustQty5,#{item.adjustQty6} as adjustQty6,#{item.settleQty1} as settleQty1,#{item.settleQty2} as settleQty2,#{item.settleQty3} as settleQty3,#{item.settleQty4} as settleQty4,#{item.settleQty5} as settleQty5,#{item.settleQty6} as settleQty6,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment,#{item.confirmAcc} as confirmAcc,#{item.confirmName} as confirmName,#{item.confirmTime} as confirmTime
+            SELECT #{item.id} as id,#{item.pid} as pid,#{item.specs} as specs,#{item.type} as type,#{item.applyContent} as applyContent,#{item.adjustContent} as adjustContent,#{item.applyQty1} as applyQty1,#{item.applyQty2} as applyQty2,#{item.applyQty3} as applyQty3,#{item.applyQty4} as applyQty4,#{item.applyQty5} as applyQty5,#{item.applyQty6} as applyQty6,#{item.adjustQty1} as adjustQty1,#{item.adjustQty2} as adjustQty2,#{item.adjustQty3} as adjustQty3,#{item.adjustQty4} as adjustQty4,#{item.adjustQty5} as adjustQty5,#{item.adjustQty6} as adjustQty6,#{item.settleQty1} as settleQty1,#{item.settleQty2} as settleQty2,#{item.settleQty3} as settleQty3,#{item.settleQty4} as settleQty4,#{item.settleQty5} as settleQty5,#{item.settleQty6} as settleQty6,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment,#{item.confirmAcc} as confirmAcc,#{item.confirmName} as confirmName,#{item.confirmTime} as confirmTime
         </foreach>
         ) AS a
         WHERE SmSrSettlementDetlFirst.id=a.id
@@ -68,7 +68,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SrSettlementDetlFirst" resultMap="SrSettlementDetlFirstResult">
-        SELECT id,pid,spec,type,applyContent,adjustContent,applyQty1,applyQty2,applyQty3,applyQty4,applyQty5,applyQty6,adjustQty1,adjustQty2,adjustQty3,adjustQty4,adjustQty5,adjustQty6,settleQty1,settleQty2,settleQty3,settleQty4,settleQty5,settleQty6,amount,attachment,comment,creatorAcc,creatorName,createTime,confirmAcc,confirmName,confirmTime
+        SELECT id,pid,specs,type,applyContent,adjustContent,applyQty1,applyQty2,applyQty3,applyQty4,applyQty5,applyQty6,adjustQty1,adjustQty2,adjustQty3,adjustQty4,adjustQty5,adjustQty6,settleQty1,settleQty2,settleQty3,settleQty4,settleQty5,settleQty6,amount,attachment,comment,creatorAcc,creatorName,createTime,confirmAcc,confirmName,confirmTime
         FROM SmSrSettlementDetlFirst
         <where>
             <if test="id!=null">id=#{id}</if>

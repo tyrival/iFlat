@@ -1,7 +1,7 @@
 Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
     extend: 'Ext.window.Window',
     alias: 'widget.sm-srsettlementapproveinfo',
-    title: '造船结算单审批',
+    title: '修船结算单审批',
     layout: 'fit',
     modal: true,
 

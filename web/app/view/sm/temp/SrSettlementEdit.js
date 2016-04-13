@@ -101,7 +101,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     xtype: 'combo',
                     name: 'srSettlement.professionalMgrAcc',
                     queryMode: 'local',
-                    allowBlank: true,
+                    allowBlank: false,
                     editable: true,
                     forceSelection : true,
                     typeAhead: true,

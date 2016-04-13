@@ -229,6 +229,20 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
      */
     updateDetail: function(editor, context, eOpts) {
         var rec = context.record;
+        // 为了后续事业部确认时方便，将确认数量与原数量保持一致
+        rec.set('srSettlementDetlFirst.adjustContent', rec.get('srSettlementDetlFirst.applyContent'));
+        rec.set('srSettlementDetlFirst.adjustQty1', rec.get('srSettlementDetlFirst.applyQty1'));
+        rec.set('srSettlementDetlFirst.adjustQty2', rec.get('srSettlementDetlFirst.applyQty2'));
+        rec.set('srSettlementDetlFirst.adjustQty3', rec.get('srSettlementDetlFirst.applyQty3'));
+        rec.set('srSettlementDetlFirst.adjustQty4', rec.get('srSettlementDetlFirst.applyQty4'));
+        rec.set('srSettlementDetlFirst.adjustQty5', rec.get('srSettlementDetlFirst.applyQty5'));
+        rec.set('srSettlementDetlFirst.adjustQty6', rec.get('srSettlementDetlFirst.applyQty6'));
+        rec.set('srSettlementDetlFirst.settleQty1', rec.get('srSettlementDetlFirst.applyQty1'));
+        rec.set('srSettlementDetlFirst.settleQty2', rec.get('srSettlementDetlFirst.applyQty2'));
+        rec.set('srSettlementDetlFirst.settleQty3', rec.get('srSettlementDetlFirst.applyQty3'));
+        rec.set('srSettlementDetlFirst.settleQty4', rec.get('srSettlementDetlFirst.applyQty4'));
+        rec.set('srSettlementDetlFirst.settleQty5', rec.get('srSettlementDetlFirst.applyQty5'));
+        rec.set('srSettlementDetlFirst.settleQty6', rec.get('srSettlementDetlFirst.applyQty6'));
         var pid = rec.get('srSettlementDetlFirst.pid');
         if (Flat.util.isEmpty(pid)) {
             var win = editor.getCmp().up('window');
@@ -344,7 +358,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
         Ext.Msg.confirm("提示!","确定要删除这条记录吗?",function(btn) {
             if (btn == "yes") {
                 Ext.Ajax.request({
-                    url: 'sm_deleteSrSettlementDetail.action',
+                    url: 'sm_deleteSrSettlementDetlFirst.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {

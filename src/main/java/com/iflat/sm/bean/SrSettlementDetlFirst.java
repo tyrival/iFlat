@@ -48,6 +48,7 @@ public class SrSettlementDetlFirst {
     private String confirmName;
     private Date confirmTime;
 
+
     public String getType() {
         return type;
     }

@@ -63,6 +63,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplySys', {
         header: '施工内容',
         width: 200,
         dataIndex: 'srSettlementDetlFirst.applyContent',
+        shrinkWrap: 1,
         editor: {
             allowBlank: false,
         }
@@ -85,6 +86,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplySys', {
         header: '备注',
         width: 150,
         dataIndex: 'srSettlementDetlFirst.comment',
+        shrinkWrap: 1,
         editor: {
         }
     }, {
@@ -95,6 +97,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplySys', {
         header: '施工内容（确认）',
         width: 200,
         dataIndex: 'srSettlementDetlFirst.adjustContent',
+        shrinkWrap: 1,
     }, {
         header: '数量（确认）',
         dataIndex: 'srSettlementDetlFirst.adjustQty1',

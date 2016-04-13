@@ -266,6 +266,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     header: '内容',
                     width: 200,
                     dataIndex: 'sbSettlementDetail.content',
+                    shrinkWrap: 1,
                     editor: {
                         allowBlank: false,
                     }
@@ -306,6 +307,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     header: '备注',
                     width: 150,
                     dataIndex: 'sbSettlementDetail.comment',
+                    shrinkWrap: 1,
                     editor: {
                     }
                 }],
