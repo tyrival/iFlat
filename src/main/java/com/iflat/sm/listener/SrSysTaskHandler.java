@@ -163,7 +163,7 @@ public class SrSysTaskHandler extends WorkflowTaskListener {
      * @param description
      */
     private void setTaskInfoSys(DelegateTask delegateTask, String description) {
-        this.setTaskInfo(delegateTask, SrStatus.TASK_NAME_MISC, description);
+        this.setTaskInfo(delegateTask, SrStatus.TASK_NAME_SYS, description);
     }
 
     private BaseService getSrProjectManagerService() {

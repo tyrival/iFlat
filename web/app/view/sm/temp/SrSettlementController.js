@@ -1,4 +1,4 @@
-Ext.define('iFlat.view.sm.SrSettlementController', {
+Ext.define('iFlat.view.sm.temp.SrSettlementController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.sm-srsettlement',
 
@@ -9,7 +9,7 @@ Ext.define('iFlat.view.sm.SrSettlementController', {
     amountFormat: function(value, metaData) {
         return Flat.util.financeFormat(value,2);
     },
-    
+
     info: function (grid, rowIndex, colIndex, item, e, record, row) {
         var win = Ext.getCmp('workflow-comment');
         if (!win) {
@@ -30,7 +30,7 @@ Ext.define('iFlat.view.sm.SrSettlementController', {
     edit: function (comp, rowIndex, colIndex, item, e, record, row) {
         var win = Ext.getCmp('sm-srsettlementedit');
         if (!win) {
-            win = Ext.create('iFlat.view.sm.SrSettlementEdit');
+            win = Ext.create('iFlat.view.sm.temp.SrSettlementEdit');
         };
         /* 三个流程的界面中不同的add按钮，生成的srSettlement.type不同 */
         var type = '';
@@ -42,10 +42,9 @@ Ext.define('iFlat.view.sm.SrSettlementController', {
             var deptName = '';
             if (type != 'Main') {
                 deptName = Ext.getCmp('global-panel').getViewModel().get('user')['porgName']
-                
             }
-
             record = Ext.create('iFlat.model.sm.SrSettlement', {
+                'srSettlement.progress': 100,
                 'srSettlement.deptName': deptName,
                 'srSettlement.type': type,
                 'srSettlement.status': '未提交'
@@ -65,7 +64,7 @@ Ext.define('iFlat.view.sm.SrSettlementController', {
         var title = panel.up('window').getTitle();
         var type = this.convertTitleToType(title);
         type = Ext.util.Format.lowercase(type);
-        var xtype = 'sm-detail-sr' + type;
+        var xtype = 'sm-detail-srapply' + type;
         panel.add({ xtype : xtype });
 
         // 根据单据状态，决定是否可修改
@@ -95,9 +94,9 @@ Ext.define('iFlat.view.sm.SrSettlementController', {
         win.down('combo[name=srSettlement.professionalMgrAcc]').setHidden(type == 'main');
         
         // 刷新store
-        var store = win.down('sm-detail-sr' + type).getStore();
+        var store = win.down('sm-detail-srapply' + type).getStore();
         var id = win.down('textfield[name=srSettlement.id]').getValue();
-        store.getProxy().extraParams['srSettlementDetail.pid'] = id;
+        store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
         store.reload();
     },
 
@@ -182,21 +181,14 @@ Ext.define('iFlat.view.sm.SrSettlementController', {
      * 完成对SrSettlement的修改，并提交审批
      */
     saveAndSubmitSrSettlementEdit: function (btn) {
-        var win = btn.up('win');
+        var win = btn.up('window');
         var form = win.down('form');
         form.submit({
             url: 'sm_saveAndSubmitSrSettlement.action',
             success: function(form, action) {
                 Flat.util.tip(action.response.responseText);
-                var result = Ext.JSON.decode(action.response.responseText);
-                var id = result['object']['id'];
-                var status = result['object']['status'];
-                // 将edit界面的id值设置为返回id
-                form.down('textfield[name=srSettlement.id]').setValue(id);
-                form.down('textfield[name=srSettlement.status]').setValue(status);
-                // 将明细项的pid设置为返回id值
                 win.hide();
-                smSrSettlementStore.reload();
+                Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
             },
             failure: function(form, action) {
                 Flat.util.tip(action.response.responseText);
@@ -236,25 +228,24 @@ Ext.define('iFlat.view.sm.SrSettlementController', {
      * 保存SrSettlement完毕后，如果是新增的SrSettlement对象，则启动流程，
      */
     updateDetail: function(editor, context, eOpts) {
-        debugger
         var rec = context.record;
-        var pid = rec.get('srSettlementDetail.pid');
+        var pid = rec.get('srSettlementDetlFirst.pid');
         if (Flat.util.isEmpty(pid)) {
-            var form = editor.getCmp().up('window').down('form[name=sm-srsettlementedit-form]');
+            var win = editor.getCmp().up('window');
+            var form = win.down('form[name=sm-srsettlementedit-form]');
             form.submit({
                 url: 'sm_createSrSettlementDetlFirst.action',
                 params: rec.getData(),
                 success: function(form, action) {
+                    Flat.util.tip(action.response.responseText);
                     var result = Ext.JSON.decode(action.response.responseText);
                     var map = result['map'];
-                    if (Flat.util.isEmpty(map)) {
+                    if (!Flat.util.isEmpty(map)) {
                         var head = map['head'];
                         var detail = map['detail'];
-                        form.down('textfield[name=srSettlement.id]').setValue(head['id']);
-                        rec.set('srSettlementDetail.id', detail['id']);
-                        rec.set('srSettlementDetail.pid', detail['pid']);
-                    } else {
-                        Flat.util.tip(action.response.responseText);
+                        win.down('textfield[name=srSettlement.id]').setValue(head['id']);
+                        rec.set('srSettlementDetlFirst.id', detail['id']);
+                        rec.set('srSettlementDetlFirst.pid', detail['pid']);
                     }
                 },
                 failure: function(form, action) {
@@ -289,9 +280,9 @@ Ext.define('iFlat.view.sm.SrSettlementController', {
      * SrSettlementDetail信息退出编辑时，删除未保存的信息
      */
     deleteEmptyRecord: function(editor, context, eOpts) {
-        var id = context.record.data["srSettlementDetail.id"];
+        var id = context.record.data["srSettlementDetlFirst.id"];
         if(id == "") {
-            editor.getCmp().remove(context.record);
+            editor.getCmp().getStore().remove(context.record);
         }
     },
 

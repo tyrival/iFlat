@@ -1,10 +1,10 @@
-Ext.define('iFlat.view.sm.SbSettlementApprove', {
+Ext.define('iFlat.view.sm.temp.SbSettlementApprove', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.sm-sbsettlementapprove',
     xtype: 'sm-sbsettlementapprove',
 
     requires: [
-        'iFlat.view.sm.SbSettlementApproveController'
+        'iFlat.view.sm.temp.SbSettlementApproveController'
     ],
 
     controller: 'sm-sbsettlementapprove',

@@ -1,4 +1,4 @@
-Ext.define('iFlat.view.sm.SbSettlementApproveController', {
+Ext.define('iFlat.view.sm.temp.SbSettlementApproveController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.sm-sbsettlementapprove',
 
@@ -26,7 +26,7 @@ Ext.define('iFlat.view.sm.SbSettlementApproveController', {
     info: function (grid, rowIndex, colIndex, item, e, record, row) {
         var win = Ext.getCmp('sm-sbsettlementapproveinfo');
         if (!win) {
-            win = Ext.create('iFlat.view.sm.SbSettlementApproveInfo');
+            win = Ext.create('iFlat.view.sm.temp.SbSettlementApproveInfo');
         }
         var form = win.down('form');
         form.loadRecord(record);

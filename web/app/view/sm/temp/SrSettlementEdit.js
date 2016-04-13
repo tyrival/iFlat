@@ -1,4 +1,4 @@
-Ext.define('iFlat.view.sm.SrSettlementEdit', {
+Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
     extend: 'Ext.window.Window',
     alias: 'widget.sm-srsettlementedit',
     title: '修船结算单',
@@ -6,9 +6,9 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
     modal: true,
     
     requires: [
-        'iFlat.view.sm.detail.SrMain',
-        'iFlat.view.sm.detail.SrMisc',
-        'iFlat.view.sm.detail.SrSys',
+        'iFlat.view.sm.temp.detail.SrApplyMain',
+        'iFlat.view.sm.temp.detail.SrApplyMisc',
+        'iFlat.view.sm.temp.detail.SrApplySys',
     ],
 
     controller: 'sm-srsettlement',
@@ -35,7 +35,8 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
                 items: [{
                     xtype: 'combo',
                     name: 'srSettlement.projNo',
-                    store: smSrSettlementEditComboStore = Ext.create('iFlat.store.report.bi.Project', {
+                    store: smSrSettlementEditComboStore 
+                        = Ext.create('iFlat.store.report.bi.Project', {
                         proxy: {
                             extraParams: {
                                 'rptProject.type': '修船',
@@ -56,7 +57,7 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
                     listeners: {
                         // 选择工号时，在隐藏单元格中保存船名
                         select: function (combo, record, eOpts) {
-                            combo.nextSibling('textfield').setValue(record.get('project.name'));
+                            combo.nextSibling('textfield').setValue(record.get('rptProject.name'));
                         },
                     }
                 }, {
@@ -72,7 +73,7 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
                     allowBlank: true,
                     editable: false,
                     forceSelection : true,
-                    width: 250,
+                    width: 200,
                     bind: {
                         store: '{smSrDept}',
                     },
@@ -93,7 +94,7 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
                     forceSelection : true,
                     displayField: 'teamName',
                     valueField: 'teamName',
-                    width: 300,
+                    width: 250,
                     fieldLabel: '施工队',
                     store: Ext.create('iFlat.store.code.Team'),
                 }, {
@@ -107,7 +108,7 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
                     minChars: 0,
                     displayField: 'userName',
                     valueField: 'account',
-                    width: 250,
+                    width: 150,
                     fieldLabel: '主修',
                     store: Ext.create('iFlat.store.system.UserRoleVo', {
                         proxy: {
@@ -120,7 +121,8 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
                     xtype: 'textfield',
                     name: 'srSettlement.progress',
                     fieldLabel: '进度',
-                    hidden: true
+                    width: 150,
+                    //hidden: true
                 }]
             }, {
                 xtype: 'container',
@@ -133,7 +135,7 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlement.type',
-                    fieldLabel: 'ID',
+                    fieldLabel: 'type',
                     hidden: true,
                 }, {
                     xtype: 'textfield',
@@ -162,10 +164,14 @@ Ext.define('iFlat.view.sm.SrSettlementEdit', {
                     listeners: {
                         change: function (field, newValue, oldValue, eOpts) {
                             var win = field.up('window');
+                            var dept = win.down('combo[name=srSettlement.deptName]');
+                            dept.setDisabled(newValue != '未提交');
+                            var mgr = win.down('combo[name=srSettlement.professionalMgrAcc]');
+                            mgr.setDisabled(newValue != '未提交');
                             var toolbar = win.down('toolbar[name=sm-srsettlementedit-toolbar]');
                             var uploadatt
                                 = win.down('container[name=sm-srsettlementedit-uploadatt]');
-                            var deleteatt 
+                            var deleteatt
                                 = win.down('button[name=sm-srsettlementedit-deleteatt]');
                             if (newValue === '未提交') {
                                 toolbar.show();

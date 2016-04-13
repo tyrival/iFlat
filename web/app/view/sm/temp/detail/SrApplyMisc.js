@@ -1,9 +1,9 @@
-Ext.define('iFlat.view.sm.detail.SrMisc', {
+Ext.define('iFlat.view.sm.temp.detail.SrApplyMisc', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.sm-detail-srmisc',
+    alias: 'widget.sm-detail-srapplymisc',
 
     requires: [
-        'iFlat.view.sm.SrSettlementController'
+        'iFlat.view.sm.temp.SrSettlementController'
     ],
     controller: 'sm-srsettlement',
 
@@ -11,7 +11,7 @@ Ext.define('iFlat.view.sm.detail.SrMisc', {
     scrollable: true,
     border: true,
     columnLines: true,
-    store: smSrMiscDetailStore = Ext.create('iFlat.store.sm.SrSettlementDetlFirst'),
+    store: smSrApplyMiscDetailStore = Ext.create('iFlat.store.sm.SrSettlementDetlFirst'),
 
     tbar: [{
         xtype: 'button',
@@ -24,8 +24,8 @@ Ext.define('iFlat.view.sm.detail.SrMisc', {
         handler: 'refreshDetail',
     }],
     plugins: [
-        smSrMiscDetailRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
-            pluginId: 'sm-srsettlementedit-detail-edit',
+        smSrApplyMiscDetailRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
+            pluginId: 'sm-srapplymiscedit-detail-edit',
             clicksToMoveEditor: 1,
             autoCancel: true,
             listeners: {
@@ -89,6 +89,7 @@ Ext.define('iFlat.view.sm.detail.SrMisc', {
         }
     }, {
         header: '金额',
+        align: 'right',
         dataIndex: 'srSettlementDetlFirst.amount',
     }, {
         header: '施工内容（确认）',
@@ -96,14 +97,6 @@ Ext.define('iFlat.view.sm.detail.SrMisc', {
         dataIndex: 'srSettlementDetlFirst.adjustContent',
     }, {
         header: '数量（确认）',
-        width: 200,
         dataIndex: 'srSettlementDetlFirst.adjustQty1',
-    }, {
-        header: '附件',
-        dataIndex: 'srSettlementDetlFirst.attachment',
-        renderer: 'renderAttachment',
-        hidden: true,
-        editor: {
-        }
-    }],
+    }, ],
 });

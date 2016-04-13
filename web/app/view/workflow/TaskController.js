@@ -7,17 +7,13 @@ Ext.define('iFlat.view.workflow.TaskController', {
     },
 
     deal: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-        var formKey = record.get('formKey');
-        var arr = formKey.split(':');
-        var viewName = 'iFlat.view.' + arr[1];
-        var text = arr[0];
-        var id = 'win-' + text;
+        var viewName = 'iFlat.view.' + record.get('formKey');
         var win = Ext.getCmp(id);
         if(!win) {
             win = Ext.create('Ext.window.Window', {
                 title: '审批',
                 closeAction: 'hide',
-                id: id,
+                //id: id,
                 layout: 'fit',
                 modal: true,
                 height: '95%',

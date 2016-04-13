@@ -4,6 +4,7 @@ import com.iflat.base.service.impl.BaseServiceSupport;
 import com.iflat.sm.bean.SrSettlement;
 import com.iflat.sm.service.SrSettlementService;
 import com.iflat.system.entity.UserInfoVo;
+import com.iflat.util.ReflectUtil;
 import com.iflat.util.Session;
 import com.iflat.workflow.service.WorkflowService;
 
@@ -60,6 +61,17 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
                 + ((SrSettlement) this.processObj).getType()
                 + ":"
                 + this.reflectProcessObj.getMethodValue("id").toString();
+    }
+
+    @Override
+    public String getBusinessKey(Object object) throws Exception {
+
+        // 在完成任务界面，传送到后台的只有id，所以需要重新获取整个object
+        object = this.list(object).get(0);
+        this.processObj = object;
+        this.reflectProcessObj = new ReflectUtil(this.processObj);
+        generateBusinessKey();
+        return this.processBusinessKey;
     }
 
     @Override

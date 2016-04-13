@@ -1,4 +1,4 @@
-Ext.define('iFlat.view.sm.SbSettlementApproveInfo', {
+Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
     extend: 'Ext.window.Window',
     alias: 'widget.sm-sbsettlementapproveinfo',
     title: '造船结算单审批',
@@ -6,7 +6,7 @@ Ext.define('iFlat.view.sm.SbSettlementApproveInfo', {
     modal: true,
 
     requires: [
-        'iFlat.view.sm.SbSettlementApproveController'
+        'iFlat.view.sm.temp.SbSettlementApproveController'
     ],
 
     controller: 'sm-sbsettlementapprove',

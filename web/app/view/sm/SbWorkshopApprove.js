@@ -1,5 +1,5 @@
 Ext.define('iFlat.view.sm.SbWorkshopApprove', {
-    extend: 'iFlat.view.sm.SbSettlementApprove',
+    extend: 'iFlat.view.sm.temp.SbSettlementApprove',
     alias: 'widget.sm-sbworkshopapprove',
 
     store: smSbWorkshopApproveStore = Ext.create('iFlat.store.sm.SbSettlement', {

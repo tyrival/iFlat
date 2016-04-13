@@ -1,14 +1,12 @@
-Ext.define('iFlat.view.sm.SrSettlement', {
+Ext.define('iFlat.view.sm.temp.SrSettlement', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.sm-srsettlement',
 
     requires: [
-        'iFlat.view.sm.SrSettlementController'
+        'iFlat.view.sm.temp.SrSettlementController',
     ],
 
     controller: 'sm-srsettlement',
-
-    store: smSrSettlementStore = Ext.create('iFlat.store.sm.SrSettlement'),
 
     tbar: [{
         xtype: 'button',
@@ -50,7 +48,7 @@ Ext.define('iFlat.view.sm.SrSettlement', {
         handler: 'info',
     }, {
         header: '状态',
-        width: 80,
+        width: 120,
         dataIndex: 'srSettlement.status',
     }, {
         header: '类型',
@@ -64,7 +62,7 @@ Ext.define('iFlat.view.sm.SrSettlement', {
         width: 150,
         dataIndex: 'srSettlement.projName',
     }, {
-        header: '进度',
+        header: '进度%',
         width: 80,
         dataIndex: 'srSettlement.progress',
     }, {
