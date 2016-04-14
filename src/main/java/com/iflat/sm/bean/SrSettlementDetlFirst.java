@@ -37,6 +37,7 @@ public class SrSettlementDetlFirst {
     private double settleQty4;
     private double settleQty5;
     private double settleQty6;
+    private double price;
     private double amount;  // 结算金额
 
     private String attachment;
@@ -48,6 +49,13 @@ public class SrSettlementDetlFirst {
     private String confirmName;
     private Date confirmTime;
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public String getType() {
         return type;

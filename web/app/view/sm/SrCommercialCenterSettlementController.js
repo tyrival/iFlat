@@ -1,15 +1,64 @@
-Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
+Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.sm-srsettlementapprove',
-    
+    alias: 'controller.sm-srcommercialcentersettlement',
+
+    loadBusinessObjByTaskId: function(field, newValue, oldValue, eOpts) {
+        Ext.Ajax.request({
+            url: 'workflow_getBusinessObjByProcessInstanceId.action?processInstanceId=' + newValue,
+            method: 'post',
+            success: function(response, opts) {
+                var obj = Ext.JSON.decode(response.responseText)['object'];
+                var type = '';
+                var id = '';
+                if (obj) {
+                    var record = Ext.create('iFlat.model.sm.SrSettlement', obj);
+                    type = obj['type'];
+                    id = obj['id'];
+                }
+                field.up('form').loadRecord(record);
+                
+                // 根据type选择相应的grid嵌入窗口
+                var panel = field.up('window').down('panel[name=detail]');
+                var xtype = 'sm-detail-srsettlementfirst' + type.toLowerCase();
+                panel.add({ xtype : xtype });
+
+                // 刷新store
+                if (!Flat.util.isEmpty(id)) {
+                    var store = panel.down(xtype).getStore();
+                    store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
+                    store.reload();
+                }
+            },
+            failure: function(response, opts) {
+                Flat.util.tip(response.responseText);
+            }
+        });
+    },
+
+    updateDetail: function (editor, context, eOpts) {
+        var r = context.record;
+        Ext.Ajax.request({
+            url: 'sm_saveSrSettlementDetlFirst.action',
+            method: 'post',
+            params: r.getData(),
+            success: function(response, opts) {
+                Flat.util.tip(response.responseText);
+            },
+            failure: function(response, opts) {
+                Flat.util.tip(response.responseText);
+            }
+        });
+    },
+/*
+
     amountFormat: function(value, metaData) {
         return Flat.util.financeFormat(value,2);
     },
-    
+
     renderType: function(value, metaData) {
         return this.convertTypeToName(value);
     },
-    
+
     convertTypeToName: function (type) {
         switch (type) {
             case "Main":
@@ -24,8 +73,9 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
         }
         return type;
     },
+*/
 
-    showComment: function (grid, rowIndex, colIndex, item, e, record, row) {
+    showComment: function (btn) {
         var win = Ext.getCmp('workflow-comment');
         if (!win) {
             win = Ext.create('iFlat.view.workflow.Comment');
@@ -34,7 +84,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
             proxy: {
                 url: 'sm_listSrSettlementComment.action',
                 extraParams: {
-                    'srSettlement.id': Ext.getCmp('sm-srsettlementapproveinfo-id').getValue()
+                    'srSettlement.id': btn.up('window').down('textfield[name=id]').getValue()
                 }
             }
         }))
@@ -42,37 +92,11 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
     },
 
     refresh: function (btn) {
-        // 刷新列表的store
         btn.up('grid').getStore().reload()
     },
 
-    info: function (grid, rowIndex, colIndex, item, e, record, row) {
-        var win = Ext.getCmp('sm-srsettlementapproveinfo');
-        if (!win) {
-            win = Ext.create('iFlat.view.sm.temp.SrSettlementApproveInfo');
-        }
-        var form = win.down('form');
-        form.loadRecord(record);
-        win.show();
-    },
-
-    changeGridWithType: function (panel, eOpts) {
-        var type = panel.up('window').down('textfield[name=srSettlement.type]').getValue();
-        var xtype = 'sm-detail-srapprove' + type.toLowerCase();
-        panel.add({ xtype : xtype });
-
-        // 刷新store
-        var store = panel.down(xtype).getStore();
-        var id = panel.up('window').down('textfield[name=srSettlement.id]').getValue();
-        store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
-        store.reload();
-    },
-
-    /**
-     * 上传附件时触发显示附件下载和删除按钮
-     */
     onAttachmentChange: function(field, newValue, oldValue, eOpts) {
-        var btnDown = Ext.getCmp('sm-srsettlementapproveinfo-down');
+        var btnDown = Ext.getCmp('sm-srcommercialcentersettlementedit-down');
         btnDown.setHref(newValue);
         if (!Flat.util.isEmpty(newValue)) {
             btnDown.show();
@@ -81,17 +105,9 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
         }
     },
 
-    renderAttachment: function (v) {
-        if(!v || v == '') {
-            return '';
-        } else {
-            return "<a href='" + v + "'>下载</a>";
-        }
-    },
-
     completeTask: function (btn) {
-        var commentCmp = Ext.getCmp('sm-srsettlementapproveinfo-comment');
-        var comment = commentCmp.getValue();
+
+        var comment = Ext.getCmp('sm-srcommercialcentersettlementedit-comment').getValue();
         if (Flat.util.isEmpty(comment)) {
             Ext.Msg.show({
                 title:'警告',
@@ -104,15 +120,14 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
                 url: 'sm_approveSrSettlement.action',
                 method: 'post',
                 params: {
-                    'srSettlement.id': Ext.getCmp('sm-srsettlementapproveinfo-id')
+                    'srSettlement.id': Ext.getCmp('sm-srcommercialcentersettlementedit-id')
                         .getValue(),
                     'outGoingName': text,
                     'comment': comment,
                 },
                 success: function(response, opts) {
                     Flat.util.tip(response.responseText);
-                    commentCmp.setValue('');
-                    Ext.getCmp('sm-srsettlementapproveinfo').hide();
+                    Ext.getCmp('sm-srcommercialcentersettlementedit').hide();
                     var active = Ext.WindowManager.getActive();
                     if (active && active.isXType('window')) {
                         active.down('grid').getStore().reload();
@@ -120,8 +135,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
                 },
                 failure: function(response, opts) {
                     Flat.util.tip(response.responseText);
-                    commentCmp.setValue('');
-                    Ext.getCmp('sm-srsettlementapproveinfo').hide();
+                    Ext.getCmp('sm-srcommercialcentersettlementedit').hide();
                     var active = Ext.WindowManager.getActive();
                     if (active && active.isXType('window')) {
                         active.down('grid').getStore().reload();
@@ -129,6 +143,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
                 }
             });
         }
-
     }
+    
 });

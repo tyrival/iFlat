@@ -25,6 +25,7 @@ Ext.define('iFlat.model.sm.SrSettlementDetlFirst', {
         {name: 'srSettlementDetlFirst.settleQty4', mapping: 'settleQty4', type: 'number'},
         {name: 'srSettlementDetlFirst.settleQty5', mapping: 'settleQty5', type: 'number'},
         {name: 'srSettlementDetlFirst.settleQty6', mapping: 'settleQty6', type: 'number'},
+        {name: 'srSettlementDetlFirst.price', mapping: 'price', type: 'number'},
         {name: 'srSettlementDetlFirst.amount', mapping: 'amount', type: 'number'},
         {name: 'srSettlementDetlFirst.attachment', mapping: 'attachment', type: 'string'},
         {name: 'srSettlementDetlFirst.comment', mapping: 'comment', type: 'string'},

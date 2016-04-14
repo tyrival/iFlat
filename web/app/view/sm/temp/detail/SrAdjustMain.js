@@ -15,7 +15,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMain', {
 
     tbar: ['->', {
         text: '刷新',
-        handler: 'refreshDetail',
+        handler: 'refresh',
     }],
     plugins: [
         smSrAdjustMainDetailRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {

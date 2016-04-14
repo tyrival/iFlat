@@ -12,7 +12,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApprove', {
     id: 'sm-srsettlementapprove',
     tbar: ['->', {
         text: '刷新',
-        id: 'sm-srsettlementapprove-refresh',
+        name: 'sm-srsettlementapprove-refresh',
         handler: 'refresh',
     }],
 

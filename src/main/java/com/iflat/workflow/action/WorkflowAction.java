@@ -31,6 +31,20 @@ public class WorkflowAction extends BaseAction {
     private String outGoingName;  // 审批结论
     private String comment;  // 批注
 
+    private String processInstanceId;
+
+    public String getBusinessObjByProcessInstanceId() throws Exception {
+        this.result.setObject(this.workflowService.getBusinessObjByProcessInstanceId(processInstanceId));
+        return SUCCESS;
+    }
+    public String getProcessInstanceId() {
+        return processInstanceId;
+    }
+
+    public void setProcessInstanceId(String processInstanceId) {
+        this.processInstanceId = processInstanceId;
+    }
+
     /* 流程定义 */
     public String listProcessDefinition() {
         List<ProcessDefinition> list = workflowService.listProcessDefinition();

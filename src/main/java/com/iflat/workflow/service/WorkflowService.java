@@ -131,4 +131,6 @@ public interface WorkflowService {
     List<Comment> listProcessInstanceCommentsByTaskId(String taskId);
     List<Comment> listProcessInstanceCommentsByBusinessKey(String businessKey) throws Exception;
 
+    Object getBusinessObjByProcessInstanceId(String processInstanceId) throws Exception;
+
 }

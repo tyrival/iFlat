@@ -36,6 +36,12 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
     }
 
     @Override
+    protected void generateProcessKey() {
+        super.generateProcessKey();
+        this.processKey += ((SrSettlement) this.processObj).getType();
+    }
+
+    @Override
     protected void beforeStartProcess() throws Exception {
         // 将工号置入流程变量，用于后续查询修船总管
         processMap.put("projNo", reflectProcessObj.getMethodValue("projNo").toString());
@@ -48,7 +54,7 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
         }
     }
 
-    @Override
+    /*@Override
     protected void generateProcessKey() {
         super.generateProcessKey();
         this.processKey += ((SrSettlement) this.processObj).getType();
@@ -66,14 +72,14 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
     @Override
     public String getBusinessKey(Object object) throws Exception {
 
-        // 在完成任务界面，传送到后台的只有id，所以需要重新获取整个object
+        // 在完成任务界面，传送到后台的只有id，此处除了要id，还要type，所以需要重新获取整个object
         object = this.list(object).get(0);
         this.processObj = object;
         this.reflectProcessObj = new ReflectUtil(this.processObj);
         generateBusinessKey();
         return this.processBusinessKey;
     }
-
+*/
     @Override
     protected void beforeDelete() throws Exception {
         if (!"未提交".equals(((SrSettlement) this.deleteObj).getStatus())) {

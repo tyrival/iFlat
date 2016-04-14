@@ -15,6 +15,7 @@ public class TaskVo {
     private String name;
     private String assignee;
     private String description;
+    private String processInstanceId;
     private String processDefinitionId;
     private String formKey;
     private Date createTime;
@@ -25,6 +26,7 @@ public class TaskVo {
         taskVo.setName(task.getName());
         taskVo.setAssignee(task.getAssignee());
         taskVo.setDescription(task.getDescription());
+        taskVo.setProcessInstanceId(task.getProcessInstanceId());
         taskVo.setCreateTime(task.getCreateTime());
         taskVo.setProcessDefinitionId(task.getProcessDefinitionId());
         taskVo.setFormKey(task.getFormKey());
@@ -93,5 +95,13 @@ public class TaskVo {
 
     public void setFormKey(String formKey) {
         this.formKey = formKey;
+    }
+
+    public String getProcessInstanceId() {
+        return processInstanceId;
+    }
+
+    public void setProcessInstanceId(String processInstanceId) {
+        this.processInstanceId = processInstanceId;
     }
 }

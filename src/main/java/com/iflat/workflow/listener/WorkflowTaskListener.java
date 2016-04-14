@@ -43,7 +43,9 @@ public class WorkflowTaskListener implements TaskListener {
     protected List<String> getCandidateUsers(List<UserInfoVo> list) {
         List<String> candidate = new ArrayList<>();
         if (list != null && list.size() != 0) {
-            candidate.add(list.get(0).getAccount());
+            for (int i = 0; i < list.size(); i++) {
+                candidate.add(list.get(i).getAccount());
+            }
         }
         return candidate;
     }

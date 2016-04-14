@@ -249,6 +249,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
             var form = win.down('form[name=sm-srsettlementedit-form]');
             form.submit({
                 url: 'sm_createSrSettlementDetlFirst.action',
+                method: 'POST',
                 params: rec.getData(),
                 success: function(form, action) {
                     Flat.util.tip(action.response.responseText);

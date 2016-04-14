@@ -73,6 +73,21 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                         name: 'srSettlement.status',
                         id: 'sm-srsettlementapproveinfo-status',
                         hidden: true,
+                        listeners: {
+                            change:  function(field, newValue, oldValue, eOpts) {
+                                var container = field.up('window')
+                                    .down('container[name=srSettlement.amount]');
+                                var hidden = false;
+                                if (newValue == '修船主修审核'
+                                    || newValue == '修船总管审核'
+                                    || newValue == '修船事业部部长审批'
+                                    || newValue == '修船一级结算') {
+
+                                    hidden = true;
+                                }
+                                container.setHidden(hidden);
+                            },
+                        }
                     }, {
                         xtype: 'textfield',
                         name: 'srSettlement.attachment',
@@ -115,6 +130,38 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                         name: 'srSettlement.comment',
                         fieldLabel: '备注',
                         width: 800,
+                    }]
+                }, {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '0 0 10 0',
+                    name: 'srSettlement.amount',
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'srSettlement.summaryAmount',
+                        fieldLabel: '合计',
+                        width: 170,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srSettlement.laborAmount',
+                        fieldLabel: '人工费',
+                        width: 150,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '易耗品补贴',
+                        name: 'srSettlement.consumableAmount',
+                        labelWidth: 80,
+                        width: 180,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '绩效',
+                        name: 'srSettlement.performanceAmount',
+                        width: 150,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '材料费',
+                        name: 'srSettlement.materialAmount',
+                        width: 150,
                     }]
                 }, {
                     xtype: 'panel',

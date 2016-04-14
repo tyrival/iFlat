@@ -28,6 +28,15 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
             || adjustQty1 != applyQty1 || adjustQty2 != applyQty2
             || adjustQty3 != applyQty3 || adjustQty4 != applyQty4
             || adjustQty5 != applyQty5 || adjustQty6 != applyQty6) {
+            
+            // 将结算数量初始值与确认数量保持一致
+            r.set('srSettlementDetlFirst.settleQty1', adjustQty1);
+            r.set('srSettlementDetlFirst.settleQty2', adjustQty2);
+            r.set('srSettlementDetlFirst.settleQty3', adjustQty3);
+            r.set('srSettlementDetlFirst.settleQty4', adjustQty4);
+            r.set('srSettlementDetlFirst.settleQty5', adjustQty5);
+            r.set('srSettlementDetlFirst.settleQty6', adjustQty6);
+            
             Ext.Ajax.request({
                 url: 'sm_saveSrSettlementDetlFirst.action',
                 method: 'post',
@@ -154,6 +163,7 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
     },
 
     completeTask: function (btn) {
+
         var comment = Ext.getCmp('sm-srprofessionalmanagerauditedit-comment').getValue();
         if (Flat.util.isEmpty(comment)) {
             Ext.Msg.show({
@@ -164,7 +174,7 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
             var text = btn.getText();
             text = text === '通过' ? 'pass' : 'reject';
             Ext.Ajax.request({
-                url: 'sm_adjustSrSettlement.action',
+                url: 'sm_approveSrSettlement.action',
                 method: 'post',
                 params: {
                     'srSettlement.id': Ext.getCmp('sm-srprofessionalmanagerauditedit-id')
@@ -174,13 +184,19 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
                 },
                 success: function(response, opts) {
                     Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-srsettlementadjust').getStore().reload()
                     Ext.getCmp('sm-srprofessionalmanagerauditedit').hide();
+                    var active = Ext.WindowManager.getActive();
+                    if (active && active.isXType('window')) {
+                        active.down('grid').getStore().reload();
+                    }
                 },
                 failure: function(response, opts) {
                     Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-srsettlementadjust').getStore().reload()
                     Ext.getCmp('sm-srprofessionalmanagerauditedit').hide();
+                    var active = Ext.WindowManager.getActive();
+                    if (active && active.isXType('window')) {
+                        active.down('grid').getStore().reload();
+                    }
                 }
             });
         }

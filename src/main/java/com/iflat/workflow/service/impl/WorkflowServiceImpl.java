@@ -1,5 +1,7 @@
 package com.iflat.workflow.service.impl;
 
+import com.iflat.base.service.BaseService;
+import com.iflat.base.service.impl.BaseServiceSupport;
 import com.iflat.util.*;
 import com.iflat.workflow.service.WorkflowService;
 import org.activiti.engine.HistoryService;
@@ -326,6 +328,24 @@ public class WorkflowServiceImpl implements WorkflowService {
                 = getProcessInstanceByBusinessKey(businessKey)
                 .getProcessInstanceId();
         return listProcessInstanceComments(processInstanceId);
+    }
+
+    @Override
+    public Object getBusinessObjByProcessInstanceId(String processInstanceId) throws Exception {
+        ProcessInstance processInstance = getProcessInstanceById(processInstanceId);
+        String businessKey = processInstance.getBusinessKey();
+        String[] array = businessKey.split(":");
+        String className = array[0];
+        String id = array[1];
+        Object obj = Class.forName(className).newInstance();
+        ReflectUtil reflectUtil = new ReflectUtil(obj);
+        reflectUtil.setMethodValue("id", id);
+        obj = reflectUtil.getObject();
+        BaseService baseService = new BaseServiceSupport();
+        obj = baseService.list(obj).get(0);
+
+        return obj;
+
     }
 
     /**

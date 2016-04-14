@@ -7,16 +7,18 @@ Ext.define('iFlat.view.workflow.TaskController', {
     },
 
     deal: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-        var viewName = 'iFlat.view.' + record.get('formKey');
+        var formKey = record.get('formKey');
+        var viewName = 'iFlat.view.' + formKey;
+        var id = 'win-' + formKey.replace(/\./g, '-').toLowerCase();
         var win = Ext.getCmp(id);
         if(!win) {
             win = Ext.create('Ext.window.Window', {
                 title: '审批',
                 closeAction: 'hide',
-                //id: id,
+                id: id,
                 layout: 'fit',
                 modal: true,
-                height: '95%',
+                //height: '95%',
                 width: '95%',
                 items: [Ext.create(viewName)],
                 listeners: {
@@ -26,6 +28,10 @@ Ext.define('iFlat.view.workflow.TaskController', {
                 }
             });
         };
+        var form = win.down('form');
+        if (form) {
+            form.loadRecord(record);
+        }
         win.show();
     },
     

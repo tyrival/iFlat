@@ -6,6 +6,7 @@ Ext.define('iFlat.model.workflow.Task', {
         {name: 'task.createTime', mapping: 'createTime', type: 'date'},
         {name: 'task.assignee', mapping: 'assignee', type: 'string'},
         {name: 'task.description', mapping: 'description', type: 'string'},
+        {name: 'task.processInstanceId', mapping: 'processInstanceId', type: 'string'},
         {name: 'task.formKey', mapping: 'formKey', type: 'string'},
         {name: 'task.processDefinitionId', mapping: 'processDefinitionId', type: 'string'},
     ]
