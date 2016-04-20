@@ -44,11 +44,13 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
      */
     updateSplitRecord: function (editor, context, eOpts) {
         var record = context.record;
+        Flat.util.mask();
         Ext.Ajax.request({
             url: 'sm_saveSbTargetCostSplit.action',
             method: 'post',
             params: record.getData(),
             success: function(response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 var obj = result['object'];
@@ -68,6 +70,7 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
                 }
             },
             failure: function(response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
             }
         });
@@ -102,11 +105,13 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
     deleteSplit:function (grid, rowIndex, colIndex, item, e, record, row) {
         Ext.Msg.confirm("提示!","确定删除记录吗?",function(btn) {
             if(btn=="yes") {
+                Flat.util.mask('删除中...');
                 Ext.Ajax.request({
                     url: 'sm_deleteSbTargetCostSplit.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                         var result = Ext.JSON.decode(response.responseText);
                         var obj = result['object'];
@@ -119,6 +124,7 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
                         }
                     },
                     failure: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                     }
                 });

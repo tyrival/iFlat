@@ -53,11 +53,12 @@ public class BaseServiceSupport implements BaseService {
     protected void beforeGenerate() throws Exception { };
     protected void afterGenerate() throws Exception { };
 
+    protected void beforeSave() throws Exception { };
     protected void beforeInsert() throws Exception { };
     protected void afterInsert() throws Exception { };
     protected void beforeUpdate() throws Exception { };
     protected void afterUpdate() throws Exception { };
-    protected void afterSave() throws Exception { }
+    protected void afterSave() throws Exception { };
 
     protected void afterUpdateBatch() throws Exception { };
     protected void beforeUpdateBatch() throws Exception { };
@@ -191,14 +192,18 @@ public class BaseServiceSupport implements BaseService {
     public Object save(Object o) throws Exception {
 
         this.saveObj = o;
+
+        this.beforeSave();
+
         ReflectUtil obj = new ReflectUtil(this.saveObj);
         Object id = obj.getMethodValue("id");
         Object result;
 
         if(id == null || "".equals(id.toString())) {
 
-            this.beforeInsert();
             obj.setMethodValue("id", UUID.randomUUID().toString());
+
+            this.beforeInsert();
             result = executeMethod(this.saveObj, "insert");
             this.afterInsert();
 

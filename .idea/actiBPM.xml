@@ -13,10 +13,10 @@
     <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMain.bpmn">
       <view grid="false" />
     </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn">
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMain.bpmn">
       <view grid="false" />
     </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementSys.bpmn">
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn">
       <view grid="false" />
     </stateFile>
   </component>

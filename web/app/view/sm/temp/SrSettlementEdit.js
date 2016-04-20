@@ -13,6 +13,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
 
     controller: 'sm-srsettlement',
     closeAction: 'hide',
+    id: 'sm-srsettlementedit',
     items: [{
         xtype: 'container',
         margin: '15 15 0 15',
@@ -122,7 +123,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     name: 'srSettlement.progress',
                     fieldLabel: '进度',
                     width: 150,
-                    //hidden: true
+                    hidden: true
                 }]
             }, {
                 xtype: 'container',
@@ -168,6 +169,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                             dept.setDisabled(newValue != '未提交');
                             var mgr = win.down('combo[name=srSettlement.professionalMgrAcc]');
                             mgr.setDisabled(newValue != '未提交');
+                            var progress = win.down('textfield[name=srSettlement.progress]');
+                            progress.setDisabled(newValue != '未提交');
                             var toolbar = win.down('toolbar[name=sm-srsettlementedit-toolbar]');
                             var uploadatt
                                 = win.down('container[name=sm-srsettlementedit-uploadatt]');
@@ -244,6 +247,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
             }]
         }, {
             xtype: 'panel',
+            name: 'detail',
             height: 300,
             border: false,
             margin: '30 0 5 0',
@@ -251,9 +255,13 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                 type: 'hbox',
                 align: 'stretch'
             },
-            listeners: {
-                beforerender: 'changeGridWithType'
-            },
+            items: [{
+                xtype: 'sm-detail-srapplymain'
+            }, {
+                xtype: 'sm-detail-srapplymisc'
+            }, {
+                xtype: 'sm-detail-srapplysys'
+            }, ]
         }],
     }],
 
@@ -275,7 +283,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
     }],
 
     listeners: {
-        close: 'editClose'
+        hide: 'editClose',
+        beforeshow: 'changeGridWithType'
     }
 
 });

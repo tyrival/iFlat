@@ -26,6 +26,8 @@
         <property name="srSettlementBalanceService" ref="srSettlementBalanceService"/>
         <property name="srSettlementBalance" ref="srSettlementBalance"/>
         <property name="workflowService" ref="workflowService"/>
+        <property name="srSettlementSecond" ref="srSettlementSecond"/>
+        <property name="srSettlementSecondService" ref="srSettlementSecondService"/>
     </bean>
 
     <bean id="sbSettlementService" class="com.iflat.sm.service.impl.SbSettlementServiceImpl">
@@ -63,6 +65,7 @@
 
     <bean id="srSettlementService" class="com.iflat.sm.service.impl.SrSettlementServiceImpl">
         <property name="workflowService" ref="workflowService"/>
+        <property name="srSettlementDetlFirstService" ref="srSettlementDetlFirstService"/>
     </bean>
     <bean id="srSettlementDao" class="com.iflat.sm.dao.impl.SrSettlementDaoImpl"/>
     <bean id="srSettlement" class="com.iflat.sm.bean.SrSettlement" scope="prototype"/>
@@ -70,6 +73,14 @@
     <bean id="srSettlementDetlFirstService" class="com.iflat.sm.service.impl.SrSettlementDetlFirstServiceImpl"/>
     <bean id="srSettlementDetlFirstDao" class="com.iflat.sm.dao.impl.SrSettlementDetlFirstDaoImpl"/>
     <bean id="srSettlementDetlFirst" class="com.iflat.sm.bean.SrSettlementDetlFirst" scope="prototype"/>
+
+    <bean id="srSettlementSecondService" class="com.iflat.sm.service.impl.SrSettlementSecondServiceImpl">
+        <property name="srSettlementBalance" ref="srSettlementBalance"/>
+        <property name="srSettlementBalanceService" ref="srSettlementBalanceService"/>
+        <property name="srSettlementDetlSecondService" ref="srSettlementDetlSecondService"/>
+    </bean>
+    <bean id="srSettlementSecondDao" class="com.iflat.sm.dao.impl.SrSettlementSecondDaoImpl"/>
+    <bean id="srSettlementSecond" class="com.iflat.sm.bean.SrSettlementSecond" scope="prototype"/>
 
     <bean id="srSettlementDetlSecondService" class="com.iflat.sm.service.impl.SrSettlementDetlSecondServiceImpl"/>
     <bean id="srSettlementDetlSecondDao" class="com.iflat.sm.dao.impl.SrSettlementDetlSecondDaoImpl"/>

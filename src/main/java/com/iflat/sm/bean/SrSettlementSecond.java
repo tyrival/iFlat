@@ -3,17 +3,18 @@ package com.iflat.sm.bean;
 import java.util.Date;
 
 /**
- * Created by tyriv on 2016/3/22.
+ * Created by tyriv on 2016/4/15.
  */
-public class SrSettlement {
+public class SrSettlementSecond {
 
     private String id;
+    private String pid;  // SrSettlement.id
     private String type;  // 主体/零星/机电
     private Double progress;  // 工程进度
     private String projNo;
     private String projName;
     private String deptName;
-    private String team;  // 机电修理填写
+    private String team;
     private double laborAmount;  // 人工费
     private double consumableAmount;  // 易耗品补贴
     private double performanceAmount;  // 绩效
@@ -21,73 +22,22 @@ public class SrSettlement {
     private double summaryAmount;
     private String attachment;
     private String comment;
-    private String status;
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
-    private String professionalMgrAcc;  // 主修
-    private String settleFirstAcc;
-    private String settleFirstName;
-    private Date settleFirstTime;
 
-    public String getSettleFirstAcc() {
-        return settleFirstAcc;
-    }
-
-    public void setSettleFirstAcc(String settleFirstAcc) {
-        this.settleFirstAcc = settleFirstAcc;
-    }
-
-    public String getSettleFirstName() {
-        return settleFirstName;
-    }
-
-    public void setSettleFirstName(String settleFirstName) {
-        this.settleFirstName = settleFirstName;
-    }
-
-    public Date getSettleFirstTime() {
-        return settleFirstTime;
-    }
-
-    public void setSettleFirstTime(Date settleFirstTime) {
-        this.settleFirstTime = settleFirstTime;
-    }
-
-    public String getProfessionalMgrAcc() {
-        return professionalMgrAcc;
-    }
-
-    public void setProfessionalMgrAcc(String professionalMgrAcc) {
-        this.professionalMgrAcc = professionalMgrAcc;
-    }
-
-    public Double getProgress() {
-        return progress;
-    }
-
-    public void setProgress(Double progress) {
-        this.progress = progress;
-    }
-
-    public SrSettlement() {
+    public SrSettlementSecond() {
         this.createTime = new Date();
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getAttachment() {
-        return attachment;
-    }
-
-    public void setAttachment(String attachment) {
-        this.attachment = attachment;
+    public SrSettlementSecond(SrSettlement srSettlement) {
+        this.pid = srSettlement.getId();
+        this.type = srSettlement.getType();
+        this.progress = srSettlement.getProgress();
+        this.projNo = srSettlement.getProjNo();
+        this.projName = srSettlement.getProjName();
+        this.team = srSettlement.getTeam();
+        this.createTime = new Date();
     }
 
     public String getType() {
@@ -98,12 +48,28 @@ public class SrSettlement {
         this.type = type;
     }
 
+    public Double getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Double progress) {
+        this.progress = progress;
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getProjNo() {
@@ -144,7 +110,7 @@ public class SrSettlement {
 
     public void setLaborAmount(double laborAmount) {
         this.laborAmount = laborAmount;
-        this.setSummaryAmount();
+        setSummaryAmount();
     }
 
     public double getConsumableAmount() {
@@ -153,7 +119,7 @@ public class SrSettlement {
 
     public void setConsumableAmount(double consumableAmount) {
         this.consumableAmount = consumableAmount;
-        this.setSummaryAmount();
+        setSummaryAmount();
     }
 
     public double getPerformanceAmount() {
@@ -162,7 +128,7 @@ public class SrSettlement {
 
     public void setPerformanceAmount(double performanceAmount) {
         this.performanceAmount = performanceAmount;
-        this.setSummaryAmount();
+        setSummaryAmount();
     }
 
     public double getMaterialAmount() {
@@ -171,7 +137,7 @@ public class SrSettlement {
 
     public void setMaterialAmount(double materialAmount) {
         this.materialAmount = materialAmount;
-        this.setSummaryAmount();
+        setSummaryAmount();
     }
 
     public double getSummaryAmount() {
@@ -179,7 +145,17 @@ public class SrSettlement {
     }
 
     private void setSummaryAmount() {
-        this.summaryAmount = this.laborAmount + this.consumableAmount + this.performanceAmount - this.materialAmount;
+        this.summaryAmount
+                = consumableAmount + laborAmount + performanceAmount
+                - materialAmount;
+    }
+
+    public String getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(String attachment) {
+        this.attachment = attachment;
     }
 
     public String getComment() {
@@ -188,14 +164,6 @@ public class SrSettlement {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getCreatorAcc() {
@@ -214,7 +182,11 @@ public class SrSettlement {
         this.creatorName = creatorName;
     }
 
-    public void setSummaryAmount(double summaryAmount) {
-        this.summaryAmount = summaryAmount;
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

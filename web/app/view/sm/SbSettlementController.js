@@ -117,9 +117,15 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
     deleteAttachment: function(btn) {
         Ext.Msg.confirm("提示!","确定要删除附件吗?",function(btn) {
             if(btn=="yes") {
+                Flat.util.mask();
                 Ext.Ajax.request({
                     url: 'sm_deleteFile.action?filePath=' + Ext.getCmp('sm-sbsettlementedit-attachment').getValue(),
                     success: function (response, opts) {
+                        Flat.util.unmask();
+                        Flat.util.tip(response.responseText);
+                    },
+                    failure: function (response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                     },
                 })
@@ -134,15 +140,18 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      * SbSettlementEdit界面，data为SbSettlement.id
      */
     submit: function (view, rowIndex, colIndex, item, e, record, row) {
+        Flat.util.mask();
         Ext.Ajax.request({
             url: 'sm_submitSbSettlement.action',
             params: record.getData(),
             method: 'POST',
             success: function (response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
                 smSbSettlementStore.reload();
             },
             failure: function (response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
                 smSbSettlementStore.reload();
             }
@@ -156,6 +165,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
         var form = Ext.getCmp('sm-sbsettlementedit-form');
         form.submit({
             url: 'sm_saveAndSubmitSbSettlement.action',
+            waitMsg: '保存中...',
             success: function(form, action) {
                 Flat.util.tip(action.response.responseText);
                 var result = Ext.JSON.decode(action.response.responseText);
@@ -211,6 +221,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             var form = Ext.getCmp('sm-sbsettlementedit-form');
             form.submit({
                 url: 'sm_saveSbSettlement.action',
+                waitMsg: '保存中...',
                 success: function(form, action) {
                     var result = Ext.JSON.decode(action.response.responseText);
                     if (result['object']['id']) {
@@ -233,11 +244,13 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             saveDetail(rec);
         };
         function saveDetail (recordDetail) {
+            Flat.util.mask();
             Ext.Ajax.request({
                 url: 'sm_saveSbSettlementDetail.action',
                 method: 'post',
                 params: recordDetail.getData(),
                 success: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     if (Flat.util.isEmpty(recordDetail.get('sbSettlementDetail.id'))) {
                         var result = Ext.JSON.decode(response.responseText);
@@ -250,6 +263,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                     }
                 },
                 failure: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                 }
             });
@@ -282,6 +296,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
         var form = Ext.getCmp('sm-sbsettlementedit-form');
         form.submit({
             url: 'sm_saveSbSettlement.action',
+            waitMsg: '保存中...',
             success: function(form, action) {
                 Flat.util.tip(action.response.responseText);
                 Ext.getCmp('sm-sbsettlementedit').hide();
@@ -292,45 +307,25 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             }
         });
     },
-/*
-    /!**
-     * 保存SbSettlementDetail内容
-     *!/
-    saveSbSettlementDetail: function (recordDetail) {
-        Ext.Ajax.request({
-            url: 'sm_saveSbSettlementDetail.action',
-            method: 'post',
-            params: recordDetail.getData(),
-            success: function(response, opts) {
-                Flat.util.tip(response.responseText);
-                if (Flat.util.isEmpty(recordDetail.get('sbSettlementDetail.id'))) {
-                    var result = Ext.JSON.decode(response.responseText);
-                    recordDetail.set(
-                        'sbSettlementDetail.id', result['object']['id']);
-                    smSbSettlementDetailStore.insert(0, recordDetail);
-                }
-            },
-            failure: function(response, opts) {
-                Flat.util.tip(response.responseText);
-            }
-        });
-    },*/
-
+    
     /**
      * 删除结算申请
      */
     delete: function (view, rowIndex, colIndex, item, e, record, row) {
         Ext.Msg.confirm("提示!","确定要删除这条申请吗?",function(btn) {
             if (btn == "yes") {
+                Flat.util.mask();
                 Ext.Ajax.request({
                     url: 'sm_deleteSbSettlement.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                         smSbSettlementStore.remove(record);
                     },
                     failure: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                         smSbSettlementStore.reload();
                     }
@@ -345,11 +340,13 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
     deleteDetail: function (view, rowIndex, colIndex, item, e, record, row) {
         Ext.Msg.confirm("提示!","确定要删除这条记录吗?",function(btn) {
             if (btn == "yes") {
+                Flat.util.mask();
                 Ext.Ajax.request({
                     url: 'sm_deleteSbSettlementDetail.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                         var result = Ext.JSON.decode(response.responseText);
                         if (result['success']) {
@@ -359,6 +356,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                         }
                     },
                     failure: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                     }
                 })

@@ -11,7 +11,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplySys', {
     scrollable: true,
     border: true,
     columnLines: true,
-    store: smSrApplySysDetailStore = Ext.create('iFlat.store.sm.SrSettlementDetlFirst'),
+    store: Ext.create('iFlat.store.sm.SrSettlementDetlFirst'),
 
     tbar: [{
         xtype: 'button',
@@ -24,8 +24,8 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplySys', {
         handler: 'refreshDetail',
     }],
     plugins: [
-        smSrApplySysDetailRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
-            pluginId: 'sm-srapplysysedit-detail-edit',
+        Ext.create('Ext.grid.plugin.RowEditing', {
+            //pluginId: 'sm-srapplysysedit-detail-edit',
             clicksToMoveEditor: 1,
             autoCancel: true,
             listeners: {

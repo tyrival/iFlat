@@ -2,6 +2,8 @@ package com.iflat.sm.service.impl;
 
 import com.iflat.base.service.impl.BaseServiceSupport;
 import com.iflat.sm.bean.SrSettlement;
+import com.iflat.sm.bean.SrSettlementDetlFirst;
+import com.iflat.sm.service.SrSettlementDetlFirstService;
 import com.iflat.sm.service.SrSettlementService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ReflectUtil;
@@ -14,6 +16,7 @@ import com.iflat.workflow.service.WorkflowService;
 public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSettlementService {
 
     private WorkflowService workflowService;
+    private SrSettlementDetlFirstService srSettlementDetlFirstService;
 
     /**
      * 创建对象前，生成对象的创建人等属性
@@ -54,32 +57,6 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
         }
     }
 
-    /*@Override
-    protected void generateProcessKey() {
-        super.generateProcessKey();
-        this.processKey += ((SrSettlement) this.processObj).getType();
-    }
-
-    @Override
-    protected void generateBusinessKey() throws Exception {
-        this.processBusinessKey
-                = this.processObj.getClass().getName()
-                + ((SrSettlement) this.processObj).getType()
-                + ":"
-                + this.reflectProcessObj.getMethodValue("id").toString();
-    }
-
-    @Override
-    public String getBusinessKey(Object object) throws Exception {
-
-        // 在完成任务界面，传送到后台的只有id，此处除了要id，还要type，所以需要重新获取整个object
-        object = this.list(object).get(0);
-        this.processObj = object;
-        this.reflectProcessObj = new ReflectUtil(this.processObj);
-        generateBusinessKey();
-        return this.processBusinessKey;
-    }
-*/
     @Override
     protected void beforeDelete() throws Exception {
         if (!"未提交".equals(((SrSettlement) this.deleteObj).getStatus())) {
@@ -93,6 +70,11 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
      */
     @Override
     protected void afterDelete() throws Exception {
+        // 删除明细项
+        SrSettlementDetlFirst param = new SrSettlementDetlFirst();
+        param.setPid(((SrSettlement) this.deleteObj).getId());
+        this.srSettlementDetlFirstService.delete(param);
+        // 删除流程实例
         this.deleteProcessInstance(this.deleteObj);
     }
 
@@ -115,5 +97,18 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
 
     public void setWorkflowService(WorkflowService workflowService) {
         this.workflowService = workflowService;
+    }
+
+    @Override
+    public WorkflowService getWorkflowService() {
+        return workflowService;
+    }
+
+    public SrSettlementDetlFirstService getSrSettlementDetlFirstService() {
+        return srSettlementDetlFirstService;
+    }
+
+    public void setSrSettlementDetlFirstService(SrSettlementDetlFirstService srSettlementDetlFirstService) {
+        this.srSettlementDetlFirstService = srSettlementDetlFirstService;
     }
 }

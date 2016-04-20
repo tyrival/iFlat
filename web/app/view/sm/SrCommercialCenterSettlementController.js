@@ -3,10 +3,12 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
     alias: 'controller.sm-srcommercialcentersettlement',
 
     loadBusinessObjByTaskId: function(field, newValue, oldValue, eOpts) {
+        Flat.util.mask();
         Ext.Ajax.request({
             url: 'workflow_getBusinessObjByProcessInstanceId.action?processInstanceId=' + newValue,
             method: 'post',
             success: function(response, opts) {
+                Flat.util.unmask();
                 var obj = Ext.JSON.decode(response.responseText)['object'];
                 var type = '';
                 var id = '';
@@ -14,66 +16,75 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
                     var record = Ext.create('iFlat.model.sm.SrSettlement', obj);
                     type = obj['type'];
                     id = obj['id'];
+                    // 为了避免此处的id与taskId冲突
+                    record.set('srSettlement.id', id);
                 }
-                field.up('form').loadRecord(record);
+                var form = field.up('form');
+                form.loadRecord(record);
                 
                 // 根据type选择相应的grid嵌入窗口
                 var panel = field.up('window').down('panel[name=detail]');
+                var items = panel.items.items;
                 var xtype = 'sm-detail-srsettlementfirst' + type.toLowerCase();
-                panel.add({ xtype : xtype });
-
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    item.setHidden(!item.isXType(xtype));
+                }
                 // 刷新store
                 if (!Flat.util.isEmpty(id)) {
                     var store = panel.down(xtype).getStore();
                     store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
                     store.reload();
                 }
+
+                //根据type显示或隐藏部分元素
+                form.down('textfield[name=team]').setHidden(type != 'Sys');
             },
             failure: function(response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
             }
         });
     },
 
+    changeSummaryAmount: function(field, newValue, oldValue, eOpts) {
+        var sumField = field.up('window').down('textfield[name=summaryAmount]');
+        var sum = parseFloat(sumField.getValue());
+        if (!sum) {
+            sum = 0;
+        }
+        // 如果是材料费，则变为减
+        var diff = newValue - oldValue;
+        if (field.getName() == "srSettlement.materialAmount") {
+            diff = 0 - diff;
+        }
+        sum += diff;
+        sumField.setValue(sum);
+    },
+
+    loadOrigRecord: function(field, newValue, oldValue, eOpts) {
+        field.up('window')
+            .down('textfield[name=srSettlement.' + field.getName() + ']')
+            .setValue(newValue);
+    },
+
     updateDetail: function (editor, context, eOpts) {
         var r = context.record;
+        Flat.util.mask();
         Ext.Ajax.request({
             url: 'sm_saveSrSettlementDetlFirst.action',
             method: 'post',
             params: r.getData(),
             success: function(response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
             },
             failure: function(response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
             }
         });
     },
-/*
-
-    amountFormat: function(value, metaData) {
-        return Flat.util.financeFormat(value,2);
-    },
-
-    renderType: function(value, metaData) {
-        return this.convertTypeToName(value);
-    },
-
-    convertTypeToName: function (type) {
-        switch (type) {
-            case "Main":
-                type = "修船主体工程";
-                break;
-            case "Misc":
-                type = "修船零星工程";
-                break;
-            case "Sys":
-                type = "修船机电修理工程";
-                break;
-        }
-        return type;
-    },
-*/
 
     showComment: function (btn) {
         var win = Ext.getCmp('workflow-comment');
@@ -96,7 +107,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
     },
 
     onAttachmentChange: function(field, newValue, oldValue, eOpts) {
-        var btnDown = Ext.getCmp('sm-srcommercialcentersettlementedit-down');
+        var btnDown = field.up('form').down('button[name=down]');
         btnDown.setHref(newValue);
         if (!Flat.util.isEmpty(newValue)) {
             btnDown.show();
@@ -107,42 +118,35 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
 
     completeTask: function (btn) {
 
-        var comment = Ext.getCmp('sm-srcommercialcentersettlementedit-comment').getValue();
-        if (Flat.util.isEmpty(comment)) {
-            Ext.Msg.show({
-                title:'警告',
-                message: '请填写审批意见。',
-            });
-        } else {
+        var win = btn.up('window');
+        var form = win.down('form[name=amount]');
+        if (form.isValid()) {
             var text = btn.getText();
             text = text === '通过' ? 'pass' : 'reject';
-            Ext.Ajax.request({
-                url: 'sm_approveSrSettlement.action',
-                method: 'post',
+            form.submit({
+                url: 'sm_approveSrSettlementFirst.action',
+                waitMsg: '提交中...',
                 params: {
-                    'srSettlement.id': Ext.getCmp('sm-srcommercialcentersettlementedit-id')
-                        .getValue(),
+                    'srSettlement.id':win.down('textfield[name=srSettlement.id]').getValue(),
                     'outGoingName': text,
-                    'comment': comment,
                 },
-                success: function(response, opts) {
-                    Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-srcommercialcentersettlementedit').hide();
-                    var active = Ext.WindowManager.getActive();
-                    if (active && active.isXType('window')) {
-                        active.down('grid').getStore().reload();
-                    }
+                method: 'POST',
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    win.hide();
+                    Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
+                    form.down('textfield[name=srSettlement.consumableAmount]').setValue(0);
+                    form.down('textfield[name=srSettlement.performanceAmount]').setValue(0);
+                    form.down('textfield[name=srSettlement.materialAmount]').setValue(0);
+                    form.down('textfield[name=srSettlement.laborAmount]').setValue(0);
+                    form.down('textarea[name=comment]').setValue(0);
                 },
-                failure: function(response, opts) {
-                    Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-srcommercialcentersettlementedit').hide();
-                    var active = Ext.WindowManager.getActive();
-                    if (active && active.isXType('window')) {
-                        active.down('grid').getStore().reload();
-                    }
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    win.hide();
                 }
-            });
+            })
         }
-    }
+    } 
     
 });

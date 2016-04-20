@@ -63,9 +63,12 @@
         WHERE SmSrSettlementDetlFirst.id=a.id
     </update>
 
-    <delete id="delete" parameterType="com.iflat.sm.bean.SbSettlementDetail">
+    <delete id="delete" parameterType="com.iflat.sm.bean.SrSettlementDetlFirst">
         DELETE SmSrSettlementDetlFirst
-        WHERE id=#{id}
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pid!=null">AND pid=#{pid}</if>
+        </where>
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SrSettlementDetlFirst" resultMap="SrSettlementDetlFirstResult">

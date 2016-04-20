@@ -56,16 +56,29 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
         win.show();
     },
 
-    changeGridWithType: function (panel, eOpts) {
-        var type = panel.up('window').down('textfield[name=srSettlement.type]').getValue();
-        var xtype = 'sm-detail-srapprove' + type.toLowerCase();
-        panel.add({ xtype : xtype });
+    changeGridWithType: function (window, eOpts) {
 
-        // 刷新store
-        var store = panel.down(xtype).getStore();
-        var id = panel.up('window').down('textfield[name=srSettlement.id]').getValue();
+        var type = window.down('textfield[name=srSettlement.type]').getValue();
+        type = Ext.util.Format.lowercase(type);
+        var xtype = 'sm-detail-srapprove' + type;
+
+        // 遍历所有明细表组建，显示与当前单据类型匹配的表格
+        var items = window.down('panel[name=detail]').items.items;
+        for (var i = 0; i < items.length; i++) {
+            var cmp = items[i];
+            cmp.setHidden(!cmp.isXType(xtype));
+        }
+
+        // 刷新明细store
+        var store = window.down('sm-detail-srapprove' + type).getStore();
+        var id = window.down('textfield[name=srSettlement.id]').getValue();
         store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
         store.reload();
+
+        /* 根据单据类型，显示或隐藏部分组件 */
+        // 如果不是机电修理类型，则不显示工程队选择菜单
+        var team = window.down('textfield[name=srSettlement.team]');
+        team.setHidden(type != 'sys');
     },
 
     /**
@@ -100,6 +113,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
         } else {
             var text = btn.getText();
             text = text === '通过' ? 'pass' : 'reject';
+            Flat.util.mask();
             Ext.Ajax.request({
                 url: 'sm_approveSrSettlement.action',
                 method: 'post',
@@ -110,6 +124,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
                     'comment': comment,
                 },
                 success: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     commentCmp.setValue('');
                     Ext.getCmp('sm-srsettlementapproveinfo').hide();
@@ -119,6 +134,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
                     }
                 },
                 failure: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     commentCmp.setValue('');
                     Ext.getCmp('sm-srsettlementapproveinfo').hide();

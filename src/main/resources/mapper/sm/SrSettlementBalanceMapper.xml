@@ -18,7 +18,7 @@
 
     <update id="update" parameterType="com.iflat.sm.bean.SrSettlementBalance">
         UPDATE SmSrSettlementBalance
-        SET amount=CONVERT(DECIMAL(38,6), (#{amount}-#{adjustment}))
+        SET amount=CONVERT(DECIMAL(38,6), (amount+#{adjustment}))
         WHERE deptName=#{deptName}
     </update>
 

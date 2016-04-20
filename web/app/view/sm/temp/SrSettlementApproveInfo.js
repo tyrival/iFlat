@@ -12,6 +12,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
         'iFlat.view.sm.temp.detail.SrApproveSys',
     ],
 
+    x: 100,
+    y: 50,
     controller: 'sm-srsettlementapprove',
     id: 'sm-srsettlementapproveinfo',
     closeAction: 'hide',
@@ -167,13 +169,19 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                     xtype: 'panel',
                     height: 200,
                     border: false,
+                    name: 'detail',
+                    margin: '30 0 5 0',
                     layout: {
                         type: 'hbox',
                         align: 'stretch'
                     },
-                    listeners: {
-                        beforerender: 'changeGridWithType'
-                    },
+                    items: [{
+                        xtype: 'sm-detail-srapprovemain',
+                    }, {
+                        xtype: 'sm-detail-srapprovemisc',
+                    }, {
+                        xtype: 'sm-detail-srapprovesys',
+                    }, ],
                 }]
             }]
         }, {
@@ -211,4 +219,9 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
             handler: 'completeTask',
         }]
     }],
+
+    listeners: {
+        show: 'changeGridWithType'
+    },
+    
 });

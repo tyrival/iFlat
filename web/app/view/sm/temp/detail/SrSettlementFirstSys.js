@@ -11,15 +11,15 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementFirstSys', {
     scrollable: true,
     border: true,
     columnLines: true,
-    store: smSrSettlementFirstSysDetailStore = Ext.create('iFlat.store.sm.SrSettlementDetlFirst'),
+    store: Ext.create('iFlat.store.sm.SrSettlementDetlFirst'),
 
     tbar: ['->', {
         text: '刷新',
         handler: 'refresh',
     }],
     plugins: [
-        smSrSettlementFirstSysDetailRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
-            pluginId: 'sm-srsettlementfirstsys-detail-edit',
+        Ext.create('Ext.grid.plugin.RowEditing', {
+            //pluginId: 'sm-srsettlementfirstsys-detail-edit',
             clicksToMoveEditor: 1,
             autoCancel: true,
             listeners: {

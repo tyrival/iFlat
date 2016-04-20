@@ -36,15 +36,18 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
             r.set('srSettlementDetlFirst.settleQty4', adjustQty4);
             r.set('srSettlementDetlFirst.settleQty5', adjustQty5);
             r.set('srSettlementDetlFirst.settleQty6', adjustQty6);
-            
+
+            Flat.util.mask();
             Ext.Ajax.request({
                 url: 'sm_saveSrSettlementDetlFirst.action',
                 method: 'post',
                 params: r.getData(),
                 success: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                 },
                 failure: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                 }
             });
@@ -54,11 +57,13 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
     deleteDetail: function (view, rowIndex, colIndex, item, e, record, row) {
         Ext.Msg.confirm("提示!","确定要删除这条记录吗?",function(btn) {
             if (btn == "yes") {
+                Flat.util.mask('删除中...');
                 Ext.Ajax.request({
                     url: 'sm_deleteSrSettlementDetlFirst.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                         var result = Ext.JSON.decode(response.responseText);
                         if (result['success']) {
@@ -68,6 +73,7 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
                         }
                     },
                     failure: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                     }
                 })
@@ -129,9 +135,11 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
         win.show();
     },
 
-    changeGridWithType: function (panel, eOpts) {
-        var type = panel.up('window').down('textfield[name=srSettlement.type]').getValue();
+    changeGridWithType: function (window, eOpts) {
+        var type = window.down('textfield[name=srSettlement.type]').getValue();
         var xtype = 'sm-detail-sradjust' + type.toLowerCase();
+        var panel = window.down('panel[name=detail]');
+        panel.removeAll();
         panel.add({ xtype : xtype });
 
         // 刷新store
@@ -173,6 +181,7 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
         } else {
             var text = btn.getText();
             text = text === '通过' ? 'pass' : 'reject';
+            Flat.util.mask('提交中...');
             Ext.Ajax.request({
                 url: 'sm_approveSrSettlement.action',
                 method: 'post',
@@ -183,6 +192,7 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
                     'comment': comment,
                 },
                 success: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     Ext.getCmp('sm-srprofessionalmanagerauditedit').hide();
                     var active = Ext.WindowManager.getActive();
@@ -191,6 +201,7 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
                     }
                 },
                 failure: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     Ext.getCmp('sm-srprofessionalmanagerauditedit').hide();
                     var active = Ext.WindowManager.getActive();

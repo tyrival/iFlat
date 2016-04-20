@@ -1,4 +1,4 @@
-Ext.define('iFlat.view.sm.SrWorkshopApprove', {
+Ext.define('iFlat.view.sm.SrWorkshopDirectorApprove', {
     extend: 'iFlat.view.sm.temp.SrSettlementApprove',
     alias: 'widget.sm-srworkshopapprove',
 

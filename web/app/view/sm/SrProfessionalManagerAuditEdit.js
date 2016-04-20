@@ -121,15 +121,13 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
             }]
         }, {
             xtype: 'panel',
+            name: 'detail',
             height: 200,
             border: false,
             width: 830,
             layout: {
                 type: 'hbox',
                 align: 'stretch'
-            },
-            listeners: {
-                beforerender: 'changeGridWithType'
             },
         }, {
             xtype: 'textarea',
@@ -166,4 +164,8 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
             handler: 'completeTask',
         }]
     }],
+
+    listeners: {
+        show: 'changeGridWithType'
+    },
 });

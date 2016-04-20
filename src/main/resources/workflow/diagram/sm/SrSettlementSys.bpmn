@@ -100,7 +100,7 @@
     <sequenceFlow id="_16" name="pass" sourceRef="_4" targetRef="_5">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
-    <userTask activiti:exclusive="true" activiti:formKey="sm.SrSysWorkshopDirectorApprove" id="_40" name="Workshop Director Approve">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SrWorkshopDirectorApprove" id="_40" name="Workshop Director Approve">
       <extensionElements>
         <activiti:taskListener class="com.iflat.sm.listener.SrSysTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SrSysExecutionHandler" event="start"/>

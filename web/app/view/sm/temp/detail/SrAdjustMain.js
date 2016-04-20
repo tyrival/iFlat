@@ -90,9 +90,5 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMain', {
         width: 150,
         dataIndex: 'srSettlementDetlFirst.comment',
         shrinkWrap: 1,
-    }, {
-        header: '金额',
-        align: 'right',
-        dataIndex: 'srSettlementDetlFirst.amount',
     }],
 });

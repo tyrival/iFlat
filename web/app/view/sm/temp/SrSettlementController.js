@@ -60,44 +60,52 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
         win.show();
     },
 
-    changeGridWithType: function (panel, eOpts) {
+    changeGridWithType: function (window, eOpts) {
+        var panel = window.down('panel[name=detail]');
         var title = panel.up('window').getTitle();
         var type = this.convertTitleToType(title);
         type = Ext.util.Format.lowercase(type);
         var xtype = 'sm-detail-srapply' + type;
-        panel.add({ xtype : xtype });
 
-        // 根据单据状态，决定是否可修改
-        var win = panel.up('window');
-        var status = win.down('textfield[name=srSettlement.status]').getValue();
-        var isSubmit = status != '未提交';
-        win.down('combo[name=srSettlement.projNo]').setDisabled(isSubmit);
-        win.down('combo[name=srSettlement.team]').setDisabled(isSubmit);
-        win.down('textfield[name=srSettlement.comment]').setDisabled(isSubmit);
-        win.down('container[name=sm-srsettlementedit-uploadatt]').setHidden(isSubmit);
-        win.down('button[name=sm-srsettlementedit-detail-add]').setDisabled(isSubmit);
-        win.down(xtype).getColumns()[0].setDisabled(isSubmit);
-        if (isSubmit) {
-            win.down(xtype).findPlugin('rowediting').disable();
-        } else {
-            win.down(xtype).findPlugin('rowediting').enable();
+        // 遍历所有明细表组建，显示与当前单据类型匹配的表格
+        var items = panel.items.items;
+        for (var i = 0; i < items.length; i++) {
+            var cmp = items[i];
+            cmp.setHidden(!cmp.isXType(xtype));
         }
 
+        // 刷新明细store
+        var store = window.down('sm-detail-srapply' + type).getStore();
+        var id = window.down('textfield[name=srSettlement.id]').getValue();
+        store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
+        store.reload();
+
+        // 根据单据状态，决定内容是否可修改
+        var status = window.down('textfield[name=srSettlement.status]').getValue();
+        var isSubmit = status != '未提交';
+        window.down('combo[name=srSettlement.projNo]').setDisabled(isSubmit);
+        window.down('combo[name=srSettlement.team]').setDisabled(isSubmit);
+        window.down('textfield[name=srSettlement.comment]').setDisabled(isSubmit);
+        window.down('container[name=sm-srsettlementedit-uploadatt]').setHidden(isSubmit);
+        window.down('button[name=sm-srsettlementedit-detail-add]').setDisabled(isSubmit);
+        window.down(xtype).getColumns()[0].setDisabled(isSubmit);
+        if (isSubmit) {
+            window.down(xtype).findPlugin('rowediting').disable();
+        } else {
+            window.down(xtype).findPlugin('rowediting').enable();
+        }
+
+        /* 根据单据类型，显示或隐藏部分组件 */
         // 如果不是机电修理类型，则不显示工程队选择菜单
-        var team = win.down('combo[name=srSettlement.team]');
+        var team = window.down('combo[name=srSettlement.team]');
         team.setHidden(type != 'sys');
         if (type != 'sys') {
             team.setValue(null);
         }
         // 如果是主体工程类型，则显示部门选项，隐藏主修选择
-        win.down('combo[name=srSettlement.deptName]').setHidden(type != 'main');
-        win.down('combo[name=srSettlement.professionalMgrAcc]').setHidden(type == 'main');
-        
-        // 刷新store
-        var store = win.down('sm-detail-srapply' + type).getStore();
-        var id = win.down('textfield[name=srSettlement.id]').getValue();
-        store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
-        store.reload();
+        window.down('combo[name=srSettlement.deptName]').setHidden(type != 'main');
+        window.down('combo[name=srSettlement.professionalMgrAcc]').setHidden(type == 'main');
+
     },
 
     convertTitleToType: function (text) {
@@ -141,14 +149,20 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
      * 删除已上传的附件，不可逆
      */
     deleteAttachment: function(btn) {
+
         var textfield = btn.up('window').down('textfield[name=srSettlement.attachment]');
         Ext.Msg.confirm("提示!","确定要删除附件吗?",function(btn) {
             if(btn=="yes") {
+                Flat.util.mask();
                 Ext.Ajax.request({
                     url: 'sm_deleteFile.action?filePath=' + textfield.getValue(),
                     success: function (response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                     },
+                    failure: function (response, opts) {
+                        Flat.util.unmask();
+                    }
                 })
                 textfield.setValue('');
             };
@@ -161,16 +175,18 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
      * SrSettlementEdit界面，data为SrSettlement.id
      */
     submit: function (view, rowIndex, colIndex, item, e, record, row) {
+        Flat.util.mask();
         Ext.Ajax.request({
             url: 'sm_submitSrSettlement.action',
             params: record.getData(),
             method: 'POST',
             success: function (response, opts) {
-                debugger
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
                 view.up('grid').getStore().reload();
             },
             failure: function (response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
                 view.up('grid').getStore().reload();
             }
@@ -185,6 +201,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
         var form = win.down('form');
         form.submit({
             url: 'sm_saveAndSubmitSrSettlement.action',
+            waitMsg: '保存中...',
             success: function(form, action) {
                 Flat.util.tip(action.response.responseText);
                 win.hide();
@@ -211,7 +228,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
      * 表格中新增行信息
      */
     addDetail: function(btn) {
-        var grid = btn.up('window').down('grid');
+        var grid = btn.up('grid');
         var plugin = grid.findPlugin('rowediting');
         plugin.cancelEdit();
         var r = Ext.create('iFlat.model.sm.SrSettlementDetlFirst', {
@@ -247,33 +264,37 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
         if (Flat.util.isEmpty(pid)) {
             var win = editor.getCmp().up('window');
             var form = win.down('form[name=sm-srsettlementedit-form]');
-            form.submit({
-                url: 'sm_createSrSettlementDetlFirst.action',
-                method: 'POST',
-                params: rec.getData(),
-                success: function(form, action) {
-                    Flat.util.tip(action.response.responseText);
-                    var result = Ext.JSON.decode(action.response.responseText);
-                    var map = result['map'];
-                    if (!Flat.util.isEmpty(map)) {
-                        var head = map['head'];
-                        var detail = map['detail'];
-                        win.down('textfield[name=srSettlement.id]').setValue(head['id']);
-                        rec.set('srSettlementDetlFirst.id', detail['id']);
-                        rec.set('srSettlementDetlFirst.pid', detail['pid']);
+            if (form.isValid()) {
+                form.submit({
+                    url: 'sm_createSrSettlementDetlFirst.action',
+                    method: 'POST',
+                    waitMsg: '保存中...',
+                    params: rec.getData(),
+                    success: function(form, action) {
+                        Flat.util.tip(action.response.responseText);
+                        var result = Ext.JSON.decode(action.response.responseText);
+                        var map = result['map'];
+                        if (!Flat.util.isEmpty(map)) {
+                            var head = map['head'];
+                            var detail = map['detail'];
+                            win.down('textfield[name=srSettlement.id]').setValue(head['id']);
+                            rec.set('srSettlementDetlFirst.id', detail['id']);
+                            rec.set('srSettlementDetlFirst.pid', detail['pid']);
+                        }
+                    },
+                    failure: function(form, action) {
+                        Flat.util.tip(action.response.responseText);
                     }
-                },
-                failure: function(form, action) {
-                    Flat.util.tip(action.response.responseText);
-                }
-            });
-
+                });
+            }
         } else {
+            Flat.util.mask();
             Ext.Ajax.request({
                 url: 'sm_saveSrSettlementDetlFirst.action',
                 method: 'post',
                 params: rec.getData(),
                 success: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     if (Flat.util.isEmpty(rec.get('srSettlementDetlFirst.id'))) {
                         var result = Ext.JSON.decode(response.responseText);
@@ -285,6 +306,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
                     }
                 },
                 failure: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                 }
             });
@@ -304,8 +326,9 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
     /**
      * 关闭窗口时，刷新清单
      */
-    editClose: function () {
+    editClose: function (panel) {
         Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
+        panel.down('textfield[name=srSettlement.type]').setValue('');
     },
 
     /**
@@ -318,6 +341,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
         var form = win.down('form');
         form.submit({
             url: 'sm_saveSrSettlement.action',
+            waitMsg: '保存中...',
             success: function(form, action) {
                 Flat.util.tip(action.response.responseText);
                 win.hide();
@@ -333,8 +357,9 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
      * 删除结算申请
      */
     delete: function (view, rowIndex, colIndex, item, e, record, row) {
-        Ext.Msg.confirm("提示!","确定要删除这条申请吗?",function(btn) {
+        Ext.Msg.confirm("提示!","删除操作会导致此申请及其明细项均被删除，不可恢复，是否删除？",function(btn) {
             if (btn == "yes") {
+                Flat.util.mask();
                 Ext.Ajax.request({
                     url: 'sm_deleteSrSettlement.action',
                     method: 'post',
@@ -342,10 +367,12 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
                     success: function(response, opts) {
                         Flat.util.tip(response.responseText);
                         Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().remove(record);
+                        Flat.util.unmask();
                     },
                     failure: function(response, opts) {
                         Flat.util.tip(response.responseText);
                         Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
+                        Flat.util.unmask();
                     }
                 })
             };
@@ -358,11 +385,13 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
     deleteDetail: function (view, rowIndex, colIndex, item, e, record, row) {
         Ext.Msg.confirm("提示!","确定要删除这条记录吗?",function(btn) {
             if (btn == "yes") {
+                Flat.util.mask();
                 Ext.Ajax.request({
                     url: 'sm_deleteSrSettlementDetlFirst.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                         var result = Ext.JSON.decode(response.responseText);
                         if (result['success']) {
@@ -372,6 +401,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
                         }
                     },
                     failure: function(response, opts) {
+                        Flat.util.unmask();
                         Flat.util.tip(response.responseText);
                     }
                 })

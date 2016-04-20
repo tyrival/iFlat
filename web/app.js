@@ -50,6 +50,17 @@ Ext.Ajax.on('requestcomplete',function(conn,response,options) {
 });
 var Flat = {
     util: {
+        mask: function (msg) {
+            if (this.isEmpty(msg)) {
+                msg = '保存中...'
+            }
+            Ext.MessageBox.show({ msg: msg, wait:true });
+        },
+
+        unmask: function () {
+            Ext.MessageBox.hide();
+        },
+        
         isEmpty: function (str) {
             if (str === undefined || str === null || str ==='') {
                 return true;

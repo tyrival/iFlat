@@ -4,11 +4,15 @@ import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.service.BaseService;
 import com.iflat.sm.bean.*;
 import com.iflat.sm.service.*;
+import com.iflat.system.entity.UserInfoVo;
+import com.iflat.util.Session;
 import com.iflat.workflow.service.WorkflowService;
 import freemarker.ext.beans.HashAdapter;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,6 +45,8 @@ public class SmAction extends BaseAction {
     private SrSettlementDetlSecond srSettlementDetlSecond;
     private BaseService srSettlementBalanceService;
     private SrSettlementBalance srSettlementBalance;
+    private BaseService srSettlementSecondService;
+    private SrSettlementSecond srSettlementSecond;
 
     private WorkflowService workflowService;
     private String taskId;
@@ -174,8 +180,42 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
+    /* SrSettlementBalance */
+    public String listSrSettlementBalance() throws Exception {
+        this.result.setList(this.srSettlementBalanceService.list(this.srSettlementBalance));
+        return SUCCESS;
+    }
+
     /* SrSettlement */
     public String approveSrSettlement() throws Exception {
+        String businessKey = srSettlementService.getBusinessKey(srSettlement);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+        return SUCCESS;
+    }
+
+    public String approveSrSettlementFirst() throws Exception {
+
+        // 如果是审批通过，则更新余额
+        if ("pass".equals(outGoingName)) {
+            // 获取原始单据上的一级结算价格，与新价格对比，得到调整金额
+            SrSettlement orig = new SrSettlement();
+            orig.setId(this.srSettlement.getId());
+            orig = (SrSettlement) this.srSettlementService.list(orig).get(0);
+            Double adjust = this.srSettlement.getSummaryAmount() - orig.getSummaryAmount();
+
+            // 根据调整价格，修改相应部门的工费余额
+            SrSettlementBalance balance = new SrSettlementBalance();
+            balance.setDeptName(orig.getDeptName());
+            balance.setAdjustment(adjust);
+            this.srSettlementBalanceService.save(balance);
+
+            // 储存一级结算的信息
+            UserInfoVo userInfoVo = Session.getUserInfo();
+            this.srSettlement.setSettleFirstAcc(userInfoVo.getAccount());
+            this.srSettlement.setSettleFirstName(userInfoVo.getUserName());
+            this.srSettlement.setSettleFirstTime(new Date());
+            this.result.setObject(this.srSettlementService.save(this.srSettlement));
+        }
         String businessKey = srSettlementService.getBusinessKey(srSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
         return SUCCESS;
@@ -262,7 +302,44 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
+    /* SrSettlementSecond */
+    public String saveSrSettlementSecond() throws Exception {
+        this.result.setObject(this.srSettlementSecondService.save(this.srSettlementSecond));
+        return SUCCESS;
+    }
+
+    public String deleteSrSettlementSecond() throws Exception {
+        this.result.setObject(this.srSettlementSecondService.delete(this.srSettlementSecond));
+        return SUCCESS;
+    }
+
+    public String listSrSettlementSecond() throws Exception {
+        this.result.setList(this.srSettlementSecondService.list(this.srSettlementSecond));
+        return SUCCESS;
+    }
+
+    public String uploadSrSettlementSecond() throws Exception {
+        this.result.setObject(this.srSettlementSecondService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listSrSettlementSecondComment() throws Exception {
+        this.result.setList(this.srSettlementSecondService.listComment(this.srSettlementSecond));
+        return SUCCESS;
+    }
+
     /* SrSettlementDetlSecond */
+    public String listSrSettlementDetlSecondBySrSettlement() throws Exception {
+        SrSettlementSecond second = new SrSettlementSecond();
+        second.setPid(this.srSettlement.getId());
+        second = (SrSettlementSecond) this.srSettlementDetlSecondService.list(second).get(0);
+
+        SrSettlementDetlSecond param = new SrSettlementDetlSecond();
+        param.setPid(second.getId());
+        this.result.setList(this.srSettlementDetlSecondService.list(param));
+        return SUCCESS;
+    }
+
     public String saveSrSettlementDetlSecond() throws Exception {
         this.result.setObject(
                 this.srSettlementDetlSecondService.save(this.srSettlementDetlSecond));
@@ -278,6 +355,23 @@ public class SmAction extends BaseAction {
     public String listSrSettlementDetlSecond() throws Exception {
         this.result.setList(
                 this.srSettlementDetlSecondService.list(this.srSettlementDetlSecond));
+        return SUCCESS;
+    }
+
+    // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
+    public String createSrSettlementDetlSecond() throws Exception {
+
+        this.srSettlementSecond
+                = (SrSettlementSecond) this.srSettlementSecondService
+                .save(this.srSettlementSecond);
+        this.srSettlementDetlSecond.setPid(this.srSettlementSecond.getId());
+        this.srSettlementDetlSecond
+                = (SrSettlementDetlSecond) this.srSettlementDetlSecondService
+                .save(this.srSettlementDetlSecond);
+        Map<String, Object> map = new HashMap();
+        map.put("head", this.srSettlement);
+        map.put("detail", this.srSettlementDetlSecond);
+        this.result.setMap(map);
         return SUCCESS;
     }
 
@@ -487,5 +581,21 @@ public class SmAction extends BaseAction {
 
     public void setSrProjectManager(SrProjectManager srProjectManager) {
         this.srProjectManager = srProjectManager;
+    }
+
+    public BaseService getSrSettlementSecondService() {
+        return srSettlementSecondService;
+    }
+
+    public void setSrSettlementSecondService(BaseService srSettlementSecondService) {
+        this.srSettlementSecondService = srSettlementSecondService;
+    }
+
+    public SrSettlementSecond getSrSettlementSecond() {
+        return srSettlementSecond;
+    }
+
+    public void setSrSettlementSecond(SrSettlementSecond srSettlementSecond) {
+        this.srSettlementSecond = srSettlementSecond;
     }
 }

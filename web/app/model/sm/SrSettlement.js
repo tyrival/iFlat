@@ -20,5 +20,8 @@ Ext.define('iFlat.model.sm.SrSettlement', {
         {name: 'srSettlement.creatorName', mapping: 'creatorName', type: 'string'},
         {name: 'srSettlement.createTime', mapping: 'createTime', type: 'date'},
         {name: 'srSettlement.professionalMgrAcc', mapping: 'professionalMgrAcc', type: 'string'},
+        {name: 'srSettlement.settleFirstAcc', mapping: 'settleFirstAcc', type: 'string'},
+        {name: 'srSettlement.settleFirstName', mapping: 'settleFirstName', type: 'string'},
+        {name: 'srSettlement.settleFirstTime', mapping: 'settleFirstTime', type: 'date'},
     ]
 });

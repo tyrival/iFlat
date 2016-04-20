@@ -117,7 +117,6 @@ Ext.define('iFlat.view.main.MainController', {
      * 所以，取消激活该节点，改为激活其父节点
      */
     onTabPanelRemoveComponent: function(tabpanel, component, eOpts) {
-        debugger
         //获取导航菜单
         var tree = navigationTree;
         //获取当前激活的节点

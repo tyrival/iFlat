@@ -2,23 +2,24 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Sm.SrSettlement">
+<mapper namespace="Sm.SrSettlementSecond">
 
-    <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlement">
-        INSERT INTO SmSrSettlement
-        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{professionalMgrAcc},#{settleFirstAcc},#{settleFirstName},#{settleFirstTime})
+    <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlementSecond">
+        INSERT INTO SmSrSettlementSecond
+        VALUES (#{id},#{pid},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
-        INSERT INTO SmSrSettlement
+        INSERT INTO SmSrSettlementSecond
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},,#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.professionalMgrAcc},#{item.settleFirstAcc},#{item.settleFirstName},#{item.settleFirstTime}
+            SELECT #{item.id},#{item.pid},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},,#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
         </foreach>
     </insert>
 
-    <update id="update" parameterType="com.iflat.sm.bean.SrSettlement">
-        UPDATE SmSrSettlement
+    <update id="update" parameterType="com.iflat.sm.bean.SrSettlementSecond">
+        UPDATE SmSrSettlementSecond
         <set>
+            <if test="pid!=null">pid=#{pid},</if>
             <if test="type!=null">type=#{type},</if>
             <if test="progress!=null">progress=#{progress},</if>
             <if test="projNo!=null">projNo=#{projNo},</if>
@@ -31,42 +32,34 @@
             <if test="materialAmount!=null">materialAmount=#{materialAmount},</if>
             <if test="attachment!=null">attachment=#{attachment},</if>
             <if test="comment!=null">comment=#{comment},</if>
-            <if test="status!=null">status=#{status},</if>
-            <if test="professionalMgrAcc!=null">professionalMgrAcc=#{professionalMgrAcc},</if>
-            <if test="settleFirstAcc!=null">settleFirstAcc=#{settleFirstAcc},</if>
-            <if test="settleFirstName!=null">settleFirstName=#{settleFirstName},</if>
-            <if test="settleFirstTime!=null">settleFirstTime=#{settleFirstTime},</if>
         </set>
         WHERE id=#{id}
     </update>
 
-    <delete id="delete" parameterType="com.iflat.sm.bean.SrSettlement">
-        DELETE SmSrSettlement
+    <delete id="delete" parameterType="com.iflat.sm.bean.SrSettlementSecond">
+        DELETE SmSrSettlementSecond
         WHERE id=#{id}
     </delete>
 
-    <select id="list" parameterType="com.iflat.sm.bean.SrSettlement" resultMap="SmSrSettlementResult">
-        SELECT id,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime,professionalMgrAcc,settleFirstAcc,settleFirstName,settleFirstTime
-        FROM SmSrSettlement
+    <select id="list" parameterType="com.iflat.sm.bean.SrSettlementSecond" resultMap="SmSrSettlementSecondResult">
+        SELECT id,pid,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,creatorAcc,creatorName,createTime
+        FROM SmSrSettlementSecond
         <where>
             <if test="id!=null">id=#{id}</if>
+            <if test="pid!=null">AND pid=#{pid}</if>
             <if test="type!=null">AND type=#{type}</if>
             <if test="projNo!=null">AND projNo=#{projNo}</if>
             <if test="projName!=null">AND projName=#{projName}</if>
             <if test="deptName!=null">AND deptName=#{deptName}</if>
-            <if test="status!=null">AND status=#{status}</if>
             <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%' + #{team} + '%'</if>
             <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
-            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
-            <if test="professionalMgrAcc!=null and !&quot;&quot;.equals(professionalMgrAcc.trim())">AND professionalMgrAcc=#{professionalMgrAcc}</if>
-            <if test="settleFirstAcc!=null and !&quot;&quot;.equals(settleFirstAcc.trim())">AND settleFirstAcc=#{settleFirstAcc}</if>
-            <if test="settleFirstName!=null and !&quot;&quot;.equals(settleFirstName.trim())">AND settleFirstName=#{settleFirstName}</if>
         </where>
-        ORDER BY projNo,deptName,type,team,createTime,id
+        ORDER BY projNo,deptName,type,team,createTime,pid,id
     </select>
 
-    <resultMap type="com.iflat.sm.bean.SrSettlement" id="SmSrSettlementResult">
+    <resultMap type="com.iflat.sm.bean.SrSettlementSecond" id="SmSrSettlementSecondResult">
         <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pid" column="pid" jdbcType="CHAR"/>
         <result property="type" column="type" jdbcType="VARCHAR"/>
         <result property="progress" column="progress" jdbcType="DOUBLE"/>
         <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
@@ -79,13 +72,8 @@
         <result property="materialAmount" column="materialAmount" jdbcType="DOUBLE"/>
         <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
         <result property="comment" column="comment" jdbcType="VARCHAR"/>
-        <result property="status" column="status" jdbcType="VARCHAR"/>
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
-        <result property="professionalMgrAcc" column="professionalMgrAcc" jdbcType="VARCHAR"/>
-        <result property="settleFirstAcc" column="settleFirstAcc" jdbcType="VARCHAR"/>
-        <result property="settleFirstName" column="settleFirstName" jdbcType="VARCHAR"/>
-        <result property="settleFirstTime" column="settleFirstTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>

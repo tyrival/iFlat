@@ -13,11 +13,13 @@ Ext.define('iFlat.view.sm.SrProjectManagerController', {
         var record = context.record;
         record.set('srProjectManager.projName', Ext.getCmp('sm-srprojectmanager-projname').getValue());
         record.set('srProjectManager.name', Ext.getCmp('sm-srprojectmanager-name').getValue());
+        Flat.util.mask();
         Ext.Ajax.request({
             url: 'sm_saveSrProjectManager.action',
             method: 'post',
             params: context.record.data,
             success: function(response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
                 var result = Ext.JSON.decode(response.responseText);
                 if(!result['success']) {
@@ -28,6 +30,7 @@ Ext.define('iFlat.view.sm.SrProjectManagerController', {
                 }
             },
             failure: function(response, opts) {
+                Flat.util.unmask();
                 Flat.util.tip(response.responseText);
             }
         });
@@ -40,14 +43,20 @@ Ext.define('iFlat.view.sm.SrProjectManagerController', {
         } else {
             Ext.Msg.confirm("提示!","确定要删除该项吗?",function(btn) {
                 if(btn=="yes") {
+                    Flat.util.mask('删除中...');
                     Ext.Ajax.request({
                         url: 'sm_deleteSrProjectManager.action',
                         params: record.data,
                         success: function (response, opts) {
+                            Flat.util.unmask();
                             var data = Ext.JSON.decode(response.responseText);
                             if(data.success) {
                                 smSrProjectManagerStore.remove(record);
                             }
+                            Flat.util.tip(response.responseText);
+                        },
+                        success: function (response, opts) {
+                            Flat.util.unmask();
                             Flat.util.tip(response.responseText);
                         },
                     })

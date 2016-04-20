@@ -73,6 +73,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveController', {
         } else {
             var text = btn.getText();
             text = text === '通过' ? 'pass' : 'reject';
+            Flat.util.mask();
             Ext.Ajax.request({
                 url: 'sm_approveSbSettlement.action',
                 method: 'post',
@@ -83,11 +84,13 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveController', {
                     'comment': comment,
                 },
                 success: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     Ext.getCmp('sm-sbsettlementapprove').getStore().reload()
                     Ext.getCmp('sm-sbsettlementapproveinfo').hide();
                 },
                 failure: function(response, opts) {
+                    Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     Ext.getCmp('sm-sbsettlementapprove').getStore().reload()
                     Ext.getCmp('sm-sbsettlementapproveinfo').hide();

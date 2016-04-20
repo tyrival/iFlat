@@ -12,7 +12,7 @@ import org.activiti.engine.delegate.DelegateExecution;
  */
 public class SrMiscExecutionHandler extends WorkflowExecutionListener {
 
-    private SrSettlementService sbSettlementService;
+    private SrSettlementService srSettlementService;
 
     public void submit(DelegateExecution execution) throws Exception {
         setStatus(execution, SrStatus.STATUS_UNSUBMIT);
@@ -79,20 +79,20 @@ public class SrMiscExecutionHandler extends WorkflowExecutionListener {
         // 查询业务对象，并改写其状态
         SrSettlement param = new SrSettlement();
         param.setId(id);
-        SrSettlement sbSettlement
-                = (SrSettlement) getSbSettlementService()
+        SrSettlement srSettlement
+                = (SrSettlement) getSrSettlementService()
                 .list(param).get(0);
-        if (sbSettlement != null) {
-            sbSettlement.setStatus(status);
-            sbSettlementService.save(sbSettlement);
+        if (srSettlement != null) {
+            srSettlement.setStatus(status);
+            srSettlementService.save(srSettlement);
         }
     }
 
-    private SrSettlementService getSbSettlementService() {
-        if (sbSettlementService == null) {
-            sbSettlementService = Application.getSpringContext()
+    private SrSettlementService getSrSettlementService() {
+        if (srSettlementService == null) {
+            srSettlementService = Application.getSpringContext()
                     .getBean("srSettlementService", SrSettlementService.class);
         }
-        return sbSettlementService;
+        return srSettlementService;
     }
 }

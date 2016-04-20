@@ -1,6 +1,6 @@
-Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
+Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
     extend: 'Ext.panel.Panel',
-    alias: 'widget.sm-srcommercialcentersettlement',
+    alias: 'widget.sm-srworkshopsettlement',
 
     layout: {
         type: 'vbox',
@@ -8,15 +8,14 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
     },
 
     requires: [
-        'iFlat.view.sm.SrCommercialCenterSettlementController',
-        'iFlat.view.sm.temp.detail.SrSettlementFirstMain',
-        'iFlat.view.sm.temp.detail.SrSettlementFirstMisc',
-        'iFlat.view.sm.temp.detail.SrSettlementFirstSys',
+        'iFlat.view.sm.SrWorkshopSettlementController',
+        'iFlat.view.sm.temp.detail.SrSettlementSecondGrid',
+        'iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys'
     ],
 
     scrollable: 'true',
     maxHeight: 700,
-    controller: 'sm-srcommercialcentersettlement',
+    controller: 'sm-srworkshopsettlement',
     closeAction: 'hide',
 
     items: [{
@@ -42,79 +41,27 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 items: [{
                     xtype: 'container',
                     layout: 'hbox',
+                    margin: '0 0 10 0',
                     items: [{
                         xtype: 'textfield',
-                        name: 'task.processInstanceId',
-                        fieldLabel: 'processInstanceId',
-                        hidden: true,
-                        listeners: {
-                            change: 'loadBusinessObjByTaskId'
-                        },
-                    }, {
-                        xtype: 'textfield',
-                        name: 'srSettlement.id',
-                        fieldLabel: 'ID',
-                        hidden: true,
-                    }, {
-                        xtype: 'textfield',
-                        fieldLabel: '工号',
-                        name: 'projNo',
+                        name: 'deptName',
+                        fieldLabel: '部门',
                         width: 230,
-                    }, {
-                        xtype: 'textfield',
-                        fieldLabel: '船名',
-                        name: 'projName',
-                        width: 350,
-                    }, {
-                        xtype: 'textfield',
-                        fieldLabel: '进度%',
-                        name: 'progress',
-                        width: 150,
-                    }, {
-                        xtype: 'textfield',
-                        name: 'summaryAmount',
-                        fieldLabel: '合计',
-                        width: 160,
-                    }, {
-                        xtype: 'textfield',
-                        name: 'laborAmount',
-                        fieldLabel: '人工费',
-                        hidden: true,
                         listeners: {
-                            change: 'loadOrigRecord'
+                            change: 'getBalanceOfDept'
                         }
                     }, {
                         xtype: 'textfield',
-                        fieldLabel: '易耗品补贴',
-                        name: 'consumableAmount',
-                        hidden: true,
-                        listeners: {
-                            change: 'loadOrigRecord'
-                        }
+                        fieldLabel: '施工队',
+                        name: 'team',
+                        width: 430,
                     }, {
-                        xtype: 'textfield',
-                        fieldLabel: '绩效',
-                        name: 'performanceAmount',
+                        xtype: 'button',
+                        text: '下载附件',
+                        name: 'down',
+                        margin: '0 0 0 50',
                         hidden: true,
-                        listeners: {
-                            change: 'loadOrigRecord'
-                        }
-                    }, {
-                        xtype: 'textfield',
-                        fieldLabel: '材料费',
-                        name: 'materialAmount',
-                        hidden: true,
-                        listeners: {
-                            change: 'loadOrigRecord'
-                        }
-                    }, {
-                        xtype: 'textfield',
-                        name: 'type',
-                        hidden: true,
-                    }, {
-                        xtype: 'textfield',
-                        name: 'status',
-                        hidden: true,
+                        width: 100,
                     }, {
                         xtype: 'textfield',
                         name: 'attachment',
@@ -126,25 +73,88 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 }, {
                     xtype: 'container',
                     layout: 'hbox',
+                    items: [{
+                        xtype: 'textfield',
+                        fieldLabel: '工号',
+                        name: 'projNo',
+                        width: 180,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '船名',
+                        name: 'projName',
+                        width: 310,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '进度%',
+                        name: 'progress',
+                        width: 150,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'balance',
+                        fieldLabel: '可分配金额',
+                        labelWidth: 120,
+                        width: 250,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'task.processInstanceId',
+                        fieldLabel: 'processInstanceId',
+                        listeners: {
+                            change: 'loadBusinessObjByTaskId'
+                        },
+                        hidden: true,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'id',
+                        fieldLabel: 'taskId',
+                        hidden: true,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srSettlement.id',
+                        fieldLabel: 'ID',
+                        hidden: true,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'type',
+                        hidden: true,
+                        listeners: {
+                            change: 'changeEleByType'
+                        }
+                    }, {
+                        xtype: 'textfield',
+                        name: 'status',
+                        hidden: true,
+                    }]
+                }, {
+                    xtype: 'container',
+                    layout: 'hbox',
                     margin: '10 0 0 0',
                     items: [{
                         xtype: 'textfield',
-                        name: 'deptName',
-                        fieldLabel: '部门',
-                        width: 230,
+                        name: 'laborAmount',
+                        fieldLabel: '人工费',
+                        width: 170,
                     }, {
                         xtype: 'textfield',
-                        fieldLabel: '施工队',
-                        name: 'team',
-                        width: 430,
+                        fieldLabel: '易耗品补贴',
+                        name: 'consumableAmount',
+                        labelWidth: 80,
+                        width: 180,
                     }, {
-                        xtype: 'button',
-                        name: 'down',
-                        text: '下载附件',
-                        margin: '0 0 0 50',
-                        hidden: true,
-                        width: 100,
-                    }, ]
+                        xtype: 'textfield',
+                        fieldLabel: '绩效',
+                        name: 'performanceAmount',
+                        width: 170,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '材料费',
+                        name: 'materialAmount',
+                        width: 170,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'summaryAmount',
+                        fieldLabel: '总计',
+                        width: 200,
+                    }]
                 }, {
                     xtype: 'container',
                     type: 'hbox',
@@ -168,28 +178,23 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 align: 'stretch'
             },
             items: [{
-                xtype: 'sm-detail-srsettlementfirstmain'
+                xtype: 'sm-detail-srsettlementsecondgrid'
             }, {
-                xtype: 'sm-detail-srsettlementfirstmisc'
-            }, {
-                xtype: 'sm-detail-srsettlementfirstsys'
-            }, ]
+                xtype: 'sm-detail-srsettlementseconddetailsys'
+            }]
         }, {
             xtype: 'form',
-            name: 'amount',
-            fieldDefaults: {
-                labelAlign: 'right',
-                labelWidth: 50,
-            },
+            name: 'approve',
             items: [{
                 xtype: 'container',
                 layout: 'hbox',
                 margin: '20 0 10 0',
+                name: 'sysSecond',
                 items: [{
                     xtype: 'textfield',
-                    name: 'srSettlement.laborAmount',
+                    name: 'srSettlementSecond.laborAmount',
                     fieldLabel: '人工费',
-                    allowBlank: false,
+                    allowBlank: true,
                     width: 210,
                     listeners: {
                         change: 'changeSummaryAmount'
@@ -197,8 +202,8 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '易耗品补贴',
-                    name: 'srSettlement.consumableAmount',
-                    allowBlank: false,
+                    name: 'srSettlementSecond.consumableAmount',
+                    allowBlank: true,
                     labelWidth: 80,
                     width: 220,
                     listeners: {
@@ -207,8 +212,8 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '绩效',
-                    name: 'srSettlement.performanceAmount',
-                    allowBlank: false,
+                    name: 'srSettlementSecond.performanceAmount',
+                    allowBlank: true,
                     width: 210,
                     listeners: {
                         change: 'changeSummaryAmount'
@@ -216,8 +221,8 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '材料费',
-                    name: 'srSettlement.materialAmount',
-                    allowBlank: false,
+                    name: 'srSettlementSecond.materialAmount',
+                    allowBlank: true,
                     width: 210,
                     listeners: {
                         change: 'changeSummaryAmount'
@@ -229,24 +234,33 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 labelAlign: 'top',
                 fieldLabel: '审批意见',
                 allowBlank: false,
+                height: 20,
                 width: '100%',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],
     }],
-    
+
     dockedItems: [{
         xtype: 'toolbar',
         dock: 'bottom',
         ui: 'footer',
         items: [{
             xtype: 'button',
+            name: 'completeProcess',
+            ui: 'soft-purple',
+            text: '结束流程',
+            width: 100,
+            hidden: true,
+            handler: 'completeProcess',
+        }, {
+            xtype: 'button',
             text: '历史意见',
             ui: 'gray',
             handler: 'showComment',
         }, '->', {
             xtype: 'button',
-            text: '通过',
+            text: '提交',
             width: 100,
             handler: 'completeTask',
         }, {
