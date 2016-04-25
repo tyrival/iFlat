@@ -37,7 +37,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
             },
             items: [{
                 xtype: 'fieldset',
-                title: '结算单',
+                title: '一级结算单',
                 items: [{
                     xtype: 'container',
                     layout: 'hbox',
@@ -99,7 +99,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                         name: 'task.processInstanceId',
                         fieldLabel: 'processInstanceId',
                         listeners: {
-                            change: 'loadBusinessObjByTaskId'
+                            change: 'loadBusinessObjByTaskId',
                         },
                         hidden: true,
                     }, {
@@ -185,17 +185,26 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
         }, {
             xtype: 'form',
             name: 'approve',
+            margin: '20 0 30 0',
+            fieldDefaults: {
+                labelAlign: 'right',
+                labelWidth: 50,
+            },
             items: [{
                 xtype: 'container',
                 layout: 'hbox',
-                margin: '20 0 10 0',
                 name: 'sysSecond',
                 items: [{
+                    xtype: 'textfield',
+                    name: 'srSettlementSecond.id',
+                    fieldLabel: 'Second.ID',
+                    hidden: true
+                }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.laborAmount',
                     fieldLabel: '人工费',
                     allowBlank: true,
-                    width: 210,
+                    width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }
@@ -205,7 +214,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                     name: 'srSettlementSecond.consumableAmount',
                     allowBlank: true,
                     labelWidth: 80,
-                    width: 220,
+                    width: 200,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }
@@ -214,7 +223,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                     fieldLabel: '绩效',
                     name: 'srSettlementSecond.performanceAmount',
                     allowBlank: true,
-                    width: 210,
+                    width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }
@@ -223,10 +232,23 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                     fieldLabel: '材料费',
                     name: 'srSettlementSecond.materialAmount',
                     allowBlank: true,
-                    width: 210,
+                    width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }
+                }, {
+                    xtype: 'label',
+                    margin: '0 0 0 20',
+                    padding: '10',
+                    text: '合计： ',
+                    style: 'font-weight: bold; text-align: right; font-size: 110%',
+                    flex: 1
+                }, {
+                    xtype: 'label',
+                    name: 'summaryAmountSecond',
+                    padding: '10',
+                    text: '0',
+                    style: 'font-weight: bold; text-align: right; font-size: 110%',
                 }]
             }, {
                 xtype: 'textarea',

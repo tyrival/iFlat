@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by tyriv on 2016/3/21.
  */
-public class SbTargetCostSplit {
+public class TargetCostSplit {
 
     private String id;
     // 类型 0原始 1调整 2结算 可以自动判断，新增一条记录时，如果已经有该科目的目标成本存在，则为调整；一个科目向另一个科目调整，可以采用新增两行记录，一增一减的方式，均为调整类型
@@ -21,7 +21,7 @@ public class SbTargetCostSplit {
     private boolean fixed;  // 确认后不可修改，只能进行调整
     private Date fixedTime;
 
-    public SbTargetCostSplit() {
+    public TargetCostSplit() {
         this.createTime = new Date();
     }
 

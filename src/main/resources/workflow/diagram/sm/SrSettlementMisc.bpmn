@@ -31,7 +31,7 @@
         <activiti:executionListener class="com.iflat.sm.listener.SrMiscExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="sm.SrWorkshopSettlementApprove" id="_8" name="Workshop Settlement">
+    <userTask activiti:exclusive="true" activiti:formKey="sm.SrWorkshopSettlement" id="_8" name="Workshop Settlement">
       <extensionElements>
         <activiti:taskListener class="com.iflat.sm.listener.SrMiscTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SrMiscExecutionHandler" event="start"/>
@@ -57,7 +57,7 @@
     </userTask>
     <userTask activiti:exclusive="true" activiti:formKey="sm.SrHrDirectorApprove" id="_13" name="Hr Director Approve">
       <extensionElements>
-        <activiti:taskListener class="com.iflat.sm.listener.SrTaskHandler" event="create"/>
+        <activiti:taskListener class="com.iflat.sm.listener.SrMiscTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.sm.listener.SrMiscExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>

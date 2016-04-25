@@ -2,41 +2,66 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Sm.SbTargetCost">
+<mapper namespace="Sm.TargetCost">
 
-    <insert id="insert" parameterType="com.iflat.sm.bean.SbTargetCost">
-        INSERT INTO SmSbTargetCost
-        VALUES (#{id},#{projNo},#{projName},#{deptName},#{amount},#{creatorAcc},#{creatorName},#{createTime})
+    <insert id="insert" parameterType="com.iflat.sm.bean.TargetCost">
+        INSERT INTO SmTargetCost
+        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{amount},#{creatorAcc},#{creatorName},#{createTime})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
-        INSERT INTO SmSbTargetCost
+        INSERT INTO SmTargetCost
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.deptName},#{item.amount},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.amount},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
         </foreach>
     </insert>
 
-    <update id="update" parameterType="com.iflat.sm.bean.SbTargetCost">
-        UPDATE SmSbTargetCost
+    <update id="update" parameterType="com.iflat.sm.bean.TargetCost">
+        UPDATE SmTargetCost
         <set>
             <if test="projNo!=null">projNo=#{projNo},</if>
             <if test="projName!=null">projName=#{projName},</if>
             <if test="deptName!=null">deptName=#{deptName},</if>
             <if test="amount!=null">amount=#{amount},</if>
+            <if test="type!=null">type=#{type},</if>
         </set>
         WHERE id=#{id}
     </update>
 
-    <delete id="delete" parameterType="com.iflat.sm.bean.SbTargetCost">
-        DELETE SmSbTargetCost
+    <delete id="delete" parameterType="com.iflat.sm.bean.TargetCost">
+        DELETE SmTargetCost
         WHERE id=#{id}
     </delete>
 
-    <select id="list" parameterType="com.iflat.sm.bean.SbTargetCost" resultMap="SmSbTargetCostResult">
+    <select id="list" parameterType="com.iflat.sm.bean.TargetCost" resultMap="SmTargetCostResult">
+        SELECT NEWID() AS id, a.projNo,a.projName,a.deptName,a.amount,(CASE WHEN b.distribution IS NULl THEN 0 ELSE b.distribution END) AS distribution
+        FROM (SELECT projNo,projName,deptName,amount,type
+                FROM [code].[dbo].[V_TargetCost]
+                <where>
+                    <if test="id!=null">id=#{id}</if>
+                    <if test="projNo!=null">AND projNo=#{projNo}</if>
+                    <if test="projName!=null">AND projName=#{projName}</if>
+                    <if test="deptName!=null">AND deptName=#{deptName}</if>
+                    <if test="type!=null">AND type=#{type}</if>
+                </where>
+        ) a
+        LEFT JOIN (SELECT projNo,deptName,SUM(amount) AS distribution
+                    FROM SmTargetCostSplit
+                    <where>
+                        <if test="projNo!=null">AND projNo=#{projNo}</if>
+                        <if test="deptName!=null">AND deptName=#{deptName}</if>
+                    </where>
+                    GROUP BY projNo,deptName) b
+        ON a.projNo=b.projNo AND a.deptName=b.deptName
+        ORDER BY a.projName,a.deptName
+    </select>
+<!--
+
+    <select id="list" parameterType="com.iflat.sm.bean.TargetCost" resultMap="SmTargetCostResult">
         SELECT NEWID() AS id, a.projNo,a.projName,a.deptName,a.amount,(CASE WHEN b.distribution IS NULl THEN 0 ELSE b.distribution END) AS distribution
         FROM (SELECT t.projNo,t.ProjName,t.deptName,SUM(t.amount) AS amount
                FROM (SELECT projNo,projName,deptName,amount
-                        FROM SmSbTargetCost
+                        FROM SmTargetCost
                         <where>
                             <if test="id!=null">id=#{id}</if>
                             <if test="projNo!=null">AND projNo=#{projNo}</if>
@@ -55,7 +80,7 @@
                GROUP BY t.projNo,t.projName,t.deptName
         ) a
         LEFT JOIN (SELECT projNo,deptName,SUM(amount) AS distribution
-                    FROM SmSbTargetCostSplit
+                    FROM SmTargetCostSplit
                     <where>
                         <if test="projNo!=null">AND projNo=#{projNo}</if>
                         <if test="deptName!=null">AND deptName=#{deptName}</if>
@@ -64,9 +89,11 @@
         ON a.projNo=b.projNo AND a.deptName=b.deptName
         ORDER BY a.projName,a.deptName
     </select>
+-->
 
-    <resultMap type="com.iflat.sm.bean.SbTargetCost" id="SmSbTargetCostResult">
+    <resultMap type="com.iflat.sm.bean.TargetCost" id="SmTargetCostResult">
         <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="CHAR"/>
         <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
         <result property="projName" column="projName" jdbcType="VARCHAR"/>
         <result property="deptName" column="deptName" jdbcType="VARCHAR"/>

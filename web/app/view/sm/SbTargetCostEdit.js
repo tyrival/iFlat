@@ -34,24 +34,24 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 layout: 'hbox',
                 items: [{
                     xtype: 'textfield',
-                    name: 'sbTargetCost.id',
+                    name: 'targetCost.id',
                     fieldLabel: 'ID',
                     hidden: true,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '工号',
                     id: 'sm-sbtargetcostedit-projno',
-                    name: 'sbTargetCost.projNo',
+                    name: 'targetCost.projNo',
                     width: 220,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '船名',
                     id: 'sm-sbtargetcostedit-projname',
-                    name: 'sbTargetCost.projName',
+                    name: 'targetCost.projName',
                     width: 300,
                 }, {
                     xtype: 'textfield',
-                    name: 'sbTargetCost.deptName',
+                    name: 'targetCost.deptName',
                     fieldLabel: '部门',
                     id: 'sm-sbtargetcostedit-deptname',
                     width: 220
@@ -66,7 +66,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 items: [{
                     xtype: 'textfield',
                     id: 'sm-sbtargetcostedit-amount',
-                    name: 'sbTargetCost.amount',
+                    name: 'targetCost.amount',
                     fieldLabel: '总金额',
                     width: 220,
                 }, {
@@ -106,7 +106,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 width: 800,
                 scrollable: true,
                 id: 'sm-sbtargetcostedit-detail',
-                store: smSbTargetCostSplitStore = Ext.create('iFlat.store.sm.SbTargetCostSplit'),
+                store: smSbTargetCostSplitStore = Ext.create('iFlat.store.sm.TargetCostSplit'),
                 border: true,
                 columnLines: true,
                 plugins: [
@@ -122,33 +122,40 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 ],
                 columns: [{
                     header: 'id',
-                    dataIndex: 'sbTargetCostSplit.id',
+                    dataIndex: 'targetCostSplit.id',
                     hidden: true
                 }, {
                     header: '工号',
-                    dataIndex: 'sbTargetCostSplit.projNo',
+                    dataIndex: 'targetCostSplit.projNo',
                     hidden: true
                 }, {
                     header: '船名',
-                    dataIndex: 'sbTargetCostSplit.projName',
+                    dataIndex: 'targetCostSplit.projName',
                     hidden: true
                 }, {
                     header: '部门',
-                    dataIndex: 'sbTargetCostSplit.deptName',
+                    dataIndex: 'targetCostSplit.deptName',
                     hidden: true
                 }, {
                     header: '类型',
                     width: 150,
-                    dataIndex: 'sbTargetCostSplit.type',
+                    dataIndex: 'targetCostSplit.type',
                     hidden: true
                 }, {
                     header: '成本科目',
                     width: 250,
-                    dataIndex: 'sbTargetCostSplit.costAccount',
+                    dataIndex: 'targetCostSplit.costAccount',
                     editor: {
                         xtype: 'combo',
                          allowBlank: false,
-                         store: smSbTargetCoseEditComboStore = Ext.create('iFlat.store.sm.SbTargetCostAccount'),
+                         store: smSbTargetCoseEditComboStore
+                             = Ext.create('iFlat.store.sm.TargetCostAccount', {
+                             proxy: {
+                                 extraParams: {
+                                     'targetCostAccount.type': '造船'
+                                 }
+                             }
+                         }),
                          queryMode: 'local',
                          editable: true,
                          forceSelection : true,
@@ -158,7 +165,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 }, {
                     header: '金额',
                     width: 150,
-                    dataIndex: 'sbTargetCostSplit.amount',
+                    dataIndex: 'targetCostSplit.amount',
                     editor: {
                         allowBlank: false,
                         regex: /^[+]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
@@ -166,7 +173,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 }, {
                     header: '备注',
                     flex: true,
-                    dataIndex: 'sbTargetCostSplit.comment',
+                    dataIndex: 'targetCostSplit.comment',
                     editor: {
                     }
                 }, {

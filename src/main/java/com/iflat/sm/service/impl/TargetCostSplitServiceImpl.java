@@ -2,24 +2,24 @@ package com.iflat.sm.service.impl;
 
 import com.iflat.base.service.BaseService;
 import com.iflat.base.service.impl.BaseServiceSupport;
-import com.iflat.sm.bean.SbTargetCost;
-import com.iflat.sm.bean.SbTargetCostSplit;
+import com.iflat.sm.bean.TargetCost;
+import com.iflat.sm.bean.TargetCostSplit;
 import com.iflat.sm.entity.SbSettlementVo;
 import com.iflat.sm.service.SbSettlementVoService;
-import com.iflat.sm.service.SbTargetCostSplitService;
+import com.iflat.sm.service.TargetCostSplitService;
 
 /**
  * Created by tyriv on 2016/3/23.
  */
-public class SbTargetCostSplitServiceImpl extends BaseServiceSupport implements SbTargetCostSplitService {
+public class TargetCostSplitServiceImpl extends BaseServiceSupport implements TargetCostSplitService {
 
-    private BaseService sbTargetCostService;
+    private BaseService targetCostService;
     private SbSettlementVoService sbSettlementVoService;
 
     @Override
     protected void beforeInsert() throws Exception {
         // 查询此分解项对应的目标成本的余额
-        SbTargetCostSplit sbTargetCostSplit = (SbTargetCostSplit) this.saveObj;
+        TargetCostSplit sbTargetCostSplit = (TargetCostSplit) this.saveObj;
 
         Double add = sbTargetCostSplit.getAmount();
         Double remain = getRemainAmount(sbTargetCostSplit);
@@ -32,7 +32,7 @@ public class SbTargetCostSplitServiceImpl extends BaseServiceSupport implements 
     @Override
     protected void beforeUpdate() throws Exception {
         // 查询此分解项对应的目标成本的余额
-        SbTargetCostSplit sbTargetCostSplit = (SbTargetCostSplit) this.saveObj;
+        TargetCostSplit sbTargetCostSplit = (TargetCostSplit) this.saveObj;
 
         Double adjust = getAdjustAmount(sbTargetCostSplit);
         Double remain = getRemainAmount(sbTargetCostSplit);
@@ -56,7 +56,7 @@ public class SbTargetCostSplitServiceImpl extends BaseServiceSupport implements 
 
     @Override
     protected void beforeDelete() throws Exception {
-        SbTargetCostSplit sbTargetCostSplit = (SbTargetCostSplit) this.deleteObj;
+        TargetCostSplit sbTargetCostSplit = (TargetCostSplit) this.deleteObj;
         // 判断该科目是否已经提交过申请，如果已有申请，则不允许删除
         SbSettlementVo sbSettlementVo = new SbSettlementVo();
         sbSettlementVo.setProjNo(sbTargetCostSplit.getProjNo());
@@ -74,11 +74,11 @@ public class SbTargetCostSplitServiceImpl extends BaseServiceSupport implements 
      * @return
      * @throws Exception
      */
-    private Double getRemainAmount(SbTargetCostSplit sbTargetCostSplit) throws Exception {
-        SbTargetCost sbTargetCost = new SbTargetCost();
+    private Double getRemainAmount(TargetCostSplit sbTargetCostSplit) throws Exception {
+        TargetCost sbTargetCost = new TargetCost();
         sbTargetCost.setProjNo(sbTargetCostSplit.getProjNo());
         sbTargetCost.setDeptName(sbTargetCostSplit.getDeptName());
-        sbTargetCost = (SbTargetCost) sbTargetCostService.list(sbTargetCost).get(0);
+        sbTargetCost = (TargetCost) targetCostService.list(sbTargetCost).get(0);
         Double amount = sbTargetCost.getAmount();
         Double distribution = sbTargetCost.getDistribution();
         return amount - distribution;
@@ -90,13 +90,13 @@ public class SbTargetCostSplitServiceImpl extends BaseServiceSupport implements 
      * @return
      * @throws Exception
      */
-    private Double getAdjustAmount(SbTargetCostSplit sbTargetCostSplit) throws Exception {
-        SbTargetCostSplit orig = (SbTargetCostSplit) this.list(sbTargetCostSplit).get(0);
+    private Double getAdjustAmount(TargetCostSplit sbTargetCostSplit) throws Exception {
+        TargetCostSplit orig = (TargetCostSplit) this.list(sbTargetCostSplit).get(0);
         return sbTargetCostSplit.getAmount() - orig.getAmount();
     }
 
-    public void setSbTargetCostService(BaseService sbTargetCostService) {
-        this.sbTargetCostService = sbTargetCostService;
+    public void setTargetCostService(BaseService targetCostService) {
+        this.targetCostService = targetCostService;
     }
 
     public void setSbSettlementVoService(SbSettlementVoService sbSettlementVoService) {

@@ -139,8 +139,11 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
         var type = window.down('textfield[name=srSettlement.type]').getValue();
         var xtype = 'sm-detail-sradjust' + type.toLowerCase();
         var panel = window.down('panel[name=detail]');
-        panel.removeAll();
-        panel.add({ xtype : xtype });
+        var items = panel.items.items;
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            item.setHidden(!item.isXType(xtype));
+        }
 
         // 刷新store
         var store = panel.down(xtype).getStore();

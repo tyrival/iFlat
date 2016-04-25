@@ -36,6 +36,7 @@ public class SrSettlementSecond {
         this.progress = srSettlement.getProgress();
         this.projNo = srSettlement.getProjNo();
         this.projName = srSettlement.getProjName();
+        this.deptName = srSettlement.getDeptName();
         this.team = srSettlement.getTeam();
         this.createTime = new Date();
     }

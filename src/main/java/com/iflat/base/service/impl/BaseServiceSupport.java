@@ -229,7 +229,7 @@ public class BaseServiceSupport implements BaseService {
         Object result;
 
         this.beforeInsertBatch();
-        result = executeMethod(this.insertBatchList, "insertBatchVo");
+        result = executeMethod(this.insertBatchList, "insertBatch");
         this.afterInsertBatch();
 
         //如果是增删改，dao层返回的是数值，此时改为返回参数对象
@@ -246,7 +246,7 @@ public class BaseServiceSupport implements BaseService {
         Object result;
 
         this.beforeUpdateBatch();
-        result = executeMethod(this.updateBatchList, "updateBatchVo");
+        result = executeMethod(this.updateBatchList, "updateBatch");
         this.afterUpdateBatch();
 
         if(result instanceof Integer) {

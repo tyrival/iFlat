@@ -129,6 +129,13 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
                 type: 'hbox',
                 align: 'stretch'
             },
+            items: [{
+                xtype: 'sm-detail-sradjustmain'
+            }, {
+                xtype: 'sm-detail-sradjustmisc'
+            }, {
+                xtype: 'sm-detail-sradjustsys'
+            }, ]
         }, {
             xtype: 'textarea',
             name: 'comment',

@@ -8,12 +8,25 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
 
     controller: 'sm-sbtargetcost',
 
-    store: smSbTargetCostStore = Ext.create('iFlat.store.sm.SbTargetCost'),
+    store: smSbTargetCostStore = Ext.create('iFlat.store.sm.TargetCost', {
+        proxy: {
+            extraParams: {
+                'targetCost.type': '造船'
+            }
+        }
+    }),
 
     tbar: [{
         xtype: 'combo',
         id: 'sm-sbtargetcost-combo',
-        store: smSbTargetCostComboStore = Ext.create('iFlat.store.bi.Project'),
+        store: smSbTargetCostComboStore = Ext.create('iFlat.store.report.bi.Project', {
+            proxy: {
+                extraParams: {
+                    'rptProject.type': '造船',
+                    'rptProject.status': 0,
+                }
+            }
+        }),
         queryMode: 'local',
         allowBlank: false,
         editable: true,
@@ -45,23 +58,23 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
         handler: 'split',
     }, {
         header: 'id',
-        dataIndex: 'sbTargetCost.id',
+        dataIndex: 'targetCost.id',
         hidden: true
     }, {
         header: '工号',
         width: 150,
-        dataIndex: 'sbTargetCost.projNo',
+        dataIndex: 'targetCost.projNo',
     }, {
         header: '船名',
         flex: true,
-        dataIndex: 'sbTargetCost.projName',
+        dataIndex: 'targetCost.projName',
     }, {
         header: '部门',
         width: 200,
-        dataIndex: 'sbTargetCost.deptName',
+        dataIndex: 'targetCost.deptName',
     }, {
         header: '金额',
         width: 200,
-        dataIndex: 'sbTargetCost.amount',
+        dataIndex: 'targetCost.amount',
     }],
 });

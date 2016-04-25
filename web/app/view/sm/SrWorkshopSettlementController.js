@@ -16,6 +16,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
                     var record = Ext.create('iFlat.model.sm.SrSettlement', obj);
                     type = obj['type'];
                     id = obj['id'];
+                    var dept = obj['deptName'];
                     record.set('srSettlement.id', id);
                 }
                 field.up('form').loadRecord(record);
@@ -27,25 +28,51 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
                     if (type != 'Sys') {
                         Flat.util.unmask();
                         store = panel.down('sm-detail-srsettlementsecondgrid').getStore();
-                        store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
+                        store.getProxy().extraParams['srSettlementSecond.pid'] = id;
                         store.reload();
                     } else {
                         store = panel.down('sm-detail-srsettlementseconddetailsys').getStore();
-                        store.reload({
-                            proxy: {
-                                type: 'ajax',
-                                url: 'sm_listSrSettlementDetlSecondBySrSettlement.action',
-                                extraParams: {
-                                    'srSettlement.id': id
-                                },
-                            },
-                            callback: function(records, option, success) {
+                        store.getProxy().extraParams['srSettlement.id'] = id;
+                        store.reload();
+                        Ext.Ajax.request({
+                            url: 'sm_listSrSettlementSecond.action?srSettlementSecond.pid=' + id,
+                            method: 'post',
+                            success: function(response, opts) {
                                 Flat.util.unmask();
+                                var obj = Ext.JSON.decode(response.responseText)['list'];
+                                if (obj) {
+                                    field.up('window')
+                                        .down('textfield[name=srSettlementSecond.id]')
+                                        .setValue(obj[0]['id']);
+                                }
+                            },
+                            failure: function (response, opts) {
+                                Flat.util.unmask();
+                                Flat.util.tip(response.responseText);
                             }
-                        });
+                        })
                     }
                 }
-                
+
+                // 加载可分配金额
+                var balance = field.up('form').down('textfield[name=balance]');
+                //Flat.util.mask('加载中...');
+                Ext.Ajax.request({
+                    url: 'sm_listSrSettlementBalance.action',
+                    method: 'post',
+                    params: {
+                        'srSettlementBalance.deptName': dept
+                    },
+                    success: function(response, opts) {
+                        var list = Ext.JSON.decode(response.responseText)['list'];
+                        if (list[0]['amount']) {
+                            balance.setValue(list[0]['amount']);
+                        }
+                    },
+                    failure: function(response, opts) {
+                        Flat.util.tip(response.responseText);
+                    }
+                });
             },
             failure: function(response, opts) {
                 Flat.util.unmask();
@@ -73,13 +100,17 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
 
     // 根据输入的金额，自动计算总额，仅限于机电修理
     changeSummaryAmount: function(field, newValue, oldValue, eOpts) {
-        var sumField = field.up('window').down('textfield[name=summaryAmountSecond]');
-        var sum = parseFloat(sumField.getValue());
+        var sumField = field.up('window').down('label[name=summaryAmountSecond]');
+        var sum = parseFloat(sumField.text);
         if (!sum) {
             sum = 0;
         }
-        sum += (newValue - oldValue);
-        sumField.setValue(sum);
+        var diff = newValue - oldValue;
+        if (field.getName() == 'srSettlementSecond.materialAmount') {
+            diff = 0 - diff;
+        }
+        sum += diff;
+        sumField.setText(sum);
     },
 
     // 显示历史批注
@@ -117,7 +148,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
 
     // 获取部门总结余
     getBalanceOfDept: function(field, newValue, oldValue, eOpts) {
-        var dept = newValue;
+        /*var dept = newValue;
         var balance = field.up('window').down('textfield[name=balance]');
         //Flat.util.mask('加载中...');
         Ext.Ajax.request({
@@ -133,19 +164,21 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
             failure: function(response, opts) {
                 Flat.util.tip(response.responseText);
             }
-        });
+        });*/
     },
 
     // 完成Task，后台根据单据类型不同，来分别处理机电修理和主体/零星
     completeTask: function (btn) {
-
         var win = btn.up('window');
+        var text = btn.getText();
+        text = text === '提交' ? 'pass' : 'reject';
         var form = win.down('form[name=approve]');
         if (form.isValid()) {
             form.submit({
                 url: 'sm_approveSrSettlementSecond.action',
                 params: {
-                    'srSettlement.id':win.down('textfield[name=id]').getValue()
+                    'srSettlement.id':win.down('textfield[name=srSettlement.id]').getValue(),
+                    'outGoingName': text
                 },
                 method: 'POST',
                 waitMsg: '保存中...',
@@ -181,6 +214,11 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
                 
                 var win = me.up('window');
                 var form = win.down('form[name=approve]');
+                var consumableAmount = form.down('textarea[name=srSettlementSecond.consumableAmount]');
+                var performanceAmount = form.down('textarea[name=srSettlementSecond.performanceAmount]');
+                var materialAmount = form.down('textarea[name=srSettlementSecond.materialAmount]');
+                var laborAmount = form.down('textarea[name=srSettlementSecond.laborAmount]');
+                var comment = form.down('textarea[name=comment]');
                 if (form.isValid()) {
                     form.submit({
                         url: 'workflow_completeTask.action',
@@ -193,12 +231,22 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
                         success: function (fp, o) {
                             Flat.util.tip(o.response.responseText);
                             win.hide();
+                            consumableAmount.setValue(0);
+                            performanceAmount.setValue(0);
+                            materialAmount.setValue(0);
+                            laborAmount.setValue(0);
+                            comment.setValue('');
                             Ext.getCmp('main-view-tabpanel').getActiveTab()
                                 .getStore().reload();
                         },
                         failure: function (fp, o) {
                             Flat.util.tip(o.response.responseText);
                             win.hide();
+                            consumableAmount.setValue(0);
+                            performanceAmount.setValue(0);
+                            materialAmount.setValue(0);
+                            laborAmount.setValue(0);
+                            comment.setValue('');
                             Ext.getCmp('main-view-tabpanel').getActiveTab()
                                 .getStore().reload();
                         }

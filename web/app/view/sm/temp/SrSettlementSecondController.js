@@ -216,6 +216,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
     
     updateDetail: function(editor, context, eOpts) {
 
+        // 需要判断是否需创建头信息
         var grid = editor.getCmp();
         var store = grid.getStore();
         var rec = context.record;
@@ -240,7 +241,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
                                 .setValue(head['id']);
                             rec.set('srSettlementDetlSecond.id', detail['id']);
                             rec.set('srSettlementDetlSecond.pid', detail['pid']);
-                            debugger
                             updateDistribute(grid, store)
                         }
                     },
@@ -294,7 +294,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
     },
 
     deleteDetail: function (view, rowIndex, colIndex, item, e, record, row) {
-        debugger
         Ext.Msg.confirm("提示!","确定要删除这条记录吗?",function(btn) {
             if (btn == "yes") {
                 Flat.util.mask();

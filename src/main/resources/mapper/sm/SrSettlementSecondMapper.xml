@@ -57,6 +57,27 @@
         ORDER BY projNo,deptName,type,team,createTime,pid,id
     </select>
 
+    <select id="listBatch" parameterType="java.util.List" resultMap="SmSrSettlementSecondResult">
+        SELECT id,pid,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,creatorAcc,creatorName,createTime
+        FROM SmSrSettlementSecond
+        <where>
+            /*查看foreach标签的属性*/
+            <foreach collection="list" item="item" index="index" separator="OR">
+                (1=1
+                <if test="item.id!=null">AND id=#{item.id}</if>
+                <if test="item.pid!=null">AND pid=#{item.pid}</if>
+                <if test="item.type!=null">AND type=#{item.type}</if>
+                <if test="item.projNo!=null">AND projNo=#{item.projNo}</if>
+                <if test="item.projName!=null">AND projName=#{item.projName}</if>
+                <if test="item.deptName!=null">AND deptName=#{item.deptName}</if>
+                <if test="item.team!=null and !&quot;&quot;.equals(item.team.trim())">AND team LIKE '%' + #{item.team} + '%'</if>
+                <if test="item.comment!=null and !&quot;&quot;.equals(item.comment.trim())">AND comment LIKE '%' + #{item.comment} + '%'</if>
+                )
+            </foreach>
+        </where>
+        ORDER BY projNo,deptName,team,pid,id
+    </select>
+
     <resultMap type="com.iflat.sm.bean.SrSettlementSecond" id="SmSrSettlementSecondResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="pid" column="pid" jdbcType="CHAR"/>

@@ -1,13 +1,13 @@
-Ext.define('iFlat.store.sm.SbTargetCostAccount', {
+Ext.define('iFlat.store.sm.TargetCostSplit', {
     extend: 'Ext.data.Store',
 
     autoLoad: true,
-    model: 'iFlat.model.sm.SbTargetCostAccount',
+    model: 'iFlat.model.sm.TargetCostSplit',
 
     pageSize: 0,
     proxy: {
         type: 'ajax',
-        url: 'sm_listSbTargetCostAccount.action',
+        url: 'sm_listTargetCostSplit.action',
         reader: {
             type: 'json',
             rootProperty: 'list',

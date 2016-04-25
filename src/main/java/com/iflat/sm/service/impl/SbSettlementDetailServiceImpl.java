@@ -4,10 +4,9 @@ import com.iflat.base.service.BaseService;
 import com.iflat.base.service.impl.BaseServiceSupport;
 import com.iflat.sm.bean.SbSettlement;
 import com.iflat.sm.bean.SbSettlementDetail;
-import com.iflat.sm.bean.SbTargetCostSplit;
+import com.iflat.sm.bean.TargetCostSplit;
 import com.iflat.sm.entity.SbSettlementVo;
 import com.iflat.sm.service.SbSettlementDetailService;
-import com.iflat.sm.service.SbSettlementService;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ import java.util.List;
 public class SbSettlementDetailServiceImpl extends BaseServiceSupport implements SbSettlementDetailService {
 
     private BaseService sbSettlementService;
-    private BaseService sbTargetCostSplitService;
+    private BaseService targetCostSplitService;
     private BaseService sbSettlementVoService;
     @Override
     protected void beforeInsert() throws Exception {
@@ -50,11 +49,11 @@ public class SbSettlementDetailServiceImpl extends BaseServiceSupport implements
         sbSettlement = (SbSettlement) sbSettlementService.list(sbSettlement).get(0);
 
         // 按工号、部门名称和成本科目查询总金额
-        SbTargetCostSplit sbTargetCostSplit = new SbTargetCostSplit();
-        sbTargetCostSplit.setProjNo(sbSettlement.getProjNo());
-        sbTargetCostSplit.setDeptName(sbSettlement.getDeptName());
-        sbTargetCostSplit.setCostAccount(sbSettlementDetail.getAccount());
-        List<SbTargetCostSplit> list = sbTargetCostSplitService.list(sbTargetCostSplit);
+        TargetCostSplit targetCostSplit = new TargetCostSplit();
+        targetCostSplit.setProjNo(sbSettlement.getProjNo());
+        targetCostSplit.setDeptName(sbSettlement.getDeptName());
+        targetCostSplit.setCostAccount(sbSettlementDetail.getAccount());
+        List<TargetCostSplit> list = targetCostSplitService.list(targetCostSplit);
         Double total = Double.valueOf(0);
         if (list == null) {
             throw new Exception("该科目尚未分配目标成本，请联系造船事业部结算员，进行目标成本分解。");
@@ -94,8 +93,8 @@ public class SbSettlementDetailServiceImpl extends BaseServiceSupport implements
         this.sbSettlementService = sbSettlementService;
     }
 
-    public void setSbTargetCostSplitService(BaseService sbTargetCostSplitService) {
-        this.sbTargetCostSplitService = sbTargetCostSplitService;
+    public void setTargetCostSplitService(BaseService targetCostSplitService) {
+        this.targetCostSplitService = targetCostSplitService;
     }
 
     public void setSbSettlementVoService(BaseService sbSettlementVoService) {

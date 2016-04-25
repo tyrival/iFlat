@@ -3,9 +3,18 @@ package com.iflat.sm.bean;
 /**
  * Created by tyriv on 2016/4/5.
  */
-public class SbTargetCostAccount {
+public class TargetCostAccount {
     private String code;
     private String name;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getCode() {
         return code;

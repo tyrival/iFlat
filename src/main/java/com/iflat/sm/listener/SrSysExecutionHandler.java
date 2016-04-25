@@ -82,7 +82,7 @@ public class SrSysExecutionHandler extends WorkflowExecutionListener {
         List<SrSettlementSecond> srSettlementSecondList
                 = getSrSettlementSecondService().list(srSettlementSecond);
         // 如果查询到，则说明已经生成，将此记录查询出来
-        if (list != null && list.size() > 0) {
+        if (srSettlementSecondList != null && srSettlementSecondList.size() > 0) {
             srSettlementSecond = srSettlementSecondList.get(0);
             hasGenerated = true;
         } else {

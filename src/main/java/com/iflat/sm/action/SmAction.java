@@ -7,13 +7,9 @@ import com.iflat.sm.service.*;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.Session;
 import com.iflat.workflow.service.WorkflowService;
-import freemarker.ext.beans.HashAdapter;
 
 import java.io.File;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by tyriv on 2016/3/22.
@@ -28,12 +24,12 @@ public class SmAction extends BaseAction {
     private SbSettlement sbSettlement;
     private SbSettlementDetail sbSettlementDetail;
 
-    private BaseService sbTargetCostService;
-    private SbTargetCost sbTargetCost;
-    private SbTargetCostSplitService sbTargetCostSplitService;
-    private SbTargetCostSplit sbTargetCostSplit;
-    private SbTargetCostAccount sbTargetCostAccount;
-    private BaseService sbTargetCostAccountService;
+    private BaseService targetCostService;
+    private TargetCost targetCost;
+    private TargetCostSplitService targetCostSplitService;
+    private TargetCostSplit targetCostSplit;
+    private TargetCostAccount targetCostAccount;
+    private BaseService targetCostAccountService;
 
     private BaseService srProjectManagerService;
     private SrProjectManager srProjectManager;
@@ -127,40 +123,40 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
-    /* SbTargetCostAccount */
-    public String listSbTargetCostAccount() throws Exception {
-        this.result.setList(this.sbTargetCostAccountService.list(this.sbTargetCostAccount));
+    /* TargetCostAccount */
+    public String listTargetCostAccount() throws Exception {
+        this.result.setList(this.targetCostAccountService.list(this.targetCostAccount));
         return SUCCESS;
     }
 
-    /* SbTargetCost & SbTargetCostSplit */
-    public String saveSbTargetCost() throws Exception {
-        this.result.setObject(this.sbTargetCostService.save(this.sbTargetCost));
+    /* TargetCost & TargetCostSplit */
+    public String saveTargetCost() throws Exception {
+        this.result.setObject(this.targetCostService.save(this.targetCost));
         return SUCCESS;
     }
 
-    public String deleteSbTargetCost() throws Exception {
-        this.result.setObject(this.sbTargetCostService.delete(this.sbTargetCost));
+    public String deleteTargetCost() throws Exception {
+        this.result.setObject(this.targetCostService.delete(this.targetCost));
         return SUCCESS;
     }
 
-    public String listSbTargetCost() throws Exception {
-        this.result.setList(this.sbTargetCostService.list(this.sbTargetCost));
+    public String listTargetCost() throws Exception {
+        this.result.setList(this.targetCostService.list(this.targetCost));
         return SUCCESS;
     }
 
-    public String saveSbTargetCostSplit() throws Exception {
-        this.result.setObject(this.sbTargetCostSplitService.save(this.sbTargetCostSplit));
+    public String saveTargetCostSplit() throws Exception {
+        this.result.setObject(this.targetCostSplitService.save(this.targetCostSplit));
         return SUCCESS;
     }
 
-    public String deleteSbTargetCostSplit() throws Exception {
-        this.result.setObject(this.sbTargetCostSplitService.delete(this.sbTargetCostSplit));
+    public String deleteTargetCostSplit() throws Exception {
+        this.result.setObject(this.targetCostSplitService.delete(this.targetCostSplit));
         return SUCCESS;
     }
 
-    public String listSbTargetCostSplit() throws Exception {
-        this.result.setList(this.sbTargetCostSplitService.list(this.sbTargetCostSplit));
+    public String listTargetCostSplit() throws Exception {
+        this.result.setList(this.targetCostSplitService.list(this.targetCostSplit));
         return SUCCESS;
     }
 
@@ -193,6 +189,17 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
+    public String approveSrSettlementBatch() throws Exception {
+        List<SrSettlement> list = this.srSettlementService.list(this.srSettlement);
+        if (list != null && list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
+                String businessKey = srSettlementService.getBusinessKey(list.get(i));
+                workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+            }
+        }
+        return SUCCESS;
+    }
+
     public String approveSrSettlementFirst() throws Exception {
 
         // 如果是审批通过，则更新余额
@@ -203,11 +210,13 @@ public class SmAction extends BaseAction {
             orig = (SrSettlement) this.srSettlementService.list(orig).get(0);
             Double adjust = this.srSettlement.getSummaryAmount() - orig.getSummaryAmount();
 
-            // 根据调整价格，修改相应部门的工费余额
-            SrSettlementBalance balance = new SrSettlementBalance();
-            balance.setDeptName(orig.getDeptName());
-            balance.setAdjustment(adjust);
-            this.srSettlementBalanceService.save(balance);
+            if (adjust != 0) {
+                // 根据调整价格，修改相应部门的工费余额
+                SrSettlementBalance balance = new SrSettlementBalance();
+                balance.setDeptName(orig.getDeptName());
+                balance.setAdjustment(adjust);
+                this.srSettlementBalanceService.save(balance);
+            }
 
             // 储存一级结算的信息
             UserInfoVo userInfoVo = Session.getUserInfo();
@@ -303,6 +312,15 @@ public class SmAction extends BaseAction {
     }
 
     /* SrSettlementSecond */
+    public String approveSrSettlementSecond() throws Exception {
+        //this.srSettlementSecond.setPid(this.srSettlement.getId());
+        this.srSettlementSecondService.save(this.srSettlementSecond);
+
+        String businessKey = srSettlementService.getBusinessKey(srSettlement);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+        return SUCCESS;
+    }
+
     public String saveSrSettlementSecond() throws Exception {
         this.result.setObject(this.srSettlementSecondService.save(this.srSettlementSecond));
         return SUCCESS;
@@ -329,6 +347,21 @@ public class SmAction extends BaseAction {
     }
 
     /* SrSettlementDetlSecond */
+    public String listSrSettlementSecondBySrSettlement() throws Exception {
+
+        List<SrSettlement> list = this.srSettlementService.list(this.srSettlement);
+        List<SrSettlementSecond> secondList = new ArrayList<>();
+        if (list != null && list.size() != 0) {
+            for (int i = 0; i < list.size(); i++) {
+                SrSettlementSecond second = new SrSettlementSecond(list.get(i));
+                secondList.add(second);
+            }
+        }
+        secondList = this.srSettlementSecondService.listBatch(secondList);
+        this.result.setList(secondList);
+        return SUCCESS;
+    }
+
     public String listSrSettlementDetlSecondBySrSettlement() throws Exception {
         SrSettlementSecond second = new SrSettlementSecond();
         second.setPid(this.srSettlement.getId());
@@ -369,7 +402,7 @@ public class SmAction extends BaseAction {
                 = (SrSettlementDetlSecond) this.srSettlementDetlSecondService
                 .save(this.srSettlementDetlSecond);
         Map<String, Object> map = new HashMap();
-        map.put("head", this.srSettlement);
+        map.put("head", this.srSettlementSecond);
         map.put("detail", this.srSettlementDetlSecond);
         this.result.setMap(map);
         return SUCCESS;
@@ -447,36 +480,36 @@ public class SmAction extends BaseAction {
         this.comment = comment;
     }
 
-    public void setSbTargetCostService(BaseService sbTargetCostService) {
-        this.sbTargetCostService = sbTargetCostService;
+    public void setTargetCostService(BaseService targetCostService) {
+        this.targetCostService = targetCostService;
     }
 
-    public void setSbTargetCost(SbTargetCost sbTargetCost) {
-        this.sbTargetCost = sbTargetCost;
+    public void setTargetCost(TargetCost targetCost) {
+        this.targetCost = targetCost;
     }
 
-    public void setSbTargetCostSplitService(SbTargetCostSplitService sbTargetCostSplitService) {
-        this.sbTargetCostSplitService = sbTargetCostSplitService;
+    public void setTargetCostSplitService(TargetCostSplitService targetCostSplitService) {
+        this.targetCostSplitService = targetCostSplitService;
     }
 
-    public BaseService getSbTargetCostService() {
-        return sbTargetCostService;
+    public BaseService getTargetCostService() {
+        return targetCostService;
     }
 
-    public SbTargetCost getSbTargetCost() {
-        return sbTargetCost;
+    public TargetCost getTargetCost() {
+        return targetCost;
     }
 
-    public SbTargetCostSplitService getSbTargetCostSplitService() {
-        return sbTargetCostSplitService;
+    public TargetCostSplitService getTargetCostSplitService() {
+        return targetCostSplitService;
     }
 
-    public SbTargetCostSplit getSbTargetCostSplit() {
-        return sbTargetCostSplit;
+    public TargetCostSplit getTargetCostSplit() {
+        return targetCostSplit;
     }
 
-    public void setSbTargetCostSplit(SbTargetCostSplit sbTargetCostSplit) {
-        this.sbTargetCostSplit = sbTargetCostSplit;
+    public void setTargetCostSplit(TargetCostSplit targetCostSplit) {
+        this.targetCostSplit = targetCostSplit;
     }
 
     public String getOutGoingName() {
@@ -487,20 +520,20 @@ public class SmAction extends BaseAction {
         return comment;
     }
 
-    public SbTargetCostAccount getSbTargetCostAccount() {
-        return sbTargetCostAccount;
+    public TargetCostAccount getTargetCostAccount() {
+        return targetCostAccount;
     }
 
-    public void setSbTargetCostAccount(SbTargetCostAccount sbTargetCostAccount) {
-        this.sbTargetCostAccount = sbTargetCostAccount;
+    public void setTargetCostAccount(TargetCostAccount targetCostAccount) {
+        this.targetCostAccount = targetCostAccount;
     }
 
-    public BaseService getSbTargetCostAccountService() {
-        return sbTargetCostAccountService;
+    public BaseService getTargetCostAccountService() {
+        return targetCostAccountService;
     }
 
-    public void setSbTargetCostAccountService(BaseService sbTargetCostAccountService) {
-        this.sbTargetCostAccountService = sbTargetCostAccountService;
+    public void setTargetCostAccountService(BaseService targetCostAccountService) {
+        this.targetCostAccountService = targetCostAccountService;
     }
 
     public void setSrSettlementService(SrSettlementService srSettlementService) {

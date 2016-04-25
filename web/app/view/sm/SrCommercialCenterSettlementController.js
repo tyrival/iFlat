@@ -139,11 +139,17 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
                     form.down('textfield[name=srSettlement.performanceAmount]').setValue(0);
                     form.down('textfield[name=srSettlement.materialAmount]').setValue(0);
                     form.down('textfield[name=srSettlement.laborAmount]').setValue(0);
-                    form.down('textarea[name=comment]').setValue(0);
+                    form.down('textarea[name=comment]').setValue('');
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
                     win.hide();
+                    Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
+                    form.down('textfield[name=srSettlement.consumableAmount]').setValue(0);
+                    form.down('textfield[name=srSettlement.performanceAmount]').setValue(0);
+                    form.down('textfield[name=srSettlement.materialAmount]').setValue(0);
+                    form.down('textfield[name=srSettlement.laborAmount]').setValue(0);
+                    form.down('textarea[name=comment]').setValue('');
                 }
             })
         }

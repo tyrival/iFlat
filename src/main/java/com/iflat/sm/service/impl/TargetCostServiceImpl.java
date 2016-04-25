@@ -5,5 +5,5 @@ import com.iflat.base.service.impl.BaseServiceSupport;
 /**
  * Created by tyriv on 2016/3/23.
  */
-public class SbTargetCostServiceImpl extends BaseServiceSupport {
+public class TargetCostServiceImpl extends BaseServiceSupport {
 }

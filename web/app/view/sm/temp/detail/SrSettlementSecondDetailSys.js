@@ -11,17 +11,17 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
     scrollable: true,
     border: true,
     columnLines: true,
-    store: Ext.create('iFlat.store.sm.SrSettlementDetlSecond'),
+    store: Ext.create('iFlat.store.sm.SrSettlementDetlSecond', {
+        proxy: {
+            type: 'ajax',
+            url: 'sm_listSrSettlementDetlSecondBySrSettlement.action',
+        },
+    }),
 
-    tbar: [{
-        text: '新增',
-        ui: 'orig-blue',
-        handler: 'addDetail',
-    }, '->', {
+    tbar: ['->', {
         xtype: 'label',
         padding: '10',
         text: '已分配： ',
-        flex: 1
     }, {
         xtype: 'label',
         name: 'distribute',
@@ -52,47 +52,48 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
         shrinkWrap: 1,
     }, {
         header: '规格',
-        dataIndex: 'srSettlementDetlSecond.spec',
+        dataIndex: 'srSettlementDetlSecond.specs',
     }, {
         header: '单位',
+        width: 80,
         dataIndex: 'srSettlementDetlSecond.unit',
     }, {
         header: '数量',
+        width: 80,
         dataIndex: 'srSettlementDetlSecond.settleQty1',
-        editor: {
-        }
     }, {
         header: '单价',
+        width: 80,
         dataIndex: 'srSettlementDetlSecond.settlePrice',
-        editor: {
-        }
     }, {
         header: '金额',
+        width: 80,
         dataIndex: 'srSettlementDetlSecond.settleAmount',
-        editor: {
-        }
     }, {
-        header: '数量',
+        header: '数量（二级）',
+        width: 120,
         dataIndex: 'srSettlementDetlSecond.qty1',
         editor: {
         }
     }, {
-        header: '单价',
+        header: '单价（二级）',
         align: 'right',
+        width: 120,
         dataIndex: 'srSettlementDetlSecond.price',
         editor: {
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
         }
     }, {
-        header: '金额',
+        header: '金额（二级）',
         align: 'right',
+        width: 120,
         dataIndex: 'srSettlementDetlSecond.amount',
         editor: {
             allowBlank: false,
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
         }
     }, {
-        header: '备注',
+        header: '备注（二级）',
         width: 150,
         dataIndex: 'srSettlementDetlSecond.comment',
         editor: {

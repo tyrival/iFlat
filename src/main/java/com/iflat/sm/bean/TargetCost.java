@@ -5,9 +5,10 @@ import java.util.Date;
 /**
  * Created by tyriv on 2016/3/21.
  */
-public class SbTargetCost {
+public class TargetCost {
 
     private String id;
+    private String type;
     private String projNo;
     private String projName;
     private String deptName;
@@ -16,6 +17,14 @@ public class SbTargetCost {
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getCreatorAcc() {
         return creatorAcc;

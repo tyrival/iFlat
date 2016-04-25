@@ -9,6 +9,8 @@ Ext.define('iFlat.view.workflow.Comment', {
     closeAction: 'hide',
     width: 800,
     store: workflowCommentStore = Ext.create('iFlat.store.workflow.Comment'),
+    maxHeight: 500,
+    y: 20,
     items: [{
         xtype: 'grid',
         id: 'workflow-comment-grid',

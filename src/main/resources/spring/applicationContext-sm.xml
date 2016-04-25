@@ -9,12 +9,12 @@
         <property name="sbSettlementService" ref="sbSettlementService"/>
         <property name="sbSettlementDetail" ref="sbSettlementDetail"/>
         <property name="sbSettlementDetailService" ref="sbSettlementDetailService"/>
-        <property name="sbTargetCost" ref="sbTargetCost"/>
-        <property name="sbTargetCostService" ref="sbTargetCostService"/>
-        <property name="sbTargetCostSplit" ref="sbTargetCostSplit"/>
-        <property name="sbTargetCostSplitService" ref="sbTargetCostSplitService"/>
-        <property name="sbTargetCostAccount" ref="sbTargetCostAccount"/>
-        <property name="sbTargetCostAccountService" ref="sbTargetCostAccountService"/>
+        <property name="targetCost" ref="targetCost"/>
+        <property name="targetCostService" ref="targetCostService"/>
+        <property name="targetCostSplit" ref="targetCostSplit"/>
+        <property name="targetCostSplitService" ref="targetCostSplitService"/>
+        <property name="targetCostAccount" ref="targetCostAccount"/>
+        <property name="targetCostAccountService" ref="targetCostAccountService"/>
         <property name="srProjectManagerService" ref="srProjectManagerService"/>
         <property name="srProjectManager" ref="srProjectManager"/>
         <property name="srSettlementService" ref="srSettlementService"/>
@@ -42,26 +42,26 @@
 
     <bean id="sbSettlementDetailService" class="com.iflat.sm.service.impl.SbSettlementDetailServiceImpl">
         <property name="sbSettlementService" ref="sbSettlementService"/>
-        <property name="sbTargetCostSplitService" ref="sbTargetCostSplitService"/>
+        <property name="targetCostSplitService" ref="targetCostSplitService"/>
         <property name="sbSettlementVoService" ref="sbSettlementVoService"/>
     </bean>
     <bean id="sbSettlementDetailDao" class="com.iflat.sm.dao.impl.SbSettlementDetailDaoImpl"/>
     <bean id="sbSettlementDetail" class="com.iflat.sm.bean.SbSettlementDetail" scope="prototype"/>
 
-    <bean id="sbTargetCostService" class="com.iflat.sm.service.impl.SbTargetCostServiceImpl"/>
-    <bean id="sbTargetCostDao" class="com.iflat.sm.dao.impl.SbTargetCostDaoImpl"/>
-    <bean id="sbTargetCost" class="com.iflat.sm.bean.SbTargetCost" scope="prototype"/>
+    <bean id="targetCostService" class="com.iflat.sm.service.impl.TargetCostServiceImpl"/>
+    <bean id="targetCostDao" class="com.iflat.sm.dao.impl.TargetCostDaoImpl"/>
+    <bean id="targetCost" class="com.iflat.sm.bean.TargetCost" scope="prototype"/>
 
-    <bean id="sbTargetCostAccountService" class="com.iflat.sm.service.impl.SbTargetCostAccountServiceImpl"/>
-    <bean id="sbTargetCosAccounttDao" class="com.iflat.sm.dao.impl.SbTargetCostAccountDaoImpl"/>
-    <bean id="sbTargetCostAccount" class="com.iflat.sm.bean.SbTargetCostAccount" scope="prototype"/>
+    <bean id="targetCostAccountService" class="com.iflat.sm.service.impl.TargetCostAccountServiceImpl"/>
+    <bean id="targetCosAccountDao" class="com.iflat.sm.dao.impl.TargetCostAccountDaoImpl"/>
+    <bean id="targetCostAccount" class="com.iflat.sm.bean.TargetCostAccount" scope="prototype"/>
 
-    <bean id="sbTargetCostSplitService" class="com.iflat.sm.service.impl.SbTargetCostSplitServiceImpl">
-        <property name="sbTargetCostService" ref="sbTargetCostService"/>
+    <bean id="targetCostSplitService" class="com.iflat.sm.service.impl.TargetCostSplitServiceImpl">
+        <property name="targetCostService" ref="targetCostService"/>
         <property name="sbSettlementVoService" ref="sbSettlementVoService"/>
     </bean>
-    <bean id="sbTargetCostSplitDao" class="com.iflat.sm.dao.impl.SbTargetCostSplitDaoImpl"/>
-    <bean id="sbTargetCostSplit" class="com.iflat.sm.bean.SbTargetCostSplit" scope="prototype"/>
+    <bean id="targetCostSplitDao" class="com.iflat.sm.dao.impl.TargetCostSplitDaoImpl"/>
+    <bean id="targetCostSplit" class="com.iflat.sm.bean.TargetCostSplit" scope="prototype"/>
 
     <bean id="srSettlementService" class="com.iflat.sm.service.impl.SrSettlementServiceImpl">
         <property name="workflowService" ref="workflowService"/>

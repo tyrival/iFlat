@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlementDetlSecond">
         INSERT INTO SmSrSettlementDetlSecond
-        VALUES (#{id},#{pid},#{content},#{type},#{specs},#{qty1},#{qty2},#{qty3},#{qty4},#{qty5},#{qty6},#{price},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{settleQty1},#{settleQty2},#{settleQty3},#{settleQty4},#{settleQty5},#{settleQty6},#{settlePrice},#{settleAmount})
+        VALUES (#{id},#{pid},#{type},#{specs},#{content},#{qty1},#{qty2},#{qty3},#{qty4},#{qty5},#{qty6},#{price},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{settleQty1},#{settleQty2},#{settleQty3},#{settleQty4},#{settleQty5},#{settleQty6},#{settlePrice},#{settleAmount})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlementDetlSecond
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.pid},#{item.content},#{item.type},#{item.specs},#{item.qty1},#{item.qty2},#{item.qty3},#{item.qty4},#{item.qty5},#{item.qty6},#{item.price},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.settleQty1},#{item.settleQty2},#{item.settleQty3},#{item.settleQty4},#{item.settleQty5},#{item.settleQty6},#{item.settlePrice},#{item.settleAmount}
+            SELECT #{item.id},#{item.pid},#{item.type},#{item.specs},#{item.content},#{item.qty1},#{item.qty2},#{item.qty3},#{item.qty4},#{item.qty5},#{item.qty6},#{item.price},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.settleQty1},#{item.settleQty2},#{item.settleQty3},#{item.settleQty4},#{item.settleQty5},#{item.settleQty6},#{item.settlePrice},#{item.settleAmount}
         </foreach>
     </insert>
 

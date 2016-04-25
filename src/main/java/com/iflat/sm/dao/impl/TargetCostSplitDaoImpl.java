@@ -5,5 +5,5 @@ import com.iflat.base.dao.impl.BaseDaoSupport;
 /**
  * Created by tyriv on 2016/3/23.
  */
-public class SbTargetCostSplitDaoImpl extends BaseDaoSupport {
+public class TargetCostSplitDaoImpl extends BaseDaoSupport {
 }

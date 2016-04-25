@@ -13,8 +13,29 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
 
     listeners: {
         hide: function () {
-            Ext.WindowManager.getActive()
-            .down('sm-detail-srsettlementsecondgrid').getStore().reload();
+            var win = Ext.WindowManager.getActive();
+            if (win.isXType('tip')) {
+                win.close();
+                win = Ext.WindowManager.getActive();
+            }
+            win.down('sm-detail-srsettlementsecondgrid').getStore().reload();
+            // 加载可分配金额
+            var balance = win.down('form').down('textfield[name=balance]');
+            //Flat.util.mask('加载中...');
+            Ext.Ajax.request({
+                url: 'sm_listSrSettlementBalance.action',
+                method: 'post',
+                params: {
+                    'srSettlementBalance.deptName': dept
+                },
+                success: function(response, opts) {
+                    var list = Ext.JSON.decode(response.responseText)['list'];
+                    balance.setValue(list[0]['amount']);
+                },
+                failure: function(response, opts) {
+                    Flat.util.tip(response.responseText);
+                }
+            });
         }
     },
 

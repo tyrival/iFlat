@@ -2,22 +2,22 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Sm.SbTargetCostSplit">
+<mapper namespace="Sm.TargetCostSplit">
 
-    <insert id="insert" parameterType="com.iflat.sm.bean.SbTargetCostSplit">
-        INSERT INTO SmSbTargetCostSplit
+    <insert id="insert" parameterType="com.iflat.sm.bean.TargetCostSplit">
+        INSERT INTO SmTargetCostSplit
         VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{costAccount},#{amount},#{creatorAcc},#{creatorName},#{createTime},#{fixed},#{fixedTime})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
-        INSERT INTO SmSbTargetCostSplit
+        INSERT INTO SmTargetCostSplit
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
             SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.costAccount},#{item.amount},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.fixed},#{item.fixedTime}
         </foreach>
     </insert>
 
-    <update id="update" parameterType="com.iflat.sm.bean.SbTargetCostSplit">
-        UPDATE SmSbTargetCostSplit
+    <update id="update" parameterType="com.iflat.sm.bean.TargetCostSplit">
+        UPDATE SmTargetCostSplit
         <set>
             <if test="type!=null">type=#{type},</if>
             <if test="projNo!=null">projNo=#{projNo},</if>
@@ -31,14 +31,14 @@
         WHERE id=#{id}
     </update>
 
-    <delete id="delete" parameterType="com.iflat.sm.bean.SbTargetCostSplit">
-        DELETE SmSbTargetCostSplit
+    <delete id="delete" parameterType="com.iflat.sm.bean.TargetCostSplit">
+        DELETE SmTargetCostSplit
         WHERE id=#{id}
     </delete>
 
-    <select id="list" parameterType="com.iflat.sm.bean.SbTargetCostSplit" resultMap="SmSbTargetCostSplitResult">
+    <select id="list" parameterType="com.iflat.sm.bean.TargetCostSplit" resultMap="SmTargetCostSplitResult">
         SELECT id,type,projNo,projName,deptName,costAccount,amount,creatorAcc,creatorName,createTime,fixed,fixedTime
-        FROM SmSbTargetCostSplit
+        FROM SmTargetCostSplit
         <where>
             <if test="id!=null">id=#{id}</if>
             <if test="type!=null">AND type=#{type}</if>
@@ -52,7 +52,7 @@
         ORDER BY projNo,deptName,type,costAccount,createTime,id
     </select>
 
-    <resultMap type="com.iflat.sm.bean.SbTargetCostSplit" id="SmSbTargetCostSplitResult">
+    <resultMap type="com.iflat.sm.bean.TargetCostSplit" id="SmTargetCostSplitResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="type" column="type" jdbcType="VARCHAR"/>
         <result property="projNo" column="projNo" jdbcType="VARCHAR"/>

@@ -53,6 +53,8 @@ public class SrSettlementDetlSecond {
         this.settleQty6 = first.getSettleQty6();
         this.settlePrice = first.getPrice();
         this.settleAmount = first.getAmount();
+        this.creatorAcc = first.getCreatorAcc();
+        this.creatorName = first.getCreatorName();
         this.createTime = new Date();
     }
 
@@ -70,6 +72,8 @@ public class SrSettlementDetlSecond {
         this.settleQty6 = first.getSettleQty6();
         this.settlePrice = first.getPrice();
         this.settleAmount = first.getAmount();
+        this.creatorAcc = first.getCreatorAcc();
+        this.creatorName = first.getCreatorName();
         this.createTime = new Date();
     }
 

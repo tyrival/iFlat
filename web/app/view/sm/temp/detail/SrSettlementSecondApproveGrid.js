@@ -1,45 +1,57 @@
-Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondGrid', {
+Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondApproveGrid', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.sm-detail-srsettlementsecondgrid',
+    alias: 'widget.sm-detail-srsettlementsecondapprovegrid',
 
     requires: [
-        'iFlat.view.sm.temp.SrSettlementSecondController'
+        'iFlat.view.sm.temp.SrSettlementApproveSecondController',
+        'iFlat.view.sm.temp.SrSettlementApproveSecondInfoMain',
+        'iFlat.view.sm.temp.SrSettlementApproveSecondInfoMisc',
+        'iFlat.view.sm.temp.SrSettlementApproveSecondInfoSys',
     ],
-    controller: 'sm-srsettlementsecond',
+    controller: 'sm-srsettlementapprovesecond',
 
     width: '100%',
     scrollable: true,
     border: true,
     columnLines: true,
-    store: smSrSettlementSecondGridStore = Ext.create('iFlat.store.sm.SrSettlementSecond'),
+    store: Ext.create('iFlat.store.sm.SrSettlementSecond', {
+        proxy: {
+            type: 'ajax',
+            url: 'sm_listSrSettlementSecondBySrSettlement.action',
+        },
+    }),
 
-    tbar: [{
-        text: '新增',
-        name: 'addDetail',
-        ui: 'orig-blue',
-        handler: 'editSecond',
-    }, '->', {
+    tbar: ['->', {
         xtype: 'textfield',
         name: 'summaryAmountSecond',
         fieldLabel: '已分配',
         labelAlign: 'right',
+        align: 'right',
         width: 240,
+        editable: false,
     }, {
         text: '刷新',
         handler: 'refresh',
     }],
 
     columns: [{
-        text: '编辑',
+        text: '详情',
         width: 60,
         menuDisabled: true,
         xtype: 'actioncolumn',
         align: 'center',
-        iconCls: 'x-fa fa-edit',
-        handler: 'editSecond',
+        iconCls: 'x-fa fa-file-text-o',
+        handler: 'info',
         editor: {
             xtype: 'label',
         }
+    }, {
+        header: '工号',
+        dataIndex: 'srSettlementSecond.projNo',
+    }, {
+        header: '船名',
+        width: 220,
+        dataIndex: 'srSettlementSecond.projName',
     }, {
         header: '工程队',
         width: 220,
@@ -67,6 +79,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondGrid', {
     }, {
         header: '附件',
         align: 'right',
+        width: 80,
         dataIndex: 'srSettlementSecond.attachment',
         renderer: 'renderAttachment'
     }, {
@@ -74,18 +87,5 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondGrid', {
         width: 150,
         dataIndex: 'srSettlementSecond.comment',
         shrinkWrap: 1,
-    }, {
-        text: '删除',
-        name: 'deleteDetail',
-        width: 60,
-        menuDisabled: true,
-        xtype: 'actioncolumn',
-        tooltip: '删除',
-        align: 'center',
-        iconCls: 'x-fa fa-close',
-        handler: 'deleteSettlementSecond',
-        editor: {
-            xtype: 'label',
-        }
     }],
 });
