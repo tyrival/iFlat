@@ -251,6 +251,49 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                     style: 'font-weight: bold; text-align: right; font-size: 110%',
                 }]
             }, {
+                xtype: 'container',
+                layout: 'hbox',
+                name: 'assess',
+                items: [{
+                    xtype: 'textfield',
+                    name: 'srSettlementSecond.mgrScore',
+                    fieldLabel: '管理分',
+                    value: 100,
+                    allowBlank: true,
+                    width: 150,
+                }, {
+                    xtype: 'textfield',
+                    fieldLabel: '进度分',
+                    name: 'srSettlementSecond.progressScore',
+                    value: 100,
+                    allowBlank: true,
+                    width: 150,
+                }, {
+                    xtype: 'textfield',
+                    fieldLabel: '质量分',
+                    name: 'srSettlementSecond.qualityScore',
+                    value: 100,
+                    allowBlank: true,
+                    width: 150,
+                }, {
+                    xtype: 'textfield',
+                    fieldLabel: '安全分',
+                    name: 'srSettlementSecond.safetyScore',
+                    value: 100,
+                    allowBlank: true,
+                    width: 150,
+                }, {
+                    xtype: 'textfield',
+                    fieldLabel: '扣款',
+                    name: 'srSettlementSecond.fineAmount',
+                    value: 0,
+                    allowBlank: true,
+                    width: 150,
+                    listeners: {
+                        change: 'changeSummaryAmount'
+                    }
+                }]
+            }, {
                 xtype: 'textarea',
                 name: 'comment',
                 labelAlign: 'top',

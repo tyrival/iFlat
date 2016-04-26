@@ -77,6 +77,10 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondApproveGrid', {
         align: 'right',
         dataIndex: 'srSettlementSecond.materialAmount',
     }, {
+        header: '扣款',
+        align: 'right',
+        dataIndex: 'srSettlementSecond.fineAmount',
+    }, {
         header: '附件',
         align: 'right',
         width: 80,

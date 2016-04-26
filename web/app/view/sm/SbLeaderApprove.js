@@ -1,13 +1,5 @@
 Ext.define('iFlat.view.sm.SbLeaderApprove', {
-    extend: 'iFlat.view.sm.temp.SbSettlementApprove',
+    extend: 'iFlat.view.sm.temp.SbSettlementApproveBatch',
     alias: 'widget.sm-sbleaderapprove',
-
-    store: smSbWorkshopApproveStore = Ext.create('iFlat.store.sm.SbSettlement', {
-        proxy: {
-            extraParams: {
-                'sbSettlement.status': '公司领导审批',
-            }
-        },
-    }),
 
 });

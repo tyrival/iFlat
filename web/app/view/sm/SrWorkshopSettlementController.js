@@ -87,12 +87,14 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
         var team = win.down('textfield[name=team]');
         var amount = win.down('textfield[name=summaryAmountSecond]');
         var second = win.down('container[name=sysSecond]');
+        var assess = win.down('container[name=assess]');
         var completeProcess = win.down('button[name=completeProcess]');
         var panel = win.down('panel[name=detail]');
         
         team.setHidden(newValue != 'Sys');
         amount.setHidden(newValue != 'Sys');
         second.setHidden(newValue != 'Sys');
+        assess.setHidden(newValue != 'Sys');
         completeProcess.setHidden(newValue == 'Sys');
         panel.down('sm-detail-srsettlementsecondgrid').setHidden(newValue == 'Sys');
         panel.down('sm-detail-srsettlementseconddetailsys').setHidden(newValue != 'Sys');
@@ -106,7 +108,8 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
             sum = 0;
         }
         var diff = newValue - oldValue;
-        if (field.getName() == 'srSettlementSecond.materialAmount') {
+        if (field.getName() == 'srSettlementSecond.materialAmount' 
+            || field.getName() == 'srSettlementSecond.fineAmount') {
             diff = 0 - diff;
         }
         sum += diff;

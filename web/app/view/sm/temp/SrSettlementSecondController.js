@@ -146,7 +146,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
         }
         // 如果是材料费，则变为减
         var diff = newValue - oldValue;
-        if (field.getName() == "srSettlementSecond.materialAmount") {
+        if (field.getName() == "srSettlementSecond.materialAmount"
+            || field.getName() == "srSettlementSecond.fineAmount") {
             diff = 0 - diff;
         }
         sum += diff;

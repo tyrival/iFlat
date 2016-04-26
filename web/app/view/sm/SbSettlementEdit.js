@@ -84,6 +84,40 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 layout: 'hbox',
                 items: [{
                     xtype: 'textfield',
+                    name: 'sbSettlement.mgrScore',
+                    fieldLabel: '管理分',
+                    value: 100,
+                    width: 150,
+                }, {
+                    xtype: 'textfield',
+                    name: 'sbSettlement.progressScore',
+                    fieldLabel: '进度分',
+                    value: 100,
+                    width: 150,
+                }, {
+                    xtype: 'textfield',
+                    name: 'sbSettlement.qualityScore',
+                    fieldLabel: '质量分',
+                    value: 100,
+                    width: 150,
+                }, {
+                    xtype: 'textfield',
+                    name: 'sbSettlement.safetyScore',
+                    fieldLabel: '安全分',
+                    value: 100,
+                    width: 150,
+                }, {
+                    xtype: 'textfield',
+                    name: 'sbSettlement.fineAmount',
+                    fieldLabel: '扣款',
+                    value: 0,
+                    width: 150,
+                }, ]
+            }, {
+                xtype: 'container',
+                layout: 'hbox',
+                items: [{
+                    xtype: 'textfield',
                     id: 'sm-sbsettlementedit-attachment',
                     name: 'sbSettlement.attachment',
                     fieldLabel: 'attachment',
