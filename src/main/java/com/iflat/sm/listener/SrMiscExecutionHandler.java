@@ -50,6 +50,10 @@ public class SrMiscExecutionHandler extends WorkflowExecutionListener {
         setStatus(execution, SrStatus.STATUS_WORKSHOP_SETTLEMENT_APPROVE);
     }
 
+    public void businessDivisionAudit(DelegateExecution execution) throws Exception {
+        setStatus(execution, SrStatus.STATUS_BUSINESS_DIVISION_AUDIT);
+    }
+
     public void hrAudit(DelegateExecution execution) throws Exception {
         setStatus(execution, SrStatus.STATUS_HR_AUDIT);
     }

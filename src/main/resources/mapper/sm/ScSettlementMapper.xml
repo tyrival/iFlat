@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.ScSettlement">
         INSERT INTO SmScSettlement
-        VALUES (#{id},#{projNo},#{projName},#{month},#{deptName},#{team},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime})
+        VALUES (#{id},#{projNo},#{projName},#{month},#{deptName},#{team},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{mgrScore},#{progressScore},#{qualityScore},#{safetyScore},#{fineAmount})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmScSettlement
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.month},#{item.deptName},#{item.team},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.month},#{item.deptName},#{item.team},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.mgrScore},#{item.progressScore},#{item.qualityScore},#{item.safetyScore},#{item.fineAmount}
         </foreach>
     </insert>
 
@@ -27,6 +27,11 @@
             <if test="attachment!=null">attachment=#{attachment},</if>
             <if test="comment!=null">comment=#{comment},</if>
             <if test="status!=null">status=#{status},</if>
+            <if test="mgrScore!=null">mgrScore=#{mgrScore},</if>
+            <if test="progressScore!=null">progressScore=#{progressScore},</if>
+            <if test="qualityScore!=null">qualityScore=#{qualityScore},</if>
+            <if test="safetyScore!=null">safetyScore=#{safetyScore},</if>
+            <if test="fineAmount!=null">fineAmount=#{fineAmount},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -37,8 +42,8 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.ScSettlement" resultMap="SmScSettlementResult">
-        SELECT id,projNo,projName,month,deptName,team,attachment,comment,status,creatorAcc,creatorName,createTime
-        FROM SmScSettlement
+        SELECT id,projNo,projName,month,deptName,team,attachment,comment,status,creatorAcc,creatorName,createTime,amount,mgrScore,progressScore,qualityScore,safetyScore,fineAmount
+        FROM V_SmScSettlement
         <where>
             <if test="id!=null">id=#{id}</if>
             <if test="projNo!=null">AND projNo=#{projNo}</if>
@@ -66,5 +71,10 @@
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="mgrScore" column="mgrScore" jdbcType="DOUBLE"/>
+        <result property="progressScore" column="progressScore" jdbcType="DOUBLE"/>
+        <result property="qualityScore" column="qualityScore" jdbcType="DOUBLE"/>
+        <result property="safetyScore" column="safetyScore" jdbcType="DOUBLE"/>
+        <result property="fineAmount" column="fineAmount" jdbcType="DOUBLE"/>
     </resultMap>
 </mapper>

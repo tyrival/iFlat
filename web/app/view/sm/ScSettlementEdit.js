@@ -1,12 +1,12 @@
-Ext.define('iFlat.view.sm.SbSettlementEdit', {
+Ext.define('iFlat.view.sm.ScSettlementEdit', {
     extend: 'Ext.window.Window',
-    alias: 'widget.sm-sbsettlementedit',
+    alias: 'widget.sm-scsettlementedit',
     title: '造船结算单',
     layout: 'fit',
     modal: true,
 
-    id: 'sm-sbsettlementedit',
-    controller: 'sm-sbsettlement',
+    id: 'sm-scsettlementedit',
+    controller: 'sm-scsettlement',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
@@ -19,7 +19,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
         },
         items: [{
             xtype: 'form',
-            id: 'sm-sbsettlementedit-form',
+            id: 'sm-scsettlementedit-form',
             fieldDefaults: {
                 labelAlign: 'right',
                 labelWidth: 50,
@@ -32,19 +32,19 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     allowBlank: false,
                     fieldLabel: '日期',
                     format: 'Y-m',
-                    id: 'sm-sbsettlementedit-time',
+                    id: 'sm-scsettlementedit-time',
                     width: 200,
                     listeners: {
                         change: function (df, newValue, oldValue, eOpts) {
-                            Ext.getCmp('sm-sbsettlementedit-month')
+                            Ext.getCmp('sm-scsettlementedit-month')
                                 .setValue(Ext.Date.format(newValue, 'Y-m-d'));
                         }
                     }
                 }, {
                     xtype: 'combo',
-                    name: 'sbSettlement.projNo',
-                    id: 'sm-sbsettlementedit-projno',
-                    store: smSbSettlementEditComboStore = Ext.create('iFlat.store.report.bi.Project', {
+                    name: 'scSettlement.projNo',
+                    id: 'sm-scsettlementedit-projno',
+                    store: smScSettlementEditComboStore = Ext.create('iFlat.store.report.bi.Project', {
                         proxy: {
                             extraParams: {
                                 'rptProject.type': '造船',
@@ -67,8 +67,8 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     }
                 }, {
                     xtype: 'combo',
-                    id: 'sm-sbsettlementedit-team',
-                    name: 'sbSettlement.team',
+                    id: 'sm-scsettlementedit-team',
+                    name: 'scSettlement.team',
                     queryMode: 'local',
                     allowBlank: false,
                     editable: false,
@@ -77,7 +77,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     valueField: 'teamName',
                     width: 300,
                     fieldLabel: '施工队',
-                    store: smSbSettlementTeamStore = Ext.create('iFlat.store.code.Team'),
+                    store: smScSettlementTeamStore = Ext.create('iFlat.store.code.Team'),
                 }]
             }, {
                 xtype: 'container',
@@ -85,32 +85,32 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 margin: '10 0 0 0',
                 items: [{
                     xtype: 'textfield',
-                    name: 'sbSettlement.mgrScore',
+                    name: 'scSettlement.mgrScore',
                     fieldLabel: '管理分',
                     value: 100,
                     width: 160,
                 }, {
                     xtype: 'textfield',
-                    name: 'sbSettlement.progressScore',
+                    name: 'scSettlement.progressScore',
                     fieldLabel: '进度分',
                     value: 100,
                     width: 160,
                 }, {
                     xtype: 'textfield',
-                    name: 'sbSettlement.qualityScore',
+                    name: 'scSettlement.qualityScore',
                     fieldLabel: '质量分',
                     value: 100,
                     width: 160,
                 }, {
                     xtype: 'textfield',
-                    name: 'sbSettlement.safetyScore',
+                    name: 'scSettlement.safetyScore',
                     fieldLabel: '安全分',
                     value: 100,
                     width: 160,
                 }, {
                     xtype: 'textfield',
-                    name: 'sbSettlement.fineAmount',
-                    fieldLabel: '扣款(元)',
+                    name: 'scSettlement.fineAmount',
+                    fieldLabel: '扣款',
                     value: 0,
                     width: 160,
                 }, ]
@@ -119,8 +119,8 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 layout: 'hbox',
                 items: [{
                     xtype: 'textfield',
-                    id: 'sm-sbsettlementedit-attachment',
-                    name: 'sbSettlement.attachment',
+                    id: 'sm-scsettlementedit-attachment',
+                    name: 'scSettlement.attachment',
                     fieldLabel: 'attachment',
                     hidden: true,
                     listeners: [{
@@ -128,50 +128,50 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     }]
                 }, {
                     xtype: 'textfield',
-                    id: 'sm-sbsettlementedit-projname',
-                    name: 'sbSettlement.projName',
+                    id: 'sm-scsettlementedit-projname',
+                    name: 'scSettlement.projName',
                     fieldLabel: '船名',
                     hidden: true
                 }, {
                     xtype: 'textfield',
-                    id: 'sm-sbsettlementedit-deptname',
-                    name: 'sbSettlement.deptName',
+                    id: 'sm-scsettlementedit-deptname',
+                    name: 'scSettlement.deptName',
                     fieldLabel: '部门',
                     listeners: {
                         change: function(textfield, newValue, oldValue, eOpts) {
-                            smSbSettlementTeamStore
+                            smScSettlementTeamStore
                                 .getProxy().extraParams['team.deptName']
                                 = newValue;
-                            smSbSettlementTeamStore.reload();
+                            smScSettlementTeamStore.reload();
                         }
                     },
                     hidden: true
                 }, {
                     xtype: 'textfield',
-                    id: 'sm-sbsettlementedit-month',
-                    name: 'sbSettlement.month',
+                    id: 'sm-scsettlementedit-month',
+                    name: 'scSettlement.month',
                     hidden: true
                 }, {
                     xtype: 'textfield',
-                    name: 'sbSettlement.id',
-                    id: 'sm-sbsettlementedit-id',
+                    name: 'scSettlement.id',
+                    id: 'sm-scsettlementedit-id',
                     fieldLabel: 'ID',
                     hidden: true,
                 }, {
                     xtype: 'textfield',
-                    name: 'sbSettlement.status',
-                    id: 'sm-sbsettlementedit-status',
+                    name: 'scSettlement.status',
+                    id: 'sm-scsettlementedit-status',
                     hidden: true,
                     listeners: {
                         change: function (field, newValue, oldValue, eOpts) {
                             if (newValue === '未提交') {
-                                Ext.getCmp('sm-sbsettlementedit-toolbar').show();
-                                Ext.getCmp('sm-sbsettlementedit-uploadatt').show();
-                                Ext.getCmp('sm-sbsettlementedit-deleteatt').show();
+                                Ext.getCmp('sm-scsettlementedit-toolbar').show();
+                                Ext.getCmp('sm-scsettlementedit-uploadatt').show();
+                                Ext.getCmp('sm-scsettlementedit-deleteatt').show();
                             } else {
-                                Ext.getCmp('sm-sbsettlementedit-toolbar').hide();
-                                Ext.getCmp('sm-sbsettlementedit-uploadatt').hide();
-                                Ext.getCmp('sm-sbsettlementedit-deleteatt').hide();
+                                Ext.getCmp('sm-scsettlementedit-toolbar').hide();
+                                Ext.getCmp('sm-scsettlementedit-uploadatt').hide();
+                                Ext.getCmp('sm-scsettlementedit-deleteatt').hide();
                             }
                         }
                     }
@@ -182,26 +182,26 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 margin: '10 0 0 0',
                 items: [{
                     xtype: 'textfield',
-                    name: 'sbSettlement.comment',
-                    id: 'sm-sbsettlementedit-comment',
+                    name: 'scSettlement.comment',
+                    id: 'sm-scsettlementedit-comment',
                     fieldLabel: '备注',
                     width: 800,
                 }]
             }, {
                 xtype: 'container',
                 layout: 'hbox',
-                id: 'sm-sbsettlementedit-att',
+                id: 'sm-scsettlementedit-att',
                 margin: '10 0 0 55',
                 hidden: true,
                 items: [{
                     xtype: 'button',
-                    id: 'sm-sbsettlementedit-link',
+                    id: 'sm-scsettlementedit-link',
                     text: '下载附件',
                     margin: '0 5 0 0',
                     width: 100,
                 }, {
                     xtype: 'button',
-                    id: 'sm-sbsettlementedit-deleteatt',
+                    id: 'sm-scsettlementedit-deleteatt',
                     hidden: true,
                     ui: 'gray',
                     text: '删除',
@@ -213,10 +213,10 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
             layout: 'hbox',
             margin: '10 0 0 0',
             hidden: true,
-            id: 'sm-sbsettlementedit-uploadatt',
+            id: 'sm-scsettlementedit-uploadatt',
             items: [{
                 xtype: 'form',
-                id: 'sm-sbsettlementedit-upload',
+                id: 'sm-scsettlementedit-upload',
                 fieldDefaults: {
                     labelAlign: 'right',
                     labelWidth: 50,
@@ -248,13 +248,13 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 xtype: 'gridpanel',
                 width: 800,
                 scrollable: true,
-                id: 'sm-sbsettlementedit-detail',
-                store: smSbSettlementDetailStore = Ext.create('iFlat.store.sm.SbSettlementDetail'),
+                id: 'sm-scsettlementedit-detail',
+                store: smScSettlementDetailStore = Ext.create('iFlat.store.sm.ScSettlementDetail'),
                 border: true,
                 columnLines: true,
                 plugins: [
-                    smSbSettlementDetailRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
-                        pluginId: 'sm-sbsettlementedit-detail-edit',
+                    smScSettlementDetailRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
+                        pluginId: 'sm-scsettlementedit-detail-edit',
                         clicksToMoveEditor: 1,
                         autoCancel: true,
                         listeners: {
@@ -267,7 +267,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     xtype: 'button',
                     text: '新增',
                     ui: 'orig-blue',
-                    id: 'sm-sbsettlementedit-detail-add',
+                    id: 'sm-scsettlementedit-detail-add',
                     handler: 'addDetail'
                 }],
 
@@ -278,7 +278,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     xtype: 'actioncolumn',
                     align: 'center',
                     iconCls: 'x-fa fa-close',
-                    id: 'sm-sbsettlementedit-detail-delete',
+                    id: 'sm-scsettlementedit-detail-delete',
                     handler: 'deleteDetail',
                     editor: {
                         xtype: 'label'
@@ -286,11 +286,11 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 }, {
                     header: '成本科目',
                     width: 200,
-                    dataIndex: 'sbSettlementDetail.account',
+                    dataIndex: 'scSettlementDetail.account',
                     editor: {
                         xtype: 'combo',
                         allowBlank: false,
-                        store: smSbSettlementDetailComboStore = Ext.create('iFlat.store.sm.TargetCostAccount'),
+                        store: smScSettlementDetailComboStore = Ext.create('iFlat.store.sm.TargetCostAccount'),
                         queryMode: 'local',
                         editable: true,
                         forceSelection : true,
@@ -300,40 +300,40 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 }, {
                     header: '内容',
                     width: 200,
-                    dataIndex: 'sbSettlementDetail.content',
+                    dataIndex: 'scSettlementDetail.content',
                     shrinkWrap: 1,
                     editor: {
                         allowBlank: false,
                     }
                 }, {
                     header: '金额',
-                    dataIndex: 'sbSettlementDetail.amount',
+                    dataIndex: 'scSettlementDetail.amount',
                     editor: {
                         allowBlank: false,
                     }
                 }, {
                     header: '单价',
-                    dataIndex: 'sbSettlementDetail.price',
+                    dataIndex: 'scSettlementDetail.price',
                     editor: {
                     }
                 }, {
                     header: '物量',
-                    dataIndex: 'sbSettlementDetail.matQty',
+                    dataIndex: 'scSettlementDetail.matQty',
                     editor: {
                     }
                 }, {
                     header: '规格',
-                    dataIndex: 'sbSettlementDetail.spec',
+                    dataIndex: 'scSettlementDetail.spec',
                     editor: {
                     }
                 }, {
                     header: '单位',
-                    dataIndex: 'sbSettlementDetail.unit',
+                    dataIndex: 'scSettlementDetail.unit',
                     editor: {
                     }
                 }, {
                     header: '附件',
-                    dataIndex: 'sbSettlementDetail.attachment',
+                    dataIndex: 'scSettlementDetail.attachment',
                     renderer: 'renderAttachment',
                     hidden: true,
                     editor: {
@@ -341,7 +341,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                 }, {
                     header: '备注',
                     width: 150,
-                    dataIndex: 'sbSettlementDetail.comment',
+                    dataIndex: 'scSettlementDetail.comment',
                     shrinkWrap: 1,
                     editor: {
                     }
@@ -354,19 +354,19 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
         xtype: 'toolbar',
         dock: 'bottom',
         ui: 'footer',
-        id: 'sm-sbsettlementedit-toolbar',
+        id: 'sm-scsettlementedit-toolbar',
         hidden: true,
         items: [{
             xtype: 'button',
             text: '保存并提交',
-            handler: 'saveAndSubmitSbSettlementEdit',
+            handler: 'saveAndSubmitScSettlementEdit',
         }, '->', {
             xtype: 'button',
             text: '保 存',
             handler: 'saveEdit',
         }]
     }],
-    
+
     listeners: {
         close: 'editClose'
     }

@@ -100,6 +100,17 @@ public class SrMainTaskHandler extends WorkflowTaskListener {
         delegateTask.setAssignee(list.get(0).getAccount());
     }
 
+    public void businessDivisionAutid(DelegateTask delegateTask) throws Exception {
+
+        setAssignee(delegateTask, SrStatus.STATUS_WORKSHOP_SETTLEMENT_APPROVE);
+        setTaskInfoMain(delegateTask, SrStatus.STATUS_BUSINESS_DIVISION_AUDIT);
+
+        UserInfoVo assignee = new UserInfoVo();
+        assignee.setPorgName("修船事业部");
+        assignee.setRoleName("修船事业部部长");
+        delegateTask.setAssignee(listAssignees(assignee).get(0).getAccount());
+    }
+
     public void hrAudit(DelegateTask delegateTask) throws Exception {
 
         setAssignee(delegateTask, SrStatus.STATUS_WORKSHOP_SETTLEMENT_APPROVE);

@@ -9,6 +9,10 @@
         <property name="sbSettlementService" ref="sbSettlementService"/>
         <property name="sbSettlementDetail" ref="sbSettlementDetail"/>
         <property name="sbSettlementDetailService" ref="sbSettlementDetailService"/>
+        <property name="scSettlement" ref="scSettlement"/>
+        <property name="scSettlementService" ref="scSettlementService"/>
+        <property name="scSettlementDetail" ref="scSettlementDetail"/>
+        <property name="scSettlementDetailService" ref="scSettlementDetailService"/>
         <property name="targetCost" ref="targetCost"/>
         <property name="targetCostService" ref="targetCostService"/>
         <property name="targetCostSplit" ref="targetCostSplit"/>
@@ -48,6 +52,24 @@
     <bean id="sbSettlementDetailDao" class="com.iflat.sm.dao.impl.SbSettlementDetailDaoImpl"/>
     <bean id="sbSettlementDetail" class="com.iflat.sm.bean.SbSettlementDetail" scope="prototype"/>
 
+    <bean id="scSettlementService" class="com.iflat.sm.service.impl.ScSettlementServiceImpl">
+        <property name="workflowService" ref="workflowService"/>
+    </bean>
+    <bean id="scSettlementDao" class="com.iflat.sm.dao.impl.ScSettlementDaoImpl"/>
+    <bean id="scSettlement" class="com.iflat.sm.bean.ScSettlement" scope="prototype"/>
+
+    <bean id="scSettlementVoService" class="com.iflat.sm.service.impl.ScSettlementVoServiceImpl"/>
+    <bean id="scSettlementVoDao" class="com.iflat.sm.dao.impl.ScSettlementVoDaoImpl"/>
+    <bean id="scSettlementVo" class="com.iflat.sm.entity.ScSettlementVo" scope="prototype"/>
+
+    <bean id="scSettlementDetailService" class="com.iflat.sm.service.impl.ScSettlementDetailServiceImpl">
+        <property name="scSettlementService" ref="scSettlementService"/>
+        <property name="targetCostSplitService" ref="targetCostSplitService"/>
+        <property name="scSettlementVoService" ref="scSettlementVoService"/>
+    </bean>
+    <bean id="scSettlementDetailDao" class="com.iflat.sm.dao.impl.ScSettlementDetailDaoImpl"/>
+    <bean id="scSettlementDetail" class="com.iflat.sm.bean.ScSettlementDetail" scope="prototype"/>
+
     <bean id="targetCostService" class="com.iflat.sm.service.impl.TargetCostServiceImpl"/>
     <bean id="targetCostDao" class="com.iflat.sm.dao.impl.TargetCostDaoImpl"/>
     <bean id="targetCost" class="com.iflat.sm.bean.TargetCost" scope="prototype"/>
@@ -59,6 +81,7 @@
     <bean id="targetCostSplitService" class="com.iflat.sm.service.impl.TargetCostSplitServiceImpl">
         <property name="targetCostService" ref="targetCostService"/>
         <property name="sbSettlementVoService" ref="sbSettlementVoService"/>
+        <property name="scSettlementVoService" ref="scSettlementVoService"/>
     </bean>
     <bean id="targetCostSplitDao" class="com.iflat.sm.dao.impl.TargetCostSplitDaoImpl"/>
     <bean id="targetCostSplit" class="com.iflat.sm.bean.TargetCostSplit" scope="prototype"/>

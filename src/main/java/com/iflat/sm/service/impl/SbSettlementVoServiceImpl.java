@@ -12,7 +12,7 @@ import java.util.List;
 public class SbSettlementVoServiceImpl extends BaseServiceSupport implements SbSettlementVoService {
 
     @Override
-    public Double getAmountSummary(SbSettlementVo sbSettlementVo) throws Exception {
+    public Double getAmountSummary(Object sbSettlementVo) throws Exception {
         List<SbSettlementVo> list = this.list(sbSettlementVo);
         Double amount = Double.valueOf(0);
         for (int i = 0; i < list.size(); i++) {

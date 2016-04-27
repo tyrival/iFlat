@@ -22,6 +22,71 @@ public class ScSettlement {
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
+    private Double amount;
+    private double mgrScore;
+    private double progressScore;
+    private double qualityScore;
+    private double safetyScore;
+    private double fineAmount;
+    private double summaryAmount;
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+        setSummaryAmount();
+    }
+
+    public double getMgrScore() {
+        return mgrScore;
+    }
+
+    public void setMgrScore(double mgrScore) {
+        this.mgrScore = mgrScore;
+    }
+
+    public double getProgressScore() {
+        return progressScore;
+    }
+
+    public void setProgressScore(double progressScore) {
+        this.progressScore = progressScore;
+    }
+
+    public double getQualityScore() {
+        return qualityScore;
+    }
+
+    public void setQualityScore(double qualityScore) {
+        this.qualityScore = qualityScore;
+    }
+
+    public double getSafetyScore() {
+        return safetyScore;
+    }
+
+    public void setSafetyScore(double safetyScore) {
+        this.safetyScore = safetyScore;
+    }
+
+    public double getFineAmount() {
+        return fineAmount;
+    }
+
+    public void setFineAmount(double fineAmount) {
+        this.fineAmount = fineAmount;
+        setSummaryAmount();
+    }
+
+    public double getSummaryAmount() {
+        return summaryAmount;
+    }
+
+    private void setSummaryAmount() {
+        this.summaryAmount = amount - fineAmount;
+    }
 
     public ScSettlement() {
         this.createTime = new Date();

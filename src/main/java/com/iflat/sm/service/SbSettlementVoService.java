@@ -1,11 +1,8 @@
 package com.iflat.sm.service;
 
-import com.iflat.sm.entity.SbSettlementVo;
-
 /**
  * Created by tyriv on 2016/4/5.
  */
-public interface SbSettlementVoService {
+public interface SbSettlementVoService extends BaseSettlementService {
 
-    Double getAmountSummary(SbSettlementVo sbSettlementVo) throws Exception;
 }

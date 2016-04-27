@@ -6,6 +6,7 @@ import com.iflat.sm.bean.SbSettlement;
 import com.iflat.sm.bean.SbSettlementDetail;
 import com.iflat.sm.bean.TargetCostSplit;
 import com.iflat.sm.entity.SbSettlementVo;
+import com.iflat.sm.service.BaseSettlementService;
 import com.iflat.sm.service.SbSettlementDetailService;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class SbSettlementDetailServiceImpl extends BaseServiceSupport implements
 
     private BaseService sbSettlementService;
     private BaseService targetCostSplitService;
-    private BaseService sbSettlementVoService;
+    private BaseSettlementService sbSettlementVoService;
     @Override
     protected void beforeInsert() throws Exception {
         // 判断目标成本余额是否足以支付此申请
@@ -68,13 +69,7 @@ public class SbSettlementDetailServiceImpl extends BaseServiceSupport implements
         sbSettlementVo.setProjNo(sbSettlement.getProjNo());
         sbSettlementVo.setDeptName(sbSettlement.getDeptName());
         sbSettlementVo.setAccountDetl(sbSettlementDetail.getAccount());
-        List<SbSettlementVo> applyList = sbSettlementVoService.list(sbSettlementVo);
-        Double spent = Double.valueOf(0);
-        if (applyList != null) {
-            for (int i = 0; i < applyList.size(); i++) {
-                spent += applyList.get(i).getAmountDetl();
-            }
-        }
+        Double spent = sbSettlementVoService.getAmountSummary(sbSettlementVo);
         return total - spent;
     }
 
@@ -97,7 +92,7 @@ public class SbSettlementDetailServiceImpl extends BaseServiceSupport implements
         this.targetCostSplitService = targetCostSplitService;
     }
 
-    public void setSbSettlementVoService(BaseService sbSettlementVoService) {
+    public void setSbSettlementVoService(BaseSettlementService sbSettlementVoService) {
         this.sbSettlementVoService = sbSettlementVoService;
     }
 }

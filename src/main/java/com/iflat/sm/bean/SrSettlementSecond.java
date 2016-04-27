@@ -20,6 +20,11 @@ public class SrSettlementSecond {
     private double performanceAmount;  // 绩效
     private double materialAmount;  // 材料费
     private double summaryAmount;
+    private double mgrScore;
+    private double progressScore;
+    private double qualityScore;
+    private double safetyScore;
+    private double fineAmount;
     private String attachment;
     private String comment;
     private String creatorAcc;
@@ -39,6 +44,47 @@ public class SrSettlementSecond {
         this.deptName = srSettlement.getDeptName();
         this.team = srSettlement.getTeam();
         this.createTime = new Date();
+    }
+
+    public double getMgrScore() {
+        return mgrScore;
+    }
+
+    public void setMgrScore(double mgrScore) {
+        this.mgrScore = mgrScore;
+    }
+
+    public double getProgressScore() {
+        return progressScore;
+    }
+
+    public void setProgressScore(double progressScore) {
+        this.progressScore = progressScore;
+    }
+
+    public double getQualityScore() {
+        return qualityScore;
+    }
+
+    public void setQualityScore(double qualityScore) {
+        this.qualityScore = qualityScore;
+    }
+
+    public double getSafetyScore() {
+        return safetyScore;
+    }
+
+    public void setSafetyScore(double safetyScore) {
+        this.safetyScore = safetyScore;
+    }
+
+    public double getFineAmount() {
+        return fineAmount;
+    }
+
+    public void setFineAmount(double fineAmount) {
+        this.fineAmount = fineAmount;
+        setSummaryAmount();
     }
 
     public String getType() {
@@ -148,7 +194,7 @@ public class SrSettlementSecond {
     private void setSummaryAmount() {
         this.summaryAmount
                 = consumableAmount + laborAmount + performanceAmount
-                - materialAmount;
+                - materialAmount - fineAmount;
     }
 
     public String getAttachment() {

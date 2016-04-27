@@ -10,7 +10,7 @@ public class SbStatus {
     public static final String STATUS_SUBMIT = "提交";
     public static final String STATUS_WORKSHOP_APPROVE = "车间审批";
     public static final String STATUS_BUSINESS_DIVISION_AUDIT = "事业部结算员审核";
-    public static final String STATUS_BUSINESS_DIVITION_DIRECTOR_APPROVE = "事业部审批";
+    public static final String STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE = "事业部审批";
     public static final String STATUS_HR_AUDIT = "人力资源部结算员审核";
     public static final String STATUS_HR_DIRECTOR_APPROVE = "人力资源部审批";
     public static final String STATUS_LEADER_APPROVE = "公司领导审批";

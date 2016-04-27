@@ -14,7 +14,6 @@ public class SbSettlementExecutionHandler extends WorkflowExecutionListener {
 
     private SbSettlementService sbSettlementService;
 
-
     public void submit(DelegateExecution execution) throws Exception {
         setStatus(execution, SbStatus.STATUS_UNSUBMIT);
     }
@@ -28,7 +27,7 @@ public class SbSettlementExecutionHandler extends WorkflowExecutionListener {
     }
 
     public void businessDivisionDirectorApprove(DelegateExecution execution) throws Exception {
-        setStatus(execution, SbStatus.STATUS_BUSINESS_DIVITION_DIRECTOR_APPROVE);
+        setStatus(execution, SbStatus.STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE);
     }
 
     public void hrAudit(DelegateExecution execution) throws Exception {

@@ -53,7 +53,7 @@ public class SbSettlementTaskHandler extends WorkflowTaskListener {
     public void businessDivisionDirectorApprove(DelegateTask delegateTask) throws Exception {
 
         setAssignee(delegateTask, SbStatus.STATUS_BUSINESS_DIVISION_AUDIT);
-        setTaskInfoSb(delegateTask, SbStatus.STATUS_BUSINESS_DIVITION_DIRECTOR_APPROVE);
+        setTaskInfoSb(delegateTask, SbStatus.STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE);
 
         UserInfoVo assignee = new UserInfoVo();
         assignee.setPorgName("造船事业部");
@@ -64,7 +64,7 @@ public class SbSettlementTaskHandler extends WorkflowTaskListener {
 
     public void hrAudit(DelegateTask delegateTask) throws Exception {
 
-        setAssignee(delegateTask, SbStatus.STATUS_BUSINESS_DIVITION_DIRECTOR_APPROVE);
+        setAssignee(delegateTask, SbStatus.STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE);
         setTaskInfoSb(delegateTask, SbStatus.STATUS_HR_AUDIT);
 
         UserInfoVo assignee = new UserInfoVo();

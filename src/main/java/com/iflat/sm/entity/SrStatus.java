@@ -18,6 +18,7 @@ public class SrStatus {
     public static final String STATUS_WORKSHOP_SETTLEMENT = "修船二级结算";
     public static final String STATUS_WORKSHOP_DIRECTOR_APPROVE = "修船车间领导审批";
     public static final String STATUS_WORKSHOP_SETTLEMENT_APPROVE = "修船二级结算审批";
+    public static final String STATUS_BUSINESS_DIVISION_AUDIT = "修船事业部备案";
     public static final String STATUS_HR_AUDIT = "人力资源部审核";
     public static final String STATUS_HR_DIRECTOR_APPROVE = "人力资源部部长审批";
     public static final String STATUS_LEADER_APPROVE = "公司领导审批";

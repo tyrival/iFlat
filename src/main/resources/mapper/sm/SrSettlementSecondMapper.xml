@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlementSecond">
         INSERT INTO SmSrSettlementSecond
-        VALUES (#{id},#{pid},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime})
+        VALUES (#{id},#{pid},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{mgrScore},#{progressScore},#{qualityScore},#{safetyScore},#{fineAmount})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlementSecond
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.pid},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},,#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+            SELECT #{item.id},#{item.pid},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},,#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.mgrScore},#{item.progressScore},#{item.qualityScore},#{item.safetyScore},#{item.fineAmount}
         </foreach>
     </insert>
 
@@ -32,6 +32,11 @@
             <if test="materialAmount!=null">materialAmount=#{materialAmount},</if>
             <if test="attachment!=null">attachment=#{attachment},</if>
             <if test="comment!=null">comment=#{comment},</if>
+            <if test="mgrScore!=null">mgrScore=#{mgrScore},</if>
+            <if test="progressScore!=null">progressScore=#{progressScore},</if>
+            <if test="qualityScore!=null">qualityScore=#{qualityScore},</if>
+            <if test="safetyScore!=null">safetyScore=#{safetyScore},</if>
+            <if test="fineAmount!=null">fineAmount=#{fineAmount},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -58,7 +63,7 @@
     </select>
 
     <select id="listBatch" parameterType="java.util.List" resultMap="SmSrSettlementSecondResult">
-        SELECT id,pid,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,creatorAcc,creatorName,createTime
+        SELECT id,pid,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,creatorAcc,creatorName,createTime,mgrScore,progressScore,qualityScore,safetyScore,fineAmount
         FROM SmSrSettlementSecond
         <where>
             /*查看foreach标签的属性*/
@@ -96,5 +101,10 @@
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="mgrScore" column="mgrScore" jdbcType="DOUBLE"/>
+        <result property="progressScore" column="progressScore" jdbcType="DOUBLE"/>
+        <result property="qualityScore" column="qualityScore" jdbcType="DOUBLE"/>
+        <result property="safetyScore" column="safetyScore" jdbcType="DOUBLE"/>
+        <result property="fineAmount" column="fineAmount" jdbcType="DOUBLE"/>
     </resultMap>
 </mapper>

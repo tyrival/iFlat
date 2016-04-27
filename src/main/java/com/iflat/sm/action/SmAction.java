@@ -24,6 +24,11 @@ public class SmAction extends BaseAction {
     private SbSettlement sbSettlement;
     private SbSettlementDetail sbSettlementDetail;
 
+    private ScSettlementService scSettlementService;
+    private ScSettlementDetailService scSettlementDetailService;
+    private ScSettlement scSettlement;
+    private ScSettlementDetail scSettlementDetail;
+
     private BaseService targetCostService;
     private TargetCost targetCost;
     private TargetCostSplitService targetCostSplitService;
@@ -49,7 +54,18 @@ public class SmAction extends BaseAction {
     private String outGoingName;
     private String comment;
 
-    /* SbSettlement */
+    /* 造船结算 SbSettlement */
+    public String approveSbSettlementBatch() throws Exception {
+        List<SrSettlement> list = this.sbSettlementService.list(this.sbSettlement);
+        if (list != null && list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
+                String businessKey = sbSettlementService.getBusinessKey(list.get(i));
+                workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+            }
+        }
+        return SUCCESS;
+    }
+
     public String approveSbSettlement() throws Exception {
         String businessKey = sbSettlementService.getBusinessKey(sbSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -123,13 +139,98 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
-    /* TargetCostAccount */
+    /* 造船结算 ScSettlement */
+    public String approveScSettlementBatch() throws Exception {
+        List<SrSettlement> list = this.scSettlementService.list(this.scSettlement);
+        if (list != null && list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
+                String businessKey = scSettlementService.getBusinessKey(list.get(i));
+                workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+            }
+        }
+        return SUCCESS;
+    }
+
+    public String approveScSettlement() throws Exception {
+        String businessKey = scSettlementService.getBusinessKey(scSettlement);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+        return SUCCESS;
+    }
+
+    public String saveScSettlement() throws Exception {
+        this.result.setObject(this.scSettlementService.save(this.scSettlement));
+        return SUCCESS;
+    }
+
+    public String deleteScSettlement() throws Exception {
+        this.result.setObject(this.scSettlementService.delete(this.scSettlement));
+        return SUCCESS;
+    }
+
+    public String listScSettlement() throws Exception {
+        this.result.setList(this.scSettlementService.list(this.scSettlement));
+        return SUCCESS;
+    }
+
+    public String uploadScSettlement() throws Exception {
+        this.result.setObject(this.scSettlementService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listScSettlementComment() throws Exception {
+        this.result.setList(this.scSettlementService.listComment(this.scSettlement));
+        return SUCCESS;
+    }
+
+    /**
+     * 提交ScSettlement审批
+     * @return
+     * @throws Exception
+     */
+    public String submitScSettlement() throws Exception {
+        scSettlementService.submit(this.scSettlement);
+        return SUCCESS;
+    }
+
+    /**
+     * 保存ScSettlement并提交审批
+     * @return
+     * @throws Exception
+     */
+    public String saveAndSubmitScSettlement() throws Exception {
+        ScSettlement scSettlement
+                = (ScSettlement) this.scSettlementService.save(this.scSettlement);
+        scSettlementService.submit(this.scSettlement);
+        this.result.setObject(scSettlement);
+        return SUCCESS;
+    }
+
+    /* ScSettlementDetail */
+    public String saveScSettlementDetail() throws Exception {
+        this.result.setObject(
+                this.scSettlementDetailService.save(this.scSettlementDetail));
+        return SUCCESS;
+    }
+
+    public String deleteScSettlementDetail() throws Exception {
+        this.result.setObject(
+                this.scSettlementDetailService.delete(this.scSettlementDetail));
+        return SUCCESS;
+    }
+
+    public String listScSettlementDetail() throws Exception {
+        this.result.setList(
+                this.scSettlementDetailService.list(this.scSettlementDetail));
+        return SUCCESS;
+    }
+
+    /* 目标成本科目 TargetCostAccount */
     public String listTargetCostAccount() throws Exception {
         this.result.setList(this.targetCostAccountService.list(this.targetCostAccount));
         return SUCCESS;
     }
 
-    /* TargetCost & TargetCostSplit */
+    /* 目标成本分解 TargetCost & TargetCostSplit */
     public String saveTargetCost() throws Exception {
         this.result.setObject(this.targetCostService.save(this.targetCost));
         return SUCCESS;
@@ -160,7 +261,7 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
-    /* SrProjectManager */
+    /* 修船总管 SrProjectManager */
     public String saveSrProjectManager() throws Exception {
         this.result.setObject(this.srProjectManagerService.save(this.srProjectManager));
         return SUCCESS;
@@ -176,13 +277,13 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
-    /* SrSettlementBalance */
+    /* 修船结余 SrSettlementBalance */
     public String listSrSettlementBalance() throws Exception {
         this.result.setList(this.srSettlementBalanceService.list(this.srSettlementBalance));
         return SUCCESS;
     }
 
-    /* SrSettlement */
+    /* 修船结算 SrSettlement */
     public String approveSrSettlement() throws Exception {
         String businessKey = srSettlementService.getBusinessKey(srSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -630,5 +731,37 @@ public class SmAction extends BaseAction {
 
     public void setSrSettlementSecond(SrSettlementSecond srSettlementSecond) {
         this.srSettlementSecond = srSettlementSecond;
+    }
+
+    public ScSettlementService getScSettlementService() {
+        return scSettlementService;
+    }
+
+    public void setScSettlementService(ScSettlementService scSettlementService) {
+        this.scSettlementService = scSettlementService;
+    }
+
+    public ScSettlementDetailService getScSettlementDetailService() {
+        return scSettlementDetailService;
+    }
+
+    public void setScSettlementDetailService(ScSettlementDetailService scSettlementDetailService) {
+        this.scSettlementDetailService = scSettlementDetailService;
+    }
+
+    public ScSettlement getScSettlement() {
+        return scSettlement;
+    }
+
+    public void setScSettlement(ScSettlement scSettlement) {
+        this.scSettlement = scSettlement;
+    }
+
+    public ScSettlementDetail getScSettlementDetail() {
+        return scSettlementDetail;
+    }
+
+    public void setScSettlementDetail(ScSettlementDetail scSettlementDetail) {
+        this.scSettlementDetail = scSettlementDetail;
     }
 }

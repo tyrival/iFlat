@@ -19,5 +19,10 @@ Ext.define('iFlat.model.sm.SrSettlementSecond', {
         {name: 'srSettlementSecond.creatorAcc', mapping: 'creatorAcc', type: 'string'},
         {name: 'srSettlementSecond.creatorName', mapping: 'creatorName', type: 'string'},
         {name: 'srSettlementSecond.createTime', mapping: 'createTime', type: 'date'},
+        {name: 'srSettlementSecond.mgrScore', mapping: 'mgrScore', type: 'number', defaultValue: 100 },
+        {name: 'srSettlementSecond.progressScore', mapping: 'progressScore', type: 'number', defaultValue: 100 },
+        {name: 'srSettlementSecond.qualityScore', mapping: 'qualityScore', type: 'number', defaultValue: 100 },
+        {name: 'srSettlementSecond.safetyScore', mapping: 'safetyScore', type: 'number', defaultValue: 100 },
+        {name: 'srSettlementSecond.fineAmount', mapping: 'fineAmount', type: 'number', defaultValue: 0 },
     ]
 });
