@@ -220,17 +220,21 @@ Ext.define('iFlat.view.sm.ScSettlementController', {
         if (Flat.util.isEmpty(pid)) {
             var form = Ext.getCmp('sm-scsettlementedit-form');
             form.submit({
-                url: 'sm_saveScSettlement.action',
+                url: 'sm_createScSettlementDetail.action',
                 waitMsg: '保存中...',
+                params: rec.getData(),
                 success: function(form, action) {
+                    Flat.util.tip(action.response.responseText);
                     var result = Ext.JSON.decode(action.response.responseText);
-                    if (result['object']['id']) {
-                        var id = result['object']['id'];
+                    var map = result['map'];
+                    if (!Flat.util.isEmpty(map)) {
+                        var head = map['head'];
+                        var detail = map['detail'];
                         // 将edit界面的id值设置为返回id
-                        Ext.getCmp('sm-scsettlementedit-id').setValue(id);
-                        // 将明细项的pid设置为返回id值
-                        rec.set('scSettlementDetail.pid', id);
-                        saveDetail(rec);
+                        Ext.getCmp('sm-scsettlementedit-id').setValue(head['id']);
+                        
+                        rec.set('scSettlementDetail.id', detail['id']);
+                        rec.set('scSettlementDetail.pid', detail['pid']);
                     } else {
                         Flat.util.tip(action.response.responseText);
                     }
@@ -241,24 +245,22 @@ Ext.define('iFlat.view.sm.ScSettlementController', {
             });
 
         } else {
-            saveDetail(rec);
-        };
-        function saveDetail (recordDetail) {
+
             Flat.util.mask();
             Ext.Ajax.request({
                 url: 'sm_saveScSettlementDetail.action',
                 method: 'post',
-                params: recordDetail.getData(),
+                params: rec.getData(),
                 success: function(response, opts) {
                     Flat.util.unmask();
                     Flat.util.tip(response.responseText);
-                    if (Flat.util.isEmpty(recordDetail.get('scSettlementDetail.id'))) {
+                    if (Flat.util.isEmpty(rec.get('scSettlementDetail.id'))) {
                         var result = Ext.JSON.decode(response.responseText);
                         var id = result['object']['id'];
                         if (id) {
-                            recordDetail.set(
+                            rec.set(
                                 'scSettlementDetail.id', id);
-                            smScSettlementDetailStore.insert(0, recordDetail);
+                            smScSettlementDetailStore.insert(0, rec);
                         }
                     }
                 },
@@ -267,7 +269,7 @@ Ext.define('iFlat.view.sm.ScSettlementController', {
                     Flat.util.tip(response.responseText);
                 }
             });
-        }
+        };
     },
 
     /**

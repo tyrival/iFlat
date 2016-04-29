@@ -1,24 +1,24 @@
-Ext.define('iFlat.view.sm.ScSettlement', {
+Ext.define('iFlat.view.sm.TecSettlement', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.sm-scsettlement',
+    alias: 'widget.sm-tecsettlement',
 
     requires: [
-        'iFlat.view.sm.ScSettlementController'
+        'iFlat.view.sm.TecSettlementController'
     ],
 
-    controller: 'sm-scsettlement',
+    controller: 'sm-tecsettlement',
 
-    store: smScSettlementStore = Ext.create('iFlat.store.sm.ScSettlement'),
+    store: smTecSettlementStore = Ext.create('iFlat.store.sm.TecSettlement'),
 
     tbar: [{
         xtype: 'button',
         text: '新增',
         ui: 'orig-blue',
-        id: 'sm-scsettlement-add',
+        id: 'sm-tecsettlement-add',
         handler: 'edit'
     }, '->', {
         text: '刷新',
-        id: 'sm-scsettlement-refresh',
+        id: 'sm-tecsettlement-refresh',
         handler: 'refresh',
     }],
 
@@ -31,7 +31,7 @@ Ext.define('iFlat.view.sm.ScSettlement', {
         iconCls: 'x-fa fa-hand-o-up',
         handler: 'submit',
         isDisabled: function(view, rowIdx, colIdx, item, record) {
-            return record.get('scSettlement.status') != '未提交';
+            return record.get('tecSettlement.status') != '未提交';
         },
     }, {
         text: '编辑',
@@ -53,35 +53,35 @@ Ext.define('iFlat.view.sm.ScSettlement', {
     }, {
         header: '状态',
         width: 80,
-        dataIndex: 'scSettlement.status',
+        dataIndex: 'tecSettlement.status',
     }, {
         header: '月份',
-        dataIndex: 'scSettlement.month',
+        dataIndex: 'tecSettlement.month',
         formatter: 'date("Y-m")'
     }, {
         header: '工号',
-        dataIndex: 'scSettlement.projNo',
+        dataIndex: 'tecSettlement.projNo',
     }, {
-        header: '工程名称',
+        header: '项目名称',
         width: 150,
-        dataIndex: 'scSettlement.projName',
+        dataIndex: 'tecSettlement.projName',
     }, {
         header: '部门',
         width: 120,
-        dataIndex: 'scSettlement.deptName',
+        dataIndex: 'tecSettlement.deptName',
     }, {
         header: '工程队',
         width: 200,
-        dataIndex: 'scSettlement.team',
+        dataIndex: 'tecSettlement.team',
     }, {
         header: '附件',
         width: 50,
-        dataIndex: 'scSettlement.attachment',
+        dataIndex: 'tecSettlement.attachment',
         renderer: 'renderAttachment'
     }, {
         header: '备注',
         width: 150,
-        dataIndex: 'scSettlement.comment',
+        dataIndex: 'tecSettlement.comment',
     }, {
         text: '删除',
         width: 50,
@@ -91,7 +91,7 @@ Ext.define('iFlat.view.sm.ScSettlement', {
         iconCls: 'x-fa fa-close',
         handler: 'delete',
         isDisabled: function(view, rowIdx, colIdx, item, record) {
-            return record.get('scSettlement.status') != '未提交';
+            return record.get('tecSettlement.status') != '未提交';
         },
     }],
 });

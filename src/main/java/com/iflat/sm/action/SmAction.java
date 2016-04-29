@@ -49,12 +49,34 @@ public class SmAction extends BaseAction {
     private BaseService srSettlementSecondService;
     private SrSettlementSecond srSettlementSecond;
 
+    private TecSettlementService tecSettlementService;
+    private TecSettlementDetailService tecSettlementDetailService;
+    private TecSettlement tecSettlement;
+    private TecSettlementDetail tecSettlementDetail;
+
     private WorkflowService workflowService;
     private String taskId;
     private String outGoingName;
     private String comment;
 
     /* 造船结算 SbSettlement */
+    // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
+    public String createSbSettlementDetail() throws Exception {
+
+        this.sbSettlement
+                = (SbSettlement) this.sbSettlementService
+                .save(this.sbSettlement);
+        this.sbSettlementDetail.setPid(this.sbSettlement.getId());
+        this.sbSettlementDetail
+                = (SbSettlementDetail) this.sbSettlementDetailService
+                .save(this.sbSettlementDetail);
+        Map<String, Object> map = new HashMap();
+        map.put("head", this.sbSettlement);
+        map.put("detail", this.sbSettlementDetail);
+        this.result.setMap(map);
+        return SUCCESS;
+    }
+
     public String approveSbSettlementBatch() throws Exception {
         List<SrSettlement> list = this.sbSettlementService.list(this.sbSettlement);
         if (list != null && list.size() > 0) {
@@ -139,7 +161,24 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
-    /* 造船结算 ScSettlement */
+    /* 钢结构结算 ScSettlement */
+    // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
+    public String createScSettlementDetail() throws Exception {
+
+        this.scSettlement
+                = (ScSettlement) this.scSettlementService
+                .save(this.scSettlement);
+        this.scSettlementDetail.setPid(this.scSettlement.getId());
+        this.scSettlementDetail
+                = (ScSettlementDetail) this.scSettlementDetailService
+                .save(this.scSettlementDetail);
+        Map<String, Object> map = new HashMap();
+        map.put("head", this.scSettlement);
+        map.put("detail", this.scSettlementDetail);
+        this.result.setMap(map);
+        return SUCCESS;
+    }
+
     public String approveScSettlementBatch() throws Exception {
         List<SrSettlement> list = this.scSettlementService.list(this.scSettlement);
         if (list != null && list.size() > 0) {
@@ -509,6 +548,101 @@ public class SmAction extends BaseAction {
         return SUCCESS;
     }
 
+
+    /* 技措技改/大修理/108 TecSettlement */
+    public String createTecSettlementDetail() throws Exception {
+
+        this.tecSettlement
+                = (TecSettlement) this.tecSettlementService
+                .save(this.tecSettlement);
+        this.tecSettlementDetail.setPid(this.tecSettlement.getId());
+        this.tecSettlementDetail
+                = (TecSettlementDetail) this.tecSettlementDetailService
+                .save(this.tecSettlementDetail);
+        Map<String, Object> map = new HashMap();
+        map.put("head", this.tecSettlement);
+        map.put("detail", this.tecSettlementDetail);
+        this.result.setMap(map);
+        return SUCCESS;
+    }
+
+    public String approveTecSettlementBatch() throws Exception {
+        List<SrSettlement> list = this.tecSettlementService.list(this.tecSettlement);
+        if (list != null && list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
+                String businessKey = tecSettlementService.getBusinessKey(list.get(i));
+                workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+            }
+        }
+        return SUCCESS;
+    }
+
+    public String approveTecSettlement() throws Exception {
+        String businessKey = tecSettlementService.getBusinessKey(tecSettlement);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+        return SUCCESS;
+    }
+
+    public String saveTecSettlement() throws Exception {
+        this.result.setObject(this.tecSettlementService.save(this.tecSettlement));
+        return SUCCESS;
+    }
+
+    public String deleteTecSettlement() throws Exception {
+        this.result.setObject(this.tecSettlementService.delete(this.tecSettlement));
+        return SUCCESS;
+    }
+
+    public String listTecSettlement() throws Exception {
+        this.result.setList(this.tecSettlementService.list(this.tecSettlement));
+        return SUCCESS;
+    }
+
+    public String uploadTecSettlement() throws Exception {
+        this.result.setObject(this.tecSettlementService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listTecSettlementComment() throws Exception {
+        this.result.setList(this.tecSettlementService.listComment(this.tecSettlement));
+        return SUCCESS;
+    }
+
+    public String submitTecSettlement() throws Exception {
+        tecSettlementService.submit(this.tecSettlement);
+        return SUCCESS;
+    }
+
+    public String saveAndSubmitTecSettlement() throws Exception {
+        TecSettlement tecSettlement
+                = (TecSettlement) this.tecSettlementService.save(this.tecSettlement);
+        tecSettlementService.submit(this.tecSettlement);
+        this.result.setObject(tecSettlement);
+        return SUCCESS;
+    }
+
+    /* TecSettlementDetail */
+    public String saveTecSettlementDetail() throws Exception {
+        this.result.setObject(
+                this.tecSettlementDetailService.save(this.tecSettlementDetail));
+        return SUCCESS;
+    }
+
+    public String deleteTecSettlementDetail() throws Exception {
+        this.result.setObject(
+                this.tecSettlementDetailService.delete(this.tecSettlementDetail));
+        return SUCCESS;
+    }
+
+    public String listTecSettlementDetail() throws Exception {
+        this.result.setList(
+                this.tecSettlementDetailService.list(this.tecSettlementDetail));
+        return SUCCESS;
+    }
+
+
+
+    /* getter & setter */
     public File getUpload() {
         return upload;
     }
@@ -763,5 +897,37 @@ public class SmAction extends BaseAction {
 
     public void setScSettlementDetail(ScSettlementDetail scSettlementDetail) {
         this.scSettlementDetail = scSettlementDetail;
+    }
+
+    public TecSettlementService getTecSettlementService() {
+        return tecSettlementService;
+    }
+
+    public void setTecSettlementService(TecSettlementService tecSettlementService) {
+        this.tecSettlementService = tecSettlementService;
+    }
+
+    public TecSettlementDetailService getTecSettlementDetailService() {
+        return tecSettlementDetailService;
+    }
+
+    public void setTecSettlementDetailService(TecSettlementDetailService tecSettlementDetailService) {
+        this.tecSettlementDetailService = tecSettlementDetailService;
+    }
+
+    public TecSettlement getTecSettlement() {
+        return tecSettlement;
+    }
+
+    public void setTecSettlement(TecSettlement tecSettlement) {
+        this.tecSettlement = tecSettlement;
+    }
+
+    public TecSettlementDetail getTecSettlementDetail() {
+        return tecSettlementDetail;
+    }
+
+    public void setTecSettlementDetail(TecSettlementDetail tecSettlementDetail) {
+        this.tecSettlementDetail = tecSettlementDetail;
     }
 }

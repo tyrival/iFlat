@@ -13,6 +13,9 @@ Ext.define('iFlat.view.ss.SafetyFineEdit', {
         id: 'ss-safetyfineedit-form',
         margin: 5,
         border: false,
+        layout: 'vbox',
+        maxHeight: 550,
+        scrollable: 'y',
         fieldDefaults: {
             labelAlign: 'right',
             labelWidth: 60,
@@ -21,10 +24,8 @@ Ext.define('iFlat.view.ss.SafetyFineEdit', {
             border: false,
             xtype: 'panel',
             layout: 'hbox',
-            flex: 1,
             margin: '5 10 5 0'
         },
-        layout: 'vbox',
         items: [{
             items: [{
                 xtype: 'combo',

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.TecSettlementDetail">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.TecSettlementDetail">
+        INSERT INTO SmTecSettlementDetail
+        VALUES (#{id},#{pid},#{content},#{matQty},#{spec},#{unit},#{price},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmTecSettlementDetail
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.content},#{item.matQty},#{item.spec},#{item.unit},#{item.price},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.TecSettlementDetail">
+        UPDATE SmTecSettlementDetail
+        <set>
+            <if test="pid!=null">pid=#{pid},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="matQty!=null">matQty=#{matQty},</if>
+            <if test="spec!=null">spec=#{spec},</if>
+            <if test="unit!=null">unit=#{unit},</if>
+            <if test="price!=null">price=#{price},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE SmTecSettlementDetail SET id=a.id,pid=a.pid,content=a.content,matQty=a.matQty,spec=a.spec,unit=a.unit,price=a.price,amount=a.amount,attachment=a.attachment,comment=a.comment
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id} as id,#{item.pid} as pid,#{item.content} as content,#{item.matQty} as matQty,#{item.spec} as spec,#{item.unit} as unit,#{item.price} as price,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment
+        </foreach>
+        ) AS a
+        WHERE SmTecSettlementDetail.id=a.id
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.TecSettlementDetail">
+        DELETE SmTecSettlementDetail
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.TecSettlementDetail" resultMap="TecSettlementDetailResult">
+        SELECT id,pid,content,matQty,spec,unit,price,amount,attachment,comment,creatorAcc,creatorName,createTime
+        FROM SmTecSettlementDetail
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pid!=null">AND pid=#{pid}</if>
+            <if test="spec!=null">AND spec=#{spec}</if>
+            <if test="unit!=null">AND unit=#{unit}</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+        </where>
+        ORDER BY pid,account,createTime,id
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.TecSettlementDetail" id="TecSettlementDetailResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pid" column="pid" jdbcType="CHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="matQty" column="matQty" jdbcType="DOUBLE"/>
+        <result property="spec" column="spec" jdbcType="VARCHAR"/>
+        <result property="unit" column="unit" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="DOUBLE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

@@ -1,11 +1,11 @@
-Ext.define('iFlat.view.sm.SbSettlementController', {
+Ext.define('iFlat.view.sm.TecSettlementController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.sm-sbsettlement',
+    alias: 'controller.sm-tecsettlement',
 
     refresh: function () {
-        smSbSettlementStore.reload();
+        smTecSettlementStore.reload();
     },
-    
+
     info: function (grid, rowIndex, colIndex, item, e, record, row) {
         var win = Ext.getCmp('workflow-comment');
         if (!win) {
@@ -13,7 +13,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
         }
         win.down('grid').setStore(Ext.create('iFlat.store.workflow.Comment', {
             proxy: {
-                url: 'sm_listSbSettlementComment.action',
+                url: 'sm_listTecSettlementComment.action',
                 extraParams: record.getData()
             }
         }))
@@ -24,49 +24,49 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      * 新增或编辑时，弹出窗口，装载数据
      */
     edit: function (grid, rowIndex, colIndex, item, e, record, row) {
-        var win = Ext.getCmp('sm-sbsettlementedit');
+        var win = Ext.getCmp('sm-tecsettlementedit');
         if (!win) {
-            win = Ext.create('iFlat.view.sm.SbSettlementEdit');
+            win = Ext.create('iFlat.view.sm.TecSettlementEdit');
         };
         if (record == undefined) {
-            record = Ext.create('iFlat.model.sm.SbSettlement', {
-                'sbSettlement.deptName': Ext.getCmp('global-panel')
+            record = Ext.create('iFlat.model.sm.TecSettlement', {
+                'tecSettlement.deptName': Ext.getCmp('global-panel')
                     .getViewModel()
                     .get('user')['porgName'],
-                'sbSettlement.status': '未提交'
+                'tecSettlement.status': '未提交'
             });
-            smSbSettlementStore.insert(0, record);
+            smTecSettlementStore.insert(0, record);
         }
 
-        if (record.get('sbSettlement.status') != '未提交') {
-            smSbSettlementDetailRowEditing.disable();
-            Ext.getCmp('sm-sbsettlementedit-detail-delete').setDisabled(true);
-            Ext.getCmp('sm-sbsettlementedit-time').disable();
-            Ext.getCmp('sm-sbsettlementedit-projno').disable();
-            Ext.getCmp('sm-sbsettlementedit-team').disable();
-            Ext.getCmp('sm-sbsettlementedit-comment').disable();
-            Ext.getCmp('sm-sbsettlementedit-detail-add').setDisabled(true);
+        if (record.get('tecSettlement.status') != '未提交') {
+            smTecSettlementDetailRowEditing.disable();
+            Ext.getCmp('sm-tecsettlementedit-detail-delete').setDisabled(true);
+            Ext.getCmp('sm-tecsettlementedit-time').disable();
+            Ext.getCmp('sm-tecsettlementedit-projno').disable();
+            Ext.getCmp('sm-tecsettlementedit-team').disable();
+            Ext.getCmp('sm-tecsettlementedit-comment').disable();
+            Ext.getCmp('sm-tecsettlementedit-detail-add').setDisabled(true);
         } else {
-            smSbSettlementDetailRowEditing.enable();
-            Ext.getCmp('sm-sbsettlementedit-detail-delete').setDisabled(false);
-            Ext.getCmp('sm-sbsettlementedit-time').enable();
-            Ext.getCmp('sm-sbsettlementedit-projno').enable();
-            Ext.getCmp('sm-sbsettlementedit-team').enable();
-            Ext.getCmp('sm-sbsettlementedit-comment').enable();
-            Ext.getCmp('sm-sbsettlementedit-detail-add').setDisabled(false);
+            smTecSettlementDetailRowEditing.enable();
+            Ext.getCmp('sm-tecsettlementedit-detail-delete').setDisabled(false);
+            Ext.getCmp('sm-tecsettlementedit-time').enable();
+            Ext.getCmp('sm-tecsettlementedit-projno').enable();
+            Ext.getCmp('sm-tecsettlementedit-team').enable();
+            Ext.getCmp('sm-tecsettlementedit-comment').enable();
+            Ext.getCmp('sm-tecsettlementedit-detail-add').setDisabled(false);
         }
-        
-        Ext.getCmp('sm-sbsettlementedit-form').loadRecord(record);
-        var month = record.get('sbSettlement.month');
+
+        Ext.getCmp('sm-tecsettlementedit-form').loadRecord(record);
+        var month = record.get('tecSettlement.month');
         if (month) {
-            Ext.getCmp('sm-sbsettlementedit-time').setValue(new Date(month));
+            Ext.getCmp('sm-tecsettlementedit-time').setValue(new Date(month));
         } else {
-            Ext.getCmp('sm-sbsettlementedit-time').reset();
+            Ext.getCmp('sm-tecsettlementedit-time').reset();
         }
-        var id = record.get('sbSettlement.id');
-        smSbSettlementDetailStore.getProxy()
-            .extraParams['sbSettlementDetail.pid'] = id;
-        smSbSettlementDetailStore.reload();
+        var id = record.get('tecSettlement.id');
+        smTecSettlementDetailStore.getProxy()
+            .extraParams['tecSettlementDetail.pid'] = id;
+        smTecSettlementDetailStore.reload();
         win.show();
     },
 
@@ -74,7 +74,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      * 选择工号时，在隐藏单元格中保存船名
      */
     onProjNoChange: function (combo, record, eOpts) {
-        Ext.getCmp('sm-sbsettlementedit-projname').setValue(record.get('project.name'));
+        Ext.getCmp('sm-tecsettlementedit-projname').setValue(record.get('project.name'));
     },
 
     /**
@@ -82,11 +82,11 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      */
     onAttachmentChange: function(field, newValue, oldValue, eOpts) {
         if (!Flat.util.isEmpty(newValue)) {
-            Ext.getCmp('sm-sbsettlementedit-att').show();
-            Ext.getCmp('sm-sbsettlementedit-link').setHref(newValue);
+            Ext.getCmp('sm-tecsettlementedit-att').show();
+            Ext.getCmp('sm-tecsettlementedit-link').setHref(newValue);
         } else {
-            Ext.getCmp('sm-sbsettlementedit-att').hide();
-            Ext.getCmp('sm-sbsettlementedit-link').setHref('');
+            Ext.getCmp('sm-tecsettlementedit-att').hide();
+            Ext.getCmp('sm-tecsettlementedit-link').setHref('');
         }
     },
 
@@ -94,15 +94,15 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      * 上传附件
      */
     uploadAttachment: function(btn) {
-        var form = Ext.getCmp('sm-sbsettlementedit-upload');
+        var form = Ext.getCmp('sm-tecsettlementedit-upload');
         if (form.isValid()) {
             form.submit({
-                url: 'sm_uploadSbSettlement.action',
+                url: 'sm_uploadTecSettlement.action',
                 method: 'POST',
                 waitMsg: '正在上传......',
                 success: function (fp, o) {
                     var path = (Ext.JSON.decode(o.response.responseText)).object;
-                    Ext.getCmp('sm-sbsettlementedit-attachment').setValue(path);
+                    Ext.getCmp('sm-tecsettlementedit-attachment').setValue(path);
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
@@ -119,7 +119,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             if(btn=="yes") {
                 Flat.util.mask();
                 Ext.Ajax.request({
-                    url: 'sm_deleteFile.action?filePath=' + Ext.getCmp('sm-sbsettlementedit-attachment').getValue(),
+                    url: 'sm_deleteFile.action?filePath=' + Ext.getCmp('sm-tecsettlementedit-attachment').getValue(),
                     success: function (response, opts) {
                         Flat.util.unmask();
                         Flat.util.tip(response.responseText);
@@ -129,42 +129,42 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                         Flat.util.tip(response.responseText);
                     },
                 })
-                Ext.getCmp('sm-sbsettlementedit-attachment').setValue('');
+                Ext.getCmp('sm-tecsettlementedit-attachment').setValue('');
             };
         })
     },
 
     /**
-     * 将SbSettlement提交审批
-     * SbSettlement列表界面，data为undefined，
-     * SbSettlementEdit界面，data为SbSettlement.id
+     * 将TecSettlement提交审批
+     * TecSettlement列表界面，data为undefined，
+     * TecSettlementEdit界面，data为TecSettlement.id
      */
     submit: function (view, rowIndex, colIndex, item, e, record, row) {
         Flat.util.mask();
         Ext.Ajax.request({
-            url: 'sm_submitSbSettlement.action',
+            url: 'sm_submitTecSettlement.action',
             params: record.getData(),
             method: 'POST',
             success: function (response, opts) {
                 Flat.util.unmask();
                 Flat.util.tip(response.responseText);
-                smSbSettlementStore.reload();
+                smTecSettlementStore.reload();
             },
             failure: function (response, opts) {
                 Flat.util.unmask();
                 Flat.util.tip(response.responseText);
-                smSbSettlementStore.reload();
+                smTecSettlementStore.reload();
             }
         });
     },
 
     /**
-     * 完成对SbSettlement的修改，并提交审批
+     * 完成对TecSettlement的修改，并提交审批
      */
-    saveAndSubmitSbSettlementEdit: function (btn) {
-        var form = Ext.getCmp('sm-sbsettlementedit-form');
+    saveAndSubmitTecSettlementEdit: function (btn) {
+        var form = Ext.getCmp('sm-tecsettlementedit-form');
         form.submit({
-            url: 'sm_saveAndSubmitSbSettlement.action',
+            url: 'sm_saveAndSubmitTecSettlement.action',
             waitMsg: '保存中...',
             success: function(form, action) {
                 Flat.util.tip(action.response.responseText);
@@ -172,11 +172,11 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                 var id = result['object']['id'];
                 var status = result['object']['status'];
                 // 将edit界面的id值设置为返回id
-                Ext.getCmp('sm-sbsettlementedit-id').setValue(id);
-                Ext.getCmp('sm-sbsettlementedit-status').setValue(status);
+                Ext.getCmp('sm-tecsettlementedit-id').setValue(id);
+                Ext.getCmp('sm-tecsettlementedit-status').setValue(status);
                 // 将明细项的pid设置为返回id值
-                Ext.getCmp('sm-sbsettlementedit').hide();
-                smSbSettlementStore.reload();
+                Ext.getCmp('sm-tecsettlementedit').hide();
+                smTecSettlementStore.reload();
             },
             failure: function(form, action) {
                 Flat.util.tip(action.response.responseText);
@@ -199,28 +199,28 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      * 表格中新增行信息
      */
     addDetail: function() {
-        smSbSettlementDetailRowEditing.cancelEdit();
-        var r = Ext.create('iFlat.model.sm.SbSettlementDetail', {
-            'sbSettlementDetail.pid': Ext.getCmp('sm-sbsettlementedit-id').getValue()
+        smTecSettlementDetailRowEditing.cancelEdit();
+        var r = Ext.create('iFlat.model.sm.TecSettlementDetail', {
+            'tecSettlementDetail.pid': Ext.getCmp('sm-tecsettlementedit-id').getValue()
         });
-        smSbSettlementDetailStore.insert(0, r);
-        smSbSettlementDetailRowEditing.startEdit(0, 0);
+        smTecSettlementDetailStore.insert(0, r);
+        smTecSettlementDetailRowEditing.startEdit(0, 0);
     },
-    
+
     /**
-     * 查看sbSettlement.id，如果是空，则保存头信息，
-     * 返回id填入sbSettlement.id和sbSettlementDetail.pid，然后保存行信息
+     * 查看tecSettlement.id，如果是空，则保存头信息，
+     * 返回id填入tecSettlement.id和tecSettlementDetail.pid，然后保存行信息
      * 如果不为空，则说明头信息存在，直接保存行信息
-     * 保存SbSettlement完毕后，如果是新增的SbSettlement对象，则启动流程，
+     * 保存TecSettlement完毕后，如果是新增的TecSettlement对象，则启动流程，
      */
     updateDetail: function(editor, context, eOpts) {
-        
+
         var rec = context.record;
-        var pid = rec.get('sbSettlementDetail.pid');
+        var pid = rec.get('tecSettlementDetail.pid');
         if (Flat.util.isEmpty(pid)) {
-            var form = Ext.getCmp('sm-sbsettlementedit-form');
+            var form = Ext.getCmp('sm-tecsettlementedit-form');
             form.submit({
-                url: 'sm_createSbSettlementDetail.action',
+                url: 'sm_createTecSettlementDetail.action',
                 waitMsg: '保存中...',
                 params: rec.getData(),
                 success: function(form, action) {
@@ -231,10 +231,10 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                         var head = map['head'];
                         var detail = map['detail'];
                         // 将edit界面的id值设置为返回id
-                        Ext.getCmp('sm-sbsettlementedit-id').setValue(head['id']);
-
-                        rec.set('sbSettlementDetail.id', detail['id']);
-                        rec.set('sbSettlementDetail.pid', detail['pid']);
+                        Ext.getCmp('sm-tecsettlementedit-id').setValue(head['id']);
+                        
+                        rec.set('tecSettlementDetail.id', detail['id']);
+                        rec.set('tecSettlementDetail.pid', detail['pid']);
                     } else {
                         Flat.util.tip(action.response.responseText);
                     }
@@ -245,21 +245,22 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             });
 
         } else {
+
             Flat.util.mask();
             Ext.Ajax.request({
-                url: 'sm_saveSbSettlementDetail.action',
+                url: 'sm_saveTecSettlementDetail.action',
                 method: 'post',
                 params: rec.getData(),
                 success: function(response, opts) {
                     Flat.util.unmask();
                     Flat.util.tip(response.responseText);
-                    if (Flat.util.isEmpty(rec.get('sbSettlementDetail.id'))) {
+                    if (Flat.util.isEmpty(rec.get('tecSettlementDetail.id'))) {
                         var result = Ext.JSON.decode(response.responseText);
                         var id = result['object']['id'];
                         if (id) {
                             rec.set(
-                                'sbSettlementDetail.id', id);
-                            smSbSettlementDetailStore.insert(0, rec);
+                                'tecSettlementDetail.id', id);
+                            smTecSettlementDetailStore.insert(0, rec);
                         }
                     }
                 },
@@ -272,12 +273,12 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
     },
 
     /**
-     * SbSettlementDetail信息退出编辑时，删除未保存的信息
+     * TecSettlementDetail信息退出编辑时，删除未保存的信息
      */
     deleteEmptyRecord: function(editor, context, eOpts) {
-        var id = context.record.data["sbSettlementDetail.id"];
+        var id = context.record.data["tecSettlementDetail.id"];
         if(id == "") {
-            smSbSettlementDetailStore.remove(context.record);
+            smTecSettlementDetailStore.remove(context.record);
         }
     },
 
@@ -285,30 +286,30 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      * 关闭窗口时，刷新清单
      */
     editClose: function () {
-        smSbSettlementStore.reload();
+        smTecSettlementStore.reload();
     },
 
     /**
-     * 点击右下角保存按钮时，保存SbSettlement头信息
+     * 点击右下角保存按钮时，保存TecSettlement头信息
      * 由于明细行信息在表格内部保存，此时无需考虑行信息，所以只要保存头信息
-     * 保存头信息后，如果是新增的SbSettlement对象，则启动流程
+     * 保存头信息后，如果是新增的TecSettlement对象，则启动流程
      */
     saveEdit: function () {
-        var form = Ext.getCmp('sm-sbsettlementedit-form');
+        var form = Ext.getCmp('sm-tecsettlementedit-form');
         form.submit({
-            url: 'sm_saveSbSettlement.action',
+            url: 'sm_saveTecSettlement.action',
             waitMsg: '保存中...',
             success: function(form, action) {
                 Flat.util.tip(action.response.responseText);
-                Ext.getCmp('sm-sbsettlementedit').hide();
-                smSbSettlementStore.reload();
+                Ext.getCmp('sm-tecsettlementedit').hide();
+                smTecSettlementStore.reload();
             },
             failure: function(form, action) {
                 Flat.util.tip(action.response.responseText);
             }
         });
     },
-    
+
     /**
      * 删除结算申请
      */
@@ -317,18 +318,18 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             if (btn == "yes") {
                 Flat.util.mask();
                 Ext.Ajax.request({
-                    url: 'sm_deleteSbSettlement.action',
+                    url: 'sm_deleteTecSettlement.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
                         Flat.util.unmask();
                         Flat.util.tip(response.responseText);
-                        smSbSettlementStore.remove(record);
+                        smTecSettlementStore.remove(record);
                     },
                     failure: function(response, opts) {
                         Flat.util.unmask();
                         Flat.util.tip(response.responseText);
-                        smSbSettlementStore.reload();
+                        smTecSettlementStore.reload();
                     }
                 })
             };
@@ -343,7 +344,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             if (btn == "yes") {
                 Flat.util.mask();
                 Ext.Ajax.request({
-                    url: 'sm_deleteSbSettlementDetail.action',
+                    url: 'sm_deleteTecSettlementDetail.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
@@ -351,9 +352,9 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
                         Flat.util.tip(response.responseText);
                         var result = Ext.JSON.decode(response.responseText);
                         if (result['success']) {
-                            var model = smSbSettlementDetailStore.findRecord(
-                                'sbSettlementDetail.id', result['object']['id']);
-                            smSbSettlementDetailStore.remove(model);
+                            var model = smTecSettlementDetailStore.findRecord(
+                                'tecSettlementDetail.id', result['object']['id']);
+                            smTecSettlementDetailStore.remove(model);
                         }
                     },
                     failure: function(response, opts) {

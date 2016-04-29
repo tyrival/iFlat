@@ -92,12 +92,12 @@ Ext.define('iFlat.view.report.hr.FineOfWorkerController', {
         var id = 'rpt-hr-fineofworker-grid';
         var t = '';
         switch (text) {
-            case '导出质量':
-                id = id + '1';
+            case '导出-质量':
+                id += '1';
                 t = '质量罚款';
                 break;
-            case  '导出安全':
-                id = id + '2';
+            case  '导出-安全':
+                id += '2';
                 t = '安全罚款';
                 break;
         }

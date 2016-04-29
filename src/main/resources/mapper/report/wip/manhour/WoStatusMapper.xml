@@ -24,7 +24,10 @@ FROM (
     LEFT JOIN V_Wh_WoHullPrinted c1 ON a1.gcbh=c1.gcbh AND a1.pgdbh=c1.pgdbh
     LEFT JOIN V_Wh_Project d1 ON a1.gcbh=d1.gcbh
     <where>
-        (a1.zymc = '船体' or a1.zgzmc ='管子制作') AND d1.gh=#{projNo}
+        (a1.zymc = '船体' or a1.zgzmc ='管子制作')
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo)">
+          AND d1.gh=#{projNo}
+        </if>
         <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
           AND a1.pgdbh LIKE '%' + #{woNo} + '%'
         </if>
@@ -42,7 +45,10 @@ FROM (
     LEFT JOIN V_Wh_WoOutfittingPrinted c2 ON a2.gcbh=c2.gcbh AND a2.pgdms=c2.pgdms AND b2.djsj=c2.djsj
     LEFT JOIN V_Wh_Project d2 ON a2.gcbh=d2.gcbh
     <where>
-        a2.zymc='舾装安装' AND d2.gh=#{projNo}
+        a2.zymc='舾装安装'
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo)">
+            AND d2.gh=#{projNo}
+        </if>
         <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
             AND a2.pgdbh LIKE '%' + #{woNo} + '%'
         </if>
@@ -60,7 +66,10 @@ FROM (
     LEFT JOIN V_Wh_WoFittingMakingPrinted c3 ON a3.gcbh=c3.gcbh AND a3.pgdms=c3.pgdms AND b3.djsj=c3.djsj
     LEFT JOIN V_Wh_Project d3 ON a3.gcbh=d3.gcbh
     <where>
-        a3.zymc='舾装制作' AND d3.gh=#{projNo}
+        a3.zymc='舾装制作'
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo)">
+            AND d3.gh=#{projNo}
+        </if>
         <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
             AND a3.pgdbh LIKE '%' + #{woNo} + '%'
         </if>
@@ -73,7 +82,10 @@ FROM (
     LEFT JOIN V_Wh_WoMiscPrinted c4 ON a4.gcbh=c4.gcbh AND a4.pgdbh=c4.pgdbh AND b4.djsj=c4.djsj
     LEFT JOIN V_Wh_Project d4 ON a4.gcbh=d4.gcbh
     <where>
-        b4.sgnr NOT LIKE '%厚度:%' AND d4.gh=#{projNo}
+        b4.sgnr NOT LIKE '%厚度:%'
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo)">
+            AND d4.gh=#{projNo}
+        </if>
         <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
             AND a4.pgdbh LIKE '%' + #{woNo} + '%'
         </if>
@@ -102,7 +114,10 @@ FROM (
     LEFT JOIN V_Wh_WoModifyPrinted c5 ON CAST(b5.xgnr as varchar(max))= cast(c5.sgnr as varchar(max)) and c5.gcmc = a5.gcmc and c5.xgdbh = b5.xgdh
     LEFT JOIN V_Wh_Project d5 ON a5.gcbh=d5.gcbh
     <where>
-        d5.gh=#{projNo}
+
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo)">
+            d5.gh=#{projNo}
+        </if>
         <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
             AND a5.xgdbh LIKE '%' + #{woNo} + '%'
         </if>
@@ -117,7 +132,10 @@ FROM (
     LEFT JOIN V_Wh_WoCommonPrinted c6 ON a6.pgdbh=c6.pgdbh AND b6.sgxm=c6.sgxm AND b6.ggxh=c6.ggxh AND b6.djsj=c6.djsj
     LEFT JOIN V_Wh_Project d6 ON a6.gcbh=d6.gcbh
     <where>
-        d6.gh=#{projNo}
+
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo)">
+            d6.gh=#{projNo}
+        </if>
         <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
             AND a6.pgdbh LIKE '%' + #{woNo} + '%'
         </if>
@@ -130,7 +148,10 @@ FROM (
     LEFT JOIN V_Wh_WoPipePrinted c8 ON b8.ygid=c8.mxbz
     LEFT JOIN V_Wh_Project d8 ON a8.gcbh=d8.gcbh
     <where>
-        b8.sgnr LIKE '%厚度:%' AND d8.gh=#{projNo}
+        b8.sgnr LIKE '%厚度:%'
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo)">
+            AND d8.gh=#{projNo}
+        </if>
         <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
             AND a8.pgdbh LIKE '%' + #{woNo} + '%'
         </if>
@@ -144,7 +165,10 @@ FROM (
     LEFT JOIN V_Wh_WoExtraPrinted c7 ON a7.gcbh=c7.gcbh AND b7.sgnr=CONVERT(VARCHAR(500),c7.sgnr) AND b7.djsj=c7.djsj
     LEFT JOIN V_Wh_Project d7 ON a7.gcbh=d7.gcbh
     <where>
-        d7.gh=#{projNo}
+
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo)">
+            d7.gh=#{projNo}
+        </if>
         <if test="woNo!=null and !&quot;&quot;.equals(woNo.trim())">
             AND a7.pgdbh LIKE '%' + #{woNo} + '%'
         </if>

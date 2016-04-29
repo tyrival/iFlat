@@ -10,10 +10,10 @@ Ext.define('iFlat.view.report.wip.manhour.WoStatusController', {
     search: function(button) {
         var proj = Ext.getCmp('rpt-wip-manhour-wostatus-combo-projno').getValue();
         var type = Ext.getCmp('rpt-wip-manhour-wostatus-combo-type').getValue();
-        if(!proj || proj == '' || !type || type == '') {
+        if(!type || type == '') {
             Ext.Msg.show({
                 title:'提示',
-                message: '请先选择船名和派工单类型。',
+                message: '请先选择派工单类型。',
             });
         } else {
             rptWipManhourWoStatusGridStore.getProxy().extraParams['woStatus.projNo'] = proj;

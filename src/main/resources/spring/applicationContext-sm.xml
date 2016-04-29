@@ -32,6 +32,10 @@
         <property name="workflowService" ref="workflowService"/>
         <property name="srSettlementSecond" ref="srSettlementSecond"/>
         <property name="srSettlementSecondService" ref="srSettlementSecondService"/>
+        <property name="tecSettlement" ref="tecSettlement"/>
+        <property name="tecSettlementService" ref="tecSettlementService"/>
+        <property name="tecSettlementDetail" ref="tecSettlementDetail"/>
+        <property name="tecSettlementDetailService" ref="tecSettlementDetailService"/>
     </bean>
 
     <bean id="sbSettlementService" class="com.iflat.sm.service.impl.SbSettlementServiceImpl">
@@ -116,4 +120,15 @@
     <bean id="srProjectManagerService" class="com.iflat.sm.service.impl.SrProjectManagerServiceImpl"/>
     <bean id="srProjectManagerDao" class="com.iflat.sm.dao.impl.SrProjectManagerDaoImpl"/>
     <bean id="srProjectManager" class="com.iflat.sm.bean.SrProjectManager" scope="prototype"/>
+
+    <bean id="tecSettlementService" class="com.iflat.sm.service.impl.TecSettlementServiceImpl">
+        <property name="workflowService" ref="workflowService"/>
+    </bean>
+    <bean id="tecSettlementDao" class="com.iflat.sm.dao.impl.TecSettlementDaoImpl"/>
+    <bean id="tecSettlement" class="com.iflat.sm.bean.TecSettlement" scope="prototype"/>
+
+    <bean id="tecSettlementDetailService" class="com.iflat.sm.service.impl.TecSettlementDetailServiceImpl"/>
+    <bean id="tecSettlementDetailDao" class="com.iflat.sm.dao.impl.TecSettlementDetailDaoImpl"/>
+    <bean id="tecSettlementDetail" class="com.iflat.sm.bean.TecSettlementDetail" scope="prototype"/>
+
 </beans>
