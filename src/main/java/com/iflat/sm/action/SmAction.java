@@ -1,12 +1,16 @@
 package com.iflat.sm.action;
 
 import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.entity.ExcelTemplate;
+import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
 import com.iflat.sm.bean.*;
 import com.iflat.sm.service.*;
 import com.iflat.system.entity.UserInfoVo;
+import com.iflat.util.ExcelUtil;
 import com.iflat.util.Session;
 import com.iflat.workflow.service.WorkflowService;
+import com.opensymphony.xwork2.ModelDriven;
 
 import java.io.File;
 import java.util.*;
@@ -14,8 +18,9 @@ import java.util.*;
 /**
  * Created by tyriv on 2016/3/22.
  */
-public class SmAction extends BaseAction {
-    
+public class SmAction extends BaseAction implements ModelDriven<Page> {
+
+    protected Page page;
     private File upload;
     private String uploadFileName;
 
@@ -46,13 +51,20 @@ public class SmAction extends BaseAction {
     private SrSettlementDetlSecond srSettlementDetlSecond;
     private BaseService srSettlementBalanceService;
     private SrSettlementBalance srSettlementBalance;
-    private BaseService srSettlementSecondService;
+    private SrSettlementSecondService srSettlementSecondService;
     private SrSettlementSecond srSettlementSecond;
+    private String srtype;
 
     private TecSettlementService tecSettlementService;
     private TecSettlementDetailService tecSettlementDetailService;
     private TecSettlement tecSettlement;
     private TecSettlementDetail tecSettlementDetail;
+
+    private BaseService subsidyService;
+    private Subsidy subsidy;
+
+    private BaseService temporaryService;
+    private Temporary temporary;
 
     private WorkflowService workflowService;
     private String taskId;
@@ -323,6 +335,18 @@ public class SmAction extends BaseAction {
     }
 
     /* 修船结算 SrSettlement */
+    public String templateSrSettlement() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("sm", "Sr" + this.srtype);
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String importSrSettlement() throws Exception {
+        this.result.setMap(this.srSettlementService.importExcel(this.upload, this.uploadFileName, this.srtype));
+        return SUCCESS;
+    }
+
     public String approveSrSettlement() throws Exception {
         String businessKey = srSettlementService.getBusinessKey(srSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -452,6 +476,18 @@ public class SmAction extends BaseAction {
     }
 
     /* SrSettlementSecond */
+    public String templateSrSettlementSecond() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("sm", "SrSecond");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String importSrSettlementSecond() throws Exception {
+        this.result.setMap(this.srSettlementSecondService.importExcel(this.upload, this.uploadFileName, this.srtype));
+        return SUCCESS;
+    }
+
     public String approveSrSettlementSecond() throws Exception {
         //this.srSettlementSecond.setPid(this.srSettlement.getId());
         this.srSettlementSecondService.save(this.srSettlementSecond);
@@ -639,6 +675,61 @@ public class SmAction extends BaseAction {
                 this.tecSettlementDetailService.list(this.tecSettlementDetail));
         return SUCCESS;
     }
+
+    /* Subsidy */
+    public String saveSubsidy() throws Exception {
+        this.result.setObject(this.subsidyService.save(this.subsidy));
+        return SUCCESS;
+    }
+
+    public String deleteSubsidy() throws Exception {
+        this.result.setObject(this.subsidyService.delete(this.subsidy));
+        return SUCCESS;
+    }
+
+    public String listSubsidy() throws Exception {
+        this.result.setList(this.subsidyService.list(this.subsidy));
+        return SUCCESS;
+    }
+
+    public String uploadSubsidy() throws Exception {
+        this.result.setObject(this.subsidyService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listPageSubsidy() throws Exception {
+        this.result.setObject(this.subsidyService.listPage(this.subsidy, this.page));
+        return SUCCESS;
+    }
+
+    /* Temporary */
+    public String saveTemporary() throws Exception {
+        this.result.setObject(this.temporaryService.save(this.temporary));
+        return SUCCESS;
+    }
+
+    public String deleteTemporary() throws Exception {
+        this.result.setObject(this.temporaryService.delete(this.temporary));
+        return SUCCESS;
+    }
+
+    public String listTemporary() throws Exception {
+        this.result.setList(this.temporaryService.list(this.temporary));
+        return SUCCESS;
+    }
+
+    public String uploadTemporary() throws Exception {
+        this.result.setObject(this.temporaryService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listPageTemporary() throws Exception {
+        this.result.setObject(this.temporaryService.listPage(this.temporary, this.page));
+        return SUCCESS;
+    }
+
+
+
 
 
 
@@ -851,11 +942,11 @@ public class SmAction extends BaseAction {
         this.srProjectManager = srProjectManager;
     }
 
-    public BaseService getSrSettlementSecondService() {
+    public SrSettlementSecondService getSrSettlementSecondService() {
         return srSettlementSecondService;
     }
 
-    public void setSrSettlementSecondService(BaseService srSettlementSecondService) {
+    public void setSrSettlementSecondService(SrSettlementSecondService srSettlementSecondService) {
         this.srSettlementSecondService = srSettlementSecondService;
     }
 
@@ -929,5 +1020,61 @@ public class SmAction extends BaseAction {
 
     public void setTecSettlementDetail(TecSettlementDetail tecSettlementDetail) {
         this.tecSettlementDetail = tecSettlementDetail;
+    }
+
+    public BaseService getSubsidyService() {
+        return subsidyService;
+    }
+
+    public void setSubsidyService(BaseService subsidyService) {
+        this.subsidyService = subsidyService;
+    }
+
+    public Subsidy getSubsidy() {
+        return subsidy;
+    }
+
+    public void setSubsidy(Subsidy subsidy) {
+        this.subsidy = subsidy;
+    }
+
+    public BaseService getTemporaryService() {
+        return temporaryService;
+    }
+
+    public void setTemporaryService(BaseService temporaryService) {
+        this.temporaryService = temporaryService;
+    }
+
+    public Temporary getTemporary() {
+        return temporary;
+    }
+
+    public void setTemporary(Temporary temporary) {
+        this.temporary = temporary;
+    }
+
+    public String getSrtype() {
+        return srtype;
+    }
+
+    public void setSrtype(String srtype) {
+        this.srtype = srtype;
+    }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
+
+    @Override
+    public Page getModel() {
+        if(page == null){
+            page = new Page();
+        }
+        return page;
     }
 }

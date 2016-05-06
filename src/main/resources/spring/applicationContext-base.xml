@@ -18,4 +18,6 @@
     <bean id="baseAction" class="com.iflat.base.action.impl.BaseAction" scope="prototype">
         <property name="result" ref="result"/>
     </bean>
+
+    <bean id="page" class="com.iflat.base.entity.Page"/>
 </beans>

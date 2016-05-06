@@ -36,6 +36,10 @@
         <property name="tecSettlementService" ref="tecSettlementService"/>
         <property name="tecSettlementDetail" ref="tecSettlementDetail"/>
         <property name="tecSettlementDetailService" ref="tecSettlementDetailService"/>
+        <property name="subsidy" ref="subsidy"/>
+        <property name="subsidyService" ref="subsidyService"/>
+        <property name="temporary" ref="temporary"/>
+        <property name="temporaryService" ref="temporaryService"/>
     </bean>
 
     <bean id="sbSettlementService" class="com.iflat.sm.service.impl.SbSettlementServiceImpl">
@@ -93,6 +97,10 @@
     <bean id="srSettlementService" class="com.iflat.sm.service.impl.SrSettlementServiceImpl">
         <property name="workflowService" ref="workflowService"/>
         <property name="srSettlementDetlFirstService" ref="srSettlementDetlFirstService"/>
+        <property name="srSettlement" ref="srSettlement"/>
+        <property name="rptProjectService" ref="rptProjectService"/>
+        <property name="userService" ref="userService"/>
+        <property name="teamService" ref="teamService"/>
     </bean>
     <bean id="srSettlementDao" class="com.iflat.sm.dao.impl.SrSettlementDaoImpl"/>
     <bean id="srSettlement" class="com.iflat.sm.bean.SrSettlement" scope="prototype"/>
@@ -105,6 +113,9 @@
         <property name="srSettlementBalance" ref="srSettlementBalance"/>
         <property name="srSettlementBalanceService" ref="srSettlementBalanceService"/>
         <property name="srSettlementDetlSecondService" ref="srSettlementDetlSecondService"/>
+        <property name="teamService" ref="teamService"/>
+        <property name="srSettlementSecond" ref="srSettlementSecond"/>
+        <property name="rptProjectService" ref="rptProjectService"/>
     </bean>
     <bean id="srSettlementSecondDao" class="com.iflat.sm.dao.impl.SrSettlementSecondDaoImpl"/>
     <bean id="srSettlementSecond" class="com.iflat.sm.bean.SrSettlementSecond" scope="prototype"/>
@@ -131,4 +142,11 @@
     <bean id="tecSettlementDetailDao" class="com.iflat.sm.dao.impl.TecSettlementDetailDaoImpl"/>
     <bean id="tecSettlementDetail" class="com.iflat.sm.bean.TecSettlementDetail" scope="prototype"/>
 
+    <bean id="subsidyService" class="com.iflat.sm.service.impl.SubsidyServiceImpl"/>
+    <bean id="subsidyDao" class="com.iflat.sm.dao.impl.SubsidyDaoImpl"/>
+    <bean id="subsidy" class="com.iflat.sm.bean.Subsidy" scope="prototype"/>
+
+    <bean id="temporaryService" class="com.iflat.sm.service.impl.TemporaryServiceImpl"/>
+    <bean id="temporaryDao" class="com.iflat.sm.dao.impl.TemporaryDaoImpl"/>
+    <bean id="temporary" class="com.iflat.sm.bean.Temporary" scope="prototype"/>
 </beans>

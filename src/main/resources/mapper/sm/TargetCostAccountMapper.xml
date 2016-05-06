@@ -12,7 +12,7 @@
             <if test="name!=null">AND name=#{name}</if>
             <if test="type!=null">AND type=#{type}</if>
         </where>
-        ORDER BY code
+        ORDER BY (CASE type WHEN '钢结构' THEN 0 ELSE 1 END) AS seq,code
     </select>
 
     <resultMap type="com.iflat.sm.bean.TargetCostAccount" id="SmTargetCostAccountResult">

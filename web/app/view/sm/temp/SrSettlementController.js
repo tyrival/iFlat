@@ -411,5 +411,65 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
 
     refreshDetail: function (btn) {
         btn.up('window').down('grid').getStore().reload();
-    }
+    },
+
+
+    uploadFile: function(btn) {
+        var grid = btn.up('grid');
+        var m;
+        switch (grid.getXType()) {
+            case 'sm-srmain':
+                m = 'Main';
+                break;
+            case 'sm-srmisc':
+                m = 'Misc';
+                break;
+            case 'sm-srsys':
+                m = 'Sys';
+                break;
+        }
+        var form = btn.previousSibling('form');
+        if (form.isValid()) {
+            form.submit({
+                url: 'sm_importSrSettlement.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                params: {
+                    'srtype': m
+                },
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    grid.getStore().reload();
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        var panel = btn.up('panel');
+        if(panel) {
+            var m;
+            switch (panel.getXType()) {
+                case 'sm-srmain':
+                    m = 'Main';
+                    break;
+                case 'sm-srmisc':
+                    m = 'Misc';
+                    break;
+                case 'sm-srsys':
+                    m = 'Sys';
+                    break;
+            }
+            Ext.Ajax.request({
+                url: 'sm_templateSrSettlement.action?srtype=' + m,
+                method: 'post',
+                success: function(response, opts) {
+                    window.open(Ext.JSON.decode(response.responseText)['object']);
+                },
+            });
+        }
+    },
 });

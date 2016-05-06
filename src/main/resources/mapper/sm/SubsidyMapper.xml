@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.Subsidy">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.Subsidy">
+        INSERT INTO SmSubsidy
+        VALUES (#{id},#{type},#{team},#{month},#{amount},#{creatorAcc},#{creatorName},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmSubsidy
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.type},#{item.team},#{item.month},#{item.amount},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.Subsidy">
+        UPDATE SmSubsidy
+        <set>
+            <if test="type!=null">type=#{type},</if>
+            <if test="month!=null">month=#{month},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.Subsidy">
+        DELETE SmSubsidy
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.Subsidy" resultMap="SmSubsidyResult">
+        SELECT id,type,month,team,amount,creatorAcc,creatorName,createTime
+        FROM SmSubsidy
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="type!=null">AND type=#{type}</if>
+            <if test="month!=null">AND DATEDIFF(MONTH,#{month},month)=0</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
+        </where>
+        ORDER BY month DESC,team,type,createTime
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.Subsidy" id="SmSubsidyResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

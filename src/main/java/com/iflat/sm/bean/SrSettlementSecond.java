@@ -84,7 +84,6 @@ public class SrSettlementSecond {
 
     public void setFineAmount(double fineAmount) {
         this.fineAmount = fineAmount;
-        setSummaryAmount();
     }
 
     public String getType() {
@@ -193,8 +192,7 @@ public class SrSettlementSecond {
 
     private void setSummaryAmount() {
         this.summaryAmount
-                = consumableAmount + laborAmount + performanceAmount
-                - materialAmount - fineAmount;
+                = consumableAmount + laborAmount + performanceAmount - materialAmount;
     }
 
     public String getAttachment() {

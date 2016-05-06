@@ -36,7 +36,7 @@ Ext.define('iFlat.view.ss.SafetyFineEdit', {
                 editable: true,
                 typeAhead: true,
                 minChars: 0,
-                forceSelection : false,
+                forceSelection : true,
                 displayField: 'name',
                 valueField: 'projNo',
                 width: 250,

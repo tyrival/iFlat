@@ -5,20 +5,22 @@
 <mapper namespace="Code.Team">
 
     <select id="list" parameterType="com.iflat.code.bean.Team" resultMap="codeTeamResult">
-        SELECT DISTINCT deptCode,deptName,teamName
+        SELECT DISTINCT deptCode,deptName,teamName,type
         FROM code.dbo.V_Team
         <where>
             <if test="deptCode!=null">AND deptCode=#{deptCode}</if>
             <if test="deptName!=null">AND deptName=#{deptName}</if>
             <if test="teamName!=null">AND teamName=#{teamName}</if>
+            <if test="type!=null">AND type=#{type}</if>
         </where>
-        GROUP BY deptCode,deptName,teamName
-        ORDER BY deptCode,deptName,teamName
+        GROUP BY deptCode,deptName,teamName,type
+        ORDER BY deptCode,deptName,teamName,type
     </select>
 
     <resultMap type="com.iflat.code.bean.Team" id="codeTeamResult">
         <result property="deptCode" column="deptCode" jdbcType="VARCHAR"/>
         <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
         <result property="teamName" column="teamName" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

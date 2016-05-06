@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlementDetlSecond">
         INSERT INTO SmSrSettlementDetlSecond
-        VALUES (#{id},#{pid},#{type},#{specs},#{content},#{qty1},#{qty2},#{qty3},#{qty4},#{qty5},#{qty6},#{price},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{settleQty1},#{settleQty2},#{settleQty3},#{settleQty4},#{settleQty5},#{settleQty6},#{settlePrice},#{settleAmount})
+        VALUES (#{id},#{pid},#{type},#{specs},#{unit},#{content},#{qty1},#{qty2},#{qty3},#{qty4},#{qty5},#{qty6},#{price},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{settleQty1},#{settleQty2},#{settleQty3},#{settleQty4},#{settleQty5},#{settleQty6},#{settlePrice},#{settleAmount})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlementDetlSecond
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.pid},#{item.type},#{item.specs},#{item.content},#{item.qty1},#{item.qty2},#{item.qty3},#{item.qty4},#{item.qty5},#{item.qty6},#{item.price},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.settleQty1},#{item.settleQty2},#{item.settleQty3},#{item.settleQty4},#{item.settleQty5},#{item.settleQty6},#{item.settlePrice},#{item.settleAmount}
+            SELECT #{item.id},#{item.pid},#{item.type},#{item.specs},#{item.unit},#{item.content},#{item.qty1},#{item.qty2},#{item.qty3},#{item.qty4},#{item.qty5},#{item.qty6},#{item.price},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.settleQty1},#{item.settleQty2},#{item.settleQty3},#{item.settleQty4},#{item.settleQty5},#{item.settleQty6},#{item.settlePrice},#{item.settleAmount}
         </foreach>
     </insert>
 
@@ -23,6 +23,7 @@
             <if test="content!=null">content=#{content},</if>
             <if test="type!=null">type=#{type},</if>
             <if test="specs!=null">specs=#{specs},</if>
+            <if test="unit!=null">unit=#{unit},</if>
             <if test="qty1!=null">qty1=#{qty1},</if>
             <if test="qty2!=null">qty2=#{qty2},</if>
             <if test="qty3!=null">qty3=#{qty3},</if>
@@ -47,10 +48,10 @@
 
     <!-- 批量修改，只能用于由一级结算明细自动生成二级结算明细 -->
     <update id="updateBatch" parameterType="java.util.List">
-        UPDATE SmSrSettlementDetlSecond SET id=id,settleQty1=settleQty1,settleQty2=settleQty2,settleQty3=settleQty3,settleQty4=settleQty4,settleQty5=settleQty5,settleQty6=settleQty6,settlePrice=settlePrice,settleAmount=settleAmount
+        UPDATE SmSrSettlementDetlSecond SET id=id,settleQty1=settleQty1,settleQty2=settleQty2,settleQty3=settleQty3,settleQty4=settleQty4,settleQty5=settleQty5,settleQty6=settleQty6,settlePrice=settlePrice,settleAmount=settleAmount,unit=unit
         FROM (
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id} as id,#{item.settleQty1} as settleQty1,#{item.settleQty2} as settleQty2,#{item.settleQty3} as settleQty3,#{item.settleQty4} as settleQty4,#{item.settleQty5} as settleQty5,#{item.settleQty6} as settleQty6,#{item.settlePrice} as settlePrice,#{item.settleAmount} as settleAmount
+            SELECT #{item.id} as id,#{item.settleQty1} as settleQty1,#{item.settleQty2} as settleQty2,#{item.settleQty3} as settleQty3,#{item.settleQty4} as settleQty4,#{item.settleQty5} as settleQty5,#{item.settleQty6} as settleQty6,#{item.settlePrice} as settlePrice,#{item.settleAmount} as settleAmount,#{item.unit} as unit
         </foreach>
         ) AS a
         WHERE SmSrSettlementDetlSecond.id=a.id
@@ -77,12 +78,13 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SrSettlementDetlSecond" resultMap="SrSettlementDetlSecondResult">
-        SELECT id,pid,content,type,specs,qty1,qty2,qty3,qty4,qty5,qty6,price,amount,attachment,comment,creatorAcc,creatorName,createTime,settleQty1,settleQty2,settleQty3,settleQty4,settleQty5,settleQty6,settlePrice,settleAmount
+        SELECT id,pid,content,type,specs,unit,qty1,qty2,qty3,qty4,qty5,qty6,price,amount,attachment,comment,creatorAcc,creatorName,createTime,settleQty1,settleQty2,settleQty3,settleQty4,settleQty5,settleQty6,settlePrice,settleAmount
         FROM SmSrSettlementDetlSecond
         <where>
             <if test="id!=null">id=#{id}</if>
             <if test="pid!=null">AND pid=#{pid}</if>
             <if test="type!=null ">AND type=#{type}</if>
+            <if test="unit!=null ">AND unit=#{unit}</if>
             <if test="content!=null and !&quot;&quot;.equals(content.trim())">AND content LIKE '%' + #{content} + '%'</if>
             <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
@@ -96,6 +98,7 @@
         <result property="content" column="content" jdbcType="VARCHAR"/>
         <result property="type" column="type" jdbcType="VARCHAR"/>
         <result property="specs" column="specs" jdbcType="VARCHAR"/>
+        <result property="unit" column="unit" jdbcType="VARCHAR"/>
         <result property="qty1" column="qty1" jdbcType="DOUBLE"/>
         <result property="qty2" column="qty2" jdbcType="DOUBLE"/>
         <result property="qty3" column="qty3" jdbcType="DOUBLE"/>

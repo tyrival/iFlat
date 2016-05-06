@@ -321,4 +321,39 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
             };
         })
     },
+    
+    uploadFile: function(btn) {
+        var type = btn.up('window').down('textfield[name=srSettlementSecond.type]').getValue()
+        var form = btn.previousSibling('form');
+        if (form.isValid()) {
+            form.submit({
+                url: 'sm_importSrSettlementSecond.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                params: {
+                    'srtype': type
+                },
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    /*var map = Ext.JSON.decode(o.response.responseText)['map'];
+                    var head = map['head'];
+                    var detail = map['detail'];*/
+                    
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        Ext.Ajax.request({
+            url: 'sm_templateSrSettlementSecond.action',
+            method: 'post',
+            success: function(response, opts) {
+                window.open(Ext.JSON.decode(response.responseText)['object']);
+            },
+        });
+    },
 });

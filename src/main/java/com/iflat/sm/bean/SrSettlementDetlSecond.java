@@ -12,6 +12,7 @@ public class SrSettlementDetlSecond {
     private String content;
     private String type;
     private String specs;
+    private String unit;
     private double settleQty1;
     private double settleQty2;
     private double settleQty3;
@@ -33,6 +34,14 @@ public class SrSettlementDetlSecond {
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 
     public SrSettlementDetlSecond() {
         this.createTime = new Date();

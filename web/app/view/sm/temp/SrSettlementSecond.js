@@ -26,7 +26,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                 url: 'sm_listSrSettlementBalance.action',
                 method: 'post',
                 params: {
-                    'srSettlementBalance.deptName': dept
+                    'srSettlementBalance.deptName': 
+                        win.down('textfield[name=deptName]').getValue()
                 },
                 success: function(response, opts) {
                     var list = Ext.JSON.decode(response.responseText)['list'];
@@ -43,6 +44,26 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
     closeAction: 'hide',
     id: 'sm-srsettlementsecond',
     width: '95%',
+
+    tbar: [{
+        xtype: 'form',
+        items: [{
+            xtype: 'fileuploadfield',
+            name: 'upload',
+            buttonText: '选择...',
+            width: 300,
+            margin: '0 0 0 0',
+        }, ]
+    }, {
+        xtype: 'button',
+        text: '导入',
+        ui: 'orig-blue',
+        handler: 'uploadFile'
+    }, '->', {
+        text: '下载模板',
+        handler: 'downloadTemplate'
+    }],
+
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',

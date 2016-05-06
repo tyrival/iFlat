@@ -11,6 +11,8 @@ public class ExcelReader {
     private String[] props;
     private int startRow;
     private int startColumn;
+    private int endRow;
+    private int endColumn;
 
     public ExcelReader() {
     }
@@ -20,6 +22,8 @@ public class ExcelReader {
         this.filePath = filePath;
         this.startColumn = 1;
         this.startRow = 1;
+        this.endColumn = 0;
+        this.endRow = 0;
     }
 
     public String getSheetName() {
@@ -68,5 +72,21 @@ public class ExcelReader {
 
     public void setStartColumn(int startColumn) {
         this.startColumn = startColumn;
+    }
+
+    public int getEndRow() {
+        return endRow;
+    }
+
+    public void setEndRow(int endRow) {
+        this.endRow = endRow;
+    }
+
+    public int getEndColumn() {
+        return endColumn;
+    }
+
+    public void setEndColumn(int endColumn) {
+        this.endColumn = endColumn;
     }
 }

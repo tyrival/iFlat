@@ -11,6 +11,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellRangeAddressList;
 import org.apache.struts2.ServletActionContext;
 import org.jdom.Attribute;
+import org.jdom.DataConversionException;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -169,7 +170,12 @@ public class ExcelUtil {
         rowIndicate++;
 
         //获取最后一行行号
-        int lastRowNum = sheet.getLastRowNum();
+        int lastRowNum = excelReader.getEndRow();
+        if (lastRowNum == 0) {
+            // 如果未定义最后一行行号，则以文件行数为准
+            lastRowNum = sheet.getLastRowNum();
+        }
+
         for(int i = rowIndicate; i <= lastRowNum; i++) {
             HSSFRow row = sheet.getRow(i);
 
@@ -179,6 +185,9 @@ public class ExcelUtil {
 
             //获取最后一列列号
             int lastCellNum = row.getLastCellNum();
+            if (excelReader.getEndColumn() != 0) {
+                lastCellNum = excelReader.getEndColumn();
+            }
             for(int j = startCol; j < lastCellNum; j++) {
                 HSSFCell cell = row.getCell(j);
 
@@ -195,10 +204,10 @@ public class ExcelUtil {
                             value = cell.getDateCellValue();
                             break;
                         case "class java.lang.String":
-                            value = cell.getStringCellValue();
+                            value = cell.getStringCellValue().trim();
                             break;
                         case "string":
-                            value = cell.getStringCellValue();
+                            value = cell.getStringCellValue().trim();
                             break;
                         case "boolean":
                             value = cell.getBooleanCellValue();
@@ -326,18 +335,19 @@ public class ExcelUtil {
 
         //设置数据区域样式
         Element tbody = root.getChild("tbody");
-        Element tr = tbody.getChild("tr");
-        int repeat = tr.getAttribute("repeat").getIntValue();
-
-        List<Element> tds = tr.getChildren("td");
-        for (int i = 0; i < repeat; i++) {
-            HSSFRow row = sheet.createRow(rownum);
-            for(column =0 ;column < tds.size();column++){
-                Element td = tds.get(column);
-                HSSFCell cell = row.createCell(column);
-                setType(wb,cell,td);
+        trs = tbody.getChildren("tr");
+        for (Element tr : trs) {
+            int repeat = tr.getAttribute("repeat").getIntValue();
+            List<Element> tds = tr.getChildren("td");
+            for (int i = 0; i < repeat; i++) {
+                HSSFRow row = sheet.createRow(rownum);
+                for(column =0 ;column < tds.size();column++){
+                    Element td = tds.get(column);
+                    HSSFCell cell = row.createCell(column);
+                    setType(wb,cell,td);
+                }
+                rownum++;
             }
-            rownum++;
         }
 
         //生成Excel导入模板
@@ -366,7 +376,7 @@ public class ExcelUtil {
      * @param cell
      * @param td
      */
-    private static void setType(HSSFWorkbook wb, HSSFCell cell, Element td) {
+    private static void setType(HSSFWorkbook wb, HSSFCell cell, Element td) throws DataConversionException {
 
         Attribute typeAttr = td.getAttribute("type");
         String type = typeAttr.getValue();
@@ -374,16 +384,25 @@ public class ExcelUtil {
         HSSFCellStyle cellStyle = wb.createCellStyle();
 
         if("NUMERIC".equalsIgnoreCase(type)){
+
             cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
             Attribute formatAttr = td.getAttribute("format");
             String formatValue = formatAttr.getValue();
             formatValue = StringUtils.isNotBlank(formatValue)? formatValue : "#,##0.00";
             cellStyle.setDataFormat(format.getFormat(formatValue));
 
+            Attribute a = td.getAttribute("value");
+            Double v = a != null ?  a.getDoubleValue() : Double.valueOf(0);
+            cell.setCellValue(v);
+
         }else if("STRING".equalsIgnoreCase(type)){
-            cell.setCellValue("");
+
             cell.setCellType(HSSFCell.CELL_TYPE_STRING);
             cellStyle.setDataFormat(format.getFormat("@"));
+
+            Attribute a = td.getAttribute("value");
+            String v = a != null ? a.getValue() : "";
+            cell.setCellValue(v);
 
         }else if("DATE".equalsIgnoreCase(type)){
             cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);

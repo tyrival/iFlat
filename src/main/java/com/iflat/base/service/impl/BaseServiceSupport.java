@@ -81,6 +81,8 @@ public class BaseServiceSupport implements BaseService {
     protected void setImportExcelReader() throws Exception { }
     protected void setImportProps() throws Exception { }
     protected void importValidate() throws Exception { }
+    protected void beforeImportData() throws Exception { }
+    protected void afterImportData() throws Exception { }
 
     protected void beforeStartProcess() throws Exception { }
     protected void afterStartProcess() throws Exception { }
@@ -372,12 +374,14 @@ public class BaseServiceSupport implements BaseService {
         //批量插入数据
         List result = null;
         Object res = null;
+        this.beforeImportData();
         if(this.importList.size() > 0) {
-            res = executeMethod(this.importList, "insertBatchVo");
+            res = executeMethod(this.importList, "insertBatch");
         }
         if(res instanceof Integer) {
             result = (int)res > 0 ? importList : null;
         }
+        this.afterImportData();
         //删除excel文件
         FileUtil.delete(excelReader.getFilePath());
         return result;

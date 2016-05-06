@@ -11,6 +11,7 @@ public class SrSettlementDetlFirst {
     private String pid;
     private String specs;  //规格
     private String type;  //类型
+    private String unit;
 
     // 申请内容
     private String applyContent;  // 施工内容
@@ -48,6 +49,14 @@ public class SrSettlementDetlFirst {
     private String confirmAcc;
     private String confirmName;
     private Date confirmTime;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 
     public double getPrice() {
         return price;

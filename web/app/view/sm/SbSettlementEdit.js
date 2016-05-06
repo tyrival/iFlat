@@ -290,11 +290,17 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     editor: {
                         xtype: 'combo',
                         allowBlank: false,
-                        store: smSbSettlementDetailComboStore = Ext.create('iFlat.store.sm.TargetCostAccount'),
+                        store: smSbSettlementDetailComboStore = Ext.create('iFlat.store.sm.TargetCostAccount', {
+                            proxy: {
+                                extraParams: {
+                                    'targetCostAccount.type': '造船'
+                                }
+                            }
+                        }),
                         queryMode: 'local',
                         editable: true,
                         forceSelection : true,
-                        valueField : 'name',
+                        valueField : 'code',
                         displayField : 'name',
                     }
                 }, {

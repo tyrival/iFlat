@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="srMisc" code="srMisc" name="修船零星工程">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+        <col index="G" width='17em'></col>
+        <col index="H" width='17em'></col>
+        <col index="I" width='17em'></col>
+        <col index="J" width='17em'></col>
+        <col index="K" width='17em'></col>
+        <col index="L" width='17em'></col>
+        <col index="M" width='17em'></col>
+        <col index="N" width='17em'></col>
+        <col index="O" width='17em'></col>
+        <col index="P" width='17em'></col>
+        <col index="Q" width='17em'></col>
+        <col index="R" width='17em'></col>
+        <col index="S" width='17em'></col>
+        <col index="T" width='17em'></col>
+        <col index="U" width='17em'></col>
+        <col index="V" width='17em'></col>
+        <col index="W" width='17em'></col>
+        <col index="X" width='17em'></col>
+        <col index="Y" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="9" value="修船零星工程" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="工号" />
+            <th value="主修一卡通" />
+            <th value="备注" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="1">
+            <td type="string" isnullable="false" maxlength="8" />
+            <td type="string" isnullable="false" maxlength="60" />
+            <td type="string" isnullable="true" />
+        </tr>
+        <tr height="16px" firstrow="3" firstcol="0" repeat="1">
+            <td type="string" isnullable="false" value="类型" />
+            <td type="string" isnullable="false" value="施工内容" />
+            <td type="string" isnullable="false" value="规格" />
+            <td type="string" isnullable="false" value="单位" />
+            <td type="string" isnullable="false" value="数量1" />
+            <td type="string" isnullable="false" value="数量2" />
+            <td type="string" isnullable="false" value="数量3" />
+            <td type="string" isnullable="false" value="数量4" />
+            <td type="string" isnullable="false" value="备注" />
+        </tr>
+        <tr height="16px" firstrow="4" firstcol="0" repeat="1">
+            <td type="string" maxlength="30" />
+            <td type="string" isnullable="false" />
+            <td type="string" maxlength="30" />
+            <td type="string" maxlength="30" />
+            <td type="numeric" format="##0.00" />
+            <td type="numeric" format="##0.00" />
+            <td type="numeric" format="##0.00" />
+            <td type="numeric" format="##0.00" />
+            <td type="string" />
+        </tr>
+    </tbody>
+</excel>

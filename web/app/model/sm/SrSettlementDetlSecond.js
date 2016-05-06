@@ -5,6 +5,7 @@ Ext.define('iFlat.model.sm.SrSettlementDetlSecond', {
         {name: 'srSettlementDetlSecond.pid', mapping: 'pid', type: 'string'},
         {name: 'srSettlementDetlSecond.type', mapping: 'type', type: 'string'},
         {name: 'srSettlementDetlSecond.specs', mapping: 'specs', type: 'string'},
+        {name: 'srSettlementDetlSecond.unit', mapping: 'unit', type: 'string'},
         {name: 'srSettlementDetlSecond.content', mapping: 'content', type: 'string'},
         {name: 'srSettlementDetlSecond.qty1', mapping: 'qty1', type: 'number'},
         {name: 'srSettlementDetlSecond.qty2', mapping: 'qty2', type: 'number'},

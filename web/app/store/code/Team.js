@@ -1,7 +1,7 @@
 Ext.define('iFlat.store.code.Team', {
     extend: 'Ext.data.Store',
 
-    autoLoad: false,
+    autoLoad: true,
     model: 'iFlat.model.code.Team',
 
     pageSize: 0,
