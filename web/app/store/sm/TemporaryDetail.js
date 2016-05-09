@@ -1,13 +1,13 @@
-Ext.define('iFlat.store.sm.Temporary', {
+Ext.define('iFlat.store.sm.TemporaryDetail', {
     extend: 'Ext.data.Store',
 
-    autoLoad: true,
-    model: 'iFlat.model.sm.Temporary',
+    autoLoad: false,
+    model: 'iFlat.model.sm.TemporaryDetail',
 
     pageSize: 0,
     proxy: {
         type: 'ajax',
-        url: 'sm_listTemporary.action',
+        url: 'sm_listTemporaryDetail.action',
         reader: {
             type: 'json',
             rootProperty: 'list',

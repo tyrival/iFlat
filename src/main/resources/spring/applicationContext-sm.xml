@@ -40,6 +40,8 @@
         <property name="subsidyService" ref="subsidyService"/>
         <property name="temporary" ref="temporary"/>
         <property name="temporaryService" ref="temporaryService"/>
+        <property name="temporaryDetail" ref="temporaryDetail"/>
+        <property name="temporaryDetailService" ref="temporaryDetailService"/>
     </bean>
 
     <bean id="sbSettlementService" class="com.iflat.sm.service.impl.SbSettlementServiceImpl">
@@ -146,7 +148,13 @@
     <bean id="subsidyDao" class="com.iflat.sm.dao.impl.SubsidyDaoImpl"/>
     <bean id="subsidy" class="com.iflat.sm.bean.Subsidy" scope="prototype"/>
 
-    <bean id="temporaryService" class="com.iflat.sm.service.impl.TemporaryServiceImpl"/>
+    <bean id="temporaryService" class="com.iflat.sm.service.impl.TemporaryServiceImpl">
+        <property name="workflowService" ref="workflowService"/>
+    </bean>
     <bean id="temporaryDao" class="com.iflat.sm.dao.impl.TemporaryDaoImpl"/>
     <bean id="temporary" class="com.iflat.sm.bean.Temporary" scope="prototype"/>
+
+    <bean id="temporaryDetailService" class="com.iflat.sm.service.impl.TemporaryDetailServiceImpl"/>
+    <bean id="temporaryDetailDao" class="com.iflat.sm.dao.impl.TemporaryDetailDaoImpl"/>
+    <bean id="temporaryDetail" class="com.iflat.sm.bean.TemporaryDetail" scope="prototype"/>
 </beans>

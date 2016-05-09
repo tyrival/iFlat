@@ -8,7 +8,13 @@ Ext.define('iFlat.view.sm.ScSettlement', {
 
     controller: 'sm-scsettlement',
 
-    store: smScSettlementStore = Ext.create('iFlat.store.sm.ScSettlement'),
+    store: smScSettlementStore = Ext.create('iFlat.store.sm.ScSettlement', {
+         proxy: {
+             extraParams: {
+                 'scSettlement.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+             }
+         }
+     }),
 
     tbar: [{
         xtype: 'button',

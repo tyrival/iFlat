@@ -6,6 +6,7 @@ Ext.define('iFlat.view.sm.SrSys', {
         proxy: {
             extraParams: {
                 'srSettlement.type': 'Sys',
+                'srSettlement.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
             }
         },
     }),

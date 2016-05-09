@@ -19,7 +19,7 @@ public class TecSettlement {
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
-    private Double amount;
+    private double amount;
     private double mgrScore;
     private double progressScore;
     private double qualityScore;
@@ -80,11 +80,11 @@ public class TecSettlement {
         this.summaryAmount = amount - fineAmount;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
         setSummaryAmount();
     }

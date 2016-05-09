@@ -65,8 +65,10 @@ Ext.define('iFlat.view.sm.Subsidy', {
             name: 'subsidy.team',
             queryMode: 'local',
             allowBlank: false,
-            editable: false,
+            editable: true,
             forceSelection : true,
+            typeAhead: true,
+            minChars: 0,
             displayField: 'teamName',
             valueField: 'teamName',
             store: smSubsidyTeamStore = Ext.create('iFlat.store.code.Team', {

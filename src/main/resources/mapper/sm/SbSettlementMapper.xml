@@ -55,7 +55,6 @@
             <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
         </where>
-        LEFT JOIN
         ORDER BY month DESC,projNo,deptName,team,status,id
     </select>
 
@@ -72,6 +71,7 @@
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
         <result property="mgrScore" column="mgrScore" jdbcType="DOUBLE"/>
         <result property="progressScore" column="progressScore" jdbcType="DOUBLE"/>
         <result property="qualityScore" column="qualityScore" jdbcType="DOUBLE"/>

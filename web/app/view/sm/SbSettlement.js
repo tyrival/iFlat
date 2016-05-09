@@ -8,7 +8,13 @@ Ext.define('iFlat.view.sm.SbSettlement', {
 
     controller: 'sm-sbsettlement',
 
-    store: smSbSettlementStore = Ext.create('iFlat.store.sm.SbSettlement'),
+    store: smSbSettlementStore = Ext.create('iFlat.store.sm.SbSettlement', {
+        proxy: {
+            extraParams: {
+                'sbSettlement.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+            }
+        }
+    }),
 
     tbar: [{
         xtype: 'button',

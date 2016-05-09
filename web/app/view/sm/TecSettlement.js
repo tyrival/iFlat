@@ -8,7 +8,13 @@ Ext.define('iFlat.view.sm.TecSettlement', {
 
     controller: 'sm-tecsettlement',
 
-    store: smTecSettlementStore = Ext.create('iFlat.store.sm.TecSettlement'),
+    store: smTecSettlementStore = Ext.create('iFlat.store.sm.TecSettlement', {
+        proxy: {
+            extraParams: {
+                'tecSettlement.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+            }
+        }
+    }),
 
     tbar: [{
         xtype: 'button',

@@ -1,107 +1,89 @@
 Ext.define('iFlat.view.sm.Temporary', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.sm-temporary',
-    xtype: 'sm-temporary',
 
     requires: [
-        'iFlat.view.sm.TemporaryController',
+        'iFlat.view.sm.TemporaryController'
     ],
-    
-    controller: 'sm-temporary',
-    store: smTemporaryStore = Ext.create('iFlat.store.sm.Temporary'),
-    id: 'sm-temporary',
 
-    plugins: [
-        smTemporaryRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
-            pluginId: 'sm-temporary-edit',
-            clicksToMoveEditor: 1,
-            autoCancel: true,
-            listeners: {
-                edit: 'updateTemporaryRecord',
-                cancelEdit: 'deleteEmptyRecord',
+    controller: 'sm-temporary',
+
+    store: smTemporaryStore = Ext.create('iFlat.store.sm.Temporary', {
+        proxy: {
+            extraParams: {
+                'temporary.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
             }
-        })
-    ],
-    
-    dockedItems: [{
-        xtype: 'toolbar',
-        dock: 'top',
-        overflowHandler: 'scroller',
-        items: [{
-            text: '新增',
-            id: 'sm-temporary-add',
-            ui: 'orig-blue',
-            handler: 'addTemporaryRecord',
-        }, '->', {
-            text: '刷新',
-            id: 'sm-temporary-refresh',
-            handler: 'refreshList',
-        }],
+        }
+    }),
+
+    tbar: [{
+        xtype: 'button',
+        text: '新增',
+        ui: 'orig-blue',
+        id: 'sm-temporary-add',
+        handler: 'edit'
+    }, '->', {
+        text: '刷新',
+        id: 'sm-temporary-refresh',
+        handler: 'refresh',
     }],
-    
+
     columns: [{
+        text: '提交',
+        width: 50,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        align: 'center',
+        iconCls: 'x-fa fa-hand-o-up',
+        handler: 'submit',
+        isDisabled: function(view, rowIdx, colIdx, item, record) {
+            return record.get('temporary.status') != '未提交';
+        },
+    }, {
+        text: '编辑',
+        width: 50,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        tooltip: '编辑',
+        align: 'center',
+        iconCls: 'x-fa fa-edit',
+        handler: 'edit',
+    }, {
+        text: '批注',
+        width: 50,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        align: 'center',
+        iconCls: 'x-fa fa-tags',
+        handler: 'info',
+    }, {
+        header: '状态',
+        width: 80,
+        dataIndex: 'temporary.status',
+    }, {
         header: '月份',
         width: 200,
         dataIndex: 'temporary.month',
-        formatter: 'date("Y-m")',
-        editor: {
-            xtype: 'datefield',
-            name: 'temporary.month',
-            allowBlank: false,
-            format: 'Y-m',
-        }
+        formatter: 'date("Y-m")'
     }, {
-        header: '类型',
-        dataIndex: 'temporary.type',
-        editor: {
-            xtype: 'textfield',
-        }
+        header: '附件',
+        width: 50,
+        dataIndex: 'temporary.attachment',
+        renderer: 'renderAttachment'
     }, {
-        header: '施工队',
-        width: 350,
-        dataIndex: 'temporary.team',
-        editor: {
-            xtype: 'combo',
-            name: 'temporary.team',
-            queryMode: 'local',
-            allowBlank: false,
-            editable: false,
-            forceSelection : true,
-            displayField: 'teamName',
-            valueField: 'teamName',
-            store: smTemporaryTeamStore = Ext.create('iFlat.store.code.Team', {
-                proxy: {
-                    extraParams: {
-                        'team.type': '外包工'
-                    }
-                }
-            }),
-        }
-    }, {
-        header: '金额',
-        dataIndex: 'temporary.amount',
+        header: '备注',
         flex: true,
-        editor: {
-            regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
-        }
+        dataIndex: 'temporary.comment',
     }, {
         text: '删除',
-        width: 60,
+        width: 50,
         menuDisabled: true,
         xtype: 'actioncolumn',
-        tooltip: '删除',
         align: 'center',
         iconCls: 'x-fa fa-close',
-        handler: 'deleteTemporary',
-        editor: {
-            xtype: 'label',
-        }
+        handler: 'delete',
+        isDisabled: function(view, rowIdx, colIdx, item, record) {
+            return record.get('temporary.status') != '未提交';
+        },
     }],
-    bbar: {
-        xtype: 'pagingtoolbar',
-        pageIndex: 5,
-        store: smTemporaryStore,
-        displayInfo: true,
-    }
-
 });

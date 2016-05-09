@@ -74,7 +74,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      * 选择工号时，在隐藏单元格中保存船名
      */
     onProjNoChange: function (combo, record, eOpts) {
-        Ext.getCmp('sm-sbsettlementedit-projname').setValue(record.get('project.name'));
+        Ext.getCmp('sm-sbsettlementedit-projname').setValue(record.get('rptProject.name'));
     },
 
     /**

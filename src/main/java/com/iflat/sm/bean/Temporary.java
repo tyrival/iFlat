@@ -8,14 +8,21 @@ public class Temporary {
     private String id;
     private Date month;
     private String dept;
-    private String team;
-    private String name;
-    private String amount;
-    private String trades;  // 工种
-    private String comment;
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
+    private String status;
+    private double amount;
+    private String attachment;
+    private String comment;
+
+    public String getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(String attachment) {
+        this.attachment = attachment;
+    }
 
     public String getComment() {
         return comment;
@@ -23,6 +30,22 @@ public class Temporary {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getId() {
@@ -47,38 +70,6 @@ public class Temporary {
 
     public void setDept(String dept) {
         this.dept = dept;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
-    public String getTrades() {
-        return trades;
-    }
-
-    public void setTrades(String trades) {
-        this.trades = trades;
     }
 
     public String getCreatorAcc() {

@@ -22,7 +22,7 @@ public class ScSettlement {
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
-    private Double amount;
+    private double amount;
     private double mgrScore;
     private double progressScore;
     private double qualityScore;
@@ -30,11 +30,11 @@ public class ScSettlement {
     private double fineAmount;
     private double summaryAmount;
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
         setSummaryAmount();
     }

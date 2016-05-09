@@ -63,8 +63,10 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     private BaseService subsidyService;
     private Subsidy subsidy;
 
-    private BaseService temporaryService;
+    private TemporaryService temporaryService;
+    private TemporaryDetailService temporaryDetailService;
     private Temporary temporary;
+    private TemporaryDetail temporaryDetail;
 
     private WorkflowService workflowService;
     private String taskId;
@@ -702,7 +704,41 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
-    /* Temporary */
+
+    /* 技措技改/大修理/108 Temporary */
+    public String createTemporaryDetail() throws Exception {
+
+        this.temporary
+                = (Temporary) this.temporaryService
+                .save(this.temporary);
+        this.temporaryDetail.setPid(this.temporary.getId());
+        this.temporaryDetail
+                = (TemporaryDetail) this.temporaryDetailService
+                .save(this.temporaryDetail);
+        Map<String, Object> map = new HashMap();
+        map.put("head", this.temporary);
+        map.put("detail", this.temporaryDetail);
+        this.result.setMap(map);
+        return SUCCESS;
+    }
+
+    public String approveTemporaryBatch() throws Exception {
+        List<SrSettlement> list = this.temporaryService.list(this.temporary);
+        if (list != null && list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
+                String businessKey = temporaryService.getBusinessKey(list.get(i));
+                workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+            }
+        }
+        return SUCCESS;
+    }
+
+    public String approveTemporary() throws Exception {
+        String businessKey = temporaryService.getBusinessKey(temporary);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+        return SUCCESS;
+    }
+
     public String saveTemporary() throws Exception {
         this.result.setObject(this.temporaryService.save(this.temporary));
         return SUCCESS;
@@ -723,10 +759,43 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
-    public String listPageTemporary() throws Exception {
-        this.result.setObject(this.temporaryService.listPage(this.temporary, this.page));
+    public String listTemporaryComment() throws Exception {
+        this.result.setList(this.temporaryService.listComment(this.temporary));
         return SUCCESS;
     }
+
+    public String submitTemporary() throws Exception {
+        temporaryService.submit(this.temporary);
+        return SUCCESS;
+    }
+
+    public String saveAndSubmitTemporary() throws Exception {
+        Temporary temporary
+                = (Temporary) this.temporaryService.save(this.temporary);
+        temporaryService.submit(this.temporary);
+        this.result.setObject(temporary);
+        return SUCCESS;
+    }
+
+    /* TemporaryDetail */
+    public String saveTemporaryDetail() throws Exception {
+        this.result.setObject(
+                this.temporaryDetailService.save(this.temporaryDetail));
+        return SUCCESS;
+    }
+
+    public String deleteTemporaryDetail() throws Exception {
+        this.result.setObject(
+                this.temporaryDetailService.delete(this.temporaryDetail));
+        return SUCCESS;
+    }
+
+    public String listTemporaryDetail() throws Exception {
+        this.result.setList(
+                this.temporaryDetailService.list(this.temporaryDetail));
+        return SUCCESS;
+    }
+
 
 
 
@@ -1038,14 +1107,6 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         this.subsidy = subsidy;
     }
 
-    public BaseService getTemporaryService() {
-        return temporaryService;
-    }
-
-    public void setTemporaryService(BaseService temporaryService) {
-        this.temporaryService = temporaryService;
-    }
-
     public Temporary getTemporary() {
         return temporary;
     }
@@ -1068,6 +1129,30 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public void setPage(Page page) {
         this.page = page;
+    }
+
+    public void setTemporaryService(TemporaryService temporaryService) {
+        this.temporaryService = temporaryService;
+    }
+
+    public TemporaryService getTemporaryService() {
+        return temporaryService;
+    }
+
+    public TemporaryDetailService getTemporaryDetailService() {
+        return temporaryDetailService;
+    }
+
+    public void setTemporaryDetailService(TemporaryDetailService temporaryDetailService) {
+        this.temporaryDetailService = temporaryDetailService;
+    }
+
+    public TemporaryDetail getTemporaryDetail() {
+        return temporaryDetail;
+    }
+
+    public void setTemporaryDetail(TemporaryDetail temporaryDetail) {
+        this.temporaryDetail = temporaryDetail;
     }
 
     @Override

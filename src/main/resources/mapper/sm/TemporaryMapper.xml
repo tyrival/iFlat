@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.Temporary">
         INSERT INTO SmTemporary
-        VALUES (#{id},#{month},#{dept},#{team},#{name},#{amount},#{trades},#{comment},#{creatorAcc},#{creatorName},#{createTime})
+        VALUES (#{id},#{month},#{dept},#{creatorAcc},#{creatorName},#{createTime},#{status},#{attachment},#{comment})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmTemporary
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.month},#{item.dept},#{item.team},#{item.name},#{item.amount},#{item.trades},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+            SELECT #{item.id},#{item.month},#{item.dept},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.status},#{item.attachment},#{item.comment}
         </foreach>
     </insert>
 
@@ -21,10 +21,8 @@
         <set>
             <if test="month!=null">month=#{month},</if>
             <if test="dept!=null">dept=#{dept},</if>
-            <if test="team!=null">team=#{team},</if>
-            <if test="name!=null">name=#{name},</if>
-            <if test="amount!=null">amount=#{amount},</if>
-            <if test="trades!=null">trades=#{trades},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
             <if test="comment!=null">comment=#{comment},</if>
         </set>
         WHERE id=#{id}
@@ -36,31 +34,29 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.Temporary" resultMap="SmTemporaryResult">
-        SELECT id,month,dept,team,name,amount,trades,comment,creatorAcc,creatorName,createTime
-        FROM SmTemporary
+        SELECT id,month,dept,creatorAcc,creatorName,createTime,status,amount,attachment,comment
+        FROM V_SmTemporary
         <where>
             <if test="id!=null">id=#{id}</if>
             <if test="dept!=null">AND dept=#{dept}</if>
-            <if test="team!=null">AND team=#{team}</if>
             <if test="month!=null">AND DATEDIFF(MONTH,#{month},month)=0</if>
-            <if test="trades!=null">AND trades=#{trades}</if>
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
             <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
+            <if test="status!=null">AND status=#{status}</if>
         </where>
-        ORDER BY month DESC,dept,team,trades,createTime
+        ORDER BY month DESC,dept,createTime
     </select>
 
     <resultMap type="com.iflat.sm.bean.Temporary" id="SmTemporaryResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="month" column="month" jdbcType="DATE"/>
         <result property="dept" column="dept" jdbcType="VARCHAR"/>
-        <result property="team" column="team" jdbcType="VARCHAR"/>
-        <result property="name" column="name" jdbcType="VARCHAR"/>
-        <result property="amount" column="amount" jdbcType="DOUBLE"/>
-        <result property="trades" column="trades" jdbcType="VARCHAR"/>
-        <result property="comment" column="comment" jdbcType="VARCHAR"/>
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="attachment" column="attachment" jdbcType="DOUBLE"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

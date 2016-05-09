@@ -191,5 +191,6 @@ Ext.define('iFlat.view.ss.SafetyFineController', {
             Ext.getCmp('ss-safetyfineedit-att').hide();
             Ext.getCmp('ss-safetyfineedit-link').setHref('');
         }
-    }
+    },
+    
 })

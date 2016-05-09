@@ -7,6 +7,8 @@ import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.Session;
 import com.iflat.workflow.service.WorkflowService;
 
+import java.util.Date;
+
 /**
  * Created by tyriv on 2016/3/23.
  */
@@ -23,6 +25,7 @@ public class TecSettlementServiceImpl extends BaseServiceSupport implements TecS
         UserInfoVo userInfoVo = Session.getUserInfo();
         ((TecSettlement)this.saveObj).setCreatorAcc(userInfoVo.getAccount());
         ((TecSettlement)this.saveObj).setCreatorName(userInfoVo.getUserName());
+        ((TecSettlement) this.saveObj).setCreateTime(new Date());
     }
 
     /**

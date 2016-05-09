@@ -9,7 +9,7 @@ public class SrSettlement {
 
     private String id;
     private String type;  // 主体/零星/机电
-    private Double progress;  // 工程进度
+    private double progress;  // 工程进度
     private String projNo;
     private String projName;
     private String deptName;
@@ -62,11 +62,11 @@ public class SrSettlement {
         this.professionalMgrAcc = professionalMgrAcc;
     }
 
-    public Double getProgress() {
+    public double getProgress() {
         return progress;
     }
 
-    public void setProgress(Double progress) {
+    public void setProgress(double progress) {
         this.progress = progress;
     }
 
