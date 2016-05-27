@@ -42,7 +42,26 @@ Ext.define('iFlat.view.sm.ScTargetCost', {
     }, {
         text: '查询',
         handler: 'search'
+    }, {
+        xtype: 'form',
+        id: 'sm-sctargetcost-import',
+        items: [{
+            xtype: 'fileuploadfield',
+            name: 'upload',
+            buttonText: '选择...',
+            width: 300,
+            margin: '0 0 0 20',
+        }, ]
+    }, {
+        xtype: 'button',
+        text: '导入',
+        ui: 'orig-blue',
+        handler: 'uploadFile'
     }, '->', {
+        text: '下载模板',
+        id: 'bi-sctargetcost-template',
+        handler: 'downloadTemplate'
+    }, {
         text: '刷新',
         id: 'sm-sctargetcost-refresh',
         handler: 'refresh',

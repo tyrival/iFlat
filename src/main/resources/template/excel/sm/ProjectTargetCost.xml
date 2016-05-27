@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="projectTargetCost" code="projectTargetCost" name="单船目标工费">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="4" value="单船目标工费" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="工号" />
+            <th value="工程名称" />
+            <th value="金额" />
+            <th value="备注" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="5">
+            <td type="string" isnullable="false" maxlength="30" />
+            <td type="string" isnullable="false" maxlength="400" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="string" isnullable="false" maxlength="40000" />
+        </tr>
+    </tbody>
+</excel>

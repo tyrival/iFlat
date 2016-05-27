@@ -8,7 +8,7 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
 
     search: function () {
         var projNo = Ext.getCmp('sm-sctargetcost-combo').getValue();
-        smScTargetCostStore.getProxy().extraParams['scTargetCost.projNo'] = projNo;
+        smScTargetCostStore.getProxy().extraParams['targetCost.projNo'] = projNo;
         smScTargetCostStore.reload();
     },
 
@@ -19,18 +19,18 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
         }
         var form = win.down('form');
         form.loadRecord(record);
-        smScTargetCostSplitStore.getProxy().extraParams['scTargetCostSplit.projNo'] = record.get('scTargetCost.projNo');
-        smScTargetCostSplitStore.getProxy().extraParams['scTargetCostSplit.deptName'] = record.get('scTargetCost.deptName');
+        smScTargetCostSplitStore.getProxy().extraParams['targetCostSplit.projNo'] = record.get('targetCost.projNo');
+        smScTargetCostSplitStore.getProxy().extraParams['targetCostSplit.deptName'] = record.get('targetCost.deptName');
         this.refreshSplit();
         win.show();
     },
 
     addSplit: function () {
         smScTargetCostSplitRowEditing.cancelEdit();
-        var record = Ext.create('iFlat.model.sm.ScTargetCostSplit', {
-            'scTargetCostSplit.projNo': Ext.getCmp('sm-sctargetcostedit-projno').getValue(),
-            'scTargetCostSplit.projName': Ext.getCmp('sm-sctargetcostedit-projname').getValue(),
-            'scTargetCostSplit.deptName': Ext.getCmp('sm-sctargetcostedit-deptname').getValue(),
+        var record = Ext.create('iFlat.model.sm.TargetCostSplit', {
+            'targetCostSplit.projNo': Ext.getCmp('sm-sctargetcostedit-projno').getValue(),
+            'targetCostSplit.projName': Ext.getCmp('sm-sctargetcostedit-projname').getValue(),
+            'targetCostSplit.deptName': Ext.getCmp('sm-sctargetcostedit-deptname').getValue(),
         })
         smScTargetCostSplitStore.insert(0, record);
         smScTargetCostSplitRowEditing.startEdit(0, 0);
@@ -46,7 +46,7 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
         var record = context.record;
         Flat.util.mask();
         Ext.Ajax.request({
-            url: 'sm_saveScTargetCostSplit.action',
+            url: 'sm_saveTargetCostSplit.action',
             method: 'post',
             params: record.getData(),
             success: function(response, opts) {
@@ -59,8 +59,8 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
                     smScTargetCostSplitStore.reload();
                 } else {
                     // 保存成功，则将返回的id填入相应的record的属性
-                    if (Flat.util.isEmpty(record.get('scTargetCostSplit.id'))) {
-                        record.set('scTargetCostSplit.id', obj['id']);
+                    if (Flat.util.isEmpty(record.get('targetCostSplit.id'))) {
+                        record.set('targetCostSplit.id', obj['id']);
                         smScTargetCostSplitStore.insert(0, record);
                         var distribution = parseFloat(Ext.getCmp('sm-sctargetcostedit-distribute').getValue()) + parseFloat(obj['amount']);
                         var remain = parseFloat(Ext.getCmp('sm-sctargetcostedit-remain').getValue()) - parseFloat(obj['amount']);
@@ -77,7 +77,7 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
     },
 
     deleteEmptyRecord: function(editor, context, eOpts) {
-        var id = context.record.data["scTargetCostSplit.id"];
+        var id = context.record.data["targetCostSplit.id"];
         if(id == "") {
             smScTargetCostSplitStore.remove(context.record);
         }
@@ -107,7 +107,7 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
             if(btn=="yes") {
                 Flat.util.mask('删除中...');
                 Ext.Ajax.request({
-                    url: 'sm_deleteScTargetCostSplit.action',
+                    url: 'sm_deleteTargetCostSplit.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
@@ -131,5 +131,33 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
             };
         })
 
-    }
+    },
+
+    uploadFile: function(btn) {
+        var form = Ext.getCmp('sm-sctargetcost-import');
+        if (form.isValid()) {
+            form.submit({
+                url: 'sm_importTargetCostSplit.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                success: function (fp, o) {
+                    smProjectTargetCostStore.reload();
+                    Flat.util.tip(o.response.responseText);
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        Ext.Ajax.request({
+            url: 'sm_templateTargetCostSplit.action',
+            method: 'post',
+            success: function(response, opts) {
+                window.location.href = Ext.JSON.decode(response.responseText)['object'];
+            },
+        });
+    },
 });

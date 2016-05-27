@@ -6,20 +6,24 @@ import com.iflat.sm.bean.TargetCost;
 import com.iflat.sm.bean.TargetCostSplit;
 import com.iflat.sm.entity.SbSettlementVo;
 import com.iflat.sm.entity.ScSettlementVo;
+import com.iflat.sm.entity.TargetCostVo;
 import com.iflat.sm.service.BaseSettlementService;
 import com.iflat.sm.service.SbSettlementVoService;
 import com.iflat.sm.service.ScSettlementVoService;
 import com.iflat.sm.service.TargetCostSplitService;
+import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ReflectUtil;
+import com.iflat.util.Session;
+import org.springframework.oxm.ValidationFailureException;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by tyriv on 2016/3/23.
  */
 public class TargetCostSplitServiceImpl extends BaseServiceSupport implements TargetCostSplitService {
 
-    private BaseService targetCostService;
+    private BaseService targetCostVoService;
     private SbSettlementVoService sbSettlementVoService;
     private ScSettlementVoService scSettlementVoService;
 
@@ -42,15 +46,15 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
         TargetCostSplit targetCostSplit = (TargetCostSplit) this.saveObj;
 
         Double adjust = getAdjustAmount(targetCostSplit);
-        TargetCost targetCost = getTargetCost(targetCostSplit);
-        Double remain = targetCost.getAmount() - targetCost.getDistribution();
+        TargetCostVo targetCostVo = getTargetCost(targetCostSplit);
+        Double remain = targetCostVo.getAmount() - targetCostVo.getDistribution();
         // 余额与当前新增项目的比较
         if (adjust > remain) {
-            throw new Exception("调整失败。目标成本调整额度为" + adjust + "， 超过了该部门的余额"  + remain +"，请重新调整。");
+            throw new Exception("调整失败。目标成本调整额度为" + adjust + "， 超过了该科目的余额"  + remain +"，请重新调整。");
         }
 
         // 对调整金额进行校验
-        validateAdjustmentWithApplied(targetCost.getType(), targetCostSplit, adjust);
+        validateAdjustmentWithApplied(targetCostVo.getType(), targetCostSplit, adjust);
     }
 
     /**
@@ -103,10 +107,10 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
     protected void beforeDelete() throws Exception {
         TargetCostSplit targetCostSplit = (TargetCostSplit) this.deleteObj;
 
-        TargetCost targetCost = new TargetCost();
-        targetCost.setProjNo(targetCostSplit.getProjNo());
-        targetCost.setDeptName(targetCostSplit.getDeptName());
-        List<TargetCost> list = targetCostService.list(targetCost);
+        TargetCostVo targetCostVo = new TargetCostVo();
+        targetCostVo.setProjNo(targetCostSplit.getProjNo());
+        targetCostVo.setCostAccount(targetCostSplit.getCostAccount());
+        List<TargetCost> list = targetCostVoService.list(targetCostVo);
         String type = "";
         if (list != null && list.size() > 0) {
             type = list.get(0).getType();
@@ -119,29 +123,104 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
     }
 
     /**
-     * 获取目标成本部门余额
+     * 获取目标成本科目余额
      * @param targetCostSplit
      * @return
      * @throws Exception
      */
     private Double getRemainAmount(TargetCostSplit targetCostSplit) throws Exception {
-        TargetCost targetCost = getTargetCost(targetCostSplit);
-        Double amount = targetCost.getAmount();
-        Double distribution = targetCost.getDistribution();
+        TargetCostVo targetCostVo = getTargetCost(targetCostSplit);
+        Double amount = targetCostVo.getAmount();
+        Double distribution = targetCostVo.getDistribution();
         return amount - distribution;
     }
 
-    private TargetCost getTargetCost(TargetCostSplit targetCostSplit) throws Exception {
-        TargetCost targetCost = new TargetCost();
-        targetCost.setProjNo(targetCostSplit.getProjNo());
-        targetCost.setDeptName(targetCostSplit.getDeptName());
-        List<TargetCost> list = (List<TargetCost>) targetCostService.list(targetCost);
+    private TargetCostVo getTargetCost(TargetCostSplit targetCostSplit) throws Exception {
+        TargetCostVo targetCostVo = new TargetCostVo();
+        targetCostVo.setProjNo(targetCostSplit.getProjNo());
+        targetCostVo.setCostAccount(targetCostSplit.getCostAccount());
+        List<TargetCostVo> list = (List<TargetCostVo>) targetCostVoService.list(targetCostVo);
         if (list != null && list.size() > 0) {
-            targetCost = list.get(0);
+            targetCostVo = list.get(0);
         }
-        return targetCost;
+        return targetCostVo;
     }
 
+    @Override
+    public void setImportExcelReader() throws Exception {
+
+        super.getExcelReader().setClassName("com.iflat.sm.bean.TargetCostSplit");
+        String[] props = new String[]{"projNo", "projName", "deptName", "costAccount", "costAccountName", "amount", "comment"};;
+        super.getExcelReader().setProps(props);
+    }
+
+    @Override
+    public void setImportProps() throws Exception {
+        List list = super.getImportList();
+        for(int i = 0; i < list.size(); i++) {
+            TargetCost o = (TargetCost)list.get(i);
+            o.setId(UUID.randomUUID().toString());
+            UserInfoVo userInfoVo = Session.getUserInfo();
+            o.setCreatorAcc(userInfoVo.getAccount());
+            o.setCreatorName(userInfoVo.getUserName());
+            o.setCreateTime(new Date());
+        }
+    }
+
+    @Override
+    public void importValidate() throws Exception {
+
+        List list = super.getImportList();
+        Map<String, Map> map = new HashMap<>();
+
+        for(int i = 0; i < list.size(); i++) {
+            TargetCostSplit o = (TargetCostSplit)list.get(i);
+            if(o.getProjNo() == null || o.getProjNo() == "") {
+                throw new ValidationFailureException("第" + (i + 1) + "行工号为空，请修改后重新导入");
+            }
+            if(o.getDeptName() == null || o.getDeptName() == "") {
+                throw new ValidationFailureException("第" + (i + 1) + "行部门为空，请修改后重新导入");
+            }
+            if(o.getCostAccount() == null || o.getCostAccount() == "") {
+                throw new ValidationFailureException("第" + (i + 1) + "成本科目代码为空，请修改后重新导入");
+            }
+
+            Map<String, Double> m = map.get(o.getProjNo());
+            Double amount = null;
+            if (m != null) {
+                amount =  m.get(o.getCostAccount());
+            } else {
+                m = new HashMap<>();
+                map.put(o.getProjNo(), m);
+            }
+
+            if (amount == null) {
+                amount = Double.valueOf(0);
+            }
+            m.put(o.getCostAccount(), amount + o.getAmount());
+        }
+
+        for (Map.Entry<String, Map> entry : map.entrySet()) {
+            Map<String, Double> m = entry.getValue();
+            for (Map.Entry<String, Double> en : m.entrySet()) {
+                TargetCostVo vo = new TargetCostVo();
+                vo.setProjNo(entry.getKey());
+                vo.setCostAccount(en.getKey());
+                List<TargetCostVo> l = this.targetCostVoService.list(vo);
+
+                if (l == null || l.size() <= 0) {
+                    throw new NullPointerException("未找到工程" + entry.getKey() + "中，成本科目为" + en.getKey() + "的目标成本公费，请联系相关人员维护相关数据后，重新导入。");
+                }
+
+                vo = l.get(0);
+                Double remain = vo.getAmount() - vo.getDistribution();
+
+                if (remain < en.getValue()) {
+                    throw new Exception("工程" + entry.getKey() + "的成本科目" + en.getKey() + "上，导入的工费总额为" + en.getValue() + "，超过该工程该科目中未分配的工费余额" + remain + "。请修改后重新导入。");
+                }
+            }
+        }
+    }
     /**
      * 获取目标成本分解项的调整金额
      * @param targetCostSplit
@@ -153,8 +232,8 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
         return targetCostSplit.getAmount() - orig.getAmount();
     }
 
-    public void setTargetCostService(BaseService targetCostService) {
-        this.targetCostService = targetCostService;
+    public void setTargetCostVoService(BaseService targetCostVoService) {
+        this.targetCostVoService = targetCostVoService;
     }
 
     public void setSbSettlementVoService(SbSettlementVoService sbSettlementVoService) {

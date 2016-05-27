@@ -34,27 +34,34 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 layout: 'hbox',
                 items: [{
                     xtype: 'textfield',
-                    name: 'targetCost.id',
+                    name: 'targetCostVo.id',
+                    id: 'sm-sbtargetcostedit-id',
                     fieldLabel: 'ID',
                     hidden: true,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '工号',
                     id: 'sm-sbtargetcostedit-projno',
-                    name: 'targetCost.projNo',
-                    width: 220,
+                    name: 'targetCostVo.projNo',
+                    width: 140,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '船名',
                     id: 'sm-sbtargetcostedit-projname',
-                    name: 'targetCost.projName',
-                    width: 300,
+                    name: 'targetCostVo.projName',
+                    width: 260,
                 }, {
                     xtype: 'textfield',
-                    name: 'targetCost.deptName',
-                    fieldLabel: '部门',
-                    id: 'sm-sbtargetcostedit-deptname',
-                    width: 220
+                    name: 'targetCostVo.costAccount',
+                    fieldLabel: '代码',
+                    id: 'sm-sbtargetcostedit-costaccount',
+                    width: 150
+                }, {
+                    xtype: 'textfield',
+                    name: 'targetCostVo.costAccountName',
+                    fieldLabel: '科目',
+                    id: 'sm-sbtargetcostedit-costaccountname',
+                    width: 250
                 }]
             }, {
                 xtype: 'container',
@@ -66,7 +73,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 items: [{
                     xtype: 'textfield',
                     id: 'sm-sbtargetcostedit-amount',
-                    name: 'targetCost.amount',
+                    name: 'targetCostVo.amount',
                     fieldLabel: '总金额',
                     width: 220,
                 }, {
@@ -78,7 +85,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                     xtype: 'textfield',
                     fieldLabel: '余额',
                     id: 'sm-sbtargetcostedit-remain',
-                    width: 220,
+                    width: 280,
                 }]
             }, ]
         }, {
@@ -134,34 +141,34 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                     hidden: true
                 }, {
                     header: '部门',
+                    width: 250,
                     dataIndex: 'targetCostSplit.deptName',
-                    hidden: true
+                    editor: {
+                        xtype: 'combo',
+                        allowBlank: false,
+                        bind: {
+                            store: '{smDept}'
+                        },
+                        queryMode: 'local',
+                        editable: true,
+                        forceSelection : true,
+                        valueField : 'name',
+                        displayField : 'name',
+                    }
                 }, {
                     header: '类型',
                     width: 150,
                     dataIndex: 'targetCostSplit.type',
                     hidden: true
                 }, {
-                    header: '成本科目',
-                    width: 250,
+                    header: '成本科目代码',
+                    width: 150,
                     dataIndex: 'targetCostSplit.costAccount',
-                    editor: {
-                        xtype: 'combo',
-                         allowBlank: false,
-                         store: smSbTargetCoseEditComboStore
-                             = Ext.create('iFlat.store.sm.TargetCostAccount', {
-                             proxy: {
-                                 extraParams: {
-                                     'targetCostAccount.type': '造船'
-                                 }
-                             }
-                         }),
-                         queryMode: 'local',
-                         editable: true,
-                         forceSelection : true,
-                         valueField : 'name',
-                         displayField : 'name',
-                    }
+                    hidden: true
+                }, {
+                    header: '成本科目',
+                    dataIndex: 'targetCostSplit.costAccountName',
+                    hidden: true
                 }, {
                     header: '金额',
                     width: 150,

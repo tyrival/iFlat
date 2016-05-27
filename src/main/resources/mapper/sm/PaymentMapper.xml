@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.Payment">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.Payment">
+        INSERT INTO SmPayment
+        VALUES (#{id},#{projNo},#{projName},#{deptCode},#{deptName},#{team},#{month},#{amount},#{reduce},#{creatorAcc},#{creatorName},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmPayment
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.deptCode},#{item.deptName},#{item.team},#{item.month},#{item.amount},#{item.reduce},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.Payment">
+        UPDATE SmPayment
+        <set>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="deptCode!=null">deptCode=#{deptCode},</if>
+            <if test="deptName!=null">deptName=#{deptName},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="month!=null">month=#{month},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="reduce!=null">reduce=#{reduce},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.Payment">
+        DELETE SmPayment
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.Payment" resultMap="SmPaymentResult">
+        SELECT id,projNo,projName,deptCode,deptName,team,month,amount,reduce,creatorAcc,creatorName,createTime
+        FROM SmPayment
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="projName!=null">AND projName=#{projName}</if>
+            <if test="deptCode!=null">AND deptCode=#{deptCode}</if>
+            <if test="deptName!=null">AND deptName=#{deptName}</if>
+            <if test="team!=null">AND team=#{team}</if>
+            <if test="month!=null">AND DATEDIFF(MONTH,#{month},month)=0</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
+        </where>
+        ORDER BY month DESC,team,createTime
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.Payment" id="SmPaymentResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="deptCode" column="deptCode" jdbcType="VARCHAR"/>
+        <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="reduce" column="reduce" jdbcType="DOUBLE"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

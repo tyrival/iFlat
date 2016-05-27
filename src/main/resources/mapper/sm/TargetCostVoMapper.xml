@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.TargetCostVo">
+
+    <select id="list" parameterType="com.iflat.sm.entity.TargetCostVo" resultMap="SmTargetCostVoResult">
+        SELECT a.projNo,a.projName,a.costAccount,a.amount,(CASE WHEN b.distribution IS NULl THEN 0 ELSE b.distribution END) AS distribution,a.type,a.costAccountName
+        FROM (SELECT projNo,projName,costAccount,SUM(amount) AS amount,type,costAccountName
+                FROM V_SmTargetCostVo
+                <where>
+                    <if test="projNo!=null">AND projNo=#{projNo}</if>
+                    <if test="costAccount!=null">AND costAccount=#{costAccount}</if>
+                    <if test="type!=null">AND type=#{type}</if>
+                </where>
+                GROUP BY projNo,projName,costAccount,type,costAccountName
+        ) a
+        LEFT JOIN (SELECT projNo,costAccount,SUM(amount) AS distribution
+                    FROM SmTargetCostVoSplit
+                    <where>
+                        <if test="projNo!=null">AND projNo=#{projNo}</if>
+                        <if test="costAccount!=null">AND costAccount=#{costAccount}</if>
+                    </where>
+                    GROUP BY projNo,costAccount) b
+        ON a.projNo=b.projNo AND a.costAccount=b.costAccount
+        ORDER BY a.projName,a.costAccount
+    </select>
+
+    <resultMap type="com.iflat.sm.entity.TargetCostVo" id="SmTargetCostVoResult">
+        <result property="type" column="type" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="costAccount" column="costAccount" jdbcType="VARCHAR"/>
+        <result property="costAccountName" column="costAccountName" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="distribution" column="distribution" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

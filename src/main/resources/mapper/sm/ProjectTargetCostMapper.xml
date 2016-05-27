@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.ProjectTargetCost">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.ProjectTargetCost">
+        INSERT INTO SmProjectTargetCost
+        VALUES (#{id},#{projNo},#{projName},#{amount},#{creatorAcc},#{creatorName},#{createTime},#{attachment},#{comment})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmProjectTargetCost
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.amount},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.attachment},#{item.comment}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.ProjectTargetCost">
+        UPDATE SmProjectTargetCost
+        <set>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.ProjectTargetCost">
+        DELETE SmProjectTargetCost
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.ProjectTargetCost" resultMap="SmProjectTargetCostResult">
+        SELECT id,projNo,projName,amount,type,attachment,comment
+        FROM  V_SmProjectTargetCost
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="type!=null">AND type=#{type}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+        </where>
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.ProjectTargetCost" id="SmProjectTargetCostResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

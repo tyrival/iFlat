@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.ProjectTargetCostVo">
+
+    <select id="list" parameterType="com.iflat.sm.entity.ProjectTargetCostVo" resultMap="SmProjectTargetCostVoResult">
+        SELECT a.projNo,a.projName,a.amount,(CASE WHEN b.distribution IS NULl THEN 0 ELSE b.distribution END) AS distribution,a.type
+        FROM (SELECT projNo,projName,SUM(amount) AS amount,type
+                FROM  V_SmProjectTargetCostVo
+                <where>
+                    <if test="type!=null">AND type=#{type}</if>
+                    <if test="projNo!=null">AND projNo=#{projNo}</if>
+                </where>
+                GROUP BY projNo,projName,type
+        ) a
+        LEFT JOIN (SELECT projNo,SUM(amount) AS distribution
+                    FROM SmTargetCost
+                    <where>
+                        <if test="projNo!=null">AND projNo=#{projNo}</if>
+                    </where>
+                    GROUP BY projNo) b
+        ON a.projNo=b.projNo
+        ORDER BY a.projName
+    </select>
+
+    <resultMap type="com.iflat.sm.entity.ProjectTargetCostVo" id="SmProjectTargetCostVoResult">
+        <result property="type" column="type" jdbcType="CHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="distribution" column="distribution" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

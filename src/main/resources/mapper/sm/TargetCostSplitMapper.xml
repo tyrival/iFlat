@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.TargetCostSplit">
         INSERT INTO SmTargetCostSplit
-        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{costAccount},#{amount},#{creatorAcc},#{creatorName},#{createTime},#{fixed},#{fixedTime})
+        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{costAccount},#{amount},#{creatorAcc},#{creatorName},#{createTime},#{fixed},#{fixedTime},#{comment},#{costAccountName})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmTargetCostSplit
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.costAccount},#{item.amount},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.fixed},#{item.fixedTime}
+            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.costAccount},#{item.amount},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.fixed},#{item.fixedTime},#{item.comment},#{item.costAccountName}
         </foreach>
     </insert>
 
@@ -24,9 +24,11 @@
             <if test="projName!=null">projName=#{projName},</if>
             <if test="deptName!=null">deptName=#{deptName},</if>
             <if test="costAccount!=null">costAccount=#{costAccount},</if>
+            <if test="costAccountName!=null">costAccountName=#{costAccountName},</if>
             <if test="amount!=null">amount=#{amount},</if>
             <if test="fixed!=null">fixed=#{fixed},</if>
             <if test="fixedTime!=null">fixedTime=#{fixedTime}</if>
+            <if test="comment!=null">comment=#{comment}</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -37,7 +39,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.TargetCostSplit" resultMap="SmTargetCostSplitResult">
-        SELECT id,type,projNo,projName,deptName,costAccount,amount,creatorAcc,creatorName,createTime,fixed,fixedTime
+        SELECT id,type,projNo,projName,deptName,costAccount,amount,creatorAcc,creatorName,createTime,fixed,fixedTime,comment,costAccountName
         FROM SmTargetCostSplit
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -59,11 +61,13 @@
         <result property="projName" column="projName" jdbcType="VARCHAR"/>
         <result property="deptName" column="deptName" jdbcType="VARCHAR"/>
         <result property="costAccount" column="costAccount" jdbcType="VARCHAR"/>
+        <result property="costAccountName" column="costAccountName" jdbcType="VARCHAR"/>
         <result property="amount" column="amount" jdbcType="DOUBLE"/>
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
         <result property="fixed" column="fixed" jdbcType="BIT"/>
         <result property="fixedTime" column="fixedTime" jdbcType="DATE"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

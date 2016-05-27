@@ -8,7 +8,7 @@ Ext.define('iFlat.store.sm.Subsidy', {
     proxy: {
         enablePaging: true,
         type: 'ajax',
-        url: 'ss_listPageSubsidy.action',
+        url: 'sm_listPageSubsidy.action',
         reader: {
             type: 'json',
             rootProperty: 'object.list',

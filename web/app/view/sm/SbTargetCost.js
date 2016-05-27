@@ -8,10 +8,10 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
 
     controller: 'sm-sbtargetcost',
 
-    store: smSbTargetCostStore = Ext.create('iFlat.store.sm.TargetCost', {
+    store: smSbTargetCostStore = Ext.create('iFlat.store.sm.TargetCostVo', {
         proxy: {
             extraParams: {
-                'targetCost.type': '造船'
+                'targetCostVo.type': '造船'
             }
         }
     }),
@@ -42,7 +42,26 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
     }, {
         text: '查询',
         handler: 'search'
+    }, {
+        xtype: 'form',
+        id: 'sm-sbtargetcost-import',
+        items: [{
+            xtype: 'fileuploadfield',
+            name: 'upload',
+            buttonText: '选择...',
+            width: 300,
+            margin: '0 0 0 20',
+        }, ]
+    }, {
+        xtype: 'button',
+        text: '导入',
+        ui: 'orig-blue',
+        handler: 'uploadFile'
     }, '->', {
+        text: '下载模板',
+        id: 'bi-sbtargetcost-template',
+        handler: 'downloadTemplate'
+    }, {
         text: '刷新',
         id: 'sm-sbtargetcost-refresh',
         handler: 'refresh',
@@ -58,23 +77,31 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
         handler: 'split',
     }, {
         header: 'id',
-        dataIndex: 'targetCost.id',
+        dataIndex: 'targetCostVo.id',
         hidden: true
     }, {
         header: '工号',
         width: 150,
-        dataIndex: 'targetCost.projNo',
+        dataIndex: 'targetCostVo.projNo',
     }, {
         header: '船名',
         flex: true,
-        dataIndex: 'targetCost.projName',
+        dataIndex: 'targetCostVo.projName',
     }, {
-        header: '部门',
+        header: '成本科目代码',
         width: 200,
-        dataIndex: 'targetCost.deptName',
+        dataIndex: 'targetCostVo.costAccount',
+    }, {
+        header: '成本科目',
+        width: 200,
+        dataIndex: 'targetCostVo.costAccountName',
     }, {
         header: '金额',
         width: 200,
-        dataIndex: 'targetCost.amount',
+        dataIndex: 'targetCostVo.amount',
+    }, {
+        header: '金额',
+        width: 200,
+        dataIndex: 'targetCostVo.distribution',
     }],
 });

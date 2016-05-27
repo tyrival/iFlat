@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.Outsourcing">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.Outsourcing">
+        INSERT INTO SmOutsourcing
+        VALUES (#{id},#{projNo},#{dept},#{team},#{type},#{month},#{amount},#{creatorAcc},#{creatorName},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmOutsourcing
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.dept},#{item.team},#{item.type},#{item.month},#{item.amount},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.Outsourcing">
+        UPDATE SmOutsourcing
+        <set>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="dept!=null">dept=#{dept},</if>
+            <if test="month!=null">month=#{month},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="type!=null">type=#{type},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.Outsourcing">
+        DELETE SmOutsourcing
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.Outsourcing" resultMap="SmOutsourcingResult">
+        SELECT id,month,projNo,dept,team,type,amount,creatorAcc,creatorName,createTime
+        FROM SmOutsourcing
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null">AND projNo=#{projNo}</if>
+            <if test="dept!=null">AND dept=#{dept}</if>
+            <if test="team!=null">AND team=#{team}</if>
+            <if test="type!=null">AND type=#{type}</if>
+            <if test="month!=null">AND DATEDIFF(MONTH,#{month},month)=0</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
+        </where>
+        ORDER BY month DESC,type,createTime
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.Outsourcing" id="SmOutsourcingResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

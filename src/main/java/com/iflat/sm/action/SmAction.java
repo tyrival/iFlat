@@ -5,6 +5,8 @@ import com.iflat.base.entity.ExcelTemplate;
 import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
 import com.iflat.sm.bean.*;
+import com.iflat.sm.entity.ProjectTargetCostVo;
+import com.iflat.sm.entity.TargetCostVo;
 import com.iflat.sm.service.*;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ExcelUtil;
@@ -34,8 +36,16 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     private ScSettlement scSettlement;
     private ScSettlementDetail scSettlementDetail;
 
+    private BaseService projectTargetCostVoService;
+    private ProjectTargetCostVo projectTargetCostVo;
+
+    private BaseService targetCostVoService;
+    private TargetCostVo targetCostVo;
+
     private BaseService targetCostService;
     private TargetCost targetCost;
+    private BaseService projectTargetCostService;
+    private ProjectTargetCost projectTargetCost;
     private TargetCostSplitService targetCostSplitService;
     private TargetCostSplit targetCostSplit;
     private TargetCostAccount targetCostAccount;
@@ -62,6 +72,12 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     private BaseService subsidyService;
     private Subsidy subsidy;
+
+    private BaseService paymentService;
+    private Payment payment;
+
+    private BaseService outsourcingService;
+    private Outsourcing outsourcing;
 
     private TemporaryService temporaryService;
     private TemporaryDetailService temporaryDetailService;
@@ -284,6 +300,72 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     /* 目标成本分解 TargetCost & TargetCostSplit */
+    public String templateProjectTargetCost() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("sm", "ProjectTargetCost");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String templateTargetCost() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("sm", "TargetCost");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String templateTargetCostSplit() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("sm", "TargetCostSplit");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String importProjectTargetCost() throws Exception {
+        this.result.setList(this.projectTargetCostService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    public String importTargetCost() throws Exception {
+        this.result.setList(this.targetCostService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    public String importTargetCostSplit() throws Exception {
+        this.result.setList(this.targetCostSplitService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listTargetCostVo() throws Exception {
+        this.result.setList(this.targetCostVoService.list(this.targetCostVo));
+        return SUCCESS;
+    }
+
+    public String listProjectTargetCostVo() throws Exception {
+        this.result.setList(this.projectTargetCostVoService.list(this.projectTargetCostVo));
+        return SUCCESS;
+    }
+
+    public String uploadProjectTargetCost() throws Exception {
+        this.result.setObject(this.projectTargetCostService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String saveProjectTargetCost() throws Exception {
+        this.result.setObject(this.projectTargetCostService.save(this.projectTargetCost));
+        return SUCCESS;
+    }
+
+    public String deleteProjectTargetCost() throws Exception {
+        this.result.setObject(this.projectTargetCostService.delete(this.projectTargetCost));
+        return SUCCESS;
+    }
+
+    public String listProjectTargetCost() throws Exception {
+        this.result.setList(this.projectTargetCostService.list(this.projectTargetCost));
+        return SUCCESS;
+    }
+
     public String saveTargetCost() throws Exception {
         this.result.setObject(this.targetCostService.save(this.targetCost));
         return SUCCESS;
@@ -701,6 +783,58 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public String listPageSubsidy() throws Exception {
         this.result.setObject(this.subsidyService.listPage(this.subsidy, this.page));
+        return SUCCESS;
+    }
+
+    /* Outsourcing */
+    public String saveOutsourcing() throws Exception {
+        this.result.setObject(this.outsourcingService.save(this.outsourcing));
+        return SUCCESS;
+    }
+
+    public String deleteOutsourcing() throws Exception {
+        this.result.setObject(this.outsourcingService.delete(this.outsourcing));
+        return SUCCESS;
+    }
+
+    public String listOutsourcing() throws Exception {
+        this.result.setList(this.outsourcingService.list(this.outsourcing));
+        return SUCCESS;
+    }
+
+    public String uploadOutsourcing() throws Exception {
+        this.result.setObject(this.outsourcingService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listPageOutsourcing() throws Exception {
+        this.result.setObject(this.outsourcingService.listPage(this.outsourcing, this.page));
+        return SUCCESS;
+    }
+
+    /* Payment */
+    public String savePayment() throws Exception {
+        this.result.setObject(this.paymentService.save(this.payment));
+        return SUCCESS;
+    }
+
+    public String deletePayment() throws Exception {
+        this.result.setObject(this.paymentService.delete(this.payment));
+        return SUCCESS;
+    }
+
+    public String listPayment() throws Exception {
+        this.result.setList(this.paymentService.list(this.payment));
+        return SUCCESS;
+    }
+
+    public String uploadPayment() throws Exception {
+        this.result.setObject(this.paymentService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listPagePayment() throws Exception {
+        this.result.setObject(this.paymentService.listPage(this.payment, this.page));
         return SUCCESS;
     }
 
@@ -1123,6 +1257,38 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         this.srtype = srtype;
     }
 
+    public BaseService getPaymentService() {
+        return paymentService;
+    }
+
+    public void setPaymentService(BaseService paymentService) {
+        this.paymentService = paymentService;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public BaseService getOutsourcingService() {
+        return outsourcingService;
+    }
+
+    public void setOutsourcingService(BaseService outsourcingService) {
+        this.outsourcingService = outsourcingService;
+    }
+
+    public Outsourcing getOutsourcing() {
+        return outsourcing;
+    }
+
+    public void setOutsourcing(Outsourcing outsourcing) {
+        this.outsourcing = outsourcing;
+    }
+
     public Page getPage() {
         return page;
     }
@@ -1153,6 +1319,54 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public void setTemporaryDetail(TemporaryDetail temporaryDetail) {
         this.temporaryDetail = temporaryDetail;
+    }
+
+    public BaseService getProjectTargetCostService() {
+        return projectTargetCostService;
+    }
+
+    public void setProjectTargetCostService(BaseService projectTargetCostService) {
+        this.projectTargetCostService = projectTargetCostService;
+    }
+
+    public ProjectTargetCost getProjectTargetCost() {
+        return projectTargetCost;
+    }
+
+    public void setProjectTargetCost(ProjectTargetCost projectTargetCost) {
+        this.projectTargetCost = projectTargetCost;
+    }
+
+    public BaseService getProjectTargetCostVoService() {
+        return projectTargetCostVoService;
+    }
+
+    public void setProjectTargetCostVoService(BaseService projectTargetCostVoService) {
+        this.projectTargetCostVoService = projectTargetCostVoService;
+    }
+
+    public ProjectTargetCostVo getProjectTargetCostVo() {
+        return projectTargetCostVo;
+    }
+
+    public void setProjectTargetCostVo(ProjectTargetCostVo projectTargetCostVo) {
+        this.projectTargetCostVo = projectTargetCostVo;
+    }
+
+    public BaseService getTargetCostVoService() {
+        return targetCostVoService;
+    }
+
+    public void setTargetCostVoService(BaseService targetCostVoService) {
+        this.targetCostVoService = targetCostVoService;
+    }
+
+    public TargetCostVo getTargetCostVo() {
+        return targetCostVo;
+    }
+
+    public void setTargetCostVo(TargetCostVo targetCostVo) {
+        this.targetCostVo = targetCostVo;
     }
 
     @Override

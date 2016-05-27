@@ -11,9 +11,9 @@ public class TargetCost {
     private String type;
     private String projNo;
     private String projName;
-    private String deptName;
+    private String costAccount;
+    private String costAccountName;
     private double amount;
-    private double distribution;
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
@@ -50,14 +50,6 @@ public class TargetCost {
         this.createTime = createTime;
     }
 
-    public double getDistribution() {
-        return distribution;
-    }
-
-    public void setDistribution(double distribution) {
-        this.distribution = distribution;
-    }
-
     public String getId() {
         return id;
     }
@@ -74,12 +66,12 @@ public class TargetCost {
         this.projNo = projNo;
     }
 
-    public String getDeptName() {
-        return deptName;
+    public String getCostAccount() {
+        return costAccount;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
+    public void setCostAccount(String costAccount) {
+        this.costAccount = costAccount;
     }
 
     public double getAmount() {
@@ -96,5 +88,13 @@ public class TargetCost {
 
     public void setProjName(String projName) {
         this.projName = projName;
+    }
+
+    public String getCostAccountName() {
+        return costAccountName;
+    }
+
+    public void setCostAccountName(String costAccountName) {
+        this.costAccountName = costAccountName;
     }
 }

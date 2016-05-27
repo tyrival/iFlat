@@ -14,7 +14,9 @@ public class TargetCostSplit {
     private String projName;
     private String deptName;
     private String costAccount;  // 成本科目
+    private String costAccountName;  // 成本科目
     private double amount;  // 金额
+    private String comment;
     private String creatorAcc;
     private String creatorName;
     private Date createTime;
@@ -23,6 +25,22 @@ public class TargetCostSplit {
 
     public TargetCostSplit() {
         this.createTime = new Date();
+    }
+
+    public String getCostAccountName() {
+        return costAccountName;
+    }
+
+    public void setCostAccountName(String costAccountName) {
+        this.costAccountName = costAccountName;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getId() {

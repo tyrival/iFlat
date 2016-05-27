@@ -38,22 +38,33 @@ Ext.define('iFlat.view.sm.ScSettlementController', {
             smScSettlementStore.insert(0, record);
         }
 
+        var form = Ext.getCmp('sm-scsettlementedit-form');
         if (record.get('scSettlement.status') != '未提交') {
             smScSettlementDetailRowEditing.disable();
             Ext.getCmp('sm-scsettlementedit-detail-delete').setDisabled(true);
-            Ext.getCmp('sm-scsettlementedit-time').disable();
-            Ext.getCmp('sm-scsettlementedit-projno').disable();
-            Ext.getCmp('sm-scsettlementedit-team').disable();
-            Ext.getCmp('sm-scsettlementedit-comment').disable();
+            Ext.getCmp('sm-scsettlementedit-time').setEditable(false);
+            Ext.getCmp('sm-scsettlementedit-projno').setEditable(false);
+            Ext.getCmp('sm-scsettlementedit-team').setEditable(false);
+            Ext.getCmp('sm-scsettlementedit-comment').setEditable(false);
             Ext.getCmp('sm-scsettlementedit-detail-add').setDisabled(true);
+            form.down('textfield[name=sbSettlement.mgrScore]').setEditable(false);
+            form.down('textfield[name=sbSettlement.progressScore]').setEditable(false);
+            form.down('textfield[name=sbSettlement.qualityScore]').setEditable(false);
+            form.down('textfield[name=sbSettlement.safetyScore]').setEditable(false);
+            form.down('textfield[name=sbSettlement.fineAmount]').setEditable(false);
         } else {
             smScSettlementDetailRowEditing.enable();
             Ext.getCmp('sm-scsettlementedit-detail-delete').setDisabled(false);
-            Ext.getCmp('sm-scsettlementedit-time').enable();
-            Ext.getCmp('sm-scsettlementedit-projno').enable();
-            Ext.getCmp('sm-scsettlementedit-team').enable();
-            Ext.getCmp('sm-scsettlementedit-comment').enable();
+            Ext.getCmp('sm-scsettlementedit-time').setEditable(true);
+            Ext.getCmp('sm-scsettlementedit-projno').setEditable(true);
+            Ext.getCmp('sm-scsettlementedit-team').setEditable(true);
+            Ext.getCmp('sm-scsettlementedit-comment').setEditable(true);
             Ext.getCmp('sm-scsettlementedit-detail-add').setDisabled(false);
+            form.down('textfield[name=sbSettlement.mgrScore]').setEditable(true);
+            form.down('textfield[name=sbSettlement.progressScore]').setEditable(true);
+            form.down('textfield[name=sbSettlement.qualityScore]').setEditable(true);
+            form.down('textfield[name=sbSettlement.safetyScore]').setEditable(true);
+            form.down('textfield[name=sbSettlement.fineAmount]').setEditable(true);
         }
 
         Ext.getCmp('sm-scsettlementedit-form').loadRecord(record);
@@ -237,10 +248,12 @@ Ext.define('iFlat.view.sm.ScSettlementController', {
                         rec.set('scSettlementDetail.pid', detail['pid']);
                     } else {
                         Flat.util.tip(action.response.responseText);
+                        smScSettlementDetailStore.reload();
                     }
                 },
                 failure: function(form, action) {
                     Flat.util.tip(action.response.responseText);
+                    smScSettlementDetailStore.reload();
                 }
             });
 

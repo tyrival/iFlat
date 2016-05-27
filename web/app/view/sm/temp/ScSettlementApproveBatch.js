@@ -74,6 +74,41 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatch', {
                     hidden: true,
                 }, ]
             }, {
+                xtype: 'container',
+                layout: 'hbox',
+                margin: '0 0 10 0',
+                items: [{
+                    xtype: 'textfield',
+                    name: 'scSettlement.mgrScore',
+                    fieldLabel: '管理分',
+                    editable: false,
+                    width: 160,
+                },{
+                    xtype: 'textfield',
+                    name: 'scSettlement.progressScore',
+                    fieldLabel: '进度分',
+                    editable: false,
+                    width: 160,
+                },{
+                    xtype: 'textfield',
+                    name: 'scSettlement.qualityScore',
+                    fieldLabel: '质量分',
+                    editable: false,
+                    width: 160,
+                },{
+                    xtype: 'textfield',
+                    name: 'scSettlement.safetyScore',
+                    fieldLabel: '安全分',
+                    editable: false,
+                    width: 160,
+                },{
+                    xtype: 'textfield',
+                    name: 'scSettlement.fineAmount',
+                    fieldLabel: '扣款(元)',
+                    editable: false,
+                    width: 160,
+                },]
+            }, {
                 xtype: 'panel',
                 border: false,
                 width: '100%',

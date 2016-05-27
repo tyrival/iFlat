@@ -8,10 +8,10 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
 
     search: function () {
         var projNo = Ext.getCmp('sm-sbtargetcost-combo').getValue();
-        smSbTargetCostStore.getProxy().extraParams['sbTargetCost.projNo'] = projNo;
+        smSbTargetCostStore.getProxy().extraParams['targetCostVo.projNo'] = projNo;
         smSbTargetCostStore.reload();
     },
-    
+
     split: function (grid, rowIndex, colIndex, item, e, record, row) {
         var win = Ext.getCmp('sm-sbtargetcostedit');
         if (!win) {
@@ -19,18 +19,19 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
         }
         var form = win.down('form');
         form.loadRecord(record);
-        smSbTargetCostSplitStore.getProxy().extraParams['sbTargetCostSplit.projNo'] = record.get('sbTargetCost.projNo');
-        smSbTargetCostSplitStore.getProxy().extraParams['sbTargetCostSplit.deptName'] = record.get('sbTargetCost.deptName');
+        smSbTargetCostSplitStore.getProxy().extraParams['targetCostSplit.projNo'] = record.get('targetCostVo.projNo');
+        smSbTargetCostSplitStore.getProxy().extraParams['targetCostSplit.costAccount'] = record.get('targetCostVo.costAccount');
         this.refreshSplit();
         win.show();
     },
 
     addSplit: function () {
         smSbTargetCostSplitRowEditing.cancelEdit();
-        var record = Ext.create('iFlat.model.sm.SbTargetCostSplit', {
-            'sbTargetCostSplit.projNo': Ext.getCmp('sm-sbtargetcostedit-projno').getValue(),
-            'sbTargetCostSplit.projName': Ext.getCmp('sm-sbtargetcostedit-projname').getValue(),
-            'sbTargetCostSplit.deptName': Ext.getCmp('sm-sbtargetcostedit-deptname').getValue(),
+        var record = Ext.create('iFlat.model.sm.TargetCostSplit', {
+            'targetCostSplit.projNo': Ext.getCmp('sm-sbtargetcostedit-projno').getValue(),
+            'targetCostSplit.projName': Ext.getCmp('sm-sbtargetcostedit-projname').getValue(),
+            'targetCostSplit.costAccount': Ext.getCmp('sm-sbtargetcostedit-costaccount').getValue(),
+            'targetCostSplit.costAccountName': Ext.getCmp('sm-sbtargetcostedit-costaccountname').getValue(),
         })
         smSbTargetCostSplitStore.insert(0, record);
         smSbTargetCostSplitRowEditing.startEdit(0, 0);
@@ -46,7 +47,7 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
         var record = context.record;
         Flat.util.mask();
         Ext.Ajax.request({
-            url: 'sm_saveSbTargetCostSplit.action',
+            url: 'sm_saveTargetCostSplit.action',
             method: 'post',
             params: record.getData(),
             success: function(response, opts) {
@@ -59,8 +60,8 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
                     smSbTargetCostSplitStore.reload();
                 } else {
                     // 保存成功，则将返回的id填入相应的record的属性
-                    if (Flat.util.isEmpty(record.get('sbTargetCostSplit.id'))) {
-                        record.set('sbTargetCostSplit.id', obj['id']);
+                    if (Flat.util.isEmpty(record.get('targetCostSplit.id'))) {
+                        record.set('targetCostSplit.id', obj['id']);
                         smSbTargetCostSplitStore.insert(0, record);
                         var distribution = parseFloat(Ext.getCmp('sm-sbtargetcostedit-distribute').getValue()) + parseFloat(obj['amount']);
                         var remain = parseFloat(Ext.getCmp('sm-sbtargetcostedit-remain').getValue()) - parseFloat(obj['amount']);
@@ -77,7 +78,7 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
     },
 
     deleteEmptyRecord: function(editor, context, eOpts) {
-        var id = context.record.data["sbTargetCostSplit.id"];
+        var id = context.record.data["targetCostSplit.id"];
         if(id == "") {
             smSbTargetCostSplitStore.remove(context.record);
         }
@@ -107,7 +108,7 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
             if(btn=="yes") {
                 Flat.util.mask('删除中...');
                 Ext.Ajax.request({
-                    url: 'sm_deleteSbTargetCostSplit.action',
+                    url: 'sm_deleteTargetCostSplit.action',
                     method: 'post',
                     params: record.getData(),
                     success: function(response, opts) {
@@ -131,5 +132,33 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
             };
         })
 
-    }
+    },
+    
+    uploadFile: function(btn) {
+        var form = Ext.getCmp('sm-sbtargetcost-import');
+        if (form.isValid()) {
+            form.submit({
+                url: 'sm_importTargetCostSplit.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                success: function (fp, o) {
+                    smProjectTargetCostStore.reload();
+                    Flat.util.tip(o.response.responseText);
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        Ext.Ajax.request({
+            url: 'sm_templateTargetCostSplit.action',
+            method: 'post',
+            success: function(response, opts) {
+                window.location.href = Ext.JSON.decode(response.responseText)['object'];
+            },
+        });
+    },
 });

@@ -13,8 +13,14 @@
         <property name="scSettlementService" ref="scSettlementService"/>
         <property name="scSettlementDetail" ref="scSettlementDetail"/>
         <property name="scSettlementDetailService" ref="scSettlementDetailService"/>
+        <property name="projectTargetCost" ref="projectTargetCost"/>
+        <property name="projectTargetCostService" ref="projectTargetCostService"/>
         <property name="targetCost" ref="targetCost"/>
         <property name="targetCostService" ref="targetCostService"/>
+        <property name="projectTargetCostVo" ref="projectTargetCostVo"/>
+        <property name="projectTargetCostVoService" ref="projectTargetCostVoService"/>
+        <property name="targetCostVo" ref="targetCostVo"/>
+        <property name="targetCostVoService" ref="targetCostVoService"/>
         <property name="targetCostSplit" ref="targetCostSplit"/>
         <property name="targetCostSplitService" ref="targetCostSplitService"/>
         <property name="targetCostAccount" ref="targetCostAccount"/>
@@ -38,6 +44,10 @@
         <property name="tecSettlementDetailService" ref="tecSettlementDetailService"/>
         <property name="subsidy" ref="subsidy"/>
         <property name="subsidyService" ref="subsidyService"/>
+        <property name="payment" ref="payment"/>
+        <property name="paymentService" ref="paymentService"/>
+        <property name="outsourcing" ref="outsourcing"/>
+        <property name="outsourcingService" ref="outsourcingService"/>
         <property name="temporary" ref="temporary"/>
         <property name="temporaryService" ref="temporaryService"/>
         <property name="temporaryDetail" ref="temporaryDetail"/>
@@ -80,16 +90,32 @@
     <bean id="scSettlementDetailDao" class="com.iflat.sm.dao.impl.ScSettlementDetailDaoImpl"/>
     <bean id="scSettlementDetail" class="com.iflat.sm.bean.ScSettlementDetail" scope="prototype"/>
 
-    <bean id="targetCostService" class="com.iflat.sm.service.impl.TargetCostServiceImpl"/>
+    <bean id="projectTargetCostService" class="com.iflat.sm.service.impl.ProjectTargetCostServiceImpl"/>
+    <bean id="projectTargetCostDao" class="com.iflat.sm.dao.impl.ProjectTargetCostDaoImpl"/>
+    <bean id="projectTargetCost" class="com.iflat.sm.bean.ProjectTargetCost" scope="prototype"/>
+
+    <bean id="projectTargetCostVoService" class="com.iflat.sm.service.impl.ProjectTargetCostVoServiceImpl"/>
+    <bean id="projectTargetCostVoDao" class="com.iflat.sm.dao.impl.ProjectTargetCostVoDaoImpl"/>
+    <bean id="projectTargetCostVo" class="com.iflat.sm.entity.ProjectTargetCostVo" scope="prototype"/>
+
+    <bean id="targetCostService" class="com.iflat.sm.service.impl.TargetCostServiceImpl">
+        <property name="projectTargetCostVoService" ref="projectTargetCostVoService"/>
+        <property name="sbSettlementVoService" ref="sbSettlementVoService"/>
+        <property name="scSettlementVoService" ref="scSettlementVoService"/>
+    </bean>
     <bean id="targetCostDao" class="com.iflat.sm.dao.impl.TargetCostDaoImpl"/>
     <bean id="targetCost" class="com.iflat.sm.bean.TargetCost" scope="prototype"/>
+
+    <bean id="targetCostVoService" class="com.iflat.sm.service.impl.TargetCostVoServiceImpl"/>
+    <bean id="targetCostVoDao" class="com.iflat.sm.dao.impl.TargetCostVoDaoImpl"/>
+    <bean id="targetCostVo" class="com.iflat.sm.entity.TargetCostVo" scope="prototype"/>
 
     <bean id="targetCostAccountService" class="com.iflat.sm.service.impl.TargetCostAccountServiceImpl"/>
     <bean id="targetCosAccountDao" class="com.iflat.sm.dao.impl.TargetCostAccountDaoImpl"/>
     <bean id="targetCostAccount" class="com.iflat.sm.bean.TargetCostAccount" scope="prototype"/>
 
     <bean id="targetCostSplitService" class="com.iflat.sm.service.impl.TargetCostSplitServiceImpl">
-        <property name="targetCostService" ref="targetCostService"/>
+        <property name="targetCostVoService" ref="targetCostVoService"/>
         <property name="sbSettlementVoService" ref="sbSettlementVoService"/>
         <property name="scSettlementVoService" ref="scSettlementVoService"/>
     </bean>
@@ -147,6 +173,14 @@
     <bean id="subsidyService" class="com.iflat.sm.service.impl.SubsidyServiceImpl"/>
     <bean id="subsidyDao" class="com.iflat.sm.dao.impl.SubsidyDaoImpl"/>
     <bean id="subsidy" class="com.iflat.sm.bean.Subsidy" scope="prototype"/>
+
+    <bean id="paymentService" class="com.iflat.sm.service.impl.PaymentServiceImpl"/>
+    <bean id="paymentDao" class="com.iflat.sm.dao.impl.PaymentDaoImpl"/>
+    <bean id="payment" class="com.iflat.sm.bean.Payment" scope="prototype"/>
+
+    <bean id="outsourcingService" class="com.iflat.sm.service.impl.OutsourcingServiceImpl"/>
+    <bean id="outsourcingDao" class="com.iflat.sm.dao.impl.OutsourcingDaoImpl"/>
+    <bean id="outsourcing" class="com.iflat.sm.bean.Outsourcing" scope="prototype"/>
 
     <bean id="temporaryService" class="com.iflat.sm.service.impl.TemporaryServiceImpl">
         <property name="workflowService" ref="workflowService"/>
