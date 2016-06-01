@@ -8,6 +8,8 @@ import com.iflat.sm.bean.TargetCostSplit;
 import com.iflat.sm.entity.SbSettlementVo;
 import com.iflat.sm.service.BaseSettlementService;
 import com.iflat.sm.service.SbSettlementDetailService;
+import com.iflat.system.entity.UserInfoVo;
+import com.iflat.util.Session;
 
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class SbSettlementDetailServiceImpl extends BaseServiceSupport implements
     private BaseService sbSettlementService;
     private BaseService targetCostSplitService;
     private BaseSettlementService sbSettlementVoService;
+
     @Override
     protected void beforeInsert() throws Exception {
         // 判断目标成本余额是否足以支付此申请

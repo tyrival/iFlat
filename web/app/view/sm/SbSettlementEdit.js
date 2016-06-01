@@ -58,6 +58,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     typeAhead: true,
                     minChars: 0,
                     forceSelection : true,
+                    anyMatch: true,
                     displayField: 'name',
                     valueField: 'projNo',
                     width: 300,
@@ -73,6 +74,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     allowBlank: false,
                     editable: false,
                     forceSelection : true,
+                    anyMatch: true,
                     displayField: 'teamName',
                     valueField: 'teamName',
                     width: 300,
@@ -147,9 +149,10 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     },
                     hidden: true
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'datefield',
                     id: 'sm-sbsettlementedit-month',
                     name: 'sbSettlement.month',
+                    format: 'Y-m-d',
                     hidden: true
                 }, {
                     xtype: 'textfield',
@@ -299,6 +302,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                         }),
                         queryMode: 'local',
                         editable: true,
+                        anyMatch: true,
                         forceSelection : true,
                         valueField : 'code',
                         displayField : 'name',

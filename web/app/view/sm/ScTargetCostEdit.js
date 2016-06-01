@@ -158,6 +158,7 @@ Ext.define('iFlat.view.sm.ScTargetCostEdit', {
                         }),
                         queryMode: 'local',
                         editable: true,
+                        anyMatch: true,
                         forceSelection : true,
                         valueField : 'name',
                         displayField : 'name',

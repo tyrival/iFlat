@@ -41,7 +41,7 @@ public class TecSettlementTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("人力资源部");
         assignee.setRoleName("人力资源部部长");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void leaderApprove(DelegateTask delegateTask) throws Exception {

@@ -140,6 +140,7 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatch', {
                 allowBlank: false,
                 height: 20,
                 width: '100%',
+                value: '同意',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

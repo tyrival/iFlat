@@ -7,7 +7,7 @@
     <select id="list" parameterType="com.iflat.sm.entity.TargetCostVo" resultMap="SmTargetCostVoResult">
         SELECT a.projNo,a.projName,a.costAccount,a.amount,(CASE WHEN b.distribution IS NULl THEN 0 ELSE b.distribution END) AS distribution,a.type,a.costAccountName
         FROM (SELECT projNo,projName,costAccount,SUM(amount) AS amount,type,costAccountName
-                FROM V_SmTargetCostVo
+                FROM V_SmTargetCost
                 <where>
                     <if test="projNo!=null">AND projNo=#{projNo}</if>
                     <if test="costAccount!=null">AND costAccount=#{costAccount}</if>
@@ -16,7 +16,7 @@
                 GROUP BY projNo,projName,costAccount,type,costAccountName
         ) a
         LEFT JOIN (SELECT projNo,costAccount,SUM(amount) AS distribution
-                    FROM SmTargetCostVoSplit
+                    FROM SmTargetCostSplit
                     <where>
                         <if test="projNo!=null">AND projNo=#{projNo}</if>
                         <if test="costAccount!=null">AND costAccount=#{costAccount}</if>

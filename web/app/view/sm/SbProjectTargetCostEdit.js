@@ -145,8 +145,9 @@ Ext.define('iFlat.view.sm.SbProjectTargetCostEdit', {
                         queryMode: 'local',
                         editable: true,
                         forceSelection : true,
-                        valueField : 'name',
-                        displayField : 'name',
+                        anyMatch: true,
+                        valueField : 'code',
+                        displayField : 'description',
                         listeners: {
                             select: 'onCostAccountChange',
                         }

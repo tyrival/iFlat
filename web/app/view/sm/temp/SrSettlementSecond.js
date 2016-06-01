@@ -89,9 +89,10 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                     name: 'srSettlementSecond.deptName',
                     fieldLabel: '部门',
                     width: 230,
-                    hidden: true,
+                    //hidden: true,
                     listeners: {
                         change: function(combo, newValue, oldValue, eOpts) {
+                            debugger
                             // 将下一个控件的store根据部门值联动
                             var store = combo.nextSibling('combo').getStore()
                             store.getProxy().extraParams['team.deptName']= newValue;
@@ -165,19 +166,19 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                 items: [{
                     xtype: 'textfield',
                     fieldLabel: '工号',
-                    hidden: true,
+                    //hidden: true,
                     name: 'srSettlementSecond.projNo',
                     width: 180,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '船名',
-                    hidden: true,
+                    //hidden: true,
                     name: 'srSettlementSecond.projName',
                     width: 310,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '进度%',
-                    hidden: true,
+                    //hidden: true,
                     name: 'srSettlementSecond.progress',
                     width: 150,
                 }, {
@@ -187,7 +188,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                     listeners: {
                         change: 'loadBusinessObjByTaskId'
                     },
-                    hidden: true,
+                    //hidden: true,
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.id',
@@ -201,7 +202,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.type',
-                    hidden: true,
+                    //hidden: true,
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.status',

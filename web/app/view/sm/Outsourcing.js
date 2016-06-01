@@ -8,7 +8,13 @@ Ext.define('iFlat.view.sm.Outsourcing', {
     ],
     
     controller: 'sm-outsourcing',
-    store: smOutsourcingStore = Ext.create('iFlat.store.sm.Outsourcing'),
+    store: smOutsourcingStore = Ext.create('iFlat.store.sm.Outsourcing', {
+        proxy: {
+            extraParams: {
+                'outsourcing.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+            }
+        }
+    }),
     id: 'sm-outsourcing',
 
     plugins: [
@@ -56,6 +62,7 @@ Ext.define('iFlat.view.sm.Outsourcing', {
         flex: true,
         editor: {
             xtype: 'combo',
+            anyMatch: true,
             name: 'outsourcing.type',
             queryMode: 'local',
             allowBlank: false,

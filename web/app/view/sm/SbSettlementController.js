@@ -307,6 +307,7 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
      * 保存头信息后，如果是新增的SbSettlement对象，则启动流程
      */
     saveEdit: function () {
+        debugger
         var form = Ext.getCmp('sm-sbsettlementedit-form');
         form.submit({
             url: 'sm_saveSbSettlement.action',

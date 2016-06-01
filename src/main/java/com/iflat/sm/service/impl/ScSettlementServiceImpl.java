@@ -15,17 +15,6 @@ public class ScSettlementServiceImpl extends BaseServiceSupport implements ScSet
     private WorkflowService workflowService;
 
     /**
-     * 创建对象前，生成对象的创建人等属性
-     * @throws Exception
-     */
-    @Override
-    protected void beforeInsert() throws Exception {
-        UserInfoVo userInfoVo = Session.getUserInfo();
-        ((ScSettlement)this.saveObj).setCreatorAcc(userInfoVo.getAccount());
-        ((ScSettlement)this.saveObj).setCreatorName(userInfoVo.getUserName());
-    }
-
-    /**
      * 创建对象时，启动流程
      * @throws Exception
      */

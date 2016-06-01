@@ -34,7 +34,8 @@ public class SbSettlementTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         assignee.setRoleName("造船车间主任");
         assignee.setPorgId(porgId);
-        delegateTask.setAssignee(listAssignees(assignee).get(0).getAccount());
+        List<UserInfoVo> list = listAssignees(assignee);
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
 
     }
 
@@ -47,7 +48,7 @@ public class SbSettlementTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("造船事业部");
         assignee.setRoleName("造船事业部结算员");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void businessDivisionDirectorApprove(DelegateTask delegateTask) throws Exception {
@@ -59,7 +60,7 @@ public class SbSettlementTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("造船事业部");
         assignee.setRoleName("造船事业部部长");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void hrAudit(DelegateTask delegateTask) throws Exception {
@@ -83,7 +84,7 @@ public class SbSettlementTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("人力资源部");
         assignee.setRoleName("人力资源部部长");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void leaderApprove(DelegateTask delegateTask) throws Exception {

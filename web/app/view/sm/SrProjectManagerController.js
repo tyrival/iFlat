@@ -50,14 +50,13 @@ Ext.define('iFlat.view.sm.SrProjectManagerController', {
                         success: function (response, opts) {
                             Flat.util.unmask();
                             var data = Ext.JSON.decode(response.responseText);
-                            if(data.success) {
-                                smSrProjectManagerStore.remove(record);
-                            }
                             Flat.util.tip(response.responseText);
+                            smSrProjectManagerStore.reload();
                         },
                         success: function (response, opts) {
                             Flat.util.unmask();
                             Flat.util.tip(response.responseText);
+                            smSrProjectManagerStore.reload();
                         },
                     })
                 };
@@ -67,6 +66,8 @@ Ext.define('iFlat.view.sm.SrProjectManagerController', {
 
     refreshList: function() {
         smSrProjectManagerStore.reload();
+        smSrProjectManagerProjectStore.reload();
+        smSrProjectManagerUserStore.reload();
     },
 
     addSrProjectManagerRecord: function() {

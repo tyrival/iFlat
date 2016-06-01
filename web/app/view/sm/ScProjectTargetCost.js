@@ -1,21 +1,21 @@
 Ext.define('iFlat.view.sm.ScProjectTargetCost', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.sm-sbprojecttargetcost',
-    xtype: 'sm-sbprojecttargetcost',
+    alias: 'widget.sm-scprojecttargetcost',
+    xtype: 'sm-scprojecttargetcost',
 
     requires: [
         'iFlat.view.sm.ScProjectTargetCostController',
     ],
 
-    controller: 'sm-sbprojecttargetcost',
+    controller: 'sm-scprojecttargetcost',
     store: smScProjectTargetCostStore = Ext.create('iFlat.store.sm.ProjectTargetCostVo', {
         proxy: {
             extraParams: {
-                'projectTargetCostVo.type': '造船'
+                'projectTargetCostVo.type': '钢结构'
             }
         }
     }),
-    id: 'sm-sbprojecttargetcost',
+    id: 'sm-scprojecttargetcost',
 
     dockedItems: [{
         xtype: 'toolbar',
@@ -23,7 +23,7 @@ Ext.define('iFlat.view.sm.ScProjectTargetCost', {
         overflowHandler: 'scroller',
         items: [{
             xtype: 'combo',
-            id: 'sm-sbprojecttargetcost-combo',
+            id: 'sm-scprojecttargetcost-combo',
             store: smScTargetCostComboStore = Ext.create('iFlat.store.report.bi.Project'),
             queryMode: 'local',
             allowBlank: false,
@@ -31,6 +31,7 @@ Ext.define('iFlat.view.sm.ScProjectTargetCost', {
             typeAhead: true,
             minChars: 0,
             forceSelection : true,
+            anyMatch: true,
             displayField: 'name',
             valueField: 'projNo',
             width: 350,

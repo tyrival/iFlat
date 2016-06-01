@@ -28,7 +28,8 @@ public class TemporaryTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         assignee.setPorgName(Session.getUserInfo().getPorgName());
         assignee.setRoleName("修船车间主任");
-        delegateTask.setAssignee(listAssignees(assignee).get(0).getAccount());
+        List<UserInfoVo> list = listAssignees(assignee);
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
     
     public void hrAudit(DelegateTask delegateTask) throws Exception {
@@ -52,7 +53,7 @@ public class TemporaryTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("人力资源部");
         assignee.setRoleName("人力资源部部长");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void leaderApprove(DelegateTask delegateTask) throws Exception {
@@ -63,7 +64,7 @@ public class TemporaryTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         assignee.setRoleName("总经理");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
     
     /**

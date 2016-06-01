@@ -14,6 +14,7 @@ import com.iflat.sm.service.TargetCostSplitService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ReflectUtil;
 import com.iflat.util.Session;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.oxm.ValidationFailureException;
 
 import java.util.*;
@@ -183,6 +184,12 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
             }
             if(o.getCostAccount() == null || o.getCostAccount() == "") {
                 throw new ValidationFailureException("第" + (i + 1) + "成本科目代码为空，请修改后重新导入");
+            }
+
+            // 判断部门名称是否符合规范
+            String[] arr = new String[]{"造船事业部", "造船加工车间", "造船船体车间", "造船安装车间", "修船事业部", "修船坞修车间", "修船冷作车间", "修船舾装车间", "修船机电修理车间", "钢结构事业部"};
+            if (!ArrayUtils.contains(arr, o.getDeptName())) {
+                throw new ValidationFailureException("第" + (i + 1) + "行部门名称错误，请修改后重新导入");
             }
 
             Map<String, Double> m = map.get(o.getProjNo());

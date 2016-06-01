@@ -43,6 +43,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
 
     // 新增/编辑二级结算清单，机电修理类型下，此按钮是隐藏的，所以不做考虑
     editSecond: function (cmp, rowIndex, colIndex, item, e, record, row) {
+        debugger
         // 查询二级结算窗口
         var win = Ext.getCmp('sm-srsettlementsecond');
         if (!win) {
@@ -65,7 +66,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
         }
         
         // 在新窗口的form中加载record
-        var form = win.down('form');
+        var form = win.down('form[name=sm-srsettlementsecondedit-form]');
         form.loadRecord(record);
 
         // 根据type不同，显示不同的grid
@@ -216,7 +217,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
     },
     
     updateDetail: function(editor, context, eOpts) {
-
+debugger
         // 需要判断是否需创建头信息
         var grid = editor.getCmp();
         var store = grid.getStore();

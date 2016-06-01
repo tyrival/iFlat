@@ -68,6 +68,7 @@ Ext.define('iFlat.view.sm.Subsidy', {
             editable: true,
             forceSelection : true,
             typeAhead: true,
+            anyMatch: true,
             minChars: 0,
             displayField: 'teamName',
             valueField: 'teamName',

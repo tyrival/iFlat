@@ -205,6 +205,15 @@ public class BaseServiceSupport implements BaseService {
 
             obj.setMethodValue("id", UUID.randomUUID().toString());
 
+            try {
+                UserInfoVo userInfoVo = Session.getUserInfo();
+                obj.setMethodValue("creatorAcc", userInfoVo.getAccount());
+                obj.setMethodValue("creatorName", userInfoVo.getUserName());
+                obj.setMethodValue("createTime", new Date());
+
+            } catch (Exception e) {
+            }
+
             this.beforeInsert();
             result = executeMethod(this.saveObj, "insert");
             this.afterInsert();

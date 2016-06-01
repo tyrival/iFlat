@@ -4,5 +4,6 @@ Ext.define('iFlat.model.sm.TargetCostAccount', {
         {name: 'targetCostAccount.code', mapping: 'code', type: 'string'},
         {name: 'targetCostAccount.name', mapping: 'name', type: 'string'},
         {name: 'targetCostAccount.type', mapping: 'type', type: 'string'},
+        {name: 'targetCostAccount.description', mapping: 'description', type: 'string'},
     ]
 });

@@ -31,6 +31,7 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
         allowBlank: false,
         editable: true,
         typeAhead: true,
+        anyMatch: true,
         minChars: 0,
         forceSelection : true,
         displayField: 'name',
@@ -100,7 +101,7 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
         width: 200,
         dataIndex: 'targetCostVo.amount',
     }, {
-        header: '金额',
+        header: '已分配',
         width: 200,
         dataIndex: 'targetCostVo.distribution',
     }],

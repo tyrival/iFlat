@@ -101,13 +101,13 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatchController', {
                     Flat.util.tip(o.response.responseText);
                     btn.up('window').hide();
                     Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
-                    form.down('textarea[name=comment]').setValue('');
+                    form.down('textarea[name=comment]').setValue('同意');
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
                     btn.up('window').hide();
                     Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
-                    form.down('textarea[name=co`mment]').setValue('');
+                    form.down('textarea[name=co`mment]').setValue('同意');
                 }
             })
         }

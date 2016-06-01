@@ -14,14 +14,14 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
     ],
 
     scrollable: 'true',
-    maxHeight: 700,
+    maxHeight: 500,
     controller: 'sm-srworkshopsettlement',
     closeAction: 'hide',
 
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 700,
+        maxHeight: 500,
         width: '100%',
         scollable: 'y',
         layout: {
@@ -301,6 +301,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                 allowBlank: false,
                 height: 20,
                 width: '100%',
+                value: '同意',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

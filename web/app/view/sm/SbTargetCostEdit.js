@@ -145,6 +145,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                     dataIndex: 'targetCostSplit.deptName',
                     editor: {
                         xtype: 'combo',
+                        anyMatch: true,
                         allowBlank: false,
                         bind: {
                             store: '{smDept}'

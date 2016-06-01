@@ -48,6 +48,7 @@ Ext.define('iFlat.view.workflow.Task', {
     }, {
         header: '办理者',
         dataIndex: 'task.assignee',
+        hidden: true,
     }, {
         header: 'FormKey',
         dataIndex: 'task.formKey',

@@ -28,7 +28,7 @@ public class ScSettlementTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("钢结构事业部");
         assignee.setRoleName("钢结构事业部部长");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void hrAudit(DelegateTask delegateTask) throws Exception {
@@ -52,7 +52,7 @@ public class ScSettlementTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("人力资源部");
         assignee.setRoleName("人力资源部部长");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void leaderApprove(DelegateTask delegateTask) throws Exception {

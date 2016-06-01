@@ -201,6 +201,7 @@ Ext.define('iFlat.view.sm.TemporaryEdit', {
                         allowBlank: false,
                         editable: false,
                         forceSelection : true,
+                        anyMatch: true,
                         displayField: 'teamName',
                         valueField: 'teamName',
                         store: smTemporaryTeamStore = Ext.create('iFlat.store.code.Team', {

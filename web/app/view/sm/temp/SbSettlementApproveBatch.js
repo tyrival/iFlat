@@ -74,41 +74,6 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatch', {
                     hidden: true,
                 }, ]
             }, {
-                xtype: 'container',
-                layout: 'hbox',
-                margin: '0 0 10 0',
-                items: [{
-                    xtype: 'textfield',
-                    name: 'sbSettlement.mgrScore',
-                    fieldLabel: '管理分',
-                    editable: false,
-                    width: 160,
-                },{
-                    xtype: 'textfield',
-                    name: 'sbSettlement.progressScore',
-                    fieldLabel: '进度分',
-                    editable: false,
-                    width: 160,
-                },{
-                    xtype: 'textfield',
-                    name: 'sbSettlement.qualityScore',
-                    fieldLabel: '质量分',
-                    editable: false,
-                    width: 160,
-                },{
-                    xtype: 'textfield',
-                    name: 'sbSettlement.safetyScore',
-                    fieldLabel: '安全分',
-                    editable: false,
-                    width: 160,
-                },{
-                    xtype: 'textfield',
-                    name: 'sbSettlement.fineAmount',
-                    fieldLabel: '扣款(元)',
-                    editable: false,
-                    width: 160,
-                },]
-            }, {
                 xtype: 'panel',
                 border: false,
                 width: '100%',
@@ -177,6 +142,26 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatch', {
                         dataIndex: 'sbSettlement.attachment',
                         renderer: 'renderAttachment'
                     }, {
+                        header: '管理分',
+                        width: 80,
+                        dataIndex: 'sbSettlement.mgrScore',
+                    }, {
+                        header: '进度分',
+                        width: 80,
+                        dataIndex: 'sbSettlement.progressScore',
+                    }, {
+                        header: '质量分',
+                        width: 80,
+                        dataIndex: 'sbSettlement.qualityScore',
+                    }, {
+                        header: '安全分',
+                        width: 80,
+                        dataIndex: 'sbSettlement.safetyScore',
+                    }, {
+                        header: '扣款(元)',
+                        width: 80,
+                        dataIndex: 'sbSettlement.fineAmount',
+                    }, {
                         header: '备注',
                         width: 150,
                         dataIndex: 'sbSettlement.comment',
@@ -191,6 +176,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatch', {
                 allowBlank: false,
                 height: 20,
                 width: '100%',
+                value: '同意',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

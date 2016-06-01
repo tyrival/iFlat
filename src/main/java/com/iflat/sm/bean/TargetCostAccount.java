@@ -7,6 +7,15 @@ public class TargetCostAccount {
     private String code;
     private String name;
     private String type;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription() {
+        this.description = this.code + " " + this.name;
+    }
 
     public String getType() {
         return type;
@@ -22,6 +31,7 @@ public class TargetCostAccount {
 
     public void setCode(String code) {
         this.code = code;
+        setDescription();
     }
 
     public String getName() {
@@ -30,5 +40,6 @@ public class TargetCostAccount {
 
     public void setName(String name) {
         this.name = name;
+        setDescription();
     }
 }

@@ -51,6 +51,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     typeAhead: true,
                     minChars: 0,
                     forceSelection : true,
+                    anyMatch: true,
                     displayField: 'name',
                     valueField: 'projNo',
                     width: 250,
@@ -74,9 +75,10 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     allowBlank: true,
                     editable: false,
                     forceSelection : true,
+                    anyMatch: true,
                     width: 200,
                     bind: {
-                        store: '{smSrDept}',
+                        store: '{smDeptSrFirst}',
                     },
                     listeners: {
                         change: function(combo, newValue, oldValue, eOpts) {
@@ -93,6 +95,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     allowBlank: true,
                     editable: false,
                     forceSelection : true,
+                    anyMatch: true,
                     displayField: 'teamName',
                     valueField: 'teamName',
                     width: 250,
@@ -106,6 +109,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     editable: true,
                     forceSelection : true,
                     typeAhead: true,
+                    anyMatch: true,
                     minChars: 0,
                     displayField: 'userName',
                     valueField: 'account',
@@ -123,7 +127,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     name: 'srSettlement.progress',
                     fieldLabel: '进度',
                     width: 150,
-                    hidden: true
+                    //hidden: true
                 }]
             }, {
                 xtype: 'container',

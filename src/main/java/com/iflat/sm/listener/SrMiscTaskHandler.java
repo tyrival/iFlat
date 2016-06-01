@@ -32,7 +32,8 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         assignee.setPorgName(userInfoVo.getPorgName());
         assignee.setRoleName("修船车间主任");
-        delegateTask.setAssignee(listAssignees(assignee).get(0).getAccount());
+        List<UserInfoVo> list = listAssignees(assignee);
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void professionalManagerAudit(DelegateTask delegateTask) throws Exception {
@@ -68,7 +69,8 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         assignee.setPorgName("修船事业部");
         assignee.setRoleName("修船事业部部长");
-        delegateTask.setAssignee(listAssignees(assignee).get(0).getAccount());
+        List<UserInfoVo> list = listAssignees(assignee);
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void commercialCenterSettlement(DelegateTask delegateTask) throws Exception {
@@ -93,7 +95,7 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("修船经营部");
         assignee.setRoleName("修船经营部部长");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void workshopSettlement(DelegateTask delegateTask) throws Exception {
@@ -119,10 +121,10 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName(deptName);
         assignee.setRoleName("修船车间主任");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
-    public void businessDivisionAutid(DelegateTask delegateTask) throws Exception {
+    public void businessDivisionAudit(DelegateTask delegateTask) throws Exception {
 
         setAssignee(delegateTask, SrStatus.STATUS_WORKSHOP_SETTLEMENT_APPROVE);
         setTaskInfoMisc(delegateTask, SrStatus.STATUS_BUSINESS_DIVISION_AUDIT);
@@ -130,7 +132,8 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         assignee.setPorgName("修船事业部");
         assignee.setRoleName("修船事业部部长");
-        delegateTask.setAssignee(listAssignees(assignee).get(0).getAccount());
+        List<UserInfoVo> list = listAssignees(assignee);
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void hrAudit(DelegateTask delegateTask) throws Exception {
@@ -154,7 +157,7 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         assignee.setPorgName("人力资源部");
         assignee.setRoleName("人力资源部部长");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void leaderApprove(DelegateTask delegateTask) throws Exception {

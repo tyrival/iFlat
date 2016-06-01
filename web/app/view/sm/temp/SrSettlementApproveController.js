@@ -126,7 +126,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
                 success: function(response, opts) {
                     Flat.util.unmask();
                     Flat.util.tip(response.responseText);
-                    commentCmp.setValue('');
+                    commentCmp.setValue('同意');
                     Ext.getCmp('sm-srsettlementapproveinfo').hide();
                     var active = Ext.WindowManager.getActive();
                     if (active && active.isXType('window')) {
@@ -136,7 +136,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
                 failure: function(response, opts) {
                     Flat.util.unmask();
                     Flat.util.tip(response.responseText);
-                    commentCmp.setValue('');
+                    commentCmp.setValue('同意');
                     Ext.getCmp('sm-srsettlementapproveinfo').hide();
                     var active = Ext.WindowManager.getActive();
                     if (active && active.isXType('window')) {

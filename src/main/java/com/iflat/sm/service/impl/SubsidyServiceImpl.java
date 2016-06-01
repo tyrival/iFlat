@@ -12,12 +12,4 @@ import java.util.Date;
  */
 public class SubsidyServiceImpl extends BaseServiceSupport {
 
-    @Override
-    protected void beforeInsert() throws Exception {
-        UserInfoVo userInfoVo = Session.getUserInfo();
-        ((Subsidy)this.saveObj).setCreatorAcc(userInfoVo.getAccount());
-        ((Subsidy)this.saveObj).setCreatorName(userInfoVo.getUserName());
-        ((Subsidy)this.saveObj).setCreateTime(new Date());
-    }
-
 }

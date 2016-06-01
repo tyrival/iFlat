@@ -1,9 +1,9 @@
 Ext.define('iFlat.view.sm.ScProjectTargetCostController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.sm-sbprojecttargetcost',
+    alias: 'controller.sm-scprojecttargetcost',
 
     search: function () {
-        var projNo = Ext.getCmp('sm-sbprojecttargetcost-combo').getValue();
+        var projNo = Ext.getCmp('sm-scprojecttargetcost-combo').getValue();
         smScProjectTargetCostStore.getProxy().extraParams['projectTargetCostVo.projNo'] = projNo;
         smScProjectTargetCostStore.reload();
     },
@@ -13,7 +13,7 @@ Ext.define('iFlat.view.sm.ScProjectTargetCostController', {
     },
 
     split: function (grid, rowIndex, colIndex, item, e, record, row) {
-        var win = Ext.getCmp('sm-sbprojecttargetcostedit');
+        var win = Ext.getCmp('sm-scprojecttargetcostedit');
         if (!win) {
             win = Ext.create('iFlat.view.sm.ScProjectTargetCostEdit');
         }
@@ -27,8 +27,8 @@ Ext.define('iFlat.view.sm.ScProjectTargetCostController', {
     addSplit: function () {
         smScProjectTargetCostSplitRowEditing.cancelEdit();
         var record = Ext.create('iFlat.model.sm.TargetCost', {
-            'targetCost.projNo': Ext.getCmp('sm-sbprojecttargetcostedit-projno').getValue(),
-            'targetCost.projName': Ext.getCmp('sm-sbprojecttargetcostedit-projname').getValue(),
+            'targetCost.projNo': Ext.getCmp('sm-scprojecttargetcostedit-projno').getValue(),
+            'targetCost.projName': Ext.getCmp('sm-scprojecttargetcostedit-projname').getValue(),
         })
         smScProjectTargetCostSplitStore.insert(0, record);
         smScProjectTargetCostSplitRowEditing.startEdit(0, 0);
@@ -54,10 +54,10 @@ Ext.define('iFlat.view.sm.ScProjectTargetCostController', {
                     if (Flat.util.isEmpty(record.get('targetCost.id'))) {
                         record.set('targetCost.id', obj['id']);
                         smScProjectTargetCostSplitStore.insert(0, record);
-                        var distribution = parseFloat(Ext.getCmp('sm-sbprojecttargetcostedit-distribute').getValue()) + parseFloat(obj['amount']);
-                        var remain = parseFloat(Ext.getCmp('sm-sbprojecttargetcostedit-remain').getValue()) - parseFloat(obj['amount']);
-                        Ext.getCmp('sm-sbprojecttargetcostedit-distribute').setValue(distribution);
-                        Ext.getCmp('sm-sbprojecttargetcostedit-remain').setValue(remain);
+                        var distribution = parseFloat(Ext.getCmp('sm-scprojecttargetcostedit-distribute').getValue()) + parseFloat(obj['amount']);
+                        var remain = parseFloat(Ext.getCmp('sm-scprojecttargetcostedit-remain').getValue()) - parseFloat(obj['amount']);
+                        Ext.getCmp('sm-scprojecttargetcostedit-distribute').setValue(distribution);
+                        Ext.getCmp('sm-scprojecttargetcostedit-remain').setValue(remain);
                     }
                 }
             },
@@ -88,9 +88,9 @@ Ext.define('iFlat.view.sm.ScProjectTargetCostController', {
                         distribution += records[i].getData()['amount'];
                     }
                 }
-                var remain = Ext.getCmp('sm-sbprojecttargetcostedit-amount').getValue() - distribution;
-                Ext.getCmp('sm-sbprojecttargetcostedit-distribute').setValue(distribution);
-                Ext.getCmp('sm-sbprojecttargetcostedit-remain').setValue(remain);
+                var remain = Ext.getCmp('sm-scprojecttargetcostedit-amount').getValue() - distribution;
+                Ext.getCmp('sm-scprojecttargetcostedit-distribute').setValue(distribution);
+                Ext.getCmp('sm-scprojecttargetcostedit-remain').setValue(remain);
             }
         })
     },
@@ -110,10 +110,10 @@ Ext.define('iFlat.view.sm.ScProjectTargetCostController', {
                         var obj = result['object'];
                         if (!Flat.util.isEmpty(obj)) {
                             smScProjectTargetCostSplitStore.remove(record);
-                            var distribution = parseFloat(Ext.getCmp('sm-sbprojecttargetcostedit-distribute').getValue()) - parseFloat(obj['amount']);
-                            var remain = parseFloat(Ext.getCmp('sm-sbprojecttargetcostedit-remain').getValue()) + parseFloat(obj['amount']);
-                            Ext.getCmp('sm-sbprojecttargetcostedit-distribute').setValue(distribution);
-                            Ext.getCmp('sm-sbprojecttargetcostedit-remain').setValue(remain);
+                            var distribution = parseFloat(Ext.getCmp('sm-scprojecttargetcostedit-distribute').getValue()) - parseFloat(obj['amount']);
+                            var remain = parseFloat(Ext.getCmp('sm-scprojecttargetcostedit-remain').getValue()) + parseFloat(obj['amount']);
+                            Ext.getCmp('sm-scprojecttargetcostedit-distribute').setValue(distribution);
+                            Ext.getCmp('sm-scprojecttargetcostedit-remain').setValue(remain);
                         }
                     },
                     failure: function(response, opts) {
@@ -128,7 +128,7 @@ Ext.define('iFlat.view.sm.ScProjectTargetCostController', {
     },
 
     onCostAccountChange: function (combo, record, eOpts) {
-        Ext.getCmp('sm-sbprojecttargetcostedit-detail-costaccountname').setValue(record.get('targetCostAccount.name'));
+        Ext.getCmp('sm-scprojecttargetcostedit-detail-costaccountname').setValue(record.get('targetCostAccount.name'));
     },
 
     uploadFile: function(btn) {

@@ -35,17 +35,6 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
     private String srtype;
     private Map<String, Object> map;
 
-    /**
-     * 创建对象前，生成对象的创建人等属性
-     * @throws Exception
-     */
-    @Override
-    protected void beforeInsert() throws Exception {
-        UserInfoVo userInfoVo = Session.getUserInfo();
-        ((SrSettlementSecond)this.saveObj).setCreatorAcc(userInfoVo.getAccount());
-        ((SrSettlementSecond)this.saveObj).setCreatorName(userInfoVo.getUserName());
-    }
-
     @Override
     protected void beforeSave() throws Exception {
 

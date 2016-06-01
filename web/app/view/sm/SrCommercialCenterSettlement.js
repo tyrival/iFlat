@@ -15,14 +15,14 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
     ],
 
     scrollable: 'true',
-    maxHeight: 700,
+    maxHeight: 500,
     controller: 'sm-srcommercialcentersettlement',
     closeAction: 'hide',
 
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 700,
+        maxHeight: 500,
         width: '100%',
         scollable: 'y',
         layout: {
@@ -230,6 +230,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 fieldLabel: '审批意见',
                 allowBlank: false,
                 width: '100%',
+                value: '同意',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

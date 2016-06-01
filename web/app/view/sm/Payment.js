@@ -8,7 +8,13 @@ Ext.define('iFlat.view.sm.Payment', {
     ],
     
     controller: 'sm-payment',
-    store: smPaymentStore = Ext.create('iFlat.store.sm.Payment'),
+    store: smPaymentStore = Ext.create('iFlat.store.sm.Payment', {
+        proxy: {
+            extraParams: {
+                'payment.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+            }
+        }
+    }),
     id: 'sm-payment',
 
     plugins: [
@@ -56,6 +62,7 @@ Ext.define('iFlat.view.sm.Payment', {
         dataIndex: 'payment.team',
         editor: {
             xtype: 'combo',
+            anyMatch: true,
             name: 'payment.team',
             queryMode: 'local',
             allowBlank: false,

@@ -88,14 +88,14 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveController', {
                     Flat.util.tip(response.responseText);
                     Ext.getCmp('sm-scsettlementapprove').getStore().reload()
                     Ext.getCmp('sm-scsettlementapproveinfo').hide();
-                    Ext.getCmp('sm-scsettlementapproveinfo-comment').setValue('');
+                    Ext.getCmp('sm-scsettlementapproveinfo-comment').setValue('同意');
                 },
                 failure: function(response, opts) {
                     Flat.util.unmask();
                     Flat.util.tip(response.responseText);
                     Ext.getCmp('sm-scsettlementapprove').getStore().reload()
                     Ext.getCmp('sm-scsettlementapproveinfo').hide();
-                    Ext.getCmp('sm-scsettlementapproveinfo-comment').setValue('');
+                    Ext.getCmp('sm-scsettlementapproveinfo-comment').setValue('同意');
                 }
             });
         }

@@ -36,18 +36,6 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
     private Map<String, Object> map;
 
     /**
-     * 创建对象前，生成对象的创建人等属性
-     * @throws Exception
-     */
-    @Override
-    protected void beforeInsert() throws Exception {
-        UserInfoVo userInfoVo = Session.getUserInfo();
-        ((SrSettlement)this.saveObj).setCreatorAcc(userInfoVo.getAccount());
-        ((SrSettlement)this.saveObj).setCreatorName(userInfoVo.getUserName());
-        ((SrSettlement)this.saveObj).setCreateTime(new Date());
-    }
-
-    /**
      * 创建对象时，启动流程
      * @throws Exception
      */

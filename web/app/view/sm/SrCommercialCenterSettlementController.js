@@ -95,7 +95,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
             proxy: {
                 url: 'sm_listSrSettlementComment.action',
                 extraParams: {
-                    'srSettlement.id': btn.up('window').down('textfield[name=id]').getValue()
+                    'srSettlement.id': btn.up('window').down('textfield[name=srSettlement.id]').getValue()
                 }
             }
         }))
