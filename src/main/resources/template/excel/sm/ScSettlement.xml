@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="scSettlement" code="scSettlement" name="钢结构结算单">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+        <col index="G" width='17em'></col>
+        <col index="H" width='17em'></col>
+        <col index="I" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="9" value="钢结构结算单" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="工号" />
+            <th value="月份(格式：2000-01)" />
+            <th value="工程队" />
+            <th value="管理分" />
+            <th value="进度分" />
+            <th value="质量分" />
+            <th value="安全分" />
+            <th value="扣款（元）" />
+            <th value="备注" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="1">
+            <td type="string" isnullable="false" maxlength="20" />
+            <td type="string" isnullable="false" maxlength="15" />
+            <td type="string" isnullable="false" maxlength="60" />
+            <td type="numeric" format="##0.00" isnullable="false" value="100" />
+            <td type="numeric" format="##0.00" isnullable="false" value="100" />
+            <td type="numeric" format="##0.00" isnullable="false" value="100" />
+            <td type="numeric" format="##0.00" isnullable="false" value="100" />
+            <td type="numeric" format="##0.00" isnullable="false" value="0" />
+            <td type="string" isnullable="true" />
+        </tr>
+        <tr height="16px" firstrow="3" firstcol="0" repeat="1">
+            <td type="string" isnullable="false" value="成本代码" />
+            <td type="string" isnullable="false" value="施工内容" />
+            <td type="string" isnullable="false" value="金额" />
+            <td type="string" isnullable="false" value="物量" />
+            <td type="string" isnullable="false" value="规格" />
+            <td type="string" isnullable="false" value="单位" />
+            <td type="string" isnullable="false" value="单价" />
+            <td type="string" isnullable="false" value="备注" />
+        </tr>
+        <tr height="16px" firstrow="4" firstcol="0" repeat="1">
+            <td type="string" maxlength="30" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="numeric" format="##0.00" isnullable="false" />
+            <td type="string" maxlength="200" />
+            <td type="string" maxlength="200" />
+            <td type="numeric" format="##0.00" />
+            <td type="numeric" format="##0.00" />
+            <td type="string" />
+        </tr>
+    </tbody>
+</excel>

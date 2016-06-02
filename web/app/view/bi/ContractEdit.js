@@ -27,6 +27,7 @@ Ext.define('iFlat.view.bi.ContractEdit', {
                 allowBlank: false,
                 editable: false,
                 forceSelection : true,// 必须选择一个选项
+                anyMatch: true,
                 displayField: 'name',
                 valueField: 'projNo',
                 width: 500,

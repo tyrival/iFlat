@@ -13,7 +13,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecondInfoMain', {
     closeAction: 'hide',
     id: 'sm-srsettlementapprovesecondinfomain',
     width: '95%',
-    maxHeight: 600,
+    maxHeight: 500,
     y: 20,
     items: [{
         xtype: 'container',

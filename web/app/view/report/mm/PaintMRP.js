@@ -27,6 +27,7 @@ Ext.define('iFlat.view.report.mm.PaintMRP', {
         labelAlign: 'right',
         labelWidth: 40,
         typeAhead: true,
+        anyMatch: true,
         minChars: 0,
     }, {
         text: '查询',

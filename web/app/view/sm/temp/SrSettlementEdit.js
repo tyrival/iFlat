@@ -17,7 +17,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
     items: [{
         xtype: 'container',
         margin: '15 15 0 15',
-        maxHeight: 650,
+        maxHeight: 500,
         scollable: 'y',
         layout: {
             type: 'vbox',

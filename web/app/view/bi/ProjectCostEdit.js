@@ -76,6 +76,7 @@ Ext.define('iFlat.view.bi.ProjectCostEdit', {
                     typeAhead: true,
                     minChars: 0,
                     forceSelection : true,
+                    anyMatch: true,
                     displayField: 'name',
                     valueField: 'projNo',
                     width: 250,

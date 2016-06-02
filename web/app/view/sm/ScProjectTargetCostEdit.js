@@ -129,7 +129,7 @@ Ext.define('iFlat.view.sm.ScProjectTargetCostEdit', {
                     hidden: true
                 }, {
                     header: '成本科目代码',
-                    width: 150,
+                    width: 250,
                     dataIndex: 'targetCost.costAccount',
                     editor: {
                         xtype: 'combo',
@@ -149,7 +149,7 @@ Ext.define('iFlat.view.sm.ScProjectTargetCostEdit', {
                         valueField : 'code',
                         displayField : 'description',
                         listeners: {
-                            select: 'onCostAccountChange',
+                            change: 'onCostAccountChange',
                         }
                     }
                 }, {

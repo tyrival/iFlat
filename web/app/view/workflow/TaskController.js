@@ -2,8 +2,8 @@ Ext.define('iFlat.view.workflow.TaskController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.workflow-task',
 
-    refresh: function() {
-        workflowTaskStore.reload();
+    refresh: function(btn) {
+        btn.up('grid').getStore().reload()
     },
 
     deal: function(grid, rowIndex, colIndex, actionItem, event, record, row) {

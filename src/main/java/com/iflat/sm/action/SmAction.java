@@ -191,6 +191,18 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    public String importSbSettlement() throws Exception {
+        this.result.setList(this.sbSettlementService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    public String templateSbSettlement() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("sm", "SbSettlement");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
     /* 钢结构结算 ScSettlement */
     // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
     public String createScSettlementDetail() throws Exception {
@@ -248,6 +260,18 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public String listScSettlementComment() throws Exception {
         this.result.setList(this.scSettlementService.listComment(this.scSettlement));
+        return SUCCESS;
+    }
+
+    public String importScSettlement() throws Exception {
+        this.result.setList(this.scSettlementService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    public String templateScSettlement() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("sm", "ScSettlement");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
 
@@ -426,11 +450,6 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
-    public String importSrSettlement() throws Exception {
-        this.result.setMap(this.srSettlementService.importExcel(this.upload, this.uploadFileName, this.srtype));
-        return SUCCESS;
-    }
-
     public String approveSrSettlement() throws Exception {
         String businessKey = srSettlementService.getBusinessKey(srSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -442,7 +461,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         if (list != null && list.size() > 0) {
             for (int i = 0; i < list.size(); i++) {
                 String businessKey = srSettlementService.getBusinessKey(list.get(i));
-                workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+                 workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
             }
         }
         return SUCCESS;

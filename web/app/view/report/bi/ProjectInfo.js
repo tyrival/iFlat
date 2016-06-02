@@ -21,6 +21,7 @@ Ext.define('iFlat.view.report.bi.ProjectInfo', {
         allowBlank: false,
         editable: false,
         forceSelection : true,
+        anyMatch: true,
         displayField: 'name',
         valueField: 'projNo',
         width: 250,

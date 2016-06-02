@@ -1,5 +1,7 @@
 package com.iflat.sm.bean;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -29,6 +31,7 @@ public class SbSettlement {
     private double safetyScore;
     private double fineAmount;
     private double summaryAmount;
+    private String strMonth;
 
     public SbSettlement() {
         this.createTime = new Date();
@@ -187,5 +190,25 @@ public class SbSettlement {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public void setSummaryAmount(double summaryAmount) {
+        this.summaryAmount = summaryAmount;
+    }
+
+    public String getStrMonth() {
+        return strMonth;
+    }
+
+    public void setStrMonth(String strMonth) {
+        this.strMonth = strMonth;
+        if (this.month == null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                this.month = sdf.parse(strMonth + "-01");
+            } catch (ParseException e) {
+                this.month = null;
+            }
+        }
     }
 }

@@ -7,6 +7,7 @@ import com.iflat.sm.bean.TargetCostSplit;
 import com.iflat.sm.entity.SbSettlementVo;
 import com.iflat.sm.entity.ScSettlementVo;
 import com.iflat.sm.entity.TargetCostVo;
+import com.iflat.sm.entity.Workshop;
 import com.iflat.sm.service.BaseSettlementService;
 import com.iflat.sm.service.SbSettlementVoService;
 import com.iflat.sm.service.ScSettlementVoService;
@@ -187,8 +188,7 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
             }
 
             // 判断部门名称是否符合规范
-            String[] arr = new String[]{"造船事业部", "造船加工车间", "造船船体车间", "造船安装车间", "修船事业部", "修船坞修车间", "修船冷作车间", "修船舾装车间", "修船机电修理车间", "钢结构事业部"};
-            if (!ArrayUtils.contains(arr, o.getDeptName())) {
+            if (!Workshop.isWorkshop(o.getDeptName())) {
                 throw new ValidationFailureException("第" + (i + 1) + "行部门名称错误，请修改后重新导入");
             }
 

@@ -12,14 +12,14 @@ Ext.define('iFlat.view.sm.TemporaryApprove', {
     ],
 
     scrollable: 'true',
-    maxHeight: 700,
+    maxHeight: 500,
     controller: 'sm-temporaryapprove',
     closeAction: 'hide',
 
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 700,
+        maxHeight: 500,
         width: '100%',
         scollable: 'y',
         layout: {

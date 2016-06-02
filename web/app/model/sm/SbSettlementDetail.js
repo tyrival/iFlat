@@ -4,6 +4,7 @@ Ext.define('iFlat.model.sm.SbSettlementDetail', {
         {name: 'sbSettlementDetail.id', mapping: 'id', type: 'string'},
         {name: 'sbSettlementDetail.pid', mapping: 'pid', type: 'string'},
         {name: 'sbSettlementDetail.account', mapping: 'account', type: 'string'},
+        {name: 'sbSettlementDetail.accountName', mapping: 'accountName', type: 'string'},
         {name: 'sbSettlementDetail.content', mapping: 'content', type: 'string'},
         {name: 'sbSettlementDetail.matQty', mapping: 'matQty', type: 'number'},
         {name: 'sbSettlementDetail.spec', mapping: 'spec', type: 'string'},

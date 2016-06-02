@@ -64,6 +64,7 @@ Ext.define('iFlat.view.bi.ProjectInProcess', {
             width: 370,
             typeAhead: true,
             minChars: 0,
+            anyMatch: true,
         }
     }, {
         header: '时间',

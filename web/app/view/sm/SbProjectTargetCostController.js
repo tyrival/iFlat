@@ -127,10 +127,10 @@ Ext.define('iFlat.view.sm.SbProjectTargetCostController', {
 
     },
 
-    onCostAccountChange: function (combo, record, eOpts) {
-        Ext.getCmp('sm-sbprojecttargetcostedit-detail-costaccountname').setValue(record.get('targetCostAccount.name'));
+    onCostAccountChange: function (combo, newValue, oldValue, eOpts) {
+        var v = combo.getStore().findRecord('code', newValue).get('name');
+        Ext.getCmp('sm-sbprojecttargetcostedit-detail-costaccountname').setValue(v);
     },
-
 
     uploadFile: function(btn) {
         var form = Ext.getCmp('sm-sbprojecttargetcost-import');

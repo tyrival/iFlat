@@ -12,6 +12,7 @@ public class ScSettlementDetail {
     private String id;
     private String pid;  // SbSettlementId
     private String account;  // 成本科目 拼板/成型/物耗补贴/餐费...
+    private String accountName;  // 成本科目 拼板/成型/物耗补贴/餐费...
     private String content;  // 工程内容
     private double matQty;  // 物量
     private String spec;  // 规格
@@ -26,6 +27,14 @@ public class ScSettlementDetail {
 
     public ScSettlementDetail() {
         this.createTime = new Date();
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
     public String getId() {

@@ -27,6 +27,7 @@ Ext.define('iFlat.view.report.wip.manhour.WoStatus', {
         labelAlign: 'right',
         labelWidth: 40,
         typeAhead: true,
+        anyMatch: true,
         minChars: 0,
     }, {
         xtype: 'combo',

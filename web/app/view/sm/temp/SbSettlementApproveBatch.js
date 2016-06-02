@@ -12,14 +12,14 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatch', {
     ],
 
     scrollable: 'true',
-    maxHeight: 700,
+    maxHeight: 500,
     controller: 'sm-sbsettlementapprovebatch',
     closeAction: 'hide',
 
     items: [{
         xtype: 'container',
         margin: '15 15 0 15',
-        maxHeight: 700,
+        maxHeight: 500,
         width: '100%',
         scollable: 'y',
         layout: {

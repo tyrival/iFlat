@@ -16,7 +16,7 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveInfo', {
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 650,
+        maxHeight: 500,
         scollable: 'y',
         layout: {
             type: 'vbox',

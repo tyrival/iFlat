@@ -7,6 +7,7 @@ import com.iflat.code.bean.Team;
 import com.iflat.report.bean.bi.Project;
 import com.iflat.sm.bean.SrSettlement;
 import com.iflat.sm.bean.SrSettlementDetlFirst;
+import com.iflat.sm.entity.Workshop;
 import com.iflat.sm.service.SrSettlementDetlFirstService;
 import com.iflat.sm.service.SrSettlementService;
 import com.iflat.system.entity.UserInfoVo;
@@ -159,7 +160,7 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
             throw new Exception("导入失败，未填写工号。");
         }
 
-        if ("Main".equals(srtype) && StringUtil.isBlank(o.getDeptName())) {
+        if ("Main".equals(srtype) && !Workshop.isWorkshop(o.getDeptName())) {
             throw new Exception("导入失败，未填写部门。");
         }
 

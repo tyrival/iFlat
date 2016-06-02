@@ -45,7 +45,7 @@ Ext.define('iFlat.view.sm.ScTargetCostEdit', {
                     width: 220,
                 }, {
                     xtype: 'textfield',
-                    fieldLabel: '船名',
+                    fieldLabel: '工程名',
                     id: 'sm-sctargetcostedit-projname',
                     name: 'targetCost.projName',
                     width: 300,
@@ -129,40 +129,40 @@ Ext.define('iFlat.view.sm.ScTargetCostEdit', {
                     dataIndex: 'targetCostSplit.projNo',
                     hidden: true
                 }, {
-                    header: '船名',
+                    header: '工程名',
                     dataIndex: 'targetCostSplit.projName',
                     hidden: true
                 }, {
                     header: '部门',
+                    width: 250,
                     dataIndex: 'targetCostSplit.deptName',
-                    hidden: true
+                    editor: {
+                        xtype: 'combo',
+                        anyMatch: true,
+                        allowBlank: false,
+                        bind: {
+                            store: '{smDept}'
+                        },
+                        queryMode: 'local',
+                        editable: true,
+                        forceSelection : true,
+                        valueField : 'name',
+                        displayField : 'name',
+                    }
                 }, {
                     header: '类型',
                     width: 150,
                     dataIndex: 'targetCostSplit.type',
                     hidden: true
                 }, {
-                    header: '成本科目',
-                    width: 250,
+                    header: '成本科目代码',
+                    width: 150,
                     dataIndex: 'targetCostSplit.costAccount',
-                    editor: {
-                        xtype: 'combo',
-                        allowBlank: false,
-                        store: smScTargetCoseEditComboStore
-                            = Ext.create('iFlat.store.sm.TargetCostAccount', {
-                            proxy: {
-                                extraParams: {
-                                    'targetCostAccount.type': '钢结构'
-                                }
-                            }
-                        }),
-                        queryMode: 'local',
-                        editable: true,
-                        anyMatch: true,
-                        forceSelection : true,
-                        valueField : 'name',
-                        displayField : 'name',
-                    }
+                    hidden: true
+                }, {
+                    header: '成本科目',
+                    dataIndex: 'targetCostSplit.costAccountName',
+                    hidden: true
                 }, {
                     header: '金额',
                     width: 150,

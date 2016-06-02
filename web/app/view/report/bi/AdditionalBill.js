@@ -22,6 +22,7 @@ Ext.define('iFlat.view.report.bi.AdditionalBill', {
         typeAhead: true,
         minChars: 0,
         forceSelection : true,
+        anyMatch: true,
         displayField: 'name',
         valueField: 'projNo',
         width: 350,

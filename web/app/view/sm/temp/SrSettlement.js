@@ -19,7 +19,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlement', {
             xtype: 'fileuploadfield',
             name: 'upload',
             buttonText: '选择...',
-            width: 300,
+            width: 140,
             margin: '0 0 0 0',
         }, ]
     }, {

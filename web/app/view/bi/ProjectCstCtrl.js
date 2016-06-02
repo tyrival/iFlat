@@ -64,8 +64,12 @@ Ext.define('iFlat.view.bi.ProjectCstCtrl', {
             store: biProjectCstCtrlProjectStore = Ext.create('iFlat.store.bi.Project'),
             id: 'bi-projectcstctrl-projno-combo',
             queryMode: 'local',
-            editable: false,
+            allowBlank: false,
+            editable: true,
+            typeAhead: true,
+            minChars: 0,
             forceSelection : true,
+            anyMatch: true,
             valueField : 'projNo',
             displayField : 'shortName',
         }

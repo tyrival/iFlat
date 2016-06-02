@@ -378,4 +378,33 @@ Ext.define('iFlat.view.sm.SbSettlementController', {
             };
         })
     },
+
+
+    uploadFile: function(btn) {
+        var form = btn.previousSibling('form');
+        if (form.isValid()) {
+            form.submit({
+                url: 'sm_importSbSettlement.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    smSbSettlementStore.reload();
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        Ext.Ajax.request({
+            url: 'sm_templateSbSettlement.action',
+            method: 'post',
+            success: function(response, opts) {
+                window.open(Ext.JSON.decode(response.responseText)['object']);
+            },
+        });
+    },
 });

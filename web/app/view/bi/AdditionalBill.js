@@ -65,6 +65,7 @@ Ext.define('iFlat.view.bi.AdditionalBill', {
             queryMode: 'local',
             editable: false,
             forceSelection : true,
+            anyMatch: true,
             valueField : 'projNo',
             displayField : 'shortName',
         }

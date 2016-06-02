@@ -40,7 +40,7 @@ Ext.define('iFlat.view.sm.ProjectTargetCost', {
             anyMatch: true,
             displayField: 'name',
             valueField: 'projNo',
-            width: 350,
+            width: 250,
             fieldLabel: '船名',
             labelAlign: 'right',
             labelWidth: 40
@@ -54,7 +54,7 @@ Ext.define('iFlat.view.sm.ProjectTargetCost', {
                 xtype: 'fileuploadfield',
                 name: 'upload',
                 buttonText: '选择...',
-                width: 300,
+                width: 150,
                 margin: '0 0 0 20',
             }, ]
         }, {

@@ -56,6 +56,10 @@
 
     <bean id="sbSettlementService" class="com.iflat.sm.service.impl.SbSettlementServiceImpl">
         <property name="workflowService" ref="workflowService"/>
+        <property name="rptProjectService" ref="rptProjectService"/>
+        <property name="targetCostAccountService" ref="targetCostAccountService"/>
+        <property name="teamService" ref="teamService"/>
+        <property name="sbSettlement" ref="sbSettlement"/>
     </bean>
     <bean id="sbSettlementDao" class="com.iflat.sm.dao.impl.SbSettlementDaoImpl"/>
     <bean id="sbSettlement" class="com.iflat.sm.bean.SbSettlement" scope="prototype"/>
@@ -74,6 +78,10 @@
 
     <bean id="scSettlementService" class="com.iflat.sm.service.impl.ScSettlementServiceImpl">
         <property name="workflowService" ref="workflowService"/>
+        <property name="rptProjectService" ref="rptProjectService"/>
+        <property name="targetCostAccountService" ref="targetCostAccountService"/>
+        <property name="teamService" ref="teamService"/>
+        <property name="scSettlement" ref="scSettlement"/>
     </bean>
     <bean id="scSettlementDao" class="com.iflat.sm.dao.impl.ScSettlementDaoImpl"/>
     <bean id="scSettlement" class="com.iflat.sm.bean.ScSettlement" scope="prototype"/>

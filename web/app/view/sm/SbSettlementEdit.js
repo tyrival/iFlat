@@ -287,8 +287,8 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                         xtype: 'label'
                     }
                 }, {
-                    header: '成本科目',
-                    width: 200,
+                    header: '成本代码',
+                    width: 250,
                     dataIndex: 'sbSettlementDetail.account',
                     editor: {
                         xtype: 'combo',
@@ -305,15 +305,21 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                         anyMatch: true,
                         forceSelection : true,
                         valueField : 'code',
-                        displayField : 'name',
+                        displayField : 'description',
+                        listeners: {
+                            change: function (combo, newValue, oldValue, eOpts) {
+                                var v = combo.getStore().findRecord('code', newValue).get('name');
+                                Ext.getCmp('sm-sbsettlementedit-detail-accountname').setValue(v);
+                            }
+                        }
                     }
                 }, {
-                    header: '内容',
+                    header: '成本科目',
                     width: 200,
-                    dataIndex: 'sbSettlementDetail.content',
-                    shrinkWrap: 1,
+                    dataIndex: 'sbSettlementDetail.accountName',
                     editor: {
-                        allowBlank: false,
+                        id: 'sm-sbsettlementedit-detail-accountname',
+                        editable: false,
                     }
                 }, {
                     header: '金额',

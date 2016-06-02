@@ -13,7 +13,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
     ],
 
     x: 100,
-    y: 50,
+    y: 20,
     controller: 'sm-srsettlementapprove',
     id: 'sm-srsettlementapproveinfo',
     closeAction: 'hide',
@@ -21,7 +21,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 650,
+        maxHeight: 500,
         scollable: 'y',
         layout: {
             type: 'vbox',

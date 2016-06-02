@@ -37,10 +37,11 @@ Ext.define('iFlat.view.bi.ProjectSchedule', {
             store: biProjectScheduleProjectStore = Ext.create('iFlat.store.bi.Project'),
             id: 'bi-projectschedule-projno-combo',
             queryMode: 'local',
-            editable: false,
+            editable: true,
             typeAhead: true,
             minChars: 0,
             forceSelection : true,
+            anyMatch: true,
             valueField : 'projNo',
             displayField : 'shortName',
         }

@@ -36,7 +36,7 @@ Ext.define('iFlat.view.sm.ScTargetCost', {
         forceSelection : true,
         displayField: 'name',
         valueField: 'projNo',
-        width: 350,
+        width: 250,
         fieldLabel: '船名',
         labelAlign: 'right',
         labelWidth: 40
@@ -50,7 +50,7 @@ Ext.define('iFlat.view.sm.ScTargetCost', {
             xtype: 'fileuploadfield',
             name: 'upload',
             buttonText: '选择...',
-            width: 300,
+            width: 140,
             margin: '0 0 0 20',
         }, ]
     }, {
@@ -85,7 +85,7 @@ Ext.define('iFlat.view.sm.ScTargetCost', {
         width: 150,
         dataIndex: 'targetCostVo.projNo',
     }, {
-        header: '船名',
+        header: '工程名',
         flex: true,
         dataIndex: 'targetCostVo.projName',
     }, {

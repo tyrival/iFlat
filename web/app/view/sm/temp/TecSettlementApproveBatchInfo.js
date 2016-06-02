@@ -13,7 +13,7 @@ Ext.define('iFlat.view.sm.temp.TecSettlementApproveBatchInfo', {
     closeAction: 'hide',
     id: 'sm-tecsettlementapprovebatchinfo',
     width: '95%',
-    maxHeight: 600,
+    maxHeight: 500,
     y: 20,
     items: [{
         xtype: 'container',

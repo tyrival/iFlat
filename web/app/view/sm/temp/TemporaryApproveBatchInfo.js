@@ -13,7 +13,7 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatchInfo', {
     closeAction: 'hide',
     id: 'sm-temporaryapprovebatchinfo',
     width: '95%',
-    maxHeight: 600,
+    maxHeight: 500,
     y: 20,
     items: [{
         xtype: 'container',
