@@ -322,6 +322,14 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                         editable: false,
                     }
                 }, {
+                    header: '施工内容',
+                    width: 200,
+                    shrinkWrap: 1,
+                    dataIndex: 'sbSettlementDetail.content',
+                    editor: {
+                        allowBlank: false,
+                    }
+                }, {
                     header: '金额',
                     dataIndex: 'sbSettlementDetail.amount',
                     editor: {

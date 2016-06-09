@@ -272,3 +272,13 @@ Ext.define("Ext.locale.zh_CN.window.MessageBox", {
 Ext.define("Ext.locale.zh_CN.Component", {	
     override: "Ext.Component"
 });
+
+// This is needed until we can refactor all of the locales into individual files
+Ext.define("Ext.locale.zh_CN.grid.RowEditor", {
+    override: "Ext.grid.RowEditor",
+
+    saveBtnText  : '保 存',
+    cancelBtnText: '取 消',
+    errorsText: '错 误',
+    dirtyText: '请将修改后的内容提交或者取消。',
+});

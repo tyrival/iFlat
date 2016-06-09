@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SbSettlementDetail">
         INSERT INTO SmSbSettlementDetail
-        VALUES (#{id},#{pid},#{account},#{content},#{matQty},#{spec},#{unit},#{price},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime})
+        VALUES (#{id},#{pid},#{account},#{content},#{matQty},#{spec},#{unit},#{price},#{amount},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{createTime},#{accountName})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSbSettlementDetail
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.pid},#{item.account},#{item.content},#{item.matQty},#{item.spec},#{item.unit},#{item.price},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+            SELECT #{item.id},#{item.pid},#{item.account},#{item.content},#{item.matQty},#{item.spec},#{item.unit},#{item.price},#{item.amount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.accountName}
         </foreach>
     </insert>
 
@@ -21,6 +21,7 @@
         <set>
             <if test="pid!=null">pid=#{pid},</if>
             <if test="account!=null">account=#{account},</if>
+            <if test="accountName!=null">accountName=#{accountName},</if>
             <if test="content!=null">content=#{content},</if>
             <if test="matQty!=null">matQty=#{matQty},</if>
             <if test="spec!=null">spec=#{spec},</if>
@@ -34,10 +35,10 @@
     </update>
 
     <update id="updateBatch" parameterType="java.util.List">
-        UPDATE SmSbSettlementDetail SET id=a.id,pid=a.pid,account=a.account,content=a.content,matQty=a.matQty,spec=a.spec,unit=a.unit,price=a.price,amount=a.amount,attachment=a.attachment,comment=a.comment
+        UPDATE SmSbSettlementDetail SET id=a.id,pid=a.pid,account=a.account,content=a.content,matQty=a.matQty,spec=a.spec,unit=a.unit,price=a.price,amount=a.amount,attachment=a.attachment,comment=a.comment,accountName=a.accountName
         FROM (
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id} as id,#{item.pid} as pid,#{item.account} as account,#{item.content} as content,#{item.matQty} as matQty,#{item.spec} as spec,#{item.unit} as unit,#{item.price} as price,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment
+            SELECT #{item.id} as id,#{item.pid} as pid,#{item.account} as account,#{item.content} as content,#{item.matQty} as matQty,#{item.spec} as spec,#{item.unit} as unit,#{item.price} as price,#{item.amount} as amount,#{item.attachment} as attachment,#{item.comment} as comment,#{item.accountName} as accountName
         </foreach>
         ) AS a
         WHERE SmSbSettlementDetail.id=a.id
@@ -49,12 +50,13 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SbSettlementDetail" resultMap="SbSettlementDetailResult">
-        SELECT id,pid,account,content,matQty,spec,unit,price,amount,attachment,comment,creatorAcc,creatorName,createTime
+        SELECT id,pid,account,content,matQty,spec,unit,price,amount,attachment,comment,creatorAcc,creatorName,createTime,accountName
         FROM SmSbSettlementDetail
         <where>
             <if test="id!=null">id=#{id}</if>
             <if test="pid!=null">AND pid=#{pid}</if>
             <if test="account!=null ">AND account=#{account}</if>
+            <if test="accountName!=null ">AND accountName=#{accountName}</if>
             <if test="spec!=null">AND spec=#{spec}</if>
             <if test="unit!=null">AND unit=#{unit}</if>
             <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
@@ -67,6 +69,7 @@
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="pid" column="pid" jdbcType="CHAR"/>
         <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="accountName" column="accountName" jdbcType="VARCHAR"/>
         <result property="content" column="content" jdbcType="VARCHAR"/>
         <result property="matQty" column="matQty" jdbcType="DOUBLE"/>
         <result property="spec" column="spec" jdbcType="VARCHAR"/>

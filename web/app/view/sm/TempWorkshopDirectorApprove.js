@@ -166,7 +166,7 @@ Ext.define('iFlat.view.sm.TempWorkshopDirectorApprove', {
                 fieldLabel: '审批意见',
                 allowBlank: false,
                 width: '100%',
-                value: '同意',
+                value: '',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

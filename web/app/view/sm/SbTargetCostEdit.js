@@ -6,7 +6,8 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
     modal: true,
 
     requires: [
-        'iFlat.view.sm.SbTargetCostController'
+        'Ext.grid.plugin.Exporter',
+        'iFlat.view.sm.SbTargetCostController',
     ],
 
     id: 'sm-sbtargetcostedit',
@@ -34,7 +35,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 layout: 'hbox',
                 items: [{
                     xtype: 'textfield',
-                    name: 'targetCostVo.id',
+                    name: 'projectTargetCostVo.id',
                     id: 'sm-sbtargetcostedit-id',
                     fieldLabel: 'ID',
                     hidden: true,
@@ -42,26 +43,14 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                     xtype: 'textfield',
                     fieldLabel: '工号',
                     id: 'sm-sbtargetcostedit-projno',
-                    name: 'targetCostVo.projNo',
+                    name: 'projectTargetCostVo.projNo',
                     width: 140,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '船名',
                     id: 'sm-sbtargetcostedit-projname',
-                    name: 'targetCostVo.projName',
+                    name: 'projectTargetCostVo.projName',
                     width: 260,
-                }, {
-                    xtype: 'textfield',
-                    name: 'targetCostVo.costAccount',
-                    fieldLabel: '代码',
-                    id: 'sm-sbtargetcostedit-costaccount',
-                    width: 150
-                }, {
-                    xtype: 'textfield',
-                    name: 'targetCostVo.costAccountName',
-                    fieldLabel: '科目',
-                    id: 'sm-sbtargetcostedit-costaccountname',
-                    width: 250
                 }]
             }, {
                 xtype: 'container',
@@ -73,7 +62,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 items: [{
                     xtype: 'textfield',
                     id: 'sm-sbtargetcostedit-amount',
-                    name: 'targetCostVo.amount',
+                    name: 'projectTargetCostVo.amount',
                     fieldLabel: '总金额',
                     width: 220,
                 }, {
@@ -104,29 +93,32 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                 id: 'sm-sbtargetcostsplit-add',
                 handler: 'addSplit'
             }, '->', {
+                text: '导出',
+                handler: 'exportToExcel'
+            }, {
                 xtype: 'button',
                 text: '刷新',
                 handler: 'refreshSplit'
             }],
             items: [{
-                xtype: 'gridpanel',
+                xtype: 'grid',
+                plugins: [{
+                    ptype: 'gridexporter'
+                }, smSbTargetCostSplitRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
+                    pluginId: 'sm-sbtargetcostsplit-edit',
+                    clicksToMoveEditor: 1,
+                    autoCancel: true,
+                    listeners: {
+                        edit: 'updateSplitRecord',
+                        cancelEdit: 'deleteEmptyRecord',
+                    }
+                })],
                 width: 800,
                 scrollable: true,
                 id: 'sm-sbtargetcostedit-detail',
                 store: smSbTargetCostSplitStore = Ext.create('iFlat.store.sm.TargetCostSplit'),
                 border: true,
                 columnLines: true,
-                plugins: [
-                    smSbTargetCostSplitRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
-                        pluginId: 'sm-sbtargetcostsplit-edit',
-                        clicksToMoveEditor: 1,
-                        autoCancel: true,
-                        listeners: {
-                            edit: 'updateSplitRecord',
-                            cancelEdit: 'deleteEmptyRecord',
-                        }
-                    })
-                ],
                 columns: [{
                     header: 'id',
                     dataIndex: 'targetCostSplit.id',
@@ -141,7 +133,7 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                     hidden: true
                 }, {
                     header: '部门',
-                    width: 250,
+                    width: 150,
                     dataIndex: 'targetCostSplit.deptName',
                     editor: {
                         xtype: 'combo',
@@ -157,18 +149,42 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
                         displayField : 'name',
                     }
                 }, {
-                    header: '类型',
-                    width: 150,
-                    dataIndex: 'targetCostSplit.type',
-                    hidden: true
-                }, {
                     header: '成本科目代码',
-                    width: 150,
+                    width: 200,
                     dataIndex: 'targetCostSplit.costAccount',
-                    hidden: true
+                    editor: {
+                        xtype: 'combo',
+                        allowBlank: false,
+                        store: smSbTargetCoseEditComboStore
+                            = Ext.create('iFlat.store.sm.TargetCostAccount', {
+                            proxy: {
+                                extraParams: {
+                                    'targetCostAccount.type': '造船'
+                                }
+                            }
+                        }),
+                        queryMode: 'local',
+                        editable: true,
+                        forceSelection : true,
+                        anyMatch: true,
+                        valueField : 'code',
+                        displayField : 'description',
+                        listeners: {
+                            change: 'onCostAccountChange',
+                        }
+                    }
                 }, {
                     header: '成本科目',
                     dataIndex: 'targetCostSplit.costAccountName',
+                    width: 150,
+                    editor: {
+                        id: 'sm-sbtargetcostedit-detail-costaccountname',
+                        editable: false,
+                    }
+                }, {
+                    header: '类型',
+                    width: 150,
+                    dataIndex: 'targetCostSplit.type',
                     hidden: true
                 }, {
                     header: '金额',

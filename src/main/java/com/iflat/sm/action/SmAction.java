@@ -89,6 +89,12 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     private String outGoingName;
     private String comment;
 
+    private List<SbSettlement> sbSettlementList = new ArrayList<>();
+    private List<ScSettlement> scSettlementList = new ArrayList<>();
+    private List<SrSettlement> srSettlementList = new ArrayList<>();
+    private List<TecSettlement> tecSettlementList = new ArrayList<>();
+    private List<Temporary> temporaryList = new ArrayList<>();
+
     /* 造船结算 SbSettlement */
     // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
     public String createSbSettlementDetail() throws Exception {
@@ -108,10 +114,9 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveSbSettlementBatch() throws Exception {
-        List<SrSettlement> list = this.sbSettlementService.list(this.sbSettlement);
-        if (list != null && list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                String businessKey = sbSettlementService.getBusinessKey(list.get(i));
+        if (sbSettlementList != null && sbSettlementList.size() > 0) {
+            for (int i = 0; i < sbSettlementList.size(); i++) {
+                String businessKey = sbSettlementService.getBusinessKey(sbSettlementList.get(i));
                 workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
             }
         }
@@ -222,10 +227,9 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveScSettlementBatch() throws Exception {
-        List<SrSettlement> list = this.scSettlementService.list(this.scSettlement);
-        if (list != null && list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                String businessKey = scSettlementService.getBusinessKey(list.get(i));
+        if (scSettlementList != null && scSettlementList.size() > 0) {
+            for (int i = 0; i < scSettlementList.size(); i++) {
+                String businessKey = scSettlementService.getBusinessKey(scSettlementList.get(i));
                 workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
             }
         }
@@ -457,10 +461,9 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveSrSettlementBatch() throws Exception {
-        List<SrSettlement> list = this.srSettlementService.list(this.srSettlement);
-        if (list != null && list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                String businessKey = srSettlementService.getBusinessKey(list.get(i));
+        if (srSettlementList != null && srSettlementList.size() > 0) {
+            for (int i = 0; i < srSettlementList.size(); i++) {
+                String businessKey = srSettlementService.getBusinessKey(srSettlementList.get(i));
                  workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
             }
         }
@@ -706,10 +709,9 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveTecSettlementBatch() throws Exception {
-        List<SrSettlement> list = this.tecSettlementService.list(this.tecSettlement);
-        if (list != null && list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                String businessKey = tecSettlementService.getBusinessKey(list.get(i));
+        if (tecSettlementList != null && tecSettlementList.size() > 0) {
+            for (int i = 0; i < tecSettlementList.size(); i++) {
+                String businessKey = tecSettlementService.getBusinessKey(tecSettlementList.get(i));
                 workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
             }
         }
@@ -876,10 +878,9 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveTemporaryBatch() throws Exception {
-        List<SrSettlement> list = this.temporaryService.list(this.temporary);
-        if (list != null && list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                String businessKey = temporaryService.getBusinessKey(list.get(i));
+        if (temporaryList != null && temporaryList.size() > 0) {
+            for (int i = 0; i < temporaryList.size(); i++) {
+                String businessKey = temporaryService.getBusinessKey(temporaryList.get(i));
                 workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
             }
         }
@@ -1386,6 +1387,46 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public void setTargetCostVo(TargetCostVo targetCostVo) {
         this.targetCostVo = targetCostVo;
+    }
+
+    public List<SbSettlement> getSbSettlementList() {
+        return sbSettlementList;
+    }
+
+    public void setSbSettlementList(List<SbSettlement> sbSettlementList) {
+        this.sbSettlementList = sbSettlementList;
+    }
+
+    public List<ScSettlement> getScSettlementList() {
+        return scSettlementList;
+    }
+
+    public void setScSettlementList(List<ScSettlement> scSettlementList) {
+        this.scSettlementList = scSettlementList;
+    }
+
+    public List<SrSettlement> getSrSettlementList() {
+        return srSettlementList;
+    }
+
+    public void setSrSettlementList(List<SrSettlement> srSettlementList) {
+        this.srSettlementList = srSettlementList;
+    }
+
+    public List<TecSettlement> getTecSettlementList() {
+        return tecSettlementList;
+    }
+
+    public void setTecSettlementList(List<TecSettlement> tecSettlementList) {
+        this.tecSettlementList = tecSettlementList;
+    }
+
+    public List<Temporary> getTemporaryList() {
+        return temporaryList;
+    }
+
+    public void setTemporaryList(List<Temporary> temporaryList) {
+        this.temporaryList = temporaryList;
     }
 
     @Override

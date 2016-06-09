@@ -64,41 +64,36 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveController', {
     },
     
     completeTask: function (btn) {
+        var text = btn.getText();
+        text = text === '通过' ? 'pass' : 'reject';
         var comment = Ext.getCmp('sm-sbsettlementapproveinfo-comment').getValue();
         if (Flat.util.isEmpty(comment)) {
-            Ext.Msg.show({
-                title:'警告',
-                message: '请填写审批意见。',
-            });
-        } else {
-            var text = btn.getText();
-            text = text === '通过' ? 'pass' : 'reject';
-            Flat.util.mask();
-            Ext.Ajax.request({
-                url: 'sm_approveSbSettlement.action',
-                method: 'post',
-                params: {
-                    'sbSettlement.id': Ext.getCmp('sm-sbsettlementapproveinfo-id')
-                        .getValue(),
-                    'outGoingName': text,
-                    'comment': comment,
-                },
-                success: function(response, opts) {
-                    Flat.util.unmask();
-                    Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-sbsettlementapprove').getStore().reload()
-                    Ext.getCmp('sm-sbsettlementapproveinfo').hide();
-                    Ext.getCmp('sm-sbsettlementapproveinfo-comment').setValue('同意');
-                },
-                failure: function(response, opts) {
-                    Flat.util.unmask();
-                    Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-sbsettlementapprove').getStore().reload()
-                    Ext.getCmp('sm-sbsettlementapproveinfo').hide();
-                    Ext.getCmp('sm-sbsettlementapproveinfo-comment').setValue('同意');
-                }
-            });
+            comment = text === 'pass' ? '同意' : '不同意';
         }
-
+        Flat.util.mask();
+        Ext.Ajax.request({
+            url: 'sm_approveSbSettlement.action',
+            method: 'post',
+            params: {
+                'sbSettlement.id': Ext.getCmp('sm-sbsettlementapproveinfo-id')
+                    .getValue(),
+                'outGoingName': text,
+                'comment': comment,
+            },
+            success: function(response, opts) {
+                Flat.util.unmask();
+                Flat.util.tip(response.responseText);
+                Ext.getCmp('sm-sbsettlementapprove').getStore().reload()
+                Ext.getCmp('sm-sbsettlementapproveinfo').hide();
+                Ext.getCmp('sm-sbsettlementapproveinfo-comment').setValue('');
+            },
+            failure: function(response, opts) {
+                Flat.util.unmask();
+                Flat.util.tip(response.responseText);
+                Ext.getCmp('sm-sbsettlementapprove').getStore().reload()
+                Ext.getCmp('sm-sbsettlementapproveinfo').hide();
+                Ext.getCmp('sm-sbsettlementapproveinfo-comment').setValue('');
+            }
+        });
     }
 });

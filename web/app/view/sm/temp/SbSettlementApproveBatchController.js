@@ -50,7 +50,8 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatchController', {
 
     // 刷新grid数据
     refresh: function (btn) {
-        btn.up('grid').getStore().reload({
+        var grid = btn.up('grid');
+        grid.getStore().reload({
             callback: function (records, operation, success) {
                 Flat.util.unmask();
                 var sum = 0;
@@ -84,30 +85,34 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatchController', {
     },
 
     completeTask: function (btn) {
-
         var panel = btn.up('sm-sbsettlementapprovebatch');
         var form = panel.down('form');
+        var grid = form.down('grid');
+        var arr = grid.getSelectionModel().getSelection();
+        var param = Flat.util.arrayToUrlParamList(arr, 'sbSettlementList', true);
+        var comment = form.down('textarea[name=comment]');
+        var text = btn.getText();
+        text = text === '通过' ? 'pass' : 'reject';
+        param['outGoingName'] = text;
+        if (Flat.util.isEmpty(comment.getValue())) {
+            var c = text === 'pass' ? '同意' : '不同意';
+            comment.setValue(c);
+        }
         if (form.isValid()) {
-            var text = btn.getText();
-            text = text === '通过' ? 'pass' : 'reject';
             form.submit({
                 url: 'sm_approveSbSettlementBatch.action',
                 waitMsg: '提交中...',
-                params: {
-                    'outGoingName': text,
-                },
+                params: param,
                 method: 'POST',
                 success: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    btn.up('window').hide();
-                    Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
-                    form.down('textarea[name=comment]').setValue('同意');
+                    grid.getStore().reload();
+                    form.down('textarea[name=comment]').setValue('');
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    btn.up('window').hide();
-                    Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
-                    form.down('textarea[name=co`mment]').setValue('同意');
+                    grid.getStore().reload();
+                    form.down('textarea[name=comment]').setValue('');
                 }
             })
         }

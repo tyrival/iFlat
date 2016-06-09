@@ -56,7 +56,7 @@
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
         </where>
         LEFT JOIN
-        ORDER BY month DESC,projNo,deptName,team,status,id
+        ORDER BY (CASE status WHEN '未提交' THEN 0 ELSE 1 END),month DESC,projNo,deptName,team,status,id
     </select>
 
     <resultMap type="com.iflat.sm.bean.TecSettlement" id="SmTecSettlementResult">

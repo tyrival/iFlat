@@ -95,7 +95,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecond', {
                 allowBlank: false,
                 height: 20,
                 width: '100%',
-                value: '同意',
+                value: '',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

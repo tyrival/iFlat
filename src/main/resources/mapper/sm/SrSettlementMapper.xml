@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlement">
         INSERT INTO SmSrSettlement
-        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{professionalMgrAcc},#{settleFirstAcc},#{settleFirstName},#{settleFirstTime})
+        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{professionalMgrAcc},#{settleFirstAcc},#{settleFirstName},#{settleFirstTime},#{teamAcc},#{teamName})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlement
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.professionalMgrAcc},#{item.settleFirstAcc},#{item.settleFirstName},#{item.settleFirstTime}
+            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.professionalMgrAcc},#{item.settleFirstAcc},#{item.settleFirstName},#{item.settleFirstTime},#{item.teamAcc},#{item.teamName}
         </foreach>
     </insert>
 
@@ -35,7 +35,8 @@
             <if test="professionalMgrAcc!=null">professionalMgrAcc=#{professionalMgrAcc},</if>
             <if test="settleFirstAcc!=null">settleFirstAcc=#{settleFirstAcc},</if>
             <if test="settleFirstName!=null">settleFirstName=#{settleFirstName},</if>
-            <if test="settleFirstTime!=null">settleFirstTime=#{settleFirstTime},</if>
+            <if test="teamAcc!=null">teamAcc=#{teamAcc},</if>
+            <if test="teamName!=null">teamName=#{teamName},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -46,7 +47,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SrSettlement" resultMap="SmSrSettlementResult">
-        SELECT id,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime,professionalMgrAcc,settleFirstAcc,settleFirstName,settleFirstTime
+        SELECT id,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime,professionalMgrAcc,settleFirstAcc,settleFirstName,settleFirstTime,teamAcc,teamName
         FROM SmSrSettlement
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -61,8 +62,10 @@
             <if test="professionalMgrAcc!=null and !&quot;&quot;.equals(professionalMgrAcc.trim())">AND professionalMgrAcc=#{professionalMgrAcc}</if>
             <if test="settleFirstAcc!=null and !&quot;&quot;.equals(settleFirstAcc.trim())">AND settleFirstAcc=#{settleFirstAcc}</if>
             <if test="settleFirstName!=null and !&quot;&quot;.equals(settleFirstName.trim())">AND settleFirstName=#{settleFirstName}</if>
+            <if test="teamAcc!=null">AND teamAcc=#{teamAcc}</if>
+            <if test="teamName!=null">AND teamName=#{teamName}</if>
         </where>
-        ORDER BY projNo,deptName,type,team,createTime,id
+        ORDER BY (CASE status WHEN '未提交' THEN 0 ELSE 1 END),projNo,deptName,type,team,createTime,id
     </select>
 
     <resultMap type="com.iflat.sm.bean.SrSettlement" id="SmSrSettlementResult">
@@ -87,5 +90,7 @@
         <result property="settleFirstAcc" column="settleFirstAcc" jdbcType="VARCHAR"/>
         <result property="settleFirstName" column="settleFirstName" jdbcType="VARCHAR"/>
         <result property="settleFirstTime" column="settleFirstTime" jdbcType="DATE"/>
+        <result property="teamAcc" column="teamAcc" jdbcType="VARCHAR"/>
+        <result property="teamName" column="teamName" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

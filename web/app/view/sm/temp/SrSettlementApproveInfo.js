@@ -2,7 +2,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
     extend: 'Ext.window.Window',
     alias: 'widget.sm-srsettlementapproveinfo',
     title: '修船结算单审批',
-    layout: 'fit',
     modal: true,
 
     requires: [
@@ -17,16 +16,13 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
     controller: 'sm-srsettlementapprove',
     id: 'sm-srsettlementapproveinfo',
     closeAction: 'hide',
-
     items: [{
         xtype: 'container',
-        margin: '0 15 0 15',
-        maxHeight: 500,
-        scollable: 'y',
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
+        margin: '0 0 0 15',
+        layout: 'vbox',
+        maxHeight: 550,
+        scrollable: 'y',
+        width: 850,
         items: [{
             xtype: 'form',
             id: 'sm-srsettlementapproveinfo-form',
@@ -128,7 +124,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                     type: 'hbox',
                     margin: '10 0 0 0',
                     items: [{
-                        xtype: 'textarea',
+                        xtype: 'textfield',
                         name: 'srSettlement.comment',
                         fieldLabel: '备注',
                         width: 800,
@@ -170,7 +166,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                     height: 200,
                     border: false,
                     name: 'detail',
-                    margin: '30 0 5 0',
+                    margin: '15 0 5 0',
                     layout: {
                         type: 'hbox',
                         align: 'stretch'
@@ -192,7 +188,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
             fieldLabel: '审批意见',
             allowBlank: false,
             width: 830,
-            value: '同意',
+            value: '',
             emptyText: '输入审批意见后，审批通过或退回结算申请'
         }],
     }],

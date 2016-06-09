@@ -4,7 +4,13 @@ Ext.define('iFlat.view.qm.QualityFine', {
     xtype: 'qm-qualityfine',
 
     controller: 'qm-qualityfine',
-    store: qmQualityFineStore = Ext.create('iFlat.store.qm.QualityFine'),
+    store: qmQualityFineStore = Ext.create('iFlat.store.qm.QualityFine', {
+        proxy: {
+            extraParams: {
+                'qualityFine.creator': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+            }
+        }
+    }),
     id: 'qm-qualityfine',
     dockedItems: [{
         xtype: 'toolbar',

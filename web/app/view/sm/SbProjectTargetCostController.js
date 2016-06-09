@@ -140,7 +140,7 @@ Ext.define('iFlat.view.sm.SbProjectTargetCostController', {
                 method: 'POST',
                 waitMsg: '正在导入......',
                 success: function (fp, o) {
-                    smProjectTargetCostStore.reload();
+                    smSbProjectTargetCostStore.reload();
                     Flat.util.tip(o.response.responseText);
                 },
                 failure: function (fp, o) {

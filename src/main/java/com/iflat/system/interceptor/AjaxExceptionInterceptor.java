@@ -32,13 +32,13 @@ public class AjaxExceptionInterceptor implements Interceptor {
          * 如果是Ajax请求，则添加AjaxExceptionListener监听器，
          * 监听器用于动态修改action中的result对象的success和message等属性
          */
-        HttpServletRequest request = ServletActionContext.getRequest();
-        String xRequestedWith = request.getHeader("X-Requested-With");
-        if(!StringUtils.isEmpty(xRequestedWith)) {
+        //HttpServletRequest request = ServletActionContext.getRequest();
+        //String xRequestedWith = request.getHeader("X-Requested-With");
+        /*if(!StringUtils.isEmpty(xRequestedWith)) {
             actionInvocation.addPreResultListener(new AjaxExceptionListener());
-        }
+        }*/
 
-        //actionInvocation.addPreResultListener(new AjaxExceptionListener());
+        actionInvocation.addPreResultListener(new AjaxExceptionListener());
         result = actionInvocation.invoke();
         return result;
     }

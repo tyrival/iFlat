@@ -15,7 +15,7 @@
                 GROUP BY projNo,projName,type
         ) a
         LEFT JOIN (SELECT projNo,SUM(amount) AS distribution
-                    FROM SmTargetCost
+                    FROM SmTargetCostSplit
                     <where>
                         <if test="projNo!=null">AND projNo=#{projNo}</if>
                     </where>

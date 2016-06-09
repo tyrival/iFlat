@@ -3,13 +3,13 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
     alias: 'controller.sm-sctargetcost',
 
     refresh: function () {
-        smScTargetCostStore.reload();
+        smScProjectTargetCostStore.reload();
     },
 
     search: function () {
         var projNo = Ext.getCmp('sm-sctargetcost-combo').getValue();
-        smScTargetCostStore.getProxy().extraParams['targetCost.projNo'] = projNo;
-        smScTargetCostStore.reload();
+        smScProjectTargetCostStore.getProxy().extraParams['projectTargetCostVo.projNo'] = projNo;
+        smScProjectTargetCostStore.reload();
     },
 
     split: function (grid, rowIndex, colIndex, item, e, record, row) {
@@ -19,8 +19,7 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
         }
         var form = win.down('form');
         form.loadRecord(record);
-        smScTargetCostSplitStore.getProxy().extraParams['targetCostSplit.projNo'] = record.get('targetCost.projNo');
-        smScTargetCostSplitStore.getProxy().extraParams['targetCostSplit.deptName'] = record.get('targetCost.deptName');
+        smScTargetCostSplitStore.getProxy().extraParams['targetCostSplit.projNo'] = record.get('projectTargetCostVo.projNo');
         this.refreshSplit();
         win.show();
     },
@@ -30,7 +29,6 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
         var record = Ext.create('iFlat.model.sm.TargetCostSplit', {
             'targetCostSplit.projNo': Ext.getCmp('sm-sctargetcostedit-projno').getValue(),
             'targetCostSplit.projName': Ext.getCmp('sm-sctargetcostedit-projname').getValue(),
-            'targetCostSplit.deptName': Ext.getCmp('sm-sctargetcostedit-deptname').getValue(),
         })
         smScTargetCostSplitStore.insert(0, record);
         smScTargetCostSplitRowEditing.startEdit(0, 0);
@@ -160,4 +158,18 @@ Ext.define('iFlat.view.sm.ScTargetCostController', {
             },
         });
     },
+
+    onCostAccountChange: function (combo, newValue, oldValue, eOpts) {
+        var v = combo.getStore().findRecord('code', newValue).get('name');
+        Ext.getCmp('sm-sctargetcostedit-detail-costaccountname').setValue(v);
+    },
+
+    exportToExcel: function(btn) {
+        var t = '造船目标成本分解';
+        var grid = Ext.getCmp('sm-sctargetcostedit-detail');
+        grid.saveDocumentAs({
+            title: t,
+            fileName: t + '.xls',
+        })
+    }
 });

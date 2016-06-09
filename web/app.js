@@ -94,14 +94,14 @@ var Flat = {
             }
             return  a + "" + b + "" + c;
         },
-        arrayToUrlParamList: function (array, paramName, isExtRecord) {
+        arrayToUrlParamList: function (array, paramName, isExtModel) {
             if (!array instanceof Array) {
                 return null;
             }
             var result = new Object();
             for (var i = 0; i < array.length; i++) {
                 var obj;
-                if (isExtRecord === true) {
+                if (isExtModel === true) {
                     obj = array[i].getData();
                 } else {
                     obj = array[i];

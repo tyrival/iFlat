@@ -114,7 +114,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
                 }, {
                     xtype: 'container',
                     layout: 'hbox',
-                    margin: '0 0 10 0',
+                    margin: '10 0 10 0',
                     items: [{
                         xtype: 'textfield',
                         name: 'sbSettlement.mgrScore',
@@ -218,7 +218,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
             fieldLabel: '审批意见',
             allowBlank: false,
             width: 830,
-            value: '同意',
+            value: '',
             emptyText: '输入审批意见后，审批通过或退回结算申请'
         }],
     }],

@@ -175,45 +175,43 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditController', {
 
     completeTask: function (btn) {
 
+        var text = btn.getText();
+        text = text === '通过' ? 'pass' : 'reject';
         var comment = Ext.getCmp('sm-srprofessionalmanagerauditedit-comment').getValue();
         if (Flat.util.isEmpty(comment)) {
-            Ext.Msg.show({
-                title:'警告',
-                message: '请填写审批意见。',
-            });
-        } else {
-            var text = btn.getText();
-            text = text === '通过' ? 'pass' : 'reject';
-            Flat.util.mask('提交中...');
-            Ext.Ajax.request({
-                url: 'sm_approveSrSettlement.action',
-                method: 'post',
-                params: {
-                    'srSettlement.id': Ext.getCmp('sm-srprofessionalmanagerauditedit-id')
-                        .getValue(),
-                    'outGoingName': text,
-                    'comment': comment,
-                },
-                success: function(response, opts) {
-                    Flat.util.unmask();
-                    Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-srprofessionalmanagerauditedit').hide();
-                    var active = Ext.WindowManager.getActive();
-                    if (active && active.isXType('window')) {
-                        active.down('grid').getStore().reload();
-                    }
-                },
-                failure: function(response, opts) {
-                    Flat.util.unmask();
-                    Flat.util.tip(response.responseText);
-                    Ext.getCmp('sm-srprofessionalmanagerauditedit').hide();
-                    var active = Ext.WindowManager.getActive();
-                    if (active && active.isXType('window')) {
-                        active.down('grid').getStore().reload();
-                    }
-                }
-            });
+            comment = text === 'pass' ? '同意' : '不同意';
         }
+        Flat.util.mask('提交中...');
+        Ext.Ajax.request({
+            url: 'sm_approveSrSettlement.action',
+            method: 'post',
+            params: {
+                'srSettlement.id': Ext.getCmp('sm-srprofessionalmanagerauditedit-id')
+                    .getValue(),
+                'outGoingName': text,
+                'comment': comment,
+            },
+            success: function(response, opts) {
+                Flat.util.unmask();
+                Flat.util.tip(response.responseText);
+                Ext.getCmp('sm-srprofessionalmanagerauditedit').hide();
+                Ext.getCmp('sm-srprofessionalmanagerauditedit-comment').setValue('');
+                var active = Ext.WindowManager.getActive();
+                if (active && active.isXType('window')) {
+                    active.down('grid').getStore().reload();
+                }
+            },
+            failure: function(response, opts) {
+                Flat.util.unmask();
+                Flat.util.tip(response.responseText);
+                Ext.getCmp('sm-srprofessionalmanagerauditedit').hide();
+                Ext.getCmp('sm-srprofessionalmanagerauditedit-comment').setValue('');
+                var active = Ext.WindowManager.getActive();
+                if (active && active.isXType('window')) {
+                    active.down('grid').getStore().reload();
+                }
+            }
+        });
 
     }
 });

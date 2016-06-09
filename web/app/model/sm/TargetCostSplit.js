@@ -7,7 +7,7 @@ Ext.define('iFlat.model.sm.TargetCostSplit', {
         {name: 'targetCostSplit.projName', mapping: 'projName', type: 'string'},
         {name: 'targetCostSplit.deptName', mapping: 'deptName', type: 'string'},
         {name: 'targetCostSplit.costAccount', mapping: 'costAccount', type: 'string'},
-        {name: 'targetCost.costAccountName', mapping: 'costAccountName', type: 'string'},
+        {name: 'targetCostSplit.costAccountName', mapping: 'costAccountName', type: 'string'},
         {name: 'targetCostSplit.amount', mapping: 'amount', type: 'number'},
         {name: 'targetCostSplit.comment', mapping: 'comment', type: 'string'},
         {name: 'targetCostSplit.creatorAcc', mapping: 'creatorAcc', type: 'string'},

@@ -22,7 +22,11 @@ Ext.define('iFlat.view.workflow.Comment', {
             width: 150,
             align: 'center',
             dataIndex: 'comment.time',
-            formatter: 'date("Y-m-d H:i")'
+            renderer: function(value, summaryData) {
+                value = Ext.Date.add(value, Ext.Date.HOUR, -8);
+                return Ext.Date.format(value, "Y-m-d H:i");
+            },
+            //formatter: 'date("Y-m-d H:i")'
         }, {
             text: '审批人',
             width: 100,

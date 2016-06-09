@@ -3,13 +3,13 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
     alias: 'controller.sm-sbtargetcost',
 
     refresh: function () {
-        smSbTargetCostStore.reload();
+        smSbProjectTargetCostStore.reload();
     },
 
     search: function () {
         var projNo = Ext.getCmp('sm-sbtargetcost-combo').getValue();
-        smSbTargetCostStore.getProxy().extraParams['targetCostVo.projNo'] = projNo;
-        smSbTargetCostStore.reload();
+        smSbProjectTargetCostStore.getProxy().extraParams['projectTargetCostVo.projNo'] = projNo;
+        smSbProjectTargetCostStore.reload();
     },
 
     split: function (grid, rowIndex, colIndex, item, e, record, row) {
@@ -19,8 +19,7 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
         }
         var form = win.down('form');
         form.loadRecord(record);
-        smSbTargetCostSplitStore.getProxy().extraParams['targetCostSplit.projNo'] = record.get('targetCostVo.projNo');
-        smSbTargetCostSplitStore.getProxy().extraParams['targetCostSplit.costAccount'] = record.get('targetCostVo.costAccount');
+        smSbTargetCostSplitStore.getProxy().extraParams['targetCostSplit.projNo'] = record.get('projectTargetCostVo.projNo');
         this.refreshSplit();
         win.show();
     },
@@ -30,8 +29,6 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
         var record = Ext.create('iFlat.model.sm.TargetCostSplit', {
             'targetCostSplit.projNo': Ext.getCmp('sm-sbtargetcostedit-projno').getValue(),
             'targetCostSplit.projName': Ext.getCmp('sm-sbtargetcostedit-projname').getValue(),
-            'targetCostSplit.costAccount': Ext.getCmp('sm-sbtargetcostedit-costaccount').getValue(),
-            'targetCostSplit.costAccountName': Ext.getCmp('sm-sbtargetcostedit-costaccountname').getValue(),
         })
         smSbTargetCostSplitStore.insert(0, record);
         smSbTargetCostSplitRowEditing.startEdit(0, 0);
@@ -161,4 +158,18 @@ Ext.define('iFlat.view.sm.SbTargetCostController', {
             },
         });
     },
+
+    onCostAccountChange: function (combo, newValue, oldValue, eOpts) {
+        var v = combo.getStore().findRecord('code', newValue).get('name');
+        Ext.getCmp('sm-sbtargetcostedit-detail-costaccountname').setValue(v);
+    },
+    
+    exportToExcel: function(btn) {
+        var t = '造船目标成本分解';
+        var grid = Ext.getCmp('sm-sbtargetcostedit-detail');
+        grid.saveDocumentAs({
+            title: t,
+            fileName: t + '.xls',
+        })
+    }
 });

@@ -4,7 +4,13 @@ Ext.define('iFlat.view.ss.SafetyFine', {
     xtype: 'ss-safetyfine',
 
     controller: 'ss-safetyfine',
-    store: ssSafetyFineStore = Ext.create('iFlat.store.ss.SafetyFine'),
+    store: ssSafetyFineStore = Ext.create('iFlat.store.ss.SafetyFine', {
+        proxy: {
+            extraParams: {
+                'safetyFine.creator': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+            }
+        }
+    }),
     id: 'ss-safetyfine',
     dockedItems: [{
         xtype: 'toolbar',

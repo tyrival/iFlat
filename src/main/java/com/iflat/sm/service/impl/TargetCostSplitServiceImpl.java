@@ -2,11 +2,11 @@ package com.iflat.sm.service.impl;
 
 import com.iflat.base.service.BaseService;
 import com.iflat.base.service.impl.BaseServiceSupport;
-import com.iflat.sm.bean.TargetCost;
+import com.iflat.sm.bean.ProjectTargetCost;
 import com.iflat.sm.bean.TargetCostSplit;
+import com.iflat.sm.entity.ProjectTargetCostVo;
 import com.iflat.sm.entity.SbSettlementVo;
 import com.iflat.sm.entity.ScSettlementVo;
-import com.iflat.sm.entity.TargetCostVo;
 import com.iflat.sm.entity.Workshop;
 import com.iflat.sm.service.BaseSettlementService;
 import com.iflat.sm.service.SbSettlementVoService;
@@ -15,7 +15,7 @@ import com.iflat.sm.service.TargetCostSplitService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ReflectUtil;
 import com.iflat.util.Session;
-import org.apache.commons.lang3.ArrayUtils;
+import com.iflat.util.StringUtil;
 import org.springframework.oxm.ValidationFailureException;
 
 import java.util.*;
@@ -25,7 +25,7 @@ import java.util.*;
  */
 public class TargetCostSplitServiceImpl extends BaseServiceSupport implements TargetCostSplitService {
 
-    private BaseService targetCostVoService;
+    private BaseService projectTargetCostVoService;
     private SbSettlementVoService sbSettlementVoService;
     private ScSettlementVoService scSettlementVoService;
 
@@ -48,15 +48,15 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
         TargetCostSplit targetCostSplit = (TargetCostSplit) this.saveObj;
 
         Double adjust = getAdjustAmount(targetCostSplit);
-        TargetCostVo targetCostVo = getTargetCost(targetCostSplit);
-        Double remain = targetCostVo.getAmount() - targetCostVo.getDistribution();
+        ProjectTargetCostVo projectTargetCostVo = getProjectTargetCost(targetCostSplit);
+        Double remain = projectTargetCostVo.getAmount() - projectTargetCostVo.getDistribution();
         // 余额与当前新增项目的比较
         if (adjust > remain) {
             throw new Exception("调整失败。目标成本调整额度为" + adjust + "， 超过了该科目的余额"  + remain +"，请重新调整。");
         }
 
         // 对调整金额进行校验
-        validateAdjustmentWithApplied(targetCostVo.getType(), targetCostSplit, adjust);
+        validateAdjustmentWithApplied(projectTargetCostVo.getType(), targetCostSplit, adjust);
     }
 
     /**
@@ -109,10 +109,9 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
     protected void beforeDelete() throws Exception {
         TargetCostSplit targetCostSplit = (TargetCostSplit) this.deleteObj;
 
-        TargetCostVo targetCostVo = new TargetCostVo();
-        targetCostVo.setProjNo(targetCostSplit.getProjNo());
-        targetCostVo.setCostAccount(targetCostSplit.getCostAccount());
-        List<TargetCost> list = targetCostVoService.list(targetCostVo);
+        ProjectTargetCostVo projectTargetCostVo = new ProjectTargetCostVo();
+        projectTargetCostVo.setProjNo(targetCostSplit.getProjNo());
+        List<ProjectTargetCostVo> list = projectTargetCostVoService.list(projectTargetCostVo);
         String type = "";
         if (list != null && list.size() > 0) {
             type = list.get(0).getType();
@@ -131,21 +130,20 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
      * @throws Exception
      */
     private Double getRemainAmount(TargetCostSplit targetCostSplit) throws Exception {
-        TargetCostVo targetCostVo = getTargetCost(targetCostSplit);
-        Double amount = targetCostVo.getAmount();
-        Double distribution = targetCostVo.getDistribution();
+        ProjectTargetCostVo projectTargetCostVo = getProjectTargetCost(targetCostSplit);
+        Double amount = projectTargetCostVo.getAmount();
+        Double distribution = projectTargetCostVo.getDistribution();
         return amount - distribution;
     }
 
-    private TargetCostVo getTargetCost(TargetCostSplit targetCostSplit) throws Exception {
-        TargetCostVo targetCostVo = new TargetCostVo();
-        targetCostVo.setProjNo(targetCostSplit.getProjNo());
-        targetCostVo.setCostAccount(targetCostSplit.getCostAccount());
-        List<TargetCostVo> list = (List<TargetCostVo>) targetCostVoService.list(targetCostVo);
+    private ProjectTargetCostVo getProjectTargetCost(TargetCostSplit targetCostSplit) throws Exception {
+        ProjectTargetCostVo projectTargetCostVo = new ProjectTargetCostVo();
+        projectTargetCostVo.setProjNo(targetCostSplit.getProjNo());
+        List<ProjectTargetCostVo> list = (List<ProjectTargetCostVo>) projectTargetCostVoService.list(projectTargetCostVo);
         if (list != null && list.size() > 0) {
-            targetCostVo = list.get(0);
+            projectTargetCostVo = list.get(0);
         }
-        return targetCostVo;
+        return projectTargetCostVo;
     }
 
     @Override
@@ -160,7 +158,7 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
     public void setImportProps() throws Exception {
         List list = super.getImportList();
         for(int i = 0; i < list.size(); i++) {
-            TargetCost o = (TargetCost)list.get(i);
+            ProjectTargetCost o = (ProjectTargetCost)list.get(i);
             o.setId(UUID.randomUUID().toString());
             UserInfoVo userInfoVo = Session.getUserInfo();
             o.setCreatorAcc(userInfoVo.getAccount());
@@ -177,13 +175,13 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
 
         for(int i = 0; i < list.size(); i++) {
             TargetCostSplit o = (TargetCostSplit)list.get(i);
-            if(o.getProjNo() == null || o.getProjNo() == "") {
+            if(o.getProjNo() == null || "".equals(o.getProjNo())) {
                 throw new ValidationFailureException("第" + (i + 1) + "行工号为空，请修改后重新导入");
             }
-            if(o.getDeptName() == null || o.getDeptName() == "") {
+            if(StringUtil.isBlank(o.getDeptName())) {
                 throw new ValidationFailureException("第" + (i + 1) + "行部门为空，请修改后重新导入");
             }
-            if(o.getCostAccount() == null || o.getCostAccount() == "") {
+            if(StringUtil.isBlank(o.getCostAccount())) {
                 throw new ValidationFailureException("第" + (i + 1) + "成本科目代码为空，请修改后重新导入");
             }
 
@@ -210,10 +208,9 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
         for (Map.Entry<String, Map> entry : map.entrySet()) {
             Map<String, Double> m = entry.getValue();
             for (Map.Entry<String, Double> en : m.entrySet()) {
-                TargetCostVo vo = new TargetCostVo();
+                ProjectTargetCostVo vo = new ProjectTargetCostVo();
                 vo.setProjNo(entry.getKey());
-                vo.setCostAccount(en.getKey());
-                List<TargetCostVo> l = this.targetCostVoService.list(vo);
+                List<ProjectTargetCostVo> l = this.projectTargetCostVoService.list(vo);
 
                 if (l == null || l.size() <= 0) {
                     throw new NullPointerException("未找到工程" + entry.getKey() + "中，成本科目为" + en.getKey() + "的目标成本公费，请联系相关人员维护相关数据后，重新导入。");
@@ -239,8 +236,12 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
         return targetCostSplit.getAmount() - orig.getAmount();
     }
 
-    public void setTargetCostVoService(BaseService targetCostVoService) {
-        this.targetCostVoService = targetCostVoService;
+    public BaseService getProjectTargetCostVoService() {
+        return projectTargetCostVoService;
+    }
+
+    public void setProjectTargetCostVoService(BaseService projectTargetCostVoService) {
+        this.projectTargetCostVoService = projectTargetCostVoService;
     }
 
     public void setSbSettlementVoService(SbSettlementVoService sbSettlementVoService) {

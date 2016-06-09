@@ -11,8 +11,6 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatch', {
         'iFlat.view.sm.temp.ScSettlementApproveBatchController',
     ],
 
-    scrollable: 'true',
-    maxHeight: 500,
     controller: 'sm-scsettlementapprovebatch',
     closeAction: 'hide',
 
@@ -78,7 +76,6 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatch', {
                 border: false,
                 width: '100%',
                 name: 'detail',
-                height: 450,
                 layout: {
                     type: 'hbox',
                     align: 'stretch'
@@ -90,12 +87,19 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatch', {
                     border: true,
                     columnLines: true,
                     store: Ext.create('iFlat.store.sm.ScSettlement', {
+                        autoLoad: false,
                         proxy: {
                             type: 'ajax',
                             url: 'sm_listScSettlement.action',
                         },
                     }),
-
+                    selModel: {
+                        type: 'spreadsheet',
+                        columnSelect: true,
+                        checkboxSelect: true,
+                        pruneRemoved: false,
+                        extensible: 'y',
+                    },
                     tbar: ['->', {
                         xtype: 'textfield',
                         name: 'summaryAmount',
@@ -176,7 +180,7 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatch', {
                 allowBlank: false,
                 height: 20,
                 width: '100%',
-                value: '同意',
+                value: '',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

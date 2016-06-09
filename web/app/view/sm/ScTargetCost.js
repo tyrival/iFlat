@@ -8,10 +8,10 @@ Ext.define('iFlat.view.sm.ScTargetCost', {
 
     controller: 'sm-sctargetcost',
 
-    store: smScTargetCostStore = Ext.create('iFlat.store.sm.TargetCostVo', {
+    store: smScProjectTargetCostStore = Ext.create('iFlat.store.sm.ProjectTargetCostVo', {
         proxy: {
             extraParams: {
-                'targetCostVo.type': '钢结构'
+                'projectTargetCostVo.type': '造船'
             }
         }
     }),
@@ -22,7 +22,7 @@ Ext.define('iFlat.view.sm.ScTargetCost', {
         store: smScTargetCostComboStore = Ext.create('iFlat.store.report.bi.Project', {
             proxy: {
                 extraParams: {
-                    'rptProject.type': '钢结构',
+                    'rptProject.type': '造船',
                     'rptProject.status': 0,
                 }
             }
@@ -78,31 +78,23 @@ Ext.define('iFlat.view.sm.ScTargetCost', {
         handler: 'split',
     }, {
         header: 'id',
-        dataIndex: 'targetCostVo.id',
+        dataIndex: 'projectTargetCostVo.id',
         hidden: true
     }, {
         header: '工号',
         width: 150,
-        dataIndex: 'targetCostVo.projNo',
+        dataIndex: 'projectTargetCostVo.projNo',
     }, {
-        header: '工程名',
+        header: '船名',
         flex: true,
-        dataIndex: 'targetCostVo.projName',
-    }, {
-        header: '成本科目代码',
-        width: 200,
-        dataIndex: 'targetCostVo.costAccount',
-    }, {
-        header: '成本科目',
-        width: 200,
-        dataIndex: 'targetCostVo.costAccountName',
+        dataIndex: 'projectTargetCostVo.projName',
     }, {
         header: '金额',
         width: 200,
-        dataIndex: 'targetCostVo.amount',
+        dataIndex: 'projectTargetCostVo.amount',
     }, {
         header: '已分配',
         width: 200,
-        dataIndex: 'targetCostVo.distribution',
+        dataIndex: 'projectTargetCostVo.distribution',
     }],
 });

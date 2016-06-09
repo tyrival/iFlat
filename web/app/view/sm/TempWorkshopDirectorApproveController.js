@@ -68,9 +68,14 @@ Ext.define('iFlat.view.sm.TempWorkshopDirectorApproveController', {
 
         var win = btn.up('window');
         var form = win.down('form[name=comment]');
+        var comment = form.down('textarea[name=comment]');
+        var text = btn.getText();
+        text = text === '通过' ? 'pass' : 'reject';
+        if (Flat.util.isEmpty(comment.getValue())) {
+            var c = text === 'pass' ? '同意' : '不同意';
+            comment.setValue(c);
+        }
         if (form.isValid()) {
-            var text = btn.getText();
-            text = text === '通过' ? 'pass' : 'reject';
             form.submit({
                 url: 'sm_approveTemporary.action',
                 waitMsg: '提交中...',
@@ -83,13 +88,13 @@ Ext.define('iFlat.view.sm.TempWorkshopDirectorApproveController', {
                     Flat.util.tip(o.response.responseText);
                     win.hide();
                     Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
-                    form.down('textarea[name=comment]').setValue('同意');
+                    form.down('textarea[name=comment]').setValue('');
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
                     win.hide();
                     Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
-                    form.down('textarea[name=comment]').setValue('同意');
+                    form.down('textarea[name=comment]').setValue('');
                 }
             })
         }

@@ -30,9 +30,13 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatchInfo', {
             columnLines: true,
             store: Ext.create('iFlat.store.sm.ScSettlementDetail'),
             columns: [{
+                header: '成本科目代码',
+                width: 120,
+                dataIndex: 'scSettlementDetail.account',
+            }, {
                 header: '成本科目',
                 width: 180,
-                dataIndex: 'scSettlementDetail.account',
+                dataIndex: 'scSettlementDetail.accountName',
             }, {
                 header: '施工内容',
                 width: 200,

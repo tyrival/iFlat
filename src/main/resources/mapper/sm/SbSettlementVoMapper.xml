@@ -25,7 +25,7 @@
             <if test="commentDetl!=null and !&quot;&quot;.equals(commentDetl.trim())">AND b.comment LIKE '%' + #{commentDetl} + '%'</if>
             <if test="creatorAccDetl!=null">AND b.creatorAcc=#{creatorAccDetl}</if>
         </where>
-        ORDER BY a.month DESC,a.projNo,a.deptName,a.team,b.account,b.createTime
+        ORDER BY (CASE a.status WHEN '未提交' THEN 0 ELSE 1 END),a.month DESC,a.projNo,a.deptName,a.team,b.account,b.createTime
     </select>
 
     <resultMap type="com.iflat.sm.entity.SbSettlementVo" id="SmSbSettlementVoResult">

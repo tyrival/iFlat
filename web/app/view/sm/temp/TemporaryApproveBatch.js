@@ -83,7 +83,13 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatch', {
                             url: 'sm_listTemporary.action',
                         },
                     }),
-
+                    selModel: {
+                        type: 'spreadsheet',
+                        columnSelect: true,
+                        checkboxSelect: true,
+                        pruneRemoved: false,
+                        extensible: 'y',
+                    },
                     tbar: ['->', {
                         xtype: 'textfield',
                         name: 'amount',
@@ -140,7 +146,7 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatch', {
                 allowBlank: false,
                 height: 20,
                 width: '100%',
-                value: '同意',
+                value: '',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

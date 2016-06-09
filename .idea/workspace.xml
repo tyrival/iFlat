@@ -1,79 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveInfo.js" line="22" />
+    <bookmark url="file://$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatch.js" line="95" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/entity/Workshop.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SbSettlement.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/ScSettlement.xml" />
+    <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="&lt;工费结算&gt;&#10;修复了bug">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/system/interceptor/AjaxExceptionInterceptor.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/system/interceptor/AjaxExceptionInterceptor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlementDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlementDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlementDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlementDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SbSettlementServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SbSettlementServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/ScSettlementServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/ScSettlementServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/TargetCostServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/TargetCostServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/TargetCostSplitServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/TargetCostSplitServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/system/interceptor/AjaxExceptionInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/system/interceptor/AjaxExceptionInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/ProjectTargetCostVoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/ProjectTargetCostVoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementDetailMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementDetailMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementVoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementVoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementDetailMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementDetailMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/SrSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/SrSettlementMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/TecSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/TecSettlementMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/TemporaryMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/TemporaryMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/sm/SbSettlementDetail.js" afterPath="$PROJECT_DIR$/web/app/model/sm/SbSettlementDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/sm/ScSettlementDetail.js" afterPath="$PROJECT_DIR$/web/app/model/sm/ScSettlementDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/bi/AdditionalBill.js" afterPath="$PROJECT_DIR$/web/app/view/bi/AdditionalBill.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/bi/ContractEdit.js" afterPath="$PROJECT_DIR$/web/app/view/bi/ContractEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/bi/ProjectCostEdit.js" afterPath="$PROJECT_DIR$/web/app/view/bi/ProjectCostEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/bi/ProjectCstCtrl.js" afterPath="$PROJECT_DIR$/web/app/view/bi/ProjectCstCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/bi/ProjectInProcess.js" afterPath="$PROJECT_DIR$/web/app/view/bi/ProjectInProcess.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/bi/ProjectSchedule.js" afterPath="$PROJECT_DIR$/web/app/view/bi/ProjectSchedule.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/qm/QualityFineEdit.js" afterPath="$PROJECT_DIR$/web/app/view/qm/QualityFineEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/bi/AdditionalBill.js" afterPath="$PROJECT_DIR$/web/app/view/report/bi/AdditionalBill.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/bi/ProjectAuxCost.js" afterPath="$PROJECT_DIR$/web/app/view/report/bi/ProjectAuxCost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/bi/ProjectCost.js" afterPath="$PROJECT_DIR$/web/app/view/report/bi/ProjectCost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/bi/ProjectCstCtrl.js" afterPath="$PROJECT_DIR$/web/app/view/report/bi/ProjectCstCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/bi/ProjectDevMatCost.js" afterPath="$PROJECT_DIR$/web/app/view/report/bi/ProjectDevMatCost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/bi/ProjectInProcess.js" afterPath="$PROJECT_DIR$/web/app/view/report/bi/ProjectInProcess.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/bi/ProjectInfo.js" afterPath="$PROJECT_DIR$/web/app/view/report/bi/ProjectInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/bi/ProjectManuCost.js" afterPath="$PROJECT_DIR$/web/app/view/report/bi/ProjectManuCost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/complex/Bi.js" afterPath="$PROJECT_DIR$/web/app/view/report/complex/Bi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/mm/MatQuato.js" afterPath="$PROJECT_DIR$/web/app/view/report/mm/MatQuato.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/mm/PaintMRP.js" afterPath="$PROJECT_DIR$/web/app/view/report/mm/PaintMRP.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/wip/manhour/WoStatus.js" afterPath="$PROJECT_DIR$/web/app/view/report/wip/manhour/WoStatus.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ProjectTargetCost.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ProjectTargetCost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCost.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCost.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/excel/sm/ProjectTargetCost.xml" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/ProjectTargetCost.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/excel/sm/TargetCost.xml" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/TargetCost.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/excel/sm/TargetCostSplit.xml" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/TargetCostSplit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app.js" afterPath="$PROJECT_DIR$/web/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/main/MainModel.js" afterPath="$PROJECT_DIR$/web/app/model/main/MainModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/sm/SrSettlement.js" afterPath="$PROJECT_DIR$/web/app/model/sm/SrSettlement.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/sm/TargetCostSplit.js" afterPath="$PROJECT_DIR$/web/app/model/sm/TargetCostSplit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/qm/QualityFine.js" afterPath="$PROJECT_DIR$/web/app/view/qm/QualityFine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbBusinessDivisionDirectorApprove.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbBusinessDivisionDirectorApprove.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCostController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCostController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCostEdit.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCostEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbSettlement.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbSettlement.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbSettlementController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbSettlementController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbSettlementEdit.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbSettlementEdit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbTargetCost.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbTargetCost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCost.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCost.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbTargetCostController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbTargetCostController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbTargetCostEdit.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbTargetCostEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScBusinessDivisionDirectorApprove.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScBusinessDivisionDirectorApprove.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCostController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCostController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCostEdit.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCostEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScSettlement.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScSettlement.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScSettlementController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScSettlementController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScSettlementEdit.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScSettlementEdit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScTargetCost.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScTargetCost.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScTargetCostController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScTargetCostController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScTargetCostEdit.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScTargetCostEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SrProfessionalManagerAuditController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SrProfessionalManagerAuditController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/TempWorkshopDirectorApprove.js" afterPath="$PROJECT_DIR$/web/app/view/sm/TempWorkshopDirectorApprove.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/TempWorkshopDirectorApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/TempWorkshopDirectorApproveController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatch.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveInfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatch.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlement.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlement.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveInfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecond.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecond.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondInfoMain.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondInfoMain.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondInfoMisc.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondInfoMisc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondInfoSys.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondInfoSys.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementEdit.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementSecond.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementSecond.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatch.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatchInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatchInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatchController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApprove.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApprove.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatch.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/SafetyFineEdit.js" afterPath="$PROJECT_DIR$/web/app/view/ss/SafetyFineEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondApproveGrid.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondApproveGrid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/SafetyFine.js" afterPath="$PROJECT_DIR$/web/app/view/ss/SafetyFine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/workflow/Comment.js" afterPath="$PROJECT_DIR$/web/app/view/workflow/Comment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/workflow/TaskController.js" afterPath="$PROJECT_DIR$/web/app/view/workflow/TaskController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/ext/classic/locale/overrides/zh_CN/ext-locale-zh_CN.js" afterPath="$PROJECT_DIR$/web/ext/classic/locale/overrides/zh_CN/ext-locale-zh_CN.js" />
     </list>
     <ignored path="iFlat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,12 +94,22 @@
     <favorites_list name="iFlat" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SbSettlementServiceImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SbSettlementServiceImpl.java">
+    <leaf>
+      <file leaf-file-name="SbBusinessDivisionDirectorApprove.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbBusinessDivisionDirectorApprove.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="176" column="113" selection-start-line="176" selection-start-column="37" selection-end-line="176" selection-end-column="113" />
+            <state relative-caret-position="38">
+              <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationContext-sm.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2223">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -140,57 +147,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCost.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/SbSettlement.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/SbSettlementController.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/SbSettlementService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlementDetail.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlementDetail.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SbSettlementServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/ScSettlementController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/ScSettlement.js" />
-        <option value="$PROJECT_DIR$/web/app/model/sm/ScSettlementDetail.js" />
-        <option value="$PROJECT_DIR$/web/app/model/sm/SbSettlementDetail.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/ScSettlementServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/code/bean/Department.java" />
+        <option value="$PROJECT_DIR$/web/app/model/sm/TargetCostSplit.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/TargetCostSplitServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/entity/Workshop.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web/app/model/main/MainModel.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/SbTargetCostController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/SbTargetCost.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/SbTargetCostEdit.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/ScTargetCost.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/ScTargetCostEdit.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/ScTargetCostController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchInfo.js" />
         <option value="$PROJECT_DIR$/web/app/view/sm/SbSettlementEdit.js" />
         <option value="$PROJECT_DIR$/web/app/view/sm/ScSettlementEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/ProjectTargetCost.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCostEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCostController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCostController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCostEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/ScTargetCostEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/ScTargetCost.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/wip/manhour/WoStatus.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/mm/MatQuato.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/mm/PaintMRP.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/complex/Bi.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/bi/AdditionalBill.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/bi/ProjectAuxCost.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/bi/ProjectCost.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/bi/ProjectCstCtrl.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/bi/ProjectDevMatCost.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/bi/ProjectInfo.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/bi/ProjectInProcess.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/bi/ProjectManuCost.js" />
-        <option value="$PROJECT_DIR$/web/app/view/ss/SafetyFineEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/qm/QualityFineEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/bi/AdditionalBill.js" />
-        <option value="$PROJECT_DIR$/web/app/view/bi/ContractEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/bi/ProjectCostEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/bi/ProjectCstCtrl.js" />
-        <option value="$PROJECT_DIR$/web/app/view/bi/ProjectInProcess.js" />
-        <option value="$PROJECT_DIR$/web/app/view/bi/ProjectSchedule.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/excel/sm/ScSettlement.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/excel/sm/SbSettlement.xml" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/view/workflow/Comment.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/TempWorkshopDirectorApprove.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/TempWorkshopDirectorApproveController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/SrProfessionalManagerAuditController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecond.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApprove.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryController.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementDetailMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementDetailMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/view/workflow/TaskController.js" />
+        <option value="$PROJECT_DIR$/web/app.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatch.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatch.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondApproveGrid.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatch.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatch.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatchController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/SbBusinessDivisionDirectorApprove.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/ScBusinessDivisionDirectorApprove.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/SrSettlementMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/model/sm/SrSettlement.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementVoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/TecSettlementMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/TemporaryMapper.xml" />
       </list>
     </option>
   </component>
@@ -260,8 +267,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1040" />
-    <option name="height" value="1266" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -392,6 +399,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -440,7 +473,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="excel" />
+              <option name="myItemId" value="spring" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -464,126 +497,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -767,6 +680,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" />
               <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1685,7 +1612,24 @@
       <workItem from="1464749049080" duration="1365000" />
       <workItem from="1464763901111" duration="2613000" />
       <workItem from="1464776292069" duration="4218000" />
-      <workItem from="1464823695013" duration="10107000" />
+      <workItem from="1464823695013" duration="10620000" />
+      <workItem from="1464847646745" duration="221000" />
+      <workItem from="1464853102270" duration="2175000" />
+      <workItem from="1464909989249" duration="595000" />
+      <workItem from="1464913585042" duration="979000" />
+      <workItem from="1464945650804" duration="327000" />
+      <workItem from="1465180253430" duration="151000" />
+      <workItem from="1465180750519" duration="3128000" />
+      <workItem from="1465260364251" duration="28000" />
+      <workItem from="1465260491872" duration="1506000" />
+      <workItem from="1465286771725" duration="4546000" />
+      <workItem from="1465301557560" duration="7545000" />
+      <workItem from="1465341431644" duration="5404000" />
+      <workItem from="1465354879816" duration="2242000" />
+      <workItem from="1465357158984" duration="517000" />
+      <workItem from="1465357704730" duration="517000" />
+      <workItem from="1465364102350" duration="1168000" />
+      <workItem from="1465454771724" duration="1360000" />
     </task>
     <task id="LOCAL-00001" summary="工程结算&#10;将质量、安全罚单拆分到质量模块和安全模块">
       <created>1453766845857</created>
@@ -1939,7 +1883,14 @@
       <option name="project" value="LOCAL" />
       <updated>1464780515930</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="&lt;工费结算&gt;&#10;1. 增加造船结算单导入&#10;2. 增加钢结构结算单导入">
+      <created>1464834860480</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1464834860480</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1975,7 +1926,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1320876000" />
+    <option name="totallyTimeSpent" value="1353798000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1987,15 +1938,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="1266" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5942761" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32828283" sideWeight="0.4969743" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27757686" sideWeight="0.50918365" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28028932" sideWeight="0.5132653" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730561" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -2003,15 +1953,15 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820976" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26734695" sideWeight="0.4575045" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25945538" sideWeight="0.5294118" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24886535" sideWeight="0.45921052" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26734695" sideWeight="0.5407895" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22919819" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26530612" sideWeight="0.5424955" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57233274" sideWeight="0.49167928" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22603978" sideWeight="0.4867347" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2019,6 +1969,7 @@
       <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="BPMN Editor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25378153" sideWeight="0.49081632" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5942761" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37205386" sideWeight="0.50832075" order="15" side_tool="true" content_ui="tabs" />
@@ -2039,11 +1990,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="全局&#10;加入了Maven支持" />
-    <MESSAGE value="报表&#10;BI类增加了成本会演示报表，综合了所有BI类报表" />
-    <MESSAGE value="全局&#10;将Service层的类名由Manager改为Service" />
-    <MESSAGE value="全局&#10;集成了Activiti工作流框架" />
-    <MESSAGE value="全局&#10;重构了base模块，将system中的全局接口、父类和Javabean移入了base模块中维护" />
     <MESSAGE value="工作流：&#10;新增了工作流发布、删除、启动等的基本功能" />
     <MESSAGE value="工作流：&#10;增加了分支处理功能" />
     <MESSAGE value="权限管理：&#10;修复了bug" />
@@ -2064,7 +2010,12 @@
     <MESSAGE value="&lt;工费结算&gt;&#10;零杂工费：&#10;1. 流程完成；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;基础数据：&#10;1. 增加造船/钢结构目标工费维护功能；&#10;2. 增加造船/钢结构目标工费明细维护功能；&#10;3. 增加造船/钢结构目标工费分解维护功能；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 修复了部分bug；&#10;2. 对部分弹窗的高度进行了修改；" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;工费结算&gt;&#10;1. 修复了部分bug；&#10;2. 对部分弹窗的高度进行了修改；" />
+    <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加造船结算单导入&#10;2. 增加钢结构结算单导入" />
+    <MESSAGE value="&lt;工费结算&gt;&#10;1. 需要增加导出功能。 - 目标成本明细和目标成本分解&#10;2. 单船目标成本“分解”与“明细”最好能合并使用1个EXCEL模板导入，方便操作； -只保留科目+部门的明细项&#10;3. 领导审核“通过或退回”，目前记录均显示“同意”，需要修改。 - 退回&#10;4. 系统时间有问题（上午操作的，显示下午的时间在经办）。&#10;5. 成本科目后的“内容”不显示。 - 造船结算申请明细项增加施工内容&#10;6. 易琳的账号看不到批注，无法点通过或退回。 &#10;- （已修改）需要显示施工内容和成本科目名称&#10;- （已修改）批量审批增加勾选&#10;7. 目前无法“导入”。" />
+    <MESSAGE value="&lt;工费结算&gt;&#10;修改以下内容：&#10;1. 需要增加导出功能。 - 目标成本明细和目标成本分解&#10;2. 单船目标成本“分解”与“明细”最好能合并使用1个EXCEL模板导入，方便操作； -只保留科目+部门的明细项&#10;3. 领导审核“通过或退回”，目前记录均显示“同意”，需要修改。 - 退回&#10;4. 系统时间有问题（上午操作的，显示下午的时间在经办）。&#10;5. 成本科目后的“内容”不显示。 - 造船结算申请明细项增加施工内容&#10;6. 易琳的账号看不到批注，无法点通过或退回。 &#10;- （已修改）需要显示施工内容和成本科目名称&#10;- （已修改）批量审批增加勾选&#10;7. 无法“导入”。" />
+    <MESSAGE value="&lt;工费结算&gt;&#10;修改以下内容：&#10;1. 需要增加导出功能。 - 目标成本明细和目标成本分解&#10;2. 单船目标成本“分解”与“明细”最好能合并使用1个EXCEL模板导入，方便操作； -只保留科目+部门的明细项&#10;3. 领导审核“通过或退回”，目前记录均显示“同意”，需要修改。 - 退回&#10;4. 系统时间有问题（上午操作的，显示下午的时间在经办）。&#10;5. 成本科目后的“内容”不显示。 - 造船结算申请明细项增加施工内容&#10;6. 易琳的账号看不到批注，无法点通过或退回。 &#10;- 需要显示施工内容和成本科目名称&#10;- 批量审批增加勾选&#10;7. 无法“导入”。" />
+    <MESSAGE value="&lt;工费结算&gt;&#10;修复了bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;工费结算&gt;&#10;修复了bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2076,11 +2027,12 @@
           <option name="timeStamp" value="429" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="450" />
+      <option name="time" value="464" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="tbody.getChildren(&quot;tr&quot;)" language="JAVA" custom="" />
+        <watch expression="outGoingName" language="JAVA" custom="" />
+        <watch expression="type=list.get(0).getType()" language="JAVA" custom="" />
       </configuration>
     </watches-manager>
   </component>
@@ -2089,183 +2041,344 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbSettlementEdit.js">
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="312" column="29" selection-start-line="309" selection-start-column="36" selection-end-line="312" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCostController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="132" column="6" selection-start-line="129" selection-start-column="25" selection-end-line="132" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCostController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="131" column="25" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbTargetCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbTargetCostEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
-          <caret line="172" column="19" selection-start-line="168" selection-start-column="19" selection-end-line="172" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/ScTargetCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="87" column="19" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/ScTargetCostEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="47" column="35" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbProjectTargetCostEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="151" column="34" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/model/report/wip/manhour/WoStatus.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-898">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/ScProjectTargetCostEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="131" column="28" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/wip/manhour/WoStatus.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="29" column="23" selection-start-line="28" selection-start-column="24" selection-end-line="29" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/wip/manhour/DetailOfMiscWo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/mm/MatQuato.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/mm/PaintMRP.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlementDetail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-          <folding />
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/cst/sb/SbProjectCostController.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlementDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/sm/SbSettlementDetail.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/cst/sb/SbProjectCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/complex/bi/AdditionalBill.js">
+    <entry file="file://$PROJECT_DIR$/web/app/model/sm/ScSettlement.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/complex/Bi.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementDetailMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="285">
+          <caret line="71" column="58" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/complex/bi/ProjectManuCost.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementDetailMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="8" column="177" selection-start-line="8" selection-start-column="177" selection-end-line="8" selection-end-column="177" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/Application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="33" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="33" />
-          <folding />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/AdditionalBill.js">
+    <entry file="file://$PROJECT_DIR$/web/app/store/sm/SbSettlement.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state relative-caret-position="57">
+          <caret line="3" column="19" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/store/sm/ScSettlement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1881">
+          <caret line="103" column="30" selection-start-line="103" selection-start-column="30" selection-end-line="103" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-62">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/workflow/Comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrWorkshopSettlementApprove.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrWorkshopSettlementController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3249">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrWorkshopDirectorApprove.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApprove.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondApproveGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="93" column="32" selection-start-line="93" selection-start-column="32" selection-end-line="93" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/TecHrAudit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="710" column="28" selection-start-line="710" selection-start-column="18" selection-end-line="710" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="110" column="47" selection-start-line="110" selection-start-column="47" selection-end-line="110" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1072">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/TempHrAudit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/TecHrDirectorApprove.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatchController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="115" column="67" selection-start-line="115" selection-start-column="67" selection-end-line="115" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="114" column="42" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/workflow/TaskController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1596">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/AuxCstCompose.js">
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbBusinessDivisionAudit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbHrAudit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="58" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/ScBusinessDivisionDirectorApprove.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="35" />
-          <folding />
+          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/DeptCstCtrl.js">
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/ScHrAudit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="58" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrBusinessDivisionAudit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrHrAudit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrBusinessDivisionDirectorApprove.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecond.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="56" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/sm/SrSettlement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementVoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="57" column="60" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/SrSettlementMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="64" column="29" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/TecSettlementMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="58" column="60" selection-start-line="58" selection-start-column="60" selection-end-line="58" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/TemporaryMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/print.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -2273,226 +2386,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/MajorDevCst.js">
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbBusinessDivisionDirectorApprove.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="38">
+          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/ManuCstCompose.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
+        <state relative-caret-position="-2223">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/ProjectAuxCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/ProjectCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/ProjectCstCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/ProjectDevMatCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/ProjectInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/ProjectInProcess.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/bi/ProjectManuCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/ss/SafetyFine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1710">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/ss/SafetyFineEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/qm/QualityFineEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/AdditionalBill.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/Contract.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/ContractEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/DeptCstCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1083">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/MajorDevCstEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/Project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1581">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/ProjectCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-912">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/ProjectTargetCost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="39" column="27" selection-start-line="33" selection-start-column="31" selection-end-line="39" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/ProjectCostEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="78" column="35" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/ProjectInProcess.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/ProjectSchedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/ProjectCstCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="71" column="27" selection-start-line="70" selection-start-column="34" selection-end-line="71" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMain.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="27" selection-start-line="0" selection-start-column="0" selection-end-line="72" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/SbSettlement.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/ScSettlement.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SbSettlementServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="176" column="113" selection-start-line="176" selection-start-column="37" selection-end-line="176" selection-end-column="113" />
           <folding />
         </state>
       </provider>

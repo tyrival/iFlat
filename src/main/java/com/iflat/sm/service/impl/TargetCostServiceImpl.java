@@ -12,6 +12,7 @@ import com.iflat.sm.service.ScSettlementVoService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ReflectUtil;
 import com.iflat.util.Session;
+import com.iflat.util.StringUtil;
 import org.springframework.oxm.ValidationFailureException;
 
 import java.util.*;
@@ -184,10 +185,10 @@ public class TargetCostServiceImpl extends BaseServiceSupport {
 
         for(int i = 0; i < list.size(); i++) {
             TargetCost o = (TargetCost)list.get(i);
-            if(o.getProjNo() == null || o.getProjNo() == "") {
+            if(StringUtil.isBlank(o.getProjNo())) {
                 throw new ValidationFailureException("第" + (i + 1) + "行工号为空，请修改后重新导入");
             }
-            if(o.getCostAccount() == null || o.getCostAccount() == "") {
+            if(StringUtil.isBlank(o.getCostAccount())) {
                 throw new ValidationFailureException("第" + (i + 1) + "成本科目代码为空，请修改后重新导入");
             }
 

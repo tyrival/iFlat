@@ -3,15 +3,16 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
     alias: 'widget.sm-sbtargetcost',
 
     requires: [
+        'Ext.grid.plugin.Exporter',
         'iFlat.view.sm.SbTargetCostController'
     ],
 
     controller: 'sm-sbtargetcost',
 
-    store: smSbTargetCostStore = Ext.create('iFlat.store.sm.TargetCostVo', {
+    store: smSbProjectTargetCostStore = Ext.create('iFlat.store.sm.ProjectTargetCostVo', {
         proxy: {
             extraParams: {
-                'targetCostVo.type': '造船'
+                'projectTargetCostVo.type': '造船'
             }
         }
     }),
@@ -78,31 +79,23 @@ Ext.define('iFlat.view.sm.SbTargetCost', {
         handler: 'split',
     }, {
         header: 'id',
-        dataIndex: 'targetCostVo.id',
+        dataIndex: 'projectTargetCostVo.id',
         hidden: true
     }, {
         header: '工号',
         width: 150,
-        dataIndex: 'targetCostVo.projNo',
+        dataIndex: 'projectTargetCostVo.projNo',
     }, {
         header: '船名',
         flex: true,
-        dataIndex: 'targetCostVo.projName',
-    }, {
-        header: '成本科目代码',
-        width: 200,
-        dataIndex: 'targetCostVo.costAccount',
-    }, {
-        header: '成本科目',
-        width: 200,
-        dataIndex: 'targetCostVo.costAccountName',
+        dataIndex: 'projectTargetCostVo.projName',
     }, {
         header: '金额',
         width: 200,
-        dataIndex: 'targetCostVo.amount',
+        dataIndex: 'projectTargetCostVo.amount',
     }, {
         header: '已分配',
         width: 200,
-        dataIndex: 'targetCostVo.distribution',
+        dataIndex: 'projectTargetCostVo.distribution',
     }],
 });

@@ -83,27 +83,32 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatchController', {
 
         var panel = btn.up('sm-temporaryapprovebatch');
         var form = panel.down('form');
+        var comment = form.down('textarea[name=comment]');
+        var text = btn.getText();
+        text = text === '通过' ? 'pass' : 'reject';
+        var grid = form.down('grid');
+        var arr = grid.getSelectionModel().getSelection();
+        var param = Flat.util.arrayToUrlParamList(arr, 'temporaryList', true);
+        param['outGoingName'] = text;
+        if (Flat.util.isEmpty(comment.getValue())) {
+            var c = text === 'pass' ? '同意' : '不同意';
+            comment.setValue(c);
+        }
         if (form.isValid()) {
-            var text = btn.getText();
-            text = text === '通过' ? 'pass' : 'reject';
             form.submit({
                 url: 'sm_approveTemporaryBatch.action',
                 waitMsg: '提交中...',
-                params: {
-                    'outGoingName': text,
-                },
+                params: param,
                 method: 'POST',
                 success: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    btn.up('window').hide();
-                    Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
-                    form.down('textarea[name=comment]').setValue('同意');
+                    grid.getStore().reload();
+                    form.down('textarea[name=comment]').setValue('');
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    btn.up('window').hide();
-                    Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
-                    form.down('textarea[name=co`mment]').setValue('同意');
+                    grid.getStore().reload();
+                    form.down('textarea[name=comment]').setValue('');
                 }
             })
         }

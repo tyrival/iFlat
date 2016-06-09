@@ -30,6 +30,25 @@ public class SrSettlement {
     private String settleFirstName;
     private Date settleFirstTime;
 
+    private String teamAcc;
+    private String teamName;
+
+    public String getTeamAcc() {
+        return teamAcc;
+    }
+
+    public void setTeamAcc(String teamAcc) {
+        this.teamAcc = teamAcc;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
     public String getSettleFirstAcc() {
         return settleFirstAcc;
     }

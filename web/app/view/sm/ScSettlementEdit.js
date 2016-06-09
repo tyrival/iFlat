@@ -315,7 +315,7 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
                         editable: false,
                     }
                 }, {
-                    header: '内容',
+                    header: '施工内容',
                     width: 200,
                     dataIndex: 'scSettlementDetail.content',
                     shrinkWrap: 1,

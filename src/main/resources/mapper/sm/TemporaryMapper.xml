@@ -44,7 +44,7 @@
             <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
             <if test="status!=null">AND status=#{status}</if>
         </where>
-        ORDER BY month DESC,dept,createTime
+        ORDER BY (CASE status WHEN '未提交' THEN 0 ELSE 1 END),month DESC,dept,createTime
     </select>
 
     <resultMap type="com.iflat.sm.bean.Temporary" id="SmTemporaryResult">

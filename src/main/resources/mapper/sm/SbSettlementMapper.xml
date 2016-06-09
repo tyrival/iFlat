@@ -55,7 +55,7 @@
             <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
         </where>
-        ORDER BY month DESC,projNo,deptName,team,status,id
+        ORDER BY (CASE status WHEN '未提交' THEN 0 ELSE 1 END),month DESC,projNo,deptName,team,status,id
     </select>
 
     <resultMap type="com.iflat.sm.bean.SbSettlement" id="SmSbSettlementResult">

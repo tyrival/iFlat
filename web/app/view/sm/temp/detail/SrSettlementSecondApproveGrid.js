@@ -21,6 +21,14 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondApproveGrid', {
         },
     }),
 
+    selModel: {
+        type: 'spreadsheet',
+        columnSelect: true,
+        checkboxSelect: true,
+        pruneRemoved: false,
+        extensible: 'y',
+    },
+    
     tbar: ['->', {
         xtype: 'textfield',
         name: 'summaryAmountSecond',
