@@ -68,10 +68,7 @@
             <td type="string" isnullable="false" value="施工内容" />
             <td type="string" isnullable="false" value="规格" />
             <td type="string" isnullable="false" value="单位" />
-            <td type="string" isnullable="false" value="数量1" />
-            <td type="string" isnullable="false" value="数量2" />
-            <td type="string" isnullable="false" value="数量3" />
-            <td type="string" isnullable="false" value="数量4" />
+            <td type="string" isnullable="false" value="数量" />
             <td type="string" isnullable="false" value="单价" />
             <td type="string" isnullable="false" value="金额" />
             <td type="string" isnullable="false" value="备注" />
@@ -81,9 +78,6 @@
             <td type="string" isnullable="false" />
             <td type="string" maxlength="30" />
             <td type="string" maxlength="30" />
-            <td type="numeric" format="##0.00" />
-            <td type="numeric" format="##0.00" />
-            <td type="numeric" format="##0.00" />
             <td type="numeric" format="##0.00" />
             <td type="numeric" format="##0.00" />
             <td type="numeric" format="##0.00" />

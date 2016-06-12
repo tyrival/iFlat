@@ -44,14 +44,14 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
     closeAction: 'hide',
     id: 'sm-srsettlementsecond',
     width: '95%',
-
+    
     tbar: [{
         xtype: 'form',
         items: [{
             xtype: 'fileuploadfield',
             name: 'upload',
             buttonText: '选择...',
-            width: 140,
+            width: 250,
             margin: '0 0 0 0',
         }, ]
     }, {
@@ -67,12 +67,14 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 700,
+        //width: '100%',
+        maxHeight: 500,
         scollable: 'y',
-        layout: {
+        layout: 'vbox',
+        /*layout: {
             type: 'vbox',
             align: 'stretch'
-        },
+        },*/
         items: [{
             xtype: 'form',
             name: 'sm-srsettlementsecondedit-form',
@@ -92,7 +94,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                     //hidden: true,
                     listeners: {
                         change: function(combo, newValue, oldValue, eOpts) {
-                            debugger
                             // 将下一个控件的store根据部门值联动
                             var store = combo.nextSibling('combo').getStore()
                             store.getProxy().extraParams['team.deptName']= newValue;
@@ -166,19 +167,19 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                 items: [{
                     xtype: 'textfield',
                     fieldLabel: '工号',
-                    //hidden: true,
+                    hidden: true,
                     name: 'srSettlementSecond.projNo',
                     width: 180,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '船名',
-                    //hidden: true,
+                    hidden: true,
                     name: 'srSettlementSecond.projName',
                     width: 310,
                 }, {
                     xtype: 'textfield',
                     fieldLabel: '进度%',
-                    //hidden: true,
+                    hidden: true,
                     name: 'srSettlementSecond.progress',
                     width: 150,
                 }, {
@@ -188,7 +189,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                     listeners: {
                         change: 'loadBusinessObjByTaskId'
                     },
-                    //hidden: true,
+                    hidden: true,
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.id',
@@ -202,7 +203,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.type',
-                    //hidden: true,
+                    hidden: true,
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.status',
@@ -306,7 +307,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                 type: 'hbox',
                 margin: '10 0 0 0',
                 items: [{
-                    xtype: 'textarea',
+                    xtype: 'textfield',
                     name: 'srSettlementSecond.comment',
                     fieldLabel: '备注',
                     width: '100%',
@@ -341,7 +342,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
             border: false,
             width: '100%',
             name: 'detail',
-            height: 350,
+            height: 250,
             margin: '10 0 10 0',
             layout: {
                 type: 'hbox',

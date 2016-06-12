@@ -194,13 +194,52 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                 }]
             }, {
                 xtype: 'container',
-                type: 'hbox',
+                layout: 'hbox',
                 margin: '10 0 0 0',
                 items: [{
                     xtype: 'textfield',
                     name: 'srSettlement.comment',
                     fieldLabel: '备注',
-                    width: 800,
+                    width: 600,
+                }, {
+                    xtype: 'textfield',
+                    name: 'srSettlement.teamName',
+                    fieldLabel: '确认人',
+                    width: 200,
+                    listeners: {
+                        change: function (textfield, newValue, oldValue, eOpts) {
+                            var reg = new RegExp("^[0-9]*$");
+                            if (reg.test(newValue)) {
+                                Flat.util.mask();
+                                Ext.Ajax.request({
+                                    url: 'code_listCardInfo.action',
+                                    method: 'post',
+                                    params: {
+                                        'cardInfo.cardFixNo': newValue
+                                    },
+                                    success: function(response, opts) {
+                                        Flat.util.unmask();
+                                        var o = Ext.JSON.decode(response.responseText)['list'];
+                                        var acc = o[0]['empNo'];
+                                        var name = o[0]['empName'];
+                                        textfield.setValue(name);
+                                        textfield.nextSibling('textfield[name=srSettlement.teamAcc]').setValue(acc);
+                                    },
+                                    failure: function(response, opts) {
+                                        Flat.util.unmask();
+                                        Flat.util.tip(response.responseText);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }, {
+                    xtype: 'textfield',
+                    name: 'srSettlement.teamAcc',
+                    fieldLabel: '确认人',
+                    width: 200,
+                    editable: false,
+                    hidden: true
                 }]
             }, {
                 xtype: 'container',

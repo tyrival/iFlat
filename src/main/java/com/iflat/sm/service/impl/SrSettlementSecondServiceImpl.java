@@ -32,7 +32,7 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
 
     private BaseService teamService;
     private SrSettlementSecond srSettlementSecond;
-    private String srtype;
+    //private String srtype;
     private Map<String, Object> map;
 
     @Override
@@ -96,7 +96,8 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
         List list = super.getImportList();
         SrSettlementSecond o = (SrSettlementSecond) list.get(0);
         o.setId(UUID.randomUUID().toString());
-        o.setType(srtype);
+        o.setPid(this.srSettlementSecond.getPid());
+        o.setType(this.srSettlementSecond.getType());
         UserInfoVo user = Session.getUserInfo();
         o.setDeptName(user.getPorgName());
         o.setCreatorAcc(user.getAccount());
@@ -179,12 +180,12 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
         reader.setStartRow(3);
         reader.setEndRow(0);
         reader.setEndColumn(0);
-        reader.setProps(new String[]{"type", "content", "specs", "unit", "settleQty1", "settleQty2", "settleQty3", "settleQty4", "price", "settleAmount", "comment"});
+        reader.setProps(new String[]{"type", "content", "specs", "unit", "qty1", "price", "amount", "comment"});
 
         //读取excel
         List list = ExcelUtil.read(reader);
         for (int i = 0; i < list.size(); i++) {
-            SrSettlementDetlSecond o = (SrSettlementDetlSecond) list.get(0);
+            SrSettlementDetlSecond o = (SrSettlementDetlSecond) list.get(i);
 
             if (StringUtil.isBlank(o.getContent())) {
                 throw new Exception("导入失败。第" + i + "行施工内容为空，请填写后重新导入。");
@@ -215,8 +216,8 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
     }
 
     @Override
-    public Map importExcel(File file, String fileName, String type) throws Exception {
-        this.srtype = type;
+    public Map importExcel(File file, String fileName, SrSettlementSecond srSettlementSecond) throws Exception {
+        this.srSettlementSecond = srSettlementSecond;
         List list = this.importExcel(file, fileName);
         getMap().put("head", list);
         return this.map;
@@ -262,13 +263,6 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
         this.teamService = teamService;
     }
 
-    public String getSrtype() {
-        return srtype;
-    }
-
-    public void setSrtype(String srtype) {
-        this.srtype = srtype;
-    }
 
     public SrSettlementSecond getSrSettlementSecond() {
         return srSettlementSecond;

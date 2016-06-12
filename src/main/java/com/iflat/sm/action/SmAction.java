@@ -590,7 +590,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String importSrSettlementSecond() throws Exception {
-        this.result.setMap(this.srSettlementSecondService.importExcel(this.upload, this.uploadFileName, this.srtype));
+        this.result.setMap(this.srSettlementSecondService.importExcel(this.upload, this.uploadFileName, this.srSettlementSecond));
         return SUCCESS;
     }
 
@@ -609,6 +609,8 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String deleteSrSettlementSecond() throws Exception {
+        this.srSettlementDetlSecond.setPid(this.srSettlementSecond.getId());
+        this.srSettlementDetlSecondService.delete(this.srSettlementDetlSecond);
         this.result.setObject(this.srSettlementSecondService.delete(this.srSettlementSecond));
         return SUCCESS;
     }

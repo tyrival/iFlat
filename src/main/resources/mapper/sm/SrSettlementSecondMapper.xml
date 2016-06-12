@@ -12,7 +12,7 @@
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlementSecond
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.pid},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},,#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.mgrScore},#{item.progressScore},#{item.qualityScore},#{item.safetyScore},#{item.fineAmount}
+            SELECT #{item.id},#{item.pid},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.mgrScore},#{item.progressScore},#{item.qualityScore},#{item.safetyScore},#{item.fineAmount}
         </foreach>
     </insert>
 

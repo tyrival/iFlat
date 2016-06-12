@@ -188,11 +188,13 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlementController', {
                 success: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
                     win.hide();
+                    win.down('form[name=approve]').down('textarea[name=comment]').setValue('');
                     Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
                     win.hide();
+                    win.down('form[name=approve]').down('textarea[name=comment]').setValue('');
                     Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
                 }
             })

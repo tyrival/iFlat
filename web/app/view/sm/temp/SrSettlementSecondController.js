@@ -43,7 +43,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
 
     // 新增/编辑二级结算清单，机电修理类型下，此按钮是隐藏的，所以不做考虑
     editSecond: function (cmp, rowIndex, colIndex, item, e, record, row) {
-        debugger
         // 查询二级结算窗口
         var win = Ext.getCmp('sm-srsettlementsecond');
         if (!win) {
@@ -217,7 +216,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
     },
     
     updateDetail: function(editor, context, eOpts) {
-debugger
         // 需要判断是否需创建头信息
         var grid = editor.getCmp();
         var store = grid.getStore();
@@ -324,7 +322,9 @@ debugger
     },
     
     uploadFile: function(btn) {
-        var type = btn.up('window').down('textfield[name=srSettlementSecond.type]').getValue()
+        var win = btn.up('window');
+        var type = win.down('textfield[name=srSettlementSecond.type]').getValue()
+        var pid = win.down('textfield[name=srSettlementSecond.pid]').getValue()
         var form = btn.previousSibling('form');
         if (form.isValid()) {
             form.submit({
@@ -332,13 +332,19 @@ debugger
                 method: 'POST',
                 waitMsg: '正在导入......',
                 params: {
-                    'srtype': type
+                    'srSettlementSecond.type': type,
+                    'srSettlementSecond.pid': pid,
                 },
                 success: function (fp, o) {
+                    debugger
                     Flat.util.tip(o.response.responseText);
-                    /*var map = Ext.JSON.decode(o.response.responseText)['map'];
-                    var head = map['head'];
-                    var detail = map['detail'];*/
+                    var map = Ext.JSON.decode(o.response.responseText)['map'];
+                    var head = map['head'][0];
+                    var id = head['id'];
+                    win.down('textfield[name=srSettlementSecond.id]').setValue(id);
+                    var store = win.down('sm-detail-srsettlementseconddetail' + type.toLowerCase()).getStore();
+                    store.getProxy().extraParams['srSettlementDetlSecond.pid'] = id;
+                    store.reload();
                     
                 },
                 failure: function (fp, o) {

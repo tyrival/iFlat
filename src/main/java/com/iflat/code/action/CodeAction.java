@@ -2,6 +2,7 @@ package com.iflat.code.action;
 
 import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.service.BaseService;
+import com.iflat.code.bean.CardInfo;
 import com.iflat.code.bean.Group;
 import com.iflat.code.bean.Team;
 import com.iflat.code.bean.Worker;
@@ -17,6 +18,8 @@ public class CodeAction extends BaseAction {
     private BaseService workerService;
     private Group group;
     private BaseService groupService;
+    private CardInfo cardInfo;
+    private BaseService cardInfoService;
 
     public String listWorker() throws Exception {
         this.result.setList(this.workerService.list(this.worker));
@@ -30,6 +33,11 @@ public class CodeAction extends BaseAction {
 
     public String listGroup() throws Exception {
         this.result.setList(this.groupService.list(this.group));
+        return SUCCESS;
+    }
+
+    public String listCardInfo() throws Exception {
+        this.result.setList(this.cardInfoService.list(this.cardInfo));
         return SUCCESS;
     }
 
@@ -79,5 +87,21 @@ public class CodeAction extends BaseAction {
 
     public void setWorkerService(BaseService workerService) {
         this.workerService = workerService;
+    }
+
+    public CardInfo getCardInfo() {
+        return cardInfo;
+    }
+
+    public void setCardInfo(CardInfo cardInfo) {
+        this.cardInfo = cardInfo;
+    }
+
+    public BaseService getCardInfoService() {
+        return cardInfoService;
+    }
+
+    public void setCardInfoService(BaseService cardInfoService) {
+        this.cardInfoService = cardInfoService;
     }
 }

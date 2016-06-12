@@ -99,6 +99,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
         // 如果不是机电修理类型，则不显示工程队选择菜单
         var team = window.down('combo[name=srSettlement.team]');
         team.setHidden(type != 'sys');
+        var teamAcc = window.down('textfield[name=srSettlement.teamName]');
+        teamAcc.setHidden(type != 'sys');
         if (type != 'sys') {
             team.setValue(null);
         }

@@ -123,7 +123,7 @@
     <bean id="targetCostAccount" class="com.iflat.sm.bean.TargetCostAccount" scope="prototype"/>
 
     <bean id="targetCostSplitService" class="com.iflat.sm.service.impl.TargetCostSplitServiceImpl">
-        <property name="targetCostVoService" ref="targetCostVoService"/>
+        <property name="projectTargetCostVoService" ref="projectTargetCostVoService"/>
         <property name="sbSettlementVoService" ref="sbSettlementVoService"/>
         <property name="scSettlementVoService" ref="scSettlementVoService"/>
     </bean>

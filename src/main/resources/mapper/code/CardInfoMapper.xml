@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Code.CardInfo">
+
+    <select id="list" parameterType="com.iflat.code.bean.CardInfo" resultMap="codeCardInfoResult">
+        SELECT cardFixNo,empNo,empName
+        FROM code.dbo.V_CardInfo
+        <where>
+            <if test="cardFixNo!=null">cardFixNo=#{cardFixNo}</if>
+            <if test="empNo!=null">AND empNo=#{empNo}</if>
+            <if test="empName!=null">AND empName=#{empName}</if>
+        </where>
+        ORDER BY empNo
+    </select>
+
+    <resultMap type="com.iflat.code.bean.CardInfo" id="codeCardInfoResult">
+        <result property="cardFixNo" column="cardFixNo" jdbcType="VARCHAR"/>
+        <result property="empNo" column="empNo" jdbcType="VARCHAR"/>
+        <result property="empName" column="empName" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

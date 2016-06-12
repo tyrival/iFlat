@@ -11,6 +11,8 @@
         <property name="team" ref="team"/>
         <property name="groupService" ref="groupService"/>
         <property name="group" ref="group"/>
+        <property name="cardInfoService" ref="cardInfoService"/>
+        <property name="cardInfo" ref="cardInfo"/>
     </bean>
 
     <bean id="groupService" class="com.iflat.code.service.impl.GroupServiceImpl">
@@ -28,7 +30,13 @@
     <bean id="teamDao" class="com.iflat.code.dao.impl.TeamDaoImpl">
     </bean>
 
+    <bean id="cardInfoService" class="com.iflat.code.service.impl.CardInfoServiceImpl">
+    </bean>
+    <bean id="cardInfoDao" class="com.iflat.code.dao.impl.CardInfoDaoImpl">
+    </bean>
+
     <bean id="team" class="com.iflat.code.bean.Team" scope="prototype"/>
     <bean id="worker" class="com.iflat.code.bean.Worker" scope="prototype"/>
     <bean id="group" class="com.iflat.code.bean.Group" scope="prototype"/>
+    <bean id="cardInfo" class="com.iflat.code.bean.CardInfo" scope="prototype"/>
 </beans>

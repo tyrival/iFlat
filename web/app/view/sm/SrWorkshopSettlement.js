@@ -2,32 +2,27 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.sm-srworkshopsettlement',
 
-    layout: {
-        type: 'vbox',
-        align: 'stretch'
-    },
-
     requires: [
         'iFlat.view.sm.SrWorkshopSettlementController',
         'iFlat.view.sm.temp.detail.SrSettlementSecondGrid',
         'iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys'
     ],
 
-    scrollable: 'true',
-    maxHeight: 500,
     controller: 'sm-srworkshopsettlement',
     closeAction: 'hide',
 
+    layout: {
+        type: 'vbox',
+        align: 'stretch'
+    },
+
     items: [{
         xtype: 'container',
-        margin: '0 15 0 15',
-        maxHeight: 500,
+        margin: '0 0 0 15',
         width: '100%',
-        scollable: 'y',
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
+        layout: 'vbox',
+        maxHeight: 550,
+        scrollable: 'y',
         items: [{
             xtype: 'form',
             fieldDefaults: {
@@ -185,7 +180,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
         }, {
             xtype: 'form',
             name: 'approve',
-            margin: '20 0 30 0',
+            margin: '10 0 10 0',
             fieldDefaults: {
                 labelAlign: 'right',
                 labelWidth: 50,
@@ -299,9 +294,9 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                 labelAlign: 'top',
                 fieldLabel: '审批意见',
                 allowBlank: false,
-                height: 20,
+                //height: 20,
                 width: '100%',
-                value: '同意',
+                value: '',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

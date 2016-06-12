@@ -9,6 +9,7 @@ Ext.define('iFlat.view.workflow.TaskController', {
     deal: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
         var formKey = record.get('formKey');
         var viewName = 'iFlat.view.' + formKey;
+        //debugger
         var id = 'win-' + formKey.replace(/\./g, '-').toLowerCase();
         var win = Ext.getCmp(id);
         if(!win) {
@@ -41,7 +42,7 @@ Ext.define('iFlat.view.workflow.TaskController', {
         if(!win) {
             win = Ext.create('iFlat.view.workflow.ProcessImage');
         }
-        Ext.getCmp('workflow-processimage-taskid').setValue("111");
+        Ext.getCmp('workflow-processimage-taskid').setValue("");
         win.show();
     }
 })
