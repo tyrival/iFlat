@@ -142,7 +142,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                     }, {
                         xtype: 'textfield',
                         name: 'srSettlement.laborAmount',
-                        fieldLabel: '人工费',
+                        fieldLabel: '工程总价',
                         width: 150,
                     }, {
                         xtype: 'textfield',

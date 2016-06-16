@@ -48,7 +48,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMain', {
         header: '施工内容',
         width: 200,
         dataIndex: 'srSettlementDetlFirst.applyContent',
-        shrinkWrap: 1
+        cellWrap: true,
     }, {
         header: '施工内容（确认）',
         width: 200,
@@ -81,7 +81,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMain', {
         }
     }, {
         header: '规格',
-        dataIndex: 'srSettlementDetlFirst.spec',
+        dataIndex: 'srSettlementDetlFirst.specs',
     }, {
         header: '单位',
         dataIndex: 'srSettlementDetlFirst.unit',

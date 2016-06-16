@@ -126,7 +126,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                     items: [{
                         xtype: 'textfield',
                         name: 'laborAmount',
-                        fieldLabel: '人工费',
+                        fieldLabel: '工程总价',
                         width: 170,
                     }, {
                         xtype: 'textfield',
@@ -197,7 +197,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.laborAmount',
-                    fieldLabel: '人工费',
+                    fieldLabel: '工程总价',
                     allowBlank: true,
                     width: 180,
                     listeners: {

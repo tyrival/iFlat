@@ -36,7 +36,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementFirstMisc', {
         header: '施工内容',
         width: 200,
         dataIndex: 'srSettlementDetlFirst.adjustContent',
-        shrinkWrap: 1,
+        cellWrap: true,
     }, {
         header: '数量',
         dataIndex: 'srSettlementDetlFirst.adjustQty1',
@@ -44,25 +44,34 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementFirstMisc', {
         header: '结算数量',
         dataIndex: 'srSettlementDetlFirst.settleQty1',
         editor: {
+            name: 'srSettlementDetlFirst.settleQty1',
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+            listeners: {
+                change: 'calcAmount'
+            }
         }
     }, {
         header: '单价',
         align: 'right',
         dataIndex: 'srSettlementDetlFirst.price',
         editor: {
+            name: 'srSettlementDetlFirst.price',
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+            listeners: {
+                change: 'calcAmount'
+            }
         }
     }, {
         header: '金额',
         align: 'right',
         dataIndex: 'srSettlementDetlFirst.amount',
         editor: {
+            name: 'srSettlementDetlFirst.amount',
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
         }
     }, {
         header: '规格',
-        dataIndex: 'srSettlementDetlFirst.spec',
+        dataIndex: 'srSettlementDetlFirst.specs',
     }, {
         header: '单位',
         dataIndex: 'srSettlementDetlFirst.unit',
@@ -70,6 +79,6 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementFirstMisc', {
         header: '备注',
         width: 150,
         dataIndex: 'srSettlementDetlFirst.comment',
-        shrinkWrap: 1,
+        cellWrap: true,
     }],
 });

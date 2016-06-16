@@ -52,18 +52,24 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailMain', {
         header: '施工内容',
         width: 200,
         dataIndex: 'srSettlementDetlSecond.content',
-        shrinkWrap: 1,
+        cellWrap: true,
         editor: {
+            xtype: 'textarea',
             allowBlank: false
         }
     }, {
         header: '数量',
         dataIndex: 'srSettlementDetlSecond.qty1',
         editor: {
+            name: 'srSettlementDetlSecond.qty1',
+            regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+            listeners: {
+                change: 'calcAmount'
+            }
         }
     }, {
         header: '规格',
-        dataIndex: 'srSettlementDetlSecond.spec',
+        dataIndex: 'srSettlementDetlSecond.specs',
         editor: {
         }
     }, {
@@ -76,13 +82,18 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailMain', {
         align: 'right',
         dataIndex: 'srSettlementDetlSecond.price',
         editor: {
+            name: 'srSettlementDetlSecond.price',
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+            listeners: {
+                change: 'calcAmount'
+            }
         }
     }, {
         header: '金额',
         align: 'right',
         dataIndex: 'srSettlementDetlSecond.amount',
         editor: {
+            name: 'srSettlementDetlSecond.amount',
             allowBlank: false,
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
         }
@@ -92,7 +103,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailMain', {
         dataIndex: 'srSettlementDetlSecond.comment',
         editor: {
         },
-        shrinkWrap: 1,
+        cellWrap: true,
     }, {
         text: '删除',
         width: 50,

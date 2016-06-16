@@ -151,7 +151,7 @@ Ext.define('iFlat.view.sm.temp.TecSettlementApproveBatch', {
                         header: '备注',
                         width: 150,
                         dataIndex: 'tecSettlement.comment',
-                        shrinkWrap: 1,
+                        cellWrap: true,
                     }],
                 }]
             }, {

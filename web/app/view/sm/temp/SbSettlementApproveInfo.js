@@ -180,7 +180,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
                             header: '内容',
                             width: 200,
                             dataIndex: 'sbSettlementDetail.content',
-                            shrinkWrap: 1,
+                            cellWrap: true,
                         }, {
                             header: '金额',
                             dataIndex: 'sbSettlementDetail.amount',
@@ -205,7 +205,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
                             header: '备注',
                             width: 150,
                             dataIndex: 'sbSettlementDetail.comment',
-                            shrinkWrap: 1,
+                            cellWrap: true,
                         }],
                     }]
                 }]

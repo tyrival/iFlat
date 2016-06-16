@@ -67,7 +67,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        //width: '100%',
         maxHeight: 500,
         scollable: 'y',
         layout: 'vbox',
@@ -105,8 +104,11 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                     name: 'srSettlementSecond.team',
                     queryMode: 'local',
                     allowBlank: false,
-                    editable: false,
+                    editable: true,
+                    typeAhead: true,
+                    minChars: 0,
                     forceSelection : true,
+                    anyMatch: true,
                     displayField: 'teamName',
                     valueField: 'teamName',
                     width: 380,
@@ -215,7 +217,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                 items: [{
                     xtype: 'textfield',
                     name: 'srSettlementSecond.laborAmount',
-                    fieldLabel: '人工费',
+                    fieldLabel: '工程总价',
                     width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'

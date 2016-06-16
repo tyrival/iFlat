@@ -222,14 +222,21 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                                         var o = Ext.JSON.decode(response.responseText)['list'];
                                         var acc = o[0]['empNo'];
                                         var name = o[0]['empName'];
-                                        textfield.setValue(name);
-                                        textfield.nextSibling('textfield[name=srSettlement.teamAcc]').setValue(acc);
+                                        if (Flat.util.isEmpty(acc)) {
+                                            textfield.nextSibling('textfield[name=srSettlement.teamAcc]').setValue('');
+                                        } else {
+                                            textfield.setValue(name);
+                                            textfield.nextSibling('textfield[name=srSettlement.teamAcc]').setValue(acc);
+                                        }
                                     },
                                     failure: function(response, opts) {
                                         Flat.util.unmask();
                                         Flat.util.tip(response.responseText);
+                                        textfield.nextSibling('textfield[name=srSettlement.teamAcc]').setValue('');
                                     }
                                 });
+                            } else {
+                                textfield.nextSibling('textfield[name=srSettlement.teamAcc]').setValue('');
                             }
                         }
                     }
@@ -239,7 +246,17 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     fieldLabel: '确认人',
                     width: 200,
                     editable: false,
-                    hidden: true
+                    hidden: true,
+                    listeners: {
+                        change: function (textfield, newValue, oldValue, eOpts) {
+                            var plugin = textfield.up('window').down('sm-detail-srapplysys').findPlugin('rowediting')
+                            if (Flat.util.isEmpty(newValue)) {
+                                plugin.enable();
+                            } else {
+                                plugin.disable();
+                            }
+                        }
+                    }
                 }]
             }, {
                 xtype: 'container',

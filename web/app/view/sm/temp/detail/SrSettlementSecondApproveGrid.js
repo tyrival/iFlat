@@ -98,6 +98,6 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondApproveGrid', {
         header: '备注',
         width: 150,
         dataIndex: 'srSettlementSecond.comment',
-        shrinkWrap: 1,
+        cellWrap: true,
     }],
 });

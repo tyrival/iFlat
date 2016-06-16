@@ -37,7 +37,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecondInfoSys', {
                 header: '施工内容',
                 width: 200,
                 dataIndex: 'srSettlementDetlSecond.content',
-                shrinkWrap: 1,
+                cellWrap: true,
             }, {
                 header: '数量',
                 dataIndex: 'srSettlementDetlSecond.qty1',
@@ -63,7 +63,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecondInfoSys', {
                 header: '备注',
                 width: 150,
                 dataIndex: 'srSettlementDetlSecond.comment',
-                shrinkWrap: 1,
+                cellWrap: true,
             }],
         }],
     }],

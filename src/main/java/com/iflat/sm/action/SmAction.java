@@ -92,6 +92,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     private List<SbSettlement> sbSettlementList = new ArrayList<>();
     private List<ScSettlement> scSettlementList = new ArrayList<>();
     private List<SrSettlement> srSettlementList = new ArrayList<>();
+    private List<SrSettlementSecond> srSettlementSecondList = new ArrayList<>();
     private List<TecSettlement> tecSettlementList = new ArrayList<>();
     private List<Temporary> temporaryList = new ArrayList<>();
 
@@ -464,6 +465,19 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         if (srSettlementList != null && srSettlementList.size() > 0) {
             for (int i = 0; i < srSettlementList.size(); i++) {
                 String businessKey = srSettlementService.getBusinessKey(srSettlementList.get(i));
+                 workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+            }
+        }
+        return SUCCESS;
+    }
+
+    public String approveSrSettlementSecondBatch() throws Exception {
+        if (srSettlementSecondList != null && srSettlementSecondList.size() > 0) {
+            for (int i = 0; i < srSettlementSecondList.size(); i++) {
+                SrSettlementSecond o2 = srSettlementSecondList.get(i);
+                SrSettlement o1 = new SrSettlement();
+                o1.setId(o2.getPid());
+                String businessKey = srSettlementService.getBusinessKey(o1);
                  workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
             }
         }
@@ -1429,6 +1443,14 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public void setTemporaryList(List<Temporary> temporaryList) {
         this.temporaryList = temporaryList;
+    }
+
+    public List<SrSettlementSecond> getSrSettlementSecondList() {
+        return srSettlementSecondList;
+    }
+
+    public void setSrSettlementSecondList(List<SrSettlementSecond> srSettlementSecondList) {
+        this.srSettlementSecondList = srSettlementSecondList;
     }
 
     @Override

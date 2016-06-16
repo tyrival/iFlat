@@ -204,31 +204,63 @@ public class ExcelUtil {
                             value = cell.getDateCellValue();
                             break;
                         case "class java.lang.String":
-                            value = cell.getStringCellValue().trim();
+                            try {
+                                value = cell.getStringCellValue().trim();
+                            } catch (Exception e) {
+                                value = Double.toString(cell.getNumericCellValue());
+                            }
                             break;
                         case "string":
-                            value = cell.getStringCellValue().trim();
+                            try {
+                                value = cell.getStringCellValue().trim();
+                            } catch (Exception e) {
+                                value = Double.toString(cell.getNumericCellValue());
+                            }
                             break;
                         case "boolean":
                             value = cell.getBooleanCellValue();
                             break;
                         case "class java.lang.Double":
-                            value = cell.getNumericCellValue();
+                            try {
+                                value = cell.getNumericCellValue();
+                            } catch (Exception e) {
+                                value = Double.parseDouble(cell.getStringCellValue());
+                            }
                             break;
                         case "double":
-                            value = cell.getNumericCellValue();
+                            try {
+                                value = cell.getNumericCellValue();
+                            } catch (Exception e) {
+                                value = Double.parseDouble(cell.getStringCellValue());
+                            }
                             break;
                         case "class java.lang.Float":
-                            value = cell.getNumericCellValue();
+                            try {
+                                value = cell.getNumericCellValue();
+                            } catch (Exception e) {
+                                value = Float.parseFloat(cell.getStringCellValue());
+                            }
                             break;
                         case "float":
-                            value = cell.getNumericCellValue();
+                            try {
+                                value = cell.getNumericCellValue();
+                            } catch (Exception e) {
+                                value = Float.parseFloat(cell.getStringCellValue());
+                            }
                             break;
                         case "class java.lang.Integer":
-                            value = cell.getNumericCellValue();
+                            try {
+                                value = cell.getNumericCellValue();
+                            } catch (Exception e) {
+                                value = Integer.parseInt(cell.getStringCellValue());
+                            }
                             break;
                         case "int":
-                            value = cell.getNumericCellValue();
+                            try {
+                                value = cell.getNumericCellValue();
+                            } catch (Exception e) {
+                                value = Integer.parseInt(cell.getStringCellValue());
+                            }
                             break;
                         case "class java.lang.Byte":
                             value = cell.getErrorCellValue();

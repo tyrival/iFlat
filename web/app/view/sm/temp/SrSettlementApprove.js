@@ -59,7 +59,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApprove', {
         align: 'right',
         renderer: 'amountFormat'
     }, {
-        header: '人工费',
+        header: '工程总价',
         dataIndex: 'srSettlement.laborAmount',
         align: 'right',
         renderer: 'amountFormat'

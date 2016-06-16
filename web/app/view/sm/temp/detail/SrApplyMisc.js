@@ -63,13 +63,14 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplyMisc', {
         header: '施工内容',
         width: 200,
         dataIndex: 'srSettlementDetlFirst.applyContent',
-        shrinkWrap: 1,
+        cellWrap: true,
         editor: {
+            xtype: 'textarea',
             allowBlank: false,
         }
     }, {
         header: '规格',
-        dataIndex: 'srSettlementDetlFirst.spec',
+        dataIndex: 'srSettlementDetlFirst.specs',
         editor: {
         }
     }, {

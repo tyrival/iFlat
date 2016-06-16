@@ -78,7 +78,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                     }, {
                         xtype: 'textfield',
                         name: 'laborAmount',
-                        fieldLabel: '人工费',
+                        fieldLabel: '工程总价',
                         hidden: true,
                         listeners: {
                             change: 'loadOrigRecord'
@@ -188,7 +188,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 items: [{
                     xtype: 'textfield',
                     name: 'srSettlement.laborAmount',
-                    fieldLabel: '人工费',
+                    fieldLabel: '工程总价',
                     allowBlank: false,
                     width: 210,
                     listeners: {

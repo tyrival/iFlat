@@ -168,7 +168,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatch', {
                         header: '备注',
                         width: 150,
                         dataIndex: 'sbSettlement.comment',
-                        shrinkWrap: 1,
+                        cellWrap: true,
                     }],
                 }]
             }, {

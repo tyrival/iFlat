@@ -48,12 +48,12 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMisc', {
         header: '施工内容',
         width: 200,
         dataIndex: 'srSettlementDetlFirst.applyContent',
-        shrinkWrap: 1,
+        cellWrap: true,
     }, {
         header: '施工内容（确认）',
         width: 200,
         dataIndex: 'srSettlementDetlFirst.adjustContent',
-        shrinkWrap: 1,
+        cellWrap: true,
         renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
             if (value == record.get('srSettlementDetlFirst.applyContent')) {
                 return '';
@@ -81,7 +81,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMisc', {
         }
     }, {
         header: '规格',
-        dataIndex: 'srSettlementDetlFirst.spec',
+        dataIndex: 'srSettlementDetlFirst.specs',
     }, {
         header: '单位',
         dataIndex: 'srSettlementDetlFirst.unit',
@@ -89,6 +89,6 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMisc', {
         header: '备注',
         width: 150,
         dataIndex: 'srSettlementDetlFirst.comment',
-        shrinkWrap: 1,
+        cellWrap: true,
     }],
 });

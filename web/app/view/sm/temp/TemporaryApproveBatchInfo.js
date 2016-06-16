@@ -65,7 +65,7 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatchInfo', {
                 header: '备注',
                 width: 150,
                 dataIndex: 'temporaryDetail.comment',
-                shrinkWrap: 1,
+                cellWrap: true,
             }],
         }],
     }],

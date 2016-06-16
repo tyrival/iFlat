@@ -318,8 +318,9 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
                     header: '施工内容',
                     width: 200,
                     dataIndex: 'scSettlementDetail.content',
-                    shrinkWrap: 1,
+                    cellWrap: true,
                     editor: {
+                        xtype: 'textarea',
                         allowBlank: false,
                     }
                 }, {
@@ -359,7 +360,7 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
                     header: '备注',
                     width: 150,
                     dataIndex: 'scSettlementDetail.comment',
-                    shrinkWrap: 1,
+                    cellWrap: true,
                     editor: {
                     }
                 }],

@@ -49,7 +49,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
         header: '施工内容',
         width: 200,
         dataIndex: 'srSettlementDetlSecond.content',
-        shrinkWrap: 1,
+        cellWrap: true,
     }, {
         header: '规格',
         dataIndex: 'srSettlementDetlSecond.specs',
@@ -74,6 +74,11 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
         width: 120,
         dataIndex: 'srSettlementDetlSecond.qty1',
         editor: {
+            name: 'srSettlementDetlSecond.qty1',
+            regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+            listeners: {
+                change: 'calcAmount'
+            }
         }
     }, {
         header: '单价（二级）',
@@ -81,7 +86,11 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
         width: 120,
         dataIndex: 'srSettlementDetlSecond.price',
         editor: {
+            name: 'srSettlementDetlSecond.price',
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+            listeners: {
+                change: 'calcAmount'
+            }
         }
     }, {
         header: '金额（二级）',
@@ -89,6 +98,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
         width: 120,
         dataIndex: 'srSettlementDetlSecond.amount',
         editor: {
+            name: 'srSettlementDetlSecond.amount',
             allowBlank: false,
             regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
         }
@@ -98,6 +108,6 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
         dataIndex: 'srSettlementDetlSecond.comment',
         editor: {
         },
-        shrinkWrap: 1,
+        cellWrap: true,
     }],
 });

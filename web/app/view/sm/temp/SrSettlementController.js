@@ -201,6 +201,26 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
     saveAndSubmitSrSettlementEdit: function (btn) {
         var win = btn.up('window');
         var form = win.down('form');
+        var team = form.down('textfield[name=srSettlement.teamAcc]').getValue();
+        /*if (Flat.util.isEmpty(team)) {
+            Ext.Msg.show({
+                title:'提示',
+                message: '需工程队刷卡确认后才可提交。',
+            });
+        } else {
+            form.submit({
+                url: 'sm_saveAndSubmitSrSettlement.action',
+                waitMsg: '保存中...',
+                success: function(form, action) {
+                    Flat.util.tip(action.response.responseText);
+                    win.hide();
+                    Ext.getCmp('main-view-tabpanel').getActiveTab().getStore().reload();
+                },
+                failure: function(form, action) {
+                    Flat.util.tip(action.response.responseText);
+                }
+            });
+        }*/
         form.submit({
             url: 'sm_saveAndSubmitSrSettlement.action',
             waitMsg: '保存中...',

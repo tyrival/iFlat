@@ -153,6 +153,38 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
                 }
             })
         }
-    } 
+    },
+
+    calcAmount: function (textfield, newValue, oldValue, eOpts) {
+        var name = textfield.getName();
+        var price;
+        var qty;
+        var amount;
+        switch (name) {
+            case 'srSettlementDetlSecond.price':
+                price = textfield;
+                qty = textfield.nextSibling('textfield[name=srSettlementDetlSecond.settleQty1]');
+                if (Flat.util.isEmpty(qty)) {
+                    qty = textfield.previousSibling('textfield[name=srSettlementDetlSecond.settleQty1]');
+                };
+                break;
+
+            case 'srSettlementDetlSecond.settleQty1':
+                qty = textfield;
+                price = textfield.nextSibling('textfield[name=srSettlementDetlSecond.price]');
+                if (Flat.util.isEmpty(price)) {
+                    price = textfield.previousSibling('textfield[name=srSettlementDetlSecond.price]');
+                };
+                break;
+
+        }
+        amount = textfield.nextSibling('textfield[name=srSettlementDetlSecond.amount]');
+        if (Flat.util.isEmpty(amount)) {
+            amount = textfield.previousSibling('textfield[name=srSettlementDetlSecond.amount]');
+        };
+
+        var a = price.getValue() * qty.getValue();
+        amount.setValue(a);
+    }
     
 });

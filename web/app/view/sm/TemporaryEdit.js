@@ -194,7 +194,7 @@ Ext.define('iFlat.view.sm.TemporaryEdit', {
                     header: '工程队',
                     width: 280,
                     dataIndex: 'temporaryDetail.team',
-                    shrinkWrap: 1,
+                    cellWrap: true,
                     editor: {
                         xtype: 'combo',
                         queryMode: 'local',
@@ -272,7 +272,7 @@ Ext.define('iFlat.view.sm.TemporaryEdit', {
                     header: '备注',
                     width: 150,
                     dataIndex: 'temporaryDetail.comment',
-                    shrinkWrap: 1,
+                    cellWrap: true,
                     editor: {
                     }
                 }],

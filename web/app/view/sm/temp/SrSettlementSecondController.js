@@ -165,11 +165,11 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
                 waitMsg: '保存中...',
                 success: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    //win.hide();
+                    win.hide();
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    //win.hide();
+                    win.hide();
                 }
             })
         }
@@ -336,16 +336,31 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
                     'srSettlementSecond.pid': pid,
                 },
                 success: function (fp, o) {
-                    debugger
                     Flat.util.tip(o.response.responseText);
+                    //win.hide();
                     var map = Ext.JSON.decode(o.response.responseText)['map'];
                     var head = map['head'][0];
-                    var id = head['id'];
-                    win.down('textfield[name=srSettlementSecond.id]').setValue(id);
+                    win.down('textfield[name=srSettlementSecond.id]').setValue(head['id']);
+                    win.down('textfield[name=srSettlementSecond.pid]').setValue(head['pid']);
+                    win.down('textfield[name=srSettlementSecond.type]').setValue(head['type']);
+                    win.down('textfield[name=srSettlementSecond.progress]').setValue(head['progress']);
+                    win.down('textfield[name=srSettlementSecond.projNo]').setValue(head['projNo']);
+                    win.down('textfield[name=srSettlementSecond.projName]').setValue(head['projName']);
+                    win.down('textfield[name=srSettlementSecond.deptName]').setValue(head['deptName']);
+                    win.down('textfield[name=srSettlementSecond.team]').setValue(head['team']);
+                    win.down('textfield[name=srSettlementSecond.laborAmount]').setValue(head['laborAmount']);
+                    win.down('textfield[name=srSettlementSecond.consumableAmount]').setValue(head['consumableAmount']);
+                    win.down('textfield[name=srSettlementSecond.performanceAmount]').setValue(head['performanceAmount']);
+                    win.down('textfield[name=srSettlementSecond.materialAmount]').setValue(head['materialAmount']);
+                    win.down('textfield[name=srSettlementSecond.comment]').setValue(head['comment']);
+                    win.down('textfield[name=srSettlementSecond.mgrScore]').setValue(head['mgrScore']);
+                    win.down('textfield[name=srSettlementSecond.progressScore]').setValue(head['progressScore']);
+                    win.down('textfield[name=srSettlementSecond.qualityScore]').setValue(head['qualityScore']);
+                    win.down('textfield[name=srSettlementSecond.safetyScore]').setValue(head['safetyScore']);
+                    win.down('textfield[name=srSettlementSecond.fineAmount]').setValue(head['fineAmount']);
                     var store = win.down('sm-detail-srsettlementseconddetail' + type.toLowerCase()).getStore();
-                    store.getProxy().extraParams['srSettlementDetlSecond.pid'] = id;
+                    store.getProxy().extraParams['srSettlementDetlSecond.pid'] = head['id'];
                     store.reload();
-                    
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
@@ -363,4 +378,36 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
             },
         });
     },
+
+    calcAmount: function (textfield, newValue, oldValue, eOpts) {
+        var name = textfield.getName();
+        var price;
+        var qty;
+        var amount;
+        switch (name) {
+            case 'srSettlementDetlSecond.price':
+                price = textfield;
+                qty = textfield.nextSibling('textfield[name=srSettlementDetlSecond.qty1]');
+                if (Flat.util.isEmpty(qty)) {
+                    qty = textfield.previousSibling('textfield[name=srSettlementDetlSecond.qty1]');
+                };
+                break;
+            
+            case 'srSettlementDetlSecond.qty1':
+                qty = textfield;
+                price = textfield.nextSibling('textfield[name=srSettlementDetlSecond.price]');
+                if (Flat.util.isEmpty(price)) {
+                    price = textfield.previousSibling('textfield[name=srSettlementDetlSecond.price]');
+                };
+                break;
+
+        }
+        amount = textfield.nextSibling('textfield[name=srSettlementDetlSecond.amount]');
+        if (Flat.util.isEmpty(amount)) {
+            amount = textfield.previousSibling('textfield[name=srSettlementDetlSecond.amount]');
+        };
+
+        var a = price.getValue() * qty.getValue();
+        amount.setValue(a);
+    }
 });

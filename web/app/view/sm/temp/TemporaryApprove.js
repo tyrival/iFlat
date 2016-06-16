@@ -161,7 +161,7 @@ Ext.define('iFlat.view.sm.TemporaryApprove', {
                     header: '备注',
                     width: 150,
                     dataIndex: 'srSettlementDetail.comment',
-                    shrinkWrap: 1,
+                    cellWrap: true,
                 }],
             }]
         }, {

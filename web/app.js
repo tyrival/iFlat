@@ -15,6 +15,7 @@ var application = new Ext.application({
 
     requires: [
         'iFlat.view.main.Main',
+        'Ext.ux.grid.Printer'
     ],
 
     // The name of the initial view to create. With the classic toolkit this class
@@ -50,6 +51,18 @@ Ext.Ajax.on('requestcomplete',function(conn,response,options) {
 });
 var Flat = {
     util: {
+        printGrid: function (grid) {
+            if (!grid) {
+                grid = grid.up('grid');
+            }
+            if (grid) {
+                //Ext.ux.grid.Printer.printAutomatically = false;
+                Ext.ux.grid.Printer.print(grid);
+            } else {
+                Ext.example.msg("错误", "找不到需打印的表格，请联系系统管理员", 5000);
+            }
+        },
+        
         mask: function (msg) {
             if (this.isEmpty(msg)) {
                 msg = '保存中...'

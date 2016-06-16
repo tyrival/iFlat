@@ -289,8 +289,9 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
                     header: '内容',
                     width: 200,
                     dataIndex: 'tecSettlementDetail.content',
-                    shrinkWrap: 1,
+                    cellWrap: true,
                     editor: {
+                        xtype: 'textarea',
                         allowBlank: false,
                     }
                 }, {
@@ -330,7 +331,7 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
                     header: '备注',
                     width: 150,
                     dataIndex: 'tecSettlementDetail.comment',
-                    shrinkWrap: 1,
+                    cellWrap: true,
                     editor: {
                     }
                 }],

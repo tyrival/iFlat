@@ -73,7 +73,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondGrid', {
         header: '备注',
         width: 150,
         dataIndex: 'srSettlementSecond.comment',
-        shrinkWrap: 1,
+        cellWrap: true,
     }, {
         text: '删除',
         name: 'deleteDetail',

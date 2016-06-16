@@ -12,8 +12,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecond', {
         'iFlat.view.sm.temp.detail.SrSettlementSecondApproveGrid',
     ],
 
-    scrollable: 'true',
-    maxHeight: 500,
     controller: 'sm-srsettlementapprovesecond',
     closeAction: 'hide',
 
@@ -79,7 +77,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecond', {
                 border: false,
                 width: '100%',
                 name: 'detail',
-                height: 450,
+                height: 250,
                 layout: {
                     type: 'hbox',
                     align: 'stretch'
@@ -93,7 +91,6 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecond', {
                 labelAlign: 'top',
                 fieldLabel: '审批意见',
                 allowBlank: false,
-                height: 20,
                 width: '100%',
                 value: '',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'

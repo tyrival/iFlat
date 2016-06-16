@@ -41,7 +41,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatchInfo', {
                 header: '施工内容',
                 width: 200,
                 dataIndex: 'sbSettlementDetail.content',
-                shrinkWrap: 1,
+                cellWrap: true,
             }, {
                 header: '物量',
                 dataIndex: 'sbSettlementDetail.matQty',
@@ -63,7 +63,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatchInfo', {
                 header: '备注',
                 width: 150,
                 dataIndex: 'sbSettlementDetail.comment',
-                shrinkWrap: 1,
+                cellWrap: true,
             }],
         }],
     }],
