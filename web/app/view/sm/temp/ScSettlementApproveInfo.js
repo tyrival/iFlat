@@ -2,7 +2,7 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveInfo', {
     extend: 'Ext.window.Window',
     alias: 'widget.sm-scsettlementapproveinfo',
     title: '造船结算单审批',
-    layout: 'fit',
+    //layout: 'fit',
     modal: true,
 
     requires: [
@@ -16,12 +16,9 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveInfo', {
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 500,
-        scollable: 'y',
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
+        layout: 'vbox',
+        maxHeight: 550,
+        scrollable: 'y',
         items: [{
             xtype: 'form',
             id: 'sm-scsettlementapproveinfo-form',

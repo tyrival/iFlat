@@ -16,12 +16,9 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 500,
-        scollable: 'y',
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
+        layout: 'vbox',
+        maxHeight: 550,
+        scrollable: 'y',
         items: [{
             xtype: 'form',
             id: 'sm-sbsettlementapproveinfo-form',

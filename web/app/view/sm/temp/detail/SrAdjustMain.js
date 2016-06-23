@@ -41,7 +41,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMain', {
             xtype: 'label'
         }
     }, {
-        header: '类型',
+        header: '工种',
         width: 120,
         dataIndex: 'srSettlementDetlFirst.type',
     }, {
@@ -53,7 +53,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMain', {
         header: '施工内容（确认）',
         width: 200,
         dataIndex: 'srSettlementDetlFirst.adjustContent',
-        shrinkWrap: 1,
+        cellWrap: true,
         renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
             if (value == record.get('srSettlementDetlFirst.applyContent')) {
                 return '';
@@ -62,6 +62,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustMain', {
             }
         },
         editor: {
+            xtype: 'textarea'
         }
     }, {
         header: '数量',

@@ -61,12 +61,6 @@
         <activiti:executionListener class="com.iflat.sm.listener.SrMiscExecutionHandler" event="start"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="sm.SrLeaderApprove" id="_14" name="Leader Approve">
-      <extensionElements>
-        <activiti:taskListener class="com.iflat.sm.listener.SrMiscTaskHandler" event="create"/>
-        <activiti:executionListener class="com.iflat.sm.listener.SrMiscExecutionHandler" event="start"/>
-      </extensionElements>
-    </userTask>
     <sequenceFlow id="_19" name="pass" sourceRef="_11" targetRef="_6">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
@@ -74,12 +68,6 @@
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="_24" name="pass" sourceRef="_12" targetRef="_13">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
-    </sequenceFlow>
-    <sequenceFlow id="_25" name="pass" sourceRef="_13" targetRef="_14">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
-    </sequenceFlow>
-    <sequenceFlow id="_26" name="pass" sourceRef="_14" targetRef="_3">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="_27" name="reject" sourceRef="_5" targetRef="_4">
@@ -137,9 +125,6 @@
     <sequenceFlow id="_22" name="reject" sourceRef="_9" targetRef="_8">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="reject"}]]></conditionExpression>
     </sequenceFlow>
-    <sequenceFlow id="_31" name="reject" sourceRef="_14" targetRef="_12">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="reject"}]]></conditionExpression>
-    </sequenceFlow>
     <sequenceFlow id="_10" name="pass" sourceRef="_5" targetRef="_11">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
@@ -163,6 +148,9 @@
     </sequenceFlow>
     <sequenceFlow id="_34" name="reject" sourceRef="_18" targetRef="_9">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="reject"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_31" name="pass" sourceRef="_13" targetRef="_3">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram documentation="background=#3C3F41;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0" id="Diagram-_1" name="New Diagram">
@@ -233,12 +221,6 @@
           <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="_14" id="Shape-_14">
-        <omgdc:Bounds height="55.0" width="85.0" x="430.0" y="345.0"/>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_40" id="Shape-_40">
         <omgdc:Bounds height="55.0" width="85.0" x="165.0" y="220.0"/>
         <bpmndi:BPMNLabel>
@@ -258,7 +240,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_34" id="BPMNEdge__34" sourceElement="_18" targetElement="_9">
-        <omgdi:waypoint x="415.0" y="712.5"/>
+        <omgdi:waypoint x="430.0" y="712.5"/>
         <omgdi:waypoint x="395.0" y="765.0"/>
         <omgdi:waypoint x="435.0" y="812.5"/>
         <bpmndi:BPMNLabel>
@@ -377,22 +359,8 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_23" id="BPMNEdge__23" sourceElement="_18" targetElement="_12">
-        <omgdi:waypoint x="472.5" y="670.0"/>
+        <omgdi:waypoint x="472.5" y="685.0"/>
         <omgdi:waypoint x="472.5" y="625.0"/>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_26" id="BPMNEdge__26" sourceElement="_14" targetElement="_3">
-        <omgdi:waypoint x="471.0" y="345.0"/>
-        <omgdi:waypoint x="471.0" y="262.0"/>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_25" id="BPMNEdge__25" sourceElement="_13" targetElement="_14">
-        <omgdi:waypoint x="472.5" y="460.0"/>
-        <omgdi:waypoint x="472.5" y="400.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
@@ -414,16 +382,15 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_29" id="BPMNEdge__29" sourceElement="_9" targetElement="_18">
-        <omgdi:waypoint x="475.0" y="770.0"/>
+        <omgdi:waypoint x="475.0" y="785.0"/>
         <omgdi:waypoint x="475.0" y="740.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_31" id="BPMNEdge__31" sourceElement="_14" targetElement="_12">
-        <omgdi:waypoint x="430.0" y="372.5"/>
-        <omgdi:waypoint x="400.0" y="490.0"/>
-        <omgdi:waypoint x="430.0" y="597.5"/>
+      <bpmndi:BPMNEdge bpmnElement="_31" id="BPMNEdge__31" sourceElement="_13" targetElement="_3">
+        <omgdi:waypoint x="471.0" y="460.0"/>
+        <omgdi:waypoint x="471.0" y="262.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
@@ -437,7 +404,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_33" id="BPMNEdge__33" sourceElement="_12" targetElement="_18">
-        <omgdi:waypoint x="530.0" y="597.5"/>
+        <omgdi:waypoint x="515.0" y="597.5"/>
         <omgdi:waypoint x="540.0" y="660.0"/>
         <omgdi:waypoint x="515.0" y="712.5"/>
         <bpmndi:BPMNLabel>

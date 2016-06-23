@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dh.Post">
+
+    <insert id="insert" parameterType="com.iflat.dh.bean.Post">
+        INSERT INTO DhPost
+        VALUES (#{id},#{type},#{system},#{description},#{attachment},#{comment},#{tel},#{dept},#{status},#{creatorAcc},#{creatorName},#{createTime},#{handlerAcc},#{handlerName},#{workhour},#{reason})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO DhPost
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.type},#{item.system},#{item.description},#{item.attachment},#{item.comment},#{item.tel},#{item.dept},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.handlerAcc},#{item.handlerName},#{item.workhour},#{item.reason}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.dh.bean.Post">
+        UPDATE DhPost
+        <set>
+            <if test="type!=null">type=#{type},</if>
+            <if test="system!=null">system=#{system},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+            <if test="tel!=null">tel=#{tel},</if>
+            <if test="dept!=null">dept=#{dept},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+            <if test="creatorName!=null">creatorName=#{creatorName},</if>
+            <if test="createTime!=null">createTime=#{createTime},</if>
+            <if test="handlerAcc!=null">handlerAcc=#{handlerAcc},</if>
+            <if test="handlerName!=null">handlerName=#{handlerName},</if>
+            <if test="workhour!=null">workhour=#{workhour},</if>
+            <if test="reason!=null">reason=#{reason},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.dh.bean.Post">
+        DELETE DhPost
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.dh.bean.Post" resultMap="DhPostResult">
+        SELECT id,type,system,description,attachment,comment,tel,dept,status,creatorAcc,creatorName,createTime,handlerAcc,handlerName,workhour,reason
+        FROM DhPost
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="type!=null">AND type=#{type}</if>
+            <if test="system!=null">AND system=#{system}</if>
+            <if test="description!=null">AND description LIKE '%' + #{description} + '%'</if>
+            <if test="tel!=null">AND tel=#{tel}</if>
+            <if test="dept!=null">AND dept=#{dept}</if>
+            <if test="status!=null">AND status=#{status}</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
+            <if test="handlerAcc!=null">AND handlerAcc=#{handlerAcc}</if>
+            <if test="handlerName!=null">AND handlerName=#{handlerName}</if>
+            <if test="reason!=null">AND reason LIKE '%' + #{reason} + '%'</if>
+        </where>
+        ORDER BY system, createTime DESC
+    </select>
+
+    <resultMap type="com.iflat.dh.bean.Post" id="DhPostResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="system" column="system" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="tel" column="tel" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="handlerAcc" column="handlerAcc" jdbcType="VARCHAR"/>
+        <result property="handlerName" column="handlerName" jdbcType="VARCHAR"/>
+        <result property="workhour" column="workhour" jdbcType="DOUBLE"/>
+        <result property="reason" column="reason" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

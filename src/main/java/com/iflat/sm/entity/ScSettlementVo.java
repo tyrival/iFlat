@@ -32,6 +32,16 @@ public class ScSettlementVo {
     private String creatorAccDetl;
     private String creatorNameDetl;
     private Date createTimeDetl;
+    private Date settlementTime;
+
+    public Date getSettlementTime() {
+        return settlementTime;
+    }
+
+    public void setSettlementTime(Date settlementTime) {
+        this.settlementTime = settlementTime;
+    }
+
 
     public String getId() {
         return id;

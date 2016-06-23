@@ -36,6 +36,15 @@ public class SafetyFine {
     private String creator;  //录入人
     private Date createTime;  //录入日期
     private String attachment;  //附件
+    private String paid;  //已付清
+
+    public String getPaid() {
+        return paid;
+    }
+
+    public void setPaid(String paid) {
+        this.paid = paid;
+    }
 
     public String getAttachment() {
         return attachment;

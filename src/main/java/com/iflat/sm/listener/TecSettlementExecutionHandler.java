@@ -7,6 +7,8 @@ import com.iflat.util.Application;
 import com.iflat.workflow.listener.WorkflowExecutionListener;
 import org.activiti.engine.delegate.DelegateExecution;
 
+import java.util.Date;
+
 /**
  * Created by tyriv on 2016/3/30.
  */
@@ -52,6 +54,9 @@ public class TecSettlementExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (tecSettlement != null) {
             tecSettlement.setStatus(status);
+            if (status.equals(TecStatus.STATUS_HR_AUDIT)) {
+                tecSettlement.setSettlementTime(new Date());
+            }
             tecSettlementService.save(tecSettlement);
         }
     }

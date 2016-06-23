@@ -170,6 +170,14 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
+        <!-- dh模块 -->
+        <action name="dh_*" class="com.iflat.dh.action.DhAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
     </package>
 
 </struts>

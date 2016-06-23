@@ -26,6 +26,15 @@ public class TecSettlement {
     private double safetyScore;
     private double fineAmount;
     private double summaryAmount;
+    private Date settlementTime;
+
+    public Date getSettlementTime() {
+        return settlementTime;
+    }
+
+    public void setSettlementTime(Date settlementTime) {
+        this.settlementTime = settlementTime;
+    }
 
     public TecSettlement() {
         this.createTime = new Date();

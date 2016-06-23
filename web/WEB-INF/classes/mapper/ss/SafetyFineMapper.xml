@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.ss.bean.SafetyFine">
         INSERT INTO SsSafetyFine
-        VALUES (#{id},#{projNo},#{position},#{place},#{type},#{date},#{dept},#{team},#{group},#{personAcc},#{personName},#{description},#{measure},#{deadline},#{amount},#{feedback},#{manager},#{mgrDept},#{dangerType},#{damageType},#{riskLevel},#{groupLeader},#{inspectType},#{comment},#{issuer},#{attachment},#{source},#{creator},#{createTime})
+        VALUES (#{id},#{projNo},#{position},#{place},#{type},#{date},#{dept},#{team},#{group},#{personAcc},#{personName},#{description},#{measure},#{deadline},#{amount},#{feedback},#{manager},#{mgrDept},#{dangerType},#{damageType},#{riskLevel},#{groupLeader},#{inspectType},#{comment},#{issuer},#{attachment},#{source},#{creator},#{createTime},#{paid})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SsSafetyFine
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.projNo},#{item.position},#{item.place},#{item.type},#{item.date},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.description},#{item.measure},#{item.deadline},#{item.amount},#{item.feedback},#{item.manager},#{item.mgrDept},#{item.dangerType},#{item.damageType},#{item.riskLevel},#{item.groupLeader},#{item.inspectType},#{item.comment},#{item.issuer},#{item.attachment},#{item.source},#{item.creator},#{item.createTime}
+            SELECT #{item.id},#{item.projNo},#{item.position},#{item.place},#{item.type},#{item.date},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.description},#{item.measure},#{item.deadline},#{item.amount},#{item.feedback},#{item.manager},#{item.mgrDept},#{item.dangerType},#{item.damageType},#{item.riskLevel},#{item.groupLeader},#{item.inspectType},#{item.comment},#{item.issuer},#{item.attachment},#{item.source},#{item.creator},#{item.createTime},#{item.paid}
         </foreach>
     </insert>
 
@@ -47,6 +47,7 @@
             <if test="source!=null">source=#{source},</if>
             <if test="creator!=null">creator=#{creator},</if>
             <if test="createTime!=null">createTime=#{createTime},</if>
+            <if test="paid!=null">paid=#{paid},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -57,7 +58,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.ss.bean.SafetyFine" resultMap="SsSafetyFineResult">
-        SELECT id,projNo,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime
+        SELECT id,projNo,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime,paid
         FROM SsSafetyFine
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -86,6 +87,7 @@
             <if test="issuer!=null">AND issuer=#{issuer}</if>
             <if test="source!=null">AND source=#{source}</if>
             <if test="creator!=null">AND creator=#{creator}</if>
+            <if test="paid!=null">AND paid=#{paid}</if>
         </where>
         ORDER BY  (CASE WHEN personAcc IS NULL OR personAcc='' THEN 0 ELSE 1 END),date DESC,projNo,type,dept,team,[group],personName,qc,createTime,source
     </select>
@@ -120,5 +122,6 @@
         <result property="source" column="source" jdbcType="VARCHAR"/>
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="paid" column="paid" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

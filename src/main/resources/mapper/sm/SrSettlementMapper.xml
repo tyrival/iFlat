@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlement">
         INSERT INTO SmSrSettlement
-        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{professionalMgrAcc},#{settleFirstAcc},#{settleFirstName},#{settleFirstTime},#{teamAcc},#{teamName})
+        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{professionalMgrAcc},#{settleFirstAcc},#{settleFirstName},#{settleFirstTime},#{teamAcc},#{teamName},#{settlementTime})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlement
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.professionalMgrAcc},#{item.settleFirstAcc},#{item.settleFirstName},#{item.settleFirstTime},#{item.teamAcc},#{item.teamName}
+            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.professionalMgrAcc},#{item.settleFirstAcc},#{item.settleFirstName},#{item.settleFirstTime},#{item.teamAcc},#{item.teamName},#{item.settlementTime}
         </foreach>
     </insert>
 
@@ -37,6 +37,7 @@
             <if test="settleFirstName!=null">settleFirstName=#{settleFirstName},</if>
             <if test="teamAcc!=null">teamAcc=#{teamAcc},</if>
             <if test="teamName!=null">teamName=#{teamName},</if>
+            <if test="settlementTime!=null">settlementTime=#{settlementTime},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -47,7 +48,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SrSettlement" resultMap="SmSrSettlementResult">
-        SELECT id,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime,professionalMgrAcc,settleFirstAcc,settleFirstName,settleFirstTime,teamAcc,teamName
+        SELECT id,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime,professionalMgrAcc,settleFirstAcc,settleFirstName,settleFirstTime,teamAcc,teamName,settlementTime
         FROM SmSrSettlement
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -64,6 +65,7 @@
             <if test="settleFirstName!=null and !&quot;&quot;.equals(settleFirstName.trim())">AND settleFirstName=#{settleFirstName}</if>
             <if test="teamAcc!=null">AND teamAcc=#{teamAcc}</if>
             <if test="teamName!=null">AND teamName=#{teamName}</if>
+            <if test="settlementTime!=null">AND DATEDIFF(MONTH,#{settlementTime},settlementTime)=0</if>
         </where>
         ORDER BY (CASE status WHEN '未提交' THEN 0 ELSE 1 END),projNo,deptName,type,team,createTime,id
     </select>
@@ -92,5 +94,6 @@
         <result property="settleFirstTime" column="settleFirstTime" jdbcType="DATE"/>
         <result property="teamAcc" column="teamAcc" jdbcType="VARCHAR"/>
         <result property="teamName" column="teamName" jdbcType="VARCHAR"/>
+        <result property="settlementTime" column="settlementTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>

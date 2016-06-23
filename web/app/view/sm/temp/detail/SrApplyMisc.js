@@ -53,7 +53,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplyMisc', {
         dataIndex: 'srSettlementDetlFirst.content',
         hidden: true
     }, {
-        header: '类型',
+        header: '工种',
         width: 120,
         dataIndex: 'srSettlementDetlFirst.type',
         editor: {

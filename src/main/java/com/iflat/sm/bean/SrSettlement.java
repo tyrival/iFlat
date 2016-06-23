@@ -32,6 +32,15 @@ public class SrSettlement {
 
     private String teamAcc;
     private String teamName;
+    private Date settlementTime;
+
+    public Date getSettlementTime() {
+        return settlementTime;
+    }
+
+    public void setSettlementTime(Date settlementTime) {
+        this.settlementTime = settlementTime;
+    }
 
     public String getTeamAcc() {
         return teamAcc;

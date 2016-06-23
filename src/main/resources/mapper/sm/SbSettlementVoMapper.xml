@@ -5,7 +5,7 @@
 <mapper namespace="Sm.SbSettlementVo">
 
     <select id="list" parameterType="com.iflat.sm.entity.SbSettlementVo" resultMap="SmSbSettlementVoResult">
-        SELECT a.id,a.projNo,a.projName,a.month,a.deptName,a.team,a.attachment,a.comment,a.status,a.creatorAcc,a.creatorName,a.createTime,b.id AS idDetl,b.account AS accountDetl,b.content AS contentDetl,b.matQty AS matQtyDetl,b.spec AS specDetl,b.unit AS unitDetl,b.price AS priceDetl,b.amount AS amountDetl,b.attachment AS attachmentDetl,b.comment AS commentDetl,b.creatorAcc AS creatorAccDetl,b.creatorName AS creatorNameDetl,b.createTime AS createTimeDetl
+        SELECT a.id,a.projNo,a.projName,a.month,a.deptName,a.team,a.attachment,a.comment,a.status,a.creatorAcc,a.creatorName,a.createTime,a.settlementTime,b.id AS idDetl,b.account AS accountDetl,b.content AS contentDetl,b.matQty AS matQtyDetl,b.spec AS specDetl,b.unit AS unitDetl,b.price AS priceDetl,b.amount AS amountDetl,b.attachment AS attachmentDetl,b.comment AS commentDetl,b.creatorAcc AS creatorAccDetl,b.creatorName AS creatorNameDetl,b.createTime AS createTimeDetl
         FROM SmSbSettlementDetail b
         LEFT JOIN SmSbSettlement a ON a.id=b.pid
         <where>
@@ -13,6 +13,7 @@
             <if test="projNo!=null">AND a.projNo=#{projNo}</if>
             <if test="projName!=null">AND a.projName=#{projName}</if>
             <if test="month!=null">AND DATEDIFF(MONTH,#{month},a.month)=0</if>
+            <if test="settlementTime!=null">AND DATEDIFF(MONTH,#{settlementTime},a.settlementTime)=0</if>
             <if test="deptName!=null">AND a.deptName=#{deptName}</if>
             <if test="status!=null">AND a.status=#{status}</if>
             <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND a.team LIKE '%' + #{team} + '%'</if>
@@ -41,5 +42,6 @@
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="settlementTime" column="settlementTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>

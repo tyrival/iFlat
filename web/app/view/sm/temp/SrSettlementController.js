@@ -202,7 +202,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementController', {
         var win = btn.up('window');
         var form = win.down('form');
         var team = form.down('textfield[name=srSettlement.teamAcc]').getValue();
-        /*if (Flat.util.isEmpty(team)) {
+        var type = form.down('textfield[name=srSettlement.type]').getValue();
+        /*if (Flat.util.isEmpty(team) && type == 'Sys') {
             Ext.Msg.show({
                 title:'提示',
                 message: '需工程队刷卡确认后才可提交。',

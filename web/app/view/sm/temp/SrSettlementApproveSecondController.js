@@ -19,6 +19,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecondController', {
                     record.set('srSettlement.status', obj['status']);
                     var form = field.up('form');
                     form.loadRecord(record);
+                    form.down('textarea[name=comment]').setValue('');
 
                     // 加载二级结算单列表
                     var grid = form.down('sm-detail-srsettlementsecondapprovegrid');
@@ -106,12 +107,26 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecondController', {
                 method: 'POST',
                 success: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    grid.getStore().reload();
+                    grid.getSelectionModel().deselectAll();
+                    grid.getStore().reload({
+                        callback: function (records, operation, success) {
+                            if (records.length == 0) {
+                                btn.up('window').hide();
+                            }
+                        }
+                    })
                     form.down('textarea[name=comment]').setValue('');
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    grid.getStore().reload();
+                    grid.getSelectionModel().deselectAll();
+                    grid.getStore().reload({
+                        callback: function (records, operation, success) {
+                            if (records.length == 0) {
+                                btn.up('window').hide();
+                            }
+                        }
+                    })
                     form.down('textarea[name=co`mment]').setValue('');
                 }
             })

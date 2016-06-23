@@ -40,6 +40,15 @@ public class SafetyFineVo {
 
     private Date fromDate;
     private Date toDate;
+    private String paid;
+
+    public String getPaid() {
+        return paid;
+    }
+
+    public void setPaid(String paid) {
+        this.paid = paid;
+    }
 
     public String getSource() {
         return source;

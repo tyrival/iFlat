@@ -7,6 +7,8 @@ import com.iflat.util.Application;
 import com.iflat.workflow.listener.WorkflowExecutionListener;
 import org.activiti.engine.delegate.DelegateExecution;
 
+import java.util.Date;
+
 /**
  * Created by tyriv on 2016/4/12.
  */
@@ -88,6 +90,9 @@ public class SrMiscExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (srSettlement != null) {
             srSettlement.setStatus(status);
+            if (status.equals(SrStatus.STATUS_HR_AUDIT)) {
+                srSettlement.setSettlementTime(new Date());
+            }
             srSettlementService.save(srSettlement);
         }
     }

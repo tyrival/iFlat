@@ -4,10 +4,10 @@
     <startEvent id="_2" name="StartEvent"/>
     <endEvent id="_3" name="EndEvent"/>
     <userTask activiti:exclusive="true" id="_4" name="Submit"/>
-    <userTask activiti:exclusive="true" id="_5" name="Approve"/>
+    <userTask activiti:exclusive="true" id="_5" name="Director Approve"/>
     <userTask activiti:exclusive="true" id="_6" name="Handler"/>
     <userTask activiti:exclusive="true" id="_7" name="Assess"/>
-    <userTask activiti:exclusive="true" id="_8" name="Complete"/>
+    <userTask activiti:exclusive="true" id="_8" name="Closing"/>
     <sequenceFlow id="_9" sourceRef="_2" targetRef="_4"/>
     <sequenceFlow id="_10" sourceRef="_4" targetRef="_5"/>
     <sequenceFlow id="_11" name="reject" sourceRef="_5" targetRef="_4">
@@ -77,21 +77,21 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_12" id="BPMNEdge__12" sourceElement="_5" targetElement="_6">
-        <omgdi:waypoint x="247.5" y="220.0"/>
+        <omgdi:waypoint x="247.5" y="235.0"/>
         <omgdi:waypoint x="247.5" y="265.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_15" id="BPMNEdge__15" sourceElement="_7" targetElement="_8">
-        <omgdi:waypoint x="250.0" y="430.0"/>
+        <omgdi:waypoint x="250.0" y="445.0"/>
         <omgdi:waypoint x="250.0" y="480.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_14" id="BPMNEdge__14" sourceElement="_7" targetElement="_6">
-        <omgdi:waypoint x="305.0" y="402.5"/>
+        <omgdi:waypoint x="290.0" y="402.5"/>
         <omgdi:waypoint x="335.0" y="340.0"/>
         <omgdi:waypoint x="290.0" y="292.5"/>
         <bpmndi:BPMNLabel>
@@ -113,7 +113,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_11" id="BPMNEdge__11" sourceElement="_5" targetElement="_4">
-        <omgdi:waypoint x="290.0" y="192.5"/>
+        <omgdi:waypoint x="305.0" y="192.5"/>
         <omgdi:waypoint x="330.0" y="140.0"/>
         <omgdi:waypoint x="285.0" y="97.5"/>
         <bpmndi:BPMNLabel>

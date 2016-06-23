@@ -24,7 +24,7 @@ Ext.define('iFlat.view.workflow.TaskController', {
                 y: 20,
                 items: [Ext.create(viewName)],
                 listeners: {
-                    close: function () {
+                    hide: function () {
                         workflowTaskStore.reload();
                     }
                 }

@@ -16,6 +16,7 @@ import org.activiti.engine.delegate.DelegateExecution;
 import org.apache.commons.collections.map.HashedMap;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -179,6 +180,9 @@ public class SrSysExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (srSettlement != null) {
             srSettlement.setStatus(status);
+            if (status.equals(SrStatus.STATUS_HR_AUDIT)) {
+                srSettlement.setSettlementTime(new Date());
+            }
             srSettlementService.save(srSettlement);
         }
     }

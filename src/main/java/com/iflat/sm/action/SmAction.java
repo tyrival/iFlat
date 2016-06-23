@@ -79,6 +79,9 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     private BaseService outsourcingService;
     private Outsourcing outsourcing;
 
+    private BaseService fineService;
+    private Fine fine;
+
     private TemporaryService temporaryService;
     private TemporaryDetailService temporaryDetailService;
     private Temporary temporary;
@@ -849,6 +852,32 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    /* Fine */
+    public String saveFine() throws Exception {
+        this.result.setObject(this.fineService.save(this.fine));
+        return SUCCESS;
+    }
+
+    public String deleteFine() throws Exception {
+        this.result.setObject(this.fineService.delete(this.fine));
+        return SUCCESS;
+    }
+
+    public String listFine() throws Exception {
+        this.result.setList(this.fineService.list(this.fine));
+        return SUCCESS;
+    }
+
+    public String uploadFine() throws Exception {
+        this.result.setObject(this.fineService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listPageFine() throws Exception {
+        this.result.setObject(this.fineService.listPage(this.fine, this.page));
+        return SUCCESS;
+    }
+
     /* Payment */
     public String savePayment() throws Exception {
         this.result.setObject(this.paymentService.save(this.payment));
@@ -1451,6 +1480,22 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public void setSrSettlementSecondList(List<SrSettlementSecond> srSettlementSecondList) {
         this.srSettlementSecondList = srSettlementSecondList;
+    }
+
+    public BaseService getFineService() {
+        return fineService;
+    }
+
+    public void setFineService(BaseService fineService) {
+        this.fineService = fineService;
+    }
+
+    public Fine getFine() {
+        return fine;
+    }
+
+    public void setFine(Fine fine) {
+        this.fine = fine;
     }
 
     @Override

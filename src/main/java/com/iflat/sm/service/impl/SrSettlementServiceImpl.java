@@ -5,6 +5,7 @@ import com.iflat.base.service.BaseService;
 import com.iflat.base.service.impl.BaseServiceSupport;
 import com.iflat.code.bean.Team;
 import com.iflat.report.bean.bi.Project;
+import com.iflat.sm.bean.SrProjectManager;
 import com.iflat.sm.bean.SrSettlement;
 import com.iflat.sm.bean.SrSettlementDetlFirst;
 import com.iflat.sm.entity.Workshop;
@@ -29,12 +30,24 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
     private WorkflowService workflowService;
     private SrSettlementDetlFirstService srSettlementDetlFirstService;
     private BaseService rptProjectService;
+    private BaseService srProjectManagerService;
 
     private UserService userService;
     private BaseService teamService;
     private String srtype;
     private SrSettlement srSettlement;
     private Map<String, Object> map;
+
+    @Override
+    protected void beforeInsert() throws Exception {
+        SrSettlement o = (SrSettlement) this.saveObj;
+        SrProjectManager mgr = new SrProjectManager();
+        mgr.setProjNo(o.getProjNo());
+        List list = srProjectManagerService.list(mgr);
+        if (list == null || list.size() == 0) {
+            throw new Exception("未定义" + o.getProjName() + "的修船总管信息。");
+        }
+    }
 
     /**
      * 创建对象时，启动流程
@@ -309,6 +322,14 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
 
     public void setTeamService(BaseService teamService) {
         this.teamService = teamService;
+    }
+
+    public BaseService getSrProjectManagerService() {
+        return srProjectManagerService;
+    }
+
+    public void setSrProjectManagerService(BaseService srProjectManagerService) {
+        this.srProjectManagerService = srProjectManagerService;
     }
 
     public Map<String, Object> getMap() {

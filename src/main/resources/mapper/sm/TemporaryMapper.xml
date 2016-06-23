@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.Temporary">
         INSERT INTO SmTemporary
-        VALUES (#{id},#{month},#{dept},#{creatorAcc},#{creatorName},#{createTime},#{status},#{attachment},#{comment})
+        VALUES (#{id},#{month},#{dept},#{creatorAcc},#{creatorName},#{createTime},#{status},#{attachment},#{comment},#{settlementTime})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmTemporary
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.month},#{item.dept},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.status},#{item.attachment},#{item.comment}
+            SELECT #{item.id},#{item.month},#{item.dept},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.status},#{item.attachment},#{item.comment},#{item.settlementTime}
         </foreach>
     </insert>
 
@@ -24,6 +24,7 @@
             <if test="status!=null">status=#{status},</if>
             <if test="attachment!=null">attachment=#{attachment},</if>
             <if test="comment!=null">comment=#{comment},</if>
+            <if test="settlementTime!=null">settlementTime=#{settlementTime},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -34,12 +35,13 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.Temporary" resultMap="SmTemporaryResult">
-        SELECT id,month,dept,creatorAcc,creatorName,createTime,status,amount,attachment,comment
+        SELECT id,month,dept,creatorAcc,creatorName,createTime,status,amount,attachment,comment,settlementTime
         FROM V_SmTemporary
         <where>
             <if test="id!=null">id=#{id}</if>
             <if test="dept!=null">AND dept=#{dept}</if>
             <if test="month!=null">AND DATEDIFF(MONTH,#{month},month)=0</if>
+            <if test="settlementTime!=null">AND DATEDIFF(MONTH,#{settlementTime},settlementTime)=0</if>
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
             <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
             <if test="status!=null">AND status=#{status}</if>
@@ -58,5 +60,6 @@
         <result property="amount" column="amount" jdbcType="DOUBLE"/>
         <result property="attachment" column="attachment" jdbcType="DOUBLE"/>
         <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="settlementTime" column="settlementTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>

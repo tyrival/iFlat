@@ -15,6 +15,15 @@ public class Temporary {
     private double amount;
     private String attachment;
     private String comment;
+    private Date settlementTime;
+
+    public Date getSettlementTime() {
+        return settlementTime;
+    }
+
+    public void setSettlementTime(Date settlementTime) {
+        this.settlementTime = settlementTime;
+    }
 
     public String getAttachment() {
         return attachment;

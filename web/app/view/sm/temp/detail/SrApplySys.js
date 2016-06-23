@@ -53,11 +53,17 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplySys', {
         dataIndex: 'srSettlementDetlFirst.content',
         hidden: true
     }, {
-        header: '类型',
+        header: '工种',
         width: 120,
         dataIndex: 'srSettlementDetlFirst.type',
         editor: {
+            xtype: 'combo',
             allowBlank: false,
+            forceSelection: true,
+            editable: false,
+            bind: {
+                store: '{smSrWorkTypeJD}'
+            }
         }
     }, {
         header: '施工内容',

@@ -22,7 +22,6 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 500,
         width: '100%',
         scollable: 'y',
         layout: {
@@ -70,11 +69,6 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                         fieldLabel: '进度%',
                         name: 'progress',
                         width: 150,
-                    }, {
-                        xtype: 'textfield',
-                        name: 'summaryAmount',
-                        fieldLabel: '合计',
-                        width: 160,
                     }, {
                         xtype: 'textfield',
                         name: 'laborAmount',
@@ -179,7 +173,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
             name: 'amount',
             fieldDefaults: {
                 labelAlign: 'right',
-                labelWidth: 50,
+                labelWidth: 70,
             },
             items: [{
                 xtype: 'container',
@@ -188,9 +182,9 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 items: [{
                     xtype: 'textfield',
                     name: 'srSettlement.laborAmount',
-                    fieldLabel: '工程总价',
+                    fieldLabel: '工费',
                     allowBlank: false,
-                    width: 210,
+                    width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }
@@ -200,7 +194,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                     name: 'srSettlement.consumableAmount',
                     allowBlank: false,
                     labelWidth: 80,
-                    width: 220,
+                    width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }
@@ -209,7 +203,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                     fieldLabel: '绩效',
                     name: 'srSettlement.performanceAmount',
                     allowBlank: false,
-                    width: 210,
+                    width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }
@@ -218,10 +212,16 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                     fieldLabel: '材料费',
                     name: 'srSettlement.materialAmount',
                     allowBlank: false,
-                    width: 210,
+                    width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }
+                }, {
+                    xtype: 'textfield',
+                    name: 'summaryAmount',
+                    fieldLabel: '合计',
+                    width: 180,
+                    editable: false,
                 }]
             }, {
                 xtype: 'textarea',
@@ -230,7 +230,7 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
                 fieldLabel: '审批意见',
                 allowBlank: false,
                 width: '100%',
-                value: '同意',
+                value: '',
                 emptyText: '输入审批意见后，审批通过或退回结算申请'
             }]
         }],

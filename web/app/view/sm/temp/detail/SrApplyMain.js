@@ -53,11 +53,46 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplyMain', {
         dataIndex: 'srSettlementDetlFirst.content',
         hidden: true
     }, {
-        header: '类型',
+        header: '工种',
         width: 120,
         dataIndex: 'srSettlementDetlFirst.type',
         editor: {
+            xtype: 'combo',
             allowBlank: false,
+            forceSelection: true,
+            editable: false,
+            bind: {
+                store: '{smSrWorkType}'
+            }
+            /*listeners: {
+                render: function (combo, op) {
+                    var dept = combo.up('window').down('combo[name=srSettlement.deptName]').getValue;
+                    if (Flat.util.isEmpty(dept)) {
+                        dept = combo.up('window').down('textfield[name=srSettlement.deptName]').getValue;
+                    }
+                    var n = '';
+                    switch (dept) {
+                        case '修船冷作车间':
+                            n = "LZ";
+                            break;
+                        case '修船坞修车间':
+                            n = "WX";
+                            break;
+                        case '修船舾装车间':
+                            n = "XZ";
+                            break;
+                        case '修船机电修理车间':
+                            n = "JD";
+                            break;
+                    }
+                    combo.setBind({
+                        store: '{smSrWorkType' + n + '}',
+                    });
+                    setTimeout(function () {
+                        combo.setValue(combo.getBind().store.lastValue[0])
+                    }, 200);
+                }
+            }*/
         }
     }, {
         header: '施工内容',

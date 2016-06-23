@@ -43,12 +43,6 @@
         <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
       </extensionElements>
     </userTask>
-    <userTask activiti:exclusive="true" activiti:formKey="sm.SbLeaderApprove" id="_10" name="Leader Approve">
-      <extensionElements>
-        <activiti:taskListener class="com.iflat.sm.listener.SbSettlementTaskHandler" event="create"/>
-        <activiti:executionListener class="com.iflat.sm.listener.SbSettlementExecutionHandler" event="start"/>
-      </extensionElements>
-    </userTask>
     <sequenceFlow id="_12" sourceRef="_2" targetRef="_4"/>
     <sequenceFlow id="_11" name="pass" sourceRef="_5" targetRef="_6">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
@@ -60,12 +54,6 @@
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="_15" name="pass" sourceRef="_8" targetRef="_9">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
-    </sequenceFlow>
-    <sequenceFlow id="_16" name="pass" sourceRef="_9" targetRef="_10">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
-    </sequenceFlow>
-    <sequenceFlow id="_17" name="pass" sourceRef="_10" targetRef="_3">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="_18" sourceRef="_4" targetRef="_5">
@@ -86,8 +74,8 @@
     <sequenceFlow id="_20" name="reject" sourceRef="_8" targetRef="_6">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="reject"}]]></conditionExpression>
     </sequenceFlow>
-    <sequenceFlow id="_22" name="reject" sourceRef="_10" targetRef="_8">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="reject"}]]></conditionExpression>
+    <sequenceFlow id="_22" name="pass" sourceRef="_9" targetRef="_3">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outGoingName=="pass"}]]></conditionExpression>
     </sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram documentation="background=#3C3F41;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0" id="Diagram-_1" name="New Diagram">
@@ -140,12 +128,6 @@
           <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="_10" id="Shape-_10">
-        <omgdc:Bounds height="55.0" width="85.0" x="240.0" y="590.0"/>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_13" id="BPMNEdge__13" sourceElement="_6" targetElement="_7">
         <omgdi:waypoint x="282.5" y="320.0"/>
         <omgdi:waypoint x="282.5" y="365.0"/>
@@ -174,20 +156,6 @@
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_17" id="BPMNEdge__17" sourceElement="_10" targetElement="_3">
-        <omgdi:waypoint x="281.0" y="645.0"/>
-        <omgdi:waypoint x="281.0" y="670.0"/>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_16" id="BPMNEdge__16" sourceElement="_9" targetElement="_10">
-        <omgdi:waypoint x="282.5" y="570.0"/>
-        <omgdi:waypoint x="282.5" y="590.0"/>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_19" id="BPMNEdge__19" sourceElement="_5" targetElement="_4">
         <omgdi:waypoint x="245.0" y="202.5"/>
         <omgdi:waypoint x="200.0" y="155.0"/>
@@ -211,10 +179,9 @@
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_22" id="BPMNEdge__22" sourceElement="_10" targetElement="_8">
-        <omgdi:waypoint x="240.0" y="617.5"/>
-        <omgdi:waypoint x="195.0" y="545.0"/>
-        <omgdi:waypoint x="240.0" y="467.5"/>
+      <bpmndi:BPMNEdge bpmnElement="_22" id="BPMNEdge__22" sourceElement="_9" targetElement="_3">
+        <omgdi:waypoint x="281.0" y="570.0"/>
+        <omgdi:waypoint x="281.0" y="670.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>

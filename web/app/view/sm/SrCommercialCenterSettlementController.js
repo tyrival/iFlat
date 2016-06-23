@@ -32,9 +32,40 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
                 }
                 // 刷新store
                 if (!Flat.util.isEmpty(id)) {
-                    var store = panel.down(xtype).getStore();
+                    var g = panel.down(xtype);
+                    var store = g.getStore();
                     store.getProxy().extraParams['srSettlementDetlFirst.pid'] = id;
-                    store.reload();
+                    store.reload({
+                        callback: function (records, operation, success) {
+                            var grid = g;
+                            var win = grid.up('window');
+                            var type = win.down('textfield[name=type]').getValue();
+                            var a = 0;
+                            var b = 0;
+                            for (var i = 0; i < records.length; i++) {
+                                var rec = records[i];
+                                var amount = rec.get('srSettlementDetlFirst.amount');
+                                a += amount;
+                                if (type == 'Main' || type == 'Sys') {
+                                    var worktype = rec.get('srSettlementDetlFirst.type');
+                                    var rate = 0;
+                                    if (worktype == '钳工' || worktype == '电工' || worktype == '涂装' || worktype == '搭架') {
+                                        rate = 0.15;
+                                    }
+                                    if (worktype == '冷作') {
+                                        rate = 0.2;
+                                    }
+                                    if (worktype == '铜工') {
+                                        rate = 0.3
+                                    }
+                                    b += amount * rate;
+                                }
+                            }
+                            var form = win.down('form[name=amount]');
+                            form.down('textfield[name=srSettlement.laborAmount]').setValue(a);
+                            form.down('textfield[name=srSettlement.performanceAmount]').setValue(b);
+                        }
+                    });
                 }
 
                 //根据type显示或隐藏部分元素
@@ -76,6 +107,34 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
             method: 'post',
             params: r.getData(),
             success: function(response, opts) {
+                var grid = editor.getCmp();
+                var win = grid.up('window');
+                var type = win.down('textfield[name=type]').getValue();
+                var a = 0;
+                var b = 0;
+                var s = grid.getStore();
+                for (var i = 0; i < s.getCount(); i++) {
+                    var rec = s.getAt(i);
+                    var amount = rec.get('srSettlementDetlFirst.amount');
+                    a += amount;
+                    if (type == 'Main' || type == 'Sys') {
+                        var worktype = rec.get('srSettlementDetlFirst.type');
+                        var rate = 0;
+                        if (worktype == '钳工' || worktype == '电工' || worktype == '涂装' || worktype == '搭架') {
+                            rate = 0.15;
+                        }
+                        if (worktype == '冷作') {
+                            rate = 0.2;
+                        }
+                        if (worktype == '铜工') {
+                            rate = 0.3
+                        }
+                        b += amount * rate;
+                    }
+                }
+                var form = win.down('form[name=amount]');
+                form.down('textfield[name=srSettlement.laborAmount]').setValue(a);
+                form.down('textfield[name=srSettlement.performanceAmount]').setValue(b);
                 Flat.util.unmask();
                 Flat.util.tip(response.responseText);
             },
@@ -103,7 +162,37 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
     },
 
     refresh: function (btn) {
-        btn.up('grid').getStore().reload()
+        btn.up('grid').getStore().reload({
+            callback: function (records, operation, success) {
+                var grid = btn.up('grid');
+                var win = grid.up('window');
+                var type = win.down('textfield[name=type]').getValue();
+                var a = 0;
+                var b = 0;
+                for (var i = 0; i < records.length; i++) {
+                    var rec = records[i];
+                    var amount = rec.get('srSettlementDetlFirst.amount');
+                    a += amount;
+                    if (type == 'Main' || type == 'Sys') {
+                        var worktype = rec.get('srSettlementDetlFirst.type');
+                        var rate = 0;
+                        if (worktype == '钳工' || worktype == '电工' || worktype == '涂装' || worktype == '搭架') {
+                            rate = 0.15;
+                        }
+                        if (worktype == '冷作') {
+                            rate = 0.2;
+                        }
+                        if (worktype == '铜工') {
+                            rate = 0.3
+                        }
+                        b += amount * rate;
+                    }
+                }
+                var form = win.down('form[name=amount]');
+                form.down('textfield[name=srSettlement.laborAmount]').setValue(a);
+                form.down('textfield[name=srSettlement.performanceAmount]').setValue(b);
+            }
+        })
     },
 
     onAttachmentChange: function(field, newValue, oldValue, eOpts) {
@@ -161,26 +250,26 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlementController', {
         var qty;
         var amount;
         switch (name) {
-            case 'srSettlementDetlSecond.price':
+            case 'srSettlementDetlFirst.price':
                 price = textfield;
-                qty = textfield.nextSibling('textfield[name=srSettlementDetlSecond.settleQty1]');
+                qty = textfield.nextSibling('textfield[name=srSettlementDetlFirst.settleQty1]');
                 if (Flat.util.isEmpty(qty)) {
-                    qty = textfield.previousSibling('textfield[name=srSettlementDetlSecond.settleQty1]');
+                    qty = textfield.previousSibling('textfield[name=srSettlementDetlFirst.settleQty1]');
                 };
                 break;
 
-            case 'srSettlementDetlSecond.settleQty1':
+            case 'srSettlementDetlFirst.settleQty1':
                 qty = textfield;
-                price = textfield.nextSibling('textfield[name=srSettlementDetlSecond.price]');
+                price = textfield.nextSibling('textfield[name=srSettlementDetlFirst.price]');
                 if (Flat.util.isEmpty(price)) {
-                    price = textfield.previousSibling('textfield[name=srSettlementDetlSecond.price]');
+                    price = textfield.previousSibling('textfield[name=srSettlementDetlFirst.price]');
                 };
                 break;
 
         }
-        amount = textfield.nextSibling('textfield[name=srSettlementDetlSecond.amount]');
+        amount = textfield.nextSibling('textfield[name=srSettlementDetlFirst.amount]');
         if (Flat.util.isEmpty(amount)) {
-            amount = textfield.previousSibling('textfield[name=srSettlementDetlSecond.amount]');
+            amount = textfield.previousSibling('textfield[name=srSettlementDetlFirst.amount]');
         };
 
         var a = price.getValue() * qty.getValue();

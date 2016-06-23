@@ -7,6 +7,8 @@ import com.iflat.util.Application;
 import com.iflat.workflow.listener.WorkflowExecutionListener;
 import org.activiti.engine.delegate.DelegateExecution;
 
+import java.util.Date;
+
 /**
  * Created by tyriv on 2016/4/8.
  */
@@ -56,6 +58,9 @@ public class ScSettlementExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (scSettlement != null) {
             scSettlement.setStatus(status);
+            if (status.equals(ScStatus.STATUS_HR_AUDIT)) {
+                scSettlement.setSettlementTime(new Date());
+            }
             scSettlementService.save(scSettlement);
         }
     }

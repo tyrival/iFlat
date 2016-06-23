@@ -63,12 +63,23 @@ Ext.define('iFlat.model.main.MainModel', {
         smSrDept: ['修船冷作车间','修船坞修车间','修船舾装车间','修船机电修理车间'],
         smScDept: ['钢结构事业部'],
         smOutsourcingType: ['29 代理制餐补','20 代理制工费','201 返聘工资','13 工伤补贴','23 绩效工资','19 工会经费','202 沐浴费','18 其他工费','39 福利费','25 保险费'],
+        smSrWorkType: ['冷作', '钳工', '涂装', '搭架', '电工', '铜工'],
+        smSrWorkTypeLZ: ['冷作', '钳工'],
+        smSrWorkTypeJD: ['电工', '钳工', '铜工'],
+        smSrWorkTypeWithOutJD: ['冷作', '钳工', '涂装', '搭架'],
+        smSrWorkTypeWX: ['涂装'],
+        smSrWorkTypeXZ: ['搭架'],
+        smFineType: ['计划执行','设备能源','其他'],
+        smCategoryPlan: ['分段制作', '船台搭载', '码头舾装'],
+        smCategoryEnergy: ['电', '气', '水', '奖惩条例','设备','焊材','工具','工装'],
+        smCategoryOther: ['培训类', '工时填报', '晚间值班', '班前会组织','精细化派工'],
 
         /* 质量管理 quality managerment */
         qualityFineCategory: ['质量指标','工艺纪律','交验考核'],
         qualityFineProfession: ['船体','轮机','电气','内装','油漆'],
 
         /* 安环保卫 safety & security */
+        safetyFinePaid: ['未付','已付'],
         safetyFineType: ['安全隐患','行为规范','5S','事故'],
         safetyFineMgrDept: ['造船事业部','修船事业部','钢结构事业部'],
         safetyFineDeadline: ['立即整改','通知整改'],

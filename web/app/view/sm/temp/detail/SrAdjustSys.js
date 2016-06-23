@@ -41,7 +41,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustSys', {
             xtype: 'label'
         }
     }, {
-        header: '类型',
+        header: '工种',
         width: 120,
         dataIndex: 'srSettlementDetlFirst.type',
     }, {
@@ -62,6 +62,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrAdjustSys', {
             }
         },
         editor: {
+            xtype: 'textarea'
         }
     }, {
         header: '数量',

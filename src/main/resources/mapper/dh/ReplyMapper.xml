@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dh.Reply">
+
+    <insert id="insert" parameterType="com.iflat.dh.bean.Reply">
+        INSERT INTO DhReply
+        VALUES (#{id},#{postId},#{content},#{attachment},#{creatorAcc},#{creatorName},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO DhReply
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.postId},#{item.content},#{item.attachment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.dh.bean.Reply">
+        UPDATE DhReply
+        <set>
+            <if test="postId!=null">postId=#{postId},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+            <if test="creatorName!=null">creatorName=#{creatorName},</if>
+            <if test="createTime!=null">createTime=#{createTime},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.dh.bean.Reply">
+        DELETE DhReply
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.dh.bean.Reply" resultMap="DhReplyResult">
+        SELECT id,postId,content,attachment,creatorAcc,creatorName,createTime
+        FROM DhReply
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="postId!=null">AND postId=#{postId}</if>
+            <if test="content!=null">AND content LIKE '%' + #{content} + '%'</if>
+            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
+        </where>
+        ORDER BY createTime DESC
+    </select>
+
+    <resultMap type="com.iflat.dh.bean.Reply" id="DhReplyResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="postId" column="postId" jdbcType="CHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

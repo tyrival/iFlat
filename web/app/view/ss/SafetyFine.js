@@ -106,7 +106,7 @@ Ext.define('iFlat.view.ss.SafetyFine', {
         dataIndex: 'safetyFine.description',
     }, {
         text: '附件',
-        dataIndex: 'qualityFine.attachment',
+        dataIndex: 'safetyFine.attachment',
         width: 60,
         renderer: function(v) {
             if(!v || v == '') {
@@ -125,6 +125,10 @@ Ext.define('iFlat.view.ss.SafetyFine', {
         header: '金额',
         align: 'right',
         dataIndex: 'safetyFine.amount',
+    }, {
+        header: '现金',
+        align: 'right',
+        dataIndex: 'safetyFine.paid',
     }, {
         header: '整改措施',
         dataIndex: 'safetyFine.measure',

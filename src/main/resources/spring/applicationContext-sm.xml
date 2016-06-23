@@ -48,6 +48,8 @@
         <property name="paymentService" ref="paymentService"/>
         <property name="outsourcing" ref="outsourcing"/>
         <property name="outsourcingService" ref="outsourcingService"/>
+        <property name="fine" ref="fine"/>
+        <property name="fineService" ref="fineService"/>
         <property name="temporary" ref="temporary"/>
         <property name="temporaryService" ref="temporaryService"/>
         <property name="temporaryDetail" ref="temporaryDetail"/>
@@ -137,6 +139,7 @@
         <property name="rptProjectService" ref="rptProjectService"/>
         <property name="userService" ref="userService"/>
         <property name="teamService" ref="teamService"/>
+        <property name="srProjectManagerService" ref="srProjectManagerService"/>
     </bean>
     <bean id="srSettlementDao" class="com.iflat.sm.dao.impl.SrSettlementDaoImpl"/>
     <bean id="srSettlement" class="com.iflat.sm.bean.SrSettlement" scope="prototype"/>
@@ -189,6 +192,10 @@
     <bean id="outsourcingService" class="com.iflat.sm.service.impl.OutsourcingServiceImpl"/>
     <bean id="outsourcingDao" class="com.iflat.sm.dao.impl.OutsourcingDaoImpl"/>
     <bean id="outsourcing" class="com.iflat.sm.bean.Outsourcing" scope="prototype"/>
+
+    <bean id="fineService" class="com.iflat.sm.service.impl.FineServiceImpl"/>
+    <bean id="fineDao" class="com.iflat.sm.dao.impl.FineDaoImpl"/>
+    <bean id="fine" class="com.iflat.sm.bean.Fine" scope="prototype"/>
 
     <bean id="temporaryService" class="com.iflat.sm.service.impl.TemporaryServiceImpl">
         <property name="workflowService" ref="workflowService"/>

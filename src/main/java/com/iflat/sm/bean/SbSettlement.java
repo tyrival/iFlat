@@ -32,6 +32,15 @@ public class SbSettlement {
     private double fineAmount;
     private double summaryAmount;
     private String strMonth;
+    private Date settlementTime;
+
+    public Date getSettlementTime() {
+        return settlementTime;
+    }
+
+    public void setSettlementTime(Date settlementTime) {
+        this.settlementTime = settlementTime;
+    }
 
     public SbSettlement() {
         this.createTime = new Date();

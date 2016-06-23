@@ -158,7 +158,7 @@ public class TargetCostSplitServiceImpl extends BaseServiceSupport implements Ta
     public void setImportProps() throws Exception {
         List list = super.getImportList();
         for(int i = 0; i < list.size(); i++) {
-            ProjectTargetCost o = (ProjectTargetCost)list.get(i);
+            TargetCostSplit o = (TargetCostSplit)list.get(i);
             o.setId(UUID.randomUUID().toString());
             UserInfoVo userInfoVo = Session.getUserInfo();
             o.setCreatorAcc(userInfoVo.getAccount());

@@ -5,11 +5,13 @@
 <mapper namespace="Ss.SafetyFineVo">
 
     <select id="list" parameterType="com.iflat.ss.entity.SafetyFineVo" resultMap="SsSafetyFineVoResult">
-        SELECT id,projNo,projName,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime
+        SELECT id,projNo,projName,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime,paid
         FROM V_SsSafetyFine
         <where>
             <if test="id!=null">
                 id=#{id}</if>
+            <if test="paid!=null">
+                paid=#{paid}</if>
             <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">
                 AND projNo=#{projNo}</if>
             <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">
@@ -96,6 +98,7 @@
         <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
         <result property="source" column="source" jdbcType="VARCHAR"/>
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="paid" column="paid" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>

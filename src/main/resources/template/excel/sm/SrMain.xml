@@ -56,7 +56,7 @@
             <td type="string" isnullable="false" value="备注" />
         </tr>
         <tr height="16px" firstrow="4" firstcol="0" repeat="1">
-            <td type="string" maxlength="30" />
+            <td type="enum" format="冷作,钳工,电工,铜工,涂装,搭架" isnullable="false" />
             <td type="string" isnullable="false" />
             <td type="string" maxlength="30" />
             <td type="string" maxlength="30" />

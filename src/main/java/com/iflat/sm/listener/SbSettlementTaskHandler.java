@@ -95,7 +95,7 @@ public class SbSettlementTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         assignee.setRoleName("总经理");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
     
     /**

@@ -43,7 +43,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailMisc', {
     ],
 
     columns: [{
-        header: '类型',
+        header: '工种',
         width: 120,
         dataIndex: 'srSettlementDetlSecond.type',
         editor: {

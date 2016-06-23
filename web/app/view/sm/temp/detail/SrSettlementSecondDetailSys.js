@@ -42,7 +42,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
     ],
 
     columns: [{
-        header: '类型',
+        header: '工种',
         width: 120,
         dataIndex: 'srSettlementDetlSecond.type',
     }, {
@@ -50,6 +50,10 @@ Ext.define('iFlat.view.sm.temp.detail.SrSettlementSecondDetailSys', {
         width: 200,
         dataIndex: 'srSettlementDetlSecond.content',
         cellWrap: true,
+        /*editor: {
+            xtype: 'textarea',
+            editable: false
+        }*/
     }, {
         header: '规格',
         dataIndex: 'srSettlementDetlSecond.specs',

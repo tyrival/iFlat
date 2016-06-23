@@ -90,7 +90,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
                     name: 'srSettlementSecond.deptName',
                     fieldLabel: '部门',
                     width: 230,
-                    //hidden: true,
+                    hidden: true,
                     listeners: {
                         change: function(combo, newValue, oldValue, eOpts) {
                             // 将下一个控件的store根据部门值联动

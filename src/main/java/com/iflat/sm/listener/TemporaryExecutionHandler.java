@@ -7,6 +7,8 @@ import com.iflat.util.Application;
 import com.iflat.workflow.listener.WorkflowExecutionListener;
 import org.activiti.engine.delegate.DelegateExecution;
 
+import java.util.Date;
+
 /**
  * Created by tyriv on 2016/3/30.
  */
@@ -56,6 +58,9 @@ public class TemporaryExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (temporary != null) {
             temporary.setStatus(status);
+            if (status.equals(TempStatus.STATUS_HR_AUDIT)) {
+                temporary.setSettlementTime(new Date());
+            }
             temporaryService.save(temporary);
         }
     }

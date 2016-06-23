@@ -106,12 +106,26 @@ Ext.define('iFlat.view.sm.temp.TecSettlementApproveBatchController', {
                 method: 'POST',
                 success: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    grid.getStore().reload();
+                    grid.getSelectionModel().deselectAll();
+                    grid.getStore().reload({
+                        callback: function (records, operation, success) {
+                            if (records.length == 0) {
+                                btn.up('window').hide();
+                            }
+                        }
+                    })
                     form.down('textarea[name=comment]').setValue('');
                 },
                 failure: function (fp, o) {
                     Flat.util.tip(o.response.responseText);
-                    grid.getStore().reload();
+                    grid.getSelectionModel().deselectAll();
+                    grid.getStore().reload({
+                        callback: function (records, operation, success) {
+                            if (records.length == 0) {
+                                btn.up('window').hide();
+                            }
+                        }
+                    })
                     form.down('textarea[name=co`mment]').setValue('');
                 }
             })
