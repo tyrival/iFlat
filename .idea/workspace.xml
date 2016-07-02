@@ -8,12 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/sm/Fine.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/sm/FineController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/sm/FineEdit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/print.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/FineMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/Outsourcing.js" afterPath="$PROJECT_DIR$/web/app/view/sm/Outsourcing.js" />
     </list>
     <ignored path="iFlat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,52 +34,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="print.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/print.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Outsourcing.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/view/sm/Outsourcing.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Fine.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/view/sm/Fine.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="82" column="82" selection-start-line="82" selection-start-column="82" selection-end-line="82" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FineController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/view/sm/FineController.js">
+      <file leaf-file-name="FineMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/FineMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FineEdit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/view/sm/FineEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
-              <folding />
+              <folding>
+                <marker date="1466488379473" expanded="true" signature="258:513" ph="INSERT INTO SmFine... " />
+                <marker date="1466488379473" expanded="true" signature="713:1039" ph="SELECT ##{ite... " />
+                <marker date="1466488379473" expanded="true" signature="1146:2406" ph="UPDATE SmFin... " />
+                <marker date="1466488379473" expanded="true" signature="2641:3999" ph="SELECT id,ty... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -410,32 +371,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -459,6 +394,62 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1724,7 +1715,7 @@
       <workItem from="1467079301954" duration="595000" />
       <workItem from="1467156311437" duration="6900000" />
       <workItem from="1467330297869" duration="15589000" />
-      <workItem from="1467422593629" duration="17915000" />
+      <workItem from="1467422593629" duration="18081000" />
     </task>
     <task id="LOCAL-00001" summary="工程结算&#10;将质量、安全罚单拆分到质量模块和安全模块">
       <created>1453766845857</created>
@@ -2020,7 +2011,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467455624746</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="&lt;工费结算&gt;&#10;1. 增加了其他扣款功能；&#10;2. 增加了print.html，用于打印表单；">
+      <created>1467456029095</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1467456029095</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2056,7 +2054,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1543680000" />
+    <option name="totallyTimeSpent" value="1543846000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2120,7 +2118,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&lt;工费结算&gt;&#10;造船类：&#10;1. 造船结算流程全部完成；&#10;工作流：&#10;1. 对待办任务界面进行了重构，更加人性化；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;修船类：&#10;1. 修船三大流程开单界面完成；&#10;2. 修船三大流程的流程监听器和任务监听器完成；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;修船类：&#10;1. 重构前端目录结构，将模板单独归类；&#10;2. 修船一级结算前的审批完成；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;修船类：&#10;1. 零星工程和机电修理工程中，主修审核、删改工程内容功能完成" />
@@ -2145,7 +2142,8 @@
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加了奖惩登记，用于管理计划、能源、其他奖惩；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加了奖惩登记，用于管理计划、能源、其他奖惩；&#10;2. 增加了修船主体/机电结算申请的工种；&#10;3. 增加了修船主体/机电一级结算时自动计算工费和绩效；" />
     <MESSAGE value="&lt;工费结算-新荣&gt;&#10;1. 创建了Javabean；&#10;2. 创建了流程图；" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;工费结算-新荣&gt;&#10;1. 创建了Javabean；&#10;2. 创建了流程图；" />
+    <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加了其他扣款功能；&#10;2. 增加了print.html，用于打印表单；" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;工费结算&gt;&#10;1. 增加了其他扣款功能；&#10;2. 增加了print.html，用于打印表单；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2174,13 +2172,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/FineMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/app/model/main/MainModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -2201,6 +2192,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2724,6 +2716,19 @@
         <state relative-caret-position="38">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/FineMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1466488379473" expanded="true" signature="258:513" ph="INSERT INTO SmFine... " />
+            <marker date="1466488379473" expanded="true" signature="713:1039" ph="SELECT ##{ite... " />
+            <marker date="1466488379473" expanded="true" signature="1146:2406" ph="UPDATE SmFin... " />
+            <marker date="1466488379473" expanded="true" signature="2641:3999" ph="SELECT id,ty... " />
+          </folding>
         </state>
       </provider>
     </entry>
