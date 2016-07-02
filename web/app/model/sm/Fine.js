@@ -1,0 +1,25 @@
+Ext.define('iFlat.model.sm.Fine', {
+    extend: 'Ext.data.Model',
+    fields: [
+        {name: 'fine.id', mapping: 'id', type: 'string'},
+        {name: 'fine.type', mapping: 'type', type: 'string'},
+        {name: 'fine.date', mapping: 'date', type: 'date'},
+        {name: 'fine.projNo', mapping: 'projNo', type: 'string'},
+        {name: 'fine.projName', mapping: 'projName', type: 'string'},
+        {name: 'fine.dept', mapping: 'dept', type: 'string'},
+        {name: 'fine.team', mapping: 'team', type: 'string'},
+        {name: 'fine.group', mapping: 'group', type: 'string'},
+        {name: 'fine.personAcc', mapping: 'personAcc', type: 'string'},
+        {name: 'fine.personName', mapping: 'personName', type: 'string'},
+        {name: 'fine.category', mapping: 'category', type: 'string'},
+        {name: 'fine.description', mapping: 'description', type: 'string'},
+        {name: 'fine.attachment', mapping: 'attachment', type: 'string'},
+        {name: 'fine.amount', mapping: 'amount', type: 'number'},
+        {name: 'fine.score', mapping: 'score', type: 'number'},
+        {name: 'fine.comment', mapping: 'comment', type: 'string'},
+        {name: 'fine.issuer', mapping: 'issuer', type: 'string'},
+        {name: 'fine.creatorAcc', mapping: 'creatorAcc', type: 'string'},
+        {name: 'fine.creatorName', mapping: 'creatorName', type: 'string'},
+        {name: 'fine.createTime', mapping: 'createTime', type: 'date'},
+    ]
+});
