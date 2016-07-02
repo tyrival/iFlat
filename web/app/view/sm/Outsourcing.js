@@ -4,7 +4,7 @@ Ext.define('iFlat.view.sm.Outsourcing', {
     xtype: 'sm-outsourcing',
 
     requires: [
-        'iFlat.view.sm.OutsourcingController',
+        'iFlat.view.sm.OutsourcingController'
     ],
     
     controller: 'sm-outsourcing',
