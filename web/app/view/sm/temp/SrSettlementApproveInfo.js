@@ -29,7 +29,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
             fieldDefaults: {
                 labelAlign: 'right',
                 labelWidth: 50,
-                disabled: true
+                //disabled: true
             },
             items: [{
                 xtype: 'fieldset',
@@ -43,38 +43,44 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                         id: 'sm-srsettlementapproveinfo-id',
                         fieldLabel: 'ID',
                         hidden: true,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         fieldLabel: '工号',
                         id: 'sm-srsettlementapproveinfo-projno',
                         name: 'srSettlement.projNo',
                         width: 230,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         fieldLabel: '船名',
                         id: 'sm-srsettlementapproveinfo-projname',
                         name: 'srSettlement.projName',
                         width: 350,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         fieldLabel: '进度%',
                         id: 'sm-srsettlementapproveinfo-progress',
                         name: 'srSettlement.progress',
                         width: 220,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         name: 'srSettlement.type',
                         id: 'sm-srsettlementapproveinfo-type',
                         hidden: true,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         name: 'srSettlement.status',
                         id: 'sm-srsettlementapproveinfo-status',
                         hidden: true,
+                        editable: false,
                         listeners: {
                             change:  function(field, newValue, oldValue, eOpts) {
-                                var container = field.up('window')
-                                    .down('container[name=srSettlement.amount]');
+                                var win = field.up('window');
+                                var container = win.down('container[name=srSettlement.amount]');
                                 var hidden = false;
                                 if (newValue == '修船主修审核'
                                     || newValue == '修船总管审核'
@@ -84,6 +90,14 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                                     hidden = true;
                                 }
                                 container.setHidden(hidden);
+                                var edit = false;
+                                if (newValue == '修船总管审核') {
+                                    edit = true;
+                                }
+                                win.down('textfield[name=srSettlement.progressScore]').setEditable(edit);
+                                win.down('textfield[name=srSettlement.mgrScore]').setEditable(edit);
+                                win.down('textfield[name=srSettlement.qualityScore]').setEditable(edit);
+                                win.down('textfield[name=srSettlement.safetyScore]').setEditable(edit);
                             },
                         }
                     }, {
@@ -91,6 +105,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                         name: 'srSettlement.attachment',
                         id: 'sm-srsettlementapproveinfo-attachment',
                         hidden: true,
+                        editable: false,
                         listeners: {
                             change: 'onAttachmentChange'
                         },
@@ -105,12 +120,14 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                         name: 'srSettlement.deptName',
                         fieldLabel: '部门',
                         width: 230,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         fieldLabel: '施工队',
                         id: 'sm-srsettlementapproveinfo-team',
                         name: 'srSettlement.team',
                         width: 430,
+                        editable: false,
                     }, {
                         xtype: 'button',
                         text: '下载附件',
@@ -128,6 +145,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                         name: 'srSettlement.comment',
                         fieldLabel: '备注',
                         width: 800,
+                        editable: false,
                     }]
                 }, {
                     xtype: 'container',
@@ -139,27 +157,66 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveInfo', {
                         name: 'srSettlement.summaryAmount',
                         fieldLabel: '合计',
                         width: 170,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         name: 'srSettlement.laborAmount',
-                        fieldLabel: '工程总价',
+                        fieldLabel: '工费',
                         width: 150,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         fieldLabel: '易耗品补贴',
                         name: 'srSettlement.consumableAmount',
                         labelWidth: 80,
                         width: 180,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         fieldLabel: '绩效',
                         name: 'srSettlement.performanceAmount',
                         width: 150,
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         fieldLabel: '材料费',
                         name: 'srSettlement.materialAmount',
                         width: 150,
+                        editable: false,
+                    }]
+                }, {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '10 0 10 0',
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'srSettlement.progressScore',
+                        fieldLabel: '进度分',
+                        regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                        width: 180,
+                        editable: false,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '管理分',
+                        name: 'srSettlement.mgrScore',
+                        regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                        labelWidth: 80,
+                        width: 180,
+                        editable: false,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '质量分',
+                        name: 'srSettlement.qualityScore',
+                        regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                        width: 180,
+                        editable: false,
+                    }, {
+                        xtype: 'textfield',
+                        fieldLabel: '安全分',
+                        name: 'srSettlement.safetyScore',
+                        regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                        width: 180,
+                        editable: false,
                     }]
                 }, {
                     xtype: 'panel',

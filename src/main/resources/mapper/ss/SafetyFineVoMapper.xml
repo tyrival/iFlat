@@ -5,7 +5,7 @@
 <mapper namespace="Ss.SafetyFineVo">
 
     <select id="list" parameterType="com.iflat.ss.entity.SafetyFineVo" resultMap="SsSafetyFineVoResult">
-        SELECT id,projNo,projName,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime,paid
+        SELECT id,projNo,projName,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime,paid,score
         FROM V_SsSafetyFine
         <where>
             <if test="id!=null">
@@ -100,5 +100,6 @@
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
         <result property="paid" column="paid" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
     </resultMap>
 </mapper>

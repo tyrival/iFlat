@@ -4,104 +4,97 @@
     <bookmark url="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveInfo.js" line="22" />
     <bookmark url="file://$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatch.js" line="95" />
     <bookmark url="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementController.js" line="206" />
-    <bookmark url="file://$PROJECT_DIR$/web/app/view/sm/FineEdit.js" line="50" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" line="479" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/action/DhAction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/dao/impl/PostDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/dao/impl/ReplyDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/entity/DhStatus.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/service/PostService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/service/impl/PostServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/service/impl/ReplyServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/dh/PostMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/dh/ReplyMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-dh.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/report/bean/sm/MonthlyProjectSettlement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/report/dao/impl/sm/MonthlyProjectSettlementDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/report/service/impl/sm/MonthlyProjectSettlementServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/DIscount.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/dao/impl/DiscountDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/DiscountServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/system/bean/Release.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/system/dao/impl/ReleaseDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/system/service/impl/ReleaseServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/CardInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Project.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrAssess.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrBalanceAppl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrProjectMgr.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrProjectSettPrice.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettPrice.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettlement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettlementDetl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Team.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/SrStatus.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementExecutionHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementTaskHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/report/sm/MonthlyProjectSettlementMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/DiscountMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/system/ReleaseMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/SrSettlement.bpmn" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/report/sm/MonthlyProjectSettlement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/sm/Discount.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/system/Release.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/report/sm/MonthlyProjectSettlement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/sm/Discount.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/system/Release.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/system/ReleasePage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/sm/MonthlyProjectSettlement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/sm/MonthlyProjectSettlementController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/sm/Discount.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/sm/DiscountController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/system/Release.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/system/ReleaseController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/Flat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/print.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/qm/bean/QualityFine.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/qm/bean/QualityFine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/qm/entity/QualityFineVo.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/qm/entity/QualityFineVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/report/action/ReportAction.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/report/action/ReportAction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/ss/bean/SafetyFine.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/ss/bean/SafetyFine.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/ss/entity/SafetyFineVo.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/ss/entity/SafetyFineVo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/iFlat.iml" afterPath="$PROJECT_DIR$/.idea/iFlat.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/actiBPM.xml" afterPath="$PROJECT_DIR$/.idea/actiBPM.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/dh/bean/Post.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/bean/Post.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/dh/bean/Reply.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/dh/bean/Reply.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/base/service/impl/BaseServiceSupport.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/base/service/impl/BaseServiceSupport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/qm/bean/QualityFine.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/qm/bean/QualityFine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/qm/entity/QualityFineVo.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/qm/entity/QualityFineVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/report/action/ReportAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/report/action/ReportAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SbSettlement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/ScSettlement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/TecSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/TecSettlement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/Temporary.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/Temporary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/entity/SbSettlementVo.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/entity/SbSettlementVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/entity/ScSettlementVo.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/entity/ScSettlementVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SbSettlementExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SbSettlementExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SbSettlementTaskHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SbSettlementTaskHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/ScSettlementExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/ScSettlementExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMainExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMainExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMiscExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMiscExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrSysExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrSysExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/TecSettlementExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/TecSettlementExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/TemporaryExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/TemporaryExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/TargetCostSplitServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/TargetCostSplitServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/SafetyFine.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/SafetyFine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/ss/entity/SafetyFineVo.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/ss/entity/SafetyFineVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementVoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/SbSettlementVoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/ScSettlementMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/system/action/SystemAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/system/action/SystemAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/qm/QualityFineMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/qm/QualityFineMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/qm/QualityFineVoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/qm/QualityFineVoMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/SrSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/SrSettlementMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/TecSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/TecSettlementMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/sm/TemporaryMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/sm/TemporaryMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ss/SafetyFineMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ss/SafetyFineMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ss/SafetyFineVoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ss/SafetyFineVoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-report.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-report.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/struts.xml" afterPath="$PROJECT_DIR$/src/main/resources/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMain.xml" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMain.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMisc.xml" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMisc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrSecond.xml" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrSecond.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrSys.xml" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrSys.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/dh/DemandHandler.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/dh/DemandHandler.bpmn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/ScSettlement.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/ScSettlement.bpmn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMain.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMain.bpmn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMisc.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMisc.bpmn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementSys.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementSys.bpmn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/TecSettlement.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/TecSettlement.bpmn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/Temporary.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/Temporary.bpmn" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-system.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-system.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/qm/QualityFineMapper.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/qm/QualityFineMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/qm/QualityFineVoMapper.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/qm/QualityFineVoMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/ss/SafetyFineMapper.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/ss/SafetyFineMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/ss/SafetyFineVoMapper.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/ss/SafetyFineVoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/struts.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/struts.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/spring/applicationContext-report.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/spring/applicationContext-report.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/spring/applicationContext-system.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/spring/applicationContext-system.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/main.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/main.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app.js" afterPath="$PROJECT_DIR$/web/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/main/MainModel.js" afterPath="$PROJECT_DIR$/web/app/model/main/MainModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/qm/QualityFine.js" afterPath="$PROJECT_DIR$/web/app/model/qm/QualityFine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/sm/SrSettlement.js" afterPath="$PROJECT_DIR$/web/app/model/sm/SrSettlement.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/ss/SafetyFine.js" afterPath="$PROJECT_DIR$/web/app/model/ss/SafetyFine.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SbTargetCostController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SbTargetCostController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/ScTargetCostController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/ScTargetCostController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SrCommercialCenterSettlement.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SrCommercialCenterSettlement.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SrCommercialCenterSettlementController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SrCommercialCenterSettlementController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveBatchController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SbSettlementApproveInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementSecond.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementSecond.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TecSettlementApproveBatchController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/TemporaryApproveBatchController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustMain.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustMain.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustMisc.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustMisc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustSys.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustSys.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplyMain.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplyMain.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplyMisc.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplyMisc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplySys.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplySys.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveMain.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveMain.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveMisc.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveMisc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveSys.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveSys.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstMain.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstMain.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstMisc.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstMisc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstSys.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstSys.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailMain.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailMain.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailMisc.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailMisc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailSys.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailSys.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/main/ContactUs.js" afterPath="$PROJECT_DIR$/web/app/view/main/ContactUs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/main/Main.js" afterPath="$PROJECT_DIR$/web/app/view/main/Main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/qm/QualityFine.js" afterPath="$PROJECT_DIR$/web/app/view/qm/QualityFine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/qm/QualityFineEdit.js" afterPath="$PROJECT_DIR$/web/app/view/qm/QualityFineEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/SrProfessionalManagerAuditEdit.js" afterPath="$PROJECT_DIR$/web/app/view/sm/SrProfessionalManagerAuditEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveInfo.js" afterPath="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveInfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/SafetyFine.js" afterPath="$PROJECT_DIR$/web/app/view/ss/SafetyFine.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/SafetyFineEdit.js" afterPath="$PROJECT_DIR$/web/app/view/ss/SafetyFineEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/workflow/TaskController.js" afterPath="$PROJECT_DIR$/web/app/view/workflow/TaskController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/ext/classic/classic/src/ux/grid/Printer.js" afterPath="$PROJECT_DIR$/web/ext/classic/classic/src/ux/grid/Printer.js" />
     </list>
     <ignored path="iFlat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -125,7 +118,7 @@
     <favorites_list name="iFlat" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -137,8 +130,8 @@
         <option value="Enum" />
         <option value="JavaScript File" />
         <option value="HTML File" />
-        <option value="BpmnFile" />
         <option value="Interface" />
+        <option value="BpmnFile" />
         <option value="Class" />
       </list>
     </option>
@@ -157,57 +150,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/struts.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/dao/impl/FineDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/FineServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/report/bean/sm/MonthlyProjectSettlement.java" />
+        <option value="$PROJECT_DIR$/web/app/model/report/sm/MonthlyProjectSettlement.js" />
+        <option value="$PROJECT_DIR$/web/app/model/main/MainModel.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/SrSettlementMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/model/sm/SrSettlement.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/Fine.java" />
-        <option value="$PROJECT_DIR$/web/app/model/sm/Fine.js" />
-        <option value="$PROJECT_DIR$/web/app/store/sm/Fine.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/FineController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/Fine.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/FineController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/Fine.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/sm/FineMapper.xml" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/FineEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecondController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/SbTargetCostController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/ScTargetCostController.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/TargetCostSplitServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/sm/MonthlyProjectSettlementController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/store/report/sm/MonthlyProjectSettlement.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/report/sm/MonthlyProjectSettlement.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/report/sm/MonthlyProjectSettlementMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/view/report/sm/MonthlyProjectSettlement.js" />
+        <option value="$PROJECT_DIR$/web/app/view/main/Main.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/system/action/SystemAction.java" />
+        <option value="$PROJECT_DIR$/web/ext/classic/classic/src/ux/grid/Printer.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/SafetyFine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/qm/entity/QualityFineVo.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/ss/SafetyFineMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/ss/SafetyFineVoMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/ss/entity/SafetyFineVo.java" />
-        <option value="$PROJECT_DIR$/web/app/model/ss/SafetyFine.js" />
-        <option value="$PROJECT_DIR$/web/app/view/ss/SafetyFine.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/qm/QualityFineMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/qm/QualityFineVoMapper.xml" />
         <option value="$PROJECT_DIR$/web/app/view/ss/SafetyFineEdit.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustMain.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustSys.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveMain.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveSys.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstMain.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstSys.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailSys.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplySys.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailMain.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementSecond.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrSys.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrSecond.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMain.xml" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplyMain.js" />
-        <option value="$PROJECT_DIR$/web/app/model/main/MainModel.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMisc.xml" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustMisc.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplyMisc.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveMisc.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstMisc.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailMisc.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/SrCommercialCenterSettlement.js" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/SrCommercialCenterSettlementController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/qm/QualityFineEdit.js" />
+        <option value="$PROJECT_DIR$/web/app/model/qm/QualityFine.js" />
+        <option value="$PROJECT_DIR$/web/app.js" />
+        <option value="$PROJECT_DIR$/web/js/iFlat.js" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/main.jsp" />
+        <option value="$PROJECT_DIR$/web/print.html" />
+        <option value="$PROJECT_DIR$/web/app/view/qm/QualityFine.js" />
+        <option value="$PROJECT_DIR$/web/app/view/sm/Fine.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/SafetyFine.js" />
+        <option value="$PROJECT_DIR$/web/js/print.js" />
+        <option value="$PROJECT_DIR$/web/app/model/ss/SafetyFine.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/qm/bean/QualityFine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/ss/entity/SafetyFineVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrBalanceAppl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrAssess.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettPrice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrProjectSettPrice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Team.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/CardInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Project.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettlementDetl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrProjectMgr.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettlement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementTaskHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementExecutionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/SrStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/SrSettlement.bpmn" />
       </list>
     </option>
   </component>
@@ -277,8 +270,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1040" />
-    <option name="height" value="1266" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -337,6 +330,374 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="iFlat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Extensions" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.intellij.database" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyPsiNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="diagram" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="diagram" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="diagram" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="listener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -500,338 +861,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Extensions" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.intellij.database" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyPsiNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="temp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="temp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="detail" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -846,7 +875,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\nodejs\node.exe" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Workspace/iFlat/web/app/view/workflow/TaskController.js&#10;toLowercase&#9;PSI&#9;JAVA://java.lang.String#toLowerCase&#10;ActivitiImpl&#9;PSI&#9;JAVA://org.activiti.engine.delegate.event.impl.ActivitiSignalEventImpl&#10;ReflectionUtil&#9;PSI&#9;JAVA://org.springframework.util.ReflectionUtils" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Workspace/iFlat/web/app/view/sm/temp/SrSettlementApproveInfo.js&#10;toLowercase&#9;PSI&#9;JAVA://java.lang.String#toLowerCase&#10;ActivitiImpl&#9;PSI&#9;JAVA://org.activiti.engine.delegate.event.impl.ActivitiSignalEventImpl&#10;ReflectionUtil&#9;PSI&#9;JAVA://org.springframework.util.ReflectionUtils" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/iflat/sm" />
@@ -866,18 +895,18 @@
       <recent name="com.iflat.workflow.listener" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Workspace\iFlat\web\app\view\sm" />
-      <recent name="D:\Workspace\iFlat\web\app\store\dh" />
-      <recent name="D:\Workspace\iFlat\web\app\model\dh" />
-      <recent name="D:\Workspace\iFlat\src\main\resources\mapper\dh" />
-      <recent name="D:\Workspace\iFlat\web\ext\packages\ux\classic\src" />
+      <recent name="D:\Workspace\iFlat\web\fonts" />
+      <recent name="D:\Workspace\iFlat\web\js\bootstrap" />
+      <recent name="D:\Workspace\iFlat\web\css\bootstrap" />
+      <recent name="D:\Workspace\iFlat\web\app\store\report\sm" />
+      <recent name="D:\Workspace\iFlat\web\app\model\report\sm" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.iflat.xr.entity" />
       <recent name="com.iflat.sm.listener" />
       <recent name="com.iflat.sm.dao.impl" />
       <recent name="com.iflat.sm.entity" />
       <recent name="com.iflat.sm.service.impl" />
-      <recent name="com.iflat.sm.service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Workspace\iFlat\web\" />
@@ -1798,7 +1827,18 @@
       <workItem from="1466578849003" duration="717000" />
       <workItem from="1466586198419" duration="1161000" />
       <workItem from="1466587586255" duration="47000" />
-      <workItem from="1466638914904" duration="17107000" />
+      <workItem from="1466638914904" duration="17150000" />
+      <workItem from="1466671605904" duration="1771000" />
+      <workItem from="1466679715972" duration="5568000" />
+      <workItem from="1466723774513" duration="19998000" />
+      <workItem from="1466814139676" duration="8680000" />
+      <workItem from="1466838149077" duration="977000" />
+      <workItem from="1466984338622" duration="1783000" />
+      <workItem from="1467077333778" duration="600000" />
+      <workItem from="1467079301954" duration="595000" />
+      <workItem from="1467156311437" duration="6900000" />
+      <workItem from="1467330297869" duration="15589000" />
+      <workItem from="1467422593629" duration="17569000" />
     </task>
     <task id="LOCAL-00001" summary="工程结算&#10;将质量、安全罚单拆分到质量模块和安全模块">
       <created>1453766845857</created>
@@ -2080,7 +2120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1466057170476</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="&lt;工费结算&gt;&#10;1. 增加了奖惩登记，用于管理计划、能源、其他奖惩；&#10;2. 增加了修船主体/机电结算申请的工种；&#10;3. 增加了修船主体/机电一级结算时自动计算工费和绩效；">
+      <created>1466663432131</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1466663432131</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2116,7 +2163,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1463261000" />
+    <option name="totallyTimeSpent" value="1543334000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2128,43 +2175,43 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="1266" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4448463" sideWeight="0.5173469" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730561" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25587705" sideWeight="0.48265305" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5940325" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32828283" sideWeight="0.4969743" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23779385" sideWeight="0.5214286" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730561" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32007232" sideWeight="0.49394855" order="3" side_tool="false" content_ui="tabs" x="24" y="419" width="1322" height="245" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820976" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="BPMN Editor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39730638" sideWeight="0.49081632" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37205386" sideWeight="0.50832075" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27857143" sideWeight="0.45272207" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22919819" sideWeight="0.44936708" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26734695" sideWeight="0.5407895" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22755101" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24795918" sideWeight="0.5472779" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22692889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22950819" sideWeight="0.5506329" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3209765" sideWeight="0.47857141" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="BPMN Editor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25587705" sideWeight="0.49081632" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5940325" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37205386" sideWeight="0.50832075" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32491583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2180,7 +2227,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&lt;工费结算&gt;&#10;造船类：&#10;1. 目标成本分解功能完成" />
     <MESSAGE value="&lt;工费结算&gt;&#10;造船类：&#10;1. 造船结算流程全部完成；&#10;工作流：&#10;1. 对待办任务界面进行了重构，更加人性化；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;修船类：&#10;1. 修船三大流程开单界面完成；&#10;2. 修船三大流程的流程监听器和任务监听器完成；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;修船类：&#10;1. 重构前端目录结构，将模板单独归类；&#10;2. 修船一级结算前的审批完成；" />
@@ -2205,7 +2251,8 @@
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 加入了Grid打印功能，Flat.util.printGrid(grid)；&#10;2. excel导入时，增加了单元格格式的容错；&#10;3. 修复了部分bug；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加了奖惩登记，用于管理计划、能源、其他奖惩；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加了奖惩登记，用于管理计划、能源、其他奖惩；&#10;2. 增加了修船主体/机电结算申请的工种；&#10;3. 增加了修船主体/机电一级结算时自动计算工费和绩效；" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;工费结算&gt;&#10;1. 增加了奖惩登记，用于管理计划、能源、其他奖惩；&#10;2. 增加了修船主体/机电结算申请的工种；&#10;3. 增加了修船主体/机电一级结算时自动计算工费和绩效；" />
+    <MESSAGE value="&lt;工费结算-新荣&gt;&#10;1. 创建了Javabean；&#10;2. 创建了流程图；" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;工费结算-新荣&gt;&#10;1. 创建了Javabean；&#10;2. 创建了流程图；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2217,7 +2264,7 @@
           <option name="timeStamp" value="429" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="485" />
+      <option name="time" value="495" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2234,413 +2281,554 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/FineController.js">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="304">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/Fine.js">
+    <entry file="file://$PROJECT_DIR$/web/js/Flat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1995">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="95">
+          <caret line="5" column="340" selection-start-line="5" selection-start-column="340" selection-end-line="5" selection-end-column="340" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/print.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/FineMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app/view/sm/FineEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="100" column="78" selection-start-line="100" selection-start-column="71" selection-end-line="100" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/system/AuthorityController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/system/DataDictionaryController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/system/ModuleController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/system/OrganizationController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/Application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="85" column="75" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="75" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="253" column="34" selection-start-line="253" selection-start-column="34" selection-end-line="253" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="71" column="48" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustSys.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplySys.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="65" column="13" selection-start-line="59" selection-start-column="12" selection-end-line="65" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrWorkshopSettlementApprove.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/TargetCost.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/ProjectTargetCost.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/SbSettlement.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/bi/DeptCstCtrl.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="28" column="92" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/SrSecond.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="76" column="76" selection-start-line="75" selection-start-column="63" selection-end-line="76" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMain.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementDetlFirstServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementDetlSecondServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/SrMisc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1969">
-          <caret line="124" column="22" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/excel/sm/SrSys.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="58" column="67" selection-start-line="57" selection-start-column="63" selection-end-line="58" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrAdjustMisc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="46" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplyMisc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="61" column="7" selection-start-line="54" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApproveMisc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="28" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailMisc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="51" column="7" selection-start-line="44" selection-start-column="14" selection-end-line="51" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailSys.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstSys.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrApplyMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-707">
-          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbSettlementEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6327">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementSecondController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="411" column="5" selection-start-line="381" selection-start-column="4" selection-end-line="411" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementSecondDetailMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="119" column="32" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementSecond.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="353" column="48" selection-start-line="353" selection-start-column="48" selection-end-line="353" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrWorkshopSettlement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="175" column="54" selection-start-line="175" selection-start-column="54" selection-end-line="175" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstMisc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="190">
+          <caret line="82" column="39" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app/model/main/MainModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="65" column="57" selection-start-line="65" selection-start-column="57" selection-end-line="65" selection-end-column="57" />
+        <state relative-caret-position="230">
+          <caret line="71" column="38" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/detail/SrSettlementFirstMain.js">
+    <entry file="file://$PROJECT_DIR$/web/app/view/qm/QualityFine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="889">
-          <caret line="68" column="47" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="47" />
+        <state relative-caret-position="458">
+          <caret line="85" column="82" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SbSettlementController.js">
+    <entry file="file://$PROJECT_DIR$/web/app/model/sm/Fine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="418">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/qm/QualityFine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrBusinessDivisionDirectorApprove.js">
+    <entry file="file://$PROJECT_DIR$/web/js/print.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <marker date="1467359882566" expanded="true" signature="278:296" ph="..." />
+            <marker date="1467359882566" expanded="true" signature="396:412" ph="..." />
+            <marker date="1467359882566" expanded="true" signature="1252:1294" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/sm/Fine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="82" column="82" selection-start-line="82" selection-start-column="82" selection-end-line="82" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/SafetyFine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="84" column="10" selection-start-line="84" selection-start-column="10" selection-end-line="84" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/ss/SafetyFine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/qm/entity/QualityFineVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+          <folding>
+            <element signature="e#914#915#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/qm/bean/QualityFine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+          <folding>
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/SafetyFine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="47" column="5" selection-start-line="38" selection-start-column="31" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="e#1247#1248#0" expanded="true" />
+            <element signature="e#1275#1276#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/ss/entity/SafetyFineVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+          <folding>
+            <element signature="e#1333#1334#0" expanded="true" />
+            <element signature="e#1361#1362#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="38" column="31" selection-start-line="9" selection-start-column="4" selection-end-line="38" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlementDetlSecond.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="35" column="28" selection-start-line="9" selection-start-column="4" selection-end-line="35" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/jdk1.8.0_65/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrSettlementDetlFirst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-266">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrBalanceAppl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding>
+            <element signature="e#410#411#0" expanded="false" />
+            <element signature="e#446#447#0" expanded="false" />
+            <element signature="e#474#475#0" expanded="false" />
+            <element signature="e#507#508#0" expanded="false" />
+            <element signature="e#536#537#0" expanded="false" />
+            <element signature="e#580#581#0" expanded="false" />
+            <element signature="e#616#617#0" expanded="false" />
+            <element signature="e#651#652#0" expanded="false" />
+            <element signature="e#682#683#0" expanded="false" />
+            <element signature="e#730#731#0" expanded="false" />
+            <element signature="e#770#771#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#828#829#0" expanded="false" />
+            <element signature="e#868#869#0" expanded="false" />
+            <element signature="e#900#901#0" expanded="false" />
+            <element signature="e#938#939#0" expanded="false" />
+            <element signature="e#972#973#0" expanded="false" />
+            <element signature="e#1026#1027#0" expanded="false" />
+            <element signature="e#1072#1073#0" expanded="false" />
+            <element signature="e#1109#1110#0" expanded="false" />
+            <element signature="e#1142#1143#0" expanded="false" />
+            <element signature="e#1194#1195#0" expanded="false" />
+            <element signature="e#1238#1239#0" expanded="false" />
+            <element signature="e#1275#1276#0" expanded="false" />
+            <element signature="e#1308#1309#0" expanded="false" />
+            <element signature="e#1360#1361#0" expanded="false" />
+            <element signature="e#1404#1405#0" expanded="false" />
+            <element signature="e#1442#1443#0" expanded="false" />
+            <element signature="e#1476#1477#0" expanded="false" />
+            <element signature="e#1530#1531#0" expanded="false" />
+            <element signature="e#1576#1577#0" expanded="false" />
+            <element signature="e#1611#1612#0" expanded="false" />
+            <element signature="e#1644#1645#0" expanded="false" />
+            <element signature="e#1694#1695#0" expanded="false" />
+            <element signature="e#1738#1739#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettPrice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="5" selection-start-line="12" selection-start-column="25" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#297#298#0" expanded="false" />
+            <element signature="e#327#328#0" expanded="false" />
+            <element signature="e#370#371#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrProjectSettPrice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="18" column="36" selection-start-line="17" selection-start-column="27" selection-end-line="18" selection-end-column="36" />
+          <folding>
+            <element signature="e#508#509#0" expanded="false" />
+            <element signature="e#538#539#0" expanded="false" />
+            <element signature="e#581#582#0" expanded="false" />
+            <element signature="e#612#613#0" expanded="false" />
+            <element signature="e#649#650#0" expanded="false" />
+            <element signature="e#682#683#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrAssess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding>
+            <element signature="e#435#436#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/code/bean/Team.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="24" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/code/bean/Department.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/report/bean/bi/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-152">
+          <caret line="16" column="24" selection-start-line="9" selection-start-column="4" selection-end-line="16" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Team.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/code/bean/CardInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="32" column="5" selection-start-line="6" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/CardInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettlementDetl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2758">
+          <caret line="148" column="26" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="26" />
+          <folding>
+            <element signature="e#1008#1009#0" expanded="false" />
+            <element signature="e#1038#1039#0" expanded="false" />
+            <element signature="e#1081#1082#0" expanded="false" />
+            <element signature="e#1112#1113#0" expanded="false" />
+            <element signature="e#1141#1142#0" expanded="false" />
+            <element signature="e#1166#1167#0" expanded="false" />
+            <element signature="e#1202#1203#0" expanded="false" />
+            <element signature="e#1230#1231#0" expanded="false" />
+            <element signature="e#1260#1261#0" expanded="false" />
+            <element signature="e#1286#1287#0" expanded="false" />
+            <element signature="e#1324#1325#0" expanded="false" />
+            <element signature="e#1354#1355#0" expanded="false" />
+            <element signature="e#1385#1386#0" expanded="false" />
+            <element signature="e#1412#1413#0" expanded="false" />
+            <element signature="e#1452#1453#0" expanded="false" />
+            <element signature="e#1484#1485#0" expanded="false" />
+            <element signature="e#1519#1520#0" expanded="false" />
+            <element signature="e#1550#1551#0" expanded="false" />
+            <element signature="e#1598#1599#0" expanded="false" />
+            <element signature="e#1638#1639#0" expanded="false" />
+            <element signature="e#1670#1671#0" expanded="false" />
+            <element signature="e#1698#1699#0" expanded="false" />
+            <element signature="e#1740#1741#0" expanded="false" />
+            <element signature="e#1774#1775#0" expanded="false" />
+            <element signature="e#1805#1806#0" expanded="false" />
+            <element signature="e#1832#1833#0" expanded="false" />
+            <element signature="e#1872#1873#0" expanded="false" />
+            <element signature="e#1904#1905#0" expanded="false" />
+            <element signature="e#1943#1944#0" expanded="false" />
+            <element signature="e#1978#1979#0" expanded="false" />
+            <element signature="e#2034#2035#0" expanded="false" />
+            <element signature="e#2082#2083#0" expanded="false" />
+            <element signature="e#2117#2118#0" expanded="false" />
+            <element signature="e#2148#2149#0" expanded="false" />
+            <element signature="e#2196#2197#0" expanded="false" />
+            <element signature="e#2236#2237#0" expanded="false" />
+            <element signature="e#2276#2277#0" expanded="false" />
+            <element signature="e#2312#2313#0" expanded="false" />
+            <element signature="e#2370#2371#0" expanded="false" />
+            <element signature="e#2420#2421#0" expanded="false" />
+            <element signature="e#2456#2457#0" expanded="false" />
+            <element signature="e#2488#2489#0" expanded="false" />
+            <element signature="e#2665#2666#0" expanded="false" />
+            <element signature="e#2693#2694#0" expanded="false" />
+            <element signature="e#2855#2856#0" expanded="false" />
+            <element signature="e#2884#2885#0" expanded="false" />
+            <element signature="e#3054#3055#0" expanded="false" />
+            <element signature="e#3087#3088#0" expanded="false" />
+            <element signature="e#3274#3275#0" expanded="false" />
+            <element signature="e#3308#3309#0" expanded="false" />
+            <element signature="e#3593#3594#0" expanded="false" />
+            <element signature="e#3627#3628#0" expanded="false" />
+            <element signature="e#3793#3794#0" expanded="false" />
+            <element signature="e#3828#3829#0" expanded="false" />
+            <element signature="e#4114#4115#0" expanded="false" />
+            <element signature="e#4144#4145#0" expanded="false" />
+            <element signature="e#4190#4191#0" expanded="false" />
+            <element signature="e#4228#4229#0" expanded="false" />
+            <element signature="e#4265#4266#0" expanded="false" />
+            <element signature="e#4298#4299#0" expanded="false" />
+            <element signature="e#4350#4351#0" expanded="false" />
+            <element signature="e#4394#4395#0" expanded="false" />
+            <element signature="e#4432#4433#0" expanded="false" />
+            <element signature="e#4466#4467#0" expanded="false" />
+            <element signature="e#4520#4521#0" expanded="false" />
+            <element signature="e#4566#4567#0" expanded="false" />
+            <element signature="e#4601#4602#0" expanded="false" />
+            <element signature="e#4634#4635#0" expanded="false" />
+            <element signature="e#4684#4685#0" expanded="false" />
+            <element signature="e#4728#4729#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrProjectMgr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="e#282#283#0" expanded="false" />
+            <element signature="e#318#319#0" expanded="false" />
+            <element signature="e#346#347#0" expanded="false" />
+            <element signature="e#379#380#0" expanded="false" />
+            <element signature="e#408#409#0" expanded="false" />
+            <element signature="e#452#453#0" expanded="false" />
+            <element signature="e#488#489#0" expanded="false" />
+            <element signature="e#523#524#0" expanded="false" />
+            <element signature="e#554#555#0" expanded="false" />
+            <element signature="e#602#603#0" expanded="false" />
+            <element signature="e#642#643#0" expanded="false" />
+            <element signature="e#676#677#0" expanded="false" />
+            <element signature="e#706#707#0" expanded="false" />
+            <element signature="e#752#753#0" expanded="false" />
+            <element signature="e#790#791#0" expanded="false" />
+            <element signature="e#821#822#0" expanded="false" />
+            <element signature="e#848#849#0" expanded="false" />
+            <element signature="e#888#889#0" expanded="false" />
+            <element signature="e#920#921#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/bean/SrProjectManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="24" selection-start-line="7" selection-start-column="4" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/workflow/listener/WorkflowTaskListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1159">
+          <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SbSettlementTaskHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementSys.bpmn">
+      <provider selected="true" editor-type-id="bpmn-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMisc.bpmn">
+      <provider selected="true" editor-type-id="bpmn-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMain.bpmn">
+      <provider selected="true" editor-type-id="bpmn-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettlement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="84" column="32" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
+          <folding>
+            <element signature="e#1944#1945#0" expanded="false" />
+            <element signature="e#1991#1992#0" expanded="false" />
+            <element signature="e#2026#2027#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMainTaskHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="15" column="60" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementTaskHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SbSettlementExecutionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="14" column="75" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/workflow/listener/WorkflowExecutionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementExecutionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/SrStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/entity/SrStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn">
+      <provider selected="true" editor-type-id="bpmn-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/SrSettlement.bpmn">
+      <provider selected="true" editor-type-id="bpmn-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrProfessionalManagerAuditController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrWorkshopSettlementController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/ScSettlementApproveBatchController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="37" column="21" selection-start-line="28" selection-start-column="33" selection-end-line="37" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrCommercialCenterSettlement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="223" column="36" selection-start-line="223" selection-start-column="36" selection-end-line="223" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrCommercialCenterSettlementController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

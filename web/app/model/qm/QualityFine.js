@@ -19,5 +19,6 @@ Ext.define('iFlat.model.qm.QualityFine', {
         {name: 'qualityFine.attachment', mapping: 'attachment', type: 'string'},
         {name: 'qualityFine.creator', mapping: 'creator', type: 'string'},
         {name: 'qualityFine.createTime', mapping: 'createTime', type: 'date'},
+        {name: 'qualityFine.score', mapping: 'score', type: 'number'},
     ]
 });

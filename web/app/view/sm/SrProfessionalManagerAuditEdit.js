@@ -3,7 +3,6 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
     alias: 'widget.sm-srprofessionalmanagerauditedit',
 
     title: '修船结算单审批',
-    layout: 'fit',
     modal: true,
 
     requires: [
@@ -17,15 +16,14 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
     id: 'sm-srprofessionalmanagerauditedit',
     closeAction: 'hide',
 
+    maxHeight: 550,
+    layout: 'vbox',
+    scrollable: 'y',
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 650,
-        scollable: 'y',
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
+        layout: 'vbox',
+
         items: [{
             xtype: 'form',
             id: 'sm-srprofessionalmanagerauditedit-form',
@@ -109,10 +107,10 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
                     }, ]
                 }, {
                     xtype: 'container',
-                    type: 'hbox',
+                    layout: 'hbox',
                     margin: '10 0 0 0',
                     items: [{
-                        xtype: 'textarea',
+                        xtype: 'textfield',
                         name: 'srSettlement.comment',
                         fieldLabel: '备注',
                         width: 800,
@@ -122,7 +120,7 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
         }, {
             xtype: 'panel',
             name: 'detail',
-            height: 200,
+            height: 400,
             border: false,
             width: 830,
             layout: {

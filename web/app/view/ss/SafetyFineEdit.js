@@ -62,7 +62,7 @@ Ext.define('iFlat.view.ss.SafetyFineEdit', {
                 allowBlank: false,
                 fieldLabel: '日期',
                 format: 'Y-m-d',
-                width: 200
+                width: 200,
             },{
                 xtype: 'combo',
                 name: 'safetyFine.type',
@@ -70,18 +70,28 @@ Ext.define('iFlat.view.ss.SafetyFineEdit', {
                 allowBlank: false,
                 editable: false,
                 forceSelection : true,
-                width: 200,
+                width: 180,
+                labelWidth: 40,
                 fieldLabel: '类型',
                 bind: {
                     store: '{safetyFineType}'
                 }
             },{
                 xtype: 'textfield',
+                name: 'safetyFine.score',
+                allowBlank: false,
+                fieldLabel: '扣分',
+                regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                width: 120,
+                labelWidth: 40,
+            },{
+                xtype: 'textfield',
                 name: 'safetyFine.amount',
                 allowBlank: false,
                 fieldLabel: '金额',
                 regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
-                width: 175,
+                width: 120,
+                labelWidth: 40,
             },{
                 xtype: 'combo',
                 name: 'safetyFine.paid',
@@ -93,7 +103,8 @@ Ext.define('iFlat.view.ss.SafetyFineEdit', {
                 bind: {
                     store: '{safetyFinePaid}'
                 },
-                width: 175,
+                width: 130,
+                labelWidth: 40,
             }]
         },{
             items: [{

@@ -73,6 +73,20 @@ Ext.define('iFlat.view.ss.SafetyFine', {
             xtype: 'label',
         }
     }, {
+        text: '打印',
+        width: 60,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        tooltip: '打印',
+        align: 'center',
+        iconCls: 'x-fa fa-print',
+        handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+            Print.fine(record.getData());
+        },
+        editor: {
+            xtype: 'label',
+        }
+    }, {
         header: '工号',
         dataIndex: 'safetyFine.projNo',
     }, {
@@ -121,6 +135,10 @@ Ext.define('iFlat.view.ss.SafetyFine', {
     }, {
         header: '地点',
         dataIndex: 'safetyFine.place',
+    }, {
+        header: '扣分',
+        align: 'right',
+        dataIndex: 'safetyFine.score',
     }, {
         header: '金额',
         align: 'right',

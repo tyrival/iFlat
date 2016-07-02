@@ -146,8 +146,8 @@ Ext.define("Ext.ux.grid.Printer", {
                   '</head>',
                   '<body class="' + Ext.baseCSSPrefix + 'ux-grid-printer-body">',
                   '<div class="' + Ext.baseCSSPrefix + 'ux-grid-printer-noprint ' + Ext.baseCSSPrefix + 'ux-grid-printer-links">',
-                      '<a class="' + Ext.baseCSSPrefix + 'ux-grid-printer-linkprint" href="javascript:void(0);" onclick="window.print();">' + this.printLinkText + '</a>',
-                      '<a class="' + Ext.baseCSSPrefix + 'ux-grid-printer-linkclose" href="javascript:void(0);" onclick="window.close();">' + this.closeLinkText + '</a>',
+                      '<a class="' + Ext.baseCSSPrefix + 'ux-grid-printer-linkprint" href="javascript:void(0);" onclick="window.print();" style="font-size: 14px">' + this.printLinkText + '</a>',
+                      '<a class="' + Ext.baseCSSPrefix + 'ux-grid-printer-linkclose" href="javascript:void(0);" onclick="window.close();" style="font-size: 14px">' + this.closeLinkText + '</a>',
                   '</div>',
                   '<h1>' + this.mainTitle + '</h1>',
                     '<table>',
@@ -224,13 +224,13 @@ Ext.define("Ext.ux.grid.Printer", {
          * Text show on print link
          * @type String
          */
-        printLinkText: 'Print',
+        printLinkText: '打印',
         
         /**
          * Text show on close link
          * @type String
          */
-        closeLinkText: 'Close',
+        closeLinkText: '关闭',
         
         /**
          * @property headerTpl

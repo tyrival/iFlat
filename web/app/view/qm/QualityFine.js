@@ -76,6 +76,20 @@ Ext.define('iFlat.view.qm.QualityFine', {
             xtype: 'label',
         }
     }, {
+        text: '打印',
+        width: 60,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        tooltip: '打印',
+        align: 'center',
+        iconCls: 'x-fa fa-print',
+        handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+            Print.fine(record.getData());
+        },
+        editor: {
+            xtype: 'label',
+        }
+    }, {
         header: '工号',
         dataIndex: 'qualityFine.projNo',
     }, {
@@ -121,6 +135,10 @@ Ext.define('iFlat.view.qm.QualityFine', {
     }, {
         header: '考核性质',
         dataIndex: 'qualityFine.category',
+    }, {
+        header: '扣分',
+        align: 'right',
+        dataIndex: 'qualityFine.score',
     }, {
         header: '金额',
         align: 'right',

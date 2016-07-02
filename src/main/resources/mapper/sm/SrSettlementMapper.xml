@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.sm.bean.SrSettlement">
         INSERT INTO SmSrSettlement
-        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{professionalMgrAcc},#{settleFirstAcc},#{settleFirstName},#{settleFirstTime},#{teamAcc},#{teamName},#{settlementTime})
+        VALUES (#{id},#{type},#{projNo},#{projName},#{deptName},#{team},#{progress},#{laborAmount},#{consumableAmount},#{performanceAmount},#{materialAmount},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{professionalMgrAcc},#{settleFirstAcc},#{settleFirstName},#{settleFirstTime},#{teamAcc},#{teamName},#{settlementTime},#{mgrScore},#{progressScore},#{qualityScore},#{safetyScore})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SmSrSettlement
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.professionalMgrAcc},#{item.settleFirstAcc},#{item.settleFirstName},#{item.settleFirstTime},#{item.teamAcc},#{item.teamName},#{item.settlementTime}
+            SELECT #{item.id},#{item.type},#{item.projNo},#{item.projName},#{item.deptName},#{item.team},#{item.progress},#{item.laborAmount},#{item.consumableAmount},#{item.performanceAmount},#{item.materialAmount},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.professionalMgrAcc},#{item.settleFirstAcc},#{item.settleFirstName},#{item.settleFirstTime},#{item.teamAcc},#{item.teamName},#{item.settlementTime},#{item.mgrScore},#{item.progressScore},#{item.qualityScore},#{item.safetyScore}
         </foreach>
     </insert>
 
@@ -38,6 +38,10 @@
             <if test="teamAcc!=null">teamAcc=#{teamAcc},</if>
             <if test="teamName!=null">teamName=#{teamName},</if>
             <if test="settlementTime!=null">settlementTime=#{settlementTime},</if>
+            <if test="mgrScore!=null">mgrScore=#{mgrScore},</if>
+            <if test="progressScore!=null">progressScore=#{progressScore},</if>
+            <if test="qualityScore!=null">qualityScore=#{qualityScore},</if>
+            <if test="safetyScore!=null">safetyScore=#{safetyScore},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -48,7 +52,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.sm.bean.SrSettlement" resultMap="SmSrSettlementResult">
-        SELECT id,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime,professionalMgrAcc,settleFirstAcc,settleFirstName,settleFirstTime,teamAcc,teamName,settlementTime
+        SELECT id,type,projNo,projName,deptName,team,progress,laborAmount,consumableAmount,performanceAmount,materialAmount,attachment,comment,status,creatorAcc,creatorName,createTime,professionalMgrAcc,settleFirstAcc,settleFirstName,settleFirstTime,teamAcc,teamName,settlementTime,mgrScore,progressScore,qualityScore,safetyScore
         FROM SmSrSettlement
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -95,5 +99,9 @@
         <result property="teamAcc" column="teamAcc" jdbcType="VARCHAR"/>
         <result property="teamName" column="teamName" jdbcType="VARCHAR"/>
         <result property="settlementTime" column="settlementTime" jdbcType="DATE"/>
+        <result property="mgrScore" column="mgrScore" jdbcType="DOUBLE"/>
+        <result property="progressScore" column="progressScore" jdbcType="DOUBLE"/>
+        <result property="qualityScore" column="qualityScore" jdbcType="DOUBLE"/>
+        <result property="safetyScore" column="safetyScore" jdbcType="DOUBLE"/>
     </resultMap>
 </mapper>

@@ -25,5 +25,14 @@ Ext.define('iFlat.model.sm.SrSettlement', {
         {name: 'srSettlement.settleFirstTime', mapping: 'settleFirstTime', type: 'date'},
         {name: 'srSettlement.teamAcc', mapping: 'teamAcc', type: 'string'},
         {name: 'srSettlement.teamName', mapping: 'teamName', type: 'string'},
+        {name: 'srSettlement.teamName', mapping: 'teamName', type: 'string'},
+        {name: 'srSettlement.teamName', mapping: 'teamName', type: 'string'},
+        {name: 'srSettlement.teamName', mapping: 'teamName', type: 'string'},
+        {name: 'srSettlement.teamName', mapping: 'teamName', type: 'string'},
+        {name: 'srSettlement.settlementTime', mapping: 'settlementTime', type: 'date'},
+        {name: 'srSettlement.mgrScore', mapping: 'mgrScore', type: 'number'},
+        {name: 'srSettlement.progressScore', mapping: 'progressScore', type: 'number'},
+        {name: 'srSettlement.qualityScore', mapping: 'qualityScore', type: 'number'},
+        {name: 'srSettlement.safetyScore', mapping: 'safetyScore', type: 'number'},
     ]
 });

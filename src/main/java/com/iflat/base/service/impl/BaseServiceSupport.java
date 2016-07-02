@@ -209,8 +209,11 @@ public class BaseServiceSupport implements BaseService {
                 UserInfoVo userInfoVo = Session.getUserInfo();
                 obj.setMethodValue("creatorAcc", userInfoVo.getAccount());
                 obj.setMethodValue("creatorName", userInfoVo.getUserName());
-                obj.setMethodValue("createTime", new Date());
+            } catch (Exception e) {
+            }
 
+            try {
+                obj.setMethodValue("createTime", new Date());
             } catch (Exception e) {
             }
 

@@ -49,7 +49,7 @@ Ext.define('iFlat.view.main.Main', {
             },
             {
                 cls: 'header-bar-icon',
-                iconCls:'x-fa fa-edit',
+                iconCls: 'x-fa fa-edit',
                 tooltip: '速记本',
                 id: 'Memo',
                 handler: 'popSubWindow'
@@ -63,11 +63,11 @@ Ext.define('iFlat.view.main.Main', {
                     text: '<div style="font-family:微软雅黑;font-size:15px;font-weight:bold;color:#5fa2dd"> {user.userName} [{user.roleName}] </div>',
                 },
                 menu: [
-                    { text: '切换角色', handler: 'popSubWindow', id: 'SwitchRole' },
-                    { text: '修改密码', handler: 'popSubWindow', id: 'Password' },
-                    { text: '默认角色', handler: 'popSubWindow', id: 'DefaultRole' },
+                    {text: '切换角色', handler: 'popSubWindow', id: 'SwitchRole'},
+                    {text: '修改密码', handler: 'popSubWindow', id: 'Password'},
+                    {text: '默认角色', handler: 'popSubWindow', id: 'DefaultRole'},
                     //{ text: '常用功能', handler: 'popSubWindow', id: 'Favourite' },
-                    { text: '个人资料', handler: 'popSubWindow', id: 'Profile' },
+                    {text: '个人资料', handler: 'popSubWindow', id: 'Profile'},
                 ]
             },
             {
@@ -76,12 +76,12 @@ Ext.define('iFlat.view.main.Main', {
                     'height': '36px',
                     'width': '36px'
                 },
-                iconCls:'x-fa fa-sign-out',
+                iconCls: 'x-fa fa-sign-out',
                 tooltip: '注销',
                 handler: 'logout'
             },
         ]
-    },{
+    }, {
         region: 'west',
         id: 'global-treepanel',
         width: 250,
@@ -129,6 +129,44 @@ Ext.define('iFlat.view.main.Main', {
                 text: '联系我们',
                 id: 'ContactUs',
                 handler: 'popSubWindow',
+            },],
+            items: [{
+                xtype: 'fieldset',
+                layout: 'anchor',
+                margin: '0 8 10 8',
+                items: [{
+                    xtype: 'component',
+                    anchor: '100%',
+                    html: [
+                        '<h3>2016-06-25 工费结算</h3>',
+                        '<p>1. 修船结算申请中，在修船总管审核界面，增加总管打分功能，为修船经营提供一级结算的依据。</p>',
+                    ]
+                }]
+            }, {
+                xtype: 'fieldset',
+                layout: 'anchor',
+                margin: '0 8 10 8',
+                items: [{
+                    xtype: 'component',
+                    anchor: '100%',
+                    html: [
+                        '<h3>2016-06-24 工费结算</h3>',
+                        '<p>1. 增加了工程队管理费率的维护功能，用于自动计算开票金额</p>',
+                    ]
+                }]
+            }, {
+                xtype: 'fieldset',
+                layout: 'anchor',
+                margin: '0 8 10 8',
+                items: [{
+                    xtype: 'component',
+                    anchor: '100%',
+                    html: [
+                        '<h3>2016-06-23 工费结算</h3>',
+                        '<p>1. 除安全、质量罚款外，新增加了对施工队的计划执行、设备能源、其他三方面考核奖惩登记，登记的扣款会在工费结算时统一扣除，所以，在此登记过的扣款，无需在结算单上重复登记，菜单：工程结算-奖惩管理-奖惩登记；有需要的部门可联系开通此权限；</p>',
+                        '<p>2. 安全奖惩登记增加了“现金”字段，用于标注该罚款是否已通过现金结清，如已结清，则在工费结算时不会扣除</p>',
+                    ]
+                }]
             }]
         }]
     }]

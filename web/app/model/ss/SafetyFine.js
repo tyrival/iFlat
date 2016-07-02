@@ -31,5 +31,6 @@ Ext.define('iFlat.model.ss.SafetyFine', {
         {name: 'safetyFine.creator', mapping: 'creator', type: 'string'},
         {name: 'safetyFine.createTime', mapping: 'createTime', type: 'date'},
         {name: 'safetyFine.paid', mapping: 'paid', type: 'string'},
+        {name: 'safetyFine.score', mapping: 'score', type: 'number'},
     ]
 });

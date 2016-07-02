@@ -26,9 +26,18 @@ public class QualityFineVo {
     private Date createTime;  //录入日期
     private String attachment;  //附件
     private String source;  //使用目的
+    private double score;  //扣分
 
     private Date fromDate;
     private Date toDate;
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
 
     public String getSource() {
         return source;

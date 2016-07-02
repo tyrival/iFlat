@@ -50,6 +50,8 @@
         <property name="outsourcingService" ref="outsourcingService"/>
         <property name="fine" ref="fine"/>
         <property name="fineService" ref="fineService"/>
+        <property name="discount" ref="discount"/>
+        <property name="discountService" ref="discountService"/>
         <property name="temporary" ref="temporary"/>
         <property name="temporaryService" ref="temporaryService"/>
         <property name="temporaryDetail" ref="temporaryDetail"/>
@@ -196,6 +198,10 @@
     <bean id="fineService" class="com.iflat.sm.service.impl.FineServiceImpl"/>
     <bean id="fineDao" class="com.iflat.sm.dao.impl.FineDaoImpl"/>
     <bean id="fine" class="com.iflat.sm.bean.Fine" scope="prototype"/>
+
+    <bean id="discountService" class="com.iflat.sm.service.impl.DiscountServiceImpl"/>
+    <bean id="discountDao" class="com.iflat.sm.dao.impl.DiscountDaoImpl"/>
+    <bean id="discount" class="com.iflat.sm.bean.Discount" scope="prototype"/>
 
     <bean id="temporaryService" class="com.iflat.sm.service.impl.TemporaryServiceImpl">
         <property name="workflowService" ref="workflowService"/>

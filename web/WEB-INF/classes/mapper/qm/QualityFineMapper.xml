@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.qm.bean.QualityFine">
         INSERT INTO QmQualityFine
-        VALUES (#{id},#{projNo},#{dept},#{team},#{group},#{personAcc},#{personName},#{date},#{profession},#{description},#{category},#{amount},#{comment},#{qc},#{attachment},#{creator},#{createTime},#{source})
+        VALUES (#{id},#{projNo},#{dept},#{team},#{group},#{personAcc},#{personName},#{date},#{profession},#{description},#{category},#{amount},#{comment},#{qc},#{attachment},#{creator},#{createTime},#{source},#{score})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO QmQualityFine
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.projNo},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.date},#{item.profession},#{item.description},#{item.category},#{item.amount},#{item.comment},#{item.qc},#{item.attachment},#{item.creator},#{item.createTime},#{item.source}
+            SELECT #{item.id},#{item.projNo},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.date},#{item.profession},#{item.description},#{item.category},#{item.amount},#{item.comment},#{item.qc},#{item.attachment},#{item.creator},#{item.createTime},#{item.source},#{item.score}
         </foreach>
     </insert>
 
@@ -34,6 +34,7 @@
             <if test="qc!=null">qc=#{qc},</if>
             <if test="attachment!=null">attachment=#{attachment},</if>
             <if test="source!=null">source=#{source},</if>
+            <if test="score!=null">score=#{score},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -44,7 +45,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.qm.bean.QualityFine" resultMap="QmQualityFineResult">
-        SELECT id,projNo,dept,team,[group],personAcc,personName,date,profession,description,category,amount,comment,qc,attachment,creator,createTime,source
+        SELECT id,projNo,dept,team,[group],personAcc,personName,date,profession,description,category,amount,comment,qc,attachment,creator,createTime,source,score
         FROM QmQualityFine
         <where>
             <if test="id!=null">
@@ -112,5 +113,6 @@
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
         <result property="source" column="source" jdbcType="VARCHAR"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
     </resultMap>
 </mapper>

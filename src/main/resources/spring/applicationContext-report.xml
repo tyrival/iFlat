@@ -6,6 +6,9 @@
 
     <bean id="reportAction" class="com.iflat.report.action.ReportAction" scope="prototype">
         <property name="parameter" ref="parameter"/>
+        <!-- sm -->
+        <property name="monthlyProjectSettlement" ref="monthlyProjectSettlement"/>
+        <property name="monthlyProjectSettlementService" ref="monthlyProjectSettlementService"/>
         <!-- bi -->
         <property name="rptProjectCostService" ref="rptProjectCostService"/>
         <property name="rptMajorDevCstService" ref="rptMajorDevCstService"/>
@@ -51,6 +54,10 @@
         <property name="woStatus" ref="woStatus"/>
     </bean>
 
+    <!-- sm -->
+    <bean id="monthlyProjectSettlementService" class="com.iflat.report.service.impl.sm.MonthlyProjectSettlementServiceImpl"/>
+    <bean id="monthlyProjectSettlementDao" class="com.iflat.report.dao.impl.sm.MonthlyProjectSettlementDaoImpl"/>
+    <bean id="monthlyProjectSettlement" class="com.iflat.report.bean.sm.MonthlyProjectSettlement"/>
     <!-- bi -->
     <bean id="rptCostItemService" class="com.iflat.report.service.impl.bi.CostItemServiceImpl">
     </bean>

@@ -25,6 +25,15 @@ public class QualityFine {
     private Date createTime;  //录入日期
     private String attachment;  //附件
     private String source;  //来源
+    private double score;  //扣分
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
 
     public String getSource() {
         return source;

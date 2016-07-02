@@ -14,6 +14,7 @@ import com.iflat.report.bean.cst.sr.SrProjectCostCmps;
 import com.iflat.report.bean.cst.sr.SrProjectCostNode;
 import com.iflat.report.bean.mm.MatQuato;
 import com.iflat.report.bean.mm.PaintMRP;
+import com.iflat.report.bean.sm.MonthlyProjectSettlement;
 import com.iflat.report.bean.wip.manhour.WoStatus;
 import com.iflat.report.entity.Parameter;
 import com.iflat.report.service.ReportService;
@@ -26,6 +27,9 @@ import java.util.List;
 public class ReportAction extends BaseAction {
 
     private Parameter parameter;
+    /* sm */
+    private BaseService monthlyProjectSettlementService;
+    private MonthlyProjectSettlement monthlyProjectSettlement;
     /* bi */
     private ReportService rptProjectCostService;
     private ReportService rptMajorDevCstService;
@@ -70,6 +74,13 @@ public class ReportAction extends BaseAction {
     /* wip */
     private BaseService rptWipManhourWoStatusService;
     private WoStatus woStatus;
+
+    /* sm */
+    public String listMonthlyProjectSettlement() throws Exception {
+        this.result.setList(this.monthlyProjectSettlementService.list(this.monthlyProjectSettlement));
+        return SUCCESS;
+    }
+
 
     /* bi */
     public String listProject() throws Exception {
@@ -516,5 +527,21 @@ public class ReportAction extends BaseAction {
 
     public void setCostItemList(List costItemList) {
         this.costItemList = costItemList;
+    }
+
+    public BaseService getMonthlyProjectSettlementService() {
+        return monthlyProjectSettlementService;
+    }
+
+    public void setMonthlyProjectSettlementService(BaseService monthlyProjectSettlementService) {
+        this.monthlyProjectSettlementService = monthlyProjectSettlementService;
+    }
+
+    public MonthlyProjectSettlement getMonthlyProjectSettlement() {
+        return monthlyProjectSettlement;
+    }
+
+    public void setMonthlyProjectSettlement(MonthlyProjectSettlement monthlyProjectSettlement) {
+        this.monthlyProjectSettlement = monthlyProjectSettlement;
     }
 }

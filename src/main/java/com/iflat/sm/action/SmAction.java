@@ -82,6 +82,9 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     private BaseService fineService;
     private Fine fine;
 
+    private BaseService discountService;
+    private Discount discount;
+
     private TemporaryService temporaryService;
     private TemporaryDetailService temporaryDetailService;
     private Temporary temporary;
@@ -106,14 +109,21 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         this.sbSettlement
                 = (SbSettlement) this.sbSettlementService
                 .save(this.sbSettlement);
-        this.sbSettlementDetail.setPid(this.sbSettlement.getId());
-        this.sbSettlementDetail
-                = (SbSettlementDetail) this.sbSettlementDetailService
-                .save(this.sbSettlementDetail);
-        Map<String, Object> map = new HashMap();
-        map.put("head", this.sbSettlement);
-        map.put("detail", this.sbSettlementDetail);
-        this.result.setMap(map);
+        try {
+
+            this.sbSettlementDetail.setPid(this.sbSettlement.getId());
+            this.sbSettlementDetail
+                    = (SbSettlementDetail) this.sbSettlementDetailService
+                    .save(this.sbSettlementDetail);
+            Map<String, Object> map = new HashMap();
+            map.put("head", this.sbSettlement);
+            map.put("detail", this.sbSettlementDetail);
+            this.result.setMap(map);
+
+        } catch (Exception e) {
+            this.sbSettlementService.delete(this.sbSettlement);
+            throw new Exception(e.getMessage());
+        }
         return SUCCESS;
     }
 
@@ -219,14 +229,22 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         this.scSettlement
                 = (ScSettlement) this.scSettlementService
                 .save(this.scSettlement);
-        this.scSettlementDetail.setPid(this.scSettlement.getId());
-        this.scSettlementDetail
-                = (ScSettlementDetail) this.scSettlementDetailService
-                .save(this.scSettlementDetail);
-        Map<String, Object> map = new HashMap();
-        map.put("head", this.scSettlement);
-        map.put("detail", this.scSettlementDetail);
-        this.result.setMap(map);
+        try {
+
+            this.scSettlementDetail.setPid(this.scSettlement.getId());
+            this.scSettlementDetail
+                    = (ScSettlementDetail) this.scSettlementDetailService
+                    .save(this.scSettlementDetail);
+            Map<String, Object> map = new HashMap();
+            map.put("head", this.scSettlement);
+            map.put("detail", this.scSettlementDetail);
+            this.result.setMap(map);
+
+        } catch (Exception e) {
+            this.scSettlementService.delete(this.scSettlement);
+            throw new Exception(e.getMessage());
+        }
+
         return SUCCESS;
     }
 
@@ -459,6 +477,9 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveSrSettlement() throws Exception {
+        if ("修船总管审核".equals(srSettlement.getStatus())) {
+            this.srSettlementService.save(this.srSettlement);
+        }
         String businessKey = srSettlementService.getBusinessKey(srSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
         return SUCCESS;
@@ -575,14 +596,23 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
     public String createSrSettlementDetlFirst() throws Exception {
         this.srSettlement = (SrSettlement) this.srSettlementService.save(this.srSettlement);
-        this.srSettlementDetlFirst.setPid(this.srSettlement.getId());
-        this.srSettlementDetlFirst
-                = (SrSettlementDetlFirst) this.srSettlementDetlFirstService
-                .save(this.srSettlementDetlFirst);
-        Map<String, Object> map = new HashMap();
-        map.put("head", this.srSettlement);
-        map.put("detail", this.srSettlementDetlFirst);
-        this.result.setMap(map);
+        try {
+
+            this.srSettlementDetlFirst.setPid(this.srSettlement.getId());
+
+            this.srSettlementDetlFirst
+                    = (SrSettlementDetlFirst) this.srSettlementDetlFirstService
+                    .save(this.srSettlementDetlFirst);
+            Map<String, Object> map = new HashMap();
+            map.put("head", this.srSettlement);
+            map.put("detail", this.srSettlementDetlFirst);
+            this.result.setMap(map);
+
+        } catch (Exception e) {
+            this.srSettlementService.delete(this.srSettlement);
+            throw new Exception(e.getMessage());
+        }
+
         return SUCCESS;
     }
 
@@ -698,14 +728,21 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         this.srSettlementSecond
                 = (SrSettlementSecond) this.srSettlementSecondService
                 .save(this.srSettlementSecond);
-        this.srSettlementDetlSecond.setPid(this.srSettlementSecond.getId());
-        this.srSettlementDetlSecond
-                = (SrSettlementDetlSecond) this.srSettlementDetlSecondService
-                .save(this.srSettlementDetlSecond);
-        Map<String, Object> map = new HashMap();
-        map.put("head", this.srSettlementSecond);
-        map.put("detail", this.srSettlementDetlSecond);
-        this.result.setMap(map);
+        try {
+
+            this.srSettlementDetlSecond.setPid(this.srSettlementSecond.getId());
+            this.srSettlementDetlSecond
+                    = (SrSettlementDetlSecond) this.srSettlementDetlSecondService
+                    .save(this.srSettlementDetlSecond);
+            Map<String, Object> map = new HashMap();
+            map.put("head", this.srSettlementSecond);
+            map.put("detail", this.srSettlementDetlSecond);
+            this.result.setMap(map);
+
+        } catch (Exception e) {
+            this.srSettlementSecondService.delete(this.srSettlementSecond);
+            throw new Exception(e.getMessage());
+        }
         return SUCCESS;
     }
 
@@ -716,14 +753,21 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         this.tecSettlement
                 = (TecSettlement) this.tecSettlementService
                 .save(this.tecSettlement);
-        this.tecSettlementDetail.setPid(this.tecSettlement.getId());
-        this.tecSettlementDetail
-                = (TecSettlementDetail) this.tecSettlementDetailService
-                .save(this.tecSettlementDetail);
-        Map<String, Object> map = new HashMap();
-        map.put("head", this.tecSettlement);
-        map.put("detail", this.tecSettlementDetail);
-        this.result.setMap(map);
+        try {
+
+            this.tecSettlementDetail.setPid(this.tecSettlement.getId());
+            this.tecSettlementDetail
+                    = (TecSettlementDetail) this.tecSettlementDetailService
+                    .save(this.tecSettlementDetail);
+            Map<String, Object> map = new HashMap();
+            map.put("head", this.tecSettlement);
+            map.put("detail", this.tecSettlementDetail);
+            this.result.setMap(map);
+
+        } catch (Exception e) {
+            this.tecSettlementService.delete(this.tecSettlement);
+            throw new Exception(e.getMessage());
+        }
         return SUCCESS;
     }
 
@@ -878,6 +922,32 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    /* Discount */
+    public String saveDiscount() throws Exception {
+        this.result.setObject(this.discountService.save(this.discount));
+        return SUCCESS;
+    }
+
+    public String deleteDiscount() throws Exception {
+        this.result.setObject(this.discountService.delete(this.discount));
+        return SUCCESS;
+    }
+
+    public String listDiscount() throws Exception {
+        this.result.setList(this.discountService.list(this.discount));
+        return SUCCESS;
+    }
+
+    public String uploadDiscount() throws Exception {
+        this.result.setObject(this.discountService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String listPageDiscount() throws Exception {
+        this.result.setObject(this.discountService.listPage(this.discount, this.page));
+        return SUCCESS;
+    }
+
     /* Payment */
     public String savePayment() throws Exception {
         this.result.setObject(this.paymentService.save(this.payment));
@@ -911,14 +981,22 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         this.temporary
                 = (Temporary) this.temporaryService
                 .save(this.temporary);
-        this.temporaryDetail.setPid(this.temporary.getId());
-        this.temporaryDetail
-                = (TemporaryDetail) this.temporaryDetailService
-                .save(this.temporaryDetail);
-        Map<String, Object> map = new HashMap();
-        map.put("head", this.temporary);
-        map.put("detail", this.temporaryDetail);
-        this.result.setMap(map);
+        try {
+
+            this.temporaryDetail.setPid(this.temporary.getId());
+            this.temporaryDetail
+                    = (TemporaryDetail) this.temporaryDetailService
+                    .save(this.temporaryDetail);
+            Map<String, Object> map = new HashMap();
+            map.put("head", this.temporary);
+            map.put("detail", this.temporaryDetail);
+            this.result.setMap(map);
+
+        } catch (Exception e) {
+            this.temporaryService.delete(this.temporary);
+            throw new Exception(e.getMessage());
+        }
+
         return SUCCESS;
     }
 
@@ -1496,6 +1574,22 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public void setFine(Fine fine) {
         this.fine = fine;
+    }
+
+    public BaseService getDiscountService() {
+        return discountService;
+    }
+
+    public void setDiscountService(BaseService discountService) {
+        this.discountService = discountService;
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
     }
 
     @Override

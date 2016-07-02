@@ -1,6 +1,7 @@
 package com.iflat.system.action;
 
 import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
 import com.iflat.system.bean.*;
 import com.iflat.system.entity.AuthDuplicateVo;
@@ -10,13 +11,14 @@ import com.iflat.system.entity.UserRoleVo;
 import com.iflat.system.service.*;
 import com.iflat.util.FileUtil;
 import com.iflat.util.Session;
+import com.opensymphony.xwork2.ModelDriven;
 
 import java.io.File;
 
 /**
  * Created by tyriv on 2015/9/6.
  */
-public class SystemAction extends BaseAction {
+public class  SystemAction extends BaseAction implements ModelDriven<Page> {
 
     private final static String TREE = "tree";
     //模块管理
@@ -67,11 +69,15 @@ public class SystemAction extends BaseAction {
     //问题处理
     private Question question;
     private QuestionService questionService;
+    //升级日志
+    private Release release;
+    private BaseService releaseService;
     /* 文件上传 */
     private File upload;
     private String uploadContentType;
     private String uploadFileName;
 
+    private Page page;
     /**
      * 问题处理
      */
@@ -469,6 +475,27 @@ public class SystemAction extends BaseAction {
         return SUCCESS;
     }
 
+    /* 更新日志 */
+    public String saveRelease() throws Exception {
+        this.result.setObject(this.releaseService.save(this.release));
+        return SUCCESS;
+    }
+
+    public String deleteRelease() throws Exception {
+        this.result.setObject(this.releaseService.delete(this.release));
+        return SUCCESS;
+    }
+
+    public String listRelease() throws Exception {
+        this.result.setList(this.releaseService.list(this.release));
+        return SUCCESS;
+    }
+
+    public String listPageRelease() throws Exception {
+        this.result.setObject(this.releaseService.listPage(this.release, this.page));
+        return SUCCESS;
+    }
+
     public ModuleService getModuleService() {
         return moduleService;
     }
@@ -772,5 +799,37 @@ public class SystemAction extends BaseAction {
 
     public void setUserRoleVoService(BaseService userRoleVoService) {
         this.userRoleVoService = userRoleVoService;
+    }
+
+    public Release getRelease() {
+        return release;
+    }
+
+    public void setRelease(Release release) {
+        this.release = release;
+    }
+
+    public BaseService getReleaseService() {
+        return releaseService;
+    }
+
+    public void setReleaseService(BaseService releaseService) {
+        this.releaseService = releaseService;
+    }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
+
+    @Override
+    public Page getModel() {
+        if(page == null){
+            page = new Page();
+        }
+        return page;
     }
 }

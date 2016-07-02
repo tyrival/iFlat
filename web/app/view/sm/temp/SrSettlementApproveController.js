@@ -110,35 +110,48 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveController', {
         if (Flat.util.isEmpty(comment)) {
             comment = text === 'pass' ? '同意' : '不同意';
         }
-        Flat.util.mask();
+        var param = {
+            'outGoingName': text,
+            'comment': comment,
+        };
+        var form = btn.up('window').down('form');
+        if (form.isValid()) {
+            form.submit({
+                url: 'sm_approveSrSettlement.action',
+                method: 'POST',
+                params: param,
+                waitMsg: '正在提交......',
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    commentCmp.setValue('');
+                    Ext.getCmp('sm-srsettlementapproveinfo').hide();
+                    var active = Ext.WindowManager.getActive();
+                    if (active && active.isXType('window')) {
+                        active.down('grid').getStore().reload();
+                    }
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    commentCmp.setValue('');
+                    Ext.getCmp('sm-srsettlementapproveinfo').hide();
+                    var active = Ext.WindowManager.getActive();
+                    if (active && active.isXType('window')) {
+                        active.down('grid').getStore().reload();
+                    }
+                }
+            })
+        }
         Ext.Ajax.request({
             url: 'sm_approveSrSettlement.action',
             method: 'post',
-            params: {
-                'srSettlement.id': Ext.getCmp('sm-srsettlementapproveinfo-id')
-                    .getValue(),
-                'outGoingName': text,
-                'comment': comment,
-            },
+            params: par,
             success: function(response, opts) {
                 Flat.util.unmask();
-                Flat.util.tip(response.responseText);
-                commentCmp.setValue('');
-                Ext.getCmp('sm-srsettlementapproveinfo').hide();
-                var active = Ext.WindowManager.getActive();
-                if (active && active.isXType('window')) {
-                    active.down('grid').getStore().reload();
-                }
+
             },
             failure: function(response, opts) {
                 Flat.util.unmask();
-                Flat.util.tip(response.responseText);
-                commentCmp.setValue('');
-                Ext.getCmp('sm-srsettlementapproveinfo').hide();
-                var active = Ext.WindowManager.getActive();
-                if (active && active.isXType('window')) {
-                    active.down('grid').getStore().reload();
-                }
+
             }
         });
     }

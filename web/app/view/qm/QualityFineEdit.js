@@ -70,24 +70,31 @@ Ext.define('iFlat.view.qm.QualityFineEdit', {
                 allowBlank: false,
                 editable: false,
                 forceSelection : true,
-                width: 250,
+                width: 200,
                 fieldLabel: '性质',
                 bind: {
                     store: '{qualityFineCategory}'
                 }
             },{
                 xtype: 'textfield',
+                name: 'qualityFine.score',
+                allowBlank: false,
+                fieldLabel: '扣分',
+                regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                width: 175,
+            },{
+                xtype: 'textfield',
                 name: 'qualityFine.amount',
                 allowBlank: false,
                 fieldLabel: '金额',
                 regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
-                width: 250,
+                width: 175,
             },{
                 xtype: 'textfield',
                 name: 'qualityFine.qc',
                 allowBlank: false,
                 fieldLabel: '考核人',
-                width: 250,
+                width: 200,
             },]
         },{
             items: [{

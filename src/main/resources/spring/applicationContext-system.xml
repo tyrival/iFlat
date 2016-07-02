@@ -55,6 +55,10 @@
         <!-- 问题处理 -->
         <property name="questionService" ref="questionService"></property>
         <property name="question" ref="question"></property>
+        <!-- 更新日志 -->
+        <property name="release" ref="release"/>
+        <property name="releaseService" ref="releaseService"/>
+        <property name="page" ref="page"/>
     </bean>
 
     <bean id="authModuleVo" class="com.iflat.system.entity.AuthModuleVo"></bean>
@@ -66,6 +70,13 @@
         <property name="account" value=""></property>
         <property name="password" value=""></property>
     </bean>
+
+    <!-- Release -->
+    <bean id="releaseService" class="com.iflat.system.service.impl.ReleaseServiceImpl">
+    </bean>
+    <bean id="releaseDao" class="com.iflat.system.dao.impl.ReleaseDaoImpl">
+    </bean>
+    <bean id="release" class="com.iflat.system.bean.Release" scope="prototype"/>
 
     <!-- Question -->
     <bean id="questionService" class="com.iflat.system.service.impl.QuestionServiceImpl">

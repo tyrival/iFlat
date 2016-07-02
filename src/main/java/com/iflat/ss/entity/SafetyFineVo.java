@@ -41,6 +41,15 @@ public class SafetyFineVo {
     private Date fromDate;
     private Date toDate;
     private String paid;
+    private double score;  //扣分
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
 
     public String getPaid() {
         return paid;

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report.Sm.MonthlyProjectSettlement">
+
+    <select id="list" parameterType="com.iflat.report.bean.sm.MonthlyProjectSettlement" resultMap="SmMonthlyProjectSettlementResult">
+        SELECT #{type},x.month, x.projNo, x.projName, x.dept, x.team, x.labor, x.performance, x.consumable, x.material, (CASE WHEN y.rate IS NULL THEN 0.94 ELSE y.rate END) AS rate, x.fine
+        FROM (
+            <if test="&quot;造船&quot;.equals(type.trim())">
+                SELECT settlementTime AS month, projNo, projName, deptName AS dept,
+                    team, SUM(amount) AS labor, 0 AS performance, 0 AS consumable,
+                    0 AS material, SUM(fineAmount) AS fine
+                FROM V_SmSbSettlement
+                <where>
+                    <if test="month!=null">
+                        AND DATEDIFF(MONTH,#{month},settlementTime)=0</if>
+                    <if test="projNo!=null">AND projNo=#{projNo}</if>
+                    <if test="dept!=null">AND deptName=#{dept}</if>
+                </where>
+                GROUP BY settlementTime, projNo, projName, deptName, team
+            </if>
+            <if test="&quot;修船&quot;.equals(type.trim())">
+                SELECT a.settlementTime AS month, a.projNo, a.projName,
+                    a.deptName AS dept, b.team, SUM(b.laborAmount) AS labor,
+                    SUM(b.performanceAmount) AS performance,
+                    SUM(b.consumableAmount) AS consumable, SUM(b.materialAmount) AS material,
+                    SUM(b.fineAmount) AS fine
+                FROM SmSrSettlement a
+                LEFT JOIN SmSrSettlementSecond b ON a.id=b.pid
+                <where>
+                    <if test="month!=null">
+                        AND DATEDIFF(MONTH,#{month},a.settlementTime)=0</if>
+                    <if test="projNo!=null">AND a.projNo=#{projNo}</if>
+                    <if test="dept!=null">AND a.deptName=#{dept}</if>
+                </where>
+                GROUP BY a.settlementTime, a.projNo, a.projName, a.deptName, b.team
+            </if>
+            <if test="&quot;钢结构&quot;.equals(type.trim())">
+                SELECT settlementTime AS month, projNo, projName, deptName AS dept,
+                    team, SUM(amount) AS labor, 0 AS performance, 0 AS consumable,
+                    0 AS material, SUM(fineAmount) AS fine
+                FROM V_SmScSettlement
+                <where>
+                    <if test="month!=null">
+                        AND DATEDIFF(MONTH,#{month},settlementTime)=0</if>
+                    <if test="projNo!=null">AND projNo=#{projNo}</if>
+                    <if test="dept!=null">AND deptName=#{dept}</if>
+                </where>
+                GROUP BY settlementTime, projNo, projName, deptName, team
+            </if>
+            <if test="&quot;技&quot;.equals(type.trim())">
+                SELECT settlementTime AS month, projNo, projName, deptName AS dept,
+                    team, SUM(amount) AS labor, 0 AS performance, 0 AS consumable,
+                    0 AS material, SUM(fineAmount) AS fine
+                FROM V_SmTecSettlement
+                <where>
+                    <if test="month!=null">
+                        AND DATEDIFF(MONTH,#{month},settlementTime)=0</if>
+                    <if test="projNo!=null">AND projNo=#{projNo}</if>
+                    <if test="dept!=null">AND deptName=#{dept}</if>
+                </where>
+                GROUP BY settlementTime, projNo, projName, deptName, team
+            </if>
+        ) x
+        LEFT JOIN SmDiscount y ON x.team=y.team
+        ORDER BY x.team
+    </select>
+
+    <resultMap type="com.iflat.report.bean.sm.MonthlyProjectSettlement" id="SmMonthlyProjectSettlementResult">
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="labor" column="labor" jdbcType="DOUBLE"/>
+        <result property="consumable" column="consumable" jdbcType="DOUBLE"/>
+        <result property="performance" column="performance" jdbcType="DOUBLE"/>
+        <result property="material" column="material" jdbcType="DOUBLE"/>
+        <result property="rate" column="rate" jdbcType="DOUBLE"/>
+        <result property="fine" column="fine" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sm.Discount">
+
+    <insert id="insert" parameterType="com.iflat.sm.bean.Discount">
+        INSERT INTO SmDiscount
+        VALUES (#{id},#{team},#{rate})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SmDiscount
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.team},#{item.rate}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.sm.bean.Discount">
+        UPDATE SmDiscount
+        <set>
+            <if test="team!=null">team=#{team},</if>
+            <if test="rate!=null">rate=#{rate},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.sm.bean.Discount">
+        DELETE SmDiscount
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.sm.bean.Discount" resultMap="SmDiscountResult">
+        SELECT id,team,rate
+        FROM SmDiscount
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="team!=null">AND team LIKE '%' + #{team} + '%'</if>
+        </where>
+        ORDER BY team
+    </select>
+
+    <resultMap type="com.iflat.sm.bean.Discount" id="SmDiscountResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="rate" column="rate" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

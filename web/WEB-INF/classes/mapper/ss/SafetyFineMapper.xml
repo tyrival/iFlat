@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.ss.bean.SafetyFine">
         INSERT INTO SsSafetyFine
-        VALUES (#{id},#{projNo},#{position},#{place},#{type},#{date},#{dept},#{team},#{group},#{personAcc},#{personName},#{description},#{measure},#{deadline},#{amount},#{feedback},#{manager},#{mgrDept},#{dangerType},#{damageType},#{riskLevel},#{groupLeader},#{inspectType},#{comment},#{issuer},#{attachment},#{source},#{creator},#{createTime},#{paid})
+        VALUES (#{id},#{projNo},#{position},#{place},#{type},#{date},#{dept},#{team},#{group},#{personAcc},#{personName},#{description},#{measure},#{deadline},#{amount},#{feedback},#{manager},#{mgrDept},#{dangerType},#{damageType},#{riskLevel},#{groupLeader},#{inspectType},#{comment},#{issuer},#{attachment},#{source},#{creator},#{createTime},#{paid},#{score})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SsSafetyFine
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.projNo},#{item.position},#{item.place},#{item.type},#{item.date},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.description},#{item.measure},#{item.deadline},#{item.amount},#{item.feedback},#{item.manager},#{item.mgrDept},#{item.dangerType},#{item.damageType},#{item.riskLevel},#{item.groupLeader},#{item.inspectType},#{item.comment},#{item.issuer},#{item.attachment},#{item.source},#{item.creator},#{item.createTime},#{item.paid}
+            SELECT #{item.id},#{item.projNo},#{item.position},#{item.place},#{item.type},#{item.date},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.description},#{item.measure},#{item.deadline},#{item.amount},#{item.feedback},#{item.manager},#{item.mgrDept},#{item.dangerType},#{item.damageType},#{item.riskLevel},#{item.groupLeader},#{item.inspectType},#{item.comment},#{item.issuer},#{item.attachment},#{item.source},#{item.creator},#{item.createTime},#{item.paid},#{item.score}
         </foreach>
     </insert>
 
@@ -48,6 +48,7 @@
             <if test="creator!=null">creator=#{creator},</if>
             <if test="createTime!=null">createTime=#{createTime},</if>
             <if test="paid!=null">paid=#{paid},</if>
+            <if test="score!=null">score=#{score},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -58,7 +59,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.ss.bean.SafetyFine" resultMap="SsSafetyFineResult">
-        SELECT id,projNo,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime,paid
+        SELECT id,projNo,position,place,type,date,dept,team,[group],personAcc,personName,description,measure,deadline,amount,feedback,manager,mgrDept,dangerType,damageType,riskLevel,groupLeader,inspectType,comment,issuer,attachment,source,creator,createTime,paid,score
         FROM SsSafetyFine
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -123,5 +124,6 @@
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
         <result property="paid" column="paid" jdbcType="VARCHAR"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
     </resultMap>
 </mapper>

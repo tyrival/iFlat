@@ -33,6 +33,42 @@ public class SrSettlement {
     private String teamAcc;
     private String teamName;
     private Date settlementTime;
+    private double mgrScore;
+    private double progressScore;
+    private double qualityScore;
+    private double safetyScore;
+
+    public double getMgrScore() {
+        return mgrScore;
+    }
+
+    public void setMgrScore(double mgrScore) {
+        this.mgrScore = mgrScore;
+    }
+
+    public double getProgressScore() {
+        return progressScore;
+    }
+
+    public void setProgressScore(double progressScore) {
+        this.progressScore = progressScore;
+    }
+
+    public double getQualityScore() {
+        return qualityScore;
+    }
+
+    public void setQualityScore(double qualityScore) {
+        this.qualityScore = qualityScore;
+    }
+
+    public double getSafetyScore() {
+        return safetyScore;
+    }
+
+    public void setSafetyScore(double safetyScore) {
+        this.safetyScore = safetyScore;
+    }
 
     public Date getSettlementTime() {
         return settlementTime;

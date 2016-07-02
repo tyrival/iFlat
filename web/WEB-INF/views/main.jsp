@@ -13,6 +13,8 @@
     <!-- 弹窗提示插件 -->
     <link rel="stylesheet" type="text/css" href="/css/examples.css" />
     <script type="text/javascript" src="/js/examples.js"></script>
+    <script type="text/javascript" src="/js/Flat.js"></script>
+    <script type="text/javascript" src="/js/print.js"></script>
 
 </head>
 <body>

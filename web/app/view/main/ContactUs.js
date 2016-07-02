@@ -34,6 +34,13 @@ Ext.define('iFlat.view.main.ContactUs', {
         }, {
             xtype: 'fieldset',
             html: [
+                '<h2>梅晓晶</h2>',
+                '移动电话：139-1520-2272<br />',
+                '分机：8078',
+            ]
+        }, {
+            xtype: 'fieldset',
+            html: [
                 '<h2>何春梅</h2>',
                 '移动电话：139-6167-6316<br />',
                 '分机：8078',
