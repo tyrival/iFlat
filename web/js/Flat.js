@@ -36,7 +36,8 @@ var Flat = {
         tip: function (result) {
             if (result) {
                 result = Ext.JSON.decode(result);
-                Ext.example.msg(result.title, result.message, result.time);
+                Ext.example.msg("提醒", result.message, result.time);
+                //Ext.example.msg(result.title, result.message, result.time);
             }
         },
         financeFormat: function (strNum, decimal){

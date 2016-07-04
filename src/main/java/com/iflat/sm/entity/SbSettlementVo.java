@@ -21,6 +21,7 @@ public class SbSettlementVo {
     private Date createTime;
     private String idDetl;
     private String accountDetl;  // 成本科目 拼板/成型/物耗补贴/餐费...
+    private String accountNameDetl;  // 成本科目 拼板/成型/物耗补贴/餐费...
     private String contentDetl;  // 工程内容
     private double matQtyDetl;  // 物量
     private String specDetl;  // 规格
@@ -33,6 +34,14 @@ public class SbSettlementVo {
     private String creatorNameDetl;
     private Date createTimeDetl;
     private Date settlementTime;
+
+    public String getAccountNameDetl() {
+        return accountNameDetl;
+    }
+
+    public void setAccountNameDetl(String accountNameDetl) {
+        this.accountNameDetl = accountNameDetl;
+    }
 
     public Date getSettlementTime() {
         return settlementTime;

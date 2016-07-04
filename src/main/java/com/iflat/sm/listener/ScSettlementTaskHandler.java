@@ -19,9 +19,21 @@ public class ScSettlementTaskHandler extends WorkflowTaskListener {
         setTaskInfoSb(delegateTask, ScStatus.STATUS_UNSUBMIT);
     }
 
-    public void businessDivisionDirectorApprove(DelegateTask delegateTask) throws Exception {
+    public void commercialCenterSettlement(DelegateTask delegateTask) throws Exception {
 
         setAssignee(delegateTask, ScStatus.STATUS_SUBMIT);
+        setTaskInfoSb(delegateTask, ScStatus.STATUS_COMMERCIAL_CENTER_SETTLEMENT);
+
+        UserInfoVo assignee = new UserInfoVo();
+        assignee.setPorgName("钢结构事业部");
+        assignee.setRoleName("钢结构结算员");
+        List<UserInfoVo> list = listAssignees(assignee);
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
+    }
+
+    public void businessDivisionDirectorApprove(DelegateTask delegateTask) throws Exception {
+
+        setAssignee(delegateTask, ScStatus.STATUS_COMMERCIAL_CENTER_SETTLEMENT);
         setTaskInfoSb(delegateTask, ScStatus.STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE);
 
         UserInfoVo assignee = new UserInfoVo();

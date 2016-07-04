@@ -47,11 +47,11 @@ Ext.define('iFlat.view.sm.ScSettlementController', {
             Ext.getCmp('sm-scsettlementedit-team').setEditable(false);
             Ext.getCmp('sm-scsettlementedit-comment').setEditable(false);
             Ext.getCmp('sm-scsettlementedit-detail-add').setDisabled(true);
-            form.down('textfield[name=sbSettlement.mgrScore]').setEditable(false);
-            form.down('textfield[name=sbSettlement.progressScore]').setEditable(false);
-            form.down('textfield[name=sbSettlement.qualityScore]').setEditable(false);
-            form.down('textfield[name=sbSettlement.safetyScore]').setEditable(false);
-            form.down('textfield[name=sbSettlement.fineAmount]').setEditable(false);
+            form.down('textfield[name=scSettlement.mgrScore]').setEditable(false);
+            form.down('textfield[name=scSettlement.progressScore]').setEditable(false);
+            form.down('textfield[name=scSettlement.qualityScore]').setEditable(false);
+            form.down('textfield[name=scSettlement.safetyScore]').setEditable(false);
+            form.down('textfield[name=scSettlement.fineAmount]').setEditable(false);
         } else {
             smScSettlementDetailRowEditing.enable();
             Ext.getCmp('sm-scsettlementedit-detail-delete').setDisabled(false);
@@ -60,11 +60,11 @@ Ext.define('iFlat.view.sm.ScSettlementController', {
             Ext.getCmp('sm-scsettlementedit-team').setEditable(true);
             Ext.getCmp('sm-scsettlementedit-comment').setEditable(true);
             Ext.getCmp('sm-scsettlementedit-detail-add').setDisabled(false);
-            form.down('textfield[name=sbSettlement.mgrScore]').setEditable(true);
-            form.down('textfield[name=sbSettlement.progressScore]').setEditable(true);
-            form.down('textfield[name=sbSettlement.qualityScore]').setEditable(true);
-            form.down('textfield[name=sbSettlement.safetyScore]').setEditable(true);
-            form.down('textfield[name=sbSettlement.fineAmount]').setEditable(true);
+            form.down('textfield[name=scSettlement.mgrScore]').setEditable(true);
+            form.down('textfield[name=scSettlement.progressScore]').setEditable(true);
+            form.down('textfield[name=scSettlement.qualityScore]').setEditable(true);
+            form.down('textfield[name=scSettlement.safetyScore]').setEditable(true);
+            form.down('textfield[name=scSettlement.fineAmount]').setEditable(true);
         }
 
         Ext.getCmp('sm-scsettlementedit-form').loadRecord(record);

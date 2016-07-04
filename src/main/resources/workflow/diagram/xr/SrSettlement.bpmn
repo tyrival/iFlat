@@ -6,6 +6,8 @@
       <extensionElements>
         <activiti:taskListener class="com.iflat.xr.listener.SrSettlementTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.xr.listener.SrSettlementExecutionHandler" event="start"/>
+        <activiti:taskListener event="create"/>
+        <activiti:executionListener event="start"/>
       </extensionElements>
     </userTask>
     <userTask activiti:exclusive="true" activiti:formKey="xr.SrWorkshopDirectorApprove" id="_4" name="Workshop Director Approve">
@@ -47,6 +49,7 @@
       <extensionElements>
         <activiti:taskListener class="com.iflat.xr.listener.SrSettlementTaskHandler" event="create"/>
         <activiti:executionListener class="com.iflat.xr.listener.SrSettlementExecutionHandler" event="start"/>
+        <activiti:executionListener event="start"/>
       </extensionElements>
     </userTask>
     <sequenceFlow id="_17" name="reject" sourceRef="_7" targetRef="_4">

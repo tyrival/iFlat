@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Sm.SbSettlementVo">
+<mapper namespace="Sm.ScSettlementVo">
 
-    <select id="list" parameterType="com.iflat.sm.entity.SbSettlementVo" resultMap="SmSbSettlementVoResult">
+    <select id="list" parameterType="com.iflat.sm.entity.ScSettlementVo" resultMap="SmScSettlementVoResult">
         SELECT a.id,a.projNo,a.projName,a.month,a.deptName,a.team,a.attachment,a.comment,a.status,a.creatorAcc,a.creatorName,a.createTime,a.settlementTime,b.id AS idDetl,b.account AS accountDetl,b.content AS contentDetl,b.matQty AS matQtyDetl,b.spec AS specDetl,b.unit AS unitDetl,b.price AS priceDetl,b.amount AS amountDetl,b.attachment AS attachmentDetl,b.comment AS commentDetl,b.creatorAcc AS creatorAccDetl,b.creatorName AS creatorNameDetl,b.createTime AS createTimeDetl
-        FROM SmSbSettlementDetail b
-        LEFT JOIN SmSbSettlement a ON a.id=b.pid
+        FROM SmScSettlementDetail b
+        LEFT JOIN SmScSettlement a ON a.id=b.pid
         <where>
             <if test="id!=null">a.id=#{id}</if>
             <if test="projNo!=null">AND a.projNo=#{projNo}</if>
@@ -29,7 +29,7 @@
         ORDER BY (CASE a.status WHEN '未提交' THEN 0 ELSE 1 END),a.month DESC,a.projNo,a.deptName,a.team,b.account,b.createTime
     </select>
 
-    <resultMap type="com.iflat.sm.entity.SbSettlementVo" id="SmSbSettlementVoResult">
+    <resultMap type="com.iflat.sm.entity.ScSettlementVo" id="SmScSettlementVoResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
         <result property="projName" column="projName" jdbcType="VARCHAR"/>

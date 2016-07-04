@@ -83,7 +83,9 @@ public class ScSettlementDetailServiceImpl extends BaseServiceSupport implements
      * @throws Exception
      */
     private Double getAdjustAmount(ScSettlementDetail scSettlementDetail) throws Exception {
-        ScSettlementDetail orig = (ScSettlementDetail) this.list(scSettlementDetail).get(0);
+        ScSettlementDetail param = new ScSettlementDetail();
+        param.setId(scSettlementDetail.getId());
+        ScSettlementDetail orig = (ScSettlementDetail) this.list(param).get(0);
         return scSettlementDetail.getAmount() - orig.getAmount();
     }
 

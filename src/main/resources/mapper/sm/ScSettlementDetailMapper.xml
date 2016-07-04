@@ -62,7 +62,7 @@
             <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment LIKE '%' + #{comment} + '%'</if>
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
         </where>
-        ORDER BY pid,account,reateTime,id
+        ORDER BY pid,account,createTime,id
     </select>
 
     <resultMap type="com.iflat.sm.bean.ScSettlementDetail" id="ScSettlementDetailResult">

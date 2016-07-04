@@ -83,7 +83,9 @@ public class SbSettlementDetailServiceImpl extends BaseServiceSupport implements
      * @throws Exception
      */
     private Double getAdjustAmount(SbSettlementDetail sbSettlementDetail) throws Exception {
-        SbSettlementDetail orig = (SbSettlementDetail) this.list(sbSettlementDetail).get(0);
+        SbSettlementDetail param = new SbSettlementDetail();
+        param.setId(sbSettlementDetail.getId());
+        SbSettlementDetail orig = (SbSettlementDetail) this.list(param).get(0);
         return sbSettlementDetail.getAmount() - orig.getAmount();
     }
 

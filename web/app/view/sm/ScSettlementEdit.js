@@ -324,17 +324,6 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
                         allowBlank: false,
                     }
                 }, {
-                    header: '金额',
-                    dataIndex: 'scSettlementDetail.amount',
-                    editor: {
-                        allowBlank: false,
-                    }
-                }, {
-                    header: '单价',
-                    dataIndex: 'scSettlementDetail.price',
-                    editor: {
-                    }
-                }, {
                     header: '物量',
                     dataIndex: 'scSettlementDetail.matQty',
                     editor: {
@@ -350,12 +339,11 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
                     editor: {
                     }
                 }, {
-                    header: '附件',
-                    dataIndex: 'scSettlementDetail.attachment',
-                    renderer: 'renderAttachment',
-                    hidden: true,
-                    editor: {
-                    }
+                    header: '单价',
+                    dataIndex: 'scSettlementDetail.price',
+                }, {
+                    header: '金额',
+                    dataIndex: 'scSettlementDetail.amount',
                 }, {
                     header: '备注',
                     width: 150,

@@ -11,7 +11,7 @@ Ext.define('iFlat.view.sm.ScTargetCost', {
     store: smScProjectTargetCostStore = Ext.create('iFlat.store.sm.ProjectTargetCostVo', {
         proxy: {
             extraParams: {
-                'projectTargetCostVo.type': '造船'
+                'projectTargetCostVo.type': '钢结构'
             }
         }
     }),

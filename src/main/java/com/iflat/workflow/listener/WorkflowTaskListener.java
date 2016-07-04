@@ -1,6 +1,5 @@
 package com.iflat.workflow.listener;
 
-import com.iflat.sm.entity.SrStatus;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.system.service.UserService;
 import com.iflat.util.Application;

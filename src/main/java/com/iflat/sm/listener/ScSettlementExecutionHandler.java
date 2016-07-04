@@ -20,6 +20,10 @@ public class ScSettlementExecutionHandler extends WorkflowExecutionListener {
         setStatus(execution, ScStatus.STATUS_UNSUBMIT);
     }
 
+    public void commercialCenterSettlement(DelegateExecution execution) throws Exception {
+        setStatus(execution, ScStatus.STATUS_COMMERCIAL_CENTER_SETTLEMENT);
+    }
+
     public void businessDivisionDirectorApprove(DelegateExecution execution) throws Exception {
         setStatus(execution, ScStatus.STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE);
     }
