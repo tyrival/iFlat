@@ -34,7 +34,7 @@ var Print = {
             + '<td>' + m['score'] + '</td>'
             + '</tr>'
             + '<tr>'
-            + ' <td colspan="6" style="word-wrap:break-word;word-break:break-all;">'
+            + ' <td colspan="6" style="word-wrap:break-word;word-break:break-all;text-align:left">'
             + '说明：' + m['description']
             + '</td>'
             + '</tr>'

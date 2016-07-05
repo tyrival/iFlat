@@ -8,6 +8,15 @@ Ext.define('iFlat.view.sm.FineEdit', {
     id: 'sm-fineedit',
     controller: 'sm-fine',
     closeAction: 'hide',
+
+    listeners: {
+        close: function (win, eOpts) {
+            win.down('combo[name=fine.category]').setBind({
+                store: '{smCategory}'
+            });
+        }
+    },
+
     items: {
         xtype: 'form',
         id: 'sm-fineedit-form',
@@ -44,7 +53,6 @@ Ext.define('iFlat.view.sm.FineEdit', {
                 fieldLabel: '工程',
                 listeners: {
                     change: function(combo, newValue, oldValue, op) {
-                        debugger
                         var cbName = combo.nextSibling('textfield[name=fine.projName]');
                         var store = combo.getStore();
                         var rec = store.findRecord('rptProject.projNo', newValue);
@@ -68,6 +76,10 @@ Ext.define('iFlat.view.sm.FineEdit', {
                 fieldLabel: '日期',
                 format: 'Y-m-d',
                 width: 250
+            },{
+                xtype: 'textfield',
+                name: 'fine.id',
+                hidden: true
             },]
         },{
             items: [{
@@ -83,9 +95,8 @@ Ext.define('iFlat.view.sm.FineEdit', {
                     store: '{smFineType}',
                 },
                 listeners: {
-                    select: function (combo, record, eOpts) {
-                        debugger
-                        var n = record.get('field1');
+                    change: function (combo , newValue , oldValue , eOpts ) {
+                        var n = newValue;
                         switch (n) {
                             case '计划执行':
                                 n = 'Plan'
@@ -112,6 +123,9 @@ Ext.define('iFlat.view.sm.FineEdit', {
                 forceSelection : true,
                 width: 200,
                 fieldLabel: '类别',
+                bind: {
+                    store: '{smCategory}'
+                }
             },{
                 xtype: 'textfield',
                 name: 'fine.amount',

@@ -68,7 +68,7 @@
             <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
             <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
         </where>
-        ORDER BY month DESC,type,createTime
+        ORDER BY date DESC,type,createTime
     </select>
 
     <resultMap type="com.iflat.sm.bean.Fine" id="SmFineResult">

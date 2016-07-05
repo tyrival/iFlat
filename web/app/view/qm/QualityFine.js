@@ -7,7 +7,7 @@ Ext.define('iFlat.view.qm.QualityFine', {
     store: qmQualityFineStore = Ext.create('iFlat.store.qm.QualityFine', {
         proxy: {
             extraParams: {
-                'qualityFine.creator': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+                'qualityFine.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
             }
         }
     }),

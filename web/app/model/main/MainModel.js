@@ -70,6 +70,7 @@ Ext.define('iFlat.model.main.MainModel', {
         smSrWorkTypeWX: ['涂装'],
         smSrWorkTypeXZ: ['搭架'],
         smFineType: ['计划执行','设备能源','其他'],
+        smCategory: ['分段制作', '船台搭载', '码头舾装','电', '气', '水', '奖惩条例','设备','焊材','工具','工装','培训类', '工时填报', '晚间值班', '班前会组织','精细化派工'],
         smCategoryPlan: ['分段制作', '船台搭载', '码头舾装'],
         smCategoryEnergy: ['电', '气', '水', '奖惩条例','设备','焊材','工具','工装'],
         smCategoryOther: ['培训类', '工时填报', '晚间值班', '班前会组织','精细化派工'],

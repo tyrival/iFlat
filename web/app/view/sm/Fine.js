@@ -7,7 +7,7 @@ Ext.define('iFlat.view.sm.Fine', {
     store: smFineStore = Ext.create('iFlat.store.sm.Fine', {
         proxy: {
             extraParams: {
-                'fine.creator': Ext.getCmp('global-panel').getViewModel().get('user')['account']
+                'fine.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
             }
         }
     }),

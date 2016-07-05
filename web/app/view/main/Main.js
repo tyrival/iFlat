@@ -138,6 +138,42 @@ Ext.define('iFlat.view.main.Main', {
                     xtype: 'component',
                     anchor: '100%',
                     html: [
+                        '<h3>2016-07-05 工费结算</h3>',
+                        '<p>修复了 工费结算-奖惩管理-奖惩登记 列表界面数据无法显示的bug。</p>',
+                    ]
+                }]
+            }, {
+                xtype: 'fieldset',
+                layout: 'anchor',
+                margin: '0 8 10 8',
+                items: [{
+                    xtype: 'component',
+                    anchor: '100%',
+                    html: [
+                        '<h3>2016-07-04 工费结算</h3>',
+                        '<p>安全奖惩、质量奖惩、以及工费结算-奖惩管理-奖惩登记中增加了单据打印功能。</p>',
+                    ]
+                }]
+            }, {
+                xtype: 'fieldset',
+                layout: 'anchor',
+                margin: '0 8 10 8',
+                items: [{
+                    xtype: 'component',
+                    anchor: '100%',
+                    html: [
+                        '<h3>2016-07-04 工费结算</h3>',
+                        '<p>钢结构结算：流程改为由作业长开单-钢结构事业部经营科的结算员定价-事业部领导审批</p>',
+                    ]
+                }]
+            }, {
+                xtype: 'fieldset',
+                layout: 'anchor',
+                margin: '0 8 10 8',
+                items: [{
+                    xtype: 'component',
+                    anchor: '100%',
+                    html: [
                         '<h3>2016-06-25 工费结算</h3>',
                         '<p>1. 修船结算申请中，在修船总管审核界面，增加总管打分功能，为修船经营提供一级结算的依据。</p>',
                     ]

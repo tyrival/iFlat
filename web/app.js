@@ -49,3 +49,19 @@ Ext.Ajax.on('requestcomplete',function(conn,response,options) {
         });
     }
 });
+Ext.form.action.Action.override({
+    success: function (form, action) {
+        Flat.util.tip(action.response.responseText);
+        var win = Ext.WindowManager.getActive();
+        if (win && win.isXType('window')) {
+            win.close();
+        };
+        var store = Ext.getCmp('main-view-tabpanel').getActiveTab().getStore();
+        if (store) {
+            store.reload();
+        }
+    },
+    failure: function (form, action) {
+        Flat.util.tip(action.response.responseText);
+    }
+})

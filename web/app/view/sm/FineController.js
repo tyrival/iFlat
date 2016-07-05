@@ -12,9 +12,9 @@ Ext.define('iFlat.view.sm.FineController', {
                     Ext.Ajax.request({
                         url: 'sm_deleteFine.action',
                         params: record.data,
-                        succesm: function (response, opts) {
+                        succes: function (response, opts) {
                             var data = Ext.JSON.decode(response.responseText);
-                            if(data.succesm) {
+                            if(data.succes) {
                                 smFineStore.remove(record);
                             }
                             Flat.util.tip(response.responseText);
@@ -45,7 +45,8 @@ Ext.define('iFlat.view.sm.FineController', {
         if(!record) {
             record = Ext.create('iFlat.model.sm.Fine');
         }
-        win.down('form').loadRecord(record);
+        var form = win.down('form');
+        form.loadRecord(record);
         var dept = record.get('dept');
         var team = record.get('team');
         var group = record.get('group');
@@ -78,14 +79,14 @@ Ext.define('iFlat.view.sm.FineController', {
         var form = win.down('form');
         form.submit({
             url :'sm_saveFine.action',
-            succesm: function(form, action) {
+            /*success: function(form, action) {
                 win.hide();
                 smFineStore.reload();
                 Flat.util.tip(action.response.responseText);
             },
             failure: function(form, action) {
                 Flat.util.tip(action.response.responseText);
-            }
+            }*/
         });
 
     },
@@ -173,7 +174,7 @@ Ext.define('iFlat.view.sm.FineController', {
             if(btn=="yes") {
                 Ext.Ajax.request({
                     url: 'sm_deleteFile.action?filePath=' + Ext.getCmp('sm-fineedit-attachment').getValue(),
-                    succesm: function (response, opts) {
+                    success: function (response, opts) {
                         Flat.util.tip(response.responseText);
                     },
                 })
