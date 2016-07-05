@@ -15,14 +15,15 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
         type: 'vbox',
         align: 'stretch'
     },
+    scrollable: 'y',
 
     items: [{
         xtype: 'container',
         margin: '0 0 0 15',
-        width: '100%',
-        layout: 'vbox',
-        maxHeight: 550,
-        scrollable: 'y',
+        layout: {
+            type: 'vbox',
+            align: 'stretch'
+        },
         items: [{
             xtype: 'form',
             fieldDefaults: {

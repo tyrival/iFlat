@@ -12,12 +12,11 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
     controller: 'sm-sbsettlementapprove',
     id: 'sm-sbsettlementapproveinfo',
     closeAction: 'hide',
-
+    height: '95%',
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
         layout: 'vbox',
-        maxHeight: 550,
         scrollable: 'y',
         items: [{
             xtype: 'form',

@@ -6,6 +6,7 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatch', {
         type: 'vbox',
         align: 'stretch'
     },
+    scrollable: 'y',
 
     requires: [
         'iFlat.view.sm.temp.TemporaryApproveBatchController',
@@ -19,9 +20,7 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatch', {
     items: [{
         xtype: 'container',
         margin: '15 15 0 15',
-        maxHeight: 500,
         width: '100%',
-        scollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

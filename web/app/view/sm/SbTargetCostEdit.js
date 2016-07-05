@@ -10,14 +10,15 @@ Ext.define('iFlat.view.sm.SbTargetCostEdit', {
         'iFlat.view.sm.SbTargetCostController',
     ],
 
+    height: '95%',
     id: 'sm-sbtargetcostedit',
     controller: 'sm-sbtargetcost',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '10 10 10 10',
-        maxHeight: 600,
-        scollable: 'y',
+        margin: '10 0 10 10',
+        //maxHeight: 600,
+        scrollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch',

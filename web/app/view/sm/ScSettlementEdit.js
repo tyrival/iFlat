@@ -4,15 +4,14 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
     title: '钢结构结算单',
     layout: 'fit',
     modal: true,
-
+    height: '95%',
     id: 'sm-scsettlementedit',
     controller: 'sm-scsettlement',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '15 15 0 15',
-        maxHeight: 650,
-        scollable: 'y',
+        margin: '15 0 0 15',
+        scrollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

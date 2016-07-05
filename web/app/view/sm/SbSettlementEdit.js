@@ -5,14 +5,14 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
     layout: 'fit',
     modal: true,
 
+    height: '95%',
     id: 'sm-sbsettlementedit',
     controller: 'sm-sbsettlement',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '15 15 0 15',
-        maxHeight: 650,
-        scollable: 'y',
+        margin: '15 0 0 15',
+        scrollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

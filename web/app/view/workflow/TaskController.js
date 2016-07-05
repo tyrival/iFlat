@@ -19,7 +19,7 @@ Ext.define('iFlat.view.workflow.TaskController', {
                 id: id,
                 layout: 'fit',
                 modal: true,
-                //height: '95%',
+                height: '95%',
                 width: '95%',
                 y: 20,
                 items: [Ext.create(viewName)],

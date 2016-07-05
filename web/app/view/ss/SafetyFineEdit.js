@@ -5,6 +5,7 @@ Ext.define('iFlat.view.ss.SafetyFineEdit', {
     layout: 'fit',
     modal: true,
 
+    height: '95%',
     id: 'ss-safetyfineedit',
     controller: 'ss-safetyfine',
     closeAction: 'hide',
@@ -14,7 +15,7 @@ Ext.define('iFlat.view.ss.SafetyFineEdit', {
         margin: 5,
         border: false,
         layout: 'vbox',
-        maxHeight: 550,
+        //maxHeight: 550,
         scrollable: 'y',
         fieldDefaults: {
             labelAlign: 'right',

@@ -6,22 +6,19 @@ Ext.define('iFlat.view.sm.TemporaryApprove', {
         type: 'vbox',
         align: 'stretch'
     },
+    scrollable: 'y',
 
     requires: [
         'iFlat.view.sm.TemporaryApproveController',
     ],
 
-    scrollable: 'true',
-    maxHeight: 500,
     controller: 'sm-temporaryapprove',
     closeAction: 'hide',
 
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 500,
         width: '100%',
-        scollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

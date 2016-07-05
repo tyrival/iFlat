@@ -15,15 +15,14 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
     ],
 
     scrollable: 'true',
-    maxHeight: 500,
     controller: 'sm-srcommercialcentersettlement',
     closeAction: 'hide',
+    scrollable: 'y',
 
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
         width: '100%',
-        scollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

@@ -5,6 +5,7 @@ Ext.define('iFlat.view.qm.QualityFineEdit', {
     layout: 'fit',
     modal: true,
 
+    height: '95%',
     id: 'qm-qualityfineedit',
     controller: 'qm-qualityfine',
     closeAction: 'hide',
@@ -14,6 +15,9 @@ Ext.define('iFlat.view.qm.QualityFineEdit', {
         id: 'qm-qualityfineedit-form',
         margin: 5,
         border: false,
+        layout: 'vbox',
+        //maxHeight: 550,
+        scrollable: 'y',
         fieldDefaults: {
             labelAlign: 'right',
             labelWidth: 60,
@@ -22,10 +26,8 @@ Ext.define('iFlat.view.qm.QualityFineEdit', {
             border: false,
             xtype: 'panel',
             layout: 'hbox',
-            flex: 1,
             margin: '5 10 5 0'
         },
-        layout: 'vbox',
         items: [{
             items: [{
                 xtype: 'datefield',
@@ -102,7 +104,7 @@ Ext.define('iFlat.view.qm.QualityFineEdit', {
                 name: 'qualityFine.description',
                 allowBlank: false,
                 fieldLabel: '描述',
-                height: 100,
+                //height: 100,
                 width: 750,
             },]
         },{

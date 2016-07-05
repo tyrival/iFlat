@@ -16,7 +16,7 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
     id: 'sm-srprofessionalmanagerauditedit',
     closeAction: 'hide',
 
-    maxHeight: 550,
+    height: '95%',
     layout: 'vbox',
     scrollable: 'y',
     items: [{

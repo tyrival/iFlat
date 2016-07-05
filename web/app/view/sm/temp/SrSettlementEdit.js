@@ -14,11 +14,11 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
     controller: 'sm-srsettlement',
     closeAction: 'hide',
     id: 'sm-srsettlementedit',
+    height: '95%',
     items: [{
         xtype: 'container',
-        margin: '15 15 0 15',
-        maxHeight: 500,
-        scollable: 'y',
+        margin: '15 0 0 15',
+        scrollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

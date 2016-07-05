@@ -13,11 +13,11 @@ Ext.define('iFlat.view.sm.ScTargetCostEdit', {
     id: 'sm-sctargetcostedit',
     controller: 'sm-sctargetcost',
     closeAction: 'hide',
+    height: '95%',
     items: [{
         xtype: 'container',
-        margin: '10 10 10 10',
-        maxHeight: 600,
-        scollable: 'y',
+        margin: '10 0 10 10',
+        scrollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch',

@@ -5,14 +5,14 @@ Ext.define('iFlat.view.sm.TemporaryEdit', {
     layout: 'fit',
     modal: true,
 
+    height: '95%',
     id: 'sm-temporaryedit',
     controller: 'sm-temporary',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '15 15 0 15',
-        maxHeight: 650,
-        tecollable: 'y',
+        margin: '15 0 0 15',
+        scrollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

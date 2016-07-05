@@ -15,13 +15,12 @@ Ext.define('iFlat.view.sm.TempWorkshopDirectorApprove', {
     maxHeight: 500,
     controller: 'sm-tempworkshopdirectorapprove',
     closeAction: 'hide',
+    scrollable: 'y',
 
     items: [{
         xtype: 'container',
         margin: '0 15 0 15',
-        maxHeight: 500,
         width: '100%',
-        scollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

@@ -44,7 +44,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
     closeAction: 'hide',
     id: 'sm-srsettlementsecond',
     width: '95%',
-    
+    height: '95%',
     tbar: [{
         xtype: 'form',
         items: [{
@@ -66,14 +66,12 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
 
     items: [{
         xtype: 'container',
-        margin: '0 15 0 15',
-        maxHeight: 500,
-        scollable: 'y',
-        layout: 'vbox',
-        /*layout: {
+        margin: '0 0 0 15',
+        scrollable: 'y',
+        layout: {
             type: 'vbox',
             align: 'stretch'
-        },*/
+        },
         items: [{
             xtype: 'form',
             name: 'sm-srsettlementsecondedit-form',

@@ -6,6 +6,7 @@ Ext.define('iFlat.view.sm.ScCommercialCenterSettlement', {
         type: 'vbox',
         align: 'stretch'
     },
+    scrollable: 'y',
 
     requires: [
         'iFlat.view.sm.ScCommercialCenterSettlementController'
@@ -16,9 +17,7 @@ Ext.define('iFlat.view.sm.ScCommercialCenterSettlement', {
 
     items: [{
         xtype: 'container',
-        margin: '0 0 0 15',
-        maxHeight: 550,
-        scrollable: 'y',
+        margin: '0 15 0 15',
         layout: {
             type: 'vbox',
             align: 'stretch'

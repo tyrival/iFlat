@@ -13,12 +13,12 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatchInfo', {
     closeAction: 'hide',
     id: 'sm-scsettlementapprovebatchinfo',
     width: '95%',
-    maxHeight: 500,
+    height: '95%',
     y: 20,
     items: [{
         xtype: 'container',
         margin: '15 15 15 15',
-        scollable: 'y',
+        scrollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'

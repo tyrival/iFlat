@@ -8,7 +8,7 @@ Ext.define('iFlat.view.sm.FineEdit', {
     id: 'sm-fineedit',
     controller: 'sm-fine',
     closeAction: 'hide',
-
+    height: '95%',
     listeners: {
         close: function (win, eOpts) {
             win.down('combo[name=fine.category]').setBind({
@@ -23,7 +23,6 @@ Ext.define('iFlat.view.sm.FineEdit', {
         margin: 5,
         border: false,
         layout: 'vbox',
-        maxHeight: 550,
         scrollable: 'y',
         fieldDefaults: {
             labelAlign: 'right',

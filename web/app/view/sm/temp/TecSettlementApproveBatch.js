@@ -6,22 +6,19 @@ Ext.define('iFlat.view.sm.temp.TecSettlementApproveBatch', {
         type: 'vbox',
         align: 'stretch'
     },
+    scrollable: 'y',
 
     requires: [
         'iFlat.view.sm.temp.TecSettlementApproveBatchController',
     ],
 
-    scrollable: 'true',
-    maxHeight: 500,
     controller: 'sm-tecsettlementapprovebatch',
     closeAction: 'hide',
 
     items: [{
         xtype: 'container',
-        margin: '15 15 0 15',
-        maxHeight: 500,
+        margin: '15 0 0 15',
         width: '100%',
-        scollable: 'y',
         layout: {
             type: 'vbox',
             align: 'stretch'
