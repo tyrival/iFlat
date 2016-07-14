@@ -3,7 +3,7 @@ Ext.define('iFlat.view.sm.FineController', {
     alias: 'controller.sm-fine',
 
     deleteFine: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-        var id = record.data['safetyFine.id'];
+        var id = record.data['fine.id'];
         if(id == undefined || id == '') {
             smFineStore.remove(record);
         } else {
@@ -77,17 +77,11 @@ Ext.define('iFlat.view.sm.FineController', {
     submitFineEdit: function(button) {
         var win = button.up('window');
         var form = win.down('form');
-        form.submit({
-            url :'sm_saveFine.action',
-            /*success: function(form, action) {
-                win.hide();
-                smFineStore.reload();
-                Flat.util.tip(action.response.responseText);
-            },
-            failure: function(form, action) {
-                Flat.util.tip(action.response.responseText);
-            }*/
-        });
+        if (form.isValid()) {
+            form.submit({
+                url :'sm_saveFine.action',
+            });
+        }
 
     },
 

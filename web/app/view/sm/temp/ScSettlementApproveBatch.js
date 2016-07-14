@@ -75,6 +75,8 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatch', {
                 border: false,
                 width: '100%',
                 name: 'detail',
+                flex: 1,
+                minHeight: 450,
                 layout: {
                     type: 'hbox',
                     align: 'stretch'

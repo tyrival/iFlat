@@ -76,7 +76,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecond', {
                 border: false,
                 width: '100%',
                 name: 'detail',
-                height: 250,
+                flex: 1,
+                minHeight: 450,
                 layout: {
                     type: 'hbox',
                     align: 'stretch'

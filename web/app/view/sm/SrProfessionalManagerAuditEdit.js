@@ -120,7 +120,8 @@ Ext.define('iFlat.view.sm.SrProfessionalManagerAuditEdit', {
         }, {
             xtype: 'panel',
             name: 'detail',
-            height: 400,
+            minHeight: 400,
+            flex: 1,
             border: false,
             width: 830,
             layout: {

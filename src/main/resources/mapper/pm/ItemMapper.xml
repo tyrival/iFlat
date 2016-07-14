@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pm.Item">
+
+    <insert id="insert" parameterType="com.iflat.pm.bean.Item">
+        INSERT INTO PmItem
+        VALUES (#{id},#{pid},#{type},#{content},#{status},#{creatorAcc},#{creatorName},#{createTime},#{completeTime},#{deadline})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO PmItem
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.type},#{item.content},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.completeTime},#{item.deadline}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pm.bean.Item">
+        UPDATE PmItem
+        <set>
+            <if test="pid!=null">pid=#{pid},</if>
+            <if test="type!=null">type=#{type},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="completeTime!=null">completeTime=#{completeTime},</if>
+            <if test="deadline!=null">deadline=#{deadline},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pm.bean.Item">
+        DELETE PmItem
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pm.bean.Item" resultMap="PmItemResult">
+        SELECT id,pid,type,content,status,creatorAcc,creatorName,createTime,completeTime,deadline
+        FROM PmItem
+        <where>
+            <if test="id!=null">
+                id=#{id}
+            </if>
+            <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">
+                AND pid=#{pid}
+            </if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+                AND type=#{type}
+            </if>
+            <if test="content!=null and !&quot;&quot;.equals(content.trim())">
+                AND content LIKE '%' + #{content} + '%'
+            </if>
+            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+                AND status=#{status}
+            </if>
+            <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">
+                AND creatorAcc=#{creatorAcc}
+            </if>
+            <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">
+                AND creatorName=#{creatorName}
+            </if>
+        </where>
+        ORDER BY completeTime DESC
+    </select>
+
+    <resultMap type="com.iflat.pm.bean.Item" id="PmItemResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pid" column="pid" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="deadline" column="deadline" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

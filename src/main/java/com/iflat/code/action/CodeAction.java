@@ -2,10 +2,7 @@ package com.iflat.code.action;
 
 import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.service.BaseService;
-import com.iflat.code.bean.CardInfo;
-import com.iflat.code.bean.Group;
-import com.iflat.code.bean.Team;
-import com.iflat.code.bean.Worker;
+import com.iflat.code.bean.*;
 
 /**
  * Created by tyriv on 2016/1/18.
@@ -14,6 +11,8 @@ public class CodeAction extends BaseAction {
 
     private Team team;
     private BaseService teamService;
+    private Employee employee;
+    private BaseService employeeService;
     private Worker worker;
     private BaseService workerService;
     private Group group;
@@ -36,9 +35,30 @@ public class CodeAction extends BaseAction {
         return SUCCESS;
     }
 
+    public String listEmployee() throws Exception {
+        this.result.setList(this.employeeService.list(this.employee));
+        return SUCCESS;
+    }
+
     public String listCardInfo() throws Exception {
         this.result.setList(this.cardInfoService.list(this.cardInfo));
         return SUCCESS;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public BaseService getEmployeeService() {
+        return employeeService;
+    }
+
+    public void setEmployeeService(BaseService employeeService) {
+        this.employeeService = employeeService;
     }
 
     public Group getGroup() {

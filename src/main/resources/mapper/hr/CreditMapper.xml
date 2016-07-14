@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Hr.Credit">
+
+    <insert id="insert" parameterType="com.iflat.hr.bean.Credit">
+        INSERT INTO HrCredit
+        VALUES (#{id},#{type},#{date},#{projNo},#{projName},#{dept},#{team},#{group},#{personAcc},#{personName},#{description},#{attachment},#{amount},#{score},#{comment},#{area},#{areaMgr},#{manager},#{groupMgr},#{projMgr},#{profMgr},#{workMgr},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO HrCredit
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.type},#{item.date},#{item.projNo},#{item.projName},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.description},#{item.attachment},#{item.amount},#{item.score},#{item.comment},#{item.area},#{item.areaMgr},#{item.manager},#{item.groupMgr},#{item.projMgr},#{item.profMgr},#{item.workMgr},#{item.creatorAcc},#{item.creatorName},#{item.creatorDept},#{item.createTime}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.hr.bean.Credit">
+        UPDATE HrCredit
+        <set>
+            <if test="type!=null">type=#{type},</if>
+            <if test="date!=null">date=#{date},</if>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="dept!=null">dept=#{dept},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="group!=null">[group]=#{group},</if>
+            <if test="personAcc!=null">personAcc=#{personAcc},</if>
+            <if test="personName!=null">personName=#{personName},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="score!=null">score=#{score},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+            <if test="area!=null">area=#{area},</if>
+            <if test="areaMgr!=null">areaMgr=#{areaMgr},</if>
+            <if test="manager!=null">manager=#{manager},</if>
+            <if test="groupMgr!=null">groupMgr=#{groupMgr},</if>
+            <if test="projMgr!=null">projMgr=#{projMgr},</if>
+            <if test="profMgr!=null">profMgr=#{profMgr},</if>
+            <if test="workMgr!=null">workMgr=#{workMgr},</if>
+            <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+            <if test="creatorName!=null">creatorName=#{creatorName},</if>
+            <if test="creatorDept!=null">creatorDept=#{creatorDept},</if>
+            <if test="createTime!=null">createTime=#{createTime},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.hr.bean.Credit">
+        DELETE HrCredit
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.hr.bean.Credit" resultMap="HrCreditResult">
+        SELECT id,type,date,projNo,projName,dept,team,[group],personAcc,personName,description,attachment,amount,score,comment,area,areaMgr,manager,groupMgr,projMgr,profMgr,workMgr,creatorAcc,creatorName,creatorDept,createTime
+        FROM HrCredit
+        <where>
+            <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+            <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+            <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName  LIKE '%'+#{projName} + '%'</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
+            <if test="group!=null and !&quot;&quot;.equals(group.trim())">AND [group]=#{group}</if>
+            <if test="personAcc!=null and !&quot;&quot;.equals(personAcc.trim())">AND personAcc=#{personAcc}</if>
+            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName=#{personName}</if>
+            <if test="date!=null">AND DATEDIFF(MONTH,#{date},date)=0</if>
+            <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description  LIKE '%'+#{description} + '%'</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment  LIKE '%'+#{comment} + '%'</if>
+            <if test="area!=null and !&quot;&quot;.equals(area.trim())">AND area=#{area}</if>
+            <if test="areaMgr!=null and !&quot;&quot;.equals(areaMgr.trim())">AND areaMgr=#{areaMgr}</if>
+            <if test="manager!=null and !&quot;&quot;.equals(manager.trim())">AND manager=#{manager}</if>
+            <if test="groupMgr!=null and !&quot;&quot;.equals(groupMgr.trim())">AND groupMgr=#{groupMgr}</if>
+            <if test="projMgr!=null and !&quot;&quot;.equals(projMgr.trim())">AND projMgr=#{projMgr}</if>
+            <if test="profMgr!=null and !&quot;&quot;.equals(profMgr.trim())">AND profMgr=#{profMgr}</if>
+            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr=#{workMgr}</if>
+            <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+            <if test="creatorDept!=null and !&quot;&quot;.equals(creatorDept.trim())">AND creatorDept=#{creatorDept}</if>
+            <if test="fromDate!=null">
+                AND date &gt;= #{fromDate}
+            </if>
+            <if test="toDate!=null">
+                AND date &lt; DATEADD(day,1,#{toDate})
+            </if>
+        </where>
+        ORDER BY date DESC,type,createTime
+    </select>
+
+    <resultMap type="com.iflat.hr.bean.Credit" id="HrCreditResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="date" column="date" jdbcType="DATE"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="group" column="group" jdbcType="VARCHAR"/>
+        <result property="personAcc" column="personAcc" jdbcType="VARCHAR"/>
+        <result property="personName" column="personName" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="area" column="area" jdbcType="VARCHAR"/>
+        <result property="areaMgr" column="areaMgr" jdbcType="VARCHAR"/>
+        <result property="manager" column="manager" jdbcType="VARCHAR"/>
+        <result property="groupMgr" column="groupMgr" jdbcType="VARCHAR"/>
+        <result property="projMgr" column="projMgr" jdbcType="VARCHAR"/>
+        <result property="profMgr" column="profMgr" jdbcType="VARCHAR"/>
+        <result property="workMgr" column="workMgr" jdbcType="VARCHAR"/>
+        <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="creatorDept" column="creatorDept" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

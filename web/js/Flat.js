@@ -7,9 +7,17 @@ var Flat = {
             win.document.close();
         },
 
-        printGrid: function (grid) {
+        printGrid: function (grid, title, head, foot) {
             if (grid) {
-                //Ext.ux.grid.Printer.printAutomatically = false;
+                if (title) {
+                    Ext.ux.grid.Printer.mainTitle = title;
+                }
+                if (head) {
+                    Ext.ux.grid.Printer.head = head;
+                }
+                if (foot) {
+                    Ext.ux.grid.Printer.foot = foot;
+                }
                 Ext.ux.grid.Printer.print(grid);
             } else {
                 Ext.example.msg("错误", "找不到需打印的表格，请联系系统管理员", 5000);

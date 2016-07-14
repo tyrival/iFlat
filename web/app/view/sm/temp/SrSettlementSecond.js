@@ -66,7 +66,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
 
     items: [{
         xtype: 'container',
-        margin: '0 0 0 15',
+        padding: '0 15 0 15',
         scrollable: 'y',
         layout: {
             type: 'vbox',
@@ -342,7 +342,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecond', {
             border: false,
             width: '100%',
             name: 'detail',
-            height: 250,
+            flex: 1,
+            minHeight: 450,
             margin: '10 0 10 0',
             layout: {
                 type: 'hbox',

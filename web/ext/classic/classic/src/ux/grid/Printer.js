@@ -150,6 +150,7 @@ Ext.define("Ext.ux.grid.Printer", {
                       '<a class="' + Ext.baseCSSPrefix + 'ux-grid-printer-linkclose" href="javascript:void(0);" onclick="window.close();" style="font-size: 14px">' + this.closeLinkText + '</a>',
                   '</div>',
                   '<h1>' + this.mainTitle + '</h1>',
+                    '<div>' + this.head + '</div>',
                     '<table>',
                       '<tr>',
                         headings,
@@ -161,6 +162,7 @@ Ext.define("Ext.ux.grid.Printer", {
                         pluginsBodyMarkup.join(''),
                       '</tpl>',
                     '</table>',
+                    '<div>' + this.foot + '</div>',
                   '</body>',
                 '</html>'           
             ];
@@ -219,6 +221,15 @@ Ext.define("Ext.ux.grid.Printer", {
          * (defaults to empty)
          */
         mainTitle: '',
+        
+        /**
+         * @property head/foot
+         * @type String
+         * html before/after the table
+         * (defaults to empty)
+         */
+        head: '',
+        foot: '',
         
         /**
          * Text show on print link

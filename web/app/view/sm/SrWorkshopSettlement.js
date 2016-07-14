@@ -19,7 +19,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
 
     items: [{
         xtype: 'container',
-        margin: '0 0 0 15',
+        padding: '0 15 0 15',
         layout: {
             type: 'vbox',
             align: 'stretch'
@@ -156,7 +156,7 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                     type: 'hbox',
                     margin: '10 0 0 0',
                     items: [{
-                        xtype: 'textarea',
+                        xtype: 'textfield',
                         name: 'comment',
                         fieldLabel: '备注',
                         width: '100%',
@@ -168,7 +168,8 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
             border: false,
             width: '100%',
             name: 'detail',
-            height: 250,
+            minHeight: 450,
+            flex: 1,
             layout: {
                 type: 'hbox',
                 align: 'stretch'
@@ -198,7 +199,16 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlementSecond.laborAmount',
-                    fieldLabel: '工程总价',
+                    fieldLabel: '工费',
+                    allowBlank: true,
+                    width: 180,
+                    listeners: {
+                        change: 'changeSummaryAmount'
+                    }
+                }, {
+                    xtype: 'textfield',
+                    fieldLabel: '绩效',
+                    name: 'srSettlementSecond.performanceAmount',
                     allowBlank: true,
                     width: 180,
                     listeners: {
@@ -211,15 +221,6 @@ Ext.define('iFlat.view.sm.SrWorkshopSettlement', {
                     allowBlank: true,
                     labelWidth: 80,
                     width: 200,
-                    listeners: {
-                        change: 'changeSummaryAmount'
-                    }
-                }, {
-                    xtype: 'textfield',
-                    fieldLabel: '绩效',
-                    name: 'srSettlementSecond.performanceAmount',
-                    allowBlank: true,
-                    width: 180,
                     listeners: {
                         change: 'changeSummaryAmount'
                     }

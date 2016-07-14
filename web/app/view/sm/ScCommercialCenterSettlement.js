@@ -178,7 +178,8 @@ Ext.define('iFlat.view.sm.ScCommercialCenterSettlement', {
                     }]
                 }, {
                     xtype: 'panel',
-                    height: 200,
+                    minHeight: 300,
+                    flex: 1,
                     border: false,
                     layout: {
                         type: 'hbox',

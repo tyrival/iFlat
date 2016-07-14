@@ -50,8 +50,80 @@ var Print = {
             + '</tbody>'
             + '</table>';
     },
-    fine: function (model, type) {
+    fine: function (model) {
         Flat.util.printPage(this.fineHtml(model));
+    },
+
+    creditHtml: function (m) {
+
+        return '<h1 style="text-align: center">员工日常绩效负面发现记录表</h1>'
+            + '<table class="am-table am-table-bordered am-table-centered" style="margin-bottom: 0">'
+            + '<tbody>'
+            + '<tr>'
+            + '<td>责任部门</td>'
+            + '<td colspan="7">' + m['creatorDept'] + '</td>'
+            + '</tr>'
+            + '<tr>'
+            + '<td>单位</td>'
+            + '<td colspan="3">' + m['dept'] + '-' + m['team'] + '</td>'
+            + '<td>负责人</td>'
+            + '<td>' + m['manager'] + '</td>'
+            + '<td>区域</td>'
+            + '<td>' + m['area'] + '</td>'
+            + '</tr>'
+            + '<tr>'
+            + '<td>类型</td>'
+            + '<td colspan="7">' + m['type'] + '</td>'
+            + '</tr>'
+            + ' <tr>'
+            + '<td>负面发现描述</td>'
+            + '<td colspan="7" style="word-wrap:break-word;word-break:break-all;text-align:left;">' + m['description'] + '</td>'
+            + '</tr>'
+            + '<tr>'
+            + '<td>处理情况</td>'
+            + '<td colspan="7" style="height:100px">'
+            + '<div style="margin-top:80px;position:relative;right:0px;bottom:0px;">'
+            + '<span style="margin-right:160px">'
+            + '验收人：'
+            + '</span>'
+            + '<span>'
+            + '日期：'
+            + '</span>'
+            + '</div>'
+            + '</td>'
+            + '</tr>'
+            + '<tr>'
+            + '<td>区域长</td>'
+            + '<td colspan="3">' + m['areaMgr'] + '</td>'
+            + '<td>总管</td>'
+            + '<td>' + m['projMgr'] + '</td>'
+            + '<td>主管</td>'
+            + '<td>' + m['profMgr'] + '</td>'
+            + '</tr>'
+            + '<tr>'
+            + '<td>作业长</td>'
+            + '<td>' + m['workMgr'] + '</td>'
+            + '<td>班组长</td>'
+            + '<td>' + m['groupMgr'] + '</td>'
+            + '<td>责任人</td>'
+            + '<td>' + m['personName'] + '</td>'
+            + '<td>证件号</td>'
+            + '<td>' + m['personAcc'] + '</td>'
+            + '</tr>'
+            + '</tbody>'
+            + '</table>'
+            + '<table class="am-table">'
+            + '<tbody>'
+            + '<tr>'
+            + '<td>签发部门负责人：</td>'
+            + '<td>记录人：' + m['creatorName'] + '</td>'
+            + '<td>日期：' + m['date'].substring(0, 10) + '</td>'
+            + '</tr>'
+            + '</tbody>'
+            + '</table>';
+    },
+    credit: function (model) {
+        Flat.util.printPage(this.creditHtml(model));
     },
 
     headHtml: '<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" type="text/css" href="/css/amazeui.min.css"></head><body><div class="am-print-hide"><button type="button" href="javascript:void(0);" class="am-btn am-btn-secondary am-btn-block" onclick="window.print();">打印</button></div>',

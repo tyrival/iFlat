@@ -15,9 +15,10 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
     closeAction: 'hide',
     id: 'sm-srsettlementedit',
     height: '95%',
+    width: '95%',
     items: [{
         xtype: 'container',
-        margin: '15 0 0 15',
+        padding: '15 15 0 15',
         scrollable: 'y',
         layout: {
             type: 'vbox',
@@ -54,7 +55,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     anyMatch: true,
                     displayField: 'name',
                     valueField: 'projNo',
-                    width: 250,
+                    flex: 1,
                     fieldLabel: '工程',
                     listeners: {
                         // 选择工号时，在隐藏单元格中保存船名
@@ -100,7 +101,13 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     valueField: 'teamName',
                     width: 250,
                     fieldLabel: '施工队',
-                    store: Ext.create('iFlat.store.code.Team'),
+                    store: Ext.create('iFlat.store.code.Team', {
+                        proxy: {
+                            extraParams: {
+                                'team.deptName': Ext.getCmp('global-panel').getViewModel().get('user')['porgName']
+                            }
+                        }
+                    }),
                 }, {
                     xtype: 'combo',
                     name: 'srSettlement.professionalMgrAcc',
@@ -200,7 +207,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
                     xtype: 'textfield',
                     name: 'srSettlement.comment',
                     fieldLabel: '备注',
-                    width: 600,
+                    flex: 1,
                 }, {
                     xtype: 'textfield',
                     name: 'srSettlement.teamName',
@@ -308,7 +315,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementEdit', {
         }, {
             xtype: 'panel',
             name: 'detail',
-            height: 300,
+            minHeight: 450,
+            flex: 1,
             border: false,
             margin: '30 0 5 0',
             layout: {

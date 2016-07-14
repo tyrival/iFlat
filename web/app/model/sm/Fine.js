@@ -21,5 +21,7 @@ Ext.define('iFlat.model.sm.Fine', {
         {name: 'fine.creatorAcc', mapping: 'creatorAcc', type: 'string'},
         {name: 'fine.creatorName', mapping: 'creatorName', type: 'string'},
         {name: 'fine.createTime', mapping: 'createTime', type: 'date'},
+        {name: 'fine.fromDate', mapping: 'fromDate', type: 'date'},
+        {name: 'fine.toDate', mapping: 'toDate', type: 'date'},
     ]
 });

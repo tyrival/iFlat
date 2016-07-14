@@ -17,7 +17,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveBatchInfo', {
     y: 20,
     items: [{
         xtype: 'container',
-        margin: '15 15 15 15',
+        padding: '15 15 15 15',
         scrollable: 'y',
         layout: {
             type: 'vbox',

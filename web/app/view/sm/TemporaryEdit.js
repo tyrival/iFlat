@@ -6,12 +6,13 @@ Ext.define('iFlat.view.sm.TemporaryEdit', {
     modal: true,
 
     height: '95%',
+    width: '95%',
     id: 'sm-temporaryedit',
     controller: 'sm-temporary',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '15 0 0 15',
+        padding: '15 15 0 15',
         scrollable: 'y',
         layout: {
             type: 'vbox',
@@ -144,7 +145,8 @@ Ext.define('iFlat.view.sm.TemporaryEdit', {
             }]
         }, {
             xtype: 'panel',
-            height: 300,
+            minHeight: 300,
+            flex: 1,
             border: false,
             margin: '30 0 5 0',
             layout: {
@@ -153,7 +155,7 @@ Ext.define('iFlat.view.sm.TemporaryEdit', {
             },
             items: [{
                 xtype: 'gridpanel',
-                width: 800,
+                width: '100%',
                 tecrollable: true,
                 id: 'sm-temporaryedit-detail',
                 store: smTemporaryDetailStore = Ext.create('iFlat.store.sm.TemporaryDetail'),

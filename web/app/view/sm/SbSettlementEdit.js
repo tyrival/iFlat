@@ -6,12 +6,13 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
     modal: true,
 
     height: '95%',
+    width: '95%',
     id: 'sm-sbsettlementedit',
     controller: 'sm-sbsettlement',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '15 0 0 15',
+        padding: '15 15 0 15',
         scrollable: 'y',
         layout: {
             type: 'vbox',
@@ -61,7 +62,8 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     anyMatch: true,
                     displayField: 'name',
                     valueField: 'projNo',
-                    width: 300,
+                    //width: 300,
+                    flex: 1,
                     fieldLabel: '工程',
                     listeners: {
                         select: 'onProjNoChange',
@@ -114,7 +116,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     name: 'sbSettlement.fineAmount',
                     fieldLabel: '扣款(元)',
                     value: 0,
-                    width: 160,
+                    flex: 1,
                 }, ]
             }, {
                 xtype: 'container',
@@ -188,7 +190,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
                     name: 'sbSettlement.comment',
                     id: 'sm-sbsettlementedit-comment',
                     fieldLabel: '备注',
-                    width: 800,
+                    width: '100%',
                 }]
             }, {
                 xtype: 'container',
@@ -240,7 +242,8 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
             }]
         }, {
             xtype: 'panel',
-            height: 300,
+            minHeight: 300,
+            flex: 1,
             border: false,
             margin: '30 0 5 0',
             layout: {
@@ -249,7 +252,7 @@ Ext.define('iFlat.view.sm.SbSettlementEdit', {
             },
             items: [{
                 xtype: 'gridpanel',
-                width: 800,
+                width: '100%',
                 scrollable: true,
                 id: 'sm-sbsettlementedit-detail',
                 store: smSbSettlementDetailStore = Ext.create('iFlat.store.sm.SbSettlementDetail'),

@@ -6,12 +6,13 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
     modal: true,
 
     height: '95%',
+    width: '95%',
     id: 'sm-tecsettlementedit',
     controller: 'sm-tecsettlement',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '15 0 0 15',
+        padding: '15 15 0 15',
         scrollable: 'y',
         layout: {
             type: 'vbox',
@@ -33,7 +34,7 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
                     fieldLabel: '日期',
                     format: 'Y-m',
                     id: 'sm-tecsettlementedit-time',
-                    width: 200,
+                    width: 180,
                     listeners: {
                         change: function (df, newValue, oldValue, eOpts) {
                             Ext.getCmp('sm-tecsettlementedit-month')
@@ -61,11 +62,34 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
                     anyMatch: true,
                     displayField: 'name',
                     valueField: 'projNo',
-                    width: 300,
+                    //width: 250,
+                    flex: 1,
                     fieldLabel: '工程',
                     listeners: {
                         select: 'onProjNoChange',
                     }
+                }, {
+                    xtype: 'combo',
+                    id: 'sm-tecsettlementedit-deptname',
+                    name: 'tecSettlement.deptName',
+                    fieldLabel: '部门',
+                    allowBlank: false,
+                    editable: false,
+                    forceSelection : true,
+                    queryMode: 'local',
+                    bind: {
+                        store: '{smDept}'
+                    },
+                    width: 180,
+                    listeners: {
+                        change: function(textfield, newValue, oldValue, eOpts) {
+                            smTecSettlementTeamStore
+                                .getProxy().extraParams['team.deptName']
+                                = newValue;
+                            smTecSettlementTeamStore.reload();
+                        }
+                    },
+                    //hidden: true
                 }, {
                     xtype: 'combo',
                     id: 'sm-tecsettlementedit-team',
@@ -114,7 +138,8 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
                     name: 'tecSettlement.fineAmount',
                     fieldLabel: '扣款',
                     value: 0,
-                    width: 160,
+                    //width: 160,
+                    flex: 1,
                 }, ]
             }, {
                 xtype: 'container',
@@ -133,20 +158,6 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
                     id: 'sm-tecsettlementedit-projname',
                     name: 'tecSettlement.projName',
                     fieldLabel: '船名',
-                    hidden: true
-                }, {
-                    xtype: 'textfield',
-                    id: 'sm-tecsettlementedit-deptname',
-                    name: 'tecSettlement.deptName',
-                    fieldLabel: '部门',
-                    listeners: {
-                        change: function(textfield, newValue, oldValue, eOpts) {
-                            smTecSettlementTeamStore
-                                .getProxy().extraParams['team.deptName']
-                                = newValue;
-                            smTecSettlementTeamStore.reload();
-                        }
-                    },
                     hidden: true
                 }, {
                     xtype: 'textfield',
@@ -187,7 +198,8 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
                     name: 'tecSettlement.comment',
                     id: 'sm-tecsettlementedit-comment',
                     fieldLabel: '备注',
-                    width: 800,
+                    flex: 1,
+                    width: '100%'
                 }]
             }, {
                 xtype: 'container',
@@ -239,7 +251,8 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
             }]
         }, {
             xtype: 'panel',
-            height: 300,
+            minHeight: 300,
+            flex: 1,
             border: false,
             margin: '30 0 5 0',
             layout: {
@@ -248,7 +261,7 @@ Ext.define('iFlat.view.sm.TecSettlementEdit', {
             },
             items: [{
                 xtype: 'gridpanel',
-                width: 800,
+                width: '100%',
                 tecrollable: true,
                 id: 'sm-tecsettlementedit-detail',
                 store: smTecSettlementDetailStore = Ext.create('iFlat.store.sm.TecSettlementDetail'),

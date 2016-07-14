@@ -15,7 +15,7 @@ Ext.define('iFlat.view.sm.SbProjectTargetCostEdit', {
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '10 0 10 10',
+        padding: '10 10 10 10',
         scrollable: 'y',
         layout: {
             type: 'vbox',
@@ -78,7 +78,8 @@ Ext.define('iFlat.view.sm.SbProjectTargetCostEdit', {
             }, ]
         }, {
             xtype: 'panel',
-            height: 450,
+            minHeight: 450,
+            flex: 1,
             border: false,
             margin: '10 0 0 0',
             layout: {

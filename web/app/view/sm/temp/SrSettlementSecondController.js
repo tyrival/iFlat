@@ -281,6 +281,9 @@ Ext.define('iFlat.view.sm.temp.SrSettlementSecondController', {
                 sum += model.get('srSettlementDetlSecond.amount');
             }
             grid.down('label[name=distribute]').setText(sum);
+            if (grid.isXType('sm-detail-srsettlementseconddetailsys')) {
+                grid.up('window').down('textfield[name=srSettlementSecond.laborAmount]').setValue(sum);
+            }
         }
     },
 

@@ -8,7 +8,7 @@ Ext.define('iFlat.view.sm.FineEdit', {
     id: 'sm-fineedit',
     controller: 'sm-fine',
     closeAction: 'hide',
-    height: '95%',
+    //height: '95%',
     listeners: {
         close: function (win, eOpts) {
             win.down('combo[name=fine.category]').setBind({
@@ -65,7 +65,7 @@ Ext.define('iFlat.view.sm.FineEdit', {
             },{
                 xtype: 'textfield',
                 name: 'fine.projName',
-                allowBlank: false,
+                allowBlank: true,
                 fieldLabel: '船名',
                 hidden: true
             },{

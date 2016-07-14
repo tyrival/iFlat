@@ -5,12 +5,13 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
     layout: 'fit',
     modal: true,
     height: '95%',
+    width: '95%',
     id: 'sm-scsettlementedit',
     controller: 'sm-scsettlement',
     closeAction: 'hide',
     items: [{
         xtype: 'container',
-        margin: '15 0 0 15',
+        padding: '15 15 0 15',
         scrollable: 'y',
         layout: {
             type: 'vbox',
@@ -60,7 +61,7 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
                     forceSelection : true,
                     displayField: 'name',
                     valueField: 'projNo',
-                    width: 300,
+                    flex: 1,
                     fieldLabel: '工程',
                     listeners: {
                         select: 'onProjNoChange',
@@ -113,7 +114,7 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
                     name: 'scSettlement.fineAmount',
                     fieldLabel: '扣款',
                     value: 0,
-                    width: 160,
+                    flex: 1,
                 }, ]
             }, {
                 xtype: 'container',
@@ -187,7 +188,7 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
                     name: 'scSettlement.comment',
                     id: 'sm-scsettlementedit-comment',
                     fieldLabel: '备注',
-                    width: 800,
+                    width: '100%',
                 }]
             }, {
                 xtype: 'container',
@@ -239,7 +240,8 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
             }]
         }, {
             xtype: 'panel',
-            height: 300,
+            minHeight: 300,
+            flex: 1,
             border: false,
             margin: '30 0 5 0',
             layout: {
@@ -248,7 +250,7 @@ Ext.define('iFlat.view.sm.ScSettlementEdit', {
             },
             items: [{
                 xtype: 'gridpanel',
-                width: 800,
+                width: '100%',
                 scrollable: true,
                 id: 'sm-scsettlementedit-detail',
                 store: smScSettlementDetailStore = Ext.create('iFlat.store.sm.ScSettlementDetail'),

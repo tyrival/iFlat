@@ -75,7 +75,8 @@ Ext.define('iFlat.view.sm.temp.TecSettlementApproveBatch', {
                 border: false,
                 width: '100%',
                 name: 'detail',
-                height: 450,
+                flex: 1,
+                minHeight: 450,
                 layout: {
                     type: 'hbox',
                     align: 'stretch'

@@ -155,7 +155,8 @@ Ext.define('iFlat.view.sm.SrCommercialCenterSettlement', {
             border: false,
             width: '100%',
             name: 'detail',
-            height: 250,
+            minHeight: 350,
+            flex: 1,
             layout: {
                 type: 'hbox',
                 align: 'stretch'

@@ -9,10 +9,17 @@
         <property name="worker" ref="worker"/>
         <property name="teamService" ref="teamService"/>
         <property name="team" ref="team"/>
+        <property name="employeeService" ref="employeeService"/>
+        <property name="employee" ref="employee"/>
         <property name="groupService" ref="groupService"/>
         <property name="group" ref="group"/>
         <property name="cardInfoService" ref="cardInfoService"/>
         <property name="cardInfo" ref="cardInfo"/>
+    </bean>
+
+    <bean id="employeeService" class="com.iflat.code.service.impl.EmployeeServiceImpl">
+    </bean>
+    <bean id="employeeDao" class="com.iflat.code.dao.impl.EmployeeDaoImpl">
     </bean>
 
     <bean id="groupService" class="com.iflat.code.service.impl.GroupServiceImpl">
@@ -36,6 +43,7 @@
     </bean>
 
     <bean id="team" class="com.iflat.code.bean.Team" scope="prototype"/>
+    <bean id="employee" class="com.iflat.code.bean.Employee" scope="prototype"/>
     <bean id="worker" class="com.iflat.code.bean.Worker" scope="prototype"/>
     <bean id="group" class="com.iflat.code.bean.Group" scope="prototype"/>
     <bean id="cardInfo" class="com.iflat.code.bean.CardInfo" scope="prototype"/>

@@ -31,7 +31,7 @@ public class SafetyFine {
     private String groupLeader;//班组长
     private String inspectType;  //检查类型
     private String comment;  //备注
-    private String source;  //用途，安保部签发0，车间内部签发1
+    private String source;  //来源，安保部签发0，车间内部签发1
     private String issuer;  //签发人
     private String creator;  //录入人
     private Date createTime;  //录入日期

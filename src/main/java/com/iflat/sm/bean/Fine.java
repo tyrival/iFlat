@@ -29,6 +29,25 @@ public class Fine {
     private String creatorName;  //录入人
     private Date createTime;  //录入日期
 
+    private Date fromDate;
+    private Date toDate;
+
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
     public String getId() {
         return id;
     }

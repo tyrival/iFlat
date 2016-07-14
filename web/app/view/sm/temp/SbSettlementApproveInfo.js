@@ -15,7 +15,7 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
     height: '95%',
     items: [{
         xtype: 'container',
-        margin: '0 15 0 15',
+        padding: '0 15 0 15',
         layout: 'vbox',
         scrollable: 'y',
         items: [{
@@ -154,7 +154,8 @@ Ext.define('iFlat.view.sm.temp.SbSettlementApproveInfo', {
                     }]
                 }, {
                     xtype: 'panel',
-                    height: 200,
+                    flex: 1,
+                    minHeight: 450,
                     border: false,
                     layout: {
                         type: 'hbox',

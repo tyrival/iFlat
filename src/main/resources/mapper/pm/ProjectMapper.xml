@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pm.Project">
+
+    <insert id="insert" parameterType="com.iflat.pm.bean.Project">
+        INSERT INTO PmProject
+        VALUES (#{id},#{type},#{name},#{description},#{mgrAcc},#{mgrName},#{level},#{attachment},#{comment},#{status},#{creatorAcc},#{creatorName},#{createTime},#{completeTime},#{deadline})
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO PmProject
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.type},#{item.name},#{item.description},#{item.mgrAcc},#{item.mgrName},#{item.level},#{item.attachment},#{item.comment},#{item.status},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.completeTime},#{item.deadline}
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pm.bean.Project">
+        UPDATE PmProject
+        <set>
+            <if test="type!=null">type=#{type},</if>
+            <if test="name!=null">name=#{name},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="mgrAcc!=null">mgrAcc=#{mgrAcc},</if>
+            <if test="mgrName!=null">mgrName=#{mgrName},</if>
+            <if test="level!=null">level=#{level},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="completeTime!=null">completeTime=#{completeTime},</if>
+            <if test="deadline!=null">deadline=#{deadline},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pm.bean.Project">
+        DELETE PmProject
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pm.bean.Project" resultMap="PmProjectResult">
+        SELECT id,type,name,description,mgrAcc,mgrName,level,attachment,comment,status,creatorAcc,creatorName,createTime,completeTime,deadline
+        FROM PmProject
+        <where>
+            <if test="id!=null">
+                id=#{id}
+            </if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+                AND type=#{type}
+            </if>
+            <if test="description!=null and !&quot;&quot;.equals(description.trim())">
+                AND description LIKE '%' + #{description} + '%'
+            </if>
+            <if test="mgrAcc!=null and !&quot;&quot;.equals(mgrAcc.trim())">
+                AND mgrAcc=#{mgrAcc}
+            </if>
+            <if test="mgrName!=null and !&quot;&quot;.equals(mgrName.trim())">
+                AND mgrName=#{mgrName}
+            </if>
+            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+                AND status=#{status}
+            </if>
+            <if test="level!=null">
+                AND level &gt;= #{level}
+            </if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">
+                AND comment LIKE '%' + #{comment} + '%'
+            </if>
+            <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">
+                AND creatorAcc=#{creatorAcc}
+            </if>
+            <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">
+                AND creatorName=#{creatorName}
+            </if>
+        </where>
+        ORDER BY createTime DESC
+    </select>
+
+    <resultMap type="com.iflat.pm.bean.Project" id="PmProjectResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="mgrAcc" column="mgrAcc" jdbcType="VARCHAR"/>
+        <result property="mgrName" column="mgrName" jdbcType="VARCHAR"/>
+        <result property="level" column="level" jdbcType="INTEGER"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="completeTime" column="completeTime" jdbcType="DATE"/>
+        <result property="deadline" column="deadline" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

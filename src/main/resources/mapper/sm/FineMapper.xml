@@ -51,22 +51,28 @@
         SELECT id,type,date,projNo,projName,dept,team,[group],personAcc,personName,category,description,attachment,amount,score,comment,issuer,creatorAcc,creatorName,createTime
         FROM SmFine
         <where>
-            <if test="id!=null">id=#{id}</if>
-            <if test="type!=null">AND type=#{type}</if>
-            <if test="projNo!=null">AND projNo=#{projNo}</if>
-            <if test="projName!=null">AND projName  LIKE '%'+#{projName} + '%'</if>
-            <if test="dept!=null">AND dept=#{dept}</if>
-            <if test="team!=null">AND team=#{team}</if>
-            <if test="group!=null">AND group=#{group}</if>
-            <if test="personAcc!=null">AND personAcc=#{personAcc}</if>
-            <if test="personName!=null">AND personName=#{personName}</if>
+            <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+            <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+            <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName  LIKE '%'+#{projName} + '%'</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
+            <if test="group!=null and !&quot;&quot;.equals(group.trim())">AND [group]=#{group}</if>
+            <if test="personAcc!=null and !&quot;&quot;.equals(personAcc.trim())">AND personAcc=#{personAcc}</if>
+            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName=#{personName}</if>
             <if test="date!=null">AND DATEDIFF(MONTH,#{date},date)=0</if>
-            <if test="category!=null">AND category=#{category}</if>
-            <if test="description!=null">AND description  LIKE '%'+#{description} + '%'</if>
-            <if test="comment!=null">AND comment  LIKE '%'+#{comment} + '%'</if>
-            <if test="issuer!=null">AND issuer=#{issuer}</if>
-            <if test="creatorAcc!=null">AND creatorAcc=#{creatorAcc}</if>
-            <if test="creatorName!=null">AND creatorName=#{creatorName}</if>
+            <if test="category!=null and !&quot;&quot;.equals(category.trim())">AND category=#{category}</if>
+            <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description  LIKE '%'+#{description} + '%'</if>
+            <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment  LIKE '%'+#{comment} + '%'</if>
+            <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">AND issuer=#{issuer}</if>
+            <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+            <if test="fromDate!=null">
+                AND date &gt;= #{fromDate}
+            </if>
+            <if test="toDate!=null">
+                AND date &lt; DATEADD(day,1,#{toDate})
+            </if>
         </where>
         ORDER BY date DESC,type,createTime
     </select>

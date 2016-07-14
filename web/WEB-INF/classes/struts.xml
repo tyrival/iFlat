@@ -178,6 +178,22 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
+        <!-- pm模块 -->
+        <action name="pm_*" class="com.iflat.pm.action.PmAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+
+        <!-- hr模块 -->
+        <action name="hr_*" class="com.iflat.hr.action.HrAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
     </package>
 
 </struts>

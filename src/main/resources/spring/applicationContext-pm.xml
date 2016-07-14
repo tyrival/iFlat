@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="pmAction" class="com.iflat.pm.action.PmAction" scope="prototype">
+        <property name="pmProjectService" ref="pmProjectService"/>
+        <property name="pmProject" ref="pmProject"/>
+        <!--<property name="itemService" ref="itemService"/>
+        <property name="item" ref="item"/>
+        <property name="itemInfoService" ref="itemInfoService"/>
+        <property name="itemInfo" ref="itemInfo"/>
+        <property name="memberService" ref="memberService"/>
+        <property name="member" ref="member"/>
+        <property name="projectInfoService" ref="projectInfoService"/>
+        <property name="projectInfo" ref="projectInfo"/>
+        <property name="transactorService" ref="transactorService"/>
+        <property name="transactor" ref="transactor"/>-->
+    </bean>
+
+    <bean id="pmProjectService" class="com.iflat.pm.service.impl.ProjectServiceImpl">
+    </bean>
+    <bean id="pmProjectDao" class="com.iflat.pm.dao.impl.ProjectDaoImpl">
+    </bean>
+
+    <bean id="itemService" class="com.iflat.pm.service.impl.ItemServiceImpl">
+    </bean>
+    <bean id="itemDao" class="com.iflat.pm.dao.impl.ItemDaoImpl">
+    </bean>
+
+    <bean id="projectInfoService" class="com.iflat.pm.service.impl.ProjectInfoServiceImpl">
+    </bean>
+    <bean id="projectInfoDao" class="com.iflat.pm.dao.impl.ProjectInfoDaoImpl">
+    </bean>
+
+    <bean id="itemInfoService" class="com.iflat.pm.service.impl.ItemInfoServiceImpl">
+    </bean>
+    <bean id="itemInfoDao" class="com.iflat.pm.dao.impl.ItemInfoDaoImpl">
+    </bean>
+
+    <bean id="memberService" class="com.iflat.pm.service.impl.MemberServiceImpl">
+    </bean>
+    <bean id="memberDao" class="com.iflat.pm.dao.impl.MemberDaoImpl">
+    </bean>
+
+    <bean id="transactorService" class="com.iflat.pm.service.impl.TransactorServiceImpl">
+    </bean>
+    <bean id="transactorDao" class="com.iflat.pm.dao.impl.TransactorDaoImpl">
+    </bean>
+
+    <bean id="member" class="com.iflat.pm.bean.Member" scope="prototype"/>
+    <bean id="item" class="com.iflat.pm.bean.Item" scope="prototype"/>
+    <bean id="itemInfo" class="com.iflat.pm.entity.ItemInfo" scope="prototype"/>
+    <bean id="projectInfo" class="com.iflat.pm.entity.ProjectInfo" scope="prototype"/>
+    <bean id="pmProject" class="com.iflat.pm.bean.Project" scope="prototype"/>
+    <bean id="transactor" class="com.iflat.pm.bean.Transactor" scope="prototype"/>
+</beans>

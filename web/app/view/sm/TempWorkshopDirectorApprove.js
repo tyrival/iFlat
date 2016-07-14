@@ -97,7 +97,8 @@ Ext.define('iFlat.view.sm.TempWorkshopDirectorApprove', {
             xtype: 'panel',
             border: false,
             width: '100%',
-            height: 250,
+            minHeight: 250,
+            flex: 1,
             layout: {
                 type: 'hbox',
                 align: 'stretch'

@@ -7,7 +7,7 @@ Ext.define('iFlat.view.sm.temp.detail.SrApplyMain', {
     ],
     controller: 'sm-srsettlement',
 
-    width: 800,
+    width: '100%',
     scrollable: true,
     border: true,
     columnLines: true,
