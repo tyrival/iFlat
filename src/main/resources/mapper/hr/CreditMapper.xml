@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.hr.bean.Credit">
         INSERT INTO HrCredit
-        VALUES (#{id},#{type},#{date},#{projNo},#{projName},#{dept},#{team},#{group},#{personAcc},#{personName},#{description},#{attachment},#{amount},#{score},#{comment},#{area},#{areaMgr},#{manager},#{groupMgr},#{projMgr},#{profMgr},#{workMgr},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime})
+        VALUES (#{id},#{type},#{date},#{projNo},#{projName},#{dept},#{team},#{group},#{personAcc},#{personName},#{description},#{attachment},#{amount},#{score},#{comment},#{area},#{areaMgr},#{manager},#{groupMgr},#{projMgr},#{profMgr},#{workMgr},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{feedback})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO HrCredit
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.type},#{item.date},#{item.projNo},#{item.projName},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.description},#{item.attachment},#{item.amount},#{item.score},#{item.comment},#{item.area},#{item.areaMgr},#{item.manager},#{item.groupMgr},#{item.projMgr},#{item.profMgr},#{item.workMgr},#{item.creatorAcc},#{item.creatorName},#{item.creatorDept},#{item.createTime}
+            SELECT #{item.id},#{item.type},#{item.date},#{item.projNo},#{item.projName},#{item.dept},#{item.team},#{item.group},#{item.personAcc},#{item.personName},#{item.description},#{item.attachment},#{item.amount},#{item.score},#{item.comment},#{item.area},#{item.areaMgr},#{item.manager},#{item.groupMgr},#{item.projMgr},#{item.profMgr},#{item.workMgr},#{item.creatorAcc},#{item.creatorName},#{item.creatorDept},#{item.createTime},#{item.feedback}
         </foreach>
     </insert>
 
@@ -40,10 +40,7 @@
             <if test="projMgr!=null">projMgr=#{projMgr},</if>
             <if test="profMgr!=null">profMgr=#{profMgr},</if>
             <if test="workMgr!=null">workMgr=#{workMgr},</if>
-            <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
-            <if test="creatorName!=null">creatorName=#{creatorName},</if>
-            <if test="creatorDept!=null">creatorDept=#{creatorDept},</if>
-            <if test="createTime!=null">createTime=#{createTime},</if>
+            <if test="feedback!=null">feedback=#{feedback},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -54,7 +51,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.hr.bean.Credit" resultMap="HrCreditResult">
-        SELECT id,type,date,projNo,projName,dept,team,[group],personAcc,personName,description,attachment,amount,score,comment,area,areaMgr,manager,groupMgr,projMgr,profMgr,workMgr,creatorAcc,creatorName,creatorDept,createTime
+        SELECT id,type,date,projNo,projName,dept,team,[group],personAcc,personName,description,attachment,amount,score,comment,area,areaMgr,manager,groupMgr,projMgr,profMgr,workMgr,creatorAcc,creatorName,creatorDept,createTime,feedback
         FROM HrCredit
         <where>
             <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
@@ -112,7 +109,7 @@
         <result property="projMgr" column="projMgr" jdbcType="VARCHAR"/>
         <result property="profMgr" column="profMgr" jdbcType="VARCHAR"/>
         <result property="workMgr" column="workMgr" jdbcType="VARCHAR"/>
-        <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
+        <result property="feedback" column="feedback" jdbcType="VARCHAR"/>
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="creatorDept" column="creatorDept" jdbcType="VARCHAR"/>

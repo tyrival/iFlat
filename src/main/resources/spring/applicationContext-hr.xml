@@ -9,7 +9,10 @@
         <property name="creditService" ref="creditService"/>
     </bean>
 
-    <bean id="creditService" class="com.iflat.hr.service.impl.CreditServiceImpl"/>
+    <bean id="creditService" class="com.iflat.hr.service.impl.CreditServiceImpl">
+        <property name="rptProjectService" ref="rptProjectService"/>
+        <property name="employeeService" ref="employeeService"/>
+    </bean>
     <bean id="creditDao" class="com.iflat.hr.dao.impl.CreditDaoImpl"/>
     <bean id="credit" class="com.iflat.hr.bean.Credit" scope="prototype"/>
 

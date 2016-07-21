@@ -1,9 +1,11 @@
 package com.iflat.hr.action;
 
 import com.iflat.base.action.impl.BaseAction;
+import com.iflat.base.entity.ExcelTemplate;
 import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
 import com.iflat.hr.bean.Credit;
+import com.iflat.util.ExcelUtil;
 import com.opensymphony.xwork2.ModelDriven;
 
 import java.io.File;
@@ -43,6 +45,18 @@ public class HrAction extends BaseAction implements ModelDriven<Page> {
 
     public String listPageCredit() throws Exception {
         this.result.setObject(this.creditService.listPage(this.credit, this.page));
+        return SUCCESS;
+    }
+
+    public String importCredit() throws Exception {
+        this.result.setList(this.creditService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    public String templateCredit() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("hr", "Credit");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
         return SUCCESS;
     }
 

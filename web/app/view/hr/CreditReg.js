@@ -1,79 +1,65 @@
-Ext.define('iFlat.view.hr.Credit', {
+Ext.define('iFlat.view.hr.CreditReg', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.hr-credit',
-    xtype: 'hr-credit',
+    alias: 'widget.hr-creditreg',
+    xtype: 'hr-creditreg',
 
-    controller: 'hr-credit',
-    /*store: hrCreditStore = Ext.create('iFlat.store.hr.Credit', {
+    controller: 'hr-creditreg',
+    store: hrCreditRegStore = Ext.create('iFlat.store.hr.Credit', {
         proxy: {
             extraParams: {
                 'credit.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
             }
         }
-    }),*/
-    store: hrCreditStore = Ext.create('iFlat.store.hr.Credit'),
-    id: 'hr-credit',
+    }),
+    id: 'hr-creditreg',
     dockedItems: [{
         xtype: 'toolbar',
         dock: 'top',
         overflowHandler: 'scroller',
         items: [{
             text: '新增',
-            id: 'hr-credit-add',
+            id: 'hr-creditreg-add',
             ui: 'orig-blue',
-            handler: 'showCreditEdit',
+            handler: 'showCreditRegEdit',
         }, {
             xtype: 'textfield',
             fieldLabel: '船名',
             labelAlign: 'right',
             labelWidth: 30,
             width: 150,
-            id: 'hr-credit-tbar-projname',
+            id: 'hr-creditreg-tbar-projname',
         }, {
             xtype: 'textfield',
             fieldLabel: '科室/队伍',
             labelAlign: 'right',
             labelWidth: 70,
             width: 180,
-            id: 'hr-credit-tbar-team',
+            id: 'hr-creditreg-tbar-team',
         }, {
             xtype: 'textfield',
             fieldLabel: '人员',
             labelAlign: 'right',
             labelWidth: 30,
             width: 150,
-            id: 'hr-credit-tbar-personname',
+            id: 'hr-creditreg-tbar-personname',
         }, {
             xtype: 'textfield',
             fieldLabel: '描述',
             labelAlign: 'right',
             labelWidth: 30,
             width: 180,
-            id: 'hr-credit-tbar-description',
+            id: 'hr-creditreg-tbar-description',
         }, {
             text: '查询',
-            id: 'hr-credit-search',
-            handler: 'searchCredit',
+            id: 'hr-creditreg-search',
+            handler: 'searchCreditReg',
         }, '->', {
             text: '刷新',
-            id: 'hr-credit-refresh',
+            id: 'hr-creditreg-refresh',
             handler: 'refreshList',
         }],
     }],
     columns: [{
-        text: '编辑',
-        id: 'hr-credit-editinfo',
-        width: 60,
-        menuDisabled: true,
-        xtype: 'actioncolumn',
-        tooltip: '编辑',
-        align: 'center',
-        iconCls: 'x-fa fa-edit',
-        handler: 'showCreditEdit',
-        editor: {
-            xtype: 'label',
-        }
-    }, {
         text: '打印',
         width: 60,
         menuDisabled: true,
@@ -166,24 +152,11 @@ Ext.define('iFlat.view.hr.Credit', {
         header: '登记人',
         dataIndex: 'credit.creatorName',
         hidden: true
-    }, {
-        text: '删除',
-        id: 'hr-credit-delete',
-        width: 60,
-        menuDisabled: true,
-        xtype: 'actioncolumn',
-        tooltip: '删除',
-        align: 'center',
-        iconCls: 'x-fa fa-close',
-        handler: 'deleteCredit',
-        editor: {
-            xtype: 'label',
-        }
     }],
     bbar: {
         xtype: 'pagingtoolbar',
         pageIndex: 5,
-        store: hrCreditStore,
+        store: hrCreditRegStore,
         displayInfo: true,
     }
 

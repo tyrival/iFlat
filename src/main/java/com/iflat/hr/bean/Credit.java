@@ -29,6 +29,7 @@ public class Credit {
     private String projMgr;// 总管
     private String profMgr;// 主管
     private String workMgr;// 作业长
+    private String feedback;  // 处理意见
 
     private String creatorAcc;  //录入人
     private String creatorName;  //录入人
@@ -37,6 +38,14 @@ public class Credit {
 
     private Date fromDate;
     private Date toDate;
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
 
     public String getArea() {
         return area;

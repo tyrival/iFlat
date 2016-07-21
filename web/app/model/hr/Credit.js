@@ -23,6 +23,7 @@ Ext.define('iFlat.model.hr.Credit', {
         {name: 'credit.projMgr', mapping: 'projMgr', type: 'string'},
         {name: 'credit.profMgr', mapping: 'profMgr', type: 'string'},
         {name: 'credit.workMgr', mapping: 'workMgr', type: 'string'},
+        {name: 'credit.feedback', mapping: 'feedback', type: 'string'},
         {name: 'credit.creatorAcc', mapping: 'creatorAcc', type: 'string'},
         {name: 'credit.creatorName', mapping: 'creatorName', type: 'string'},
         {name: 'credit.creatorDept', mapping: 'creatorDept', type: 'string'},

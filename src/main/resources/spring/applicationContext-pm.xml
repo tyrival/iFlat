@@ -29,9 +29,9 @@
     <bean id="itemDao" class="com.iflat.pm.dao.impl.ItemDaoImpl">
     </bean>
 
-    <bean id="projectInfoService" class="com.iflat.pm.service.impl.ProjectInfoServiceImpl">
+    <bean id="pmProjectInfoService" class="com.iflat.pm.service.impl.ProjectInfoServiceImpl">
     </bean>
-    <bean id="projectInfoDao" class="com.iflat.pm.dao.impl.ProjectInfoDaoImpl">
+    <bean id="pmProjectInfoDao" class="com.iflat.pm.dao.impl.ProjectInfoDaoImpl">
     </bean>
 
     <bean id="itemInfoService" class="com.iflat.pm.service.impl.ItemInfoServiceImpl">
@@ -52,7 +52,7 @@
     <bean id="member" class="com.iflat.pm.bean.Member" scope="prototype"/>
     <bean id="item" class="com.iflat.pm.bean.Item" scope="prototype"/>
     <bean id="itemInfo" class="com.iflat.pm.entity.ItemInfo" scope="prototype"/>
-    <bean id="projectInfo" class="com.iflat.pm.entity.ProjectInfo" scope="prototype"/>
+    <bean id="pmProjectInfo" class="com.iflat.pm.entity.ProjectInfo" scope="prototype"/>
     <bean id="pmProject" class="com.iflat.pm.bean.Project" scope="prototype"/>
     <bean id="transactor" class="com.iflat.pm.bean.Transactor" scope="prototype"/>
 </beans>

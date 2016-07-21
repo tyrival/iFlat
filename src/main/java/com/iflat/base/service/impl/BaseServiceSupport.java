@@ -449,6 +449,8 @@ public class BaseServiceSupport implements BaseService {
             if(this.isPaging) {
                 PageHelper.startPage(this.page.getPage(), this.page.getLimit());
             }
+            //重置是否需要分页的标记
+            setIsPaging(false);
             result = m.invoke(ins, o);
 
         } catch (ClassNotFoundException e) {
@@ -471,6 +473,10 @@ public class BaseServiceSupport implements BaseService {
             }
         }
         return result;
+    }
+
+    private void setIsPaging(boolean flag) {
+        this.isPaging = flag;
     }
 
     public ExcelReader getExcelReader() {

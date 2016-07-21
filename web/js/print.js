@@ -8,7 +8,7 @@ var Print = {
         if (type != '计划执行' && type != '设备能源' && type != '其他' && type != '施工质量') {
             type = '安全5S';
         }
-        return '<h1 style="text-align: center">船体车间工程考核单</h1>'
+        var h = '<h1 style="text-align: center">船体车间工程考核单</h1>'
             + '<table class="am-table am-table-bordered am-table-centered" style="margin-bottom: 0">'
             + '<tbody>'
             + '<tr>'
@@ -34,13 +34,13 @@ var Print = {
             + '<td>' + m['score'] + '</td>'
             + '</tr>'
             + '<tr>'
-            + ' <td colspan="6" style="word-wrap:break-word;word-break:break-all;text-align:left">'
+            + ' <td colspan="6" style="word-wrap:break-word;word-break:break-all;text-align:left;height: 170px">'
             + '说明：' + m['description']
             + '</td>'
             + '</tr>'
             + '</tbody>'
             + '</table>'
-            + '<table class="am-table">'
+            + '<table class="am-table"">'
             + '<tbody>'
             + '<tr>'
             + '<td>签发人：</td>'
@@ -49,6 +49,7 @@ var Print = {
             + '</tr>'
             + '</tbody>'
             + '</table>';
+        return h + h;
     },
     fine: function (model) {
         Flat.util.printPage(this.fineHtml(model));
@@ -56,7 +57,7 @@ var Print = {
 
     creditHtml: function (m) {
 
-        return '<h1 style="text-align: center">员工日常绩效负面发现记录表</h1>'
+        var h = '<h1 style="text-align: center;margin-top: 20px">员工日常绩效负面发现记录表</h1>'
             + '<table class="am-table am-table-bordered am-table-centered" style="margin-bottom: 0">'
             + '<tbody>'
             + '<tr>'
@@ -77,20 +78,11 @@ var Print = {
             + '</tr>'
             + ' <tr>'
             + '<td>负面发现描述</td>'
-            + '<td colspan="7" style="word-wrap:break-word;word-break:break-all;text-align:left;">' + m['description'] + '</td>'
+            + '<td colspan="7" style="word-wrap:break-word;word-break:break-all;text-align:left;height:70px">' + m['description'] + '</td>'
             + '</tr>'
             + '<tr>'
             + '<td>处理情况</td>'
-            + '<td colspan="7" style="height:100px">'
-            + '<div style="margin-top:80px;position:relative;right:0px;bottom:0px;">'
-            + '<span style="margin-right:160px">'
-            + '验收人：'
-            + '</span>'
-            + '<span>'
-            + '日期：'
-            + '</span>'
-            + '</div>'
-            + '</td>'
+            + '<td colspan="7" style="word-wrap:break-word;word-break:break-all;text-align:left;height:70px">' + m['feedback'] + '</td>'
             + '</tr>'
             + '<tr>'
             + '<td>区域长</td>'
@@ -121,6 +113,7 @@ var Print = {
             + '</tr>'
             + '</tbody>'
             + '</table>';
+        return h + h;
     },
     credit: function (model) {
         Flat.util.printPage(this.creditHtml(model));

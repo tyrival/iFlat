@@ -5,11 +5,33 @@ Ext.define('iFlat.view.hr.CreditEdit', {
     layout: 'fit',
     modal: true,
 
+    requires: [
+        'iFlat.view.hr.CreditController'
+    ],
+    
     id: 'hr-creditedit',
     controller: 'hr-credit',
     closeAction: 'hide',
-    //height: '95%',
-
+    
+    tbar: [{
+        xtype: 'form',
+        items: [{
+            xtype: 'fileuploadfield',
+            name: 'upload',
+            buttonText: '选择...',
+            width: 140,
+            margin: '0 0 0 0',
+        }, ]
+    }, {
+        xtype: 'button',
+        text: '导入',
+        ui: 'orig-blue',
+        handler: 'uploadFile'
+    }, '->', {
+        text: '下载模板',
+        handler: 'downloadTemplate'
+    }],
+    
     items: {
         xtype: 'form',
         id: 'hr-creditedit-form',
@@ -118,7 +140,14 @@ Ext.define('iFlat.view.hr.CreditEdit', {
                 listeners: {
                     select: 'onDeptChange',
                 }
-            },{
+            }, {
+                xtype: 'textfield',
+                id: 'hr-creditedit-personacc',
+                name: 'credit.personAcc',
+                fieldLabel: '账号',
+                width: 225,
+                editable: false
+            }, {
                 xtype: 'combo',
                 id: 'hr-creditedit-person',
                 name: 'credit.personName',
@@ -131,9 +160,11 @@ Ext.define('iFlat.view.hr.CreditEdit', {
                 minChars: 0,
                 displayField: 'name',
                 valueField: 'name',
-                width: 450,
-                fieldLabel: '人员',
-                store: hrCreditWorkerStore = Ext.create('iFlat.store.code.Employee'),
+                width: 225,
+                fieldLabel: '责任人',
+                store: hrCreditWorkerStore = Ext.create('iFlat.store.code.Employee', {
+                    autoLoad: true,
+                }),
                 listeners: {
                     select: 'onPersonChange',
                 }
@@ -164,25 +195,76 @@ Ext.define('iFlat.view.hr.CreditEdit', {
             },]
         },{
             items: [{
+                xtype: 'textarea',
+                name: 'credit.feedback',
+                allowBlank: false,
+                fieldLabel: '处理意见',
+                width: 750,
+            },]
+        },{
+            items: [{
+                xtype: 'combo',
+                id: 'hr-creditedit-manager',
+                name: 'credit.manager',
+                queryMode: 'local',
+                allowBlank: true,
+                editable: true,
+                forceSelection : true,
+                typeAhead: true,
+                anyMatch: true,
+                minChars: 0,
+                displayField: 'name',
+                valueField: 'name',
+                width: 185,
+                fieldLabel: '负责人',
+                store: hrCreditEmployeeStore = Ext.create('iFlat.store.code.Employee'),
+            },{
                 xtype: 'textfield',
                 name: 'credit.area',
                 fieldLabel: '区域',
                 width: 185,
             },{
-                xtype: 'textfield',
+                /*xtype: 'textfield',
                 name: 'credit.areaMgr',
                 fieldLabel: '区域长',
+                width: 185,*/
+                
+                xtype: 'combo',
+                id: 'hr-creditedit-areamgr',
+                name: 'credit.areaMgr',
+                queryMode: 'local',
+                allowBlank: true,
+                editable: true,
+                forceSelection : true,
+                typeAhead: true,
+                anyMatch: true,
+                minChars: 0,
+                displayField: 'name',
+                valueField: 'name',
                 width: 185,
+                fieldLabel: '区域长',
+                store: hrCreditEmployeeStore,
             },{
-                xtype: 'textfield',
-                name: 'credit.manager',
-                fieldLabel: '负责人',
-                width: 185,
-            },{
-                xtype: 'textfield',
+                /*xtype: 'textfield',
                 name: 'credit.groupMgr',
                 fieldLabel: '班长',
+                width: 195,*/
+                
+                xtype: 'combo',
+                id: 'hr-creditedit-groupmgr',
+                name: 'credit.groupMgr',
+                queryMode: 'local',
+                allowBlank: true,
+                editable: true,
+                forceSelection : true,
+                typeAhead: true,
+                anyMatch: true,
+                minChars: 0,
+                displayField: 'name',
+                valueField: 'name',
                 width: 195,
+                fieldLabel: '班长',
+                store: hrCreditEmployeeStore,
             }]
         },{
             items: [{
@@ -196,10 +278,26 @@ Ext.define('iFlat.view.hr.CreditEdit', {
                 fieldLabel: '主管',
                 width: 250,
             },{
-                xtype: 'textfield',
+                /*xtype: 'textfield',
                 name: 'credit.workMgr',
                 fieldLabel: '作业长',
+                width: 250,*/
+
+                xtype: 'combo',
+                id: 'hr-creditedit-workmgr',
+                name: 'credit.workMgr',
+                queryMode: 'local',
+                allowBlank: true,
+                editable: true,
+                forceSelection : true,
+                typeAhead: true,
+                anyMatch: true,
+                minChars: 0,
+                displayField: 'name',
+                valueField: 'name',
                 width: 250,
+                fieldLabel: '作业长',
+                store: hrCreditEmployeeStore,
             }]
         },{
             items: [{
@@ -257,12 +355,6 @@ Ext.define('iFlat.view.hr.CreditEdit', {
                 ui: 'orig-blue',
                 handler: 'uploadAttachment'
             }]
-        }, {
-            xtype: 'textfield',
-            id: 'hr-creditedit-personacc',
-            name: 'credit.personAcc',
-            fieldLabel: '账号',
-            hidden: true
         }]
     },
     buttons: [

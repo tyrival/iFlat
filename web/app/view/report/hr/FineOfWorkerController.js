@@ -14,8 +14,8 @@ Ext.define('iFlat.view.report.hr.FineOfWorkerController', {
         rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.team'] = null;
         rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.group'] = null;
         rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.personName'] = null;
-        rptHrFineOfWorkerSsStore.getProxy().extraParams['qualityFineVo.fromDate'] = null;
-        rptHrFineOfWorkerSsStore.getProxy().extraParams['qualityFineVo.toDate'] = null;
+        rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.fromDate'] = null;
+        rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.toDate'] = null;
 
         rptHrFineOfWorkerQmStore.removeAll();
         rptHrFineOfWorkerSsStore.removeAll();
@@ -82,8 +82,8 @@ Ext.define('iFlat.view.report.hr.FineOfWorkerController', {
         rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.team'] = team;
         rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.group'] = group;
         rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.personName'] = personName;
-        rptHrFineOfWorkerSsStore.getProxy().extraParams['qualityFineVo.fromDate'] = from;
-        rptHrFineOfWorkerSsStore.getProxy().extraParams['qualityFineVo.toDate'] = to;
+        rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.fromDate'] = from;
+        rptHrFineOfWorkerSsStore.getProxy().extraParams['safetyFineVo.toDate'] = to;
         rptHrFineOfWorkerSsStore.reload();
     },
 

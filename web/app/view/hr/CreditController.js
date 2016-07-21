@@ -48,12 +48,17 @@ Ext.define('iFlat.view.hr.CreditController', {
         var form = win.down('form');
         form.loadRecord(record);
         var dept = record.get('dept');
-        hrCreditWorkerStore.getProxy().extraParams['employee.deptName'] = dept;
-        hrCreditWorkerStore.reload({
-            callback: function() {
-                Ext.getCmp('hr-creditedit-person').setValue(record.get('personName'));
-            }
-        });
+        if (!Flat.util.isEmpty(dept)) {
+            hrCreditEmployeeStore.getProxy().extraParams['employee.deptName'] = dept;
+            hrCreditEmployeeStore.reload({
+                callback: function() {
+                    Ext.getCmp('hr-creditedit-manager').setValue(record.get('manager'));
+                    Ext.getCmp('hr-creditedit-areamgr').setValue(record.get('areaMgr'));
+                    Ext.getCmp('hr-creditedit-workmgr').setValue(record.get('workMgr'));
+                    Ext.getCmp('hr-creditedit-groupmgr').setValue(record.get('groupMgr'));
+                }
+            });
+        }
         win.show();
     },
 
@@ -69,8 +74,8 @@ Ext.define('iFlat.view.hr.CreditController', {
 
     onDeptChange: function(combo, record, eOpts) {
         var dept = combo.getValue();
-        hrCreditWorkerStore.getProxy().extraParams['employee.deptName'] = dept;
-        hrCreditWorkerStore.reload();
+        hrCreditEmployeeStore.getProxy().extraParams['employee.deptName'] = dept;
+        hrCreditEmployeeStore.reload();
     },
 
     onPersonChange: function(combo, record, eOpts) {
@@ -138,4 +143,35 @@ Ext.define('iFlat.view.hr.CreditController', {
         }
     },
 
+    uploadFile: function(btn) {
+        var form = btn.previousSibling('form');
+        if (form.isValid()) {
+            form.submit({
+                url: 'hr_importCredit.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    Ext.getCmp('hr-creditedit').hide();
+                    var store = Ext.getCmp('main-view-tabpanel').getActiveTab().getStore();
+                    if (store) {
+                        store.reload();
+                    }
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        Ext.Ajax.request({
+            url: 'hr_templateCredit.action',
+            method: 'post',
+            success: function(response, opts) {
+                window.open(Ext.JSON.decode(response.responseText)['object']);
+            },
+        });
+    },
 })

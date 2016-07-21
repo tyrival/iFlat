@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="credit" code="credit" name="个人信誉">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+        <col index="G" width='17em'></col>
+        <col index="H" width='17em'></col>
+        <col index="I" width='17em'></col>
+        <col index="J" width='17em'></col>
+        <col index="K" width='17em'></col>
+        <col index="L" width='17em'></col>
+        <col index="M" width='17em'></col>
+        <col index="N" width='17em'></col>
+        <col index="O" width='17em'></col>
+        <col index="P" width='17em'></col>
+        <col index="Q" width='17em'></col>
+        <col index="R" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="18" value="个人信誉" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="日期" />
+            <th value="类型" />
+            <th value="工号" />
+            <th value="部门" />
+            <th value="责任人一卡通" />
+            <th value="责任人姓名" />
+            <th value="描述" />
+            <th value="处理情况" />
+            <th value="罚款" />
+            <th value="扣分" />
+            <th value="备注" />
+            <th value="负责人" />
+            <th value="区域" />
+            <th value="区域长" />
+            <th value="班长" />
+            <th value="总管" />
+            <th value="主管" />
+            <th value="作业长" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="10">
+            <td type="date" isnullable="false" maxlength="30" />
+            <td type="enum" format="成本,安全,质量,工艺,精度,纪律,设备能源,后勤管理,培训出勤,其他" isnullable="false" />
+            <td type="string" isnullable="true" maxlength="30" />
+            <td type="enum" format="扬州分公司搭载部,扬州分公司涂装部,扬州分公司制造部,扬州分公司总装部,扬州分公司综合管理部,扬州分公司人力资源部,扬州分公司财务部,扬州分公司生产运行部,扬州分公司技术质量部,扬州分公司生产保障部,扬州分公司安保部,扬州分公司物资部" isnullable="false" />
+            <td type="string" isnullable="false" maxlength="30" />
+            <td type="string" isnullable="false" maxlength="30" />
+            <td type="string" isnullable="false" maxlength="4000" />
+            <td type="string" isnullable="false" maxlength="4000" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="numeric" format="##0.0000" isnullable="false" />
+            <td type="string" isnullable="true" maxlength="1000" />
+            <td type="string" isnullable="true" maxlength="30" />
+            <td type="string" isnullable="true" maxlength="30" />
+            <td type="string" isnullable="true" maxlength="30" />
+            <td type="string" isnullable="true" maxlength="30" />
+            <td type="string" isnullable="true" maxlength="30" />
+            <td type="string" isnullable="true" maxlength="30" />
+            <td type="string" isnullable="true" maxlength="30" />
+        </tr>
+    </tbody>
+</excel>
