@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 隐患
  */
-public class PotentialHazar {
+public class PotentialHazard {
     private String id;
     private Date time;
     private String riskLvl;
