@@ -3,9 +3,9 @@ package com.iflat.ss.bean;
 import java.util.Date;
 
 /**
- * Created by tyriv on 2016/8/5.
+ * 隐患
  */
-public class PotentialHazard {
+public class PotentialHazar {
     private String id;
     private Date time;
     private String riskLvl;
@@ -22,8 +22,8 @@ public class PotentialHazard {
     private String sex;
     private String projNo;
     private String projName;
-    private String area;
-    private String position;
+    private String area;  // 区域
+    private String position;  // 位置
     private String description;
     private String measure;  // 整改措施
     private String deadline;  // 整改期限：立即整改/限期整改
