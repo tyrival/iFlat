@@ -18,7 +18,7 @@ public class Applicant {
 
     private String creatorAcc;
     private String creatorName;
-    private Date createrTime;
+    private Date createTime;
 
     public String getId() {
         return id;
@@ -100,11 +100,11 @@ public class Applicant {
         this.creatorName = creatorName;
     }
 
-    public Date getCreaterTime() {
-        return createrTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreaterTime(Date createrTime) {
-        this.createrTime = createrTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

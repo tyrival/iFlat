@@ -44,7 +44,7 @@
     <select id="list" parameterType="com.iflat.pam.bean.News" resultMap="PamNewsResult">
         SELECT a.id,a.type,a.title,a.author,a.content,a.attachment,a.amount,a.isSubmit,a.submitTime,a.submitAcc,a.submitName,a.submitDept,a.apprvAcc,a.apprvName,a.apprvTime,a.isAdopt,a.secApprv,a.secApprvAcc,a.secApprvName,a.secApprvTime,a.status,a.creatorAcc,a.creatorName,a.createTime,b.name AS pbName
         FROM PamNews a
-        LEFT JOIN PamPartyBranch b ON a.submitDept LIKE b.dept
+        LEFT JOIN PamPartyBranch b ON b.dept LIKE '%' + a.submitDept + '%'
         <where>
             <if test="id!=null">a.id=#{id}</if>
             <if test="type!=null and !&quot;&quot;.equals(type.trim())">

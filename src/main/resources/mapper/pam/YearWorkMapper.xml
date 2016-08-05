@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.pam.bean.YearWork">
         INSERT INTO PamYearWork
-        VALUES (#{id},#{year},#{type},#{pbName},#{content},#{attachment},#{status},#{creatorAcc},#{creatorName},#{createrTime})
+        VALUES (#{id},#{year},#{type},#{pbName},#{content},#{attachment},#{status},#{creatorAcc},#{creatorName},#{createTime})
     </insert>
     <update id="update" parameterType="com.iflat.pam.bean.YearWork">
         UPDATE PamYearWork
@@ -33,7 +33,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.pam.bean.YearWork" resultMap="PamYearWorkResult">
-        SELECT id,year,type,pbName,content,attachment,status,creatorAcc,creatorName,createrTime
+        SELECT id,year,type,pbName,content,attachment,status,creatorAcc,creatorName,createTime
         FROM PamYearWork
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -57,6 +57,6 @@
         <result property="status" column="status" jdbcType="VARCHAR"/>
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
-        <result property="createrTime" column="createrTime" jdbcType="DATE"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>

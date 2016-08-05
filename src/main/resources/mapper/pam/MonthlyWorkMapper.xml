@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.pam.bean.MonthlyWork">
         INSERT INTO PamMonthlyWork
-        VALUES (#{id},#{month},#{pbName},#{confBig},#{confCom},#{confGroup},#{confClass},#{confContent},#{devApplyNum},#{devApplyNumSum},#{devActivistNum},#{devActivistNumSum},#{devCandidateNum},#{devFullMemberNum},#{tmIsStable},#{tmHasPlan},#{tmMeasure},#{mbStableMeasure},#{mbFocus},#{mbProblem},#{scMeasure},#{aiSituation},#{suMassWork},#{seSubject},#{seEffect},#{mpWork},#{wiLightspot},#{attachment},#{status},#{creatorAcc},#{creatorName},#{createrTime})
+        VALUES (#{id},#{month},#{pbName},#{confBig},#{confCom},#{confGroup},#{confClass},#{confContent},#{devApplyNum},#{devApplyNumSum},#{devActivistNum},#{devActivistNumSum},#{devCandidateNum},#{devFullMemberNum},#{tmIsStable},#{tmHasPlan},#{tmMeasure},#{mbStableMeasure},#{mbFocus},#{mbProblem},#{scMeasure},#{aiSituation},#{suMassWork},#{seSubject},#{seEffect},#{mpWork},#{wiLightspot},#{attachment},#{status},#{creatorAcc},#{creatorName},#{createTime})
     </insert>
 
     <update id="update" parameterType="com.iflat.pam.bean.MonthlyWork">
@@ -78,7 +78,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.pam.bean.MonthlyWork" resultMap="PamMonthlyWorkResult">
-        SELECT id,month,pbName,confBig,confCom,confGroup,confClass,confContent,devApplyNum,devApplyNumSum,devActivistNum,devActivistNumSum,devCandidateNum,devFullMemberNum,tmIsStable,tmHasPlan,tmMeasure,mbStableMeasure,mbFocus,mbProblem,scMeasure,aiSituation,suMassWork,seSubject,seEffect,mpWork,wiLightspot,attachment,status,creatorAcc,creatorName,createrTime
+        SELECT id,month,pbName,confBig,confCom,confGroup,confClass,confContent,devApplyNum,devApplyNumSum,devActivistNum,devActivistNumSum,devCandidateNum,devFullMemberNum,tmIsStable,tmHasPlan,tmMeasure,mbStableMeasure,mbFocus,mbProblem,scMeasure,aiSituation,suMassWork,seSubject,seEffect,mpWork,wiLightspot,attachment,status,creatorAcc,creatorName,createTime
         FROM PamMonthlyWork
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -122,6 +122,6 @@
         <result property="status" column="status" jdbcType="VARCHAR"/>
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
-        <result property="createrTime" column="createrTime" jdbcType="DATE"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>

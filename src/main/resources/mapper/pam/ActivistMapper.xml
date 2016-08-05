@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.pam.bean.Activist">
         INSERT INTO PamActivist
-        VALUES (#{id},#{pbName},#{name},#{sex},#{dept},#{birth},#{applyTime},#{becomeActivist},#{creatorAcc},#{creatorName},#{createrTime})
+        VALUES (#{id},#{pbName},#{name},#{sex},#{dept},#{birth},#{applyTime},#{becomeActivist},#{creatorAcc},#{creatorName},#{createTime})
     </insert>
 
     <update id="update" parameterType="com.iflat.pam.bean.Activist">
@@ -36,7 +36,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.pam.bean.Activist" resultMap="PamActivistResult">
-        SELECT id,pbName,name,sex,dept,birth,applyTime,becomeActivist,creatorAcc,creatorName,createrTime
+        SELECT id,pbName,name,sex,dept,birth,applyTime,becomeActivist,creatorAcc,creatorName,createTime
         FROM PamActivist
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -61,6 +61,6 @@
         <result property="becomeActivist" column="becomeActivist" jdbcType="DATE"/>
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
-        <result property="createrTime" column="createrTime" jdbcType="DATE"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>

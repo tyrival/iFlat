@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.pam.bean.CommitteeDetail">
         INSERT INTO PamCommitteeDetail
-        VALUES (#{id},#{pid},#{title},#{name},#{sex},#{degree},#{birth},#{adminTitle},#{tel},#{creatorAcc},#{creatorName},#{createrTime})
+        VALUES (#{id},#{pid},#{title},#{name},#{sex},#{degree},#{birth},#{adminTitle},#{tel},#{creatorAcc},#{creatorName},#{createTime})
     </insert>
 
     <update id="update" parameterType="com.iflat.pam.bean.CommitteeDetail">
@@ -42,7 +42,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.pam.bean.CommitteeDetail" resultMap="PamCommitteeDetailResult">
-        SELECT a.id,a.pid,a.title,a.name,a.sex,a.degree,a.birth,a.adminTitle,a.tel,a.creatorAcc,a.creatorName,a.createrTime
+        SELECT a.id,a.pid,a.title,a.name,a.sex,a.degree,a.birth,a.adminTitle,a.tel,a.creatorAcc,a.creatorName,a.createTime
         FROM PamCommitteeDetail a
         LEFT JOIN PamTitle b ON a.title=b.name
         <where>
@@ -65,6 +65,6 @@
         <result property="tel" column="tel" jdbcType="VARCHAR"/>
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
-        <result property="createrTime" column="createrTime" jdbcType="DATE"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
     </resultMap>
 </mapper>
