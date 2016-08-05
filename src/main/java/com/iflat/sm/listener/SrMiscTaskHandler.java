@@ -31,7 +31,10 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         UserInfoVo userInfoVo = Session.getUserInfo();
         UserInfoVo assignee = new UserInfoVo();
         assignee.setPorgName(userInfoVo.getPorgName());
-        assignee.setRoleName("修船车间主任");
+        assignee.setRoleName("车间主任");
+        if ("钢结构事业部".equals(userInfoVo.getPorgName())) {
+            assignee.setRoleName("钢结构事业部部长");
+        }
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }

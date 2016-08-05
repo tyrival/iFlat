@@ -194,6 +194,14 @@
                 <param name="excludeNullProperties">true</param>
             </result>
         </action>
+
+        <!-- pam模块 -->
+        <action name="pam_*" class="com.iflat.pam.action.PamAction" method="{1}">
+            <result type="json" name="success">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
     </package>
 
 </struts>

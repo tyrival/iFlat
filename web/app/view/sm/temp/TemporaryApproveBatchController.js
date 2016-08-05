@@ -88,7 +88,7 @@ Ext.define('iFlat.view.sm.temp.TemporaryApproveBatchController', {
         text = text === '通过' ? 'pass' : 'reject';
         var grid = form.down('grid');
         var arr = grid.getSelectionModel().getSelection();
-        var param = Flat.util.arrayToUrlParamList(arr, 'temporaryList', true);
+        var param = Flat.util.arrayToUrlParamList(arr, 'temporaryList', true, true);
         param['outGoingName'] = text;
         if (Flat.util.isEmpty(comment.getValue())) {
             var c = text === 'pass' ? '同意' : '不同意';

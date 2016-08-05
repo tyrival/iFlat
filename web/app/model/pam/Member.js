@@ -1,0 +1,25 @@
+Ext.define('iFlat.model.pam.Member', {
+    extend: 'Ext.data.Model',
+    fields: [
+        {name: 'pamMember.id', mapping: 'id', type: 'string'},
+        {name: 'pamMember.account', mapping: 'account', type: 'string'},
+        {name: 'pamMember.dept', mapping: 'dept', type: 'string'},
+        {name: 'pamMember.name', mapping: 'name', type: 'string'},
+        {name: 'pamMember.sex', mapping: 'sex', type: 'string'},
+        {name: 'pamMember.birth', mapping: 'birth', type: 'date'},
+        {name: 'pamMember.nation', mapping: 'nation', type: 'string'},
+        {name: 'pamMember.birthplace', mapping: 'birthplace', type: 'string'},
+        {name: 'pamMember.joinParty', mapping: 'joinParty', type: 'date'},
+        {name: 'pamMember.becomeFullMember', mapping: 'becomeFullMember', type: 'date'},
+        {name: 'pamMember.startWorking', mapping: 'startWorking', type: 'date'},
+        {name: 'pamMember.idCardNo', mapping: 'idCardNo', type: 'string'},
+        {name: 'pamMember.diploma', mapping: 'diploma', type: 'string'},
+        {name: 'pamMember.degree', mapping: 'degree', type: 'string'},
+        {name: 'pamMember.enrolment', mapping: 'enrolment', type: 'date'},
+        {name: 'pamMember.graduation', mapping: 'graduation', type: 'date'},
+        {name: 'pamMember.adminTitle', mapping: 'adminTitle', type: 'string'},
+        {name: 'pamMember.pbName', mapping: 'pbName', type: 'string'},
+        {name: 'pamMember.type', mapping: 'type', type: 'string'},
+        {name: 'pamMember.source', mapping: 'source', type: 'string'},
+    ]
+});

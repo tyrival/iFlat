@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.NewsSummary">
+
+    <select id="list" parameterType="com.iflat.pam.entity.NewsSummary" resultMap="PamNewsSummaryResult">
+        SELECT c.name AS name,SUM(CASE WHEN c.submit='1' THEN 1 ELSE 0 END) AS total, SUM(CASE WHEN c.adopt='1' THEN 1 ELSE 0 END) AS adopt
+        FROM (
+            SELECT
+                <if test="type!=null and &quot;partyBranch&quot;.equals(type.trim())">b.name AS name,</if>
+                <if test="type!=null and &quot;author&quot;.equals(type.trim())">a.author AS name,</if>
+                <if test="type!=null and &quot;dept&quot;.equals(type.trim())">a.submitDept AS name,</if>
+                a.isSubmit AS submit,a.isAdopt AS adopt
+            FROM PamNews a
+            LEFT JOIN PamPartyBranch b ON b.dept LIKE '%' + a.submitDept + '%'
+            <where>isSubmit='1'
+                <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">
+                    AND a.submitDept=#{dept}</if>
+                <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                    AND b.name=#{pbName}</if>
+                <if test="fromDate!=null">
+                    AND a.submitTime &gt;= #{fromDate}
+                </if>
+                <if test="toDate!=null">
+                    AND a.submitTime &lt; DATEADD(day,1,#{toDate})
+                </if>
+            </where>
+            ) c
+        GROUP BY c.name
+        ORDER BY SUM(CASE WHEN c.submit='1' THEN 1 ELSE 0 END) DESC
+    </select>
+
+    <resultMap type="com.iflat.pam.entity.NewsSummary" id="PamNewsSummaryResult">
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="total" column="total" jdbcType="INTEGER"/>
+        <result property="adopt" column="adopt" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

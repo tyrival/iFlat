@@ -50,6 +50,9 @@ public class BaseServiceSupport implements BaseService {
     protected String processKey;
     protected String processBusinessKey;
 
+    protected String downloadFileName;
+    protected List<String> downloadFileList;
+
     protected void beforeGenerate() throws Exception { };
     protected void afterGenerate() throws Exception { };
 
@@ -86,6 +89,9 @@ public class BaseServiceSupport implements BaseService {
 
     protected void beforeStartProcess() throws Exception { }
     protected void afterStartProcess() throws Exception { }
+
+    protected void beforeDownloadBatch() throws Exception { };
+    protected void afterDownloadBatch() throws Exception { };
 
     public BaseServiceSupport() {
         this.excelReader = new ExcelReader();
@@ -475,6 +481,16 @@ public class BaseServiceSupport implements BaseService {
         return result;
     }
 
+    @Override
+    public String downBatch(List list, String fileName) throws Exception {
+        this.downloadFileList = list;
+        this.downloadFileName = fileName;
+        beforeDownloadBatch();
+        String result = FileUtil.downloadBatch(downloadFileList, downloadFileName);
+        afterDownloadBatch();
+        return result;
+    }
+
     private void setIsPaging(boolean flag) {
         this.isPaging = flag;
     }
@@ -630,5 +646,21 @@ public class BaseServiceSupport implements BaseService {
 
     public void setWorkflowService(WorkflowService workflowService) {
         this.workflowService = workflowService;
+    }
+
+    public String getDownloadFileName() {
+        return downloadFileName;
+    }
+
+    public void setDownloadFileName(String downloadFileName) {
+        this.downloadFileName = downloadFileName;
+    }
+
+    public List<String> getDownloadFileList() {
+        return downloadFileList;
+    }
+
+    public void setDownloadFileList(List<String> downloadFileList) {
+        this.downloadFileList = downloadFileList;
     }
 }

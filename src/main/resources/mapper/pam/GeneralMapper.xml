@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.General">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.General">
+        INSERT INTO PamGeneral
+        VALUES (#{id},#{pbName},#{deptMemberNum},#{partyMemberNum},#{malePartyMember},#{femalePartyMember},#{groupWithoutParty},#{comsomol},#{contact},#{phoneNum})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.General">
+        UPDATE PamGeneral
+        <set>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                pbName=#{pbName},</if>
+            <if test="deptMemberNum!=null">
+                deptMemberNum=#{deptMemberNum},</if>
+            <if test="partyMemberNum!=null">
+                partyMemberNum=#{partyMemberNum},</if>
+            <if test="malePartyMember!=null">
+                malePartyMember=#{malePartyMember},</if>
+            <if test="femalePartyMember!=null">
+                femalePartyMember=#{femalePartyMember},</if>
+            <if test="groupWithoutParty!=null">
+                groupWithoutParty=#{groupWithoutParty},</if>
+            <if test="comsomol!=null">
+                comsomol=#{comsomol},</if>
+            <if test="contact!=null and !&quot;&quot;.equals(contact.trim())">
+                contact=#{contact},</if>
+            <if test="phoneNum!=null and !&quot;&quot;.equals(phoneNum.trim())">
+                phoneNum=#{phoneNum},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.General">
+        DELETE PamGeneral
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.General" resultMap="PamGeneralResult">
+        SELECT id,pbName,deptMemberNum,partyMemberNum,malePartyMember,femalePartyMember,groupWithoutParty,comsomol,contact,phoneNum
+        FROM PamGeneral
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                AND pbName=#{pbName}</if>
+        </where>
+        ORDER BY pbName
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.General" id="PamGeneralResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+        <result property="deptMemberNum" column="deptMemberNum" jdbcType="INTEGER"/>
+        <result property="partyMemberNum" column="partyMemberNum" jdbcType="INTEGER"/>
+        <result property="malePartyMember" column="malePartyMember" jdbcType="INTEGER"/>
+        <result property="femalePartyMember" column="femalePartyMember" jdbcType="INTEGER"/>
+        <result property="groupWithoutParty" column="groupWithoutParty" jdbcType="INTEGER"/>
+        <result property="comsomol" column="comsomol" jdbcType="INTEGER"/>
+        <result property="contact" column="contact" jdbcType="VARCHAR"/>
+        <result property="phoneNum" column="phoneNum" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

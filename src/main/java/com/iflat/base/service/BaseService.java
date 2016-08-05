@@ -23,6 +23,7 @@ public interface BaseService {
     String uploadFile(File file, String fileName) throws Exception;
     List importExcel(File file, String fileName) throws Exception;
     Object generate(Object o) throws Exception;
+    String downBatch(List list, String fileName) throws Exception;
 
     // 流程相关
     void startProcess(Object object) throws Exception;

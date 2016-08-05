@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.Title">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.Title">
+        INSERT INTO PamTitle
+        VALUES (#{id},#{name},#{sequence})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.Title">
+        UPDATE PamTitle
+        <set>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                name=#{name},</if>
+            <if test="sequence!=null and !&quot;&quot;.equals(sequence.trim())">
+                sequence=#{sequence},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.Title">
+        DELETE PamTitle
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.Title" resultMap="PamTitleResult">
+        SELECT id,name,sequence
+        FROM PamTitle
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                AND name=#{name}</if>
+        </where>
+        ORDER BY sequence
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.Title" id="PamTitleResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="sequence" column="sequence" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

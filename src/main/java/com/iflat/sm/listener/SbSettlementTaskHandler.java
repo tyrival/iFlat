@@ -32,7 +32,10 @@ public class SbSettlementTaskHandler extends WorkflowTaskListener {
         UserInfoVo userInfoVo = Session.getUserInfo();
         String porgId = userInfoVo.getPorgId();
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setRoleName("造船车间主任");
+        assignee.setRoleName("车间主任");
+        if ("钢结构事业部".equals(userInfoVo.getPorgName())) {
+            assignee.setRoleName("钢结构事业部部长");
+        }
         assignee.setPorgId(porgId);
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));

@@ -45,7 +45,7 @@ Ext.define('iFlat.view.hr.CreditController', {
         if(!record) {
             record = Ext.create('iFlat.model.hr.Credit');
         }
-        var form = win.down('form');
+        var form = win.down('form[id=hr-creditedit-form]');
         form.loadRecord(record);
         var dept = record.get('dept');
         if (!Flat.util.isEmpty(dept)) {
@@ -64,7 +64,7 @@ Ext.define('iFlat.view.hr.CreditController', {
 
     submitCreditEdit: function(button) {
         var win = button.up('window');
-        var form = win.down('form');
+        var form = win.down('form[id=hr-creditedit-form]');
         if (form.isValid()) {
             form.submit({
                 url :'hr_saveCredit.action',

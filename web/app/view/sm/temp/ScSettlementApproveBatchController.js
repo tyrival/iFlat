@@ -89,7 +89,7 @@ Ext.define('iFlat.view.sm.temp.ScSettlementApproveBatchController', {
         var form = panel.down('form');
         var grid = form.down('grid');
         var arr = grid.getSelectionModel().getSelection();
-        var param = Flat.util.arrayToUrlParamList(arr, 'scSettlementList', true);
+        var param = Flat.util.arrayToUrlParamList(arr, 'scSettlementList', true, true);
         var comment = form.down('textarea[name=comment]');
         var text = btn.getText();
         text = text === '通过' ? 'pass' : 'reject';

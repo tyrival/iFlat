@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.CommitteeDetail">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.CommitteeDetail">
+        INSERT INTO PamCommitteeDetail
+        VALUES (#{id},#{pid},#{title},#{name},#{sex},#{degree},#{birth},#{adminTitle},#{tel},#{creatorAcc},#{creatorName},#{createrTime})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.CommitteeDetail">
+        UPDATE PamCommitteeDetail
+        <set>
+            <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">
+                pid=#{pid},</if>
+            <if test="title!=null and !&quot;&quot;.equals(title.trim())">
+                title=#{title},</if>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                name=#{name},</if>
+            <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">
+                sex=#{sex},</if>
+            <if test="degree!=null and !&quot;&quot;.equals(degree.trim())">
+                degree=#{degree},</if>
+            <if test="birth!=null">
+                birth=#{birth},</if>
+            <if test="adminTitle!=null and !&quot;&quot;.equals(adminTitle.trim())">
+                adminTitle=#{adminTitle},</if>
+            <if test="tel!=null and !&quot;&quot;.equals(tel.trim())">
+                tel=#{tel},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.CommitteeDetail">
+        DELETE PamCommitteeDetail
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">
+                AND pid=#{pid}</if>
+        </where>
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.CommitteeDetail" resultMap="PamCommitteeDetailResult">
+        SELECT a.id,a.pid,a.title,a.name,a.sex,a.degree,a.birth,a.adminTitle,a.tel,a.creatorAcc,a.creatorName,a.createrTime
+        FROM PamCommitteeDetail a
+        LEFT JOIN PamTitle b ON a.title=b.name
+        <where>
+            <if test="id!=null">a.id=#{id}</if>
+            <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">
+                AND a.pid=#{pid}</if>
+        </where>
+        ORDER BY b.sequence
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.CommitteeDetail" id="PamCommitteeDetailResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pid" column="pid" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="degree" column="degree" jdbcType="VARCHAR"/>
+        <result property="birth" column="birth" jdbcType="DATE"/>
+        <result property="adminTitle" column="adminTitle" jdbcType="VARCHAR"/>
+        <result property="tel" column="tel" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createrTime" column="createrTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

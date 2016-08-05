@@ -111,14 +111,14 @@ Ext.define('iFlat.view.hr.CreditEdit', {
             },{
                 xtype: 'textfield',
                 name: 'credit.amount',
-                allowBlank: false,
+                allowBlank: true,
                 fieldLabel: '扣款',
                 regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
                 width: 225,
             },{
                 xtype: 'textfield',
                 name: 'credit.score',
-                allowBlank: false,
+                allowBlank: true ,
                 fieldLabel: '扣分',
                 regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
                 width: 225,

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.PartyGroup">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.PartyGroup">
+        INSERT INTO PamPartyGroup
+        VALUES (#{id},#{pbName},#{name},#{leader},#{memberNum},#{group})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.PartyGroup">
+        UPDATE PamPartyGroup
+        <set>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                pbName=#{pbName},</if>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                name=#{name},</if>
+            <if test="leader!=null and !&quot;&quot;.equals(leader.trim())">
+                leader=#{leader},</if>
+            <if test="memberNum!=null and !&quot;&quot;.equals(memberNum.trim())">
+                memberNum=#{memberNum},</if>
+            <if test="group!=null and !&quot;&quot;.equals(group.trim())">
+                [group]=#{group},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.PartyGroup">
+        DELETE PamPartyGroup
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.PartyGroup" resultMap="PamPartyGroupResult">
+        SELECT id,pbName,name,leader,memberNum,[group]
+        FROM PamPartyGroup
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                AND pbName=#{pbName}</if>
+        </where>
+        ORDER BY pbName,name
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.PartyGroup" id="PamPartyGroupResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="leader" column="leader" jdbcType="VARCHAR"/>
+        <result property="memberNum" column="memberNum" jdbcType="INTEGER"/>
+        <result property="group" column="group" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

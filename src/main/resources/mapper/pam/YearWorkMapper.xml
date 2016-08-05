@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.YearWork">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.YearWork">
+        INSERT INTO PamYearWork
+        VALUES (#{id},#{year},#{type},#{pbName},#{content},#{attachment},#{status},#{creatorAcc},#{creatorName},#{createrTime})
+    </insert>
+    <update id="update" parameterType="com.iflat.pam.bean.YearWork">
+        UPDATE PamYearWork
+        <set>
+            <if test="year!=null">
+                year=#{year},</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+                type=#{type},</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                pbName=#{pbName},</if>
+            <if test="content!=null and !&quot;&quot;.equals(content.trim())">
+                content=#{content},</if>
+            <if test="attachment!=null and !&quot;&quot;.equals(attachment.trim())">
+                attachment=#{attachment},</if>
+            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+                status=#{status},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.YearWork">
+        DELETE PamYearWork
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.YearWork" resultMap="PamYearWorkResult">
+        SELECT id,year,type,pbName,content,attachment,status,creatorAcc,creatorName,createrTime
+        FROM PamYearWork
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                AND pbName=#{pbName}</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+                AND type=#{type}</if>
+            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+                AND status=#{status}</if>
+        </where>
+        ORDER BY pbName,year DESC,(CASE type WHEN '计划' THEN 0 ELSE 1 END)
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.YearWork" id="PamYearWorkResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="year" column="year" jdbcType="DATE"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createrTime" column="createrTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

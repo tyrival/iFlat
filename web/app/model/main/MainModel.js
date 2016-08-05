@@ -5,6 +5,7 @@ Ext.define('iFlat.model.main.MainModel', {
     data: {
 
         /* 全局 main */
+        yesNo: ['是', '否'],
         title: {
             iconPath: 'resources/images/sencha-icon.png',
             name: ' 中船澄西信息化平台'
@@ -94,10 +95,14 @@ Ext.define('iFlat.model.main.MainModel', {
         pmProjectType: ['软件研发','软件运维'],
         pmProjectStatus: ['','进行中','完成'],
         pmProjectManager: ['周晨煜','梅晓晶'],
-        
-        
+
         /* 人事管理 human resource */
         hrDept: ['扬州分公司搭载部','扬州分公司涂装部','扬州分公司制造部','扬州分公司总装部','扬州分公司综合管理部','扬州分公司人力资源部','扬州分公司财务部','扬州分公司生产运行部','扬州分公司技术质量部','扬州分公司生产保障部','扬州分公司安保部','扬州分公司物资部'],
         hrCreditType: ['成本','安全','质量','工艺','精度','纪律','设备能源','后勤管理','培训出勤','其他'],
+
+        /* 党群 Party And Mass */
+        pamNewsSummaryType: ['党支部', '作者', '部门'],
+        pamNewsType: ['消息', '通讯', '图片新闻', '副刊', '广播/报纸/班组学习'],
+        pamNewsAmount: [0,5,8,10,15,20,25,30,50],
     },
 });

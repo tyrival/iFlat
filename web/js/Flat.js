@@ -3,7 +3,7 @@ var Flat = {
         printPage: function (html) {
             var win = window.open('/print.html');
             win.document.open();
-            win.document.write('<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" type="text/css" href="/css/amazeui.min.css"></head><body><div class="am-print-hide"><button type="button" href="javascript:void(0);" class="am-btn am-btn-secondary am-btn-block" onclick="window.print();">打印</button></div>' + html + '</body></html>');
+            win.document.write('<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" type="text/css" href="/css/amazeui.css"></head><body><div class="am-print-hide"><button type="button" href="javascript:void(0);" class="am-btn am-btn-secondary am-btn-block" onclick="window.print();">打印</button></div>' + html + '</body></html>');
             win.document.close();
         },
 
@@ -69,7 +69,7 @@ var Flat = {
             }
             return  a + "" + b + "" + c;
         },
-        arrayToUrlParamList: function (array, paramName, isExtModel) {
+        arrayToUrlParamList: function (array, paramName, isExtModel, isObject) {
             if (!array instanceof Array) {
                 return null;
             }
@@ -78,12 +78,20 @@ var Flat = {
                 var obj;
                 if (isExtModel === true) {
                     obj = array[i].getData();
+                    var attribute;
+                    for (attribute in obj) {
+                        result[paramName + "[" + i + "]." + attribute] = obj[attribute];
+                    }
                 } else {
                     obj = array[i];
-                }
-                var attribute;
-                for (attribute in obj) {
-                    result[paramName + "[" + i + "]." + attribute] = obj[attribute];
+                    if (isObject === false) {
+                        result[paramName + "[" + i + "]"] = obj;
+                    } else {
+                        var attribute;
+                        for (attribute in obj) {
+                            result[paramName + "[" + i + "]." + attribute] = obj[attribute];
+                        }
+                    }
                 }
             }
             return result;

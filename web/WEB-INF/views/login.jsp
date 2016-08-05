@@ -45,6 +45,7 @@
 <p>Windows自带的IE10、IE11、IE12、Edge</p>
 <p>遨游、QQ、TheWorld等国产浏览器</p>
 <p>Chrome、FireFox、Safari等</p>
+<a href="/resources/maxthon.exe">遨游浏览器 下载</a>
 <![endif]-->
 <div class="header">
     <div class="am-g">

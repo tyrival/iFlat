@@ -102,7 +102,7 @@ Ext.define('iFlat.view.sm.SrProjectManager', {
         dataIndex: 'srProjectManager.name',
         editor: {
             xtype: 'textfield',
-            disabled: true,
+            editable: false,
             id: 'sm-srprojectmanager-name'
         }
     }, {

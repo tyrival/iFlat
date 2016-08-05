@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.Activist">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.Activist">
+        INSERT INTO PamActivist
+        VALUES (#{id},#{pbName},#{name},#{sex},#{dept},#{birth},#{applyTime},#{becomeActivist},#{creatorAcc},#{creatorName},#{createrTime})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.Activist">
+        UPDATE PamActivist
+        <set>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                pbName=#{pbName},</if>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                name=#{name},</if>
+            <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">
+                sex=#{sex},</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">
+                dept=#{dept},</if>
+            <if test="birth!=null">
+                birth=#{birth},</if>
+            <if test="applyTime!=null">
+                applyTime=#{applyTime},</if>
+            <if test="becomeActivist!=null">
+                becomeActivist=#{becomeActivist},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.Activist">
+        DELETE PamActivist
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.Activist" resultMap="PamActivistResult">
+        SELECT id,pbName,name,sex,dept,birth,applyTime,becomeActivist,creatorAcc,creatorName,createrTime
+        FROM PamActivist
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                AND pbName=#{pbName}</if>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                AND name=#{name}</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">
+                AND dept LIKE '%' + #{dept} + '%'</if>
+        </where>
+        ORDER BY pbName,name
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.Activist" id="PamActivistResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="birth" column="birth" jdbcType="DATE"/>
+        <result property="applyTime" column="applyTime" jdbcType="DATE"/>
+        <result property="becomeActivist" column="becomeActivist" jdbcType="DATE"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createrTime" column="createrTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

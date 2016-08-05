@@ -118,8 +118,8 @@ Ext.define('iFlat.view.sm.ProjectTargetCostController', {
      */
     submit: function (btn) {
         var form = Ext.getCmp('sm-projecttargetcostedit-form');
-        Flat.util.mask();
         if (form.isValid()) {
+            Flat.util.mask();
             form.submit({
                 url: 'sm_saveProjectTargetCost.action',
                 method: 'POST',

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.Member">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.Member">
+        INSERT INTO PamMember
+        VALUES (#{id},#{account},#{dept},#{name},#{sex},#{birth},#{nation},#{birthplace},#{joinParty},#{becomeFullMember},#{startWorking},#{idCardNo},#{diploma},#{degree},#{enrolment},#{graduation},#{adminTitle},#{pbName},#{type})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.Member">
+        UPDATE PamMember
+        <set>
+            <if test="account!=null and !&quot;&quot;.equals(account.trim())">
+                account=#{account},</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">
+                dept=#{dept},</if>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                name=#{name},</if>
+            <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">
+                sex=#{sex},</if>
+            <if test="birth!=null">
+                birth=#{birth},</if>
+            <if test="nation!=null and !&quot;&quot;.equals(nation.trim())">
+                nation=#{nation},</if>
+            <if test="birthplace!=null and !&quot;&quot;.equals(birthplace.trim())">
+                birthplace=#{birthplace},</if>
+            <if test="joinParty!=null">
+                joinParty=#{joinParty},</if>
+            <if test="becomeFullMember!=null">
+                becomeFullMember=#{becomeFullMember},</if>
+            <if test="startWorking!=null">
+                startWorking=#{startWorking},</if>
+            <if test="idCardNo!=null and !&quot;&quot;.equals(idCardNo.trim())">
+                idCardNo=#{idCardNo},</if>
+            <if test="diploma!=null and !&quot;&quot;.equals(diploma.trim())">
+                diploma=#{diploma},</if>
+            <if test="degree!=null and !&quot;&quot;.equals(degree.trim())">
+                degree=#{degree},</if>
+            <if test="enrolment!=null">
+                enrolment=#{enrolment},</if>
+            <if test="graduation!=null">
+                graduation=#{graduation},</if>
+            <if test="adminTitle!=null and !&quot;&quot;.equals(adminTitle.trim())">
+                adminTitle=#{adminTitle},</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                pbName=#{pbName},</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+                type=#{type},</if>
+            <if test="source!=null and !&quot;&quot;.equals(source.trim())">
+                source=#{source},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.Member">
+        DELETE PamMember
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.Member" resultMap="PamMemberResult">
+        SELECT id,account,dept,name,sex,birth,nation,birthplace,joinParty,becomeFullMember,startWorking,idCardNo,diploma,degree,enrolment,graduation,adminTitle,pbName,type,source
+        FROM V_PamMember
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                AND pbName=#{pbName}</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+                AND type=#{type}</if>
+            <if test="source!=null and !&quot;&quot;.equals(source.trim())">
+                AND source=#{source}</if>
+        </where>
+        ORDER BY account
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.Member" id="PamMemberResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="birth" column="birth" jdbcType="DATE"/>
+        <result property="nation" column="nation" jdbcType="VARCHAR"/>
+        <result property="birthplace" column="birthplace" jdbcType="VARCHAR"/>
+        <result property="joinParty" column="joinParty" jdbcType="DATE"/>
+        <result property="becomeFullMember" column="becomeFullMember" jdbcType="DATE"/>
+        <result property="startWorking" column="startWorking" jdbcType="DATE"/>
+        <result property="idCardNo" column="idCardNo" jdbcType="VARCHAR"/>
+        <result property="diploma" column="diploma" jdbcType="VARCHAR"/>
+        <result property="degree" column="degree" jdbcType="VARCHAR"/>
+        <result property="enrolment" column="enrolment" jdbcType="DATE"/>
+        <result property="graduation" column="graduation" jdbcType="DATE"/>
+        <result property="adminTitle" column="adminTitle" jdbcType="VARCHAR"/>
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="source" column="source" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

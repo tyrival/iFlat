@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.MemberDist">
+
+    <select id="list" parameterType="com.iflat.pam.entity.MemberDist" resultMap="PamMemberDistResult">
+        SELECT pbName,memberFull,memberProb,applicant,activist
+        FROM V_PamMemberDist
+        ORDER BY sequence
+    </select>
+
+    <resultMap type="com.iflat.pam.entity.MemberDist" id="PamMemberDistResult">
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+        <result property="memberFull" column="memberFull" jdbcType="INTEGER"/>
+        <result property="memberProb" column="memberProb" jdbcType="INTEGER"/>
+        <result property="applicant" column="applicant" jdbcType="INTEGER"/>
+        <result property="activist" column="activist" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>

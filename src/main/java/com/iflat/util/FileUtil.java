@@ -5,7 +5,10 @@ import org.apache.struts2.ServletActionContext;
 
 import java.io.*;
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Created by tyriv on 2015/11/16.
@@ -46,7 +49,7 @@ public class FileUtil {
     }
 
     public static String upload(File upload, String fileName, String document) throws Exception {
-        return upload(upload, UUID.randomUUID().toString() + "_" + fileName, document, "month");
+        return upload(upload, UUID.randomUUID().toString() + "-" + fileName, document, "month");
     }
 
     public static String upload(File upload, String fileName, String document, String period) throws Exception {
@@ -78,5 +81,39 @@ public class FileUtil {
 
         FileUtils.copyFile(upload, new File(file, fileName));
         return "/upfiles/" + document + fileName;
+    }
+    public static String downloadBatch(List<String> downloadFileList)throws Exception{
+        return downloadBatch(downloadFileList, "download" + UUID.randomUUID().toString());
+    }
+
+    public static String downloadBatch(List<String> downloadFileList, String zipFileName)throws Exception{
+
+        String rootPath = Application.getWebRootPath();
+
+        zipFileName = zipFileName + "[" + UUID.randomUUID().toString() + "].zip";
+        File zipFile = new File(ServletActionContext.getServletContext().getRealPath("/download/") + zipFileName);
+        if (!zipFile.exists()) {
+            zipFile.createNewFile();
+        }
+        ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipFile));
+        int temp = 0 ;
+
+        FileInputStream input=null;
+        for (int i = 0; i < downloadFileList.size(); i++) {
+            try {
+                File files = new File(rootPath + downloadFileList.get(i));
+                input = new FileInputStream(files);
+                zos.putNextEntry(new ZipEntry(files.getName()));//将文件加入到Entry中
+                while ((temp = input.read()) != -1) { // 读取内容
+                    zos.write(temp);    // 压缩输出
+                }
+            } catch (Exception e) {
+
+            }
+        }
+
+        input.close();
+        zos.close();
+        return "/download/" + zipFileName;
     }
 }

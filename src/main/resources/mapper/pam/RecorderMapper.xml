@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.Recorder">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.Recorder">
+        INSERT INTO PamRecorder
+        VALUES (#{id},#{pbName},#{account},#{name})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.Recorder">
+        UPDATE PamRecorder
+        <set>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                pbName=#{pbName},</if>
+            <if test="account!=null and !&quot;&quot;.equals(account.trim())">
+                account=#{account},</if>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                name=#{name},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.Recorder">
+        DELETE PamRecorder
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.Recorder" resultMap="PamRecorderResult">
+        SELECT a.id,a.pbName,a.account,a.name
+        FROM PamRecorder a
+        LEFT JOIN PamPartyBranch b ON a.pbName=b.name
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                AND a.pbName=#{pbName}</if>
+            <if test="account!=null and !&quot;&quot;.equals(account.trim())">
+                AND a.account=#{account}</if>
+            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+                AND a.name=#{name}</if>
+        </where>
+        ORDER BY b.sequence,a.account
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.Recorder" id="PamRecorderResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

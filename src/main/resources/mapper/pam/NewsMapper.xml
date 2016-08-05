@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.News">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.News">
+        INSERT INTO PamNews
+        VALUES (#{id},#{type},#{title},#{author},#{content},#{attachment},#{amount},#{isSubmit},#{submitTime},'',#{submitName},#{submitDept},'',#{apprvName},#{apprvTime},#{isAdopt},'',#{secApprvAcc},#{secApprvName},#{secApprvTime},#{status},#{creatorAcc},#{creatorName},#{createTime})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.News">
+        UPDATE PamNews
+        <set>
+            <if test="type!=null">type=#{type},</if>
+            <if test="title!=null">title=#{title},</if>
+            <if test="author!=null">author=#{author},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="isSubmit!=null">isSubmit=#{isSubmit},</if>
+            <if test="submitTime!=null">submitTime=#{submitTime},</if>
+            <if test="submitAcc!=null">submitAcc=#{submitAcc},</if>
+            <if test="submitName!=null">submitName=#{submitName},</if>
+            <if test="submitDept!=null">submitDept=#{submitDept},</if>
+            <if test="apprvAcc!=null">apprvAcc=#{apprvAcc},</if>
+            <if test="apprvName!=null">apprvName=#{apprvName},</if>
+            <if test="apprvTime!=null">apprvTime=#{apprvTime},</if>
+            <if test="isAdopt!=null">isAdopt=#{isAdopt},</if>
+            <if test="secApprv!=null">secApprv=#{secApprv},</if>
+            <if test="secApprvAcc!=null">secApprvAcc=#{secApprvAcc},</if>
+            <if test="secApprvName!=null">secApprvName=#{secApprvName},</if>
+            <if test="secApprvTime!=null">secApprvTime=#{secApprvTime},</if>
+            <if test="status!=null">status=#{status},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.News">
+        DELETE PamNews
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.News" resultMap="PamNewsResult">
+        SELECT a.id,a.type,a.title,a.author,a.content,a.attachment,a.amount,a.isSubmit,a.submitTime,a.submitAcc,a.submitName,a.submitDept,a.apprvAcc,a.apprvName,a.apprvTime,a.isAdopt,a.secApprv,a.secApprvAcc,a.secApprvName,a.secApprvTime,a.status,a.creatorAcc,a.creatorName,a.createTime,b.name AS pbName
+        FROM PamNews a
+        LEFT JOIN PamPartyBranch b ON a.submitDept LIKE b.dept
+        <where>
+            <if test="id!=null">a.id=#{id}</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+                AND a.type=#{type}</if>
+            <if test="title!=null and !&quot;&quot;.equals(title.trim())">
+                AND a.title LIKE '%' + #{title} + '%'</if>
+            <if test="author!=null and !&quot;&quot;.equals(author.trim())">
+                AND a.author LIKE '%' + #{author} + '%'</if>
+            <if test="content!=null and !&quot;&quot;.equals(content.trim())">
+                AND a.content LIKE '%' + #{content} + '%'</if>
+            <if test="isSubmit!=null and !&quot;&quot;.equals(isSubmit.trim())">
+                AND a.isSubmit=#{isSubmit}</if>
+            <if test="submitAcc!=null and !&quot;&quot;.equals(submitAcc.trim())">
+                AND a.submitAcc=#{submitAcc}</if>
+            <if test="submitName!=null and !&quot;&quot;.equals(submitName.trim())">
+                AND a.submitName=#{submitName}</if>
+            <if test="submitDept!=null and !&quot;&quot;.equals(submitDept.trim())">
+                AND a.submitDept=#{submitDept}</if>
+            <if test="isAdopt!=null and !&quot;&quot;.equals(isAdopt.trim())">
+                AND a.isAdopt=#{isAdopt}</if>
+            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+                AND a.status=#{status}</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                AND b.name=#{pbName}</if>
+            <if test="fromDate!=null">
+                AND a.submitTime &gt;= #{fromDate}
+            </if>
+            <if test="toDate!=null">
+                AND a.submitTime &lt; DATEADD(day,1,#{toDate})
+            </if>
+        </where>
+        ORDER BY (CASE WHEN apprvAcc='' THEN 0 ELSE 1 END),(CASE WHEN secApprvAcc='' THEN 0 ELSE 1 END),a.submitTime DESC
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.News" id="PamNewsResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="author" column="author" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="isSubmit" column="isSubmit" jdbcType="VARCHAR"/>
+        <result property="submitTime" column="submitTime" jdbcType="DATE"/>
+        <result property="submitAcc" column="submitAcc" jdbcType="VARCHAR"/>
+        <result property="submitName" column="submitName" jdbcType="VARCHAR"/>
+        <result property="submitDept" column="submitDept" jdbcType="VARCHAR"/>
+        <result property="apprvAcc" column="apprvAcc" jdbcType="VARCHAR"/>
+        <result property="apprvName" column="apprvName" jdbcType="VARCHAR"/>
+        <result property="apprvTime" column="apprvTime" jdbcType="DATE"/>
+        <result property="isAdopt" column="isAdopt" jdbcType="VARCHAR"/>
+        <result property="secApprv" column="secApprv" jdbcType="VARCHAR"/>
+        <result property="secApprvAcc" column="secApprvAcc" jdbcType="VARCHAR"/>
+        <result property="secApprvName" column="secApprvName" jdbcType="VARCHAR"/>
+        <result property="secApprvTime" column="secApprvTime" jdbcType="DATE"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

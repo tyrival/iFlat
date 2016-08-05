@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.MonthlyWork">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.MonthlyWork">
+        INSERT INTO PamMonthlyWork
+        VALUES (#{id},#{month},#{pbName},#{confBig},#{confCom},#{confGroup},#{confClass},#{confContent},#{devApplyNum},#{devApplyNumSum},#{devActivistNum},#{devActivistNumSum},#{devCandidateNum},#{devFullMemberNum},#{tmIsStable},#{tmHasPlan},#{tmMeasure},#{mbStableMeasure},#{mbFocus},#{mbProblem},#{scMeasure},#{aiSituation},#{suMassWork},#{seSubject},#{seEffect},#{mpWork},#{wiLightspot},#{attachment},#{status},#{creatorAcc},#{creatorName},#{createrTime})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.MonthlyWork">
+        UPDATE PamMonthlyWork
+        <set>
+            <if test="month!=null">
+                month=#{month},</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                pbName=#{pbName},</if>
+            <if test="confBig!=null and !&quot;&quot;.equals(confBig.trim())">
+                confBig=#{confBig},</if>
+            <if test="confCom!=null and !&quot;&quot;.equals(confCom.trim())">
+                confCom=#{confCom},</if>
+            <if test="confGroup!=null and !&quot;&quot;.equals(confGroup.trim())">
+                confGroup=#{confGroup},</if>
+            <if test="confClass!=null and !&quot;&quot;.equals(confClass.trim())">
+                confClass=#{confClass},</if>
+            <if test="confContent!=null and !&quot;&quot;.equals(confContent.trim())">
+                confContent=#{confContent},</if>
+            <if test="devApplyNum!=null">
+                devApplyNum=#{devApplyNum},</if>
+            <if test="devApplyNumSum!=null">
+                devApplyNumSum=#{devApplyNumSum},</if>
+            <if test="devActivistNum!=null">
+                devActivistNum=#{devActivistNum},</if>
+            <if test="devActivistNumSum!=null">
+                devActivistNumSum=#{devActivistNumSum},</if>
+            <if test="devCandidateNum!=null">
+                devCandidateNum=#{devCandidateNum},</if>
+            <if test="devFullMemberNum!=null">
+                devFullMemberNum=#{devFullMemberNum},</if>
+            <if test="tmIsStable!=null">
+                tmIsStable=#{tmIsStable},</if>
+            <if test="tmHasPlan!=null">
+                tmHasPlan=#{tmHasPlan},</if>
+            <if test="tmMeasure!=null and !&quot;&quot;.equals(tmMeasure.trim())">
+                tmMeasure=#{tmMeasure},</if>
+            <if test="mbStableMeasure!=null and !&quot;&quot;.equals(mbStableMeasure.trim())">
+                mbStableMeasure=#{mbStableMeasure},</if>
+            <if test="mbFocus!=null and !&quot;&quot;.equals(mbFocus.trim())">
+                mbFocus=#{mbFocus},</if>
+            <if test="mbProblem!=null and !&quot;&quot;.equals(mbProblem.trim())">
+                mbProblem=#{mbProblem},</if>
+            <if test="scMeasure!=null and !&quot;&quot;.equals(scMeasure.trim())">
+                scMeasure=#{scMeasure},</if>
+            <if test="aiSituation!=null and !&quot;&quot;.equals(aiSituation.trim())">
+                aiSituation=#{aiSituation},</if>
+            <if test="suMassWork!=null and !&quot;&quot;.equals(suMassWork.trim())">
+                suMassWork=#{suMassWork},</if>
+            <if test="seSubject!=null and !&quot;&quot;.equals(seSubject.trim())">
+                seSubject=#{seSubject},</if>
+            <if test="seEffect!=null and !&quot;&quot;.equals(seEffect.trim())">
+                seEffect=#{seEffect},</if>
+            <if test="mpWork!=null and !&quot;&quot;.equals(mpWork.trim())">
+                mpWork=#{mpWork},</if>
+            <if test="wiLightspot!=null and !&quot;&quot;.equals(wiLightspot.trim())">
+                wiLightspot=#{wiLightspot},</if>
+            <if test="attachment!=null and !&quot;&quot;.equals(attachment.trim())">
+                attachment=#{attachment},</if>
+            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+                status=#{status},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.MonthlyWork">
+        DELETE PamMonthlyWork
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.MonthlyWork" resultMap="PamMonthlyWorkResult">
+        SELECT id,month,pbName,confBig,confCom,confGroup,confClass,confContent,devApplyNum,devApplyNumSum,devActivistNum,devActivistNumSum,devCandidateNum,devFullMemberNum,tmIsStable,tmHasPlan,tmMeasure,mbStableMeasure,mbFocus,mbProblem,scMeasure,aiSituation,suMassWork,seSubject,seEffect,mpWork,wiLightspot,attachment,status,creatorAcc,creatorName,createrTime
+        FROM PamMonthlyWork
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+                AND pbName=#{pbName}</if>
+            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+                AND status=#{status}</if>
+        </where>
+        ORDER BY month DESC
+    </select>
+    
+    <resultMap type="com.iflat.pam.bean.MonthlyWork" id="PamMonthlyWorkResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="month" column="month" jdbcType="DATE"/>
+        <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+        <result property="confBig" column="confBig" jdbcType="VARCHAR"/>
+        <result property="confCom" column="confCom" jdbcType="VARCHAR"/>
+        <result property="confGroup" column="confGroup" jdbcType="VARCHAR"/>
+        <result property="confClass" column="confClass" jdbcType="VARCHAR"/>
+        <result property="confContent" column="confContent" jdbcType="VARCHAR"/>
+        <result property="devApplyNum" column="devApplyNum" jdbcType="INTEGER"/>
+        <result property="devApplyNumSum" column="devApplyNumSum" jdbcType="INTEGER"/>
+        <result property="devActivistNum" column="devActivistNum" jdbcType="INTEGER"/>
+        <result property="devActivistNumSum" column="devActivistNumSum" jdbcType="INTEGER"/>
+        <result property="devCandidateNum" column="devCandidateNum" jdbcType="INTEGER"/>
+        <result property="devFullMemberNum" column="devFullMemberNum" jdbcType="INTEGER"/>
+        <result property="tmIsStable" column="tmIsStable" jdbcType="BOOLEAN"/>
+        <result property="tmHasPlan" column="tmHasPlan" jdbcType="BOOLEAN"/>
+        <result property="tmMeasure" column="tmMeasure" jdbcType="VARCHAR"/>
+        <result property="mbStableMeasure" column="mbStableMeasure" jdbcType="VARCHAR"/>
+        <result property="mbFocus" column="mbFocus" jdbcType="VARCHAR"/>
+        <result property="mbProblem" column="mbProblem" jdbcType="VARCHAR"/>
+        <result property="scMeasure" column="scMeasure" jdbcType="VARCHAR"/>
+        <result property="aiSituation" column="aiSituation" jdbcType="VARCHAR"/>
+        <result property="suMassWork" column="suMassWork" jdbcType="VARCHAR"/>
+        <result property="seSubject" column="seSubject" jdbcType="VARCHAR"/>
+        <result property="seEffect" column="seEffect" jdbcType="VARCHAR"/>
+        <result property="mpWork" column="mpWork" jdbcType="VARCHAR"/>
+        <result property="wiLightspot" column="wiLightspot" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createrTime" column="createrTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="pamAction" class="com.iflat.pam.action.PamAction" scope="prototype">
+        <property name="news" ref="news"/>
+        <property name="newsService" ref="newsService"/>
+        <property name="partyBranch" ref="partyBranch"/>
+        <property name="partyBranchService" ref="partyBranchService"/>
+        <property name="newsSummary" ref="newsSummary"/>
+        <property name="newsSummaryService" ref="newsSummaryService"/>
+        <property name="activist" ref="activist"/>
+        <property name="activistService" ref="activistService"/>
+        <property name="applicant" ref="applicant"/>
+        <property name="applicantService" ref="applicantService"/>
+        <property name="committee" ref="committee"/>
+        <property name="committeeService" ref="committeeService"/>
+        <property name="committeeDetail" ref="committeeDetail"/>
+        <property name="committeeDetailService" ref="committeeDetailService"/>
+        <property name="pamGeneral" ref="pamGeneral"/>
+        <property name="generalService" ref="generalService"/>
+        <property name="pamMember" ref="pamMember"/>
+        <property name="memberService" ref="memberService"/>
+        <property name="monthlyWork" ref="monthlyWork"/>
+        <property name="monthlyWorkService" ref="monthlyWorkService"/>
+        <property name="partyGroup" ref="partyGroup"/>
+        <property name="partyGroupService" ref="partyGroupService"/>
+        <property name="recorder" ref="recorder"/>
+        <property name="recorderService" ref="recorderService"/>
+        <property name="pamTitle" ref="pamTitle"/>
+        <property name="titleService" ref="titleService"/>
+        <property name="yearWork" ref="yearWork"/>
+        <property name="yearWorkService" ref="yearWorkService"/>
+        <property name="memberDist" ref="memberDist"/>
+        <property name="memberDistService" ref="memberDistService"/>
+    </bean>
+
+    <bean id="memberDistService" class="com.iflat.pam.service.impl.MemberDistServiceImpl"/>
+    <bean id="memberDistDao" class="com.iflat.pam.dao.impl.MemberDistDaoImpl"/>
+    <bean id="memberDist" class="com.iflat.pam.entity.MemberDist" scope="prototype"/>
+
+    <bean id="activistService" class="com.iflat.pam.service.impl.ActivistServiceImpl"/>
+    <bean id="activistDao" class="com.iflat.pam.dao.impl.ActivistDaoImpl"/>
+    <bean id="activist" class="com.iflat.pam.bean.Activist" scope="prototype"/>
+
+    <bean id="newsService" class="com.iflat.pam.service.impl.NewsServiceImpl"/>
+    <bean id="newsDao" class="com.iflat.pam.dao.impl.NewsDaoImpl"/>
+    <bean id="news" class="com.iflat.pam.bean.News" scope="prototype"/>
+
+    <bean id="partyBranchService" class="com.iflat.pam.service.impl.PartyBranchServiceImpl"/>
+    <bean id="partyBranchDao" class="com.iflat.pam.dao.impl.PartyBranchDaoImpl"/>
+    <bean id="partyBranch" class="com.iflat.pam.bean.PartyBranch" scope="prototype"/>
+
+    <bean id="newsSummaryService" class="com.iflat.pam.service.impl.NewsSummaryServiceImpl"/>
+    <bean id="newsSummaryDao" class="com.iflat.pam.dao.impl.NewsSummaryDaoImpl"/>
+    <bean id="newsSummary" class="com.iflat.pam.entity.NewsSummary" scope="prototype"/>
+
+    <bean id="applicantService" class="com.iflat.pam.service.impl.ApplicantServiceImpl"/>
+    <bean id="applicantDao" class="com.iflat.pam.dao.impl.ApplicantDaoImpl"/>
+    <bean id="applicant" class="com.iflat.pam.bean.Applicant" scope="prototype"/>
+
+    <bean id="committeeService" class="com.iflat.pam.service.impl.CommitteeServiceImpl"/>
+    <bean id="committeeDao" class="com.iflat.pam.dao.impl.CommitteeDaoImpl"/>
+    <bean id="committee" class="com.iflat.pam.bean.Committee" scope="prototype"/>
+
+    <bean id="committeeDetailService" class="com.iflat.pam.service.impl.CommitteeSummaryServiceImpl"/>
+    <bean id="committeeDetailDao" class="com.iflat.pam.dao.impl.CommitteeSummaryDaoImpl"/>
+    <bean id="committeeDetail" class="com.iflat.pam.bean.CommitteeDetail" scope="prototype"/>
+
+    <bean id="generalService" class="com.iflat.pam.service.impl.GeneralServiceImpl"/>
+    <bean id="generalDao" class="com.iflat.pam.dao.impl.GeneralDaoImpl"/>
+    <bean id="pamGeneral" class="com.iflat.pam.bean.General" scope="prototype"/>
+
+    <bean id="memberService" class="com.iflat.pam.service.impl.MemberServiceImpl"/>
+    <bean id="memberDao" class="com.iflat.pam.dao.impl.MemberDaoImpl"/>
+    <bean id="pamMember" class="com.iflat.pam.bean.Member" scope="prototype"/>
+
+    <bean id="monthlyWorkService" class="com.iflat.pam.service.impl.MonthlyWorkServiceImpl"/>
+    <bean id="monthlyWorkDao" class="com.iflat.pam.dao.impl.MonthlyWorkDaoImpl"/>
+    <bean id="monthlyWork" class="com.iflat.pam.bean.MonthlyWork" scope="prototype"/>
+
+    <bean id="partyGroupService" class="com.iflat.pam.service.impl.PartyGroupServiceImpl"/>
+    <bean id="partyGroupDao" class="com.iflat.pam.dao.impl.PartyGroupDaoImpl"/>
+    <bean id="partyGroup" class="com.iflat.pam.bean.PartyGroup" scope="prototype"/>
+
+    <bean id="recorderService" class="com.iflat.pam.service.impl.RecorderServiceImpl"/>
+    <bean id="recorderDao" class="com.iflat.pam.dao.impl.RecorderDaoImpl"/>
+    <bean id="recorder" class="com.iflat.pam.bean.Recorder" scope="prototype"/>
+
+    <bean id="titleService" class="com.iflat.pam.service.impl.TitleServiceImpl"/>
+    <bean id="titleDao" class="com.iflat.pam.dao.impl.TitleDaoImpl"/>
+    <bean id="pamTitle" class="com.iflat.pam.bean.Title" scope="prototype"/>
+
+    <bean id="yearWorkService" class="com.iflat.pam.service.impl.YearWorkServiceImpl"/>
+    <bean id="yearWorkDao" class="com.iflat.pam.dao.impl.YearWorkDaoImpl"/>
+    <bean id="yearWork" class="com.iflat.pam.bean.YearWork" scope="prototype"/>
+
+</beans>
