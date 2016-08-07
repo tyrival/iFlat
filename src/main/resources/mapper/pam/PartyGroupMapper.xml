@@ -12,15 +12,15 @@
     <update id="update" parameterType="com.iflat.pam.bean.PartyGroup">
         UPDATE PamPartyGroup
         <set>
-            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+            <if test="pbName!=null">
                 pbName=#{pbName},</if>
-            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+            <if test="name!=null">
                 name=#{name},</if>
-            <if test="leader!=null and !&quot;&quot;.equals(leader.trim())">
+            <if test="leader!=null">
                 leader=#{leader},</if>
-            <if test="memberNum!=null and !&quot;&quot;.equals(memberNum.trim())">
+            <if test="memberNum!=null">
                 memberNum=#{memberNum},</if>
-            <if test="group!=null and !&quot;&quot;.equals(group.trim())">
+            <if test="group!=null">
                 [group]=#{group},</if>
         </set>
         WHERE id=#{id}

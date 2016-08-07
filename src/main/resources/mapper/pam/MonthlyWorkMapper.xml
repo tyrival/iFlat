@@ -14,17 +14,17 @@
         <set>
             <if test="month!=null">
                 month=#{month},</if>
-            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+            <if test="pbName!=null">
                 pbName=#{pbName},</if>
-            <if test="confBig!=null and !&quot;&quot;.equals(confBig.trim())">
+            <if test="confBig!=null">
                 confBig=#{confBig},</if>
-            <if test="confCom!=null and !&quot;&quot;.equals(confCom.trim())">
+            <if test="confCom!=null">
                 confCom=#{confCom},</if>
-            <if test="confGroup!=null and !&quot;&quot;.equals(confGroup.trim())">
+            <if test="confGroup!=null">
                 confGroup=#{confGroup},</if>
-            <if test="confClass!=null and !&quot;&quot;.equals(confClass.trim())">
+            <if test="confClass!=null">
                 confClass=#{confClass},</if>
-            <if test="confContent!=null and !&quot;&quot;.equals(confContent.trim())">
+            <if test="confContent!=null">
                 confContent=#{confContent},</if>
             <if test="devApplyNum!=null">
                 devApplyNum=#{devApplyNum},</if>
@@ -42,31 +42,31 @@
                 tmIsStable=#{tmIsStable},</if>
             <if test="tmHasPlan!=null">
                 tmHasPlan=#{tmHasPlan},</if>
-            <if test="tmMeasure!=null and !&quot;&quot;.equals(tmMeasure.trim())">
+            <if test="tmMeasure!=null">
                 tmMeasure=#{tmMeasure},</if>
-            <if test="mbStableMeasure!=null and !&quot;&quot;.equals(mbStableMeasure.trim())">
+            <if test="mbStableMeasure!=null">
                 mbStableMeasure=#{mbStableMeasure},</if>
-            <if test="mbFocus!=null and !&quot;&quot;.equals(mbFocus.trim())">
+            <if test="mbFocus!=null">
                 mbFocus=#{mbFocus},</if>
-            <if test="mbProblem!=null and !&quot;&quot;.equals(mbProblem.trim())">
+            <if test="mbProblem!=null">
                 mbProblem=#{mbProblem},</if>
-            <if test="scMeasure!=null and !&quot;&quot;.equals(scMeasure.trim())">
+            <if test="scMeasure!=null">
                 scMeasure=#{scMeasure},</if>
-            <if test="aiSituation!=null and !&quot;&quot;.equals(aiSituation.trim())">
+            <if test="aiSituation!=null">
                 aiSituation=#{aiSituation},</if>
-            <if test="suMassWork!=null and !&quot;&quot;.equals(suMassWork.trim())">
+            <if test="suMassWork!=null">
                 suMassWork=#{suMassWork},</if>
-            <if test="seSubject!=null and !&quot;&quot;.equals(seSubject.trim())">
+            <if test="seSubject!=null">
                 seSubject=#{seSubject},</if>
-            <if test="seEffect!=null and !&quot;&quot;.equals(seEffect.trim())">
+            <if test="seEffect!=null">
                 seEffect=#{seEffect},</if>
-            <if test="mpWork!=null and !&quot;&quot;.equals(mpWork.trim())">
+            <if test="mpWork!=null">
                 mpWork=#{mpWork},</if>
-            <if test="wiLightspot!=null and !&quot;&quot;.equals(wiLightspot.trim())">
+            <if test="wiLightspot!=null)">
                 wiLightspot=#{wiLightspot},</if>
-            <if test="attachment!=null and !&quot;&quot;.equals(attachment.trim())">
+            <if test="attachment!=null">
                 attachment=#{attachment},</if>
-            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+            <if test="status!=null">
                 status=#{status},</if>
         </set>
         WHERE id=#{id}

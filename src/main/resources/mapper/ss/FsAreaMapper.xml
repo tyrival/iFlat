@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.FsArea">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.FsArea">
+        INSERT INTO SsFsArea
+        VALUES (#{id},#{code},#{dept},#{type},#{area})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.FsArea">
+        UPDATE SsFsArea
+        <set>
+            <if test="time!=null)">time=#{time},</if>
+            <if test="code!=null">code=#{code},</if>
+            <if test="dept!=null">dept=#{dept},</if>
+            <if test="type!=null">type=#{type},</if>
+            <if test="area!=null">area=#{area},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.FsArea">
+        DELETE SsFsArea
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.FsArea" resultMap="SsFsAreaResult">
+        SELECT id,code,dept,type,area
+        FROM SsFsArea
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+        </where>
+        ORDER BY type,code,dept,area
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.FsArea" id="SsFsAreaResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="area" column="area" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

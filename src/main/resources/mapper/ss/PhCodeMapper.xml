@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.PhCode">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.PhCode">
+        INSERT INTO SsPhCode
+        VALUES (#{id},#{type},#{code},#{description},#{amount},#{score})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.PhCode">
+        UPDATE SsPhCode
+        <set>
+            <if test="time!=null)">time=#{time},</if>
+            <if test="type!=null">type=#{type},</if>
+            <if test="code!=null">code=#{code},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="score!=null">score=#{score},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.PhCode">
+        DELETE SsPhCode
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.PhCode" resultMap="SsPhCodeResult">
+        SELECT id,type,code,description,amount,score
+        FROM SsPhCode
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+            <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+        </where>
+        ORDER BY type,code
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.PhCode" id="SsPhCodeResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

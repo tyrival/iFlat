@@ -12,7 +12,7 @@
     <update id="update" parameterType="com.iflat.pam.bean.Committee">
         UPDATE PamCommittee
         <set>
-            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+            <if test="pbName!=null">
                 pbName=#{pbName},</if>
             <if test="electionTime!=null">
                 electionTime=#{electionTime},</if>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.Accident">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.Accident">
+        INSERT INTO SsAccident
+        VALUES (#{id},#{time},#{projNo},#{projName},#{area},#{position},#{description},#{accLvl},#{accType},#{loss},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{rptAtt},#{otherAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.Accident">
+        UPDATE SsAccident
+        <set>
+            <if test="time!=null)">time=#{time},</if>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="area!=null">area=#{area},</if>
+            <if test="position!=null">position=#{position},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="accLvl!=null">accLvl=#{accLvl},</if>
+            <if test="accType!=null">accType=#{accType},</if>
+            <if test="loss!=null">loss=#{loss},</if>
+            <if test="projMgr!=null">projMgr=#{projMgr},</if>
+            <if test="profMgr!=null">profMgr=#{profMgr},</if>
+            <if test="workMgr!=null">workMgr=#{workMgr},</if>
+            <if test="posiMgr!=null">posiMgr=#{posiMgr},</if>
+            <if test="rptAtt!=null">rptAtt=#{rptAtt},</if>
+            <if test="otherAtt!=null">otherAtt=#{otherAtt},</if>
+            <if test="comment!=null ">comment=#{comment},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.Accident">
+        DELETE SsAccident
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.Accident" resultMap="SsAccidentResult">
+        SELECT id,time,projNo,projName,area,position,description,accLvl,accType,loss,projMgr,profMgr,workMgr,teamLeader,posiMgr,rptAtt,otherAtt,comment,creatorAcc,creatorName,creatorDept,createTime
+        FROM SsAccident
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+            <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+            <if test="area!=null and !&quot;&quot;.equals(area.trim())">AND area LIKE '%'+#{area}+'%'</if>
+            <if test="position!=null and !&quot;&quot;.equals(position.trim())">AND position LIKE '%'+#{position}+'%'</if>
+            <if test="accLvl!=null and !&quot;&quot;.equals(accLvl.trim())">AND accLvl=#{accLvl}</if>
+            <if test="accType!=null and !&quot;&quot;.equals(accType.trim())">AND accType=#{accType}</if>
+            <if test="projMgr!=null and !&quot;&quot;.equals(projMgr.trim())">AND projMgr LIKE '%'+#{projMgr}+'%'</if>
+            <if test="profMgr!=null and !&quot;&quot;.equals(profMgr.trim())">AND profMgr LIKE '%'+#{profMgr}+'%'</if>
+            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr LIKE '%'+#{workMgr}+'%'</if>
+            <if test="teamLeader!=null and !&quot;&quot;.equals(teamLeader.trim())">AND teamLeader LIKE '%'+#{teamLeader}+'%'</if>
+            <if test="posiMgr!=null and !&quot;&quot;.equals(posiMgr.trim())">AND posiMgr LIKE '%'+#{posiMgr}+'%'</if>
+            <if test="creatorDept!=null and !&quot;&quot;.equals(creatorDept.trim())">AND creatorDept=#{creatorDept}</if>
+            <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+            <if test="fromDate!=null">AND time &gt;= #{fromDate}</if>
+            <if test="toDate!=null">AND time &lt; DATEADD(day,1,#{toDate})</if>
+        </where>
+        ORDER BY time DESC
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.Accident" id="SsAccidentResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="time" column="time" jdbcType="DATE"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="area" column="area" jdbcType="VARCHAR"/>
+        <result property="position" column="position" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="accLvl" column="accLvl" jdbcType="VARCHAR"/>
+        <result property="accType" column="accType" jdbcType="VARCHAR"/>
+        <result property="loss" column="loss" jdbcType="DOUBLE"/>
+        <result property="projMgr" column="projMgr" jdbcType="VARCHAR"/>
+        <result property="profMgr" column="profMgr" jdbcType="VARCHAR"/>
+        <result property="workMgr" column="workMgr" jdbcType="VARCHAR"/>
+        <result property="teamLeader" column="teamLeader" jdbcType="VARCHAR"/>
+        <result property="posiMgr" column="posiMgr" jdbcType="VARCHAR"/>
+        <result property="rptAtt" column="rptAtt" jdbcType="VARCHAR"/>
+        <result property="otherAtt" column="otherAtt" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="creatorDept" column="creatorDept" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

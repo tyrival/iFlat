@@ -12,21 +12,21 @@
     <update id="update" parameterType="com.iflat.pam.bean.CommitteeDetail">
         UPDATE PamCommitteeDetail
         <set>
-            <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">
+            <if test="pid!=null">
                 pid=#{pid},</if>
-            <if test="title!=null and !&quot;&quot;.equals(title.trim())">
+            <if test="title!=null">
                 title=#{title},</if>
-            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+            <if test="name!=null">
                 name=#{name},</if>
-            <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">
+            <if test="sex!=null">
                 sex=#{sex},</if>
-            <if test="degree!=null and !&quot;&quot;.equals(degree.trim())">
+            <if test="degree!=null">
                 degree=#{degree},</if>
             <if test="birth!=null">
                 birth=#{birth},</if>
-            <if test="adminTitle!=null and !&quot;&quot;.equals(adminTitle.trim())">
+            <if test="adminTitle!=null">
                 adminTitle=#{adminTitle},</if>
-            <if test="tel!=null and !&quot;&quot;.equals(tel.trim())">
+            <if test="tel!=null">
                 tel=#{tel},</if>
         </set>
         WHERE id=#{id}

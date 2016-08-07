@@ -26,9 +26,9 @@
                 groupWithoutParty=#{groupWithoutParty},</if>
             <if test="comsomol!=null">
                 comsomol=#{comsomol},</if>
-            <if test="contact!=null and !&quot;&quot;.equals(contact.trim())">
+            <if test="contact!=null">
                 contact=#{contact},</if>
-            <if test="phoneNum!=null and !&quot;&quot;.equals(phoneNum.trim())">
+            <if test="phoneNum!=null">
                 phoneNum=#{phoneNum},</if>
         </set>
         WHERE id=#{id}

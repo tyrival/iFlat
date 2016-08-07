@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.ViolateRegulation">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.ViolateRegulation">
+        INSERT INTO SsViolateRegulation
+        VALUES (#{id},#{time},#{riskLvl},#{code},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{training},#{trainingEff},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.ViolateRegulation">
+        UPDATE SsViolateRegulation
+        <set>
+            <if test="time!=null)">time=#{time},</if>
+            <if test="riskLvl!=null">riskLvl=#{riskLvl},</if>
+            <if test="code!=null">code=#{code},</if>
+            <if test="dept!=null">dept=#{dept},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="groupName!=null">groupName=#{groupName},</if>
+            <if test="title!=null">title=#{title},</if>
+            <if test="personAcc!=null">personAcc=#{personAcc},</if>
+            <if test="personName!=null">personName=#{personName},</if>
+            <if test="age!=null">age=#{age},</if>
+            <if test="seniority!=null">seniority=#{seniority},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="area!=null">area=#{area},</if>
+            <if test="position!=null">position=#{position},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="measure!=null">measure=#{measure},</if>
+            <if test="feedback!=null">feedback=#{feedback},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="busiDivision!=null">busiDivision=#{busiDivision},</if>
+            <if test="projMgr!=null">projMgr=#{projMgr},</if>
+            <if test="profMgr!=null">profMgr=#{profMgr},</if>
+            <if test="workMgr!=null">workMgr=#{workMgr},</if>
+            <if test="teamLeader!=null">teamLeader=#{teamLeader},</if>
+            <if test="posiMgr!=null">posiMgr=#{posiMgr},</if>
+            <if test="score!=null">score=#{score},</if>
+            <if test="training!=null">training=#{training},</if>
+            <if test="trainingEff!=null">trainingEff=#{trainingEff},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.ViolateRegulation">
+        DELETE SsViolateRegulation
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.ViolateRegulation" resultMap="SsViolateRegulationResult">
+        SELECT id,time,riskLvl,code,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,training,trainingEff,attachment,comment,creatorDept,creatorAcc,creatorName,createTime
+        FROM SsViolateRegulation
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="riskLvl!=null and !&quot;&quot;.equals(riskLvl.trim())">AND riskLvl=#{riskLvl}</if>
+            <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%'+#{team}+'%'</if>
+            <if test="groupName!=null and !&quot;&quot;.equals(groupName.trim())">AND groupName LIKE '%'+#{groupName}+'%'</if>
+            <if test="title!=null and !&quot;&quot;.equals(title.trim())">AND title=#{title}</if>
+            <if test="personAcc!=null and !&quot;&quot;.equals(personAcc.trim())">AND personAcc=#{personAcc}</if>
+            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName=#{personName}</if>
+            <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">AND sex=#{sex}</if>
+            <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+            <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName LIKE '%'+#{projName}+'%'</if>
+            <if test="area!=null and !&quot;&quot;.equals(area.trim())">AND area LIKE '%'+#{area}+'%'</if>
+            <if test="position!=null and !&quot;&quot;.equals(position.trim())">AND position LIKE '%'+#{position}+'%'</if>
+            <if test="feedback!=null and !&quot;&quot;.equals(feedback.trim())">AND feedback=#{feedback}</if>
+            <if test="busiDivision!=null and !&quot;&quot;.equals(busiDivision.trim())">AND busiDivision=#{busiDivision}</if>
+            <if test="projMgr!=null and !&quot;&quot;.equals(projMgr.trim())">AND projMgr=#{projMgr}</if>
+            <if test="profMgr!=null and !&quot;&quot;.equals(profMgr.trim())">AND profMgr=#{profMgr}</if>
+            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr=#{workMgr}</if>
+            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr=#{workMgr}</if>
+            <if test="teamLeader!=null and !&quot;&quot;.equals(teamLeader.trim())">AND teamLeader=#{teamLeader}</if>
+            <if test="posiMgr!=null and !&quot;&quot;.equals(posiMgr.trim())">AND posiMgr=#{posiMgr}</if>
+            <if test="training!=null and !&quot;&quot;.equals(training.trim())">AND training=#{training}</if>
+            <if test="creatorDept!=null and !&quot;&quot;.equals(creatorDept.trim())">AND creatorDept=#{creatorDept}</if>
+            <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+            <if test="fromDate!=null">AND time &gt;= #{fromDate}</if>
+            <if test="toDate!=null">AND time &lt; DATEADD(day,1,#{toDate})</if>
+        </where>
+        ORDER BY time DESC
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.ViolateRegulation" id="SsViolateRegulationResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="time" column="time" jdbcType="DATE"/>
+        <result property="riskLvl" column="riskLvl" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="groupName" column="groupName" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="personAcc" column="personAcc" jdbcType="VARCHAR"/>
+        <result property="personName" column="personName" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="seniority" column="seniority" jdbcType="INTEGER"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="area" column="area" jdbcType="VARCHAR"/>
+        <result property="position" column="position" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="measure" column="measure" jdbcType="VARCHAR"/>
+        <result property="feedback" column="feedback" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="busiDivision" column="busiDivision" jdbcType="VARCHAR"/>
+        <result property="projMgr" column="projMgr" jdbcType="VARCHAR"/>
+        <result property="profMgr" column="profMgr" jdbcType="VARCHAR"/>
+        <result property="workMgr" column="workMgr" jdbcType="VARCHAR"/>
+        <result property="teamLeader" column="teamLeader" jdbcType="VARCHAR"/>
+        <result property="posiMgr" column="posiMgr" jdbcType="VARCHAR"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
+        <result property="training" column="training" jdbcType="VARCHAR"/>
+        <result property="trainingEff" column="trainingEff" jdbcType="DOUBLE"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="creatorDept" column="creatorDept" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

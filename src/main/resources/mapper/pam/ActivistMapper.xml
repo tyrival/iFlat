@@ -12,13 +12,13 @@
     <update id="update" parameterType="com.iflat.pam.bean.Activist">
         UPDATE PamActivist
         <set>
-            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+            <if test="pbName!=null">
                 pbName=#{pbName},</if>
-            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+            <if test="name!=null">
                 name=#{name},</if>
-            <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">
+            <if test="sex!=null">
                 sex=#{sex},</if>
-            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">
+            <if test="dept!=null">
                 dept=#{dept},</if>
             <if test="birth!=null">
                 birth=#{birth},</if>

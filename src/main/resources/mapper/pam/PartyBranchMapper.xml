@@ -12,13 +12,13 @@
     <update id="update" parameterType="com.iflat.pam.bean.PartyBranch">
         UPDATE PamPartyBranch
         <set>
-            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+            <if test="name!=null">
                 name=#{name},</if>
-            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">
+            <if test="dept!=null">
                 dept=#{dept},</if>
-            <if test="description!=null and !&quot;&quot;.equals(description.trim())">
+            <if test="description!=null">
                 description=#{description},</if>
-            <if test="sequence!=null and !&quot;&quot;.equals(sequence.trim())">
+            <if test="sequence!=null">
                 sequence=#{sequence},</if>
         </set>
         WHERE id=#{id}

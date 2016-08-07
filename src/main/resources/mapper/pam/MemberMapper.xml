@@ -12,19 +12,19 @@
     <update id="update" parameterType="com.iflat.pam.bean.Member">
         UPDATE PamMember
         <set>
-            <if test="account!=null and !&quot;&quot;.equals(account.trim())">
+            <if test="account!=null">
                 account=#{account},</if>
-            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">
+            <if test="dept!=null">
                 dept=#{dept},</if>
-            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+            <if test="name!=null">
                 name=#{name},</if>
-            <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">
+            <if test="sex!=null">
                 sex=#{sex},</if>
             <if test="birth!=null">
                 birth=#{birth},</if>
-            <if test="nation!=null and !&quot;&quot;.equals(nation.trim())">
+            <if test="nation!=null">
                 nation=#{nation},</if>
-            <if test="birthplace!=null and !&quot;&quot;.equals(birthplace.trim())">
+            <if test="birthplace!=null">
                 birthplace=#{birthplace},</if>
             <if test="joinParty!=null">
                 joinParty=#{joinParty},</if>
@@ -32,23 +32,23 @@
                 becomeFullMember=#{becomeFullMember},</if>
             <if test="startWorking!=null">
                 startWorking=#{startWorking},</if>
-            <if test="idCardNo!=null and !&quot;&quot;.equals(idCardNo.trim())">
+            <if test="idCardNo!=null">
                 idCardNo=#{idCardNo},</if>
-            <if test="diploma!=null and !&quot;&quot;.equals(diploma.trim())">
+            <if test="diploma!=null">
                 diploma=#{diploma},</if>
-            <if test="degree!=null and !&quot;&quot;.equals(degree.trim())">
+            <if test="degree!=null">
                 degree=#{degree},</if>
             <if test="enrolment!=null">
                 enrolment=#{enrolment},</if>
             <if test="graduation!=null">
                 graduation=#{graduation},</if>
-            <if test="adminTitle!=null and !&quot;&quot;.equals(adminTitle.trim())">
+            <if test="adminTitle!=null">
                 adminTitle=#{adminTitle},</if>
-            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+            <if test="pbName!=null">
                 pbName=#{pbName},</if>
-            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+            <if test="type!=null">
                 type=#{type},</if>
-            <if test="source!=null and !&quot;&quot;.equals(source.trim())">
+            <if test="source!=null">
                 source=#{source},</if>
         </set>
         WHERE id=#{id}

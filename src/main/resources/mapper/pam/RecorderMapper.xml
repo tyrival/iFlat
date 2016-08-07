@@ -12,11 +12,11 @@
     <update id="update" parameterType="com.iflat.pam.bean.Recorder">
         UPDATE PamRecorder
         <set>
-            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+            <if test="pbName!=null">
                 pbName=#{pbName},</if>
-            <if test="account!=null and !&quot;&quot;.equals(account.trim())">
+            <if test="account!=null">
                 account=#{account},</if>
-            <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+            <if test="name!=null">
                 name=#{name},</if>
         </set>
         WHERE id=#{id}

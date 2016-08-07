@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.VrCode">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.VrCode">
+        INSERT INTO SsVrCode
+        VALUES (#{id},#{riskLvl},#{code},#{description},#{amount},#{score})
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.VrCode">
+        UPDATE SsVrCode
+        <set>
+            <if test="time!=null)">time=#{time},</if>
+            <if test="riskLvl!=null">riskLvl=#{riskLvl},</if>
+            <if test="code!=null">code=#{code},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="score!=null">score=#{score},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.VrCode">
+        DELETE SsVrCode
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.VrCode" resultMap="SsVrCodeResult">
+        SELECT id,riskLvl,code,description,amount,score
+        FROM SsVrCode
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="riskLvl!=null and !&quot;&quot;.equals(riskLvl.trim())">AND riskLvl=#{riskLvl}</if>
+            <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+        </where>
+        ORDER BY riskLvl,code
+    </select>
+
+    <resultMap riskLvl="com.iflat.pam.bean.VrCode" id="SsVrCodeResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="riskLvl" column="riskLvl" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

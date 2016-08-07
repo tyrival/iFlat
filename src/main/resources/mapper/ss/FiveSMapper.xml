@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.FiveS">
+
+    <insert id="insert" parameterType="com.iflat.pam.bean.FiveS">
+        INSERT INTO SsFiveS
+        VALUES (#{id},#{time},#{funcDept},#{area},#{code},#{otherArea},#{projNo},#{projName},#{region},#{belongDept},#{regionPersonAcc},#{regionPersonName},#{fsType},#{fsDescription},#{attachment},#{dept},#{team},#{personAcc},#{personName},#{feedback},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime}
+    </insert>
+
+    <update id="update" parameterType="com.iflat.pam.bean.FiveS">
+        UPDATE SsFiveS
+        <set>
+            <if test="time!=null)">time=#{time},</if>
+            <if test="funcDept!=null">funcDept=#{funcDept},</if>
+            <if test="area!=null">area=#{area},</if>
+            <if test="code!=null">code=#{code},</if>
+            <if test="otherArea!=null">otherArea=#{otherArea},</if>
+            <if test="projNo!=null">projNo=#{projNo},</if>
+            <if test="projName!=null">projName=#{projName},</if>
+            <if test="region!=null">region=#{region},</if>
+            <if test="belongDept!=null">belongDept=#{belongDept},</if>
+            <if test="regionPersonAcc!=null">regionPersonAcc=#{regionPersonAcc},</if>
+            <if test="regionPersonName!=null">regionPersonName=#{regionPersonName},</if>
+            <if test="fsType!=null">fsType=#{fsType},</if>
+            <if test="fsDescription!=null">fsDescription=#{fsDescription},</if>
+            <if test="attachment!=null">attachment=#{attachment},</if>
+            <if test="dept!=null">dept=#{dept},</if>
+            <if test="team!=null">team=#{team},</if>
+            <if test="personAcc!=null">personAcc=#{personAcc},</if>
+            <if test="personName!=null">personName=#{personName},</if>
+            <if test="feedback!=null">feedback=#{feedback},</if>
+            <if test="rectifyAtt!=null">rectifyAtt=#{rectifyAtt},</if>
+            <if test="comment!=null">comment=#{comment},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.iflat.pam.bean.FiveS">
+        DELETE SsFiveS
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" parameterType="com.iflat.pam.bean.FiveS" resultMap="SsFiveSResult">
+        SELECT id,time,funcDept,area,code,otherArea,projNo,projName,region,belongDept,regionPersonAcc,regionPersonName,fsType,fsDescription,attachment,dept,team,personAcc,personName,feedback,rectifyAtt,comment,creatorAcc,creatorName,creatorDept,createTime
+        FROM SsFiveS
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="funcDept!=null and !&quot;&quot;.equals(funcDept.trim())">AND funcDept=#{funcDept}</if>
+            <if test="area!=null and !&quot;&quot;.equals(area.trim())">AND area=#{area}</if>
+            <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+            <if test="otherArea!=null and !&quot;&quot;.equals(otherArea.trim())">AND otherArea=#{otherArea}</if>
+            <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+            <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName LIKE '%'+#{projName}+'%'</if>
+            <if test="region!=null and !&quot;&quot;.equals(region.trim())">AND region=#{region}</if>
+            <if test="belongDept!=null and !&quot;&quot;.equals(belongDept.trim())">AND belongDept=#{belongDept}</if>
+            <if test="regionPersonAcc!=null and !&quot;&quot;.equals(regionPersonAcc.trim())">AND regionPersonAcc=#{regionPersonAcc}</if>
+            <if test="regionPersonName!=null and !&quot;&quot;.equals(regionPersonName.trim())">AND regionPersonName=#{regionPersonName}</if>
+            <if test="fsType!=null and !&quot;&quot;.equals(fsType.trim())">AND fsType=#{fsType}</if>
+            <if test="fsDescription!=null and !&quot;&quot;.equals(fsDescription.trim())">AND fsDescription=#{fsDescription}</if>
+            <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+            <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%'+#{team}+'%'</if>
+            <if test="personAcc!=null and !&quot;&quot;.equals(personAcc.trim())">AND personAcc=#{personAcc}</if>
+            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName=#{personName}</if>
+            <if test="feedback!=null and !&quot;&quot;.equals(feedback.trim())">AND feedback=#{feedback}</if>
+            <if test="creatorDept!=null and !&quot;&quot;.equals(creatorDept.trim())">AND creatorDept=#{creatorDept}</if>
+            <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+            <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+            <if test="fromDate!=null">AND time &gt;= #{fromDate}</if>
+            <if test="toDate!=null">AND time &lt; DATEADD(day,1,#{toDate})</if>
+        </where>
+        ORDER BY time DESC
+    </select>
+
+    <resultMap type="com.iflat.pam.bean.FiveS" id="SsFiveSResult">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="time" column="time" jdbcType="DATE"/>
+        <result property="funcDept" column="funcDept" jdbcType="VARCHAR"/>
+        <result property="area" column="area" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="otherArea" column="otherArea" jdbcType="VARCHAR"/>
+        <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+        <result property="projName" column="projName" jdbcType="VARCHAR"/>
+        <result property="region" column="region" jdbcType="VARCHAR"/>
+        <result property="belongDept" column="belongDept" jdbcType="VARCHAR"/>
+        <result property="regionPersonAcc" column="regionPersonAcc" jdbcType="VARCHAR"/>
+        <result property="regionPersonName" column="regionPersonName" jdbcType="VARCHAR"/>
+        <result property="fsType" column="fsType" jdbcType="VARCHAR"/>
+        <result property="fsDescription" column="fsDescription" jdbcType="VARCHAR"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="personAcc" column="personAcc" jdbcType="VARCHAR"/>
+        <result property="personName" column="personName" jdbcType="VARCHAR"/>
+        <result property="feedback" column="feedback" jdbcType="VARCHAR"/>
+        <result property="rectifyTime" column="rectifyTime" jdbcType="DATE"/>
+        <result property="rectifyAtt" column="rectifyAtt" jdbcType="VARCHAR"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="creatorDept" column="creatorDept" jdbcType="VARCHAR"/>
+        <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+        <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="DATE"/>
+    </resultMap>
+</mapper>

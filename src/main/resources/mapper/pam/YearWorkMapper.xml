@@ -13,15 +13,15 @@
         <set>
             <if test="year!=null">
                 year=#{year},</if>
-            <if test="type!=null and !&quot;&quot;.equals(type.trim())">
+            <if test="type!=null">
                 type=#{type},</if>
-            <if test="pbName!=null and !&quot;&quot;.equals(pbName.trim())">
+            <if test="pbName!=null">
                 pbName=#{pbName},</if>
-            <if test="content!=null and !&quot;&quot;.equals(content.trim())">
+            <if test="content!=null">
                 content=#{content},</if>
-            <if test="attachment!=null and !&quot;&quot;.equals(attachment.trim())">
+            <if test="attachment!=null">
                 attachment=#{attachment},</if>
-            <if test="status!=null and !&quot;&quot;.equals(status.trim())">
+            <if test="status!=null">
                 status=#{status},</if>
         </set>
         WHERE id=#{id}
