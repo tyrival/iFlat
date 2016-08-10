@@ -2,7 +2,8 @@ Ext.define('iFlat.model.ss.ViolateRegulation', {
     extend: 'Ext.data.Model',
     fields: [
         {name: 'violateRegulation.id', mapping: 'id', type: 'string'},
-        {name: 'violateRegulation.time', mapping: 'time', type: 'date'},
+        {name: 'violateRegulation.date', mapping: 'date', type: 'date'},
+        {name: 'violateRegulation.time', mapping: 'time', type: 'string'},
         {name: 'violateRegulation.riskLvl', mapping: 'riskLvl', type: 'string'},
         {name: 'violateRegulation.code', mapping: 'code', type: 'string'},
         {name: 'violateRegulation.dept', mapping: 'dept', type: 'string'},

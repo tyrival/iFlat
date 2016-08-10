@@ -1,7 +1,7 @@
 Ext.define('iFlat.store.ss.FsCode', {
     extend: 'Ext.data.Store',
 
-    autoLoad: false,
+    autoLoad: true,
     model: 'iFlat.model.ss.FsCode',
 
     pageSize: 0,

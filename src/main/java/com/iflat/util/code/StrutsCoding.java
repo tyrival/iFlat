@@ -35,31 +35,44 @@ public class StrutsCoding {
         List<Element> list = root.getChildren("package");
         Element pack = list.get(1);
 
-        Element action = new Element("action");
-        action.setAttribute("name", suffix + "_*");
-        action.setAttribute("class", actionClassName);
-        action.setAttribute("method", "{1}");
-        pack.addContent(action);
+        List<Element> actionList = pack.getChildren("action");
+        boolean exist = false;
+        for (int i = 0; i < actionList.size(); i++) {
+            Element o = actionList.get(i);
+            String name = o.getAttribute("name").toString();
+            if (name.equals(suffix + "_*")) {
+                exist = true;
+            }
+        }
 
-        Element result = new Element("result");
-        result.setAttribute("type", "json");
-        result.setAttribute("name", "success");
-        action.addContent(result);
+        if (!exist) {
+            Element action = new Element("action");
+            action.setAttribute("name", suffix + "_*");
+            action.setAttribute("class", actionClassName);
+            action.setAttribute("method", "{1}");
+            pack.addContent(action);
 
-        Element param1 = new Element("param");
-        param1.setAttribute("name", "root");
-        param1.setText("result");
-        result.addContent(param1);
+            Element result = new Element("result");
+            result.setAttribute("type", "json");
+            result.setAttribute("name", "success");
+            action.addContent(result);
 
-        Element param2 = new Element("param");
-        param2.setAttribute("name", "excludeNullProperties");
-        param2.setText("true");
-        result.addContent(param2);
+            Element param1 = new Element("param");
+            param1.setAttribute("name", "root");
+            param1.setText("result");
+            result.addContent(param1);
 
-        XMLOutputter out = new XMLOutputter();
-        Format fm = Format.getPrettyFormat();
-        fm.setEncoding("UTF-8");
-        out.setFormat(fm);
-        out.output(parse, new FileOutputStream(filePath));
+            Element param2 = new Element("param");
+            param2.setAttribute("name", "excludeNullProperties");
+            param2.setText("true");
+            result.addContent(param2);
+
+            XMLOutputter out = new XMLOutputter();
+            Format fm = Format.getPrettyFormat();
+            fm.setEncoding("UTF-8");
+            out.setFormat(fm);
+            out.output(parse, new FileOutputStream(filePath));
+        }
+
     }
 }

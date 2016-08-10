@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.VrCodeRiskLvl">
+
+<insert id="insert" parameterType="com.iflat.ss.entity.VrCodeRiskLvl">
+    INSERT INTO SsVrCodeRiskLvl
+    VALUES (#{riskLvl})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO SsVrCodeRiskLvl
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.riskLvl}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.ss.entity.VrCodeRiskLvl">
+    UPDATE SsVrCodeRiskLvl
+    <set>
+        <if test="riskLvl!=null">riskLvl=#{riskLvl},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE SsVrCodeRiskLvl SET riskLvl=a.riskLvl
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.riskLvl} as riskLvl
+    </foreach>
+    ) AS a
+    WHERE SsVrCodeRiskLvl.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE SsVrCodeRiskLvl
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.ss.entity.VrCodeRiskLvl" resultMap="SsVrCodeRiskLvlResult">
+    SELECT riskLvl
+    FROM SsVrCodeRiskLvl
+    <where>
+        <if test="riskLvl!=null and !&quot;&quot;.equals(riskLvl.trim())">riskLvl=#{riskLvl}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.ss.entity.VrCodeRiskLvl" id="SsVrCodeRiskLvlResult">
+    <result property="riskLvl" column="riskLvl" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

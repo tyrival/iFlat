@@ -78,7 +78,7 @@ public class ExtModelCoding {
                         break;
                 }
                 if (!StringUtil.isBlank(jstype)) {
-                    sb.append("        {name: '").append(lowerShortClassName).append(".").append(name).append("', mapping: '").append(name).append("', type: '").append(jstype).append("'},\n");
+                    sb.append("        {name: '").append(StringUtil.lowerCaseFirstChar(shortClassName)).append(".").append(name).append("', mapping: '").append(name).append("', type: '").append(jstype).append("'},\n");
                 }
             }
             sb.append("    ]\n").append("});");

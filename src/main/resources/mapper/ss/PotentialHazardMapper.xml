@@ -4,14 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Ss.PotentialHazard">
 
-    <insert id="insert" parameterType="com.iflat.pam.bean.PotentialHazard">
+    <insert id="insert" parameterType="com.iflat.ss.bean.PotentialHazard">
         INSERT INTO SsPotentialHazard
-        VALUES (#{id},#{time},#{riskLvl},#{phType},#{phCode},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{deadline},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{attachment},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime})
+        VALUES (#{id},#{date},#{time},#{riskLvl},#{phType},#{phCode},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{deadline},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{attachment},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime})
     </insert>
 
-    <update id="update" parameterType="com.iflat.pam.bean.PotentialHazard">
+    <update id="update" parameterType="com.iflat.ss.bean.PotentialHazard">
         UPDATE SsPotentialHazard
         <set>
+            <if test="date!=null)">date=#{date},</if>
             <if test="time!=null)">time=#{time},</if>
             <if test="riskLvl!=null">riskLvl=#{riskLvl},</if>
             <if test="phType!=null">phType=#{phType},</if>
@@ -48,13 +49,13 @@
         WHERE id=#{id}
     </update>
 
-    <delete id="delete" parameterType="com.iflat.pam.bean.PotentialHazard">
+    <delete id="delete" parameterType="com.iflat.ss.bean.PotentialHazard">
         DELETE SsPotentialHazard
         WHERE id=#{id}
     </delete>
 
-    <select id="list" parameterType="com.iflat.pam.bean.PotentialHazard" resultMap="SsPotentialHazardResult">
-        SELECT id,time,riskLvl,phType,phCode,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,deadline,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,attachment,rectifyAtt,comment,creatorDept,creatorAcc,creatorName,createTime
+    <select id="list" parameterType="com.iflat.ss.bean.PotentialHazard" resultMap="SsPotentialHazardResult">
+        SELECT id,date,time,riskLvl,phType,phCode,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,deadline,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,attachment,rectifyAtt,comment,creatorDept,creatorAcc,creatorName,createTime
         FROM SsPotentialHazard
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -84,15 +85,16 @@
             <if test="creatorDept!=null and !&quot;&quot;.equals(creatorDept.trim())">AND creatorDept=#{creatorDept}</if>
             <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
             <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
-            <if test="fromDate!=null">AND time &gt;= #{fromDate}</if>
-            <if test="toDate!=null">AND time &lt; DATEADD(day,1,#{toDate})</if>
+            <if test="fromDate!=null">AND date &gt;= #{fromDate}</if>
+            <if test="toDate!=null">AND date &lt; DATEADD(day,1,#{toDate})</if>
         </where>
-        ORDER BY time DESC
+        ORDER BY date DESC
     </select>
 
-    <resultMap type="com.iflat.pam.bean.PotentialHazard" id="SsPotentialHazardResult">
+    <resultMap type="com.iflat.ss.bean.PotentialHazard" id="SsPotentialHazardResult">
         <result property="id" column="id" jdbcType="CHAR"/>
-        <result property="time" column="time" jdbcType="DATE"/>
+        <result property="date" column="date" jdbcType="DATE"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
         <result property="riskLvl" column="riskLvl" jdbcType="VARCHAR"/>
         <result property="phType" column="phType" jdbcType="VARCHAR"/>
         <result property="phCode" column="phCode" jdbcType="VARCHAR"/>

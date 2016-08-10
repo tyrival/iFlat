@@ -8,8 +8,10 @@ import java.util.Date;
 public class FiveS {
 
     private String id;
-    private Date time;
+    private Date date;
+    private String time;
     private String funcDept;  // 职能部门，不包含车间
+    private String areaType;
     private String area;
     private String code;
     private String otherArea;
@@ -40,6 +42,22 @@ public class FiveS {
     private Date fromDate;
     private Date toDate;
 
+    public String getAreaType() {
+        return areaType;
+    }
+
+    public void setAreaType(String areaType) {
+        this.areaType = areaType;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Date getFromDate() {
         return fromDate;
     }
@@ -64,11 +82,11 @@ public class FiveS {
         this.id = id;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

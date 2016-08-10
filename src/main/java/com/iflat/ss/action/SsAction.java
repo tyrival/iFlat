@@ -1,5 +1,8 @@
 package com.iflat.ss.action;
 
+import com.iflat.ss.entity.VrCodeRiskLvl;
+import com.iflat.ss.entity.PhCodeType;
+import com.iflat.ss.entity.FsAreaDept;
 import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
@@ -11,46 +14,33 @@ import com.opensymphony.xwork2.ModelDriven;
 import java.io.File;
 
 public class SsAction extends BaseAction implements ModelDriven<Page> {
-
     private BaseService safetyFineService;
     private BaseService safetyFineVoService;
-
     private SafetyFine safetyFine;
     private SafetyFineVo safetyFineVo;
-
     private Page page;
     private File upload;
     private String uploadFileName;
     private String filePath;
-
     private Accident accident;
     private BaseService accidentService;
-
     private AccParty accParty;
     private BaseService accPartyService;
-
     private FiveS fiveS;
     private BaseService fiveSService;
-
     private FsArea fsArea;
     private BaseService fsAreaService;
-
     private FsCode fsCode;
     private BaseService fsCodeService;
-
     private PhCode phCode;
     private BaseService phCodeService;
-
     private PotentialHazard potentialHazard;
     private BaseService potentialHazardService;
-
     private ViolateRegulation violateRegulation;
     private BaseService violateRegulationService;
-
     private VrCode vrCode;
-    private BaseService vrCodeService;
+    private BaseService vrCodeService;    /* VrCode */
 
-    /* VrCode */
     public String saveVrCode() throws Exception {
         this.result.setObject(this.vrCodeService.save(this.vrCode));
         return SUCCESS;
@@ -74,9 +64,8 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadVrCode() throws Exception {
         this.result.setObject(this.vrCodeService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* ViolateRegulation */
 
-    /* ViolateRegulation */
     public String saveViolateRegulation() throws Exception {
         this.result.setObject(this.violateRegulationService.save(this.violateRegulation));
         return SUCCESS;
@@ -100,9 +89,8 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadViolateRegulation() throws Exception {
         this.result.setObject(this.violateRegulationService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* PotentialHazard */
 
-    /* PotentialHazard */
     public String savePotentialHazard() throws Exception {
         this.result.setObject(this.potentialHazardService.save(this.potentialHazard));
         return SUCCESS;
@@ -126,9 +114,8 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadPotentialHazard() throws Exception {
         this.result.setObject(this.potentialHazardService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* PhCode */
 
-    /* PhCode */
     public String savePhCode() throws Exception {
         this.result.setObject(this.phCodeService.save(this.phCode));
         return SUCCESS;
@@ -152,9 +139,8 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadPhCode() throws Exception {
         this.result.setObject(this.phCodeService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* FsCode */
 
-    /* FsCode */
     public String saveFsCode() throws Exception {
         this.result.setObject(this.fsCodeService.save(this.fsCode));
         return SUCCESS;
@@ -178,9 +164,8 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadFsCode() throws Exception {
         this.result.setObject(this.fsCodeService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* FsArea */
 
-    /* FsArea */
     public String saveFsArea() throws Exception {
         this.result.setObject(this.fsAreaService.save(this.fsArea));
         return SUCCESS;
@@ -204,9 +189,8 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadFsArea() throws Exception {
         this.result.setObject(this.fsAreaService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* FiveS */
 
-    /* FiveS */
     public String saveFiveS() throws Exception {
         this.result.setObject(this.fiveSService.save(this.fiveS));
         return SUCCESS;
@@ -230,9 +214,8 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadFiveS() throws Exception {
         this.result.setObject(this.fiveSService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* AccParty */
 
-    /* AccParty */
     public String saveAccParty() throws Exception {
         this.result.setObject(this.accPartyService.save(this.accParty));
         return SUCCESS;
@@ -256,15 +239,17 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadAccParty() throws Exception {
         this.result.setObject(this.accPartyService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* Accident */
 
-    /* Accident */
     public String saveAccident() throws Exception {
         this.result.setObject(this.accidentService.save(this.accident));
         return SUCCESS;
     }
 
     public String deleteAccident() throws Exception {
+        AccParty ap = new AccParty();
+        ap.setAccId(this.accident.getId());
+        this.accPartyService.delete(ap);
         this.result.setObject(this.accidentService.delete(this.accident));
         return SUCCESS;
     }
@@ -282,9 +267,8 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadAccident() throws Exception {
         this.result.setObject(this.accidentService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* SafetyFine */
 
-    /* SafetyFine */
     public String saveSafetyFine() throws Exception {
         this.result.setObject(this.safetyFineService.save(this.safetyFine));
         return SUCCESS;
@@ -530,9 +514,142 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
 
     @Override
     public Page getModel() {
-        if(page == null){
+        if (page == null) {
             page = new Page();
         }
         return page;
     }
+
+    private BaseService fsAreaDeptService;
+    private FsAreaDept fsAreaDept;
+
+    public BaseService getFsAreaDeptService() {
+        return fsAreaDeptService;
+    }
+
+    public void setFsAreaDeptService(BaseService fsAreaDeptService) {
+        this.fsAreaDeptService = fsAreaDeptService;
+    }
+
+    public FsAreaDept getFsAreaDept() {
+        return fsAreaDept;
+    }
+
+    public void setFsAreaDept(FsAreaDept fsAreaDept) {
+        this.fsAreaDept = fsAreaDept;
+    }
+
+    public String saveFsAreaDept() throws Exception {
+        this.result.setObject(this.fsAreaDeptService.save(this.fsAreaDept));
+        return SUCCESS;
+    }
+
+    public String deleteFsAreaDept() throws Exception {
+        this.result.setObject(this.fsAreaDeptService.delete(this.fsAreaDept));
+        return SUCCESS;
+    }
+
+    public String listFsAreaDept() throws Exception {
+        this.result.setList(this.fsAreaDeptService.list(this.fsAreaDept));
+        return SUCCESS;
+    }
+
+    public String listPageFsAreaDept() throws Exception {
+        this.result.setObject(this.fsAreaDeptService.listPage(this.fsAreaDept, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadFsAreaDept() throws Exception {
+        this.result.setObject(this.fsAreaDeptService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    private BaseService phCodeTypeService;
+    private PhCodeType phCodeType;
+
+    public BaseService getPhCodeTypeService() {
+        return phCodeTypeService;
+    }
+
+    public void setPhCodeTypeService(BaseService phCodeTypeService) {
+        this.phCodeTypeService = phCodeTypeService;
+    }
+
+    public PhCodeType getPhCodeType() {
+        return phCodeType;
+    }
+
+    public void setPhCodeType(PhCodeType phCodeType) {
+        this.phCodeType = phCodeType;
+    }
+
+    public String savePhCodeType() throws Exception {
+        this.result.setObject(this.phCodeTypeService.save(this.phCodeType));
+        return SUCCESS;
+    }
+
+    public String deletePhCodeType() throws Exception {
+        this.result.setObject(this.phCodeTypeService.delete(this.phCodeType));
+        return SUCCESS;
+    }
+
+    public String listPhCodeType() throws Exception {
+        this.result.setList(this.phCodeTypeService.list(this.phCodeType));
+        return SUCCESS;
+    }
+
+    public String listPagePhCodeType() throws Exception {
+        this.result.setObject(this.phCodeTypeService.listPage(this.phCodeType, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadPhCodeType() throws Exception {
+        this.result.setObject(this.phCodeTypeService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    private BaseService vrCodeRiskLvlService;
+    private VrCodeRiskLvl vrCodeRiskLvl;
+
+    public BaseService getVrCodeRiskLvlService() {
+        return vrCodeRiskLvlService;
+    }
+
+    public void setVrCodeRiskLvlService(BaseService vrCodeRiskLvlService) {
+        this.vrCodeRiskLvlService = vrCodeRiskLvlService;
+    }
+
+    public VrCodeRiskLvl getVrCodeRiskLvl() {
+        return vrCodeRiskLvl;
+    }
+
+    public void setVrCodeRiskLvl(VrCodeRiskLvl vrCodeRiskLvl) {
+        this.vrCodeRiskLvl = vrCodeRiskLvl;
+    }
+
+    public String saveVrCodeRiskLvl() throws Exception {
+        this.result.setObject(this.vrCodeRiskLvlService.save(this.vrCodeRiskLvl));
+        return SUCCESS;
+    }
+
+    public String deleteVrCodeRiskLvl() throws Exception {
+        this.result.setObject(this.vrCodeRiskLvlService.delete(this.vrCodeRiskLvl));
+        return SUCCESS;
+    }
+
+    public String listVrCodeRiskLvl() throws Exception {
+        this.result.setList(this.vrCodeRiskLvlService.list(this.vrCodeRiskLvl));
+        return SUCCESS;
+    }
+
+    public String listPageVrCodeRiskLvl() throws Exception {
+        this.result.setObject(this.vrCodeRiskLvlService.listPage(this.vrCodeRiskLvl, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadVrCodeRiskLvl() throws Exception {
+        this.result.setObject(this.vrCodeRiskLvlService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
 }

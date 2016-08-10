@@ -27,9 +27,10 @@ public class ExtStoreCoding {
             }
         }
 
-        String extClassName = "iFlat.store" + packageName + "." + shortClassName;
+        String extClassName = "iFlat.store." + packageName + "." + shortClassName;
         StringBuilder sb = new StringBuilder();
         sb = sb.append("Ext.define('").append(extClassName).append("', {\n")
+                .append("    extend: 'Ext.data.Store',")
                 .append("\n")
                 .append("    autoLoad: true,\n")
                 .append("    model: 'iFlat.model.").append(packageName).append(".").append(shortClassName).append("',\n")

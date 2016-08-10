@@ -4,12 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Ss.FsArea">
 
-    <insert id="insert" parameterType="com.iflat.pam.bean.FsArea">
+    <insert id="insert" parameterType="com.iflat.ss.bean.FsArea">
         INSERT INTO SsFsArea
         VALUES (#{id},#{code},#{dept},#{type},#{area})
     </insert>
 
-    <update id="update" parameterType="com.iflat.pam.bean.FsArea">
+    <update id="update" parameterType="com.iflat.ss.bean.FsArea">
         UPDATE SsFsArea
         <set>
             <if test="time!=null)">time=#{time},</if>
@@ -21,12 +21,12 @@
         WHERE id=#{id}
     </update>
 
-    <delete id="delete" parameterType="com.iflat.pam.bean.FsArea">
+    <delete id="delete" parameterType="com.iflat.ss.bean.FsArea">
         DELETE SsFsArea
         WHERE id=#{id}
     </delete>
 
-    <select id="list" parameterType="com.iflat.pam.bean.FsArea" resultMap="SsFsAreaResult">
+    <select id="list" parameterType="com.iflat.ss.bean.FsArea" resultMap="SsFsAreaResult">
         SELECT id,code,dept,type,area
         FROM SsFsArea
         <where>
@@ -38,7 +38,7 @@
         ORDER BY type,code,dept,area
     </select>
 
-    <resultMap type="com.iflat.pam.bean.FsArea" id="SsFsAreaResult">
+    <resultMap type="com.iflat.ss.bean.FsArea" id="SsFsAreaResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="code" column="code" jdbcType="VARCHAR"/>
         <result property="dept" column="dept" jdbcType="VARCHAR"/>

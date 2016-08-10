@@ -18,11 +18,12 @@ Ext.define('iFlat.view.pam.PartyGroup', {
                     var data = Ext.JSON.decode(response.responseText);
                     var info = data['list'];
                     var pbName;
-                    if (!Flat.util.isEmpty(info)) {
+                    if (!Flat.util.isEmpty(info) && info.length > 0) {
                         pbName = info[0]['pbName'];
                         pamPartyGroupStore.getProxy().extraParams['partyGroup.pbName'] = pbName;
                         pamPartyGroupStore.reload();
                     } else {
+                        Ext.getCmp('pam-partygroup-add').hide();
                         Ext.Msg.show({
                             title:'提示',
                             message: '您没有维护任何党支部信息的权限，请联系党群。',
@@ -54,6 +55,7 @@ Ext.define('iFlat.view.pam.PartyGroup', {
         overflowHandler: 'scroller',
         items: [{
             text: '新增',
+            id: 'pam-partygroup-add',
             ui: 'orig-blue',
             handler: 'addPartyGroupRecord',
         }, '->', {

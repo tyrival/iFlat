@@ -22,11 +22,13 @@ Ext.define('iFlat.view.pam.YearWork', {
                     var data = Ext.JSON.decode(response.responseText);
                     var info = data['list'];
                     var pbName;
-                    if (!Flat.util.isEmpty(info)) {
+                    if (!Flat.util.isEmpty(info) && info.length > 0) {
                         pbName = info[0]['pbName'];
                         pamYearWorkStore.getProxy().extraParams['yearWork.pbName'] = pbName;
                         pamYearWorkStore.reload();
                     } else {
+                        Ext.getCmp('pam-yearwork-addplan').hide();
+                        Ext.getCmp('pam-yearwork-addsum').hide();
                         Ext.Msg.show({
                             title:'提示',
                             message: '您没有维护任何党支部信息的权限，请联系党群。',
@@ -46,10 +48,12 @@ Ext.define('iFlat.view.pam.YearWork', {
         overflowHandler: 'scroller',
         items: [{
             text: '新增计划',
+            id: 'pam-yearwork-addplan',
             ui: 'orig-blue',
             handler: 'showYearWorkEdit',
         }, {
             text: '新增总结',
+            id: 'pam-yearwork-addsum',
             ui: 'orig-blue',
             handler: 'showYearWorkEdit',
         }, '->', {

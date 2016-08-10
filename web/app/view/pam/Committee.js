@@ -19,11 +19,12 @@ Ext.define('iFlat.view.pam.Committee', {
                     var data = Ext.JSON.decode(response.responseText);
                     var info = data['list'];
                     var pbName;
-                    if (!Flat.util.isEmpty(info)) {
+                    if (!Flat.util.isEmpty(info) && info.length > 0) {
                         pbName = info[0]['pbName'];
                         pamCommitteeStore.getProxy().extraParams['committee.pbName'] = pbName;
                         pamCommitteeStore.reload();
                     } else {
+                        Ext.getCmp('pam-committee-add').hide();
                         Ext.Msg.show({
                             title:'提示',
                             message: '您没有维护任何党支部信息的权限，请联系党群。',
@@ -44,6 +45,7 @@ Ext.define('iFlat.view.pam.Committee', {
         items: [{
             text: '新增',
             ui: 'orig-blue',
+            id: 'pam-committee-add',
             handler: 'showCommitteeEdit',
         }, '->', {
             text: '刷新',

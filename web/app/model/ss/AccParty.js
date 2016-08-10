@@ -5,7 +5,6 @@ Ext.define('iFlat.model.ss.AccParty', {
         {name: 'accParty.accId', mapping: 'accId', type: 'string'},
         {name: 'accParty.type', mapping: 'type', type: 'string'},
         {name: 'accParty.dept', mapping: 'dept', type: 'string'},
-        {name: 'accParty.busiDivision', mapping: 'busiDivision', type: 'string'},
         {name: 'accParty.team', mapping: 'team', type: 'string'},
         {name: 'accParty.groupName', mapping: 'groupName', type: 'date'},
         {name: 'accParty.title', mapping: 'title', type: 'string'},

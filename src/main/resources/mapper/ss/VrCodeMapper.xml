@@ -4,12 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Ss.VrCode">
 
-    <insert id="insert" parameterType="com.iflat.pam.bean.VrCode">
+    <insert id="insert" parameterType="com.iflat.ss.bean.VrCode">
         INSERT INTO SsVrCode
         VALUES (#{id},#{riskLvl},#{code},#{description},#{amount},#{score})
     </insert>
 
-    <update id="update" parameterType="com.iflat.pam.bean.VrCode">
+    <update id="update" parameterType="com.iflat.ss.bean.VrCode">
         UPDATE SsVrCode
         <set>
             <if test="time!=null)">time=#{time},</if>
@@ -22,12 +22,12 @@
         WHERE id=#{id}
     </update>
 
-    <delete id="delete" parameterType="com.iflat.pam.bean.VrCode">
+    <delete id="delete" parameterType="com.iflat.ss.bean.VrCode">
         DELETE SsVrCode
         WHERE id=#{id}
     </delete>
 
-    <select id="list" parameterType="com.iflat.pam.bean.VrCode" resultMap="SsVrCodeResult">
+    <select id="list" parameterType="com.iflat.ss.bean.VrCode" resultMap="SsVrCodeResult">
         SELECT id,riskLvl,code,description,amount,score
         FROM SsVrCode
         <where>
@@ -38,7 +38,7 @@
         ORDER BY riskLvl,code
     </select>
 
-    <resultMap riskLvl="com.iflat.pam.bean.VrCode" id="SsVrCodeResult">
+    <resultMap type="com.iflat.ss.bean.VrCode" id="SsVrCodeResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="riskLvl" column="riskLvl" jdbcType="VARCHAR"/>
         <result property="code" column="code" jdbcType="VARCHAR"/>

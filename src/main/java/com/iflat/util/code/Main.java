@@ -43,7 +43,7 @@ public class Main {
             SpringCoding.generate(main.getClassName(), springRoot);
 
             // 修改struts.xml
-            StrutsCoding.generate(main.getClassName(), resourcesRoot);
+            //StrutsCoding.generate(main.getClassName(), resourcesRoot);
 
             // 生成Ext Model
             ExtModelCoding.generate(main.getClassName(), extjsRoot);

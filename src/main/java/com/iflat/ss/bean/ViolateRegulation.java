@@ -8,7 +8,8 @@ import java.util.Date;
 public class ViolateRegulation {
 
     private String id;
-    private Date time;  // 时间
+    private Date date;
+    private String time;  // 时间
     private String riskLvl;  // 风险等级
     private String code;  // 隐患代码
     private String dept;
@@ -48,6 +49,14 @@ public class ViolateRegulation {
     private Date fromDate;
     private Date toDate;
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Date getFromDate() {
         return fromDate;
     }
@@ -80,11 +89,11 @@ public class ViolateRegulation {
         this.id = id;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

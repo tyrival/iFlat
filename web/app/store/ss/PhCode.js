@@ -1,7 +1,7 @@
 Ext.define('iFlat.store.ss.PhCode', {
     extend: 'Ext.data.Store',
 
-    autoLoad: false,
+    autoLoad: true,
     model: 'iFlat.model.ss.PhCode',
 
     pageSize: 0,

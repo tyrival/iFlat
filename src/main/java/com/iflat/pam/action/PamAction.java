@@ -1,5 +1,6 @@
 package com.iflat.pam.action;
 
+import com.iflat.pam.entity.MonthlyWorkView;
 import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
@@ -19,61 +20,45 @@ import java.util.List;
  * Created by tyriv on 2016/7/29.
  */
 public class PamAction extends BaseAction implements ModelDriven<Page> {
-
     protected Page page;
     private File upload;
     private String uploadFileName;
-
     private BaseService newsService;
     private News news;
     private BaseService partyBranchService;
     private PartyBranch partyBranch;
     private BaseService newsSummaryService;
     private NewsSummary newsSummary;
-
     private BaseService activistService;
     private Activist activist;
-
     private BaseService applicantService;
     private Applicant applicant;
-
     private BaseService committeeService;
     private Committee committee;
-
     private BaseService generalService;
     private General pamGeneral;
-
     private BaseService memberService;
     private Member pamMember;
-
     private BaseService monthlyWorkService;
     private MonthlyWork monthlyWork;
-
     private BaseService partyGroupService;
     private PartyGroup partyGroup;
-
     private BaseService recorderService;
     private Recorder recorder;
-
     private BaseService titleService;
     private Title pamTitle;
-
     private BaseService yearWorkService;
     private YearWork yearWork;
-
     private BaseService committeeDetailService;
     private CommitteeDetail committeeDetail;
-
     private BaseService memberDistService;
-    private MemberDist memberDist;
+    private MemberDist memberDist;    /* MemberDist */
 
-    /* MemberDist */
     public String listMemberDist() throws Exception {
         this.result.setList(this.memberDistService.list(this.memberDist));
         return SUCCESS;
-    }
+    }    /* YearWork */
 
-    /* YearWork */
     public String rejectYearWork() throws Exception {
         this.yearWork.setStatus("0");
         this.result.setObject(this.yearWorkService.save(this.yearWork));
@@ -109,9 +94,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String uploadYearWork() throws Exception {
         this.result.setObject(this.yearWorkService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* Title */
 
-    /* Title */
     public String saveTitle() throws Exception {
         this.result.setObject(this.titleService.save(this.pamTitle));
         return SUCCESS;
@@ -130,9 +114,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPageTitle() throws Exception {
         this.result.setObject(this.titleService.listPage(this.pamTitle, this.page));
         return SUCCESS;
-    }
+    }    /* Recorder */
 
-    /* Recorder */
     public String saveRecorder() throws Exception {
         this.result.setObject(this.recorderService.save(this.recorder));
         return SUCCESS;
@@ -157,9 +140,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPageRecorder() throws Exception {
         this.result.setObject(this.recorderService.listPage(this.recorder, this.page));
         return SUCCESS;
-    }
+    }    /* PartyGroup */
 
-    /* PartyGroup */
     public String savePartyGroup() throws Exception {
         this.result.setObject(this.partyGroupService.save(this.partyGroup));
         return SUCCESS;
@@ -178,9 +160,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPagePartyGroup() throws Exception {
         this.result.setObject(this.partyGroupService.listPage(this.partyGroup, this.page));
         return SUCCESS;
-    }
+    }    /* MonthlyWork */
 
-    /* MonthlyWork */
     public String rejectMonthlyWork() throws Exception {
         this.monthlyWork.setStatus("0");
         this.result.setObject(this.monthlyWorkService.save(this.monthlyWork));
@@ -216,9 +197,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String uploadMonthlyWork() throws Exception {
         this.result.setObject(this.monthlyWorkService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }
+    }    /* Member */
 
-    /* Member */
     public String saveMember() throws Exception {
         this.result.setObject(this.memberService.save(this.pamMember));
         return SUCCESS;
@@ -237,9 +217,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPageMember() throws Exception {
         this.result.setObject(this.memberService.listPage(this.pamMember, this.page));
         return SUCCESS;
-    }
+    }    /* General */
 
-    /* General */
     public String loadGeneralByUser() throws Exception {
         List<Recorder> list = new ArrayList<>();
         Recorder recorder = new Recorder();
@@ -271,9 +250,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPageGeneral() throws Exception {
         this.result.setObject(this.generalService.listPage(this.pamGeneral, this.page));
         return SUCCESS;
-    }
+    }    /* Committee */
 
-    /* Committee */
     public String saveCommittee() throws Exception {
         this.result.setObject(this.committeeService.save(this.committee));
         return SUCCESS;
@@ -282,7 +260,7 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String deleteCommittee() throws Exception {
         CommitteeDetail cd = new CommitteeDetail();
         cd.setPid(this.committee.getId());
-        this.committeeService.delete(this.committee);
+        this.committeeDetailService.delete(cd);
         this.result.setObject(this.committeeService.delete(this.committee));
         return SUCCESS;
     }
@@ -295,9 +273,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPageCommittee() throws Exception {
         this.result.setObject(this.committeeService.listPage(this.committee, this.page));
         return SUCCESS;
-    }
+    }    /* CommitteeDetail */
 
-    /* CommitteeDetail */
     public String saveCommitteeDetail() throws Exception {
         this.committee = (Committee) this.committeeService.save(this.committee);
         this.committeeDetail.setPid(this.committee.getId());
@@ -313,9 +290,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listCommitteeDetail() throws Exception {
         this.result.setList(this.committeeDetailService.list(this.committeeDetail));
         return SUCCESS;
-    }
+    }    /* Applicant */
 
-    /* Applicant */
     public String saveApplicant() throws Exception {
         this.result.setObject(this.applicantService.save(this.applicant));
         return SUCCESS;
@@ -334,9 +310,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPageApplicant() throws Exception {
         this.result.setObject(this.applicantService.listPage(this.applicant, this.page));
         return SUCCESS;
-    }
+    }    /* Activist */
 
-    /* Activist */
     public String saveActivist() throws Exception {
         this.result.setObject(this.activistService.save(this.activist));
         return SUCCESS;
@@ -355,9 +330,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPageActivist() throws Exception {
         this.result.setObject(this.activistService.listPage(this.activist, this.page));
         return SUCCESS;
-    }
+    }    /* PartyBranch */
 
-    /* PartyBranch */
     public String savePartyBranch() throws Exception {
         this.result.setObject(this.partyBranchService.save(this.partyBranch));
         return SUCCESS;
@@ -376,9 +350,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     public String listPagePartyBranch() throws Exception {
         this.result.setObject(this.partyBranchService.listPage(this.partyBranch, this.page));
         return SUCCESS;
-    }
+    }    /* News */
 
-    /* News */
     public String saveNews() throws Exception {
         this.result.setObject(this.newsService.save(this.news));
         return SUCCESS;
@@ -425,7 +398,6 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
         News orig = new News();
         orig.setId(this.news.getId());
         orig = (News) this.newsService.list(orig).get(0);
-
         UserInfoVo user = Session.getUserInfo();
         orig.setApprvAcc(user.getAccount());
         orig.setApprvName(user.getUserName());
@@ -441,11 +413,9 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveNewsSec() throws Exception {
-
         News orig = new News();
         orig.setId(this.news.getId());
         orig = (News) this.newsService.list(orig).get(0);
-
         UserInfoVo user = Session.getUserInfo();
         orig.setSecApprvAcc(user.getAccount());
         orig.setSecApprvName(user.getUserName());
@@ -456,7 +426,6 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String rejectNews() throws Exception {
-
         News orig = new News();
         orig.setId(this.news.getId());
         orig = (News) this.newsService.list(orig).get(0);
@@ -474,9 +443,8 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
         }
         this.result.setObject(this.newsService.save(orig));
         return SUCCESS;
-    }
+    }    /* NewsSummary */
 
-    /* NewsSummary */
     public String listNewsSummary() throws Exception {
         this.result.setList(this.newsSummaryService.list(this.newsSummary));
         return SUCCESS;
@@ -748,9 +716,52 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
 
     @Override
     public Page getModel() {
-        if(page == null){
+        if (page == null) {
             page = new Page();
         }
         return page;
     }
+
+    private BaseService monthlyWorkViewService;
+    private MonthlyWorkView monthlyWorkView;
+
+    public BaseService getMonthlyWorkViewService() {
+        return monthlyWorkViewService; }
+
+    public void setMonthlyWorkViewService(BaseService monthlyWorkViewService) {
+        this.monthlyWorkViewService = monthlyWorkViewService;
+    }
+
+    public MonthlyWorkView getMonthlyWorkView() {
+        return monthlyWorkView;
+    }
+
+    public void setMonthlyWorkView(MonthlyWorkView monthlyWorkView) {
+        this.monthlyWorkView = monthlyWorkView; }
+
+    public String saveMonthlyWorkView() throws Exception {
+        this.result.setObject(this.monthlyWorkViewService.save(this.monthlyWorkView));
+        return SUCCESS;
+    }
+
+    public String deleteMonthlyWorkView() throws Exception {
+        this.result.setObject(this.monthlyWorkViewService.delete(this.monthlyWorkView));
+        return SUCCESS;
+    }
+
+    public String listMonthlyWorkView() throws Exception {
+        this.result.setList(this.monthlyWorkViewService.list(this.monthlyWorkView));
+        return SUCCESS;
+    }
+
+    public String listPageMonthlyWorkView() throws Exception {
+        this.result.setObject(this.monthlyWorkViewService.listPage(this.monthlyWorkView, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadMonthlyWorkView() throws Exception {
+        this.result.setObject(this.monthlyWorkViewService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
 }

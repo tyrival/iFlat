@@ -4,18 +4,17 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Ss.AccParty">
 
-    <insert id="insert" parameterType="com.iflat.pam.bean.AccParty">
+    <insert id="insert" parameterType="com.iflat.ss.bean.AccParty">
         INSERT INTO SsAccParty
-        VALUES (#{id},#{accId},#{type},#{dept},#{busiDivision},#{team},#{groupName},#{title},#{personAcc},#{personName},#{opIdCardNo},#{age},#{seniority},#{sex},#{injuryLvl})
+        VALUES (#{id},#{accId},#{type},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{opIdCardNo},#{age},#{seniority},#{sex},#{injuryLvl})
     </insert>
     
-    <update id="update" parameterType="com.iflat.pam.bean.AccParty">
+    <update id="update" parameterType="com.iflat.ss.bean.AccParty">
         UPDATE SsAccParty
         <set>
             <if test="accId!=null">accId=#{accId},</if>
             <if test="type!=null">type=#{type},</if>
             <if test="dept!=null">dept=#{dept},</if>
-            <if test="busiDivision!=null">busiDivision=#{busiDivision},</if>
             <if test="team!=null">team=#{team},</if>
             <if test="groupName!=null())">groupName=#{groupName},</if>
             <if test="title!=null ">title=#{title},</if>
@@ -30,20 +29,23 @@
         WHERE id=#{id}
     </update>
     
-    <delete id="delete" parameterType="com.iflat.pam.bean.AccParty">
+    <delete id="delete" parameterType="com.iflat.ss.bean.AccParty">
         DELETE SsAccParty
-        WHERE id=#{id}
+        <where>
+            <if test="id!=null">id=#{id}</if>
+            <if test="accId!=null and !&quot;&quot;.equals(accId.trim())">
+                AND accId=#{accId}</if>
+        </where>
     </delete>
 
-    <select id="list" parameterType="com.iflat.pam.bean.AccParty" resultMap="SsAccPartyResult">
-        SELECT id,accId,type,dept,busiDivision,team,groupName,title,personAcc,personName,opIdCardNo,age,seniority,sex,injuryLvl
+    <select id="list" parameterType="com.iflat.ss.bean.AccParty" resultMap="SsAccPartyResult">
+        SELECT id,accId,type,dept,team,groupName,title,personAcc,personName,opIdCardNo,age,seniority,sex,injuryLvl
         FROM SsAccParty
         <where>
             <if test="id!=null">id=#{id}</if>
             <if test="accId!=null and !&quot;&quot;.equals(accId.trim())">AND accId=#{accId}</if>
             <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
             <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
-            <if test="busiDivision!=null and !&quot;&quot;.equals(busiDivision.trim())">AND busiDivision=#{busiDivision}</if>
             <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%'+#{team}+'%'</if>
             <if test="groupName!=null and !&quot;&quot;.equals(groupName.trim())">AND groupName LIKE '%'+#{groupName}+'%'</if>
             <if test="title!=null and !&quot;&quot;.equals(title.trim())">AND title=#{title}</if>
@@ -56,12 +58,11 @@
         ORDER BY type,personName
     </select>
 
-    <resultMap type="com.iflat.pam.bean.AccParty" id="SsAccPartyResult">
+    <resultMap type="com.iflat.ss.bean.AccParty" id="SsAccPartyResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="accId" column="accId" jdbcType="VARCHAR"/>
         <result property="type" column="type" jdbcType="VARCHAR"/>
         <result property="dept" column="dept" jdbcType="VARCHAR"/>
-        <result property="busiDivision" column="busiDivision" jdbcType="VARCHAR"/>
         <result property="groupName" column="groupName" jdbcType="VARCHAR"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
         <result property="personAcc" column="personAcc" jdbcType="VARCHAR"/>

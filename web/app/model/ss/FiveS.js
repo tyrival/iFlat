@@ -2,7 +2,10 @@ Ext.define('iFlat.model.ss.FiveS', {
     extend: 'Ext.data.Model',
     fields: [
         {name: 'fiveS.id', mapping: 'id', type: 'string'},
-        {name: 'fiveS.time', mapping: 'time', type: 'date'},
+        {name: 'fiveS.date', mapping: 'date', type: 'date'},
+        {name: 'fiveS.time', mapping: 'time', type: 'string'},
+        {name: 'fiveS.funcDept', mapping: 'funcDept', type: 'string'},
+        {name: 'fiveS.areaType', mapping: 'areaType', type: 'string'},
         {name: 'fiveS.area', mapping: 'area', type: 'string'},
         {name: 'fiveS.code', mapping: 'code', type: 'string'},
         {name: 'fiveS.otherArea', mapping: 'otherArea', type: 'string'},

@@ -1,7 +1,7 @@
 Ext.define('iFlat.store.ss.VrCode', {
     extend: 'Ext.data.Store',
 
-    autoLoad: false,
+    autoLoad: true,
     model: 'iFlat.model.ss.VrCode',
 
     pageSize: 0,

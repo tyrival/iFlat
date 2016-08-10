@@ -8,7 +8,8 @@ import java.util.Date;
 public class Accident {
 
     private String id;
-    private Date time;
+    private Date date;
+    private String time;
     private String projNo;
     private String projName;
     private String area;
@@ -17,6 +18,7 @@ public class Accident {
     private String accLvl;
     private String accType;
     private double loss;
+    private String busiDivision;
     private String projMgr;
     private String profMgr;
     private String workMgr;
@@ -33,6 +35,22 @@ public class Accident {
 
     private Date fromDate;
     private Date toDate;
+
+    public String getBusiDivision() {
+        return busiDivision;
+    }
+
+    public void setBusiDivision(String busiDivision) {
+        this.busiDivision = busiDivision;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Date getFromDate() {
         return fromDate;
@@ -58,11 +76,11 @@ public class Accident {
         this.id = id;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

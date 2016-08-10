@@ -1,79 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="ssAction" class="com.iflat.ss.action.SsAction" scope="prototype">
-        <property name="safetyFineService" ref="safetyFineService"/>
-        <property name="safetyFine" ref="safetyFine"/>
-        <property name="safetyFineVoService" ref="safetyFineVoService"/>
-        <property name="safetyFineVo" ref="safetyFineVo"/>
-        <property name="accidentService" ref="accidentService"/>
-        <property name="accident" ref="accident"/>
-        <property name="accPartyService" ref="accPartyService"/>
-        <property name="accParty" ref="accParty"/>
-        <property name="fiveSService" ref="fiveSService"/>
-        <property name="fiveS" ref="fiveS"/>
-        <property name="fsAreaService" ref="fsAreaService"/>
-        <property name="fsArea" ref="fsArea"/>
-        <property name="fsCodeService" ref="fsCodeService"/>
-        <property name="fsCode" ref="fsCode"/>
-        <property name="phCodeService" ref="phCodeService"/>
-        <property name="phCode" ref="phCode"/>
-        <property name="potentialHazardService" ref="potentialHazardService"/>
-        <property name="potentialHazard" ref="potentialHazard"/>
-        <property name="violateRegulationService" ref="violateRegulationService"/>
-        <property name="violateRegulation" ref="violateRegulation"/>
-        <property name="vrCodeService" ref="vrCodeService"/>
-        <property name="vrCode" ref="vrCode"/>
-    </bean>
-
-    <bean id="vrCodeService" class="com.iflat.ss.service.impl.VrCodeServiceImpl"/>
-    <bean id="vrCodeDao" class="com.iflat.ss.dao.impl.VrCodeDaoImpl"/>
-    <bean id="vrCode" class="com.iflat.ss.bean.VrCode" scope="prototype"/>
-
-    <bean id="violateRegulationService" class="com.iflat.ss.service.impl.ViolateRegulationServiceImpl"/>
-    <bean id="violateRegulationDao" class="com.iflat.ss.dao.impl.ViolateRegulationDaoImpl"/>
-    <bean id="violateRegulation" class="com.iflat.ss.bean.ViolateRegulation" scope="prototype"/>
-
-    <bean id="potentialHazardService" class="com.iflat.ss.service.impl.PotentialHazardServiceImpl"/>
-    <bean id="potentialHazardDao" class="com.iflat.ss.dao.impl.PotentialHazardDaoImpl"/>
-    <bean id="potentialHazard" class="com.iflat.ss.bean.PotentialHazard" scope="prototype"/>
-
-    <bean id="phCodeService" class="com.iflat.ss.service.impl.PhCodeServiceImpl"/>
-    <bean id="phCodeDao" class="com.iflat.ss.dao.impl.PhCodeDaoImpl"/>
-    <bean id="phCode" class="com.iflat.ss.bean.PhCode" scope="prototype"/>
-
-    <bean id="fsCodeService" class="com.iflat.ss.service.impl.FsCodeServiceImpl"/>
-    <bean id="fsCodeDao" class="com.iflat.ss.dao.impl.FsCodeDaoImpl"/>
-    <bean id="fsCode" class="com.iflat.ss.bean.FsCode" scope="prototype"/>
-
-    <bean id="fsAreaService" class="com.iflat.ss.service.impl.FsAreaServiceImpl"/>
-    <bean id="fsAreaDao" class="com.iflat.ss.dao.impl.FsAreaDaoImpl"/>
-    <bean id="fsArea" class="com.iflat.ss.bean.FsArea" scope="prototype"/>
-
-    <bean id="fiveSService" class="com.iflat.ss.service.impl.FiveSServiceImpl"/>
-    <bean id="fiveSDao" class="com.iflat.ss.dao.impl.FiveSDaoImpl"/>
-    <bean id="fiveS" class="com.iflat.ss.bean.FiveS" scope="prototype"/>
-
-    <bean id="accPartyService" class="com.iflat.ss.service.impl.AccPartyServiceImpl"/>
-    <bean id="accPartyDao" class="com.iflat.ss.dao.impl.AccPartyDaoImpl"/>
-    <bean id="accParty" class="com.iflat.ss.bean.AccParty" scope="prototype"/>
-
-    <bean id="accidentService" class="com.iflat.ss.service.impl.AccidentServiceImpl"/>
-    <bean id="accidentDao" class="com.iflat.ss.dao.impl.AccidentDaoImpl"/>
-    <bean id="accident" class="com.iflat.ss.bean.Accident" scope="prototype"/>
-
-    <bean id="safetyFineService" class="com.iflat.ss.service.impl.SafetyFineServiceImpl">
-    </bean>
-    <bean id="safetyFineDao" class="com.iflat.ss.dao.impl.SafetyFineDaoImpl">
-    </bean>
-
-    <bean id="safetyFineVoService" class="com.iflat.ss.service.impl.SafetyFineVoServiceImpl">
-    </bean>
-    <bean id="safetyFineVoDao" class="com.iflat.ss.dao.impl.SafetyFineVoDaoImpl">
-    </bean>
-    <bean id="safetyFine" class="com.iflat.ss.bean.SafetyFine" scope="prototype"/>
-    <bean id="safetyFineVo" class="com.iflat.ss.entity.SafetyFineVo" scope="prototype"/>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <bean id="ssAction" class="com.iflat.ss.action.SsAction" scope="prototype">
+    <property name="safetyFineService" ref="safetyFineService" />
+    <property name="safetyFine" ref="safetyFine" />
+    <property name="safetyFineVoService" ref="safetyFineVoService" />
+    <property name="safetyFineVo" ref="safetyFineVo" />
+    <property name="accidentService" ref="accidentService" />
+    <property name="accident" ref="accident" />
+    <property name="accPartyService" ref="accPartyService" />
+    <property name="accParty" ref="accParty" />
+    <property name="fiveSService" ref="fiveSService" />
+    <property name="fiveS" ref="fiveS" />
+    <property name="fsAreaService" ref="fsAreaService" />
+    <property name="fsArea" ref="fsArea" />
+    <property name="fsCodeService" ref="fsCodeService" />
+    <property name="fsCode" ref="fsCode" />
+    <property name="phCodeService" ref="phCodeService" />
+    <property name="phCode" ref="phCode" />
+    <property name="potentialHazardService" ref="potentialHazardService" />
+    <property name="potentialHazard" ref="potentialHazard" />
+    <property name="violateRegulationService" ref="violateRegulationService" />
+    <property name="violateRegulation" ref="violateRegulation" />
+    <property name="vrCodeService" ref="vrCodeService" />
+    <property name="vrCode" ref="vrCode" />
+    <property name="fsAreaDeptService" ref="fsAreaDeptService" />
+    <property name="fsAreaDept" ref="fsAreaDept" />
+    <property name="phCodeTypeService" ref="phCodeTypeService" />
+    <property name="phCodeType" ref="phCodeType" />
+    <property name="vrCodeRiskLvlService" ref="vrCodeRiskLvlService" />
+    <property name="vrCodeRiskLvl" ref="vrCodeRiskLvl" />
+  </bean>
+  <bean id="vrCodeService" class="com.iflat.ss.service.impl.VrCodeServiceImpl" />
+  <bean id="vrCodeDao" class="com.iflat.ss.dao.impl.VrCodeDaoImpl" />
+  <bean id="vrCode" class="com.iflat.ss.bean.VrCode" scope="prototype" />
+  <bean id="violateRegulationService" class="com.iflat.ss.service.impl.ViolateRegulationServiceImpl" />
+  <bean id="violateRegulationDao" class="com.iflat.ss.dao.impl.ViolateRegulationDaoImpl" />
+  <bean id="violateRegulation" class="com.iflat.ss.bean.ViolateRegulation" scope="prototype" />
+  <bean id="potentialHazardService" class="com.iflat.ss.service.impl.PotentialHazardServiceImpl" />
+  <bean id="potentialHazardDao" class="com.iflat.ss.dao.impl.PotentialHazardDaoImpl" />
+  <bean id="potentialHazard" class="com.iflat.ss.bean.PotentialHazard" scope="prototype" />
+  <bean id="phCodeService" class="com.iflat.ss.service.impl.PhCodeServiceImpl" />
+  <bean id="phCodeDao" class="com.iflat.ss.dao.impl.PhCodeDaoImpl" />
+  <bean id="phCode" class="com.iflat.ss.bean.PhCode" scope="prototype" />
+  <bean id="fsCodeService" class="com.iflat.ss.service.impl.FsCodeServiceImpl" />
+  <bean id="fsCodeDao" class="com.iflat.ss.dao.impl.FsCodeDaoImpl" />
+  <bean id="fsCode" class="com.iflat.ss.bean.FsCode" scope="prototype" />
+  <bean id="fsAreaService" class="com.iflat.ss.service.impl.FsAreaServiceImpl" />
+  <bean id="fsAreaDao" class="com.iflat.ss.dao.impl.FsAreaDaoImpl" />
+  <bean id="fsArea" class="com.iflat.ss.bean.FsArea" scope="prototype" />
+  <bean id="fiveSService" class="com.iflat.ss.service.impl.FiveSServiceImpl" />
+  <bean id="fiveSDao" class="com.iflat.ss.dao.impl.FiveSDaoImpl" />
+  <bean id="fiveS" class="com.iflat.ss.bean.FiveS" scope="prototype" />
+  <bean id="accPartyService" class="com.iflat.ss.service.impl.AccPartyServiceImpl" />
+  <bean id="accPartyDao" class="com.iflat.ss.dao.impl.AccPartyDaoImpl" />
+  <bean id="accParty" class="com.iflat.ss.bean.AccParty" scope="prototype" />
+  <bean id="accidentService" class="com.iflat.ss.service.impl.AccidentServiceImpl" />
+  <bean id="accidentDao" class="com.iflat.ss.dao.impl.AccidentDaoImpl" />
+  <bean id="accident" class="com.iflat.ss.bean.Accident" scope="prototype" />
+  <bean id="safetyFineService" class="com.iflat.ss.service.impl.SafetyFineServiceImpl" />
+  <bean id="safetyFineDao" class="com.iflat.ss.dao.impl.SafetyFineDaoImpl" />
+  <bean id="safetyFineVoService" class="com.iflat.ss.service.impl.SafetyFineVoServiceImpl" />
+  <bean id="safetyFineVoDao" class="com.iflat.ss.dao.impl.SafetyFineVoDaoImpl" />
+  <bean id="safetyFine" class="com.iflat.ss.bean.SafetyFine" scope="prototype" />
+  <bean id="safetyFineVo" class="com.iflat.ss.entity.SafetyFineVo" scope="prototype" />
+  <bean id="fsAreaDept" class="com.iflat.ss.entity.FsAreaDept" scope="prototype" />
+  <bean id="fsAreaDeptDao" class="com.iflat.ss.dao.impl.FsAreaDeptDaoImpl" />
+  <bean id="fsAreaDeptService" class="com.iflat.ss.service.impl.FsAreaDeptServiceImpl" />
+  <bean id="phCodeType" class="com.iflat.ss.entity.PhCodeType" scope="prototype" />
+  <bean id="phCodeTypeDao" class="com.iflat.ss.dao.impl.PhCodeTypeDaoImpl" />
+  <bean id="phCodeTypeService" class="com.iflat.ss.service.impl.PhCodeTypeServiceImpl" />
+  <bean id="vrCodeRiskLvl" class="com.iflat.ss.entity.VrCodeRiskLvl" scope="prototype" />
+  <bean id="vrCodeRiskLvlDao" class="com.iflat.ss.dao.impl.VrCodeRiskLvlDaoImpl" />
+  <bean id="vrCodeRiskLvlService" class="com.iflat.ss.service.impl.VrCodeRiskLvlServiceImpl" />
 </beans>
+

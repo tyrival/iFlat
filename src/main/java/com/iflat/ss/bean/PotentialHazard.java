@@ -7,7 +7,8 @@ import java.util.Date;
  */
 public class PotentialHazard {
     private String id;
-    private Date time;
+    private Date date;
+    private String time;
     private String riskLvl;
     private String phType;
     private String phCode;
@@ -47,6 +48,14 @@ public class PotentialHazard {
     private Date fromDate;
     private Date toDate;
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Date getFromDate() {
         return fromDate;
     }
@@ -71,11 +80,11 @@ public class PotentialHazard {
         this.id = id;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.FsAreaDept">
+
+<select id="list" parameterType="com.iflat.ss.entity.FsAreaDept" resultMap="SsFsAreaDeptResult">
+    SELECT DISTINCT dept
+    FROM SsFsArea
+    ORDER BY dept
+</select>
+
+<resultMap type="com.iflat.ss.entity.FsAreaDept" id="SsFsAreaDeptResult">
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

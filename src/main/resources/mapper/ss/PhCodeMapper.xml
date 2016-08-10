@@ -4,12 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Ss.PhCode">
 
-    <insert id="insert" parameterType="com.iflat.pam.bean.PhCode">
+    <insert id="insert" parameterType="com.iflat.ss.bean.PhCode">
         INSERT INTO SsPhCode
         VALUES (#{id},#{type},#{code},#{description},#{amount},#{score})
     </insert>
 
-    <update id="update" parameterType="com.iflat.pam.bean.PhCode">
+    <update id="update" parameterType="com.iflat.ss.bean.PhCode">
         UPDATE SsPhCode
         <set>
             <if test="time!=null)">time=#{time},</if>
@@ -22,12 +22,12 @@
         WHERE id=#{id}
     </update>
 
-    <delete id="delete" parameterType="com.iflat.pam.bean.PhCode">
+    <delete id="delete" parameterType="com.iflat.ss.bean.PhCode">
         DELETE SsPhCode
         WHERE id=#{id}
     </delete>
 
-    <select id="list" parameterType="com.iflat.pam.bean.PhCode" resultMap="SsPhCodeResult">
+    <select id="list" parameterType="com.iflat.ss.bean.PhCode" resultMap="SsPhCodeResult">
         SELECT id,type,code,description,amount,score
         FROM SsPhCode
         <where>
@@ -38,7 +38,7 @@
         ORDER BY type,code
     </select>
 
-    <resultMap type="com.iflat.pam.bean.PhCode" id="SsPhCodeResult">
+    <resultMap type="com.iflat.ss.bean.PhCode" id="SsPhCodeResult">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="type" column="type" jdbcType="VARCHAR"/>
         <result property="code" column="code" jdbcType="VARCHAR"/>

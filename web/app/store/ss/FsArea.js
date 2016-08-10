@@ -1,7 +1,7 @@
 Ext.define('iFlat.store.ss.FsArea', {
     extend: 'Ext.data.Store',
 
-    autoLoad: false,
+    autoLoad: true,
     model: 'iFlat.model.ss.FsArea',
 
     pageSize: 0,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.PhCodeType">
+
+<select id="list" parameterType="com.iflat.ss.entity.PhCodeType" resultMap="SsPhCodeTypeResult">
+    SELECT DISTINCT type
+    FROM SsPhCode
+    ORDER BY type
+</select>
+
+<resultMap type="com.iflat.ss.entity.PhCodeType" id="SsPhCodeTypeResult">
+    <result property="type" column="type" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

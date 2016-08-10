@@ -1,7 +1,7 @@
 Ext.define('iFlat.store.pam.NewsSummary', {
     extend: 'Ext.data.Store',
 
-    autoLoad: true,
+    autoLoad: false,
     model: 'iFlat.model.pam.NewsSummary',
 
     pageSize: 0,

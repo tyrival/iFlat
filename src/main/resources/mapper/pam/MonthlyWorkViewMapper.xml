@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pam.MonthlyWorkView">
+
+<select id="list" parameterType="com.iflat.pam.entity.MonthlyWorkView" resultMap="PamMonthlyWorkViewResult">
+    SELECT a.name AS pbName,#{month} AS month,(CASE WHEN b.status IS NULL OR b.status='0' THEN '未提交' ELSE '已提交' END) AS status
+    FROM PamPartyBranch a
+    LEFT JOIN (SELECT * FROM PamMonthlyWork
+              WHERE  DATEDIFF(MONTH,#{month},month)=0 AND status='1') b
+        ON a.name=b.pbName
+    ORDER BY a.sequence
+</select>
+
+<resultMap type="com.iflat.pam.entity.MonthlyWorkView" id="PamMonthlyWorkViewResult">
+    <result property="pbName" column="pbName" jdbcType="VARCHAR"/>
+    <result property="month" column="month" jdbcType="DATE"/>
+    <result property="status" column="status" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

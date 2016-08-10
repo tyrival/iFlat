@@ -2,7 +2,8 @@ Ext.define('iFlat.model.ss.PotentialHazard', {
     extend: 'Ext.data.Model',
     fields: [
         {name: 'potentialHazard.id', mapping: 'id', type: 'string'},
-        {name: 'potentialHazard.time', mapping: 'time', type: 'date'},
+        {name: 'potentialHazard.date', mapping: 'date', type: 'date'},
+        {name: 'potentialHazard.time', mapping: 'time', type: 'string'},
         {name: 'potentialHazard.riskLvl', mapping: 'riskLvl', type: 'string'},
         {name: 'potentialHazard.phType', mapping: 'phType', type: 'string'},
         {name: 'potentialHazard.phCode', mapping: 'phCode', type: 'string'},

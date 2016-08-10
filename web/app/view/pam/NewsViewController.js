@@ -27,6 +27,7 @@ Ext.define('iFlat.view.pam.NewsViewController', {
                 if (status == '待党群审核') {
                     param['news.isAdopt'] = '1';
                     param['news.secApprv'] = '0';
+                    param['news.amount'] = 5;
                     url = 'pam_approveNewsPam.action';
                 } else {
                     url = 'pam_approveNewsSec.action';
@@ -46,6 +47,7 @@ Ext.define('iFlat.view.pam.NewsViewController', {
             case '转保密办审核':
                 param['news.isAdopt'] = '1';
                 param['news.secApprv'] = '1';
+                param['news.amount'] = 5;
                 statusCmp.setValue('待保密办审核');
                 url = 'pam_approveNewsPam.action';
                 break;

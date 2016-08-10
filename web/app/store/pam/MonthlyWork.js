@@ -4,7 +4,7 @@ Ext.define('iFlat.store.pam.MonthlyWork', {
     autoLoad: false,
     model: 'iFlat.model.pam.MonthlyWork',
 
-    pageSize: 20,
+    pageSize: 30,
     proxy: {
         enablePaging: true,
         type: 'ajax',

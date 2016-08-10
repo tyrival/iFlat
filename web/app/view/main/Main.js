@@ -138,6 +138,18 @@ Ext.define('iFlat.view.main.Main', {
                     xtype: 'component',
                     anchor: '100%',
                     html: [
+                        '<h3>2016-08-08 党群</h3>',
+                        '<p>增加了报表：月度工作提交情况，用于总览各党支部月度工作记录提交情况。</p>',
+                    ]
+                }]
+            }, {
+                xtype: 'fieldset',
+                layout: 'anchor',
+                margin: '0 8 10 8',
+                items: [{
+                    xtype: 'component',
+                    anchor: '100%',
+                    html: [
                         '<h3>2016-08-05 党群</h3>',
                         '<p>1. 增加了新闻管理模块，管理新闻的投稿、审核，以及来稿的查询和统计；</p>',
                         '<p>2. 增加了党支部台账管理，管理党支部信息、党员信息，提交月度/年度工作，以及上述信息的查询和统计。</p>',
@@ -166,42 +178,6 @@ Ext.define('iFlat.view.main.Main', {
                     html: [
                         '<h3>2016-07-08 报表</h3>',
                         '<p>新增报表 报表-人事类-奖惩信息查询。用于查询工费结算模块的奖惩登记信息。</p>',
-                    ]
-                }]
-            }, {
-                xtype: 'fieldset',
-                layout: 'anchor',
-                margin: '0 8 10 8',
-                items: [{
-                    xtype: 'component',
-                    anchor: '100%',
-                    html: [
-                        '<h3>2016-07-05 工费结算</h3>',
-                        '<p>修复了 工费结算-奖惩管理-奖惩登记 列表界面数据无法显示的bug。</p>',
-                    ]
-                }]
-            }, {
-                xtype: 'fieldset',
-                layout: 'anchor',
-                margin: '0 8 10 8',
-                items: [{
-                    xtype: 'component',
-                    anchor: '100%',
-                    html: [
-                        '<h3>2016-07-04 工费结算</h3>',
-                        '<p>安全奖惩、质量奖惩、以及工费结算-奖惩管理-奖惩登记中增加了单据打印功能。</p>',
-                    ]
-                }]
-            }, {
-                xtype: 'fieldset',
-                layout: 'anchor',
-                margin: '0 8 10 8',
-                items: [{
-                    xtype: 'component',
-                    anchor: '100%',
-                    html: [
-                        '<h3>2016-07-04 工费结算</h3>',
-                        '<p>钢结构结算：流程改为由作业长开单-钢结构事业部经营科的结算员定价-事业部领导审批</p>',
                     ]
                 }]
             }]

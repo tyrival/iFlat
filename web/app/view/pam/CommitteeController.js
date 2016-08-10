@@ -23,10 +23,10 @@ Ext.define('iFlat.view.pam.CommitteeController', {
     },
 
     deleteCommittee: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-        Ext.Msg.confirm("提示!","确定要删除这条记录吗?",function(btn) {
+        Ext.Msg.confirm("提示!","删除操作会导致其中所有明细项都被删除，是否删除?",function(btn) {
             if(btn=="yes") {
                 Ext.Ajax.request({
-                    url: 'pam_deleteCommitteeSummary.action',
+                    url: 'pam_deleteCommittee.action',
                     params: record.data,
                     success: function (response, opts) {
                         pamCommitteeStore.reload();

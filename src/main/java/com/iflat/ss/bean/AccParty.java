@@ -9,7 +9,6 @@ public class AccParty {
     private String accId;
     private String type;  // 肇事人/受害人/肇事+受害
     private String dept;
-    private String busiDivision;
     private String team;
     private String groupName;
     private String title;
@@ -51,14 +50,6 @@ public class AccParty {
 
     public void setDept(String dept) {
         this.dept = dept;
-    }
-
-    public String getBusiDivision() {
-        return busiDivision;
-    }
-
-    public void setBusiDivision(String busiDivision) {
-        this.busiDivision = busiDivision;
     }
 
     public String getTeam() {
