@@ -249,7 +249,7 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
             SrSettlementDetlFirst o = (SrSettlementDetlFirst) list.get(i);
 
             if (StringUtil.isBlank(o.getApplyContent())) {
-                throw new Exception("导入失败。第" + i + "行施工内容为空，请填写后重新导入。");
+                throw new Exception("导入失败。第" + (i + 1) + "行/共" + list.size() + "行施工内容为空，请填写后重新导入。");
             }
 
             o.setId(UUID.randomUUID().toString());
@@ -274,6 +274,11 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
         return this.map;
     }
 
+
+    @Override
+    protected void afterImportData() throws Exception {
+        startProcess(this.srSettlement);
+    }
 
     public void setWorkflowService(WorkflowService workflowService) {
         this.workflowService = workflowService;

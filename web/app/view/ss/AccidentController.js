@@ -50,7 +50,6 @@ Ext.define('iFlat.view.ss.AccidentController', {
                 url :'ss_saveAccident.action',
                 success: function (form, action) {
                     Flat.util.tip(action.response.responseText);
-                    debugger;
                     var obj = Ext.JSON.decode(action.response.responseText)['object'];
                     if (!Flat.util.isEmpty(obj)) {
                         var id = obj['id'];

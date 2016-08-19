@@ -91,7 +91,7 @@ public class AjaxExceptionListener implements PreResultListener {
                             } else {
                                 localMsg = "AjaxExceptionListener异常，请联系管理员。异常信息：" + e.getMessage();
                             }
-                            delayTime = 30000;
+                            delayTime = 15000;
                         }
                         //强制返回值为success，使ajax返回状态为成功
                         actionInvocation.setResultCode("success");

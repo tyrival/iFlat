@@ -1,0 +1,77 @@
+Ext.define('iFlat.view.report.ss.AccPartyView', {
+    extend: 'Ext.window.Window',
+    alias: 'widget.ss-accpartyview',
+    title: '事故相关人员',
+    layout: 'fit',
+    modal: true,
+
+    id: 'ss-accpartyview',
+    closeAction: 'hide',
+    width: '80%',
+    height: '80%',
+
+    items: [{
+        xtype: 'gridpanel',
+        width: '100%',
+        flex: 1,
+        height: '100%',
+        scrollable: true,
+        store: rptSsAccPartyViewStore = Ext.create('iFlat.store.ss.AccParty'),
+        border: true,
+        columnLines: true,
+        columns: [{
+            header: '类型',
+            width: 150,
+            dataIndex: 'accParty.type',
+        }, {
+            header: '部门',
+            width: 150,
+            dataIndex: 'accParty.dept',
+        }, {
+            header: '姓名',
+            width: 120,
+            dataIndex: 'accParty.personName',
+        }, {
+            header: '工伤等级',
+            width: 100,
+            dataIndex: 'accParty.injuryLvl',
+        }, {
+            header: '特种作业证编号',
+            width: 120,
+            dataIndex: 'accParty.opIdCardNo',
+        }, {
+            header: '工号',
+            width: 120,
+            dataIndex: 'accParty.personAcc',
+        }, {
+            header: '施工队',
+            width: 180,
+            dataIndex: 'accParty.team',
+        }, {
+            header: '班组',
+            width: 120,
+            dataIndex: 'accParty.groupName',
+        }, {
+            header: '岗位/工种',
+            width: 120,
+            dataIndex: 'accParty.title',
+        }, {
+            header: '年龄',
+            width: 80,
+            dataIndex: 'accParty.age',
+        }, {
+            header: '工龄',
+            width: 80,
+            dataIndex: 'accParty.seniority',
+        }, {
+            header: '性别',
+            width: 80,
+            dataIndex: 'accParty.sex',
+        }, {
+            header: '事故ID',
+            width: 120,
+            dataIndex: 'accParty.accId',
+            hidden: true
+        }],
+    }],
+});

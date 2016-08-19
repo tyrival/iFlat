@@ -96,7 +96,7 @@ public class SrMainTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         String deptName = (String) delegateTask.getVariable("deptName");
         assignee.setPorgName(deptName);
-        assignee.setRoleName("修船车间主任");
+        assignee.setRoleName("车间主任");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }

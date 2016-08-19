@@ -28,11 +28,11 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         setAssignee(delegateTask, SrStatus.STATUS_SUBMIT);
         setTaskInfoMisc(delegateTask, SrStatus.STATUS_WORKSHOP_DIRECTOR_APPROVE);
 
-        UserInfoVo userInfoVo = Session.getUserInfo();
+        String deptName = (String) delegateTask.getVariable("deptName");
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName(userInfoVo.getPorgName());
+        assignee.setPorgName(deptName);
         assignee.setRoleName("车间主任");
-        if ("钢结构事业部".equals(userInfoVo.getPorgName())) {
+        if ("钢结构事业部".equals(deptName)) {
             assignee.setRoleName("钢结构事业部部长");
         }
         List<UserInfoVo> list = listAssignees(assignee);
@@ -122,7 +122,7 @@ public class SrMiscTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         String deptName = (String) delegateTask.getVariable("deptName");
         assignee.setPorgName(deptName);
-        assignee.setRoleName("修船车间主任");
+        assignee.setRoleName("车间主任");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }

@@ -1,6 +1,5 @@
 package com.iflat.system.service;
 
-import com.iflat.system.bean.Role;
 import com.iflat.system.bean.UserRole;
 import com.iflat.system.entity.UserRoleNode;
 import com.iflat.system.entity.UserRoleVo;
@@ -13,6 +12,8 @@ import java.util.List;
 public interface UserRoleService {
 
     public String saveUserRole(UserRole userRole, String itemselector) throws Exception;
+
+    public List<UserRole> saveUserRoleBatch(List<UserRole> list) throws Exception;
 
     public boolean saveDefaultRole(UserRole userRole) throws Exception;
 

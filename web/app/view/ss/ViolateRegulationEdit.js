@@ -230,13 +230,11 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 name: 'violateRegulation.area',
                 fieldLabel: '区域',
                 width: '40%',
-                editable: false
             },{
                 xtype: 'textfield',
                 name: 'violateRegulation.region',
                 fieldLabel: '位置',
                 width: '39%',
-                editable: false
             }]
         },{
             items: [{

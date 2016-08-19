@@ -90,6 +90,9 @@ public class SrMiscExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (srSettlement != null) {
             srSettlement.setStatus(status);
+            if (status.equals(SrStatus.STATUS_COMMERCIAL_CENTER_DIRECTOR_APPROVE)) {
+                srSettlement.setSettleFirstTime(new Date());
+            }
             if (status.equals(SrStatus.STATUS_HR_AUDIT)) {
                 srSettlement.setSettlementTime(new Date());
             }

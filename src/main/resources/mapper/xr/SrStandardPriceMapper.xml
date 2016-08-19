@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.SrStandardPrice">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.SrStandardPrice">
+    INSERT INTO XrSrStandardPrice
+    VALUES (#{id},#{code},#{category},#{content},#{specs},#{degree},#{comment},#{unit},#{quota},#{price},#{isQuota})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrSrStandardPrice
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.code},#{item.category},#{item.content},#{item.specs},#{item.degree},#{item.comment},#{item.unit},#{item.quota},#{item.price},#{item.isQuota}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.SrStandardPrice">
+    UPDATE XrSrStandardPrice
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="code!=null">code=#{code},</if>
+        <if test="category!=null">category=#{category},</if>
+        <if test="content!=null">content=#{content},</if>
+        <if test="specs!=null">specs=#{specs},</if>
+        <if test="degree!=null">degree=#{degree},</if>
+        <if test="comment!=null">comment=#{comment},</if>
+        <if test="unit!=null">unit=#{unit},</if>
+        <if test="quota!=null">quota=#{quota},</if>
+        <if test="price!=null">price=#{price},</if>
+        <if test="isQuota!=null">isQuota=#{isQuota},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrSrStandardPrice SET id=a.id,code=a.code,category=a.category,content=a.content,specs=a.specs,degree=a.degree,comment=a.comment,unit=a.unit,quota=a.quota,price=a.price,isQuota=a.isQuota
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.code} as code,#{item.category} as category,#{item.content} as content,#{item.specs} as specs,#{item.degree} as degree,#{item.comment} as comment,#{item.unit} as unit,#{item.quota} as quota,#{item.price} as price,#{item.isQuota} as isQuota
+    </foreach>
+    ) AS a
+    WHERE XrSrStandardPrice.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrSrStandardPrice
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.SrStandardPrice" resultMap="XrSrStandardPriceResult">
+    SELECT id,code,category,content,specs,degree,comment,unit,quota,price,isQuota
+    FROM XrSrStandardPrice
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+        <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+        <if test="category!=null and !&quot;&quot;.equals(category.trim())">AND category=#{category}</if>
+        <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment=#{comment}</if>
+        <if test="unit!=null and !&quot;&quot;.equals(unit.trim())">AND unit=#{unit}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.SrStandardPrice" id="XrSrStandardPriceResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="code" column="code" jdbcType="VARCHAR"/>
+    <result property="category" column="category" jdbcType="VARCHAR"/>
+    <result property="content" column="content" jdbcType="VARCHAR"/>
+    <result property="specs" column="specs" jdbcType="VARCHAR"/>
+    <result property="degree" column="degree" jdbcType="DOUBLE"/>
+    <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    <result property="unit" column="unit" jdbcType="VARCHAR"/>
+    <result property="quota" column="quota" jdbcType="DOUBLE"/>
+    <result property="price" column="price" jdbcType="DOUBLE"/>
+    <result property="isQuota" column="isQuota" jdbcType="BIT"/>
+</resultMap>
+</mapper>

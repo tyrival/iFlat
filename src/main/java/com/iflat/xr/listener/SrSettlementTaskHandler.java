@@ -9,6 +9,7 @@ import com.iflat.xr.bean.SrProjectMgr;
 import com.iflat.xr.entity.SrStatus;
 import org.activiti.engine.delegate.DelegateTask;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +19,6 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
     private BaseService xrSrProjectMgrService;
 
     public void submit(DelegateTask delegateTask) throws Exception {
-
         setTaskInfo(delegateTask, SrStatus.STATUS_UNSUBMIT);
     }
 
@@ -26,10 +26,10 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
 
         setTaskInfo(delegateTask, SrStatus.STATUS_WORKSHOP_DIRECTOR_APPROVE);
 
-        UserInfoVo userInfoVo = Session.getUserInfo();
+        String deptName = (String) delegateTask.getVariable("dept");
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName(userInfoVo.getPorgName());
-        assignee.setRoleName("修船车间主任");
+        assignee.setPorgName(deptName);
+        assignee.setRoleName("新荣车间领导");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -39,30 +39,30 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         setTaskInfo(delegateTask, SrStatus.STATUS_QUOTA_ESTIMATE);
 
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("人力资源部");
-        assignee.setRoleName("定额员");
+        assignee.setPorgName("新荣公司人力资源部");
+        assignee.setRoleName("新荣定额员");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void safetyAssess(DelegateTask delegateTask) throws Exception {
 
-        setTaskInfo(delegateTask, SrStatus.STATUS_QUOTA_ESTIMATE);
+        setTaskInfo(delegateTask, SrStatus.STATUS_SAFETY_ASSESS);
 
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("安保部");
-        assignee.setRoleName("安全员");
+        assignee.setPorgName("新荣公司安保部");
+        assignee.setRoleName("新荣安保部领导");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     public void qualityAssess(DelegateTask delegateTask) throws Exception {
 
-        setTaskInfo(delegateTask, SrStatus.STATUS_QUOTA_ESTIMATE);
+        setTaskInfo(delegateTask, SrStatus.STATUS_QUALITY_ASSESS);
 
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("技术质量部");
-        assignee.setRoleName("质检员");
+        assignee.setPorgName("新荣公司技术质量部");
+        assignee.setRoleName("新荣技术质量部领导");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -78,8 +78,17 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         if (list == null || list.size() == 0) {
             throw new Exception("未找到此工程的总管，请在“基础数据-修船总管”中定义");
         }
-        srProjectMgr = list.get(0);
-        delegateTask.setAssignee(srProjectMgr.getAccount());
+        delegateTask.addCandidateUsers(getSrProjectMgrs(list));
+    }
+
+    private List<String> getSrProjectMgrs(List<SrProjectMgr> list) {
+        List<String> candidate = new ArrayList<>();
+        if (list != null && list.size() != 0) {
+            for (int i = 0; i < list.size(); i++) {
+                candidate.add(list.get(i).getAccount());
+            }
+        }
+        return candidate;
     }
 
     public void businessDivisionDirectorApprove(DelegateTask delegateTask) throws Exception {
@@ -87,8 +96,8 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         setTaskInfo(delegateTask, SrStatus.STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE);
 
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("生产部");
-        assignee.setRoleName("生产部部长");
+        assignee.setPorgName("新荣公司生产部");
+        assignee.setRoleName("新荣生产部领导");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -99,8 +108,8 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
 
         // 通过CandidateUsers配置多个经营结算员
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("经营部");
-        assignee.setRoleName("经营结算员");
+        assignee.setPorgName("新荣公司经营部");
+        assignee.setRoleName("新荣经营结算员");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -110,8 +119,8 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         setTaskInfo(delegateTask, SrStatus.STATUS_COMMERCIAL_CENTER_DIRECTOR_APPROVE);
 
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("经营部");
-        assignee.setRoleName("经营部部长");
+        assignee.setPorgName("新荣公司经营部");
+        assignee.setRoleName("新荣经营部领导");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -123,7 +132,7 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         String deptName = (String) delegateTask.getVariable("dept");
         assignee.setPorgName(deptName);
-        assignee.setRoleName("修船车间结算员");
+        assignee.setRoleName("新荣车间结算员");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -135,7 +144,7 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         String deptName = (String) delegateTask.getVariable("dept");
         assignee.setPorgName(deptName);
-        assignee.setRoleName("修船车间主任");
+        assignee.setRoleName("新荣车间领导");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -145,8 +154,8 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         setTaskInfo(delegateTask, SrStatus.STATUS_HR_AUDIT);
 
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("人力资源部");
-        assignee.setRoleName("人力资源部结算员");
+        assignee.setPorgName("新荣公司人力资源部");
+        assignee.setRoleName("新荣人力资源部结算员");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -156,8 +165,8 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         setTaskInfo(delegateTask, SrStatus.STATUS_HR_DIRECTOR_APPROVE);
 
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("人力资源部");
-        assignee.setRoleName("人力资源部部长");
+        assignee.setPorgName("新荣公司人力资源部");
+        assignee.setRoleName("新荣人力资源部部长");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -167,9 +176,9 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         setTaskInfo(delegateTask, SrStatus.STATUS_LEADER_APPROVE);
 
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setRoleName("总经理");
+        assignee.setRoleName("新荣公司领导");
         List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.setAssignee(list.get(0).getAccount());
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
     /**
@@ -184,7 +193,7 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
     private BaseService getXrSrProjectMgrService() {
         if (xrSrProjectMgrService == null) {
             xrSrProjectMgrService = Application.getSpringContext()
-                    .getBean("xrXrSrProjectMgrService", BaseService.class);
+                    .getBean("srProjectMgrService", BaseService.class);
         }
         return xrSrProjectMgrService;
     }

@@ -242,13 +242,11 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 name: 'potentialHazard.area',
                 fieldLabel: '区域',
                 width: '40%',
-                editable: false
             },{
                 xtype: 'textfield',
                 name: 'potentialHazard.region',
                 fieldLabel: '位置',
                 width: '39%',
-                editable: false
             }]
         },{
             items: [{

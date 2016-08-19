@@ -102,12 +102,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecond', {
         xtype: 'toolbar',
         dock: 'bottom',
         ui: 'footer',
-        items: [{
-            xtype: 'button',
-            text: '历史意见',
-            ui: 'gray',
-            handler: 'showComment',
-        }, '->', {
+        items: ['->', {
             xtype: 'button',
             text: '通过',
             width: 100,

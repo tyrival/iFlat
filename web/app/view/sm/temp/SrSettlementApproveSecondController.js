@@ -51,7 +51,8 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecondController', {
     
     // 刷新grid数据
     refresh: function (btn) {
-        btn.up('grid').getStore().reload({
+        var grid = btn.up('grid');
+        grid.up('grid').getStore().reload({
             callback: function (records, operation, success) {
                 Flat.util.unmask();
                 var sum = 0;
@@ -127,7 +128,7 @@ Ext.define('iFlat.view.sm.temp.SrSettlementApproveSecondController', {
                             }
                         }
                     })
-                    form.down('textarea[name=co`mment]').setValue('');
+                    form.down('textarea[name=comment]').setValue('');
                 }
             })
         }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.SrProjectPrice">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.SrProjectPrice">
+    INSERT INTO XrSrProjectPrice
+    VALUES (#{id},#{projNo},#{projName},#{code},#{category},#{content},#{specs},#{degree},#{unit},#{quota},#{price},#{attachment},#{comment},#{isQuota},#{creatorAcc},#{creatorName},#{createTime})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrSrProjectPrice
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.code},#{item.category},#{item.content},#{item.specs},#{item.degree},#{item.unit},#{item.quota},#{item.price},#{item.attachment},#{item.comment},#{item.isQuota},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.SrProjectPrice">
+    UPDATE XrSrProjectPrice
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="projNo!=null">projNo=#{projNo},</if>
+        <if test="projName!=null">projName=#{projName},</if>
+        <if test="code!=null">code=#{code},</if>
+        <if test="category!=null">category=#{category},</if>
+        <if test="content!=null">content=#{content},</if>
+        <if test="specs!=null">specs=#{specs},</if>
+        <if test="degree!=null">degree=#{degree},</if>
+        <if test="unit!=null">unit=#{unit},</if>
+        <if test="quota!=null">quota=#{quota},</if>
+        <if test="price!=null">price=#{price},</if>
+        <if test="attachment!=null">attachment=#{attachment},</if>
+        <if test="comment!=null">comment=#{comment},</if>
+        <if test="isQuota!=null">isQuota=#{isQuota},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrSrProjectPrice SET id=a.id,projNo=a.projNo,projName=a.projName,code=a.code,category=a.category,content=a.content,specs=a.specs,degree=a.degree,unit=a.unit,quota=a.quota,price=a.price,attachment=a.attachment,comment=a.comment,isQuota=a.isQuota,creatorAcc=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.projNo} as projNo,#{item.projName} as projName,#{item.code} as code,#{item.category} as category,#{item.content} as content,#{item.specs} as specs,#{item.degree} as degree,#{item.unit} as unit,#{item.quota} as quota,#{item.price} as price,#{item.attachment} as attachment,#{item.comment} as comment,#{item.isQuota} as isQuota,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime
+    </foreach>
+    ) AS a
+    WHERE XrSrProjectPrice.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrSrProjectPrice
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.SrProjectPrice" resultMap="XrSrProjectPriceResult">
+    SELECT id,projNo,projName,code,category,content,specs,price,unit,quota,price,attachment,comment,isQuota,creatorAcc,creatorName,createTime
+    FROM XrSrProjectPrice
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+        <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+        <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+        <if test="category!=null and !&quot;&quot;.equals(category.trim())">AND category=#{category}</if>
+        <if test="unit!=null and !&quot;&quot;.equals(unit.trim())">AND unit=#{unit}</if>
+        <if test="attachment!=null and !&quot;&quot;.equals(attachment.trim())">AND attachment=#{attachment}</if>
+        <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment=#{comment}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.SrProjectPrice" id="XrSrProjectPriceResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="projName" column="projName" jdbcType="VARCHAR"/>
+    <result property="code" column="code" jdbcType="VARCHAR"/>
+    <result property="category" column="category" jdbcType="VARCHAR"/>
+    <result property="content" column="content" jdbcType="VARCHAR"/>
+    <result property="specs" column="specs" jdbcType="VARCHAR"/>
+    <result property="degree" column="degree" jdbcType="DOUBLE"/>
+    <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    <result property="unit" column="unit" jdbcType="VARCHAR"/>
+    <result property="quota" column="quota" jdbcType="DOUBLE"/>
+    <result property="price" column="price" jdbcType="DOUBLE"/>
+    <result property="isQuota" column="isQuota" jdbcType="BIT"/>
+    <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

@@ -189,12 +189,12 @@ public class MybatisCoding {
                 if ("class java.lang.String".equals(type)) {
 
                     // <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
-                    mid.append("        <if test=\"").append(name).append("!=null and !&quot;&quot;.equals(").append(name).append(".trim())\">").append(name).append("=#{").append(name).append("}</if>\n");
-                } else {
+                    mid.append("        <if test=\"").append(name).append("!=null and !&quot;&quot;.equals(").append(name).append(".trim())\">AND ").append(name).append("=#{").append(name).append("}</if>\n");
+                }/* else {
 
                     // <if test="id!=null">id=#{id}</if>
                     mid.append("        <if test=\"").append(name).append("!=null\">").append(name).append("=#{").append(name).append("}</if>\n");
-                }
+                }*/
             }
             selectBody = new StringBuilder(selectBody.substring(0, selectBody.length() - 1));
             mid.append("    </where>").append("\n");

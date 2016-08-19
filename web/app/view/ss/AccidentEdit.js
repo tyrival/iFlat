@@ -140,13 +140,11 @@ Ext.define('iFlat.view.ss.AccidentEdit', {
                 name: 'accident.area',
                 fieldLabel: '区域',
                 width: '50%',
-                editable: false
             },{
                 xtype: 'textfield',
                 name: 'accident.region',
                 fieldLabel: '位置',
                 width: '49%',
-                editable: false
             }]
         },{
             items: [{

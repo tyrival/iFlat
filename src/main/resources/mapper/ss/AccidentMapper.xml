@@ -12,8 +12,8 @@
     <update id="update" parameterType="com.iflat.ss.bean.Accident">
         UPDATE SsAccident
         <set>
-            <if test="date!=null)">date=#{date},</if>
-            <if test="time!=null)">time=#{time},</if>
+            <if test="date!=null">date=#{date},</if>
+            <if test="time!=null">time=#{time},</if>
             <if test="projNo!=null">projNo=#{projNo},</if>
             <if test="projName!=null">projName=#{projName},</if>
             <if test="area!=null">area=#{area},</if>

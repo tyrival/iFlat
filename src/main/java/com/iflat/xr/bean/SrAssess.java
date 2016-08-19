@@ -1,11 +1,13 @@
 package com.iflat.xr.bean;
 
+
 import java.util.Date;
 
 /**
  * 条线考核
  */
 public class SrAssess {
+
     private String id;
     private String settId;  // 结算单id
     private String type;  // 总管/生产部/安全/质量

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.SrProjectMgr">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.SrProjectMgr">
+    INSERT INTO XrSrProjectMgr
+    VALUES (#{id},#{projNo},#{projName},#{account},#{name})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrSrProjectMgr
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.account},#{item.name}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.SrProjectMgr">
+    UPDATE XrSrProjectMgr
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="projNo!=null">projNo=#{projNo},</if>
+        <if test="projName!=null">projName=#{projName},</if>
+        <if test="account!=null">account=#{account},</if>
+        <if test="name!=null">name=#{name},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrSrProjectMgr SET id=a.id,projNo=a.projNo,projName=a.projName,account=a.account,name=a.name
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.projNo} as projNo,#{item.projName} as projName,#{item.account} as account,#{item.name} as name
+    </foreach>
+    ) AS a
+    WHERE XrSrProjectMgr.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrSrProjectMgr
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.SrProjectMgr" resultMap="XrSrProjectMgrResult">
+    SELECT id,projNo,projName,account,name
+    FROM XrSrProjectMgr
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+        <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+        <if test="account!=null and !&quot;&quot;.equals(account.trim())">AND account=#{account}</if>
+        <if test="name!=null and !&quot;&quot;.equals(name.trim())">name=#{name}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.SrProjectMgr" id="XrSrProjectMgrResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="projName" column="projName" jdbcType="VARCHAR"/>
+    <result property="account" column="account" jdbcType="VARCHAR"/>
+    <result property="name" column="name" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

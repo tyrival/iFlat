@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.Team">
+
+<select id="list" parameterType="com.iflat.xr.bean.Team" resultMap="XrTeamResult">
+    SELECT dept,team,type
+    FROM V_XrTeam
+    <where>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">dept=#{dept}</if>
+        <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
+        <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+    </where>
+    ORDER BY dept,team,type
+</select>
+
+<resultMap type="com.iflat.xr.bean.Team" id="XrTeamResult">
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="team" column="team" jdbcType="VARCHAR"/>
+    <result property="type" column="type" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

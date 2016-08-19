@@ -1,7 +1,5 @@
 package com.iflat.pam.entity;
 
-import com.iflat.util.code.Main;
-
 import java.util.Date;
 
 /**

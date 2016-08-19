@@ -14,6 +14,7 @@ public interface UserRoleDao {
     public int insertBatch(List<UserRole> list) throws Exception;
 
     public int update(UserRole userRole) throws Exception;
+    public int updateBatch(List<UserRole> list) throws Exception;
 
     public int deleteByAccount(String account) throws Exception;
 

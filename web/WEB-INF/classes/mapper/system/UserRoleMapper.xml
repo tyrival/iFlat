@@ -17,6 +17,16 @@
         WHERE account=#{account} AND roleId=#{roleId}
     </update>
 
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE SysUserRole SET account=a.account,roleId=a.roleId,sequence=a.sequence
+        FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.account} as account,#{item.roleId} as roleId,#{item.sequence} as sequence
+        </foreach>
+        ) AS a
+        WHERE SysUserRole.account=a.account AND SysUserRole.roleId=a.roleId
+    </update>
+
     <delete id="deleteByAccount" parameterType="String">
         DELETE SysUserRole
         WHERE account=#{account}

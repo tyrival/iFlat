@@ -12,7 +12,7 @@
     <update id="update" parameterType="com.iflat.ss.bean.FsArea">
         UPDATE SsFsArea
         <set>
-            <if test="time!=null)">time=#{time},</if>
+            <if test="time!=null">time=#{time},</if>
             <if test="code!=null">code=#{code},</if>
             <if test="dept!=null">dept=#{dept},</if>
             <if test="type!=null">type=#{type},</if>

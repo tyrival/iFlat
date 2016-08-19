@@ -12,8 +12,8 @@
     <update id="update" parameterType="com.iflat.ss.bean.ViolateRegulation">
         UPDATE SsViolateRegulation
         <set>
-            <if test="date!=null)">date=#{date},</if>
-            <if test="time!=null)">time=#{time},</if>
+            <if test="date!=null">date=#{date},</if>
+            <if test="time!=null">time=#{time},</if>
             <if test="riskLvl!=null">riskLvl=#{riskLvl},</if>
             <if test="code!=null">code=#{code},</if>
             <if test="dept!=null">dept=#{dept},</if>

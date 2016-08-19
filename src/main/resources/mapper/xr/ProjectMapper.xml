@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.Project">
+
+<select id="list" parameterType="com.iflat.xr.bean.Project" resultMap="XrProjectResult">
+    SELECT projNo,category,code,name,shortName,status,completeTime
+    FROM V_XrProject
+    <where>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">projNo=#{projNo}</if>
+        <if test="category!=null and !&quot;&quot;.equals(category.trim())">AND category=#{category}</if>
+        <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+        <if test="name!=null and !&quot;&quot;.equals(name.trim())">AND name=#{name}</if>
+        <if test="shortName!=null and !&quot;&quot;.equals(shortName.trim())">AND shortName=#{shortName}</if>
+        <if test="status!=null and !&quot;&quot;.equals(status.trim())">AND status=#{status}</if>
+    </where>
+    ORDER BY projNo
+</select>
+
+<resultMap type="com.iflat.xr.bean.Project" id="XrProjectResult">
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="category" column="category" jdbcType="VARCHAR"/>
+    <result property="code" column="code" jdbcType="VARCHAR"/>
+    <result property="name" column="name" jdbcType="VARCHAR"/>
+    <result property="shortName" column="shortName" jdbcType="VARCHAR"/>
+    <result property="status" column="status" jdbcType="VARCHAR"/>
+    <result property="completeTime" column="completeTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

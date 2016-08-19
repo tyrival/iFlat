@@ -53,6 +53,11 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
+    public List<UserRole> saveUserRoleBatch(List<UserRole> list) throws Exception {
+        return this.userRoleDao.updateBatch(list) > 0 ? list : null;
+    }
+
+    @Override
     public boolean saveDefaultRole(UserRole userRole) throws Exception {
         boolean flag = false;
         int result = 0;

@@ -1,7 +1,5 @@
 package com.iflat.ss.entity;
 
-import com.iflat.util.code.Main;
-
 /**
  * Created by tyriv on 2016/8/9.
  */

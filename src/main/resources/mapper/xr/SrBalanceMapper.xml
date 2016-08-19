@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.SrBalance">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.SrBalance">
+    INSERT INTO XrSrBalance
+    VALUES (#{id},#{dept},#{amount},#{adjustment})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrSrBalance
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.dept},#{item.amount},#{item.adjustment}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.SrBalance">
+    UPDATE XrSrBalance
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="dept!=null">dept=#{dept},</if>
+        <if test="amount!=null">amount=#{amount},</if>
+        <if test="adjustment!=null">adjustment=#{adjustment},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrSrBalance SET id=a.id,dept=a.dept,amount=a.amount,adjustment=a.adjustment
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.dept} as dept,#{item.amount} as amount,#{item.adjustment} as adjustment
+    </foreach>
+    ) AS a
+    WHERE XrSrBalance.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrSrBalance
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.SrBalance" resultMap="XrSrBalanceResult">
+    SELECT id,dept,amount,adjustment
+    FROM XrSrBalance
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+        <if test="amount!=null">AND amount=#{amount}</if>
+        <if test="adjustment!=null">AND adjustment=#{adjustment}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.SrBalance" id="XrSrBalanceResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="amount" column="amount" jdbcType="DOUBLE"/>
+    <result property="adjustment" column="adjustment" jdbcType="DOUBLE"/>
+</resultMap>
+</mapper>

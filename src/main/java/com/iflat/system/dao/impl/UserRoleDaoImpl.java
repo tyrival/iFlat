@@ -27,6 +27,11 @@ public class UserRoleDaoImpl implements UserRoleDao {
     }
 
     @Override
+    public int updateBatch(List<UserRole> list) throws Exception {
+        return getSqlSessionTemplate().update("System.UserRole.updateBatch", list);
+    }
+
+    @Override
     public int deleteByAccount(String account) throws Exception {
 
         return getSqlSessionTemplate().delete("System.UserRole.deleteByAccount", account);

@@ -1,0 +1,27 @@
+Ext.define('iFlat.model.xr.SrSettlementDetl', {
+    extend: 'Ext.data.Model',
+    fields: [
+        {name: 'srSettlementDetl.id', mapping: 'id', type: 'string'},
+        {name: 'srSettlementDetl.pid', mapping: 'pid', type: 'string'},
+        {name: 'srSettlementDetl.code', mapping: 'code', type: 'string'},
+        {name: 'srSettlementDetl.category', mapping: 'category', type: 'string'},
+        {name: 'srSettlementDetl.isQuota', mapping: 'isQuota', type: 'boolean'},
+        {name: 'srSettlementDetl.specs', mapping: 'specs', type: 'string'},
+        {name: 'srSettlementDetl.unit', mapping: 'unit', type: 'string'},
+        {name: 'srSettlementDetl.applyContent', mapping: 'applyContent', type: 'string'},
+        {name: 'srSettlementDetl.applyQty', mapping: 'applyQty', type: 'number'},
+        {name: 'srSettlementDetl.adjustContent', mapping: 'adjustContent', type: 'string'},
+        {name: 'srSettlementDetl.adjustQty', mapping: 'adjustQty', type: 'number'},
+        {name: 'srSettlementDetl.quotaUnit', mapping: 'quotaUnit', type: 'number'},
+        {name: 'srSettlementDetl.quota', mapping: 'quota', type: 'number'},
+        {name: 'srSettlementDetl.degree', mapping: 'degree', type: 'number'},
+        {name: 'srSettlementDetl.priceFirst', mapping: 'priceFirst', type: 'number'},
+        {name: 'srSettlementDetl.amountFirst', mapping: 'amountFirst', type: 'number'},
+        {name: 'srSettlementDetl.priceSecond', mapping: 'priceSecond', type: 'number'},
+        {name: 'srSettlementDetl.amountSecond', mapping: 'amountSecond', type: 'number'},
+        {name: 'srSettlementDetl.comment', mapping: 'comment', type: 'string'},
+        {name: 'srSettlementDetl.creatorAcc', mapping: 'creatorAcc', type: 'string'},
+        {name: 'srSettlementDetl.creatorName', mapping: 'creatorName', type: 'string'},
+        {name: 'srSettlementDetl.createTime', mapping: 'createTime', type: 'date'},
+    ]
+});

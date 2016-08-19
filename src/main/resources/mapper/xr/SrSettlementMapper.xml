@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.SrSettlement">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.SrSettlement">
+    INSERT INTO XrSrSettlement
+    VALUES (#{id},#{progress},#{projNo},#{projName},#{dept},#{team},#{isOutwork},#{amountFirst},#{amountSecond},#{attachment},#{balApplAtt},#{comment},#{status},#{isQuota},#{creatorAcc},#{creatorName},#{createTime},#{teamAcc},#{teamName},#{score},#{opinion},#{settFirstAcc},#{settFirstName},#{settFirstTime},#{settlementTime})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrSrSettlement
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.progress},#{item.projNo},#{item.projName},#{item.dept},#{item.team},#{item.isOutwork},#{item.amountFirst},#{item.amountSecond},#{item.attachment},,#{item.balApplAtt},#{item.comment},#{item.status},#{item.isQuota},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.teamAcc},#{item.teamName},#{item.score},#{item.opinion},#{item.settFirstAcc},#{item.settFirstName},#{item.settFirstTime},#{item.settlementTime}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.SrSettlement">
+    UPDATE XrSrSettlement
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="progress!=null">progress=#{progress},</if>
+        <if test="projNo!=null">projNo=#{projNo},</if>
+        <if test="projName!=null">projName=#{projName},</if>
+        <if test="dept!=null">dept=#{dept},</if>
+        <if test="team!=null">team=#{team},</if>
+        <if test="isOutwork!=null">isOutwork=#{isOutwork},</if>
+        <if test="amountFirst!=null">amountFirst=#{amountFirst},</if>
+        <if test="amountSecond!=null">amountSecond=#{amountSecond},</if>
+        <if test="attachment!=null">attachment=#{attachment},</if>
+        <if test="balApplAtt!=null">balApplAtt=#{balApplAtt},</if>
+        <if test="comment!=null">comment=#{comment},</if>
+        <if test="status!=null">status=#{status},</if>
+        <if test="isQuota!=null">isQuota=#{isQuota},</if>
+        <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+        <if test="creatorName!=null">creatorName=#{creatorName},</if>
+        <if test="createTime!=null">createTime=#{createTime},</if>
+        <if test="teamAcc!=null">teamAcc=#{teamAcc},</if>
+        <if test="teamName!=null">teamName=#{teamName},</if>
+        <if test="score!=null">score=#{score},</if>
+        <if test="opinion!=null">opinion=#{opinion},</if>
+        <if test="settFirstAcc!=null">settFirstAcc=#{settFirstAcc},</if>
+        <if test="settFirstName!=null">settFirstName=#{settFirstName},</if>
+        <if test="settFirstTime!=null">settFirstTime=#{settFirstTime},</if>
+        <if test="settlementTime!=null">settlementTime=#{settlementTime},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrSrSettlement SET id=a.id,progress=a.progress,projNo=a.projNo,projName=a.projName,dept=a.dept,team=a.team,isOutwork=a.isOutwork,amountFirst=a.amountFirst,amountSecond=a.amountSecond,attachment=a.attachment,balApplAtt=a.balApplAtt,comment=a.comment,status=a.status,isQuota=a.amountSecond,isQuota=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime,teamAcc=a.teamAcc,teamName=a.teamName,score=a.score,opinion=a.opinion,settFirstAcc=a.settFirstAcc,settFirstName=a.settFirstName,settFirstTime=a.settFirstTime,settlementTime=a.settlementTime
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.progress} as progress,#{item.projNo} as projNo,#{item.projName} as projName,#{item.dept} as dept,#{item.team} as team,#{item.isOutwork} as isOutwork,#{item.amountFirst} as amountFirst,#{item.amountSecond} as amountSecond,#{item.attachment} as attachment,#{item.balApplAtt} as balApplAtt,#{item.comment} as comment,#{item.status} as status,#{item.isQuota} as isQuota,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime,#{item.teamAcc} as teamAcc,#{item.teamName} as teamName,#{item.score} as score,#{item.opinion} as opinion,#{item.settFirstAcc} as settFirstAcc,#{item.settFirstName} as settFirstName,#{item.settFirstTime} as settFirstTime,#{item.settlementTime} as settlementTime
+    </foreach>
+    ) AS a
+    WHERE XrSrSettlement.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrSrSettlement
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.SrSettlement" resultMap="XrSrSettlementResult">
+    SELECT id,progress,projNo,projName,dept,team,isOutwork,amountFirst,amountSecond,attachment,balApplAtt,comment,status,isQuota,creatorAcc,creatorName,createTime,teamAcc,teamName,score,opinion,settFirstAcc,settFirstName,settFirstTime,settlementTime
+    FROM XrSrSettlement
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+        <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+        <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
+        <if test="attachment!=null and !&quot;&quot;.equals(attachment.trim())">AND attachment=#{attachment}</if>
+        <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment=#{comment}</if>
+        <if test="status!=null and !&quot;&quot;.equals(status.trim())">AND status=#{status}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+        <if test="teamAcc!=null and !&quot;&quot;.equals(teamAcc.trim())">AND teamAcc=#{teamAcc}</if>
+        <if test="teamName!=null and !&quot;&quot;.equals(teamName.trim())">AND teamName=#{teamName}</if>
+        <if test="opinion!=null and !&quot;&quot;.equals(opinion.trim())">AND opinion=#{opinion}</if>
+        <if test="settFirstAcc!=null and !&quot;&quot;.equals(settFirstAcc.trim())">AND settFirstAcc=#{settFirstAcc}</if>
+        <if test="settFirstName!=null and !&quot;&quot;.equals(settFirstName.trim())">AND settFirstName=#{settFirstName}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.SrSettlement" id="XrSrSettlementResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="progress" column="progress" jdbcType="DOUBLE"/>
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="projName" column="projName" jdbcType="VARCHAR"/>
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="team" column="team" jdbcType="VARCHAR"/>
+    <result property="isOutwork" column="isOutwork" jdbcType="BIT"/>
+    <result property="amountFirst" column="amountFirst" jdbcType="DOUBLE"/>
+    <result property="amountSecond" column="amountSecond" jdbcType="DOUBLE"/>
+    <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+    <result property="balApplAtt" column="balApplAtt" jdbcType="VARCHAR"/>
+    <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    <result property="status" column="status" jdbcType="VARCHAR"/>
+    <result property="isQuota" column="isQuota" jdbcType="BIT"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+    <result property="teamAcc" column="teamAcc" jdbcType="VARCHAR"/>
+    <result property="teamName" column="teamName" jdbcType="VARCHAR"/>
+    <result property="score" column="score" jdbcType="DOUBLE"/>
+    <result property="opinion" column="opinion" jdbcType="VARCHAR"/>
+    <result property="settFirstAcc" column="settFirstAcc" jdbcType="VARCHAR"/>
+    <result property="settFirstName" column="settFirstName" jdbcType="VARCHAR"/>
+    <result property="settFirstTime" column="settFirstTime" jdbcType="DATE"/>
+    <result property="settlementTime" column="settlementTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

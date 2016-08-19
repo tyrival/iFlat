@@ -20,8 +20,8 @@ public class ActionCoding {
         String moduleName = t.substring(0, t.indexOf("."));
         String shortClassName = temp.substring(temp.lastIndexOf(".") + 1, temp.length());
         String variableName = StringUtil.lowerCaseFirstChar(shortClassName);
-        String actionClassName = temp.replace(shortClassName, StringUtil.upperCaseFirstChar(moduleName) + "Action");
-        String actionFilePath = path + actionClassName.replace(".", "\\") + ".java";
+        String actionClassName = StringUtil.upperCaseFirstChar(moduleName) + "Action";
+        String actionFilePath = path + temp.replace(shortClassName, StringUtil.upperCaseFirstChar(moduleName) + "Action").replace(".", "\\") + ".java";
 
         File file = new File(actionFilePath);
         if (!file.exists()) {
@@ -35,8 +35,8 @@ public class ActionCoding {
                     .append("\n")
                     .append("import com.iflat.base.action.impl.BaseAction;").append("\n")
                     .append("import com.iflat.base.entity.Page;").append("\n")
-                    .append("import com.iflat.base.service.BaseService").append("\n")
-                    .append("import com.opensymphony.xwork2.ModelDriven").append("\n")
+                    .append("import com.iflat.base.service.BaseService;").append("\n")
+                    .append("import com.opensymphony.xwork2.ModelDriven;").append("\n")
                     .append("\n")
                     .append("import java.io.File;").append("\n")
                     .append("\n")

@@ -28,10 +28,10 @@ public class SrSysTaskHandler extends WorkflowTaskListener {
         setAssignee(delegateTask, SrStatus.STATUS_SUBMIT);
         setTaskInfoSys(delegateTask, SrStatus.STATUS_WORKSHOP_DIRECTOR_APPROVE);
 
-        UserInfoVo userInfoVo = Session.getUserInfo();
+        String deptName = (String) delegateTask.getVariable("deptName");
         UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName(userInfoVo.getPorgName());
-        assignee.setRoleName("修船车间主任");
+        assignee.setPorgName(deptName);
+        assignee.setRoleName("车间主任");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
@@ -119,7 +119,7 @@ public class SrSysTaskHandler extends WorkflowTaskListener {
         UserInfoVo assignee = new UserInfoVo();
         String deptName = (String) delegateTask.getVariable("deptName");
         assignee.setPorgName(deptName);
-        assignee.setRoleName("修船车间主任");
+        assignee.setRoleName("车间主任");
         List<UserInfoVo> list = listAssignees(assignee);
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }

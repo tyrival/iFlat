@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.SrBalanceAppl">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.SrBalanceAppl">
+    INSERT INTO XrSrBalanceAppl
+    VALUES (#{id},#{projNo},#{projName},#{dept},#{description},#{attachment},#{creatorAcc},#{creatorName},#{createTime})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrSrBalanceAppl
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.dept},#{item.description},#{item.attachment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.SrBalanceAppl">
+    UPDATE XrSrBalanceAppl
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="projNo!=null">projNo=#{projNo},</if>
+        <if test="projName!=null">projName=#{projName},</if>
+        <if test="dept!=null">dept=#{dept},</if>
+        <if test="description!=null">description=#{description},</if>
+        <if test="attachment!=null">attachment=#{attachment},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrSrBalanceAppl SET id=a.id,projNo=a.projNo,projName=a.projName,dept=a.dept,description=a.description,attachment=a.attachment,creatorAcc=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.projNo} as projNo,#{item.projName} as projName,#{item.dept} as dept,#{item.description} as description,#{item.attachment} as attachment,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime
+    </foreach>
+    ) AS a
+    WHERE XrSrBalanceAppl.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrSrBalanceAppl
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.SrBalanceAppl" resultMap="XrSrBalanceApplResult">
+    SELECT id,projNo,projName,dept,description,attachment,creatorAcc,creatorName,createTime
+    FROM XrSrBalanceAppl
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+        <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+        <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description=#{description}</if>
+        <if test="attachment!=null and !&quot;&quot;.equals(attachment.trim())">AND attachment=#{attachment}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.SrBalanceAppl" id="XrSrBalanceApplResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="projName" column="projName" jdbcType="VARCHAR"/>
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="description" column="description" jdbcType="VARCHAR"/>
+    <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

@@ -9,7 +9,7 @@ public class SrStatus {
     public static final String STATUS_UNSUBMIT = "未提交";
     public static final String STATUS_SUBMIT = "提交";
     public static final String STATUS_WORKSHOP_DIRECTOR_APPROVE = "车间领导审批";
-    public static final String STATUS_QUOTA_ESTIMATE = "定额估算";
+    public static final String STATUS_QUOTA_ESTIMATE = "人力资源部估定额";
     public static final String STATUS_PROJECT_MANAGER_AUDIT = "总管审核";
     public static final String STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE = "生产部部长审批";
     public static final String STATUS_SAFETY_ASSESS = "安保部考核";

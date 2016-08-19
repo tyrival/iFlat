@@ -1,6 +1,6 @@
 package com.iflat.ss.entity;
 
-import com.iflat.util.code.Main;
+import com.iflat.util.code.CodeUtil;
 
 /**
  * Created by tyriv on 2016/8/9.
@@ -8,7 +8,7 @@ import com.iflat.util.code.Main;
 public class VrCodeRiskLvl {
 
     public static void main(String[] args) {
-        Main.generate("com.iflat.ss.entity.VrCodeRiskLvl");
+        CodeUtil.generate("com.iflat.ss.entity.VrCodeRiskLvl");
     }
     private String riskLvl;
 

@@ -19,13 +19,16 @@
     <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMain.bpmn">
       <view grid="false" />
     </stateFile>
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/XrSrSettlement.bpmn">
+      <view grid="false" />
+    </stateFile>
     <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SrSettlementMisc.bpmn">
       <view grid="false" />
     </stateFile>
     <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/sm/SbSettlement.bpmn">
       <view grid="false" />
     </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/SrSettlement.bpmn">
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/XrSrSettlement.bpmn">
       <view grid="false" />
     </stateFile>
   </component>

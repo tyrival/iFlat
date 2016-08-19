@@ -78,6 +78,9 @@ public class MsSqlCoding {
                     sqlType = "DATETIME";
                     break;
             }
+            if ("id".equals(name)) {
+                sqlType = "CHAR(36)";
+            }
             if (!StringUtil.isBlank(sqlType)) {
                 sb.append("    ").append(name).append(" ").append(sqlType).append(",").append("\n");
             }

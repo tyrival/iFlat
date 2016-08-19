@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.SrAssess">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.SrAssess">
+    INSERT INTO XrSrAssess
+    VALUES (#{id},#{settId},#{type},#{score},#{description},#{creatorAcc},#{creatorName},#{createTime})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrSrAssess
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.settId},#{item.type},#{item.score},#{item.description},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.SrAssess">
+    UPDATE XrSrAssess
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="settId!=null">settId=#{settId},</if>
+        <if test="type!=null">type=#{type},</if>
+        <if test="score!=null">score=#{score},</if>
+        <if test="description!=null">description=#{description},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrSrAssess SET id=a.id,settId=a.settId,type=a.type,score=a.score,description=a.description,creatorAcc=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.settId} as settId,#{item.type} as type,#{item.score} as score,#{item.description} as description,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime
+    </foreach>
+    ) AS a
+    WHERE XrSrAssess.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrSrAssess
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.SrAssess" resultMap="XrSrAssessResult">
+    SELECT id,settId,type,score,description,creatorAcc,creatorName,createTime
+    FROM XrSrAssess
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
+        <if test="settId!=null and !&quot;&quot;.equals(settId.trim())">AND settId=#{settId}</if>
+        <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+        <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description=#{description}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.SrAssess" id="XrSrAssessResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="settId" column="settId" jdbcType="VARCHAR"/>
+    <result property="type" column="type" jdbcType="VARCHAR"/>
+    <result property="score" column="score" jdbcType="DOUBLE"/>
+    <result property="description" column="description" jdbcType="VARCHAR"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

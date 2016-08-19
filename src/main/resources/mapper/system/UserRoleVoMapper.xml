@@ -14,7 +14,7 @@
             <if test="roleName!=null">AND roleName=#{roleName}</if>
             <if test="category!=null">AND category=#{category}</if>
         </where>
-        ORDER BY roleName,sequence,Account DESC
+        ORDER BY sequence,roleName,account DESC
     </select>
 
     <resultMap type="com.iflat.system.entity.UserRoleVo" id="SysUserRoleVoResult">

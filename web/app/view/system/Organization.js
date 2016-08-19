@@ -66,7 +66,8 @@ Ext.define('iFlat.view.system.Organization', {
             store: sysOrganizationEditStore = Ext.create('iFlat.store.system.OrganizationEdit'),
             id: 'system-organization-select',
             queryMode: 'local',
-            editable: false,
+            editable: true,
+            anyMatch: true,
             forceSelection : true,// 必须选择一个选项
             valueField : 'orgId',// 值,可选
             displayField : 'orgName',// 显示文本 ，对应下面store里的'text'，

@@ -18,8 +18,9 @@ public class SrSettlementDetl {
     private double applyQty;  // 申请数量
     private String adjustContent;  // 生产部确认内容
     private double adjustQty;  // 生产部确认数量
-    private double quota;  // 定额
+    private double quotaUnit;  // 每单位施工内容的定额
     private double degree;  // 难度系数
+    private double quota;  // 定额
     private double priceFirst;  // 一级单价
     private double amountFirst;  // 一级总额，自动计算，需定额时为 定额*单价*难度系数；不需定额时为 确认数量*单价*难度系数
     private double priceSecond;  // 二级单价
@@ -29,12 +30,20 @@ public class SrSettlementDetl {
     private String creatorName;
     private Date createTime;
 
-    public boolean isQuota() {
+    public double getQuotaUnit() {
+        return quotaUnit;
+    }
+
+    public void setQuotaUnit(double quotaUnit) {
+        this.quotaUnit = quotaUnit;
+    }
+
+    public boolean getIsQuota() {
         return isQuota;
     }
 
-    public void setQuota(boolean quota) {
-        isQuota = quota;
+    public void setIsQuota(boolean isQuota) {
+        this.isQuota = isQuota;
     }
 
     public String getId() {

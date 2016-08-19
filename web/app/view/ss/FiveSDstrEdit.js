@@ -112,6 +112,12 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                         width: '33%',
                         editable: false,
                         fieldLabel: '所属部门',
+                        listeners: {
+                            change: function(cb, newV, oldV, opts) {
+                                ssFiveSRegionPersonNameStore.getProxy().extraParams['employee.deptName'] = newV;
+                                ssFiveSRegionPersonNameStore.reload();
+                            }
+                        }
                     },{
                         xtype: 'textfield',
                         name: 'fiveS.otherArea',
@@ -139,7 +145,7 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                         editable: false,
                         fieldLabel: '违规部位',
                     }]
-                },{
+                },/*{
                     items: [{
                         xtype: 'textfield',
                         name: 'fiveS.regionPersonName',
@@ -153,7 +159,7 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                         editable: false,
                         fieldLabel: '账号',
                     }]
-                },{
+                },*/{
                     items: [{
                         xtype: 'textfield',
                         name: 'fiveS.fsType',
@@ -214,9 +220,37 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
             items: [{
                 items: [{
                     xtype: 'combo',
+                    name: 'fiveS.regionPersonName',
+                    queryMode: 'local',
+                    allowBlank: true,
+                    editable: true,
+                    forceSelection : true,
+                    typeAhead: true,
+                    minChars: 0,
+                    displayField: 'name',
+                    valueField: 'name',
+                    width: '33%',
+                    fieldLabel: '区域负责人',
+                    store: ssFiveSRegionPersonNameStore = Ext.create('iFlat.store.code.Employee'),
+                    listeners: {
+                        change: function (cb, newV, oldV, opt) {
+                            var v = cb.getStore().findRecord('employee.name', newV).get('employee.account');
+                            cb.up('form').down('textfield[name=fiveS.regionPersonAcc]').setValue(v);
+                        },
+                    }
+                },{
+                    xtype: 'textfield',
+                    name: 'fiveS.regionPersonAcc',
+                    fieldLabel: '账号',
+                    width: '33%',
+                    editable: false
+                }]
+            },{
+                items: [{
+                    xtype: 'combo',
                     name: 'fiveS.dept',
                     bind: {
-                        store: '{smDept}'
+                        store: '{ssFiveSFuncDept}'
                     },
                     queryMode: 'local',
                     allowBlank: false,

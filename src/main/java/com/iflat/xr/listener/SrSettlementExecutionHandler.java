@@ -1,13 +1,12 @@
 package com.iflat.xr.listener;
 
-import com.iflat.base.service.BaseService;
-import com.iflat.sm.service.SrSettlementService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.Application;
 import com.iflat.util.Session;
 import com.iflat.workflow.listener.WorkflowExecutionListener;
 import com.iflat.xr.bean.SrSettlement;
 import com.iflat.xr.entity.SrStatus;
+import com.iflat.xr.service.SrSettlementService;
 import org.activiti.engine.delegate.DelegateExecution;
 
 import java.util.Date;
@@ -16,7 +15,7 @@ import java.util.Date;
  * Created by tyriv on 2016/7/2.
  */
 public class SrSettlementExecutionHandler extends WorkflowExecutionListener {
-    private BaseService srSettlementService;
+    private SrSettlementService srSettlementService;
 
     public void submit(DelegateExecution execution) throws Exception {
         setStatus(execution, SrStatus.STATUS_UNSUBMIT);
@@ -102,7 +101,7 @@ public class SrSettlementExecutionHandler extends WorkflowExecutionListener {
                 srSettlement.setSettFirstName(userInfoVo.getUserName());
             }
             if (status.equals(SrStatus.STATUS_COMMERCIAL_CENTER_DIRECTOR_APPROVE)) {
-                srSettlement.setSettlementTime(new Date());
+                srSettlement.setSettFirstTime(new Date());
             }
             if (status.equals(SrStatus.STATUS_HR_AUDIT)) {
                 srSettlement.setSettlementTime(new Date());
@@ -111,7 +110,7 @@ public class SrSettlementExecutionHandler extends WorkflowExecutionListener {
         }
     }
 
-    private BaseService getSrSettlementService() {
+    private SrSettlementService getSrSettlementService() {
         if (srSettlementService == null) {
             srSettlementService = Application.getSpringContext()
                     .getBean("xrSrSettlementService", SrSettlementService.class);

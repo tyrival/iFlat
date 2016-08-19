@@ -14,4 +14,6 @@ Ext.define('iFlat.store.system.UserRoleTree', {
     },
     rootVisible: false,
     parentIdProperty: 'parentId',
+    sorters: ['text','name']
+    /* 看看treestore有没有sort属性 */
 });

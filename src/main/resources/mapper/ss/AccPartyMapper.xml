@@ -16,7 +16,7 @@
             <if test="type!=null">type=#{type},</if>
             <if test="dept!=null">dept=#{dept},</if>
             <if test="team!=null">team=#{team},</if>
-            <if test="groupName!=null())">groupName=#{groupName},</if>
+            <if test="groupName!=null">groupName=#{groupName},</if>
             <if test="title!=null ">title=#{title},</if>
             <if test="personAcc!=null">personAcc=#{personAcc},</if>
             <if test="personName!=null">personName=#{personName},</if>

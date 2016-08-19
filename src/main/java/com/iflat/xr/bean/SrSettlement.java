@@ -14,9 +14,11 @@ public class SrSettlement {
     private String dept;  // 部门
     private String team;  // 施工队
     private boolean isOutwork;  // 本工/外包工
-    private double amountFirst;  // 一级工费，由明细汇总得出
-    private double amountSecond;  // 二级工费，由明细汇总得出
+    private double amountFirst;  // 一级工费
+    private double amountSecond;  // 二级工费
+    private double amountDiff;  // 盈亏
     private String attachment;  // 附件
+    private String balApplAtt;  // 余额使用申请
     private String comment;  // 备注
     private String status;  // 状态
     private boolean isQuota;  // 需定额
@@ -33,6 +35,22 @@ public class SrSettlement {
     private String settFirstName;  // 一级结算人
     private Date settFirstTime;  // 一级结算时间
     private Date settlementTime;  // 人力资源部结算月份
+
+    public double getAmountDiff() {
+        return amountDiff;
+    }
+
+    private void setAmountDiff() {
+        this.amountDiff = this.amountFirst - this.amountSecond;
+    }
+
+    public String getBalApplAtt() {
+        return balApplAtt;
+    }
+
+    public void setBalApplAtt(String balApplAtt) {
+        this.balApplAtt = balApplAtt;
+    }
 
     public String getId() {
         return id;
@@ -82,12 +100,12 @@ public class SrSettlement {
         this.team = team;
     }
 
-    public boolean isOutwork() {
+    public boolean getIsOutwork() {
         return isOutwork;
     }
 
-    public void setOutwork(boolean outwork) {
-        isOutwork = outwork;
+    public void setIsOutwork(boolean isOutwork) {
+        this.isOutwork = isOutwork;
     }
 
     public double getAmountFirst() {
@@ -96,6 +114,7 @@ public class SrSettlement {
 
     public void setAmountFirst(double amountFirst) {
         this.amountFirst = amountFirst;
+        setAmountDiff();
     }
 
     public double getAmountSecond() {
@@ -104,6 +123,7 @@ public class SrSettlement {
 
     public void setAmountSecond(double amountSecond) {
         this.amountSecond = amountSecond;
+        setAmountDiff();
     }
 
     public String getAttachment() {
@@ -130,12 +150,12 @@ public class SrSettlement {
         this.status = status;
     }
 
-    public boolean isQuota() {
+    public boolean getIsQuota() {
         return isQuota;
     }
 
-    public void setQuota(boolean quota) {
-        isQuota = quota;
+    public void setIsQuota(boolean isQuota) {
+        this.isQuota = isQuota;
     }
 
     public String getCreatorAcc() {

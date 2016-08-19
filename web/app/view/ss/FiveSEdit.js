@@ -108,10 +108,12 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 fieldLabel: '区域',
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
-                        var v1 = cb.getStore().findRecord('area', newV).get('dept');
-                        cb.up('form').down('combo[name=fiveS.belongDept]').setValue(v1);
-                        var v2 = cb.getStore().findRecord('area', newV).get('code');
-                        cb.up('form').down('textfield[name=fiveS.code]').setValue(v2);
+                        if (!Flat.util.isEmpty(newV)) {
+                            var v1 = cb.getStore().findRecord('area', newV).get('dept');
+                            cb.up('form').down('combo[name=fiveS.belongDept]').setValue(v1);
+                            var v2 = cb.getStore().findRecord('area', newV).get('code');
+                            cb.up('form').down('textfield[name=fiveS.code]').setValue(v2);
+                        }
                     }
                 }
             },{
@@ -134,12 +136,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 valueField: 'dept',
                 width: 200,
                 fieldLabel: '所属部门',
-                listeners: {
-                    change: function(cb, newV, oldV, opts) {
-                        ssFiveSEmployeeStore.getProxy().extraParams['employee.deptName'] = newV;
-                        ssFiveSEmployeeStore.reload();
-                    }
-                }
+                
             },{
                 xtype: 'textfield',
                 name: 'fiveS.otherArea',
@@ -170,8 +167,10 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 fieldLabel: '工程名',
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
-                        var v = cb.getStore().findRecord('rptProject.projNo', newV).get('name');
-                        cb.up('form').down('textfield[name=fiveS.projName]').setValue(v);
+                        if (!Flat.util.isEmpty(newV)) {
+                            var v = cb.getStore().findRecord('rptProject.projNo', newV).get('name');
+                            cb.up('form').down('textfield[name=fiveS.projName]').setValue(v);
+                        }
                     }
                 }
             },{
@@ -185,7 +184,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 fieldLabel: '违规部位',
                 width: 300,
             },]
-        },{
+        },/*{
             items: [{
                 xtype: 'combo',
                 name: 'fiveS.regionPersonName',
@@ -213,7 +212,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 width: 300,
                 editable: false
             }]
-        },{
+        },*/{
             items: [{
                 xtype: 'combo',
                 name: 'fiveS.fsType',

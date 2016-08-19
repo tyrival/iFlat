@@ -1,6 +1,7 @@
 package com.iflat.system.service.impl;
 
 import com.iflat.system.bean.User;
+import com.iflat.system.bean.UserRole;
 import com.iflat.system.dao.UserDao;
 import com.iflat.system.dao.UserRoleDao;
 import com.iflat.system.entity.PasswordChange;
@@ -9,6 +10,7 @@ import com.iflat.system.service.UserService;
 import com.iflat.util.Application;
 import com.iflat.util.Session;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -64,6 +66,19 @@ public class UserServiceImpl implements UserService {
             user.setLoginTime(loginTime);
             Session.putUserInfo(user);
             Application.addOnline(user);
+
+            // 修改角色排序
+            List<UserRole> userRoleList = this.userRoleDao.listByAccount(user.getAccount());
+            for (int i = 0; i < userRoleList.size(); i++) {
+                UserRole userRole = userRoleList.get(i);
+                if (userRole.getRoleId().equals(roleId)) {
+                    userRole.setSequence(0);
+                } else {
+                    userRole.setSequence(1);
+                }
+            }
+            this.userRoleDao.updateBatch(userRoleList);
+
         } else {
             user = null;
         }

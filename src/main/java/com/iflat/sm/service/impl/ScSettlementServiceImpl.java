@@ -8,6 +8,7 @@ import com.iflat.report.bean.bi.Project;
 import com.iflat.sm.bean.ScSettlement;
 import com.iflat.sm.bean.ScSettlementDetail;
 import com.iflat.sm.bean.TargetCostAccount;
+import com.iflat.sm.service.ScSettlementDetailService;
 import com.iflat.sm.service.ScSettlementService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ExcelUtil;
@@ -29,6 +30,7 @@ public class ScSettlementServiceImpl extends BaseServiceSupport implements ScSet
     private BaseService teamService;
     private BaseService rptProjectService;
     private BaseService targetCostAccountService;
+    private ScSettlementDetailService scSettlementDetailService;
 
     private ScSettlement scSettlement;
 
@@ -65,6 +67,11 @@ public class ScSettlementServiceImpl extends BaseServiceSupport implements ScSet
      */
     @Override
     protected void afterDelete() throws Exception {
+
+        ScSettlement parent = (ScSettlement) this.deleteObj;
+        ScSettlementDetail param = new ScSettlementDetail();
+        param.setPid(parent.getId());
+        this.scSettlementDetailService.delete(param);
         this.deleteProcessInstance(this.deleteObj);
     }
 
@@ -181,19 +188,19 @@ public class ScSettlementServiceImpl extends BaseServiceSupport implements ScSet
 
             // 验证成本科目
             if (StringUtil.isBlank(o.getAccount())) {
-                throw new Exception("导入失败。第" + i + "行成本科目为空，请填写后重新导入。");
+                throw new Exception("导入失败。第" + (i + 1) + "行/共" + list.size() + "行成本科目为空，请填写后重新导入。");
             }
             TargetCostAccount targetCostAccount = new TargetCostAccount();
             targetCostAccount.setCode(o.getAccount());
             List<TargetCostAccount> l = this.targetCostAccountService.list(targetCostAccount);
             if (l == null || l.size() <= 0) {
-                throw new Exception("导入失败。第" + i + "行成本科目代码不存在，请填写后重新导入。");
+                throw new Exception("导入失败。第" + (i + 1) + "行/共" + list.size() + "行成本科目代码不存在，请填写后重新导入。");
             }
             o.setAccountName(l.get(0).getName());
 
             // 验证施工内容
             if (StringUtil.isBlank(o.getContent())) {
-                throw new Exception("导入失败。第" + i + "行施工内容为空，请填写后重新导入。");
+                throw new Exception("导入失败。第" + (i + 1) + "行/共" + list.size() + "行施工内容为空，请填写后重新导入。");
             }
 
             o.setId(UUID.randomUUID().toString());
@@ -207,6 +214,11 @@ public class ScSettlementServiceImpl extends BaseServiceSupport implements ScSet
         if(list.size() > 0) {
             executeMethod(list, "insertBatch");
         }
+    }
+
+    @Override
+    protected void afterImportData() throws Exception {
+        startProcess(this.scSettlement);
     }
 
     public BaseService getTeamService() {
@@ -243,5 +255,13 @@ public class ScSettlementServiceImpl extends BaseServiceSupport implements ScSet
 
     public void setWorkflowService(WorkflowService workflowService) {
         this.workflowService = workflowService;
+    }
+
+    public ScSettlementDetailService getScSettlementDetailService() {
+        return scSettlementDetailService;
+    }
+
+    public void setScSettlementDetailService(ScSettlementDetailService scSettlementDetailService) {
+        this.scSettlementDetailService = scSettlementDetailService;
     }
 }
