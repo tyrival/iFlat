@@ -1,0 +1,26 @@
+Ext.define('iFlat.model.xr.TrSettlementDetl', {
+    extend: 'Ext.data.Model',
+    fields: [
+        {name: 'trSettlementDetl.id', mapping: 'id', type: 'string'},
+        {name: 'trSettlementDetl.pid', mapping: 'pid', type: 'string'},
+        {name: 'trSettlementDetl.category', mapping: 'category', type: 'string'},
+        {name: 'trSettlementDetl.specs', mapping: 'specs', type: 'string'},
+        {name: 'trSettlementDetl.unit', mapping: 'unit', type: 'string'},
+        {name: 'trSettlementDetl.content', mapping: 'content', type: 'string'},
+        {name: 'trSettlementDetl.applyQty', mapping: 'applyQty', type: 'number'},
+        {name: 'trSettlementDetl.settUnit', mapping: 'settUnit', type: 'string'},
+        {name: 'trSettlementDetl.settUnitSecond', mapping: 'settUnitSecond', type: 'string'},
+        {name: 'trSettlementDetl.settleQtyFirst', mapping: 'settleQtyFirst', type: 'number'},
+        {name: 'trSettlementDetl.settleQtySecond', mapping: 'settleQtySecond', type: 'number'},
+        {name: 'trSettlementDetl.degree', mapping: 'degree', type: 'number'},
+        {name: 'trSettlementDetl.priceFirst', mapping: 'priceFirst', type: 'number'},
+        {name: 'trSettlementDetl.amountFirst', mapping: 'amountFirst', type: 'number'},
+        {name: 'trSettlementDetl.priceSecond', mapping: 'priceSecond', type: 'number'},
+        {name: 'trSettlementDetl.amountSecond', mapping: 'amountSecond', type: 'number'},
+        {name: 'trSettlementDetl.quota', mapping: 'quota', type: 'number'},
+        {name: 'trSettlementDetl.comment', mapping: 'comment', type: 'string'},
+        {name: 'trSettlementDetl.creatorAcc', mapping: 'creatorAcc', type: 'string'},
+        {name: 'trSettlementDetl.creatorName', mapping: 'creatorName', type: 'string'},
+        {name: 'trSettlementDetl.createTime', mapping: 'createTime', type: 'date'},
+    ]
+});

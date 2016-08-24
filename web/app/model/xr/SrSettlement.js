@@ -10,6 +10,8 @@ Ext.define('iFlat.model.xr.SrSettlement', {
         {name: 'xrSrSettlement.isOutwork', mapping: 'isOutwork', type: 'boolean'},
         {name: 'xrSrSettlement.amountFirst', mapping: 'amountFirst', type: 'number'},
         {name: 'xrSrSettlement.amountSecond', mapping: 'amountSecond', type: 'number'},
+        {name: 'xrSrSettlement.discountRate', mapping: 'discountRate', type: 'number'},
+        {name: 'xrSrSettlement.amountWithDiscount', mapping: 'amountWithDiscount', type: 'number'},
         {name: 'xrSrSettlement.amountDiff', mapping: 'amountDiff', type: 'number'},
         {name: 'xrSrSettlement.attachment', mapping: 'attachment', type: 'string'},
         {name: 'xrSrSettlement.balApplAtt', mapping: 'balApplAtt', type: 'string'},
@@ -27,5 +29,7 @@ Ext.define('iFlat.model.xr.SrSettlement', {
         {name: 'xrSrSettlement.settFirstName', mapping: 'settFirstName', type: 'string'},
         {name: 'xrSrSettlement.settFirstTime', mapping: 'settFirstTime', type: 'date'},
         {name: 'xrSrSettlement.settlementTime', mapping: 'settlementTime', type: 'date'},
+        {name: 'xrSrSettlement.discountRate', mapping: 'discountRate', type: 'number'},
+        {name: 'xrSrSettlement.amountWithDiscount', mapping: 'amountWithDiscount', type: 'number'},
     ]
 });

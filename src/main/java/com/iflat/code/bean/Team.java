@@ -9,6 +9,15 @@ public class Team {
     private String deptName;
     private String teamName;
     private String type;
+    private String teamFullName;
+
+    public String getTeamFullName() {
+        return teamFullName;
+    }
+
+    public void setTeamFullName(String teamFullName) {
+        this.teamFullName = teamFullName;
+    }
 
     public String getType() {
         return type;

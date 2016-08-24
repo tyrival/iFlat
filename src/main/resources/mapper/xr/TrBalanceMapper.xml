@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.TrBalance">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.TrBalance">
+    INSERT INTO XrTrBalance
+    VALUES (#{id},#{dept},#{amount})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrTrBalance
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.dept},#{item.amount}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.TrBalance">
+    UPDATE XrTrBalance
+    SET amount=CONVERT(DECIMAL(38,6), (amount+#{adjustment}))
+    WHERE dept=#{dept}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrTrBalance SET id=a.id,dept=a.dept,amount=a.amount
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.dept} as dept,#{item.amount} as amount
+    </foreach>
+    ) AS a
+    WHERE XrTrBalance.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrTrBalance
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.TrBalance" resultMap="XrTrBalanceResult">
+    SELECT id,dept,amount
+    FROM XrTrBalance
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.TrBalance" id="XrTrBalanceResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="amount" column="amount" jdbcType="DOUBLE"/>
+</resultMap>
+</mapper>

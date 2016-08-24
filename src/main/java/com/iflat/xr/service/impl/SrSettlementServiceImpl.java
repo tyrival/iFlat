@@ -22,11 +22,40 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
     private BaseService srSettlementDetlService;
     private BaseService xrProjectService;
     private BaseService srProjectMgrService;
+    private BaseService srBalanceService;
 
     private UserService userService;
     private BaseService teamService;
     private SrSettlement xrSrSettlement;
     private Map<String, Object> map;
+
+    @Override
+    protected void beforeSave() throws Exception {
+
+        // 获取原始部门余额，看是否足以支付此次分配
+        SrSettlement srSettlement = (SrSettlement) this.saveObj;
+        double diff = srSettlement.getAmountDiff();
+        if (diff < 0) {
+            SrBalance srBalance = new SrBalance();
+            srBalance.setDept(srSettlement.getDept());
+            List<SrBalance> list
+                    = this.srBalanceService.list(srBalance);
+            if (list == null || list.size() == 0) {
+                this.srBalanceService.save(srBalance);
+                throw new Exception("此部门无结余金额，无法进行超支结算。");
+            }
+            srBalance = list.get(0);
+
+            // 根据id查询此单据，如果存在，则获取原始金额，与修改后的金额相减，差用于修改部门结余金额
+
+            if (srBalance.getAmount() < Math.abs(diff)) {
+                throw new Exception("部门结余为"
+                        + srBalance.getAmount()
+                        + "元，不足以支付此次金额为" + srSettlement.getAmountDiff()
+                        + "元的超支，请重新调整。");
+            }
+        }
+    }
 
     @Override
     protected void beforeInsert() throws Exception {
@@ -130,6 +159,7 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
         o.setId(UUID.randomUUID().toString());
         o.setStatus("未提交");
         UserInfoVo user = Session.getUserInfo();
+        o.setDept(user.getPorgName());
         o.setCreatorAcc(user.getAccount());
         o.setCreatorName(user.getUserName());
         o.setCreateTime(new Date());
@@ -198,7 +228,7 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
         reader.setStartRow(3);
         reader.setEndRow(0);
         reader.setEndColumn(0);
-        reader.setProps(new String[]{"type", "applyContent", "specs", "unit", "applyQty1", "applyQty2", "applyQty3", "applyQty4", "comment"});
+        reader.setProps(new String[]{"isQuota", "applyContent", "specs", "unit", "applyQty", "degree", "comment"});
 
         //读取excel
         List list = ExcelUtil.read(reader);
@@ -303,5 +333,13 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
 
     public void setMap(Map<String, Object> map) {
         this.map = map;
+    }
+
+    public BaseService getSrBalanceService() {
+        return srBalanceService;
+    }
+
+    public void setSrBalanceService(BaseService srBalanceService) {
+        this.srBalanceService = srBalanceService;
     }
 }

@@ -1,7 +1,7 @@
 Ext.define('iFlat.view.xr.SrSettlementEdit', {
     extend: 'Ext.window.Window',
     alias: 'widget.xr-srsettlementedit',
-    title: '造船结算单',
+    title: '修船结算单',
     layout: 'fit',
     modal: true,
 
@@ -150,14 +150,59 @@ Ext.define('iFlat.view.xr.SrSettlementEdit', {
                 }]
             }, {
                 xtype: 'container',
-                type: 'hbox',
+                layout: 'hbox',
                 margin: '10 0 0 0',
                 items: [{
                     xtype: 'textfield',
                     name: 'xrSrSettlement.comment',
                     id: 'xr-srsettlementedit-comment',
                     fieldLabel: '备注',
-                    width: '100%',
+                    flex: 1,
+                }, {
+                    xtype: 'textfield',
+                    name: 'xrSrSettlement.teamName',
+                    fieldLabel: '确认人',
+                    width: 200,
+                    listeners: {
+                        change: function (textfield, newValue, oldValue, eOpts) {
+                            var reg = new RegExp("^[0-9]*$");
+                            if (reg.test(newValue)) {
+                                Flat.util.mask();
+                                Ext.Ajax.request({
+                                    url: 'code_listCardInfo.action',
+                                    method: 'post',
+                                    params: {
+                                        'cardInfo.cardFixNo': newValue
+                                    },
+                                    success: function(response, opts) {
+                                        Flat.util.unmask();
+                                        var o = Ext.JSON.decode(response.responseText)['list'];
+                                        var acc = o[0]['empNo'];
+                                        var name = o[0]['empName'];
+                                        if (Flat.util.isEmpty(acc)) {
+                                            textfield.nextSibling('textfield[name=xrSrSettlement.teamAcc]').setValue('');
+                                        } else {
+                                            textfield.setValue(name);
+                                            textfield.nextSibling('textfield[name=xrSrSettlement.teamAcc]').setValue(acc);
+                                        }
+                                    },
+                                    failure: function(response, opts) {
+                                        Flat.util.unmask();
+                                        Flat.util.tip(response.responseText);
+                                        textfield.nextSibling('textfield[name=xrSrSettlement.teamAcc]').setValue('');
+                                    }
+                                });
+                            } else {
+                                textfield.nextSibling('textfield[name=xrSrSettlement.teamAcc]').setValue('');
+                            }
+                        }
+                    }
+                }, {
+                    xtype: 'textfield',
+                    name: 'xrSrSettlement.teamAcc',
+                    fieldLabel: '确认人',
+                    editable: false,
+                    hidden: true,
                 }]
             }, {
                 xtype: 'container',

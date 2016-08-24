@@ -13,7 +13,16 @@ public class Project {
     private String name;  //船名
     private String shortName;  //简称
     private String status;  //状态
+    private String type;  //状态
     private Date completeTime;  //完工时间
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getProjNo() {
         return projNo;

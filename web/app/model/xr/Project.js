@@ -7,6 +7,7 @@ Ext.define('iFlat.model.xr.Project', {
         {name: 'xrProject.name', mapping: 'name', type: 'string'},
         {name: 'xrProject.shortName', mapping: 'shortName', type: 'string'},
         {name: 'xrProject.status', mapping: 'status', type: 'string'},
+        {name: 'xrProject.type', mapping: 'type', type: 'string'},
         {name: 'xrProject.completeTime', mapping: 'completeTime', type: 'date'},
     ]
 });

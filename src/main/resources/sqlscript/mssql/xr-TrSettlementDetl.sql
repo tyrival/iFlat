@@ -1,0 +1,22 @@
+CREATE TABLE XrTrSettlementDetl
+(
+    id CHAR(36),
+    pid CHAR(36),
+    category VARCHAR(100),
+    specs VARCHAR(200),
+    unit VARCHAR(20),
+    content VARCHAR(MAX),
+    applyQty DECIMAL(18, 2),
+    settUnit VARCHAR(20),
+    settleQtyFirst DECIMAL(18, 2),
+    settleQtySecond DECIMAL(18, 2),
+    degree DECIMAL(18, 2),
+    priceFirst DECIMAL(18, 2),
+    amountFirst DECIMAL(18, 2),
+    priceSecond DECIMAL(18, 2),
+    amountSecond DECIMAL(18, 2),
+    comment VARCHAR(2000),
+    creatorAcc VARCHAR(100),
+    creatorName VARCHAR(100),
+    createTime DATETIME,
+)

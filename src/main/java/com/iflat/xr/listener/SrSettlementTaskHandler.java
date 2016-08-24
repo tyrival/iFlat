@@ -160,6 +160,17 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
+    public void hrReAudit(DelegateTask delegateTask) throws Exception {
+
+        setTaskInfo(delegateTask, SrStatus.STATUS_HR_REAUDIT);
+
+        UserInfoVo assignee = new UserInfoVo();
+        assignee.setPorgName("新荣公司人力资源部");
+        assignee.setRoleName("新荣人力资源部复核员");
+        List<UserInfoVo> list = listAssignees(assignee);
+        delegateTask.addCandidateUsers(getCandidateUsers(list));
+    }
+
     public void hrDirectorApprove(DelegateTask delegateTask) throws Exception {
 
         setTaskInfo(delegateTask, SrStatus.STATUS_HR_DIRECTOR_APPROVE);
@@ -171,9 +182,9 @@ public class SrSettlementTaskHandler extends WorkflowTaskListener {
         delegateTask.addCandidateUsers(getCandidateUsers(list));
     }
 
-    public void leaderApprove(DelegateTask delegateTask) throws Exception {
+    public void viceManagerApprove(DelegateTask delegateTask) throws Exception {
 
-        setTaskInfo(delegateTask, SrStatus.STATUS_LEADER_APPROVE);
+        setTaskInfo(delegateTask, SrStatus.STATUS_VICE_MANAGER_APPROVE);
 
         UserInfoVo assignee = new UserInfoVo();
         assignee.setRoleName("新荣公司领导");

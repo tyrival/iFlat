@@ -183,13 +183,14 @@ Ext.define('iFlat.view.xr.SrCommercialCenterSettlementController', {
     calcAmountFirst: function(tf, newV, oldV) {
         var isQuota = Ext.getCmp('xr-srcommercialcenteraettlement-isquota').getValue();
         var degree = Ext.getCmp('xr-srcommercialcenteraettlement-degree').getValue();
+        var price = Ext.getCmp('xr-srcommercialcenteraettlement-pricefirst').getValue();
         var amount;
         if (isQuota) {
             var quota = Ext.getCmp('xr-srcommercialcenteraettlement-quota').getValue();
-            amount = newV * quota * degree;
+            amount = price * quota * degree;
         } else {
             var qty = Ext.getCmp('xr-srcommercialcenteraettlement-adjustqty').getValue();
-            amount = newV * qty * degree;
+            amount = price * qty * degree;
         }
         Ext.getCmp('xr-srcommercialcenteraettlement-amountfirst').setValue(amount);
     },

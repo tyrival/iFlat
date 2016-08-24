@@ -51,7 +51,7 @@ Ext.define('iFlat.view.sm.Discount', {
             editable: true,
             forceSelection : true,
             anyMatch: true,
-            displayField: 'teamName',
+            displayField: 'teamFullName',
             valueField: 'teamName',
             width: 300,
             store: smDiscountTeamStore = Ext.create('iFlat.store.code.Team'),

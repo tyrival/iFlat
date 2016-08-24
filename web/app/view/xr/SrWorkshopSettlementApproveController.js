@@ -71,7 +71,7 @@ Ext.define('iFlat.view.xr.SrWorkshopSettlementApproveController', {
         }
         if (form.isValid()) {
             form.submit({
-                url: 'xr_approveSrSettlementSecond.action',
+                url: 'xr_approveSrSettlement.action',
                 waitMsg: '提交中...',
                 method: 'POST',
                 params: param,

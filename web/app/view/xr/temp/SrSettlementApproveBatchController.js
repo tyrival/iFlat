@@ -30,12 +30,15 @@ Ext.define('iFlat.view.xr.temp.SrSettlementApproveBatchController', {
                             Flat.util.unmask();
                             var sum1 = 0;
                             var sum2 = 0;
+                            var sum3 = 0;
                             for (var i = 0; i < records.length; i++) {
                                 sum1 += records[i].get('amountFirst');
                                 sum2 += records[i].get('amountSecond');
+                                sum3 += records[i].get('amountWithDiscount');
                             }
                             grid.down('textfield[name=summaryAmountFirst]').setValue(sum1);
                             grid.down('textfield[name=summaryAmountSecond]').setValue(sum2);
+                            grid.down('textfield[name=summaryAmountWithDiscount]').setValue(sum3);
                             grid.down('textfield[name=summaryAmountDiff]').setValue(sum1 - sum2);
                         }
                     })
@@ -59,12 +62,15 @@ Ext.define('iFlat.view.xr.temp.SrSettlementApproveBatchController', {
                 Flat.util.unmask();
                 var sum1 = 0;
                 var sum2 = 0;
+                var sum3 = 0;
                 for (var i = 0; i < records.length; i++) {
                     sum1 += records[i].get('amountFirst');
                     sum2 += records[i].get('amountSecond');
+                    sum3 += records[i].get('amountWithDiscount');
                 }
                 grid.down('textfield[name=summaryAmountFirst]').setValue(sum1);
                 grid.down('textfield[name=summaryAmountSecond]').setValue(sum2);
+                grid.down('textfield[name=summaryAmountWithDiscount]').setValue(sum3);
                 grid.down('textfield[name=summaryAmountDiff]').setValue(sum1 - sum2);
             }
         })

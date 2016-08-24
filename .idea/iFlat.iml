@@ -30,22 +30,21 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-air.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-base.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-bi.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-code.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-hr.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-lib.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-pam.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-pm.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-qm.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-report.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-sm.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-ss.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-system.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/spring.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-workflow.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-base.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-sm.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-dh.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-xr.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-pm.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-hr.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-pam.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/spring.xml</file>
         </fileset>
       </configuration>
     </facet>

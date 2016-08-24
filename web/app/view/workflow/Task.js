@@ -39,7 +39,7 @@ Ext.define('iFlat.view.workflow.Task', {
     }, {
         header: '创建时间',
         dataIndex: 'task.createTime',
-        formatter: 'date("Y-m-d H:i")',
+        formatter: 'date("Y-m-d")',
         width: 150
     }, {
         header: '任务描述',

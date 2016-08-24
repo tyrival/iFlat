@@ -46,8 +46,8 @@ Ext.define('iFlat.view.xr.SrSettlementController', {
             Ext.getCmp('xr-srsettlementedit-projno').setEditable(false);
             Ext.getCmp('xr-srsettlementedit-team').setEditable(false);
             Ext.getCmp('xr-srsettlementedit-comment').setEditable(false);
-            form.down('textfield[name=xrSrSettlement.score]').setEditable(false);
-            form.down('textfield[name=xrSrSettlement.opinion]').setEditable(false);
+            //form.down('textfield[name=xrSrSettlement.score]').setEditable(false);
+            //form.down('textfield[name=xrSrSettlement.opinion]').setEditable(false);
         } else {
             xrSrSettlementDetailRowEditing.enable();
             Ext.getCmp('xr-srsettlementedit-detail-delete').setDisabled(false);
@@ -55,8 +55,10 @@ Ext.define('iFlat.view.xr.SrSettlementController', {
             Ext.getCmp('xr-srsettlementedit-projno').setEditable(true);
             Ext.getCmp('xr-srsettlementedit-team').setEditable(true);
             Ext.getCmp('xr-srsettlementedit-comment').setEditable(true);
-            form.down('textfield[name=xrSrSettlement.score]').setEditable(true);
-            form.down('textfield[name=xrSrSettlement.opinion]').setEditable(true);
+            //form.down('textfield[name=xrSrSettlement.score]').setEditable(true);
+            //
+            //
+            // form.down('textfield[name=xrSrSettlement.opinion]').setEditable(true);
         }
         
         Ext.getCmp('xr-srsettlementedit-form').loadRecord(record);

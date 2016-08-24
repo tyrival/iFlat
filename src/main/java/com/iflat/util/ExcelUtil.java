@@ -218,7 +218,17 @@ public class ExcelUtil {
                             }
                             break;
                         case "boolean":
-                            value = cell.getBooleanCellValue();
+                            try {
+                                value = cell.getBooleanCellValue();
+                            } catch (Exception e) {
+                                String v = cell.getStringCellValue().trim().toLowerCase();
+                                if ("1".equals(v) || "true".equals(v) || "yes".equals(v) || "y".equals(v)) {
+                                    value = true;
+                                } else {
+                                    value = false;
+                                }
+                            }
+
                             break;
                         case "class java.lang.Double":
                             try {

@@ -1,9 +1,11 @@
 package com.iflat.xr.action;
 
+import com.iflat.xr.bean.TrSettlementDetl;
+import com.iflat.xr.bean.TrBalance;
+import com.iflat.xr.bean.TrSettlement;
+import com.iflat.xr.bean.Discount;
 import com.iflat.base.entity.ExcelTemplate;
-import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ExcelUtil;
-import com.iflat.util.Session;
 import com.iflat.workflow.service.WorkflowService;
 import com.iflat.xr.bean.Team;
 import com.iflat.xr.bean.SrStandardPrice;
@@ -19,6 +21,7 @@ import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
 import com.iflat.xr.service.SrSettlementService;
+import com.iflat.xr.service.TrSettlementService;
 import com.opensymphony.xwork2.ModelDriven;
 
 import java.io.File;
@@ -395,9 +398,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
     }
 
     /**
-     * 提交SrSettlement审批
-     * @return
-     * @throws Exception
+     * 提交SrSettlement审批     * @return     * @throws Exception
      */
     public String submitSrSettlement() throws Exception {
         xrSrSettlementService.submit(this.xrSrSettlement);
@@ -405,13 +406,10 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
     }
 
     /**
-     * 保存SrSettlement并提交审批
-     * @return
-     * @throws Exception
+     * 保存SrSettlement并提交审批     * @return     * @throws Exception
      */
     public String saveAndSubmitSrSettlement() throws Exception {
-        SrSettlement srSettlement
-                = (SrSettlement) this.xrSrSettlementService.save(this.xrSrSettlement);
+        SrSettlement srSettlement = (SrSettlement) this.xrSrSettlementService.save(this.xrSrSettlement);
         xrSrSettlementService.submit(this.xrSrSettlement);
         this.result.setObject(srSettlement);
         return SUCCESS;
@@ -468,9 +466,6 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveSrSettlementWithSave() throws Exception {
-        if ("人力资源部部长审批".equals(this.xrSrSettlement.getStatus())) {
-            this.xrSrSettlement.setSettlementTime(new Date());
-        }
         this.xrSrSettlementService.save(this.xrSrSettlement);
         String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -485,68 +480,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
             }
         }
         return SUCCESS;
-    }
-
-    /* 经营部领导审批一级结算结果，同时更新余额池 */
-    public String approveSrSettlementFirst() throws Exception {
-
-        // 如果是审批通过，则更新余额
-        if ("pass".equals(outGoingName)) {
-            // 获取原始单据上的一级结算价格，与新价格对比，得到调整金额
-            SrSettlement orig = new SrSettlement();
-            orig.setId(this.xrSrSettlement.getId());
-            orig = (SrSettlement) this.xrSrSettlementService.list(orig).get(0);
-            Double adjust = this.xrSrSettlement.getAmountFirst() - orig.getAmountFirst();
-
-            if (adjust != 0) {
-                // 根据调整价格，修改相应部门的工费余额
-                SrBalance balance = new SrBalance();
-                balance.setDept(orig.getDept());
-                balance.setAdjustment(adjust);
-                this.srBalanceService.save(balance);
-            }
-
-            // 储存一级结算的信息
-            UserInfoVo userInfoVo = Session.getUserInfo();
-            this.xrSrSettlement.setSettFirstAcc(userInfoVo.getAccount());
-            this.xrSrSettlement.setSettFirstName(userInfoVo.getUserName());
-            this.xrSrSettlement.setSettFirstTime(new Date());
-            this.result.setObject(this.xrSrSettlementService.save(this.xrSrSettlement));
-        }
-        String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);
-        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
-        return SUCCESS;
-    }
-
-    public String approveSrSettlementSecond() throws Exception {
-
-        // 如果是审批通过，则更新余额
-        if ("pass".equals(outGoingName)) {
-            // 获取原始单据上的二级结算价格，与新价格对比，得到调整金额
-            SrSettlement orig = new SrSettlement();
-            orig.setId(this.xrSrSettlement.getId());
-            orig = (SrSettlement) this.xrSrSettlementService.list(orig).get(0);
-            Double adjust = this.xrSrSettlement.getAmountSecond() - orig.getAmountSecond();
-
-            if (adjust != 0) {
-                // 根据调整价格，修改相应部门的工费余额
-                SrBalance balance = new SrBalance();
-                balance.setDept(orig.getDept());
-                balance.setAdjustment(0 - adjust);
-                this.srBalanceService.save(balance);
-            }
-
-            /*// 储存一级结算的信息
-            UserInfoVo userInfoVo = Session.getUserInfo();
-            this.xrSrSettlement.setSettFirstAcc(userInfoVo.getAccount());
-            this.xrSrSettlement.setSettFirstName(userInfoVo.getUserName());
-            this.xrSrSettlement.setSettFirstTime(new Date());
-            this.result.setObject(this.xrSrSettlementService.save(this.xrSrSettlement));*/
-        }
-        String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);
-        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
-        return SUCCESS;
-    }
+    }/*    public String approveSrSettlementFirst() throws Exception {        if ("pass".equals(outGoingName)) {            SrSettlement orig = new SrSettlement();            orig.setId(this.xrSrSettlement.getId());            orig = (SrSettlement) this.xrSrSettlementService.list(orig).get(0);            Double adjust = this.xrSrSettlement.getAmountFirst() - orig.getAmountFirst();            if (adjust != 0) {                SrBalance balance = new SrBalance();                balance.setDept(orig.getDept());                balance.setAdjustment(adjust);                this.srBalanceService.save(balance);            }            UserInfoVo userInfoVo = Session.getUserInfo();            this.xrSrSettlement.setSettFirstAcc(userInfoVo.getAccount());            this.xrSrSettlement.setSettFirstName(userInfoVo.getUserName());            this.xrSrSettlement.setSettFirstTime(new Date());            this.result.setObject(this.xrSrSettlementService.save(this.xrSrSettlement));        }        String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);        return SUCCESS;    }    public String approveSrSettlementSecond() throws Exception {        if ("pass".equals(outGoingName)) {            SrSettlement orig = new SrSettlement();            orig.setId(this.xrSrSettlement.getId());            orig = (SrSettlement) this.xrSrSettlementService.list(orig).get(0);            Double adjust = this.xrSrSettlement.getAmountSecond() - orig.getAmountSecond();            if (adjust != 0) {                SrBalance balance = new SrBalance();                balance.setDept(orig.getDept());                balance.setAdjustment(0 - adjust);                this.srBalanceService.save(balance);            }        }        String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);        return SUCCESS;    }*/
 
     private BaseService srSettlementDetlService;
     private SrSettlementDetl srSettlementDetl;
@@ -567,28 +501,22 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         this.srSettlementDetl = srSettlementDetl;
     }
 
-    // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
     public String createSrSettlementDetl() throws Exception {
         this.xrSrSettlement = (SrSettlement) this.xrSrSettlementService.save(this.xrSrSettlement);
         try {
-
             this.srSettlementDetl.setPid(this.xrSrSettlement.getId());
-
-            this.srSettlementDetl
-                    = (SrSettlementDetl) this.srSettlementDetlService
-                    .save(this.srSettlementDetl);
+            this.srSettlementDetl = (SrSettlementDetl) this.srSettlementDetlService.save(this.srSettlementDetl);
             Map<String, Object> map = new HashMap();
             map.put("head", this.xrSrSettlement);
             map.put("detail", this.srSettlementDetl);
             this.result.setMap(map);
-
         } catch (Exception e) {
             this.xrSrSettlementService.delete(this.xrSrSettlement);
             throw new Exception(e.getMessage());
         }
-
         return SUCCESS;
     }
+
     public String saveSrSettlementDetl() throws Exception {
         this.result.setObject(this.srSettlementDetlService.save(this.srSettlementDetl));
         return SUCCESS;
@@ -699,6 +627,254 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
 
     public String uploadTeam() throws Exception {
         this.result.setObject(this.teamService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    private BaseService xrDiscountService;
+    private Discount xrDiscount;
+
+    public BaseService getXrDiscountService() {
+        return xrDiscountService;
+    }
+
+    public void setXrDiscountService(BaseService xrDiscountService) {
+        this.xrDiscountService = xrDiscountService;
+    }
+
+    public Discount getXrDiscount() {
+        return xrDiscount;
+    }
+
+    public void setXrDiscount(Discount xrDiscount) {
+        this.xrDiscount = xrDiscount;
+    }
+
+    public String saveDiscount() throws Exception {
+        this.result.setObject(this.xrDiscountService.save(this.xrDiscount));
+        return SUCCESS;
+    }
+
+    public String deleteDiscount() throws Exception {
+        this.result.setObject(this.xrDiscountService.delete(this.xrDiscount));
+        return SUCCESS;
+    }
+
+    public String listDiscount() throws Exception {
+        this.result.setList(this.xrDiscountService.list(this.xrDiscount));
+        return SUCCESS;
+    }
+
+    public String listPageDiscount() throws Exception {
+        this.result.setObject(this.xrDiscountService.listPage(this.xrDiscount, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadDiscount() throws Exception {
+        this.result.setObject(this.xrDiscountService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    private TrSettlementService trSettlementService;
+    private TrSettlement trSettlement;
+    private List<TrSettlement> trSettlementList = new ArrayList<>();
+
+    public List<TrSettlement> getTrSettlementList() {
+        return trSettlementList;
+    }
+
+    public void setTrSettlementList(List<TrSettlement> trSettlementList) {
+        this.trSettlementList = trSettlementList;
+    }
+
+    public TrSettlementService getTrSettlementService() {
+        return trSettlementService;
+    }
+
+    public void setTrSettlementService(TrSettlementService trSettlementService) {
+        this.trSettlementService = trSettlementService;
+    }
+
+    public TrSettlement getTrSettlement() {
+        return trSettlement;
+    }
+
+    public void setTrSettlement(TrSettlement trSettlement) {
+        this.trSettlement = trSettlement;
+    }
+
+    public String saveTrSettlement() throws Exception {
+        this.result.setObject(this.trSettlementService.save(this.trSettlement));
+        return SUCCESS;
+    }
+
+    public String deleteTrSettlement() throws Exception {
+        this.result.setObject(this.trSettlementService.delete(this.trSettlement));
+        return SUCCESS;
+    }
+
+    public String listTrSettlement() throws Exception {
+        this.result.setList(this.trSettlementService.list(this.trSettlement));
+        return SUCCESS;
+    }
+
+    public String listPageTrSettlement() throws Exception {
+        this.result.setObject(this.trSettlementService.listPage(this.trSettlement, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadTrSettlement() throws Exception {
+        this.result.setObject(this.trSettlementService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String approveTrSettlementWithSave() throws Exception {
+        this.trSettlementService.save(this.trSettlement);
+        String businessKey = trSettlementService.getBusinessKey(trSettlement);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+        return SUCCESS;
+    }
+
+    public String approveTrSettlementBatch() throws Exception {
+        if (trSettlementList != null && trSettlementList.size() > 0) {
+            for (int i = 0; i < trSettlementList.size(); i++) {
+                String businessKey = trSettlementService.getBusinessKey(trSettlementList.get(i));
+                workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+            }
+        }
+        return SUCCESS;
+    }
+
+    public String submitTrSettlement() throws Exception {
+        trSettlementService.submit(this.trSettlement);
+        return SUCCESS;
+    }
+
+    /**
+     * 保存SrSettlement并提交审批
+     * @return
+     * @throws Exception
+     */
+    public String saveAndSubmitTrSettlement() throws Exception {
+        TrSettlement trSettlement = (TrSettlement) this.trSettlementService.save(this.trSettlement);
+        trSettlementService.submit(this.trSettlement);
+        this.result.setObject(trSettlement);
+        return SUCCESS;
+    }
+
+    public String templateTrSettlement() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("xr", "TrSettlement");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String approveTrSettlement() throws Exception {
+        String businessKey = trSettlementService.getBusinessKey(trSettlement);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+        return SUCCESS;
+    }
+
+    private BaseService trBalanceService;
+    private TrBalance trBalance;
+
+    public BaseService getTrBalanceService() {
+        return trBalanceService;
+    }
+
+    public void setTrBalanceService(BaseService trBalanceService) {
+        this.trBalanceService = trBalanceService;
+    }
+
+    public TrBalance getTrBalance() {
+        return trBalance;
+    }
+
+    public void setTrBalance(TrBalance trBalance) {
+        this.trBalance = trBalance;
+    }
+
+    public String saveTrBalance() throws Exception {
+        this.result.setObject(this.trBalanceService.save(this.trBalance));
+        return SUCCESS;
+    }
+
+    public String deleteTrBalance() throws Exception {
+        this.result.setObject(this.trBalanceService.delete(this.trBalance));
+        return SUCCESS;
+    }
+
+    public String listTrBalance() throws Exception {
+        this.result.setList(this.trBalanceService.list(this.trBalance));
+        return SUCCESS;
+    }
+
+    public String listPageTrBalance() throws Exception {
+        this.result.setObject(this.trBalanceService.listPage(this.trBalance, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadTrBalance() throws Exception {
+        this.result.setObject(this.trBalanceService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    private BaseService trSettlementDetlService;
+    private TrSettlementDetl trSettlementDetl;
+
+    public BaseService getTrSettlementDetlService() {
+        return trSettlementDetlService;
+    }
+
+    public void setTrSettlementDetlService(BaseService trSettlementDetlService) {
+        this.trSettlementDetlService = trSettlementDetlService;
+    }
+
+    public TrSettlementDetl getTrSettlementDetl() {
+        return trSettlementDetl;
+    }
+
+    public void setTrSettlementDetl(TrSettlementDetl trSettlementDetl) {
+        this.trSettlementDetl = trSettlementDetl;
+    }
+
+    public String saveTrSettlementDetl() throws Exception {
+        this.result.setObject(this.trSettlementDetlService.save(this.trSettlementDetl));
+        return SUCCESS;
+    }
+
+    public String deleteTrSettlementDetl() throws Exception {
+        this.result.setObject(this.trSettlementDetlService.delete(this.trSettlementDetl));
+        return SUCCESS;
+    }
+
+    public String listTrSettlementDetl() throws Exception {
+        this.result.setList(this.trSettlementDetlService.list(this.trSettlementDetl));
+        return SUCCESS;
+    }
+
+    public String listPageTrSettlementDetl() throws Exception {
+        this.result.setObject(this.trSettlementDetlService.listPage(this.trSettlementDetl, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadTrSettlementDetl() throws Exception {
+        this.result.setObject(this.trSettlementDetlService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String createTrSettlementDetl() throws Exception {
+        this.trSettlement = (TrSettlement) this.trSettlementService.save(this.trSettlement);
+        try {
+            this.trSettlementDetl.setPid(this.trSettlement.getId());
+            this.trSettlementDetl = (TrSettlementDetl) this.trSettlementDetlService.save(this.trSettlementDetl);
+            Map<String, Object> map = new HashMap();
+            map.put("head", this.trSettlement);
+            map.put("detail", this.trSettlementDetl);
+            this.result.setMap(map);
+        } catch (Exception e) {
+            this.trSettlementService.delete(this.trSettlement);
+            throw new Exception(e.getMessage());
+        }
         return SUCCESS;
     }
 

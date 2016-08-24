@@ -116,6 +116,15 @@ Ext.define('iFlat.view.xr.temp.SrSettlementApproveBatch', {
                         labelWidth: 60,
                         editable: false,
                     }, {
+                        xtype: 'textfield',
+                        name: 'summaryAmountWithDiscount',
+                        fieldLabel: '总开票金额',
+                        labelAlign: 'right',
+                        align: 'right',
+                        width: 220,
+                        labelWidth: 100,
+                        editable: false,
+                    }, {
                         text: '刷新',
                         handler: 'refresh',
                     }],
@@ -161,6 +170,10 @@ Ext.define('iFlat.view.xr.temp.SrSettlementApproveBatch', {
                         header: '盈亏',
                         align: 'right',
                         dataIndex: 'xrSrSettlement.amountDiff',
+                    }, {
+                        header: '开票金额（不含税）',
+                        align: 'right',
+                        dataIndex: 'xrSrSettlement.amountWithDiscount',
                     }, {
                         header: '附件',
                         width: 80,

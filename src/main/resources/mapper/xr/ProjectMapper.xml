@@ -5,7 +5,7 @@
 <mapper namespace="Xr.Project">
 
 <select id="list" parameterType="com.iflat.xr.bean.Project" resultMap="XrProjectResult">
-    SELECT projNo,category,code,name,shortName,status,completeTime
+    SELECT projNo,category,code,name,shortName,status,completeTime,type
     FROM V_XrProject
     <where>
         <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">projNo=#{projNo}</if>
@@ -14,6 +14,7 @@
         <if test="name!=null and !&quot;&quot;.equals(name.trim())">AND name=#{name}</if>
         <if test="shortName!=null and !&quot;&quot;.equals(shortName.trim())">AND shortName=#{shortName}</if>
         <if test="status!=null and !&quot;&quot;.equals(status.trim())">AND status=#{status}</if>
+        <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
     </where>
     ORDER BY projNo
 </select>
@@ -25,6 +26,7 @@
     <result property="name" column="name" jdbcType="VARCHAR"/>
     <result property="shortName" column="shortName" jdbcType="VARCHAR"/>
     <result property="status" column="status" jdbcType="VARCHAR"/>
+    <result property="type" column="type" jdbcType="VARCHAR"/>
     <result property="completeTime" column="completeTime" jdbcType="DATE"/>
 </resultMap>
 </mapper>

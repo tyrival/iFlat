@@ -71,7 +71,7 @@ Ext.define('iFlat.view.xr.SrCommercialCenterDirectorApproveController', {
         }
         if (form.isValid()) {
             form.submit({
-                url: 'xr_approveSrSettlementFirst.action',
+                url: 'xr_approveSrSettlement.action',
                 waitMsg: '提交中...',
                 method: 'POST',
                 params: param,

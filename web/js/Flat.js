@@ -74,6 +74,13 @@ var Flat = {
                 return null;
             }
             var result = new Object();
+            if (array == null || array.length == 0) {
+                Ext.Msg.show({
+                    title:'提示',
+                    message: '请先勾选记录，然后才可进行操作。',
+                })
+                return null;
+            }
             for (var i = 0; i < array.length; i++) {
                 var obj;
                 if (isExtModel === true) {

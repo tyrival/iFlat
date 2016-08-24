@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.Discount">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.Discount">
+    INSERT INTO XrDiscount
+    VALUES (#{id},#{team},#{rate})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrDiscount
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.team},#{item.rate}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.Discount">
+    UPDATE XrDiscount
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="team!=null">team=#{team},</if>
+        <if test="rate!=null">rate=#{rate},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrDiscount SET id=a.id,team=a.team,rate=a.rate
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.team} as team,#{item.rate} as rate
+    </foreach>
+    ) AS a
+    WHERE XrDiscount.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrDiscount
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.Discount" resultMap="XrDiscountResult">
+    SELECT id,team,rate
+    FROM XrDiscount
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.Discount" id="XrDiscountResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="team" column="team" jdbcType="VARCHAR"/>
+    <result property="rate" column="rate" jdbcType="DOUBLE"/>
+</resultMap>
+</mapper>

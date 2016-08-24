@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.TrSettlementDetl">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.TrSettlementDetl">
+    INSERT INTO XrTrSettlementDetl
+    VALUES (#{id},#{pid},#{category},#{specs},#{unit},#{content},#{applyQty},#{settUnit},#{settUnitSecond},#{settleQtyFirst},#{settleQtySecond},#{degree},#{priceFirst},#{amountFirst},#{priceSecond},#{amountSecond},#{quota},#{comment},#{creatorAcc},#{creatorName},#{createTime})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrTrSettlementDetl
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.category},#{item.specs},#{item.unit},#{item.content},#{item.applyQty},#{item.settUnit},#{item.settUnitSecond},#{item.settleQtyFirst},#{item.settleQtySecond},#{item.degree},#{item.priceFirst},#{item.amountFirst},#{item.priceSecond},#{item.amountSecond},#{item.quota},,#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.TrSettlementDetl">
+    UPDATE XrTrSettlementDetl
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="pid!=null">pid=#{pid},</if>
+        <if test="category!=null">category=#{category},</if>
+        <if test="specs!=null">specs=#{specs},</if>
+        <if test="unit!=null">unit=#{unit},</if>
+        <if test="content!=null">content=#{content},</if>
+        <if test="applyQty!=null">applyQty=#{applyQty},</if>
+        <if test="settUnit!=null">settUnit=#{settUnit},</if>
+        <if test="settUnitSecond!=null">settUnitSecond=#{settUnitSecond},</if>
+        <if test="settleQtyFirst!=null">settleQtyFirst=#{settleQtyFirst},</if>
+        <if test="settleQtySecond!=null">settleQtySecond=#{settleQtySecond},</if>
+        <if test="degree!=null">degree=#{degree},</if>
+        <if test="priceFirst!=null">priceFirst=#{priceFirst},</if>
+        <if test="amountFirst!=null">amountFirst=#{amountFirst},</if>
+        <if test="priceSecond!=null">priceSecond=#{priceSecond},</if>
+        <if test="amountSecond!=null">amountSecond=#{amountSecond},</if>
+        <if test="quota!=null">quota=#{quota},</if>
+        <if test="comment!=null">comment=#{comment},</if>
+        <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+        <if test="creatorName!=null">creatorName=#{creatorName},</if>
+        <if test="createTime!=null">createTime=#{createTime},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrTrSettlementDetl SET id=a.id,pid=a.pid,category=a.category,specs=a.specs,unit=a.unit,content=a.content,applyQty=a.applyQty,settUnit=a.settUnit,settUnitSecond=a.settUnitSecond,settleQtyFirst=a.settleQtyFirst,settleQtySecond=a.settleQtySecond,degree=a.degree,priceFirst=a.priceFirst,amountFirst=a.amountFirst,priceSecond=a.priceSecond,amountSecond=a.amountSecond,quota=a.quota,comment=a.comment,creatorAcc=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.pid} as pid,#{item.category} as category,#{item.specs} as specs,#{item.unit} as unit,#{item.content} as content,#{item.applyQty} as applyQty,#{item.settUnit} as settUnit,#{item.settUnitSecond} as settUnitSecond,#{item.settleQtyFirst} as settleQtyFirst,#{item.settleQtySecond} as settleQtySecond,#{item.degree} as degree,#{item.priceFirst} as priceFirst,#{item.amountFirst} as amountFirst,#{item.priceSecond} as priceSecond,#{item.amountSecond} as amountSecond,#{item.quota} as quota,#{item.comment} as comment,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime
+    </foreach>
+    ) AS a
+    WHERE XrTrSettlementDetl.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrTrSettlementDetl
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.TrSettlementDetl" resultMap="XrTrSettlementDetlResult">
+    SELECT id,pid,category,specs,unit,content,applyQty,settUnit,settUnitSecond,settleQtyFirst,settleQtySecond,degree,priceFirst,amountFirst,priceSecond,amountSecond,quota,comment,creatorAcc,creatorName,createTime
+    FROM XrTrSettlementDetl
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">AND pid=#{pid}</if>
+        <if test="category!=null and !&quot;&quot;.equals(category.trim())">AND category=#{category}</if>
+        <if test="specs!=null and !&quot;&quot;.equals(specs.trim())">AND specs=#{specs}</if>
+        <if test="unit!=null and !&quot;&quot;.equals(unit.trim())">AND unit=#{unit}</if>
+        <if test="content!=null and !&quot;&quot;.equals(content.trim())">AND content=#{content}</if>
+        <if test="settUnit!=null and !&quot;&quot;.equals(settUnit.trim())">AND settUnit=#{settUnit}</if>
+        <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment=#{comment}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.xr.bean.TrSettlementDetl" id="XrTrSettlementDetlResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="pid" column="pid" jdbcType="VARCHAR"/>
+    <result property="category" column="category" jdbcType="VARCHAR"/>
+    <result property="specs" column="specs" jdbcType="VARCHAR"/>
+    <result property="unit" column="unit" jdbcType="VARCHAR"/>
+    <result property="content" column="content" jdbcType="VARCHAR"/>
+    <result property="applyQty" column="applyQty" jdbcType="DOUBLE"/>
+    <result property="settUnit" column="settUnit" jdbcType="VARCHAR"/>
+    <result property="settUnitSecond" column="settUnitSecond" jdbcType="VARCHAR"/>
+    <result property="settleQtyFirst" column="settleQtyFirst" jdbcType="DOUBLE"/>
+    <result property="settleQtySecond" column="settleQtySecond" jdbcType="DOUBLE"/>
+    <result property="degree" column="degree" jdbcType="DOUBLE"/>
+    <result property="priceFirst" column="priceFirst" jdbcType="DOUBLE"/>
+    <result property="amountFirst" column="amountFirst" jdbcType="DOUBLE"/>
+    <result property="priceSecond" column="priceSecond" jdbcType="DOUBLE"/>
+    <result property="amountSecond" column="amountSecond" jdbcType="DOUBLE"/>
+    <result property="quota" column="quota" jdbcType="DOUBLE"/>
+    <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

@@ -116,5 +116,8 @@ Ext.define('iFlat.model.main.MainModel', {
         pamNewsSummaryType: ['党支部', '作者', '部门'],
         pamNewsType: ['消息', '通讯', '图片新闻', '副刊', '广播/报纸/班组学习'],
         pamNewsAmount: [0,5,8,10,15,20,25,30,50],
+
+        /*新荣 Xr*/
+        xrWorkshop: ['造船船体车间', '新荣公司船体车间', '新荣公司坞修车间', '新荣公司机电车间', '新荣公司服务车间',],
     },
 });

@@ -36,6 +36,25 @@ public class SrSettlement {
     private Date settFirstTime;  // 一级结算时间
     private Date settlementTime;  // 人力资源部结算月份
 
+    private double discountRate;
+    private double amountWithDiscount;
+
+    public double getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(double discountRate) {
+        this.discountRate = discountRate;
+    }
+
+    public double getAmountWithDiscount() {
+        return amountWithDiscount;
+    }
+
+    public void setAmountWithDiscount(double amountWithDiscount) {
+        this.amountWithDiscount = amountWithDiscount;
+    }
+
     public double getAmountDiff() {
         return amountDiff;
     }

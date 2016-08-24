@@ -11,4 +11,6 @@ import java.util.Map;
  */
 public interface SrSettlementSecondService extends BaseService {
     Map importExcel(File file, String fileName, SrSettlementSecond srSettlementSecond) throws Exception;
+
+    void saveWithValidateBalance(SrSettlementSecond srSettlementSecond) throws Exception;
 }

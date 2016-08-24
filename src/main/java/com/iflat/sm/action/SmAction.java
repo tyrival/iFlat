@@ -510,7 +510,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public String approveSrSettlementFirst() throws Exception {
 
-        // 如果是审批通过，则更新余额
+        /*// 如果是审批通过，则更新余额
         if ("pass".equals(outGoingName)) {
             // 获取原始单据上的一级结算价格，与新价格对比，得到调整金额
             SrSettlement orig = new SrSettlement();
@@ -532,7 +532,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
             this.srSettlement.setSettleFirstName(userInfoVo.getUserName());
             this.srSettlement.setSettleFirstTime(new Date());
             this.result.setObject(this.srSettlementService.save(this.srSettlement));
-        }
+        }*/
         String businessKey = srSettlementService.getBusinessKey(srSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
         return SUCCESS;
@@ -643,7 +643,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     public String approveSrSettlementSecond() throws Exception {
         //this.srSettlementSecond.setPid(this.srSettlement.getId());
-        this.srSettlementSecondService.save(this.srSettlementSecond);
+        this.srSettlementSecondService.saveWithValidateBalance(this.srSettlementSecond);
 
         String businessKey = srSettlementService.getBusinessKey(srSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);

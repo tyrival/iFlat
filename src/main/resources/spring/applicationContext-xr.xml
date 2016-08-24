@@ -1,65 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-  <bean id="xrAction" class="com.iflat.xr.action.XrAction" scope="prototype">
-    <property name="xrProjectService" ref="xrProjectService" />
-    <property name="xrProject" ref="xrProject" />
-    <property name="srAssessService" ref="srAssessService" />
-    <property name="srAssess" ref="srAssess" />
-    <property name="srBalanceService" ref="srBalanceService" />
-    <property name="srBalance" ref="srBalance" />
-    <property name="srBalanceApplService" ref="srBalanceApplService" />
-    <property name="srBalanceAppl" ref="srBalanceAppl" />
-    <property name="srProjectMgrService" ref="srProjectMgrService" />
-    <property name="srProjectMgr" ref="srProjectMgr" />
-    <property name="srProjectPriceService" ref="srProjectPriceService" />
-    <property name="srProjectPrice" ref="srProjectPrice" />
-    <property name="xrSrSettlementService" ref="xrSrSettlementService" />
-    <property name="xrSrSettlement" ref="xrSrSettlement" />
-    <property name="srSettlementDetlService" ref="srSettlementDetlService" />
-    <property name="srSettlementDetl" ref="srSettlementDetl" />
-    <property name="srStandardPriceService" ref="srStandardPriceService" />
-    <property name="srStandardPrice" ref="srStandardPrice" />
-    <property name="teamService" ref="teamService" />
-    <property name="xrTeam" ref="xrTeam" />
-    <property name="workflowService" ref="workflowService"/>
-  </bean>
-  <bean id="xrProject" class="com.iflat.xr.bean.Project" scope="prototype" />
-  <bean id="projectDao" class="com.iflat.xr.dao.impl.ProjectDaoImpl" />
-  <bean id="xrProjectService" class="com.iflat.xr.service.impl.ProjectServiceImpl" />
-  <bean id="srAssess" class="com.iflat.xr.bean.SrAssess" scope="prototype" />
-  <bean id="srAssessDao" class="com.iflat.xr.dao.impl.SrAssessDaoImpl" />
-  <bean id="srAssessService" class="com.iflat.xr.service.impl.SrAssessServiceImpl" />
-  <bean id="srBalance" class="com.iflat.xr.bean.SrBalance" scope="prototype" />
-  <bean id="srBalanceDao" class="com.iflat.xr.dao.impl.SrBalanceDaoImpl" />
-  <bean id="srBalanceService" class="com.iflat.xr.service.impl.SrBalanceServiceImpl" />
-  <bean id="srBalanceAppl" class="com.iflat.xr.bean.SrBalanceAppl" scope="prototype" />
-  <bean id="srBalanceApplDao" class="com.iflat.xr.dao.impl.SrBalanceApplDaoImpl" />
-  <bean id="srBalanceApplService" class="com.iflat.xr.service.impl.SrBalanceApplServiceImpl" />
-  <bean id="srProjectMgr" class="com.iflat.xr.bean.SrProjectMgr" scope="prototype" />
-  <bean id="srProjectMgrDao" class="com.iflat.xr.dao.impl.SrProjectMgrDaoImpl" />
-  <bean id="srProjectMgrService" class="com.iflat.xr.service.impl.SrProjectMgrServiceImpl" />
-  <bean id="srProjectPrice" class="com.iflat.xr.bean.SrProjectPrice" scope="prototype" />
-  <bean id="srProjectPriceDao" class="com.iflat.xr.dao.impl.SrProjectPriceDaoImpl" />
-  <bean id="srProjectPriceService" class="com.iflat.xr.service.impl.SrProjectPriceServiceImpl" />
-  <bean id="xrSrSettlement" class="com.iflat.xr.bean.SrSettlement" scope="prototype" />
-  <bean id="srSettlementDao" class="com.iflat.xr.dao.impl.SrSettlementDaoImpl" />
-  <bean id="xrSrSettlementService" class="com.iflat.xr.service.impl.SrSettlementServiceImpl">
-      <property name="workflowService" ref="workflowService"/>
-      <property name="srSettlementDetlService" ref="srSettlementDetlService"/>
-      <property name="xrSrSettlement" ref="xrSrSettlement"/>
-      <property name="xrProjectService" ref="xrProjectService"/>
-      <property name="userService" ref="userService"/>
-      <property name="teamService" ref="teamService"/>
-      <property name="srProjectMgrService" ref="srProjectMgrService"/>
-  </bean>
-  <bean id="srSettlementDetl" class="com.iflat.xr.bean.SrSettlementDetl" scope="prototype" />
-  <bean id="srSettlementDetlDao" class="com.iflat.xr.dao.impl.SrSettlementDetlDaoImpl" />
-  <bean id="srSettlementDetlService" class="com.iflat.xr.service.impl.SrSettlementDetlServiceImpl" />
-  <bean id="srStandardPrice" class="com.iflat.xr.bean.SrStandardPrice" scope="prototype" />
-  <bean id="srStandardPriceDao" class="com.iflat.xr.dao.impl.SrStandardPriceDaoImpl" />
-  <bean id="srStandardPriceService" class="com.iflat.xr.service.impl.SrStandardPriceServiceImpl" />
-  <bean id="xrTeam" class="com.iflat.xr.bean.Team" scope="prototype" />
-  <bean id="teamDao" class="com.iflat.xr.dao.impl.TeamDaoImpl" />
-  <bean id="teamService" class="com.iflat.xr.service.impl.TeamServiceImpl" />
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="xrAction" class="com.iflat.xr.action.XrAction" scope="prototype">
+        <property name="xrProjectService" ref="xrProjectService"/>
+        <property name="xrProject" ref="xrProject"/>
+        <property name="srAssessService" ref="srAssessService"/>
+        <property name="srAssess" ref="srAssess"/>
+        <property name="srBalanceService" ref="srBalanceService"/>
+        <property name="srBalance" ref="srBalance"/>
+        <property name="srBalanceApplService" ref="srBalanceApplService"/>
+        <property name="srBalanceAppl" ref="srBalanceAppl"/>
+        <property name="srProjectMgrService" ref="srProjectMgrService"/>
+        <property name="srProjectMgr" ref="srProjectMgr"/>
+        <property name="srProjectPriceService" ref="srProjectPriceService"/>
+        <property name="srProjectPrice" ref="srProjectPrice"/>
+        <property name="xrSrSettlementService" ref="xrSrSettlementService"/>
+        <property name="xrSrSettlement" ref="xrSrSettlement"/>
+        <property name="srSettlementDetlService" ref="srSettlementDetlService"/>
+        <property name="srSettlementDetl" ref="srSettlementDetl"/>
+        <property name="srStandardPriceService" ref="srStandardPriceService"/>
+        <property name="srStandardPrice" ref="srStandardPrice"/>
+        <property name="teamService" ref="teamService"/>
+        <property name="xrTeam" ref="xrTeam"/>
+        <property name="workflowService" ref="workflowService"/>
+        <property name="xrDiscountService" ref="xrDiscountService"/>
+        <property name="xrDiscount" ref="xrDiscount"/>
+        <property name="trSettlementService" ref="trSettlementService"/>
+        <property name="trSettlement" ref="trSettlement"/>
+        <property name="trBalanceService" ref="trBalanceService"/>
+        <property name="trBalance" ref="trBalance"/>
+        <property name="trSettlementDetlService" ref="trSettlementDetlService"/>
+        <property name="trSettlementDetl" ref="trSettlementDetl"/>
+    </bean>
+    <bean id="xrProject" class="com.iflat.xr.bean.Project" scope="prototype"/>
+    <bean id="projectDao" class="com.iflat.xr.dao.impl.ProjectDaoImpl"/>
+    <bean id="xrProjectService" class="com.iflat.xr.service.impl.ProjectServiceImpl"/>
+    <bean id="srAssess" class="com.iflat.xr.bean.SrAssess" scope="prototype"/>
+    <bean id="srAssessDao" class="com.iflat.xr.dao.impl.SrAssessDaoImpl"/>
+    <bean id="srAssessService" class="com.iflat.xr.service.impl.SrAssessServiceImpl"/>
+    <bean id="srBalance" class="com.iflat.xr.bean.SrBalance" scope="prototype"/>
+    <bean id="srBalanceDao" class="com.iflat.xr.dao.impl.SrBalanceDaoImpl"/>
+    <bean id="srBalanceService" class="com.iflat.xr.service.impl.SrBalanceServiceImpl"/>
+    <bean id="srBalanceAppl" class="com.iflat.xr.bean.SrBalanceAppl" scope="prototype"/>
+    <bean id="srBalanceApplDao" class="com.iflat.xr.dao.impl.SrBalanceApplDaoImpl"/>
+    <bean id="srBalanceApplService" class="com.iflat.xr.service.impl.SrBalanceApplServiceImpl"/>
+    <bean id="srProjectMgr" class="com.iflat.xr.bean.SrProjectMgr" scope="prototype"/>
+    <bean id="srProjectMgrDao" class="com.iflat.xr.dao.impl.SrProjectMgrDaoImpl"/>
+    <bean id="srProjectMgrService" class="com.iflat.xr.service.impl.SrProjectMgrServiceImpl"/>
+    <bean id="srProjectPrice" class="com.iflat.xr.bean.SrProjectPrice" scope="prototype"/>
+    <bean id="srProjectPriceDao" class="com.iflat.xr.dao.impl.SrProjectPriceDaoImpl"/>
+    <bean id="srProjectPriceService" class="com.iflat.xr.service.impl.SrProjectPriceServiceImpl"/>
+    <bean id="xrSrSettlement" class="com.iflat.xr.bean.SrSettlement" scope="prototype"/>
+    <bean id="srSettlementDao" class="com.iflat.xr.dao.impl.SrSettlementDaoImpl"/>
+    <bean id="xrSrSettlementService" class="com.iflat.xr.service.impl.SrSettlementServiceImpl">
+        <property name="workflowService" ref="workflowService"/>
+        <property name="srSettlementDetlService" ref="srSettlementDetlService"/>
+        <property name="xrSrSettlement" ref="xrSrSettlement"/>
+        <property name="xrProjectService" ref="xrProjectService"/>
+        <property name="userService" ref="userService"/>
+        <property name="teamService" ref="teamService"/>
+        <property name="srProjectMgrService" ref="srProjectMgrService"/>
+        <property name="srBalanceService" ref="srBalanceService"/>
+    </bean>
+    <bean id="srSettlementDetl" class="com.iflat.xr.bean.SrSettlementDetl" scope="prototype"/>
+    <bean id="srSettlementDetlDao" class="com.iflat.xr.dao.impl.SrSettlementDetlDaoImpl"/>
+    <bean id="srSettlementDetlService" class="com.iflat.xr.service.impl.SrSettlementDetlServiceImpl"/>
+    <bean id="srStandardPrice" class="com.iflat.xr.bean.SrStandardPrice" scope="prototype"/>
+    <bean id="srStandardPriceDao" class="com.iflat.xr.dao.impl.SrStandardPriceDaoImpl"/>
+    <bean id="srStandardPriceService" class="com.iflat.xr.service.impl.SrStandardPriceServiceImpl"/>
+    <bean id="xrTeam" class="com.iflat.xr.bean.Team" scope="prototype"/>
+    <bean id="teamDao" class="com.iflat.xr.dao.impl.TeamDaoImpl"/>
+    <bean id="teamService" class="com.iflat.xr.service.impl.TeamServiceImpl"/>
+    <bean id="xrDiscount" class="com.iflat.xr.bean.Discount" scope="prototype"/>
+    <bean id="discountDao" class="com.iflat.xr.dao.impl.DiscountDaoImpl"/>
+    <bean id="xrDiscountService" class="com.iflat.xr.service.impl.DiscountServiceImpl"/>
+    <bean id="trSettlement" class="com.iflat.xr.bean.TrSettlement" scope="prototype"/>
+    <bean id="trSettlementDao" class="com.iflat.xr.dao.impl.TrSettlementDaoImpl"/>
+    <bean id="trSettlementService" class="com.iflat.xr.service.impl.TrSettlementServiceImpl">
+        <property name="workflowService" ref="workflowService"/>
+        <property name="trSettlementDetlService" ref="trSettlementDetlService"/>
+        <property name="trSettlement" ref="trSettlement"/>
+        <property name="xrProjectService" ref="xrProjectService"/>
+        <property name="teamService" ref="teamService"/>
+        <property name="srBalanceService" ref="srBalanceService"/>
+    </bean>
+    <bean id="trBalance" class="com.iflat.xr.bean.TrBalance" scope="prototype"/>
+    <bean id="trBalanceDao" class="com.iflat.xr.dao.impl.TrBalanceDaoImpl"/>
+    <bean id="trBalanceService" class="com.iflat.xr.service.impl.TrBalanceServiceImpl"/>
+    <bean id="trSettlementDetl" class="com.iflat.xr.bean.TrSettlementDetl" scope="prototype"/>
+    <bean id="trSettlementDetlDao" class="com.iflat.xr.dao.impl.TrSettlementDetlDaoImpl"/>
+    <bean id="trSettlementDetlService" class="com.iflat.xr.service.impl.TrSettlementDetlServiceImpl"/>
 </beans>
 

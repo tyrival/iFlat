@@ -11,6 +11,7 @@ import com.iflat.sm.bean.SrSettlementDetlSecond;
 import com.iflat.sm.bean.SrSettlementSecond;
 import com.iflat.sm.service.SrSettlementDetlSecondService;
 import com.iflat.sm.service.SrSettlementSecondService;
+import com.iflat.sm.service.SrSettlementService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.ExcelUtil;
 import com.iflat.util.Session;
@@ -25,6 +26,7 @@ import java.util.*;
  */
 public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements SrSettlementSecondService {
 
+    private SrSettlementService srSettlementService;
     private BaseService srSettlementBalanceService;
     private SrSettlementBalance srSettlementBalance;
     private SrSettlementDetlSecondService srSettlementDetlSecondService;
@@ -36,15 +38,63 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
     private Map<String, Object> map;
 
     @Override
+    public void saveWithValidateBalance(SrSettlementSecond srSettlementSecond) throws Exception {
+
+        // 先保存，后控制是否允许审批通过
+        srSettlementSecond = (SrSettlementSecond) this.save(srSettlementSecond);
+
+        SrSettlement srSettlement = new SrSettlement();
+        srSettlement.setId(srSettlementSecond.getPid());
+        srSettlement = (SrSettlement) srSettlementService.list(srSettlement).get(0);
+        double amount1 = srSettlement.getSummaryAmount();
+
+        SrSettlementSecond param = new SrSettlementSecond();
+        param.setPid(srSettlementSecond.getPid());
+        List<SrSettlementSecond> list2 = this.list(param);
+        double amount2 = 0;
+        if (list2 != null && list2.size() > 0) {
+            for (int i = 0; i < list2.size(); i++) {
+                amount2 += list2.get(i).getSummaryAmount();
+            }
+        }
+        double diff = amount1 - amount2;
+
+        if (diff < 0) {
+
+            SrSettlementBalance srSettlementBalance = new SrSettlementBalance();
+            srSettlementBalance.setDeptName(srSettlementSecond.getDeptName());
+            List<SrSettlementBalance> list
+                    = this.srSettlementBalanceService.list(srSettlementBalance);
+            double bal = 0;
+            if (list == null || list.size() == 0) {
+                srSettlementBalance.setAmount(0);
+                this.srSettlementBalanceService.save(srSettlementBalance);
+                throw new Exception("此部门无结余金额。");
+            } else {
+                srSettlementBalance = list.get(0);
+                bal = srSettlementBalance.getAmount();
+            }
+
+            if (bal < Math.abs(diff)) {
+                throw new Exception("部门结余为" + srSettlementBalance.getAmount()
+                        + "元，不足以支付此次超支为" + Math.abs(diff)
+                        + "元的结算，请重新调整。");
+            }
+        }
+
+    }
+
+    @Override
     protected void beforeSave() throws Exception {
 
-        // 获取原始部门余额，看是否足以支付此次分配
+
+        /*// 获取原始部门余额，看是否足以支付此次分配
         SrSettlementSecond srSettlementSecond = (SrSettlementSecond) this.saveObj;
         this.srSettlementBalance.setDeptName(srSettlementSecond.getDeptName());
         List<SrSettlementBalance> list
                 = this.srSettlementBalanceService.list(this.srSettlementBalance);
         if (list == null || list.size() == 0) {
-            throw new Exception("此部门的结余金额为0");
+            throw new Exception("此部门无结余金额。");
         }
         srSettlementBalance = list.get(0);
 
@@ -65,7 +115,7 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
         }
         // 修改结余金额
         srSettlementBalance.setAdjustment(-diff);
-        this.srSettlementBalanceService.save(srSettlementBalance);
+        this.srSettlementBalanceService.save(srSettlementBalance);*/
     }
 
     @Override
@@ -77,10 +127,10 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
         param.setPid(o.getId());
         this.srSettlementDetlSecondService.delete(param);
 
-        // 还原balance
+        /*// 还原balance
         SrSettlementBalance balance = new SrSettlementBalance();
         balance.setDeptName(o.getDeptName());
-        balance.setAdjustment(o.getSummaryAmount());
+        balance.setAdjustment(o.getSummaryAmount());*/
     }
 
     @Override
@@ -123,17 +173,37 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
             throw new Exception("导入失败，未填写工程队名。");
         }
 
-        // 验证结余金额
-        Double balance = Double.valueOf(0);
-        SrSettlementBalance srSettlementBalance = new SrSettlementBalance();
-        srSettlementBalance.setDeptName(o.getDeptName());
-        List list = srSettlementBalanceService.list(srSettlementBalance);
-        if (list != null && list.size() != 0) {
-            balance = ((SrSettlementBalance) list.get(0)).getAmount();
+        SrSettlement srSettlement = new SrSettlement();
+        srSettlement.setId(o.getPid());
+
+        srSettlement = (SrSettlement) srSettlementService.list(srSettlement).get(0);
+        double amount1 = srSettlement.getSummaryAmount();
+
+        List<SrSettlementSecond> list2 = super.getImportList();
+        double amount2 = 0;
+        if (list2 != null && list2.size() > 0) {
+            for (int i = 0; i < list2.size(); i++) {
+                amount2 += list2.get(i).getSummaryAmount();
+            }
         }
-        if (balance < o.getSummaryAmount()) {
-            throw new Exception("结余金额为" + balance
-                    + "，不足以进行总额为" + o.getSummaryAmount() + "的分配。");
+        double diff = amount1 - amount2;
+
+        if (diff < 0) {
+            // 验证结余金额
+            Double balance = Double.valueOf(0);
+            SrSettlementBalance srSettlementBalance = new SrSettlementBalance();
+            srSettlementBalance.setDeptName(o.getDeptName());
+            List list = srSettlementBalanceService.list(srSettlementBalance);
+            if (list != null && list.size() != 0) {
+                balance = ((SrSettlementBalance) list.get(0)).getAmount();
+            } else {
+                srSettlementBalance.setAmount(0);
+                this.srSettlementBalanceService.save(srSettlementBalance);
+            }
+            if (balance < Math.abs(diff)) {
+                throw new Exception("结余金额为" + balance
+                        + "，不足以进行此次超支为" + Math.abs(diff) + "的结算。");
+            }
         }
 
         Project project = new Project();
@@ -208,11 +278,11 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
     @Override
     protected void afterImportData() throws Exception {
         // 导入后修改结余
-        SrSettlementSecond o = (SrSettlementSecond) this.importList.get(0);
+        /*SrSettlementSecond o = (SrSettlementSecond) this.importList.get(0);
         SrSettlementBalance balance = new SrSettlementBalance();
         balance.setDeptName(o.getDeptName());
         balance.setAdjustment(-o.getSummaryAmount());
-        this.srSettlementBalanceService.save(balance);
+        this.srSettlementBalanceService.save(balance);*/
     }
 
     @Override
@@ -283,4 +353,11 @@ public class SrSettlementSecondServiceImpl extends BaseServiceSupport implements
         this.map = map;
     }
 
+    public SrSettlementService getSrSettlementService() {
+        return srSettlementService;
+    }
+
+    public void setSrSettlementService(SrSettlementService srSettlementService) {
+        this.srSettlementService = srSettlementService;
+    }
 }

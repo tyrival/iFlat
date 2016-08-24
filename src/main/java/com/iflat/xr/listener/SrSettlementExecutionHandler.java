@@ -1,21 +1,27 @@
 package com.iflat.xr.listener;
 
+import com.iflat.base.service.BaseService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.Application;
 import com.iflat.util.Session;
 import com.iflat.workflow.listener.WorkflowExecutionListener;
+import com.iflat.xr.bean.Discount;
+import com.iflat.xr.bean.SrBalance;
 import com.iflat.xr.bean.SrSettlement;
 import com.iflat.xr.entity.SrStatus;
 import com.iflat.xr.service.SrSettlementService;
 import org.activiti.engine.delegate.DelegateExecution;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by tyriv on 2016/7/2.
  */
 public class SrSettlementExecutionHandler extends WorkflowExecutionListener {
     private SrSettlementService srSettlementService;
+    private BaseService xrDiscountService;
+    private BaseService srBalanceService;
 
     public void submit(DelegateExecution execution) throws Exception {
         setStatus(execution, SrStatus.STATUS_UNSUBMIT);
@@ -66,12 +72,16 @@ public class SrSettlementExecutionHandler extends WorkflowExecutionListener {
         setStatus(execution, SrStatus.STATUS_HR_AUDIT);
     }
 
+    public void hrReAudit(DelegateExecution execution) throws Exception {
+        setStatus(execution, SrStatus.STATUS_HR_REAUDIT);
+    }
+
     public void hrDirectorApprove(DelegateExecution execution) throws Exception {
         setStatus(execution, SrStatus.STATUS_HR_DIRECTOR_APPROVE);
     }
 
-    public void leaderApprove(DelegateExecution execution) throws Exception {
-        setStatus(execution, SrStatus.STATUS_LEADER_APPROVE);
+    public void viceManagerApprove(DelegateExecution execution) throws Exception {
+        setStatus(execution, SrStatus.STATUS_VICE_MANAGER_APPROVE);
     }
 
     public void endEvent(DelegateExecution execution) throws Exception {
@@ -95,21 +105,65 @@ public class SrSettlementExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (srSettlement != null) {
             srSettlement.setStatus(status);
-            if (status.equals(SrStatus.STATUS_COMMERCIAL_CENTER_SETTLEMENT)) {
+            if (SrStatus.STATUS_COMMERCIAL_CENTER_DIRECTOR_APPROVE.equals(status)) {
                 UserInfoVo userInfoVo = Session.getUserInfo();
                 srSettlement.setSettFirstAcc(userInfoVo.getAccount());
                 srSettlement.setSettFirstName(userInfoVo.getUserName());
             }
-            if (status.equals(SrStatus.STATUS_COMMERCIAL_CENTER_DIRECTOR_APPROVE)) {
+            if (SrStatus.STATUS_WORKSHOP_SETTLEMENT.equals(status)) {
                 srSettlement.setSettFirstTime(new Date());
             }
-            if (status.equals(SrStatus.STATUS_HR_AUDIT)) {
+            if (SrStatus.STATUS_HR_AUDIT.equals(status)) {
+                // 更新管理费率和开票金额（不含税）
+                Discount discount = new Discount();
+                discount.setTeam(srSettlement.getTeam());
+                List<Discount> list = this.getXrDiscountService().list(discount);
+                double amount = 0;
+                double rate = 0.06;  // 默认管理费率为6%
+                if (list != null && list.size() > 0) {
+                    rate = list.get(0).getRate();
+                    amount = srSettlement.getAmountSecond() * (1 - rate);
+                }
+                srSettlement.setDiscountRate(rate);
+                srSettlement.setAmountWithDiscount(amount);
                 srSettlement.setSettlementTime(new Date());
             }
-            srSettlementService.save(srSettlement);
+            if (!srSettlement.getIsOutwork() && SrStatus.STATUS_COMPLETE.equals(status)) {
+                srSettlement.setSettlementTime(new Date());
+            }
+            srSettlement = (SrSettlement) srSettlementService.save(srSettlement);
+            if (SrStatus.STATUS_COMPLETE.equals(status)) {
+                double diff = srSettlement.getAmountFirst() - srSettlement.getAmountSecond();
+                SrBalance balance = new SrBalance();
+                balance.setDept(srSettlement.getDept());
+                List<SrBalance> balanceList = getSrBalanceService().list(balance);
+                if (balanceList == null || balanceList.size() == 0) {
+                    balance.setAmount(diff);
+                    getSrBalanceService().save(balance);
+                } else {
+                    balance = balanceList.get(0);
+                    balance.setAdjustment(diff);
+                    getSrBalanceService().save(balance);
+                }
+            }
         }
     }
 
+    public BaseService getXrDiscountService() {
+        if (xrDiscountService == null) {
+            xrDiscountService = Application.getSpringContext()
+                    .getBean("xrDiscountService", BaseService.class);
+        }
+        return xrDiscountService;
+    }
+
+    private BaseService getSrBalanceService() {
+        if (srBalanceService == null) {
+            srBalanceService = Application.getSpringContext()
+                    .getBean("srBalanceService", BaseService.class);
+        }
+        return srBalanceService;
+    }
     private SrSettlementService getSrSettlementService() {
         if (srSettlementService == null) {
             srSettlementService = Application.getSpringContext()

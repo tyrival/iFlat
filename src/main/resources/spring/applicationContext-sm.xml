@@ -159,6 +159,7 @@
         <property name="teamService" ref="teamService"/>
         <property name="srSettlementSecond" ref="srSettlementSecond"/>
         <property name="rptProjectService" ref="rptProjectService"/>
+        <property name="srSettlementService" ref="srSettlementService"/>
     </bean>
     <bean id="srSettlementSecondDao" class="com.iflat.sm.dao.impl.SrSettlementSecondDaoImpl"/>
     <bean id="srSettlementSecond" class="com.iflat.sm.bean.SrSettlementSecond" scope="prototype"/>

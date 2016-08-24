@@ -220,6 +220,7 @@ Ext.define('iFlat.view.xr.SrCommercialCenterSettlement', {
                         dataIndex: 'srSettlementDetl.priceFirst',
                         editor: {
                             xtype: 'textfield',
+                            id: 'xr-srcommercialcenteraettlement-pricefirst',
                             regex: /^[+]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
                             listeners: {
                                 change: 'calcAmountFirst'

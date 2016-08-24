@@ -140,14 +140,14 @@ Ext.define('iFlat.view.xr.SrWorkshopSettlementApprove', {
                     name: 'xrSrSettlement.score',
                     fieldLabel: '考核分',
                     labelWidth: 80,
-                    allowBlank: false,
+                    editable: false,
                     width: '20%',
                 }, {
                     xtype: 'textfield',
                     name: 'xrSrSettlement.opinion',
                     fieldLabel: '意见',
                     labelWidth: 60,
-                    allowBlank: false,
+                    editable: false,
                     width: '79%',
                 }, ]
             }, {
