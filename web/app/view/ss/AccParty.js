@@ -104,7 +104,7 @@ Ext.define('iFlat.view.ss.AccParty', {
                     editable: false,
                     forceSelection : true,
                     bind: {
-                        store: '{smDept}'
+                        store: '{ssFiveSFuncDept}'
                     },
                     listeners: {
                         change: function(cb, newV, oldV, opts) {

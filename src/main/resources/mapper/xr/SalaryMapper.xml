@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.Salary">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.Salary">
+    INSERT INTO XrSalary
+    VALUES (#{id},#{month},#{teamCode},#{team},#{idCardNo},#{name},#{bank},#{account},#{workday},#{workHour},#{waitHour},#{overtimeHour},#{hourPrice},#{dayPrice},#{hourOfDay},#{waitSubsidy},#{monthPrice},#{prepay},#{deductionOfCheck},#{overtimeAmount},#{otherSubsidy},#{springFestivalSubsidy},#{bonusAmount},#{payableAmount},#{retentionAmount},#{supplementaryAmount},#{dinnerAmount},#{loanAmount},#{fineAmount},#{otherDeductAmount},#{otherFee},#{actualAmount},#{comment})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrSalary
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.month},#{item.teamCode},#{item.team},#{item.idCardNo},#{item.name},#{item.bank},#{item.account},#{item.workday},#{item.workHour},#{item.waitHour},#{item.overtimeHour},#{item.hourPrice},#{item.dayPrice},#{item.hourOfDay},#{item.waitSubsidy},#{item.monthPrice},#{item.prepay},#{item.deductionOfCheck},#{item.overtimeAmount},#{item.otherSubsidy},#{item.springFestivalSubsidy},#{item.bonusAmount},#{item.payableAmount},#{item.retentionAmount},#{item.supplementaryAmount},#{item.dinnerAmount},#{item.loanAmount},#{item.fineAmount},#{item.otherDeductAmount},#{item.otherFee},#{item.actualAmount},#{item.comment}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.Salary">
+    UPDATE XrSalary
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="month!=null">month=#{month},</if>
+        <if test="teamCode!=null">teamCode=#{teamCode},</if>
+        <if test="team!=null">team=#{team},</if>
+        <if test="idCardNo!=null">idCardNo=#{idCardNo},</if>
+        <if test="name!=null">name=#{name},</if>
+        <if test="bank!=null">bank=#{bank},</if>
+        <if test="account!=null">account=#{account},</if>
+        <if test="workday!=null">workday=#{workday},</if>
+        <if test="workHour!=null">workHour=#{workHour},</if>
+        <if test="waitHour!=null">waitHour=#{waitHour},</if>
+        <if test="overtimeHour!=null">overtimeHour=#{overtimeHour},</if>
+        <if test="hourPrice!=null">hourPrice=#{hourPrice},</if>
+        <if test="dayPrice!=null">dayPrice=#{dayPrice},</if>
+        <if test="hourOfDay!=null">hourOfDay=#{hourOfDay},</if>
+        <if test="waitSubsidy!=null">waitSubsidy=#{waitSubsidy},</if>
+        <if test="monthPrice!=null">monthPrice=#{monthPrice},</if>
+        <if test="prepay!=null">prepay=#{prepay},</if>
+        <if test="deductionOfCheck!=null">deductionOfCheck=#{deductionOfCheck},</if>
+        <if test="overtimeAmount!=null">overtimeAmount=#{overtimeAmount},</if>
+        <if test="otherSubsidy!=null">otherSubsidy=#{otherSubsidy},</if>
+        <if test="springFestivalSubsidy!=null">springFestivalSubsidy=#{springFestivalSubsidy},</if>
+        <if test="bonusAmount!=null">bonusAmount=#{bonusAmount},</if>
+        <if test="payableAmount!=null">payableAmount=#{payableAmount},</if>
+        <if test="retentionAmount!=null">retentionAmount=#{retentionAmount},</if>
+        <if test="supplementaryAmount!=null">supplementaryAmount=#{supplementaryAmount},</if>
+        <if test="dinnerAmount!=null">dinnerAmount=#{dinnerAmount},</if>
+        <if test="loanAmount!=null">loanAmount=#{loanAmount},</if>
+        <if test="fineAmount!=null">fineAmount=#{fineAmount},</if>
+        <if test="otherDeductAmount!=null">otherDeductAmount=#{otherDeductAmount},</if>
+        <if test="otherFee!=null">otherFee=#{otherFee},</if>
+        <if test="actualAmount!=null">actualAmount=#{actualAmount},</if>
+        <if test="comment!=null">comment=#{comment},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrSalary SET id=a.id,month=a.month,teamCode=a.teamCode,team=a.team,idCardNo=a.idCardNo,name=a.name,bank=a.bank,account=a.account,workday=a.workday,workHour=a.workHour,waitHour=a.waitHour,overtimeHour=a.overtimeHour,hourPrice=a.hourPrice,dayPrice=a.dayPrice,hourOfDay=a.hourOfDay,waitSubsidy=a.waitSubsidy,monthPrice=a.monthPrice,prepay=a.prepay,deductionOfCheck=a.deductionOfCheck,overtimeAmount=a.overtimeAmount,otherSubsidy=a.otherSubsidy,springFestivalSubsidy=a.springFestivalSubsidy,bonusAmount=a.bonusAmount,payableAmount=a.payableAmount,retentionAmount=a.retentionAmount,supplementaryAmount=a.supplementaryAmount,dinnerAmount=a.dinnerAmount,loanAmount=a.loanAmount,fineAmount=a.fineAmount,otherDeductAmount=a.otherDeductAmount,otherFee=a.otherFee,actualAmount=a.actualAmount,comment=a.comment
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.month} as month,#{item.teamCode} as teamCode,#{item.team} as team,#{item.idCardNo} as idCardNo,#{item.name} as name,#{item.bank} as bank,#{item.account} as account,#{item.workday} as workday,#{item.workHour} as workHour,#{item.waitHour} as waitHour,#{item.overtimeHour} as overtimeHour,#{item.hourPrice} as hourPrice,#{item.dayPrice} as dayPrice,#{item.hourOfDay} as hourOfDay,#{item.waitSubsidy} as waitSubsidy,#{item.monthPrice} as monthPrice,#{item.prepay} as prepay,#{item.deductionOfCheck} as deductionOfCheck,#{item.overtimeAmount} as overtimeAmount,#{item.otherSubsidy} as otherSubsidy,#{item.springFestivalSubsidy} as springFestivalSubsidy,#{item.bonusAmount} as bonusAmount,#{item.payableAmount} as payableAmount,#{item.retentionAmount} as retentionAmount,#{item.supplementaryAmount} as supplementaryAmount,#{item.dinnerAmount} as dinnerAmount,#{item.loanAmount} as loanAmount,#{item.fineAmount} as fineAmount,#{item.otherDeductAmount} as otherDeductAmount,#{item.otherFee} as otherFee,#{item.actualAmount} as actualAmount,#{item.comment} as comment
+    </foreach>
+    ) AS a
+    WHERE XrSalary.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrSalary
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.Salary" resultMap="XrSalaryResult">
+    SELECT id,month,teamCode,team,idCardNo,name,bank,account,workday,workHour,waitHour,overtimeHour,hourPrice,dayPrice,hourOfDay,waitSubsidy,monthPrice,prepay,deductionOfCheck,overtimeAmount,otherSubsidy,springFestivalSubsidy,bonusAmount,payableAmount,retentionAmount,supplementaryAmount,dinnerAmount,loanAmount,fineAmount,otherDeductAmount,otherFee,actualAmount,comment
+    FROM XrSalary
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
+        <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
+        <if test="idCardNo!=null and !&quot;&quot;.equals(idCardNo.trim())">AND idCardNo=#{idCardNo}</if>
+        <if test="name!=null and !&quot;&quot;.equals(name.trim())">AND name=#{name}</if>
+        <if test="bank!=null and !&quot;&quot;.equals(bank.trim())">AND bank=#{bank}</if>
+        <if test="account!=null and !&quot;&quot;.equals(account.trim())">AND account=#{account}</if>
+        <if test="fromDate!=null">
+            AND month &gt;= #{fromDate}</if>
+        <if test="toDate!=null">
+            AND month &lt; DATEADD(day,1,#{toDate})</if>
+    </where>
+    ORDER BY month DESC, teamCode, name
+</select>
+
+<resultMap type="com.iflat.xr.bean.Salary" id="XrSalaryResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="month" column="month" jdbcType="DATE"/>
+    <result property="teamCode" column="teamCode" jdbcType="VARCHAR"/>
+    <result property="team" column="team" jdbcType="VARCHAR"/>
+    <result property="idCardNo" column="idCardNo" jdbcType="VARCHAR"/>
+    <result property="name" column="name" jdbcType="VARCHAR"/>
+    <result property="bank" column="bank" jdbcType="VARCHAR"/>
+    <result property="account" column="account" jdbcType="VARCHAR"/>
+    <result property="workday" column="workday" jdbcType="DOUBLE"/>
+    <result property="workHour" column="workHour" jdbcType="DOUBLE"/>
+    <result property="waitHour" column="waitHour" jdbcType="DOUBLE"/>
+    <result property="overtimeHour" column="overtimeHour" jdbcType="DOUBLE"/>
+    <result property="hourPrice" column="hourPrice" jdbcType="DOUBLE"/>
+    <result property="dayPrice" column="dayPrice" jdbcType="DOUBLE"/>
+    <result property="hourOfDay" column="hourOfDay" jdbcType="DOUBLE"/>
+    <result property="waitSubsidy" column="waitSubsidy" jdbcType="DOUBLE"/>
+    <result property="monthPrice" column="monthPrice" jdbcType="DOUBLE"/>
+    <result property="prepay" column="prepay" jdbcType="DOUBLE"/>
+    <result property="deductionOfCheck" column="deductionOfCheck" jdbcType="DOUBLE"/>
+    <result property="overtimeAmount" column="overtimeAmount" jdbcType="DOUBLE"/>
+    <result property="otherSubsidy" column="otherSubsidy" jdbcType="DOUBLE"/>
+    <result property="springFestivalSubsidy" column="springFestivalSubsidy" jdbcType="DOUBLE"/>
+    <result property="bonusAmount" column="bonusAmount" jdbcType="DOUBLE"/>
+    <result property="payableAmount" column="payableAmount" jdbcType="DOUBLE"/>
+    <result property="retentionAmount" column="retentionAmount" jdbcType="DOUBLE"/>
+    <result property="supplementaryAmount" column="supplementaryAmount" jdbcType="DOUBLE"/>
+    <result property="dinnerAmount" column="dinnerAmount" jdbcType="DOUBLE"/>
+    <result property="loanAmount" column="loanAmount" jdbcType="DOUBLE"/>
+    <result property="fineAmount" column="fineAmount" jdbcType="DOUBLE"/>
+    <result property="otherDeductAmount" column="otherDeductAmount" jdbcType="DOUBLE"/>
+    <result property="otherFee" column="otherFee" jdbcType="DOUBLE"/>
+    <result property="actualAmount" column="actualAmount" jdbcType="DOUBLE"/>
+    <result property="comment" column="comment" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

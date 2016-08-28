@@ -15,6 +15,15 @@ public class Project {
     private String status;  //状态
     private String type;  //状态
     private Date completeTime;  //完工时间
+    private int dockPeriod;
+
+    public int getDockPeriod() {
+        return dockPeriod;
+    }
+
+    public void setDockPeriod(int dockPeriod) {
+        this.dockPeriod = dockPeriod;
+    }
 
     public String getType() {
         return type;

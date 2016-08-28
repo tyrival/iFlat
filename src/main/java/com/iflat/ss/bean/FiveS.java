@@ -42,6 +42,44 @@ public class FiveS {
     private Date fromDate;
     private Date toDate;
 
+    private double score;
+    private double amount;
+    private String issueDept;
+    private String issuer;
+
+    public String getIssuer() {
+        return issuer;
+    }
+
+    public void setIssuer(String issuer) {
+        this.issuer = issuer;
+    }
+
+    public String getIssueDept() {
+        return issueDept;
+    }
+
+    public void setIssueDept(String issueDept) {
+        this.issueDept = issueDept;
+    }
+
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public String getAreaType() {
         return areaType;
     }

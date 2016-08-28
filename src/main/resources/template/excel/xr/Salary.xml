@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="salary" code="salary" name="工资">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+        <col index="G" width='17em'></col>
+        <col index="H" width='17em'></col>
+        <col index="I" width='17em'></col>
+        <col index="J" width='17em'></col>
+        <col index="K" width='17em'></col>
+        <col index="L" width='17em'></col>
+        <col index="M" width='17em'></col>
+        <col index="N" width='17em'></col>
+        <col index="O" width='17em'></col>
+        <col index="P" width='17em'></col>
+        <col index="Q" width='17em'></col>
+        <col index="R" width='17em'></col>
+        <col index="S" width='17em'></col>
+        <col index="T" width='17em'></col>
+        <col index="U" width='17em'></col>
+        <col index="V" width='17em'></col>
+        <col index="W" width='17em'></col>
+        <col index="X" width='17em'></col>
+        <col index="Y" width='17em'></col>
+        <col index="Z" width='17em'></col>
+        <col index="AA" width='17em'></col>
+        <col index="AB" width='17em'></col>
+        <col index="AC" width='17em'></col>
+        <col index="AD" width='17em'></col>
+        <col index="AE" width='17em'></col>
+        <col index="AF" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="32" value="工资" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="月份" />
+            <th value="工程队id" />
+            <th value="工程队" />
+            <th value="工号" />
+            <th value="姓名" />
+            <th value="银行" />
+            <th value="银行账号" />
+            <th value="出勤天数" />
+            <th value="计工工时" />
+            <th value="等工工时" />
+            <th value="加班工时" />
+            <th value="工价-小时" />
+            <th value="工价-天" />
+            <th value="日标准工时" />
+            <th value="等工补助" />
+            <th value="包月工资" />
+            <th value="预付工资" />
+            <th value="考勤扣款" />
+            <th value="加班工资" />
+            <th value="其他补贴" />
+            <th value="春节补贴" />
+            <th value="奖金" />
+            <th value="应付工资" />
+            <th value="缓发工资" />
+            <th value="补发工资" />
+            <th value="扣伙食费" />
+            <th value="扣借款" />
+            <th value="罚款" />
+            <th value="其他扣款" />
+            <th value="其他费用" />
+            <th value="实发工资" />
+            <th value="备注" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="1">
+            <td type="date" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="string" isnullable="false" maxlength="2000" />
+        </tr>
+    </tbody>
+</excel>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.QuotaManhour">
+
+<select id="list" parameterType="com.iflat.xr.entity.QuotaManhour" resultMap="XrQuotaManhourResult">
+    SELECT projNo,projName,deptCode,dept,teamCode,team,quota,creatorAcc,creatorName,createTime,settlementTime
+    FROM V_XrQuotaManhour
+    <where>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+        <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+        <if test="deptCode!=null and !&quot;&quot;.equals(deptCode.trim())">AND deptCode=#{deptCode}</if>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+        <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
+        <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+        <if test="fromDate!=null">
+            AND settlementTime &gt;= #{fromDate}</if>
+        <if test="toDate!=null">
+            AND settlementTime &lt; DATEADD(day,1,#{toDate})</if>
+    </where>
+    ORDER BY dept,teamCode,createTime
+</select>
+
+<resultMap type="com.iflat.xr.entity.QuotaManhour" id="XrQuotaManhourResult">
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="projName" column="projName" jdbcType="VARCHAR"/>
+    <result property="deptCode" column="deptCode" jdbcType="VARCHAR"/>
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="teamCode" column="teamCode" jdbcType="VARCHAR"/>
+    <result property="team" column="team" jdbcType="VARCHAR"/>
+    <result property="quota" column="quota" jdbcType="DOUBLE"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+    <result property="settlementTime" column="settlementTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

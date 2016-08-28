@@ -1,5 +1,10 @@
 package com.iflat.xr.action;
 
+import com.iflat.xr.entity.QuotaManhour;
+import com.iflat.xr.entity.LaborExpense;
+import com.iflat.xr.bean.Benefit;
+import com.iflat.xr.bean.Salary;
+import com.iflat.xr.bean.DockPeriod;
 import com.iflat.xr.bean.TrSettlementDetl;
 import com.iflat.xr.bean.TrBalance;
 import com.iflat.xr.bean.TrSettlement;
@@ -750,9 +755,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
     }
 
     /**
-     * 保存SrSettlement并提交审批
-     * @return
-     * @throws Exception
+     * 保存SrSettlement并提交审批     * @return     * @throws Exception
      */
     public String saveAndSubmitTrSettlement() throws Exception {
         TrSettlement trSettlement = (TrSettlement) this.trSettlementService.save(this.trSettlement);
@@ -875,6 +878,235 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
             this.trSettlementService.delete(this.trSettlement);
             throw new Exception(e.getMessage());
         }
+        return SUCCESS;
+    }
+
+    private BaseService dockPeriodService;
+    private DockPeriod dockPeriod;
+
+    public BaseService getDockPeriodService() {
+        return dockPeriodService;
+    }
+
+    public void setDockPeriodService(BaseService dockPeriodService) {
+        this.dockPeriodService = dockPeriodService;
+    }
+
+    public DockPeriod getDockPeriod() {
+        return dockPeriod;
+    }
+
+    public void setDockPeriod(DockPeriod dockPeriod) {
+        this.dockPeriod = dockPeriod;
+    }
+
+    public String saveDockPeriod() throws Exception {
+        this.result.setObject(this.dockPeriodService.save(this.dockPeriod));
+        return SUCCESS;
+    }
+
+    public String deleteDockPeriod() throws Exception {
+        this.result.setObject(this.dockPeriodService.delete(this.dockPeriod));
+        return SUCCESS;
+    }
+
+    public String listDockPeriod() throws Exception {
+        this.result.setList(this.dockPeriodService.list(this.dockPeriod));
+        return SUCCESS;
+    }
+
+    public String listPageDockPeriod() throws Exception {
+        this.result.setObject(this.dockPeriodService.listPage(this.dockPeriod, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadDockPeriod() throws Exception {
+        this.result.setObject(this.dockPeriodService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    private BaseService salaryService;
+    private Salary salary;
+
+    public BaseService getSalaryService() {
+        return salaryService;
+    }
+
+    public void setSalaryService(BaseService salaryService) {
+        this.salaryService = salaryService;
+    }
+
+    public Salary getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Salary salary) {
+        this.salary = salary;
+    }
+
+    public String saveSalary() throws Exception {
+        this.result.setObject(this.salaryService.save(this.salary));
+        return SUCCESS;
+    }
+
+    public String deleteSalary() throws Exception {
+        this.result.setObject(this.salaryService.delete(this.salary));
+        return SUCCESS;
+    }
+
+    public String listSalary() throws Exception {
+        this.result.setList(this.salaryService.list(this.salary));
+        return SUCCESS;
+    }
+
+    public String listPageSalary() throws Exception {
+        this.result.setObject(this.salaryService.listPage(this.salary, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadSalary() throws Exception {
+        this.result.setObject(this.salaryService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String templateSalary() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("xr", "Salary");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String importSalary() throws Exception {
+        this.result.setList(this.salaryService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    private BaseService benefitService;
+    private Benefit benefit;
+
+    public BaseService getBenefitService() {
+        return benefitService;
+    }
+
+    public void setBenefitService(BaseService benefitService) {
+        this.benefitService = benefitService;
+    }
+
+    public Benefit getBenefit() {
+        return benefit;
+    }
+
+    public void setBenefit(Benefit benefit) {
+        this.benefit = benefit;
+    }
+
+    public String saveBenefit() throws Exception {
+        this.result.setObject(this.benefitService.save(this.benefit));
+        return SUCCESS;
+    }
+
+    public String deleteBenefit() throws Exception {
+        this.result.setObject(this.benefitService.delete(this.benefit));
+        return SUCCESS;
+    }
+
+    public String listBenefit() throws Exception {
+        this.result.setList(this.benefitService.list(this.benefit));
+        return SUCCESS;
+    }
+
+    public String listPageBenefit() throws Exception {
+        this.result.setObject(this.benefitService.listPage(this.benefit, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadBenefit() throws Exception {
+        this.result.setObject(this.benefitService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    public String templateBenefit() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("xr", "Benefit");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String importBenefit() throws Exception {
+        this.result.setList(this.benefitService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    private BaseService laborExpenseService;
+    private LaborExpense laborExpense;
+
+    public BaseService getLaborExpenseService() {
+        return laborExpenseService;
+    }
+
+    public void setLaborExpenseService(BaseService laborExpenseService) {
+        this.laborExpenseService = laborExpenseService;
+    }
+
+    public LaborExpense getLaborExpense() {
+        return laborExpense;
+    }
+
+    public void setLaborExpense(LaborExpense laborExpense) {
+        this.laborExpense = laborExpense;
+    }
+
+    public String listLaborExpense() throws Exception {
+        this.result.setList(this.laborExpenseService.list(this.laborExpense));
+        return SUCCESS;
+    }
+
+    public String listPageLaborExpense() throws Exception {
+        this.result.setObject(this.laborExpenseService.listPage(this.laborExpense, this.page));
+        return SUCCESS;
+    }
+
+    private BaseService quotaManhourService;
+    private QuotaManhour quotaManhour;
+
+    public BaseService getQuotaManhourService() {
+        return quotaManhourService;
+    }
+
+    public void setQuotaManhourService(BaseService quotaManhourService) {
+        this.quotaManhourService = quotaManhourService;
+    }
+
+    public QuotaManhour getQuotaManhour() {
+        return quotaManhour;
+    }
+
+    public void setQuotaManhour(QuotaManhour quotaManhour) {
+        this.quotaManhour = quotaManhour;
+    }
+
+    public String saveQuotaManhour() throws Exception {
+        this.result.setObject(this.quotaManhourService.save(this.quotaManhour));
+        return SUCCESS;
+    }
+
+    public String deleteQuotaManhour() throws Exception {
+        this.result.setObject(this.quotaManhourService.delete(this.quotaManhour));
+        return SUCCESS;
+    }
+
+    public String listQuotaManhour() throws Exception {
+        this.result.setList(this.quotaManhourService.list(this.quotaManhour));
+        return SUCCESS;
+    }
+
+    public String listPageQuotaManhour() throws Exception {
+        this.result.setObject(this.quotaManhourService.listPage(this.quotaManhour, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadQuotaManhour() throws Exception {
+        this.result.setObject(this.quotaManhourService.uploadFile(upload, uploadFileName));
         return SUCCESS;
     }
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.DockPeriod">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.DockPeriod">
+    INSERT INTO XrDockPeriod
+    VALUES (#{id},#{projNo},#{inDock},#{outDock})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrDockPeriod
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.inDock},#{item.outDock}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.DockPeriod">
+    UPDATE XrDockPeriod
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="projNo!=null">projNo=#{projNo},</if>
+        <if test="inDock!=null">inDock=#{inDock},</if>
+        <if test="outDock!=null">outDock=#{outDock},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrDockPeriod SET id=a.id,projNo=a.projNo,inDock=a.inDock,outDock=a.outDock
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.projNo} as projNo,#{item.inDock} as inDock,#{item.outDock} as outDock
+    </foreach>
+    ) AS a
+    WHERE XrDockPeriod.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrDockPeriod
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.DockPeriod" resultMap="XrDockPeriodResult">
+    SELECT id,projNo,inDock,outDock
+    FROM XrDockPeriod
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+    </where>
+    ORDER BY inDock
+</select>
+
+<resultMap type="com.iflat.xr.bean.DockPeriod" id="XrDockPeriodResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="inDock" column="inDock" jdbcType="DATE"/>
+    <result property="outDock" column="outDock" jdbcType="DATE"/>
+</resultMap>
+</mapper>

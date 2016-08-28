@@ -63,9 +63,6 @@ Ext.define('iFlat.view.xr.TrSettlementEdit', {
                     allowBlank: false,
                     editable: false,
                     forceSelection : true,
-                    anyMatch: true,
-                    displayField: 'team',
-                    valueField: 'team',
                     width: 300,
                     labelWidth: 80,
                     fieldLabel: '承办部门',
@@ -98,8 +95,18 @@ Ext.define('iFlat.view.xr.TrSettlementEdit', {
                         select: function (combo, record, eOpts) {
                             var type = record.get('xrTeam.type');
                             combo.up('window').down('textfield[name=trSettlement.isOutwork]').setValue(type != '本厂');
+                            combo.up('window').down('textfield[name=trSettlement.teamCode]').setValue(record.get('xrTeam.teamCode'));
+                            combo.up('window').down('textfield[name=trSettlement.deptCode]').setValue(record.get('xrTeam.deptCode'));
                         }
                     }
+                }, {
+                    xtype: 'textfield',
+                    name: 'trSettlement.teamCode',
+                    hidden: true
+                }, {
+                    xtype: 'textfield',
+                    name: 'trSettlement.deptCode',
+                    hidden: true
                 }, {
                     xtype: 'textfield',
                     name: 'trSettlement.isOutwork',

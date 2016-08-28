@@ -19,6 +19,7 @@ import org.jdom.input.SAXBuilder;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -201,7 +202,16 @@ public class ExcelUtil {
                 try {
                     switch(propType) {
                         case "class java.util.Date" :
-                            value = cell.getDateCellValue();
+                            try {
+                                value = cell.getDateCellValue();
+                            } catch (Exception e) {
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                String str = cell.getStringCellValue().trim();
+                                if (str.length() <= 7) {
+                                    str += "-01";
+                                }
+                                value = sdf.parse(str);
+                            }
                             break;
                         case "class java.lang.String":
                             try {

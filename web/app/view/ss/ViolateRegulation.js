@@ -136,6 +136,9 @@ Ext.define('iFlat.view.ss.ViolateRegulation', {
         header: '备注',
         dataIndex: 'violateRegulation.comment',
     }, {
+        header: '查处人',
+        dataIndex: 'violateRegulation.issuer',
+    }, {
         header: '创建人',
         dataIndex: 'violateRegulation.creatorName',
         hidden: true

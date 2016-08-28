@@ -192,6 +192,7 @@ Ext.define('iFlat.view.report.ss.FiveS', {
     }, {
         header: '整改时间',
         dataIndex: 'fiveS.rectifyTime',
+        formatter: 'date("Y-m-d")'
     }, {
         header: '整改照片',
         dataIndex: 'fiveS.rectifyAtt',
@@ -200,20 +201,21 @@ Ext.define('iFlat.view.report.ss.FiveS', {
             if(!v || v == '') {
                 return '';
             } else {
-                return "<a target='_blank' ssef='" + v + "'>下载</a>";
+                return "<a target='_blank' href='" + v + "'>下载</a>";
             }
         },
+    }, {
+        header: '查处人',
+        dataIndex: 'fiveS.issuer',
     }, {
         header: '备注',
         dataIndex: 'fiveS.comment',
     }, {
         header: '创建人',
         dataIndex: 'fiveS.creatorName',
-        hidden: true
     }, {
         header: '创建部门',
         dataIndex: 'fiveS.creatorDept',
-        hidden: true
     }],
     bbar: {
         xtype: 'pagingtoolbar',

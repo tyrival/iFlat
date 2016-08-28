@@ -91,6 +91,26 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 }
             },{
                 xtype: 'combo',
+                name: 'fiveS.belongDept',
+                store: ssFiveSFsAreaDeptStore = Ext.create('iFlat.store.ss.FsAreaDept'),
+                queryMode: 'local',
+                allowBlank: false,
+                editable: false,
+                forceSelection : false,
+                displayField: 'dept',
+                valueField: 'dept',
+                width: 200,
+                fieldLabel: '所属部门',
+                listeners: {
+                    change: function (cb, newV, oldV, opt) {
+                        cb.nextSibling('combo').reset();
+                        cb.up('form').down('textfield[name=fiveS.code]').setValue('')
+                        ssFiveSFsAreaStore.getProxy().extraParams['fsArea.dept'] = newV;
+                        ssFiveSFsAreaStore.reload();
+                    }
+                }
+            },{
+                xtype: 'combo',
                 name: 'fiveS.area',
                 store: ssFiveSFsAreaStore = Ext.create('iFlat.store.ss.FsArea', {
                     autoLoad: false,
@@ -109,35 +129,25 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
                         if (!Flat.util.isEmpty(newV)) {
-                            var v1 = cb.getStore().findRecord('area', newV).get('dept');
-                            cb.up('form').down('combo[name=fiveS.belongDept]').setValue(v1);
-                            var v2 = cb.getStore().findRecord('area', newV).get('code');
-                            cb.up('form').down('textfield[name=fiveS.code]').setValue(v2);
+                            var r = cb.getStore().findRecord('area', newV)
+                            if (r) {
+                                var v1 = r.get('dept');
+                                cb.up('form').down('combo[name=fiveS.belongDept]').setValue(v1);
+                                var v2 = r.get('code');
+                                cb.up('form').down('textfield[name=fiveS.code]').setValue(v2);
+                            }
                         }
                     }
                 }
-            },{
+            },]
+        },{
+            items: [{
                 xtype: 'textfield',
                 name: 'fiveS.code',
                 fieldLabel: '区域代码',
                 width: 200,
                 editable: false
-            }]
-        },{
-            items: [{
-                xtype: 'combo',
-                name: 'fiveS.belongDept',
-                store: ssFiveSFsAreaDeptStore = Ext.create('iFlat.store.ss.FsAreaDept'),
-                queryMode: 'local',
-                allowBlank: false,
-                editable: false,
-                forceSelection : false,
-                displayField: 'dept',
-                valueField: 'dept',
-                width: 200,
-                fieldLabel: '所属部门',
-                
-            },{
+            }, {
                 xtype: 'textfield',
                 name: 'fiveS.otherArea',
                 fieldLabel: '其他区域',
@@ -169,7 +179,9 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                     change: function (cb, newV, oldV, opt) {
                         if (!Flat.util.isEmpty(newV)) {
                             var v = cb.getStore().findRecord('rptProject.projNo', newV).get('name');
-                            cb.up('form').down('textfield[name=fiveS.projName]').setValue(v);
+                            if (v) {
+                                cb.up('form').down('textfield[name=fiveS.projName]').setValue(v);
+                            }
                         }
                     }
                 }
@@ -247,6 +259,32 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 store: ssFiveSFsCodeStore = Ext.create('iFlat.store.ss.FsCode', {
                     autoLoad: false
                 }),
+                listeners: {
+                    select: function (combo, record) {
+                        var score = record.get('fsCode.score');
+                        var amount = record.get('fsCode.amount');
+                        var form = combo.up('form');
+                        form.down('textfield[name=fiveS.score]').setValue(score);
+                        form.down('textfield[name=fiveS.amount]').setValue(amount);
+                    }
+                }
+            }]
+        },{
+            items: [{
+                xtype: 'textfield',
+                name: 'fiveS.score',
+                width: 200,
+                fieldLabel: '扣分',
+            },{
+                xtype: 'textfield',
+                name: 'fiveS.amount',
+                width: 200,
+                fieldLabel: '罚款',
+            },{
+                xtype: 'textfield',
+                name: 'fiveS.issuer',
+                width: 200,
+                fieldLabel: '查处人',
             }]
         },{
             xtype: 'container',

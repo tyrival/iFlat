@@ -5,10 +5,12 @@
 <mapper namespace="Xr.Team">
 
 <select id="list" parameterType="com.iflat.xr.bean.Team" resultMap="XrTeamResult">
-    SELECT dept,team,type
+    SELECT deptCode.dept,teamCode.team,type
     FROM V_XrTeam
     <where>
+        <if test="deptCode!=null and !&quot;&quot;.equals(deptCode.trim())">deptCode=#{deptCode}</if>
         <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">dept=#{dept}</if>
+        <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
         <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
         <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
     </where>
@@ -16,7 +18,9 @@
 </select>
 
 <resultMap type="com.iflat.xr.bean.Team" id="XrTeamResult">
+    <result property="deptCode" column="deptCode" jdbcType="VARCHAR"/>
     <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="teamCode" column="teamCode" jdbcType="VARCHAR"/>
     <result property="team" column="team" jdbcType="VARCHAR"/>
     <result property="type" column="type" jdbcType="VARCHAR"/>
 </resultMap>

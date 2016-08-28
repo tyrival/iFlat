@@ -11,129 +11,552 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Discount.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/TrBalance.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/TrSettlement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/TrSettlementDetl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/DiscountDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/TrBalanceDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/TrSettlementDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/TrSettlementDetlDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/TrStatus.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/TrSettlementExecutionHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/TrSettlementTaskHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/TrSettlementService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/DiscountServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/TrBalanceServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/TrSettlementDetlServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/TrSettlementServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/DiscountMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/TrBalanceMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/TrSettlementDetlMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/TrSettlementMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-Discount.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-Project.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-SrAssess.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-SrBalance.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-SrBalanceAppl.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-SrProjectMgr.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-SrProjectPrice.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-SrSettlement.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-SrSettlementDetl.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-SrStandardPrice.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-Team.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-TrBalance.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-TrSettlement.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-TrSettlementDetl.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/XrTrSettlement.bpmn" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/Discount.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/TrBalance.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/TrSettlement.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/TrSettlementDetl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/Discount.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/DiscountPage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/TrBalance.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/TrBalancePage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/TrSettlement.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/TrSettlementDetl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/TrSettlementDetlPage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/TrSettlementPage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/Discount.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/DiscountController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/SrHrReAudit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/SrHrReAuditController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/SrViceManagerApprove.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrApplyDeptDirectorApprove.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrApplyDeptDirectorApproveController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlement.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementApprove.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementApproveController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrHrAudit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrHrAuditController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrHrDirectorApprove.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrHrReAudit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrHrReAuditController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrQuotaEstimate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrQuotaEstimateController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrSettlement.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrSettlementController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrSettlementEdit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrSupportDeptDirectorApprove.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrSupportDeptDirectorApproveController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrSupportDeptSettlement.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrSupportDeptSettlementController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/TrViceManagerApprove.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatchController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatchInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/code/bean/Team.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/code/bean/Team.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/actiBPM.xml" afterPath="$PROJECT_DIR$/.idea/actiBPM.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/iFlat.iml" afterPath="$PROJECT_DIR$/.idea/iFlat.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/build/development/iFlat/resources/images/group-collapse.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/build/development/iFlat/resources/images/group-expand.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-arrow-open-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-arrow-open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-scroll-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-scroll-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-split-arrow-open-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-split-arrow-open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-split-arrow-over-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-split-arrow-over.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-split-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/breadcrumb/default-split-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn-group/btn-group-default-framed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn-group/btn-group-default-framed-notitle-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn-group/btn-group-default-framed-notitle-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn-group/btn-group-default-framed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-disabled-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-disabled-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-focus-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-focus-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-large-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-disabled-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-disabled-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-focus-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-focus-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-medium-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-disabled-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-disabled-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-focus-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-focus-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-small-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-disabled-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-disabled-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-focus-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-focus-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-large-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-disabled-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-disabled-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-focus-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-focus-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-medium-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-disabled-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-disabled-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-focus-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-focus-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-default-toolbar-small-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-large-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-large-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-large-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-large-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-large-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-large-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-large-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-large-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-medium-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-medium-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-medium-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-medium-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-medium-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-medium-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-medium-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-medium-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-small-focus-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-small-focus-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-small-focus-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-small-focus-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-small-over-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-small-over-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-small-pressed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/btn/btn-plain-toolbar-small-pressed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-large-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-large-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-large-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-large-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-large-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-large-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-medium-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-medium-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-medium-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-medium-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-medium-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-medium-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-small-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-small-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-small-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-small-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-small-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-small-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-large-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-large-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-large-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-large-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-large-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-large-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-medium-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-medium-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-medium-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-medium-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-medium-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-medium-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-small-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-small-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-small-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-small-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-small-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/default-toolbar-small-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/grid-cell-small-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/grid-cell-small-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/grid-cell-small-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/grid-cell-small-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/grid-cell-small-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-large-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-large-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-large-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-large-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-large-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-large-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-medium-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-medium-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-medium-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-medium-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-medium-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-medium-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-small-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-small-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-small-s-arrow-b-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-small-s-arrow-b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-small-s-arrow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/button/plain-toolbar-small-s-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/datepicker/arrow-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/datepicker/arrow-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/datepicker/month-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/dd/drop-add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/dd/drop-no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/dd/drop-yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/editor/tb-sprite.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/fieldset/collapse-tool.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/clear-trigger-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/clear-trigger.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/date-trigger-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/date-trigger.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/exclamation.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/search-trigger-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/search-trigger.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/spinner-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/spinner.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/tag-field-item-close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/trigger-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/form/trigger.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid-row-editor-buttons/grid-row-editor-buttons-default-bottom-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid-row-editor-buttons/grid-row-editor-buttons-default-bottom-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid-row-editor-buttons/grid-row-editor-buttons-default-top-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid-row-editor-buttons/grid-row-editor-buttons-default-top-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/col-move-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/col-move-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/columns.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/dd-insert-arrow-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/dd-insert-arrow-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/dirty-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/dirty.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/drop-no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/drop-yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/filters/equals.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/filters/find.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/filters/greater_than.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/filters/less_than.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/group-by.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/group-collapse.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/group-expand.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/hd-pop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/hmenu-asc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/hmenu-desc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/hmenu-lock.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/hmenu-unlock.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/page-first.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/page-last.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/page-next.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/page-prev.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/pick-button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/sort_asc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/grid/sort_desc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/group-collapse.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/group-expand.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/loadmask/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/magnify.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/menu/default-checked.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/menu/default-group-checked.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/menu/default-menu-parent-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/menu/default-menu-parent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/menu/default-scroll-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/menu/default-scroll-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/menu/default-unchecked.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-bottom-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-bottom-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-bottom-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-bottom-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-left-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-left-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-left-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-right-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-right-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-right-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-top-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-collapsed-top-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-left-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-left-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-left-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-right-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-right-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-right-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-top-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-default-framed-top-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-bottom-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-bottom-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-bottom-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-bottom-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-left-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-left-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-left-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-right-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-right-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-right-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-top-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-collapsed-top-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-left-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-left-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-left-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-right-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-right-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-right-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-top-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel-header/panel-header-light-framed-top-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel/panel-default-framed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel/panel-default-framed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel/panel-light-framed-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/panel/panel-light-framed-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/shared/icon-error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/shared/icon-info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/shared/icon-question.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/shared/icon-warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/sizer/e-handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/sizer/ne-handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/sizer/nw-handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/sizer/s-handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/sizer/se-handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/sizer/sw-handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/slider/slider-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/slider/slider-thumb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/slider/slider-v-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/slider/slider-v-thumb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab-bar/default-plain-scroll-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab-bar/default-plain-scroll-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab-bar/default-plain-scroll-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab-bar/default-plain-scroll-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab-bar/default-scroll-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab-bar/default-scroll-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab-bar/default-scroll-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab-bar/default-scroll-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-bottom-active-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-bottom-focus-active-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-bottom-focus-over-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-bottom-over-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-left-active-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-left-focus-active-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-left-focus-over-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-left-over-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-right-active-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-right-focus-active-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-right-focus-over-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-right-over-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-top-active-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-top-focus-active-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-top-focus-over-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tab/tab-default-top-over-fbg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tip/tip-default-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tip/tip-default-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tip/tip-form-invalid-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tip/tip-form-invalid-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/default-more-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/default-more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/default-scroll-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/default-scroll-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/default-scroll-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/default-scroll-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/footer-more-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/footer-more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/footer-scroll-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/toolbar/footer-scroll-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tools/tool-sprites-dark.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tools/tool-sprites.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/arrows-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-above.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-add.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-append.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-below.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-between.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-between.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-no.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-over.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-over.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-under.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-under.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-yes.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/drop-yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-end-minus-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-end-minus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-end-plus-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-end-plus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-end-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-end.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-line-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-line.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-minus-nl-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-minus-nl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-minus-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-minus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-plus-nl-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-plus-nl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-plus-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-plus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/elbow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/folder-open-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/folder-open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/folder-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/folder.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/leaf-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/leaf.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/tree/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/util/splitter/mini-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/util/splitter/mini-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/util/splitter/mini-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/util/splitter/mini-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-bottom-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-bottom-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-bottom-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-bottom-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-left-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-left-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-left-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-right-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-right-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-right-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-top-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-collapsed-top-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-left-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-left-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-left-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-right-corners-rtl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-right-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-right-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-top-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window-header/window-header-default-top-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window/toast/fade-blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window/toast/fader.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window/toast/icon16_error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window/toast/icon16_info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window/window-default-corners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/window/window-default-sides.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/report/bean/cst/cmp/DeptTeamExpense.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/report/dao/impl/cst/cmp/DeptTeamExpenseDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/report/service/impl/cst/cmp/DeptTeamExpenseServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/util/DateUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/util/MathUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Benefit.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/DockPeriod.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/ProjectType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Salary.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/BenefitDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/DockPeriodDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/LaborExpenseDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/QuotaManhourDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/dao/impl/SalaryDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/LaborExpense.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/QuotaManhour.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/BenefitServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/DockPeriodServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/LaborExpenseServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/QuotaManhourServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SalaryServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/report/cst/cmp/DeptTeamExpenseMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/BenefitMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/DockPeriodMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/LaborExpenseMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/QuotaManhourMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/SalaryMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/report-cst-cmp-DeptTeamExpense.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-Benefit.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-DockPeriod.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-LaborExpense.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-QuotaManhour.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-Salary.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/xr/Benefit.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/template/excel/xr/Salary.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/report/cst/cmp/DeptTeamExpense.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/Benefit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/DockPeriod.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/LaborExpense.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/QuotaManhour.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/model/xr/Salary.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/report/cst/cmp/DeptTeamExpense.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/Benefit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/BenefitPage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/DockPeriod.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/DockPeriodPage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/LaborExpense.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/LaborExpensePage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/QuotaManhour.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/QuotaManhourPage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/Salary.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/store/xr/SalaryPage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/cst/cmp/BenefitAnalyse.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/cst/cmp/BenefitAnalyseController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/cst/cmp/DeptTeamExpenseSum.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/cst/cmp/DeptTeamExpenseSumController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/cst/sm/XrLaborExpense.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/cst/sm/XrLaborExpenseController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/cst/sm/XrQuotaManhour.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/cst/sm/XrQuotaManhourController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/Benefit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/BenefitController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/DockPeriod.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/DockPeriodController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/DockPeriodDetl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/Salary.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/xr/SalaryController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/report/action/ReportAction.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/report/action/ReportAction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/resources/images/form/checkbox.png" afterPath="$PROJECT_DIR$/web/resources/images/form/checkbox.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/resources/images/form/radio.png" afterPath="$PROJECT_DIR$/web/resources/images/form/radio.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/code/bean/Team.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/code/bean/Team.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/action/SmAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMainExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMainExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMiscExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrMiscExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrSysExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrSysExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/SrSettlementSecondService.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/SrSettlementSecondService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementSecondServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/sm/service/impl/SrSettlementSecondServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/report/action/ReportAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/report/action/ReportAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/Accident.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/Accident.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/FiveS.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/FiveS.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/PotentialHazard.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/PotentialHazard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/ViolateRegulation.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/ViolateRegulation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/util/ExcelUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/util/ExcelUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/util/code/CodeUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/util/code/CodeUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/util/code/MybatisCoding.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/util/code/MybatisCoding.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/action/XrAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/action/XrAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Project.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Project.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/SrSettlement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/SrStatus.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/SrStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementTaskHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementTaskHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SrBalanceServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SrBalanceServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SrSettlementServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SrSettlementServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/code/TeamMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/code/TeamMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Team.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Team.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/TrSettlement.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/TrSettlement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/TrSettlementServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/TrSettlementServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ss/AccidentMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ss/AccidentMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ss/FiveSMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ss/FiveSMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ss/PotentialHazardMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ss/PotentialHazardMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ss/ViolateRegulationMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ss/ViolateRegulationMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ss/VrCodeRiskLvlMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ss/VrCodeRiskLvlMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/xr/ProjectMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/ProjectMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/xr/SrBalanceMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/SrBalanceMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/xr/SrSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/SrSettlementMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-sm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/xr/TeamMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/TeamMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/xr/TrSettlementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/xr/TrSettlementMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-report.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-report.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-xr.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-xr.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/XrSrSettlement.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/XrSrSettlement.bpmn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/code/TeamMapper.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/mapper/code/TeamMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/code/Team.js" afterPath="$PROJECT_DIR$/web/app/model/code/Team.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/struts.xml" afterPath="$PROJECT_DIR$/src/main/resources/struts.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/spring/applicationContext-report.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/spring/applicationContext-report.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/struts.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/struts.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/main/MainModel.js" afterPath="$PROJECT_DIR$/web/app/model/main/MainModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/ss/Accident.js" afterPath="$PROJECT_DIR$/web/app/model/ss/Accident.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/ss/FiveS.js" afterPath="$PROJECT_DIR$/web/app/model/ss/FiveS.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/ss/PotentialHazard.js" afterPath="$PROJECT_DIR$/web/app/model/ss/PotentialHazard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/ss/ViolateRegulation.js" afterPath="$PROJECT_DIR$/web/app/model/ss/ViolateRegulation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/xr/Project.js" afterPath="$PROJECT_DIR$/web/app/model/xr/Project.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/xr/SrSettlement.js" afterPath="$PROJECT_DIR$/web/app/model/xr/SrSettlement.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/sm/Discount.js" afterPath="$PROJECT_DIR$/web/app/view/sm/Discount.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/workflow/Task.js" afterPath="$PROJECT_DIR$/web/app/view/workflow/Task.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/SrCommercialCenterDirectorApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/xr/SrCommercialCenterDirectorApproveController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/SrCommercialCenterSettlement.js" afterPath="$PROJECT_DIR$/web/app/view/xr/SrCommercialCenterSettlement.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/SrCommercialCenterSettlementController.js" afterPath="$PROJECT_DIR$/web/app/view/xr/SrCommercialCenterSettlementController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/SrSettlementController.js" afterPath="$PROJECT_DIR$/web/app/view/xr/SrSettlementController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/xr/Team.js" afterPath="$PROJECT_DIR$/web/app/model/xr/Team.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/xr/TrSettlement.js" afterPath="$PROJECT_DIR$/web/app/model/xr/TrSettlement.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/Accident.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/Accident.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/FiveS.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/FiveS.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/AccParty.js" afterPath="$PROJECT_DIR$/web/app/view/ss/AccParty.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/Accident.js" afterPath="$PROJECT_DIR$/web/app/view/ss/Accident.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/AccidentEdit.js" afterPath="$PROJECT_DIR$/web/app/view/ss/AccidentEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/FiveS.js" afterPath="$PROJECT_DIR$/web/app/view/ss/FiveS.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/FiveSDstr.js" afterPath="$PROJECT_DIR$/web/app/view/ss/FiveSDstr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/FiveSDstrEdit.js" afterPath="$PROJECT_DIR$/web/app/view/ss/FiveSDstrEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/FiveSEdit.js" afterPath="$PROJECT_DIR$/web/app/view/ss/FiveSEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/PotentialHazard.js" afterPath="$PROJECT_DIR$/web/app/view/ss/PotentialHazard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/PotentialHazardEdit.js" afterPath="$PROJECT_DIR$/web/app/view/ss/PotentialHazardEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/ViolateRegulation.js" afterPath="$PROJECT_DIR$/web/app/view/ss/ViolateRegulation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/ViolateRegulationEdit.js" afterPath="$PROJECT_DIR$/web/app/view/ss/ViolateRegulationEdit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/SrSettlementEdit.js" afterPath="$PROJECT_DIR$/web/app/view/xr/SrSettlementEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/SrWorkshopSettlementApprove.js" afterPath="$PROJECT_DIR$/web/app/view/xr/SrWorkshopSettlementApprove.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/SrWorkshopSettlementApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/xr/SrWorkshopSettlementApproveController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/temp/SrSettlementApproveBatch.js" afterPath="$PROJECT_DIR$/web/app/view/xr/temp/SrSettlementApproveBatch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/temp/SrSettlementApproveBatchController.js" afterPath="$PROJECT_DIR$/web/app/view/xr/temp/SrSettlementApproveBatchController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/Flat.js" afterPath="$PROJECT_DIR$/web/js/Flat.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/xr/TrSettlementEdit.js" afterPath="$PROJECT_DIR$/web/app/view/xr/TrSettlementEdit.js" />
     </list>
     <ignored path="iFlat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -149,6 +572,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/iFlat$iflat.coverage" NAME="iflat Coverage Results" MODIFIED="1472110987800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/iFlat$Main.coverage" NAME="Main Coverage Results" MODIFIED="1470479669724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.iflat.util.cg.*</FILTER>
     </SUITE>
@@ -201,57 +625,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/app/view/xr/SrCommercialCenterSettlementController.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/TrSettlementDetl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/xr/TrSettlementDetlMapper.xml" />
-        <option value="$PROJECT_DIR$/web/app/model/xr/TrSettlementDetl.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrSupportDeptDirectorApproveController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrSupportDeptSettlementController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrHrAuditController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrHrReAuditController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/SrWorkshopSettlementApprove.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrHrDirectorApprove.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrViceManagerApprove.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/report/cst/cmp/DeptTeamExpenseMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/store/report/cst/cmp/DeptTeamExpense.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/cst/cmp/DeptTeamExpenseSum.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/cst/cmp/DeptTeamExpenseSumController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/AccidentController.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/xr/BenefitMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/MathUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Benefit.java" />
+        <option value="$PROJECT_DIR$/web/app/view/report/cst/cmp/BenefitAnalyseController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/cst/cmp/BenefitAnalyse.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/LaborExpense.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/xr/LaborExpenseMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/model/xr/LaborExpense.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/cst/sm/XrLaborExpenseController.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ss/AccidentMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/model/ss/Accident.js" />
+        <option value="$PROJECT_DIR$/web/app/model/ss/FiveS.js" />
+        <option value="$PROJECT_DIR$/web/app/model/ss/PotentialHazard.js" />
+        <option value="$PROJECT_DIR$/web/app/model/ss/ViolateRegulation.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ss/ViolateRegulationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ss/PotentialHazardMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ss/VrCodeRiskLvlMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/Accident.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/FiveS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/PotentialHazard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/ViolateRegulation.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ss/FiveSMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/FiveSDstr.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/FiveSDstrEdit.js" />
         <option value="$PROJECT_DIR$/web/app/model/main/MainModel.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrSupportDeptSettlement.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/xr/ProjectMapper.xml" />
-        <option value="$PROJECT_DIR$/web/app/model/xr/Project.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Project.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-workflow.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-xr.xml" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrSettlementController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/workflow/Task.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrApplyDeptDirectorApprove.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrApplyDeptDirectorApproveController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrQuotaEstimateController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrQuotaEstimate.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrSettlementEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrSupportDeptDirectorApprove.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlement.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementApproveController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementApprove.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Discount.java" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatchInfo.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrHrAudit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrHrReAudit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatch.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/action/XrAction.java" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/AccParty.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/Accident.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/FiveS.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/Accident.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/FiveS.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/PotentialHazard.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/ViolateRegulation.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/FiveSEdit.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/AccidentEdit.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/PotentialHazardEdit.js" />
+        <option value="$PROJECT_DIR$/web/app/view/ss/ViolateRegulationEdit.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementExecutionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/TrSettlementExecutionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/code/bean/Team.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/code/TeamMapper.xml" />
-        <option value="$PROJECT_DIR$/web/app/view/sm/Discount.js" />
-        <option value="$PROJECT_DIR$/web/app/model/code/Team.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SrBalanceServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web/app/model/xr/TrSettlement.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementController.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/TrSettlementServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SrSettlementServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/xr/SrBalanceMapper.xml" />
-        <option value="$PROJECT_DIR$/web/js/Flat.js" />
-        <option value="$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatchController.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementTaskHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/TrSettlementTaskHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/action/XrAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/QuotaManhour.java" />
+        <option value="$PROJECT_DIR$/web/app/model/xr/QuotaManhour.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/cst/sm/XrQuotaManhourController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/cst/sm/XrQuotaManhour.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/cst/sm/XrLaborExpense.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/xr/QuotaManhourMapper.xml" />
       </list>
     </option>
   </component>
@@ -321,8 +745,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1040" />
-    <option name="height" value="1266" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -371,170 +795,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Extensions" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.intellij.database" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyPsiNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mssql" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Production">
@@ -694,6 +954,288 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -708,12 +1250,36 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Extensions" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.intellij.database" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyPsiNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.20726307" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32009345" />
     <property name="recentsLimit" value="5" />
@@ -760,11 +1326,11 @@
       <recent name="com.iflat.workflow.listener" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Workspace\iFlat\src\main\resources\workflow\diagram\xr" />
+      <recent name="D:\Workspace\iFlat\web\app\view\report\cst\sm" />
+      <recent name="D:\Workspace\iFlat\web\build\development\iFlat\resources\images" />
+      <recent name="D:\Workspace\iFlat\web\resources\images" />
+      <recent name="D:\Workspace\iFlat\web\resources" />
       <recent name="D:\Workspace\iFlat\web\app\view\xr" />
-      <recent name="D:\Workspace\iFlat\web\app\view\xr\temp" />
-      <recent name="D:\Workspace\iFlat\src\main\java\com\iflat\xr\bean" />
-      <recent name="D:\Workspace\iFlat\web\app\store\workflow" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.iflat.xr.service" />
@@ -782,54 +1348,14 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.iflat">
-    <configuration default="false" name="Project" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.iflat.xr.bean.CardInfo" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.iflat.xr.bean.Project" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="iFlat" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="SrAssess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.iflat.xr.bean.CardInfo" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.iflat.xr.bean.SrAssess" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="iFlat" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Discount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Salary" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.iflat.xr.bean.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="com.iflat.xr.bean.Discount" />
+      <option name="MAIN_CLASS_NAME" value="com.iflat.xr.bean.Salary" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -842,14 +1368,14 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="TrSettlement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="DeptTeamExpense" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.iflat.xr.bean.*" />
+          <option name="PATTERN" value="com.iflat.report.bean.cst.cmp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="com.iflat.xr.bean.TrSettlement" />
+      <option name="MAIN_CLASS_NAME" value="com.iflat.report.bean.cst.cmp.DeptTeamExpense" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -862,14 +1388,54 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="TrSettlementDetl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="MathUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.iflat.xr.bean.*" />
+          <option name="PATTERN" value="com.iflat.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="com.iflat.xr.bean.TrSettlementDetl" />
+      <option name="MAIN_CLASS_NAME" value="com.iflat.util.MathUtil" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="iFlat" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="LaborExpense" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.iflat.xr.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.iflat.xr.entity.LaborExpense" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="iFlat" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="QuotaManhour" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.iflat.xr.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.iflat.xr.entity.QuotaManhour" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1362,19 +1928,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.iflat" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Project" />
-      <item index="2" class="java.lang.String" itemvalue="Application.SrAssess" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Discount" />
-      <item index="4" class="java.lang.String" itemvalue="Application.TrSettlement" />
-      <item index="5" class="java.lang.String" itemvalue="Application.TrSettlementDetl" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Salary" />
+      <item index="2" class="java.lang.String" itemvalue="Application.DeptTeamExpense" />
+      <item index="3" class="java.lang.String" itemvalue="Application.MathUtil" />
+      <item index="4" class="java.lang.String" itemvalue="Application.LaborExpense" />
+      <item index="5" class="java.lang.String" itemvalue="Application.QuotaManhour" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.TrSettlementDetl" />
-        <item index="1" class="java.lang.String" itemvalue="Application.TrSettlement" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Discount" />
-        <item index="3" class="java.lang.String" itemvalue="Application.SrAssess" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Project" />
+        <item index="0" class="java.lang.String" itemvalue="Application.QuotaManhour" />
+        <item index="1" class="java.lang.String" itemvalue="Application.LaborExpense" />
+        <item index="2" class="java.lang.String" itemvalue="Application.MathUtil" />
+        <item index="3" class="java.lang.String" itemvalue="Application.DeptTeamExpense" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Salary" />
       </list>
     </recent_temporary>
   </component>
@@ -1808,14 +2374,15 @@
       <workItem from="1471863244471" duration="76000" />
       <workItem from="1471909877423" duration="18583000" />
       <workItem from="1471996247182" duration="21616000" />
-      <workItem from="1472025598812" duration="3294000" />
-    </task>
-    <task id="LOCAL-00010" summary="BI模块&#10;后端：&#10;1. 新增自动生成单船总成本、单船主要设备费、单船材料费的实际成本，数据来源为成本系统；&#10;2. 新增明细项查询，数据来源为成本系统；">
-      <created>1455803232347</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1455803232347</updated>
+      <workItem from="1472025598812" duration="3896000" />
+      <workItem from="1472030097604" duration="586000" />
+      <workItem from="1472083272069" duration="8424000" />
+      <workItem from="1472094212672" duration="20319000" />
+      <workItem from="1472122073157" duration="3170000" />
+      <workItem from="1472169115039" duration="23959000" />
+      <workItem from="1472256777829" duration="939000" />
+      <workItem from="1472347088420" duration="1769000" />
+      <workItem from="1472349463886" duration="416000" />
     </task>
     <task id="LOCAL-00011" summary="全局&#10;加入了Maven支持">
       <created>1456621656811</created>
@@ -2153,7 +2720,14 @@
       <option name="project" value="LOCAL" />
       <updated>1471611012983</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="&lt;新荣工费结算&gt;&#10;1.修船结算流程完成；&#10;2.技措技改/大修理流程完成。">
+      <created>1472029006890</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1472029006890</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2189,7 +2763,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2119973000" />
+    <option name="totallyTimeSpent" value="2180157000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2201,46 +2775,46 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="1266" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2769231" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32828283" sideWeight="0.4969743" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29502264" sideWeight="0.53367347" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730561" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32828283" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26244345" sideWeight="0.49394855" order="4" side_tool="false" content_ui="tabs" x="24" y="419" width="1322" height="245" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820976" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="BPMN Editor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21447964" sideWeight="0.49081632" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820976" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22755101" sideWeight="0.44936708" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24583964" sideWeight="0.44936708" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26734695" sideWeight="0.5407895" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19081633" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3239819" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.18759455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="581" y="100" width="264" height="354" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22950819" sideWeight="0.5506329" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2959276" sideWeight="0.46632653" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="BPMN Editor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21447964" sideWeight="0.49081632" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29679596" sideWeight="0.46632653" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2769231" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27487352" sideWeight="0.49394855" order="4" side_tool="false" content_ui="tabs" x="24" y="419" width="1322" height="245" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37205386" sideWeight="0.50832075" order="16" side_tool="true" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26334843" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41821247" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2255,7 +2829,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&lt;工费结算&gt;&#10;1. 修复了部分bug；&#10;2. 对部分弹窗的高度进行了修改；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加造船结算单导入&#10;2. 增加钢结构结算单导入" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 需要增加导出功能。 - 目标成本明细和目标成本分解&#10;2. 单船目标成本“分解”与“明细”最好能合并使用1个EXCEL模板导入，方便操作； -只保留科目+部门的明细项&#10;3. 领导审核“通过或退回”，目前记录均显示“同意”，需要修改。 - 退回&#10;4. 系统时间有问题（上午操作的，显示下午的时间在经办）。&#10;5. 成本科目后的“内容”不显示。 - 造船结算申请明细项增加施工内容&#10;6. 易琳的账号看不到批注，无法点通过或退回。 &#10;- （已修改）需要显示施工内容和成本科目名称&#10;- （已修改）批量审批增加勾选&#10;7. 目前无法“导入”。" />
     <MESSAGE value="&lt;工费结算&gt;&#10;修改以下内容：&#10;1. 需要增加导出功能。 - 目标成本明细和目标成本分解&#10;2. 单船目标成本“分解”与“明细”最好能合并使用1个EXCEL模板导入，方便操作； -只保留科目+部门的明细项&#10;3. 领导审核“通过或退回”，目前记录均显示“同意”，需要修改。 - 退回&#10;4. 系统时间有问题（上午操作的，显示下午的时间在经办）。&#10;5. 成本科目后的“内容”不显示。 - 造船结算申请明细项增加施工内容&#10;6. 易琳的账号看不到批注，无法点通过或退回。 &#10;- 需要显示施工内容和成本科目名称&#10;- 批量审批增加勾选&#10;7. 无法“导入”。" />
@@ -2280,7 +2853,8 @@
     <MESSAGE value="&lt;安全&gt;&#10;1.完成了违章、隐患、5S、事故的信息登记" />
     <MESSAGE value="&lt;新荣工费结算&gt;&#10;1.修船结算流程基本完成。" />
     <MESSAGE value="&lt;新荣工费结算&gt;&#10;1.修船结算流程完成；&#10;2.技措技改/大修理流程完成。" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;新荣工费结算&gt;&#10;1.修船结算流程完成；&#10;2.技措技改/大修理流程完成。" />
+    <MESSAGE value="&lt;新荣工费结算&gt;&#10;1.报表完成。&#10;&lt;安全信息&gt;&#10;1.修复bug。" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;新荣工费结算&gt;&#10;1.报表完成。&#10;&lt;安全信息&gt;&#10;1.修复bug。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2292,7 +2866,7 @@
           <option name="timeStamp" value="429" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="647" />
+      <option name="time" value="653" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2313,417 +2887,428 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/app/store/xr/TrSettlementDetl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrSettlementEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="362" column="33" selection-start-line="362" selection-start-column="33" selection-end-line="362" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrSettlementController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="229" column="4" selection-start-line="229" selection-start-column="4" selection-end-line="229" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrSupportDeptDirectorApprove.js">
+    <entry file="file://$PROJECT_DIR$/web/app/store/ss/VrCodeRiskLvl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="54" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="54" />
-          <folding />
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/SrWorkshopSettlementController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementApproveController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="36" column="51" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/bean/Discount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/xr/DiscountMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="47" column="67" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="67" />
-          <folding>
-            <marker date="1471680648097" expanded="true" signature="266:323" ph="INSERT INTO XrDiscount... " />
-            <marker date="1471680648097" expanded="true" signature="515:558" ph="SELECT ##{ite... " />
-            <marker date="1471680648097" expanded="true" signature="657:855" ph="UPDATE XrDis... " />
-            <marker date="1471680648097" expanded="true" signature="928:1201" ph="UPDATE XrDis... " />
-            <marker date="1471680648097" expanded="true" signature="1404:1656" ph="SELECT id,te... XrDiscount" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlscript/mssql/xr-Discount.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/workflow/listener/WorkflowExecutionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrHrAudit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="135" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="286" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrHrReAudit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrViceManagerApprove.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatchInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="93" column="40" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/model/report/sm/MonthlyProjectSettlement.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ss/PhCodeTypeMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/report/bean/sm/MonthlyProjectSettlement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/temp/SrSettlementApproveSecond.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/report/sm/MonthlyProjectSettlementMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="7" column="137" selection-start-line="7" selection-start-column="133" selection-end-line="7" selection-end-column="137" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/SrLeaderApprove.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/code/TeamMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="28" />
-          <folding>
-            <marker date="1472023915102" expanded="true" signature="287:860" ph="SELECT DISTI... V_Team" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/DiscountController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/code/action/CodeAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/code/bean/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/model/code/Team.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/sm/Discount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-565">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/store/code/Team.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SrBalanceServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-xr.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="45" column="78" selection-start-line="45" selection-start-column="78" selection-end-line="45" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementApprove.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="209" column="54" selection-start-line="209" selection-start-column="54" selection-end-line="209" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/model/xr/TrBalance.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/model/xr/SrSettlement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="76" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/model/xr/TrSettlement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="74" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/base/service/impl/BaseServiceSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/SrSettlementServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlementController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="87" column="52" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/xr/SrBalanceMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-          <folding>
-            <marker date="1472027085384" expanded="true" signature="268:328" ph="INSERT INTO XrSrBalance... " />
-            <marker date="1472027085384" expanded="true" signature="521:566" ph="SELECT ##{ite... " />
-            <marker date="1472027085384" expanded="true" signature="666:769" ph="UPDATE XrSrB... " />
-            <marker date="1472027085384" expanded="true" signature="975:1226" ph="SELECT id,de... XrSrBalance" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/TrConstructionDeptSettlement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="264" column="67" selection-start-line="264" selection-start-column="25" selection-end-line="264" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/service/impl/TrSettlementServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ss/VrCodeMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
+          <caret line="31" column="21" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/SrSettlementController.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ss/VrCodeRiskLvlMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="324" column="18" selection-start-line="321" selection-start-column="16" selection-end-line="324" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="180">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/Flat.js">
+    <entry file="file://$PROJECT_DIR$/web/app/model/ss/FsAreaDept.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="79" column="45" selection-start-line="79" selection-start-column="45" selection-end-line="79" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/TrStatus.java">
+    <entry file="file://$PROJECT_DIR$/web/app/store/ss/FsAreaDept.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/store/ss/FsArea.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/ss/FsArea.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/FiveS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/PotentialHazard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ss/FiveSMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="116" column="32" selection-start-line="116" selection-start-column="32" selection-end-line="116" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/FiveSDstr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="99" selection-start-line="9" selection-start-column="99" selection-end-line="9" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/ViolateRegulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/FiveSDstrEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="354" column="45" selection-start-line="354" selection-start-column="33" selection-end-line="354" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/AccParty.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="106" column="48" selection-start-line="106" selection-start-column="48" selection-end-line="106" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/store/ss/PotentialHazard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/ss/PotentialHazard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/ss/ViolateRegulation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="19" column="44" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/store/ss/ViolateRegulation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/store/ss/Accident.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/ss/Accident.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/Readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/main/MainModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="99" column="20" selection-start-line="99" selection-start-column="8" selection-end-line="99" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/Accident.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="47" column="5" selection-start-line="38" selection-start-column="29" selection-end-line="47" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ss/AccidentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="97" column="70" selection-start-line="95" selection-start-column="75" selection-end-line="97" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/Accident.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="184" column="7" selection-start-line="181" selection-start-column="7" selection-end-line="184" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/FiveS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="209" column="7" selection-start-line="206" selection-start-column="7" selection-end-line="209" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="208" column="7" selection-start-line="205" selection-start-column="7" selection-end-line="208" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/AccPartyView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-912">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="187" column="7" selection-start-line="184" selection-start-column="7" selection-end-line="187" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/Accident.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="112" column="7" selection-start-line="109" selection-start-column="7" selection-end-line="112" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/FiveSEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="286" column="32" selection-start-line="286" selection-start-column="32" selection-end-line="286" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/AccidentEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="206" column="38" selection-start-line="206" selection-start-column="38" selection-end-line="206" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/PotentialHazardEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="355" column="45" selection-start-line="355" selection-start-column="45" selection-end-line="355" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/ViolateRegulationEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="332" column="26" selection-start-line="332" selection-start-column="26" selection-end-line="332" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/ViolateRegulation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="139" column="37" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/PotentialHazard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
+          <caret line="148" column="7" selection-start-line="145" selection-start-column="7" selection-end-line="148" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/workflow/diagram/xr/XrTrSettlement.bpmn">
-      <provider selected="true" editor-type-id="bpmn-editor">
-        <state />
+    <entry file="file://$PROJECT_DIR$/web/app/view/ss/FiveS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="133" column="7" selection-start-line="130" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/action/XrAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/TrSettlementExecutionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="720" column="95" selection-start-line="720" selection-start-column="95" selection-end-line="720" selection-end-column="95" />
+        <state relative-caret-position="-1332">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementExecutionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="82" column="34" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="34" />
+        <state relative-caret-position="43">
+          <caret line="114" column="13" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/SrSettlementTaskHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/xr/LaborExpenseMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="184" column="34" selection-start-line="184" selection-start-column="34" selection-end-line="184" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/TrSettlementTaskHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="126" column="34" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/xr/temp/TrSettlementApproveBatchController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="114" column="49" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/listener/TrSettlementExecutionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/sm/listener/SrSysExecutionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2998">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sm/SrSettlementBalanceMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="198">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="37" />
           <folding>
-            <marker date="1460690281314" expanded="true" signature="288:366" ph="INSERT INTO SmSrSettlementBalance... " />
-            <marker date="1460690281314" expanded="true" signature="581:630" ph="SELECT ##{ite... " />
-            <marker date="1460690281314" expanded="true" signature="752:881" ph="UPDATE SmSrS... " />
-            <marker date="1460690281314" expanded="true" signature="1176:1412" ph="SELECT id,de... SmSrSettlementBalance" />
+            <marker date="1472194222538" expanded="true" signature="307:1405" ph="SELECT projN... V_XrLaborExpense" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/action/XrAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15985">
+          <caret line="1102" column="43" selection-start-line="1102" selection-start-column="43" selection-end-line="1102" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/xr/entity/QuotaManhour.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+          <folding>
+            <element signature="e#554#555#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
+            <element signature="e#811#812#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#955#956#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1188#1189#0" expanded="true" />
+            <element signature="e#1228#1229#0" expanded="true" />
+            <element signature="e#1259#1260#0" expanded="true" />
+            <element signature="e#1286#1287#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1393#1394#0" expanded="true" />
+            <element signature="e#1424#1425#0" expanded="true" />
+            <element signature="e#1472#1473#0" expanded="true" />
+            <element signature="e#1512#1513#0" expanded="true" />
+            <element signature="e#1543#1544#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+            <element signature="e#1610#1611#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="e#1702#1703#0" expanded="true" />
+            <element signature="e#1744#1745#0" expanded="true" />
+            <element signature="e#1778#1779#0" expanded="true" />
+            <element signature="e#1815#1816#0" expanded="true" />
+            <element signature="e#1848#1849#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1944#1945#0" expanded="true" />
+            <element signature="e#1982#1983#0" expanded="true" />
+            <element signature="e#2016#2017#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+            <element signature="e#2151#2152#0" expanded="true" />
+            <element signature="e#2184#2185#0" expanded="true" />
+            <element signature="e#2234#2235#0" expanded="true" />
+            <element signature="e#2278#2279#0" expanded="true" />
+            <element signature="e#2317#2318#0" expanded="true" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2412#2413#0" expanded="true" />
+            <element signature="e#2464#2465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-xr.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1222">
+          <caret line="36" column="34" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/xr/LaborExpense.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="71" selection-start-line="16" selection-start-column="79" selection-end-line="18" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/model/xr/QuotaManhour.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/cst/sm/XrQuotaManhour.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="92" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/cst/sm/XrLaborExpense.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="110" column="32" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/cst/sm/XrLaborExpenseController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/cst/sm/XrQuotaManhourController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/xr/QuotaManhourMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding>
+            <marker date="1472348741263" expanded="true" signature="307:1517" ph="SELECT projN... XrQuotaManhour" />
           </folding>
         </state>
       </provider>
@@ -2739,6 +3324,7 @@
             <option name="proportions">
               <list>
                 <option value="0.32009345" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

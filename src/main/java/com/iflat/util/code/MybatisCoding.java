@@ -24,7 +24,7 @@ public class MybatisCoding {
         }
 
         String shortClassName = temp.substring(temp.lastIndexOf(".") + 1, temp.length());
-        String filePath = mybatisRoot + packageName + "\\" + shortClassName + "Mapper.xml";
+        String filePath = mybatisRoot + packageName.replace(".", "\\") + "\\" + shortClassName + "Mapper.xml";
         File file = new File(filePath);
         if (!file.exists()) {
             try {

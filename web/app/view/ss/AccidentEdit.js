@@ -93,7 +93,9 @@ Ext.define('iFlat.view.ss.AccidentEdit', {
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
                         var v = cb.getStore().findRecord('rptProject.projNo', newV).get('name');
-                        cb.up('form').down('textfield[name=accident.projName]').setValue(v);
+                        if (v) {
+                            cb.up('form').down('textfield[name=accident.projName]').setValue(v);
+                        }
                     }
                 }
             },{
@@ -142,7 +144,7 @@ Ext.define('iFlat.view.ss.AccidentEdit', {
                 width: '50%',
             },{
                 xtype: 'textfield',
-                name: 'accident.region',
+                name: 'accident.position',
                 fieldLabel: '位置',
                 width: '49%',
             }]
@@ -156,7 +158,7 @@ Ext.define('iFlat.view.ss.AccidentEdit', {
         },{
             items: [{
                 xtype: 'combo',
-                name: 'accident.deadline',
+                name: 'accident.busiDivision',
                 queryMode: 'local',
                 allowBlank: false,
                 editable: false,
@@ -199,7 +201,12 @@ Ext.define('iFlat.view.ss.AccidentEdit', {
                 xtype: 'textfield',
                 name: 'accident.comment',
                 fieldLabel: '备注',
-                width: '99%',
+                width: '66%',
+            }, {
+                xtype: 'textfield',
+                name: 'accident.issuer',
+                fieldLabel: '查处人',
+                width: '33%',
             }]
         },{
             items: [{

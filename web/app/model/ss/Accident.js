@@ -25,6 +25,8 @@ Ext.define('iFlat.model.ss.Accident', {
         {name: 'accident.creatorName', mapping: 'creatorName', type: 'string'},
         {name: 'accident.creatorDept', mapping: 'creatorDept', type: 'string'},
         {name: 'accident.createTime', mapping: 'createTime', type: 'date'},
+        {name: 'accident.issuer', mapping: 'issuer', type: 'string'},
+        {name: 'accident.issueDept', mapping: 'issueDept', type: 'string'},
         {name: 'accident.fromDate', mapping: 'fromDate', type: 'date'},
         {name: 'accident.toDate', mapping: 'toDate', type: 'date'},
     ]

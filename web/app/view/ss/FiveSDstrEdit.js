@@ -174,6 +174,34 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                         fieldLabel: '违规内容',
                     }]
                 },{
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'fiveS.score',
+                        width: '33%',
+                        editable: false,
+                        fieldLabel: '扣分',
+                    },{
+                        xtype: 'textfield',
+                        name: 'fiveS.amount',
+                        width: '33%',
+                        editable: false,
+                        fieldLabel: '罚款',
+                    }]
+                },{
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'fiveS.creatorName',
+                        width: '33%',
+                        editable: false,
+                        fieldLabel: '登记人',
+                    },{
+                        xtype: 'textfield',
+                        name: 'fiveS.creatorDept',
+                        width: '33%',
+                        editable: false,
+                        fieldLabel: '登记部门',
+                    }]
+                },{
                     xtype: 'container',
                     layout: 'hbox',
                     id: 'ss-fivesdstredit-att',
@@ -232,18 +260,19 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                     width: '33%',
                     fieldLabel: '区域负责人',
                     store: ssFiveSRegionPersonNameStore = Ext.create('iFlat.store.code.Employee'),
-                    listeners: {
-                        change: function (cb, newV, oldV, opt) {
-                            var v = cb.getStore().findRecord('employee.name', newV).get('employee.account');
+                    /*listeners: {
+                        select: function (cb, record, opt) {
+                            var v = record.get('employee.account');
                             cb.up('form').down('textfield[name=fiveS.regionPersonAcc]').setValue(v);
                         },
-                    }
+                    }*/
                 },{
                     xtype: 'textfield',
                     name: 'fiveS.regionPersonAcc',
                     fieldLabel: '账号',
                     width: '33%',
-                    editable: false
+                    editable: false,
+                    hidden: true,
                 }]
             },{
                 items: [{

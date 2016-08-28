@@ -36,6 +36,25 @@ public class Accident {
     private Date fromDate;
     private Date toDate;
 
+    private String issueDept;
+    private String issuer;
+
+    public String getIssuer() {
+        return issuer;
+    }
+
+    public void setIssuer(String issuer) {
+        this.issuer = issuer;
+    }
+
+    public String getIssueDept() {
+        return issueDept;
+    }
+
+    public void setIssueDept(String issueDept) {
+        this.issueDept = issueDept;
+    }
+
     public String getBusiDivision() {
         return busiDivision;
     }

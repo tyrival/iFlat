@@ -82,7 +82,9 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
                         var v = cb.getStore().findRecord('rptProject.projNo', newV).get('name');
-                        cb.up('form').down('textfield[name=violateRegulation.projName]').setValue(v);
+                        if (v) {
+                            cb.up('form').down('textfield[name=violateRegulation.projName]').setValue(v);
+                        }
                     }
                 }
             },{
@@ -124,12 +126,16 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 valueField: 'code',
                 width: '33%',
                 fieldLabel: '违章代码',
-                change: function (cb, newV, oldV, opt) {
-                    var model = cb.getStore().findRecord('vrCode.code', newV);
-                    var amount = model.get('vrCode.amount');
-                    var score = model.get('vrCode.score');
-                    cb.up('form').down('textfield[name=violateRegulation.amount]').setValue(amount);
-                    cb.up('form').down('textfield[name=violateRegulation.score]').setValue(score);
+                listeners: {
+                    change: function (cb, newV, oldV, opt) {
+                        var model = cb.getStore().findRecord('vrCode.code', newV);
+                        if (model) {
+                            var amount = model.get('vrCode.amount');
+                            var score = model.get('vrCode.score');
+                            cb.up('form').down('textfield[name=violateRegulation.amount]').setValue(amount);
+                            cb.up('form').down('textfield[name=violateRegulation.score]').setValue(score);
+                        }
+                    }
                 }
             }]
         },{
@@ -137,7 +143,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 xtype: 'combo',
                 name: 'violateRegulation.dept',
                 bind: {
-                    store: '{smDept}'
+                    store: '{ssFiveSFuncDept}'
                 },
                 queryMode: 'local',
                 allowBlank: false,
@@ -232,7 +238,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 width: '40%',
             },{
                 xtype: 'textfield',
-                name: 'violateRegulation.region',
+                name: 'violateRegulation.position',
                 fieldLabel: '位置',
                 width: '39%',
             }]
@@ -257,7 +263,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 xtype: 'combo',
                 name: 'violateRegulation.feedback',
                 queryMode: 'local',
-                allowBlank: false,
+                allowBlank: true,
                 editable: false,
                 forceSelection : false,
                 width: '33%',
@@ -281,7 +287,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
         },{
             items: [{
                 xtype: 'combo',
-                name: 'violateRegulation.deadline',
+                name: 'violateRegulation.busiDivision',
                 queryMode: 'local',
                 allowBlank: false,
                 editable: false,
@@ -324,20 +330,25 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 xtype: 'textfield',
                 name: 'violateRegulation.comment',
                 fieldLabel: '备注',
-                width: '99%',
+                width: '66%',
+            }, {
+                xtype: 'textfield',
+                name: 'violateRegulation.issuer',
+                fieldLabel: '查处人',
+                width: '33%',
             }]
         },{
             items: [{
                 xtype: 'combo',
                 name: 'violateRegulation.ssVrTraining',
                 queryMode: 'local',
-                allowBlank: false,
+                allowBlank: true,
                 editable: false,
                 forceSelection : false,
                 width: '50%',
                 fieldLabel: '集中培训',
                 bind: {
-                    store: '{safetyFineMgrDept}',
+                    store: '{ssVrTraining}',
                 },
             }, {
                 xtype: 'textfield',

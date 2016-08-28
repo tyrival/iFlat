@@ -30,6 +30,10 @@ Ext.define('iFlat.model.ss.FiveS', {
         {name: 'fiveS.creatorName', mapping: 'creatorName', type: 'string'},
         {name: 'fiveS.creatorDept', mapping: 'creatorDept', type: 'string'},
         {name: 'fiveS.createTime', mapping: 'createTime', type: 'date'},
+        {name: 'fiveS.score', mapping: 'score', type: 'number'},
+        {name: 'fiveS.amount', mapping: 'amount', type: 'number'},
+        {name: 'fiveS.issuer', mapping: 'issuer', type: 'string'},
+        {name: 'fiveS.issueDept', mapping: 'issueDept', type: 'string'},
         {name: 'fiveS.fromDate', mapping: 'fromDate', type: 'date'},
         {name: 'fiveS.toDate', mapping: 'toDate', type: 'date'},
     ]

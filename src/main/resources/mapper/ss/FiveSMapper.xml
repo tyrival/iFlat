@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.ss.bean.FiveS">
         INSERT INTO SsFiveS
-        VALUES (#{id},#{date},#{time},#{funcDept},#{areaType},#{area},#{code},#{otherArea},#{projNo},#{projName},#{region},#{belongDept},#{regionPersonAcc},#{regionPersonName},#{fsType},#{fsDescription},#{attachment},#{dept},#{team},#{personAcc},#{personName},#{feedback},#{rectifyTime},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime})
+        VALUES (#{id},#{date},#{time},#{funcDept},#{areaType},#{area},#{code},#{otherArea},#{projNo},#{projName},#{region},#{belongDept},#{regionPersonAcc},#{regionPersonName},#{fsType},#{fsDescription},#{attachment},#{dept},#{team},#{personAcc},#{personName},#{feedback},#{rectifyTime},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{score},#{amount},#{issueDept},#{issuer})
     </insert>
 
     <update id="update" parameterType="com.iflat.ss.bean.FiveS">
@@ -36,6 +36,10 @@
             <if test="rectifyTime!=null">rectifyTime=#{rectifyTime},</if>
             <if test="rectifyAtt!=null">rectifyAtt=#{rectifyAtt},</if>
             <if test="comment!=null">comment=#{comment},</if>
+            <if test="score!=null">score=#{score},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="issuer!=null">issuer=#{issuer},</if>
+            <if test="issueDept!=null">issueDept=#{issueDept},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -46,7 +50,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.ss.bean.FiveS" resultMap="SsFiveSResult">
-        SELECT id,date,time,funcDept,areaType,area,code,otherArea,projNo,projName,region,belongDept,regionPersonAcc,regionPersonName,fsType,fsDescription,attachment,dept,team,personAcc,personName,feedback,rectifyTime,rectifyAtt,comment,creatorAcc,creatorName,creatorDept,createTime
+        SELECT id,date,time,funcDept,areaType,area,code,otherArea,projNo,projName,region,belongDept,regionPersonAcc,regionPersonName,fsType,fsDescription,attachment,dept,team,personAcc,personName,feedback,rectifyTime,rectifyAtt,comment,creatorAcc,creatorName,creatorDept,createTime,score,amount,issueDept,issuer
         FROM SsFiveS
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -71,6 +75,8 @@
             <if test="creatorDept!=null and !&quot;&quot;.equals(creatorDept.trim())">AND creatorDept=#{creatorDept}</if>
             <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
             <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+            <if test="issueDept!=null and !&quot;&quot;.equals(issueDept.trim())">AND issueDept=#{issueDept}</if>
+            <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">AND issuer=#{issuer}</if>
             <if test="fromDate!=null">AND date &gt;= #{fromDate}</if>
             <if test="toDate!=null">AND date &lt; DATEADD(day,1,#{toDate})</if>
         </where>
@@ -107,5 +113,9 @@
         <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
         <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="DATE"/>
+        <result property="score" column="score" jdbcType="DOUBLE"/>
+        <result property="amount" column="amount" jdbcType="DOUBLE"/>
+        <result property="issueDept" column="issueDept" jdbcType="VARCHAR"/>
+        <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

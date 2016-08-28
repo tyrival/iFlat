@@ -78,8 +78,18 @@ Ext.define('iFlat.view.xr.SrSettlementEdit', {
                         select: function (combo, record, eOpts) {
                             var type = record.get('xrTeam.type');
                             combo.up('window').down('textfield[name=xrSrSettlement.isOutwork]').setValue(type != '本厂');
+                            combo.up('window').down('textfield[name=xrSrSettlement.teamCode]').setValue(record.get('xrTeam.teamCode'));
+                            combo.up('window').down('textfield[name=xrSrSettlement.deptCode]').setValue(record.get('xrTeam.deptCode'));
                         }
                     }
+                }, {
+                    xtype: 'textfield',
+                    name: 'xrSrSettlement.deptCode',
+                    hidden: true
+                }, {
+                    xtype: 'textfield',
+                    name: 'xrSrSettlement.teamCode',
+                    hidden: true
                 }, {
                     xtype: 'textfield',
                     name: 'xrSrSettlement.isOutwork',

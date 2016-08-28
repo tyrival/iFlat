@@ -48,6 +48,8 @@ public class TrSettlementServiceImpl extends BaseServiceSupport implements TrSet
                         + "元的超支，请重新调整。");
             }
         }
+        UserInfoVo userInfoVo = Session.getUserInfo();
+        trSettlement.setCreatorDeptCode(userInfoVo.getPorgCode());
     }
 
     /**

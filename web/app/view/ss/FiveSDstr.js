@@ -7,7 +7,7 @@ Ext.define('iFlat.view.ss.FiveSDstr', {
     store: ssFiveSDstrStore = Ext.create('iFlat.store.ss.FiveS', {
         proxy: {
             extraParams: {
-                'fiveS.belongDept': Ext.getCmp('global-panel').getViewModel().get('user')['porg']
+                'fiveS.belongDept': Ext.getCmp('global-panel').getViewModel().get('user')['porgName']
             }
         }
     }),
@@ -87,6 +87,12 @@ Ext.define('iFlat.view.ss.FiveSDstr', {
                 return "<a target='_blank' href='" + v + "'>下载</a>";
             }
         },
+    }, {
+        header: '扣分',
+        dataIndex: 'fiveS.score',
+    }, {
+        header: '罚款',
+        dataIndex: 'fiveS.amount',
     }, {
         header: '责任部门',
         dataIndex: 'fiveS.dept',

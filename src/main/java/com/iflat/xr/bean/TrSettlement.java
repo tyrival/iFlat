@@ -12,7 +12,9 @@ public class TrSettlement {
     private String id;
     private String projNo;  // 工号
     private String projName;  // 工程名
+    private String deptCode;  // 部门
     private String dept;  // 部门
+    private String teamCode;  // 施工队
     private String team;  // 施工队
     private String reason;  // 委托原因
     private boolean isOutwork;  // 本工/外包工
@@ -27,6 +29,7 @@ public class TrSettlement {
     private String creatorAcc;  // 创建人
     private String creatorName;  // 创建人
     private String creatorDept;  // 创建部门
+    private String creatorDeptCode;  // 创建部门
     private Date createTime;  // 创建时间
 
     private String teamAcc;  // 工程队打卡确认
@@ -41,6 +44,30 @@ public class TrSettlement {
 
     private double discountRate;
     private double amountWithDiscount;
+
+    public String getCreatorDeptCode() {
+        return creatorDeptCode;
+    }
+
+    public void setCreatorDeptCode(String creatorDeptCode) {
+        this.creatorDeptCode = creatorDeptCode;
+    }
+
+    public String getDeptCode() {
+        return deptCode;
+    }
+
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
+    }
+
+    public String getTeamCode() {
+        return teamCode;
+    }
+
+    public void setTeamCode(String teamCode) {
+        this.teamCode = teamCode;
+    }
 
     public String getCreatorDept() {
         return creatorDept;

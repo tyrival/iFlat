@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="benefit" code="benefit" name="经济效益">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+        <col index="G" width='17em'></col>
+        <col index="H" width='17em'></col>
+        <col index="I" width='17em'></col>
+        <col index="J" width='17em'></col>
+        <col index="K" width='17em'></col>
+        <col index="L" width='17em'></col>
+        <col index="M" width='17em'></col>
+        <col index="N" width='17em'></col>
+        <col index="O" width='17em'></col>
+        <col index="P" width='17em'></col>
+        <col index="Q" width='17em'></col>
+        <col index="R" width='17em'></col>
+        <col index="S" width='17em'></col>
+        <col index="T" width='17em'></col>
+        <col index="U" width='17em'></col>
+        <col index="V" width='17em'></col>
+        <col index="W" width='17em'></col>
+        <col index="X" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="24" value="经济效益" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="月份" />
+            <th value="部门" />
+            <th value="工程队id" />
+            <th value="工程队" />
+            <th value="总人工" />
+            <th value="总工时" />
+            <th value="注册人数" />
+            <th value="到岗人次" />
+            <th value="等工人次" />
+            <th value="临时借进人次" />
+            <th value="临时借出人次" />
+            <th value="应发工资发放人数" />
+            <th value="在厂平均人数" />
+            <th value="季度单船绩效奖" />
+            <th value="等工补贴" />
+            <th value="春节加班补贴" />
+            <th value="春节稳定金" />
+            <th value="餐费补贴" />
+            <th value="高温补贴" />
+            <th value="房水电" />
+            <th value="餐费自付" />
+            <th value="保险费" />
+            <th value="仓库领用材料费" />
+            <th value="备注" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="1">
+            <td type="date" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="string" isnullable="false" maxlength="2000" />
+        </tr>
+    </tbody>
+</excel>

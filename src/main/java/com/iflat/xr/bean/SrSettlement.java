@@ -11,7 +11,9 @@ public class SrSettlement {
     private double progress;  // 工程进度
     private String projNo;  // 工号
     private String projName;  // 工程名
+    private String deptCode;  // 部门
     private String dept;  // 部门
+    private String teamCode;  // 施工队
     private String team;  // 施工队
     private boolean isOutwork;  // 本工/外包工
     private double amountFirst;  // 一级工费
@@ -38,6 +40,22 @@ public class SrSettlement {
 
     private double discountRate;
     private double amountWithDiscount;
+
+    public String getDeptCode() {
+        return deptCode;
+    }
+
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
+    }
+
+    public String getTeamCode() {
+        return teamCode;
+    }
+
+    public void setTeamCode(String teamCode) {
+        this.teamCode = teamCode;
+    }
 
     public double getDiscountRate() {
         return discountRate;

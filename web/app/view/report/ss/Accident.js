@@ -180,11 +180,16 @@ Ext.define('iFlat.view.report.ss.Accident', {
         header: '备注',
         dataIndex: 'accident.comment',
     }, {
+        header: '查处人',
+        dataIndex: 'accident.issuer',
+    }, {
         header: '创建人',
         dataIndex: 'accident.creatorName',
+        hidden: true,
     }, {
         header: '创建部门',
         dataIndex: 'accident.creatorDept',
+        hidden: true,
     }, ],
     bbar: {
         xtype: 'pagingtoolbar',

@@ -3,6 +3,7 @@ package com.iflat.report.action;
 import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.service.BaseService;
 import com.iflat.report.bean.bi.Project;
+import com.iflat.report.bean.cst.cmp.DeptTeamExpense;
 import com.iflat.report.bean.cst.nm.NmProjectCost;
 import com.iflat.report.bean.cst.nm.NmProjectCostCmps;
 import com.iflat.report.bean.cst.nm.NmProjectCostNode;
@@ -43,6 +44,9 @@ public class ReportAction extends BaseAction {
     private Project rptProject;
     private BaseService rptCostItemService;
     private List costItemList;
+    /* cst.cmp */
+    private BaseService deptTeamExpenseService;
+    private DeptTeamExpense deptTeamExpense;
     /* cst.sb */
     private ReportService detailOfMiscWo;
     private ReportService estimateOfProject;
@@ -135,6 +139,12 @@ public class ReportAction extends BaseAction {
 
     public String listBatchCostItem() throws Exception {
         this.result.setList(this.rptCostItemService.listBatch(this.costItemList));
+        return SUCCESS;
+    }
+
+    /* cst.cmp */
+    public String listDeptTeamExpense() throws Exception {
+        this.result.setList(this.deptTeamExpenseService.list(this.deptTeamExpense));
         return SUCCESS;
     }
 
@@ -543,5 +553,21 @@ public class ReportAction extends BaseAction {
 
     public void setMonthlyProjectSettlement(MonthlyProjectSettlement monthlyProjectSettlement) {
         this.monthlyProjectSettlement = monthlyProjectSettlement;
+    }
+
+    public BaseService getDeptTeamExpenseService() {
+        return deptTeamExpenseService;
+    }
+
+    public void setDeptTeamExpenseService(BaseService deptTeamExpenseService) {
+        this.deptTeamExpenseService = deptTeamExpenseService;
+    }
+
+    public DeptTeamExpense getDeptTeamExpense() {
+        return deptTeamExpense;
+    }
+
+    public void setDeptTeamExpense(DeptTeamExpense deptTeamExpense) {
+        this.deptTeamExpense = deptTeamExpense;
     }
 }

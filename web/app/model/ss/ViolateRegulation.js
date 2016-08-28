@@ -38,6 +38,8 @@ Ext.define('iFlat.model.ss.ViolateRegulation', {
         {name: 'violateRegulation.creatorName', mapping: 'creatorName', type: 'string'},
         {name: 'violateRegulation.creatorDept', mapping: 'creatorDept', type: 'string'},
         {name: 'violateRegulation.createTime', mapping: 'createTime', type: 'date'},
+        {name: 'violateRegulation.issuer', mapping: 'issuer', type: 'string'},
+        {name: 'violateRegulation.issueDept', mapping: 'issueDept', type: 'string'},
         {name: 'violateRegulation.fromDate', mapping: 'fromDate', type: 'date'},
         {name: 'violateRegulation.toDate', mapping: 'toDate', type: 'date'},
     ]

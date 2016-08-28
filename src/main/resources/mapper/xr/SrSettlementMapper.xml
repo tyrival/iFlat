@@ -6,13 +6,13 @@
 
 <insert id="insert" parameterType="com.iflat.xr.bean.SrSettlement">
     INSERT INTO XrSrSettlement
-    VALUES (#{id},#{progress},#{projNo},#{projName},#{dept},#{team},#{isOutwork},#{amountFirst},#{amountSecond},#{attachment},#{balApplAtt},#{comment},#{status},#{isQuota},#{creatorAcc},#{creatorName},#{createTime},#{teamAcc},#{teamName},#{score},#{opinion},#{settFirstAcc},#{settFirstName},#{settFirstTime},#{settlementTime},#{discountRate},#{amountWithDiscount})
+    VALUES (#{id},#{progress},#{projNo},#{projName},#{deptCode},#{dept},#{teamCode},#{team},#{isOutwork},#{amountFirst},#{amountSecond},#{attachment},#{balApplAtt},#{comment},#{status},#{isQuota},#{creatorAcc},#{creatorName},#{createTime},#{teamAcc},#{teamName},#{score},#{opinion},#{settFirstAcc},#{settFirstName},#{settFirstTime},#{settlementTime},#{discountRate},#{amountWithDiscount})
 </insert>
 
 <insert id="insertBatch" parameterType="java.util.List">
     INSERT INTO XrSrSettlement
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.progress},#{item.projNo},#{item.projName},#{item.dept},#{item.team},#{item.isOutwork},#{item.amountFirst},#{item.amountSecond},#{item.attachment},,#{item.balApplAtt},#{item.comment},#{item.status},#{item.isQuota},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.teamAcc},#{item.teamName},#{item.score},#{item.opinion},#{item.settFirstAcc},#{item.settFirstName},#{item.settFirstTime},#{item.settlementTime},#{item.discountRate},#{item.amountWithDiscount}
+            SELECT #{item.id},#{item.progress},#{item.projNo},#{item.projName},#{item.deptCode},#{item.dept},#{item.teamCode},#{item.team},#{item.isOutwork},#{item.amountFirst},#{item.amountSecond},#{item.attachment},,#{item.balApplAtt},#{item.comment},#{item.status},#{item.isQuota},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.teamAcc},#{item.teamName},#{item.score},#{item.opinion},#{item.settFirstAcc},#{item.settFirstName},#{item.settFirstTime},#{item.settlementTime},#{item.discountRate},#{item.amountWithDiscount}
         </foreach>
 </insert>
 
@@ -23,7 +23,9 @@
         <if test="progress!=null">progress=#{progress},</if>
         <if test="projNo!=null">projNo=#{projNo},</if>
         <if test="projName!=null">projName=#{projName},</if>
+        <if test="deptCode!=null">deptCode=#{deptCode},</if>
         <if test="dept!=null">dept=#{dept},</if>
+        <if test="teamCode!=null">teamCode=#{teamCode},</if>
         <if test="team!=null">team=#{team},</if>
         <if test="isOutwork!=null">isOutwork=#{isOutwork},</if>
         <if test="amountFirst!=null">amountFirst=#{amountFirst},</if>
@@ -51,10 +53,10 @@
 </update>
 
 <update id="updateBatch" parameterType="java.util.List">
-    UPDATE XrSrSettlement SET id=a.id,progress=a.progress,projNo=a.projNo,projName=a.projName,dept=a.dept,team=a.team,isOutwork=a.isOutwork,amountFirst=a.amountFirst,amountSecond=a.amountSecond,attachment=a.attachment,balApplAtt=a.balApplAtt,comment=a.comment,status=a.status,isQuota=a.amountSecond,isQuota=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime,teamAcc=a.teamAcc,teamName=a.teamName,score=a.score,opinion=a.opinion,settFirstAcc=a.settFirstAcc,settFirstName=a.settFirstName,settFirstTime=a.settFirstTime,settlementTime=a.settlementTime,discountRate=a.discountRate,amountWithDiscount=a.amountWithDiscount
+    UPDATE XrSrSettlement SET id=a.id,progress=a.progress,projNo=a.projNo,projName=a.projName,deptCode=a.deptCode,dept=a.dept,teamCode=a.teamCode,team=a.team,isOutwork=a.isOutwork,amountFirst=a.amountFirst,amountSecond=a.amountSecond,attachment=a.attachment,balApplAtt=a.balApplAtt,comment=a.comment,status=a.status,isQuota=a.amountSecond,isQuota=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime,teamAcc=a.teamAcc,teamName=a.teamName,score=a.score,opinion=a.opinion,settFirstAcc=a.settFirstAcc,settFirstName=a.settFirstName,settFirstTime=a.settFirstTime,settlementTime=a.settlementTime,discountRate=a.discountRate,amountWithDiscount=a.amountWithDiscount
     FROM (
     <foreach collection="list" item="item" index="index" separator="UNION ALL">
-        SELECT #{item.id} as id,#{item.progress} as progress,#{item.projNo} as projNo,#{item.projName} as projName,#{item.dept} as dept,#{item.team} as team,#{item.isOutwork} as isOutwork,#{item.amountFirst} as amountFirst,#{item.amountSecond} as amountSecond,#{item.attachment} as attachment,#{item.balApplAtt} as balApplAtt,#{item.comment} as comment,#{item.status} as status,#{item.isQuota} as isQuota,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime,#{item.teamAcc} as teamAcc,#{item.teamName} as teamName,#{item.score} as score,#{item.opinion} as opinion,#{item.settFirstAcc} as settFirstAcc,#{item.settFirstName} as settFirstName,#{item.settFirstTime} as settFirstTime,#{item.settlementTime} as settlementTime,#{item.discountRate} as discountRate,#{item.amountWithDiscount} as amountWithDiscount
+        SELECT #{item.id} as id,#{item.progress} as progress,#{item.projNo} as projNo,#{item.projName} as projName,#{item.deptCode} as deptCode,#{item.dept} as dept,#{item.teamCode} as teamCode,#{item.team} as team,#{item.isOutwork} as isOutwork,#{item.amountFirst} as amountFirst,#{item.amountSecond} as amountSecond,#{item.attachment} as attachment,#{item.balApplAtt} as balApplAtt,#{item.comment} as comment,#{item.status} as status,#{item.isQuota} as isQuota,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime,#{item.teamAcc} as teamAcc,#{item.teamName} as teamName,#{item.score} as score,#{item.opinion} as opinion,#{item.settFirstAcc} as settFirstAcc,#{item.settFirstName} as settFirstName,#{item.settFirstTime} as settFirstTime,#{item.settlementTime} as settlementTime,#{item.discountRate} as discountRate,#{item.amountWithDiscount} as amountWithDiscount
     </foreach>
     ) AS a
     WHERE XrSrSettlement.id=a.id
@@ -66,13 +68,15 @@
 </delete>
 
 <select id="list" parameterType="com.iflat.xr.bean.SrSettlement" resultMap="XrSrSettlementResult">
-    SELECT id,progress,projNo,projName,dept,team,isOutwork,amountFirst,amountSecond,attachment,balApplAtt,comment,status,isQuota,creatorAcc,creatorName,createTime,teamAcc,teamName,score,opinion,settFirstAcc,settFirstName,settFirstTime,settlementTime,discountRate,amountWithDiscount
+    SELECT id,progress,projNo,projName,deptCode,dept,teamCode,team,isOutwork,amountFirst,amountSecond,attachment,balApplAtt,comment,status,isQuota,creatorAcc,creatorName,createTime,teamAcc,teamName,score,opinion,settFirstAcc,settFirstName,settFirstTime,settlementTime,discountRate,amountWithDiscount
     FROM XrSrSettlement
     <where>
         <if test="id!=null and !&quot;&quot;.equals(id.trim())">id=#{id}</if>
         <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
         <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+        <if test="deptCode!=null and !&quot;&quot;.equals(deptCode.trim())">AND deptCode=#{deptCode}</if>
         <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+        <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
         <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team=#{team}</if>
         <if test="attachment!=null and !&quot;&quot;.equals(attachment.trim())">AND attachment=#{attachment}</if>
         <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment=#{comment}</if>
@@ -93,7 +97,9 @@
     <result property="progress" column="progress" jdbcType="DOUBLE"/>
     <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
     <result property="projName" column="projName" jdbcType="VARCHAR"/>
+    <result property="deptCode" column="deptCode" jdbcType="VARCHAR"/>
     <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="teamCode" column="teamCode" jdbcType="VARCHAR"/>
     <result property="team" column="team" jdbcType="VARCHAR"/>
     <result property="isOutwork" column="isOutwork" jdbcType="BIT"/>
     <result property="amountFirst" column="amountFirst" jdbcType="DOUBLE"/>

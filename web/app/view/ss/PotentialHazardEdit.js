@@ -82,7 +82,9 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
                         var v = cb.getStore().findRecord('rptProject.projNo', newV).get('name');
-                        cb.up('form').down('textfield[name=potentialHazard.projName]').setValue(v);
+                        if (v) {
+                            cb.up('form').down('textfield[name=potentialHazard.projName]').setValue(v);
+                        }
                     }
                 }
             },{
@@ -149,7 +151,7 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 xtype: 'combo',
                 name: 'potentialHazard.dept',
                 bind: {
-                    store: '{smDept}'
+                    store: '{ssFiveSFuncDept}'
                 },
                 queryMode: 'local',
                 allowBlank: false,
@@ -244,7 +246,7 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 width: '40%',
             },{
                 xtype: 'textfield',
-                name: 'potentialHazard.region',
+                name: 'potentialHazard.position',
                 fieldLabel: '位置',
                 width: '39%',
             }]
@@ -281,7 +283,7 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 xtype: 'combo',
                 name: 'potentialHazard.feedback',
                 queryMode: 'local',
-                allowBlank: false,
+                allowBlank: true,
                 editable: false,
                 forceSelection : false,
                 width: '25%',
@@ -305,7 +307,7 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
         },{
             items: [{
                 xtype: 'combo',
-                name: 'potentialHazard.deadline',
+                name: 'potentialHazard.busiDivision',
                 queryMode: 'local',
                 allowBlank: false,
                 editable: false,
@@ -348,7 +350,12 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 xtype: 'textfield',
                 name: 'potentialHazard.comment',
                 fieldLabel: '备注',
-                width: '99%',
+                width: '66%',
+            }, {
+                xtype: 'textfield',
+                name: 'potentialHazard.issuer',
+                fieldLabel: '查处人',
+                width: '33%',
             }]
         },{
             items: [{

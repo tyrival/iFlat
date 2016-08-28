@@ -91,6 +91,12 @@ Ext.define('iFlat.view.ss.FiveS', {
             }
         },
     }, {
+        header: '扣分',
+        dataIndex: 'fiveS.score',
+    }, {
+        header: '罚款',
+        dataIndex: 'fiveS.amount',
+    }, {
         header: '责任部门',
         dataIndex: 'fiveS.dept',
     }, {
@@ -122,6 +128,9 @@ Ext.define('iFlat.view.ss.FiveS', {
     }, {
         header: '备注',
         dataIndex: 'fiveS.comment',
+    }, {
+        header: '查处人',
+        dataIndex: 'fiveS.issuer',
     }, {
         header: '创建人',
         dataIndex: 'fiveS.creatorName',

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Xr.Benefit">
+
+<insert id="insert" parameterType="com.iflat.xr.bean.Benefit">
+    INSERT INTO XrBenefit
+    VALUES (#{id},#{month},#{dept},#{teamCode},#{team},#{workday},#{manhour},#{personNum},#{workPersonTime},#{waitPersonTime},#{casualInPersonTime},#{casualOutPersonTime},#{salaryPersonNum},#{averagePersonNum},#{quarterProjectBonus},#{waitSubsidy},#{springFestivalSubsidy},#{springFestivalStable},#{dinnerSubsidy},#{temperatureSubsidy},#{rent},#{dinnerSelf},#{insurance},#{material},#{comment})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO XrBenefit
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.month},#{item.dept},#{item.teamCode},#{item.team},#{item.workday},#{item.manhour},#{item.personNum},#{item.workPersonTime},#{item.waitPersonTime},#{item.casualInPersonTime},#{item.casualOutPersonTime},#{item.salaryPersonNum},#{item.averagePersonNum},#{item.quarterProjectBonus},#{item.waitSubsidy},#{item.springFestivalSubsidy},#{item.springFestivalStable},#{item.dinnerSubsidy},#{item.temperatureSubsidy},#{item.rent},#{item.dinnerSelf},#{item.insurance},#{item.material},#{item.comment}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.xr.bean.Benefit">
+    UPDATE XrBenefit
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="month!=null">month=#{month},</if>
+        <if test="dept!=null">dept=#{dept},</if>
+        <if test="teamCode!=null">teamCode=#{teamCode},</if>
+        <if test="team!=null">team=#{team},</if>
+        <if test="workday!=null">workday=#{workday},</if>
+        <if test="manhour!=null">manhour=#{manhour},</if>
+        <if test="personNum!=null">personNum=#{personNum},</if>
+        <if test="workPersonTime!=null">workPersonTime=#{workPersonTime},</if>
+        <if test="waitPersonTime!=null">waitPersonTime=#{waitPersonTime},</if>
+        <if test="casualInPersonTime!=null">casualInPersonTime=#{casualInPersonTime},</if>
+        <if test="casualOutPersonTime!=null">casualOutPersonTime=#{casualOutPersonTime},</if>
+        <if test="salaryPersonNum!=null">salaryPersonNum=#{salaryPersonNum},</if>
+        <if test="averagePersonNum!=null">averagePersonNum=#{averagePersonNum},</if>
+        <if test="quarterProjectBonus!=null">quarterProjectBonus=#{quarterProjectBonus},</if>
+        <if test="waitSubsidy!=null">waitSubsidy=#{waitSubsidy},</if>
+        <if test="springFestivalSubsidy!=null">springFestivalSubsidy=#{springFestivalSubsidy},</if>
+        <if test="springFestivalStable!=null">springFestivalStable=#{springFestivalStable},</if>
+        <if test="dinnerSubsidy!=null">dinnerSubsidy=#{dinnerSubsidy},</if>
+        <if test="temperatureSubsidy!=null">temperatureSubsidy=#{temperatureSubsidy},</if>
+        <if test="rent!=null">rent=#{rent},</if>
+        <if test="dinnerSelf!=null">dinnerSelf=#{dinnerSelf},</if>
+        <if test="insurance!=null">insurance=#{insurance},</if>
+        <if test="material!=null">material=#{material},</if>
+        <if test="comment!=null">comment=#{comment},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE XrBenefit SET id=a.id,month=a.month,dept=a.dept,teamCode=a.teamCode,team=a.team,workday=a.workday,manhour=a.manhour,personNum=a.personNum,workPersonTime=a.workPersonTime,waitPersonTime=a.waitPersonTime,casualInPersonTime=a.casualInPersonTime,casualOutPersonTime=a.casualOutPersonTime,salaryPersonNum=a.salaryPersonNum,averagePersonNum=a.averagePersonNum,quarterProjectBonus=a.quarterProjectBonus,waitSubsidy=a.waitSubsidy,springFestivalSubsidy=a.springFestivalSubsidy,springFestivalStable=a.springFestivalStable,dinnerSubsidy=a.dinnerSubsidy,temperatureSubsidy=a.temperatureSubsidy,rent=a.rent,dinnerSelf=a.dinnerSelf,insurance=a.insurance,material=a.material,comment=a.comment
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.month} as month,#{item.dept} as dept,#{item.teamCode} as teamCode,#{item.team} as team,#{item.workday} as workday,#{item.manhour} as manhour,#{item.personNum} as personNum,#{item.workPersonTime} as workPersonTime,#{item.waitPersonTime} as waitPersonTime,#{item.casualInPersonTime} as casualInPersonTime,#{item.casualOutPersonTime} as casualOutPersonTime,#{item.salaryPersonNum} as salaryPersonNum,#{item.averagePersonNum} as averagePersonNum,#{item.quarterProjectBonus} as quarterProjectBonus,#{item.waitSubsidy} as waitSubsidy,#{item.springFestivalSubsidy} as springFestivalSubsidy,#{item.springFestivalStable} as springFestivalStable,#{item.dinnerSubsidy} as dinnerSubsidy,#{item.temperatureSubsidy} as temperatureSubsidy,#{item.rent} as rent,#{item.dinnerSelf} as dinnerSelf,#{item.insurance} as insurance,#{item.material} as material,#{item.comment} as comment
+    </foreach>
+    ) AS a
+    WHERE XrBenefit.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE XrBenefit
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.xr.bean.Benefit" resultMap="XrBenefitResult">
+    SELECT a.id,a.month,a.dept,a.teamCode,a.team,a.workday,a.manhour,a.personNum,a.workPersonTime,a.waitPersonTime,a.casualInPersonTime,a.casualOutPersonTime,a.salaryPersonNum,a.averagePersonNum,a.quarterProjectBonus,a.waitSubsidy,a.springFestivalSubsidy,a.springFestivalStable,a.dinnerSubsidy,a.temperatureSubsidy,a.rent,a.dinnerSelf,a.insurance,a.material,a.comment,b.laborExpense,c.payableSalary
+    FROM XrBenefit a
+    LEFT JOIN (
+        SELECT teamCode,SUM(amountSecond) AS laborExpense
+        FROM (
+            SELECT teamCode,amountSecond
+            FROM XrSrSettlement
+            <where>
+                <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+                <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
+                <if test="fromDate!=null">AND settlementTime &gt;= #{fromDate}</if>
+                <if test="toDate!=null">AND settlementTime &lt; DATEADD(day,1,#{toDate})</if>
+            </where>
+            UNION ALL
+            SELECT teamCode,amountSecond
+            FROM XrTrSettlement
+            <where>
+                <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+                <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
+                <if test="fromDate!=null">AND settlementTime &gt;= #{fromDate}</if>
+                <if test="toDate!=null">AND settlementTime &lt; DATEADD(day,1,#{toDate})</if>
+            </where>
+        ) z
+        GROUP BY teamCode
+    ) b ON a.teamCode=b.teamCode
+    LEFT JOIN (
+        SELECT teamCode,SUM(payableAmount) AS payableSalary
+        FROM XrSalary
+        <where>
+            <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND teamCode=#{teamCode}</if>
+            <if test="fromDate!=null">AND month &gt;= #{fromDate}</if>
+            <if test="toDate!=null">AND month &lt; DATEADD(day,1,#{toDate})</if>
+        </where>
+        GROUP BY teamCode
+    ) c ON a.teamCode=c.teamCode
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND a.id=#{id}</if>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND a.dept=#{dept}</if>
+        <if test="teamCode!=null and !&quot;&quot;.equals(teamCode.trim())">AND a.teamCode=#{teamCode}</if>
+        <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND a.team=#{team}</if>
+        <if test="fromDate!=null">
+            AND a.month &gt;= #{fromDate}</if>
+        <if test="toDate!=null">
+            AND a.month &lt; DATEADD(day,1,#{toDate})</if>
+    </where>
+    ORDER BY a.dept,a.teamCode
+</select>
+
+<resultMap type="com.iflat.xr.bean.Benefit" id="XrBenefitResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="month" column="month" jdbcType="DATE"/>
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="teamCode" column="teamCode" jdbcType="VARCHAR"/>
+    <result property="team" column="team" jdbcType="VARCHAR"/>
+    <result property="workday" column="workday" jdbcType="DOUBLE"/>
+    <result property="manhour" column="manhour" jdbcType="DOUBLE"/>
+    <result property="personNum" column="personNum" jdbcType="DOUBLE"/>
+    <result property="workPersonTime" column="workPersonTime" jdbcType="DOUBLE"/>
+    <result property="waitPersonTime" column="waitPersonTime" jdbcType="DOUBLE"/>
+    <result property="casualInPersonTime" column="casualInPersonTime" jdbcType="DOUBLE"/>
+    <result property="casualOutPersonTime" column="casualOutPersonTime" jdbcType="DOUBLE"/>
+    <result property="salaryPersonNum" column="salaryPersonNum" jdbcType="DOUBLE"/>
+    <result property="laborExpense" column="laborExpense" jdbcType="DOUBLE"/>
+    <result property="averagePersonNum" column="averagePersonNum" jdbcType="DOUBLE"/>
+    <result property="quarterProjectBonus" column="quarterProjectBonus" jdbcType="DOUBLE"/>
+    <result property="waitSubsidy" column="waitSubsidy" jdbcType="DOUBLE"/>
+    <result property="springFestivalSubsidy" column="springFestivalSubsidy" jdbcType="DOUBLE"/>
+    <result property="springFestivalStable" column="springFestivalStable" jdbcType="DOUBLE"/>
+    <result property="dinnerSubsidy" column="dinnerSubsidy" jdbcType="DOUBLE"/>
+    <result property="temperatureSubsidy" column="temperatureSubsidy" jdbcType="DOUBLE"/>
+    <result property="payableSalary" column="payableSalary" jdbcType="DOUBLE"/>
+    <result property="rent" column="rent" jdbcType="DOUBLE"/>
+    <result property="dinnerSelf" column="dinnerSelf" jdbcType="DOUBLE"/>
+    <result property="insurance" column="insurance" jdbcType="DOUBLE"/>
+    <result property="material" column="material" jdbcType="DOUBLE"/>
+    <result property="comment" column="comment" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

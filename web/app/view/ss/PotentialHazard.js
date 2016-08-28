@@ -144,6 +144,9 @@ Ext.define('iFlat.view.ss.PotentialHazard', {
         header: '备注',
         dataIndex: 'potentialHazard.comment',
     }, {
+        header: '查处人',
+        dataIndex: 'potentialHazard.issuer',
+    }, {
         header: '创建人',
         dataIndex: 'potentialHazard.creatorName',
         hidden: true
