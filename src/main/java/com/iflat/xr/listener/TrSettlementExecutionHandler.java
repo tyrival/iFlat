@@ -118,7 +118,7 @@ public class TrSettlementExecutionHandler extends WorkflowExecutionListener {
                 trSettlement.setSettlementTime(new Date());
             }
 
-            trSettlement = (TrSettlement) trSettlementService.save(trSettlement);
+            trSettlement = (TrSettlement) getTrSettlementService().save(trSettlement);
             if (SrStatus.STATUS_COMPLETE.equals(status)) {
                 double diff = trSettlement.getAmountFirst() - trSettlement.getAmountSecond();
                 SrBalance balance = new SrBalance();

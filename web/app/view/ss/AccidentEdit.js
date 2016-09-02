@@ -201,12 +201,13 @@ Ext.define('iFlat.view.ss.AccidentEdit', {
                 xtype: 'textfield',
                 name: 'accident.comment',
                 fieldLabel: '备注',
-                width: '66%',
+                width: '99%',
             }, {
                 xtype: 'textfield',
                 name: 'accident.issuer',
                 fieldLabel: '查处人',
                 width: '33%',
+                hidden: true
             }]
         },{
             items: [{

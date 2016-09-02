@@ -80,6 +80,9 @@ Ext.define('iFlat.view.ss.FiveS', {
         header: '违规内容',
         dataIndex: 'fiveS.fsDescription',
     }, {
+        header: '描述',
+        dataIndex: 'fiveS.description',
+    }, {
         text: '违规照片',
         dataIndex: 'fiveS.attachment',
         width: 60,
@@ -114,6 +117,7 @@ Ext.define('iFlat.view.ss.FiveS', {
     }, {
         header: '整改时间',
         dataIndex: 'fiveS.rectifyTime',
+        formatter: 'date("Y-m-d")'
     }, {
         header: '整改照片',
         dataIndex: 'fiveS.rectifyAtt',

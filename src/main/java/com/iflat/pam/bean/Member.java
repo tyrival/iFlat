@@ -13,16 +13,16 @@ public class Member {
     private String name;
     private String sex;
     private Date birth;
-    private String nation;  // 民族
-    private String birthplace;  // 籍贯
+    private String nation;  // 民族--
+    private String birthplace;  // 籍贯--
     private Date joinParty;  // 入党时间
     private Date becomeFullMember;  // 转正时间
     private Date startWorking;  // 工作时间
     private String idCardNo;  // 身份证
-    private String diploma;  // 学历
-    private String degree;  // 学位
-    private Date enrolment;  // 入学时间
-    private Date graduation;  // 毕业时间
+    private String diploma;  // 学历--
+    private String degree;  // 学位--
+    private Date enrolment;  // 入学时间--
+    private Date graduation;  // 毕业时间--
     private String adminTitle;  // 技术职务
     private String pbName;  // 党支部名
     private String type;  // 正式党员/预备党员

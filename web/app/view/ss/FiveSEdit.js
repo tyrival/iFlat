@@ -12,7 +12,8 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
     id: 'ss-fivesedit',
     controller: 'ss-fives',
     closeAction: 'hide',
-    width: 800,
+    height: '95%',
+    width: '95%',
     //scrollable: true,
 
     items: {
@@ -20,7 +21,11 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
         id: 'ss-fivesedit-form',
         margin: 5,
         border: false,
-        layout: 'vbox',
+        layout: {
+            type: 'vbox',
+            align: 'stretch'
+        },
+        scrollable: true,
         fieldDefaults: {
             labelAlign: 'right',
             labelWidth: 60,
@@ -43,7 +48,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 xtype: 'datefield',
                 name: 'fiveS.date',
                 allowBlank: false,
-                width: 200,
+                width: '33%',
                 fieldLabel: '日期',
                 format: 'Y-m-d'
             },{
@@ -53,7 +58,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 increment: 30,
                 fieldLabel: '时间',
                 format: 'H:i',
-                width: 300,
+                width: '33%',
             },{
                 xtype: 'combo',
                 name: 'fiveS.funcDept',
@@ -64,7 +69,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 minChars: 0,
                 forceSelection : false,
                 anyMatch: true,
-                width: 200,
+                width: '33%',
                 fieldLabel: '职能部门',
                 bind: {
                     store: '{ssFiveSFuncDept}',
@@ -78,7 +83,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 allowBlank: false,
                 editable: false,
                 forceSelection : false,
-                width: 200,
+                width: '33%',
                 fieldLabel: '区域类型',
                 bind: {
                     store: '{fsAreaType}',
@@ -94,12 +99,12 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 name: 'fiveS.belongDept',
                 store: ssFiveSFsAreaDeptStore = Ext.create('iFlat.store.ss.FsAreaDept'),
                 queryMode: 'local',
-                allowBlank: false,
+                allowBlank: true,
                 editable: false,
                 forceSelection : false,
                 displayField: 'dept',
                 valueField: 'dept',
-                width: 200,
+                width: '33%',
                 fieldLabel: '所属部门',
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
@@ -107,6 +112,8 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                         cb.up('form').down('textfield[name=fiveS.code]').setValue('')
                         ssFiveSFsAreaStore.getProxy().extraParams['fsArea.dept'] = newV;
                         ssFiveSFsAreaStore.reload();
+                        ssFiveSRegionPersonNameStore.getProxy().extraParams['employee.deptName'] = newV;
+                        ssFiveSRegionPersonNameStore.reload();
                     }
                 }
             },{
@@ -124,7 +131,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 anyMatch: true,
                 displayField: 'area',
                 valueField: 'area',
-                width: 300,
+                width: '33%',
                 fieldLabel: '区域',
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
@@ -145,13 +152,13 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 xtype: 'textfield',
                 name: 'fiveS.code',
                 fieldLabel: '区域代码',
-                width: 200,
+                width: '33%',
                 editable: false
             }, {
                 xtype: 'textfield',
                 name: 'fiveS.otherArea',
                 fieldLabel: '其他区域',
-                width: 500,
+                width: '66%',
             }]
         },{
             items: [{
@@ -173,7 +180,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 anyMatch: true,
                 displayField: 'name',
                 valueField: 'projNo',
-                width: 400,
+                width: '66%',
                 fieldLabel: '工程名',
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
@@ -194,7 +201,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 xtype: 'textfield',
                 name: 'fiveS.region',
                 fieldLabel: '违规部位',
-                width: 300,
+                width: '33%',
             },]
         },/*{
             items: [{
@@ -232,7 +239,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 allowBlank: true,
                 editable: false,
                 forceSelection : true,
-                width: 200,
+                width: '33%',
                 fieldLabel: '违规项目',
                 bind: {
                     store: '{ssFsCodeType}'
@@ -254,7 +261,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 minChars: 0,
                 displayField: 'description',
                 valueField: 'description',
-                width: 500,
+                width: '66%',
                 fieldLabel: '违规内容',
                 store: ssFiveSFsCodeStore = Ext.create('iFlat.store.ss.FsCode', {
                     autoLoad: false
@@ -271,68 +278,253 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
             }]
         },{
             items: [{
+                xtype: 'textarea',
+                name: 'fiveS.description',
+                fieldLabel: '描述',
+                width: '99%',
+            }]
+        },{
+            items: [{
                 xtype: 'textfield',
                 name: 'fiveS.score',
-                width: 200,
+                width: '33%',
                 fieldLabel: '扣分',
             },{
                 xtype: 'textfield',
                 name: 'fiveS.amount',
-                width: 200,
+                width: '33%',
                 fieldLabel: '罚款',
             },{
                 xtype: 'textfield',
                 name: 'fiveS.issuer',
-                width: 200,
+                width: '33%',
                 fieldLabel: '查处人',
             }]
         },{
-            xtype: 'container',
-            layout: 'hbox',
-            id: 'ss-fivesedit-att',
-            margin: '20 0 0 65',
-            hidden: true,
             items: [{
-                xtype: 'button',
-                id: 'ss-fivesedit-link',
-                text: '下载附件',
-                margin: '0 5 0 0',
-                width: 100,
-            }, {
-                xtype: 'button',
-                ui: 'gray',
-                text: '删除',
-                handler: 'deleteAttachment'
+                xtype: 'combo',
+                name: 'fiveS.regionPersonName',
+                queryMode: 'local',
+                allowBlank: true,
+                editable: true,
+                forceSelection : true,
+                typeAhead: true,
+                minChars: 0,
+                displayField: 'name',
+                valueField: 'name',
+                width: '33%',
+                fieldLabel: '区域负责人',
+                store: ssFiveSRegionPersonNameStore = Ext.create('iFlat.store.code.Employee'),
+                /*listeners: {
+                 select: function (cb, record, opt) {
+                 var v = record.get('employee.account');
+                 cb.up('form').down('textfield[name=fiveS.regionPersonAcc]').setValue(v);
+                 },
+                 }*/
+            },{
+                xtype: 'textfield',
+                name: 'fiveS.regionPersonAcc',
+                fieldLabel: '账号',
+                width: '33%',
+                editable: false,
+                hidden: true,
             }]
         },{
-            xtype: 'textfield',
-            id: 'ss-fivesedit-attachment',
-            name: 'fiveS.attachment',
-            fieldLabel: 'attachment',
-            hidden: true,
-            listeners: [{
-                change: 'onAttachmentChange'
-            }]
-        },{
-            xtype: 'container',
-            layout: 'hbox',
-            margin: '20 0 10 0',
             items: [{
-                xtype: 'form',
-                id: 'ss-fivesedit-upload',
+                xtype: 'combo',
+                name: 'fiveS.dept',
+                bind: {
+                    store: '{ssFiveSFuncDept}'
+                },
+                queryMode: 'local',
+                allowBlank: true,
+                editable: false,
+                forceSelection : false,
+                width: '33%',
+                fieldLabel: '责任部门',
+                listeners: {
+                    change: function(cb, newV, oldV, opts) {
+                        ssFiveSEmployeeStore.getProxy().extraParams['employee.deptName'] = newV;
+                        ssFiveSEmployeeStore.reload();
+                    }
+                }
+            },{
+                xtype: 'combo',
+                name: 'fiveS.personName',
+                queryMode: 'local',
+                allowBlank: true,
+                editable: true,
+                forceSelection : true,
+                typeAhead: true,
+                minChars: 0,
+                displayField: 'name',
+                valueField: 'name',
+                width: '33%',
+                fieldLabel: '责任人',
+                store: ssFiveSEmployeeStore = Ext.create('iFlat.store.code.Employee', {
+                    autoLoad: true
+                }),
+                listeners: {
+                    select: function (cb, record, opt) {
+                        var team = record.get('employee.teamName');
+                        cb.up('window').down('textfield[name=fiveS.team]').setValue(team);
+                        var groupName = record.get('employee.groupName');
+                        cb.up('window').down('textfield[name=fiveS.groupName]').setValue(groupName);
+                        var account = record.get('employee.account');
+                        cb.up('window').down('textfield[name=fiveS.personAcc]').setValue(account);
+                        // 年龄，工龄，性别
+
+                    },
+                }
+            },{
+                xtype: 'textfield',
+                name: 'fiveS.personAcc',
+                fieldLabel: '工号',
+                width: '33%',
+                editable: false
+            },]
+        }, {
+            items: [{
+                xtype: 'textfield',
+                name: 'fiveS.team',
+                fieldLabel: '施工队',
+                width: '66%',
+                editable: false
+            },{
+                xtype: 'textfield',
+                name: 'fiveS.groupName',
+                fieldLabel: '班组',
+                width: '33%',
+                editable: false
+            }]
+        }, {
+            items: [{
+                xtype: 'combo',
+                name: 'fiveS.feedback',
+                queryMode: 'local',
+                editable: false,
+                forceSelection : false,
+                width: '33%',
+                fieldLabel: '整改情况',
+                bind: {
+                    store: '{ssPhFeedback}',
+                },
+            },{
+                xtype: 'datefield',
+                name: 'fiveS.rectifyTime',
+                width: '33%',
+                fieldLabel: '整改日期',
+                format: 'Y-m-d'
+            }/*,{
+                xtype: 'textfield',
+                name: 'fiveS.id',
+                fieldLabel: 'id',
+                editable: false,
+                //hidden: true
+            }*/]
+        },{
+            items: [{
+                xtype: 'container',
+                layout: 'hbox',
+                id: 'ss-fivesedit-att',
+                margin: '10 0 0 65',
+                width: '50%',
+                hidden: true,
                 items: [{
-                    xtype: 'fileuploadfield',
-                    fieldLabel: '违规照片',
-                    name: 'upload',
-                    buttonText: '选择...',
-                    width: 300,
-                    margin: '0 10 0 0',
+                    xtype: 'button',
+                    id: 'ss-fivesedit-link',
+                    text: '下载违规照片',
+                    margin: '0 5 0 0',
+                    width: 100,
+                }, {
+                    xtype: 'button',
+                    ui: 'gray',
+                    text: '删除',
+                    handler: 'deleteAttachment'
+                }]
+            },{
+                xtype: 'textfield',
+                id: 'ss-fivesedit-attachment',
+                name: 'fiveS.attachment',
+                fieldLabel: 'attachment',
+                hidden: true,
+                listeners: [{
+                    change: 'onAttachmentChange'
+                }]
+            },{
+                xtype: 'container',
+                layout: 'hbox',
+                id: 'ss-fivesedit-att2',
+                margin: '10 0 0 65',
+                width: '50%',
+                hidden: true,
+                items: [{
+                    xtype: 'button',
+                    id: 'ss-fivesedit-link2',
+                    text: '下载整改照片',
+                    margin: '0 5 0 0',
+                    width: 100,
+                }, {
+                    xtype: 'button',
+                    ui: 'gray',
+                    text: '删除',
+                    handler: 'deleteAttachment2'
+                }]
+            },{
+                xtype: 'textfield',
+                id: 'ss-fivesedit-attachment2',
+                name: 'fiveS.rectifyAtt',
+                fieldLabel: 'attachment',
+                hidden: true,
+                listeners: [{
+                    change: 'onAttachmentChange2'
+                }]
+            }]
+        },{
+            items: [{
+                xtype: 'container',
+                layout: 'hbox',
+                margin: '10 0 10 0',
+                items: [{
+                    xtype: 'form',
+                    id: 'ss-fivesedit-upload',
+                    items: [{
+                        xtype: 'fileuploadfield',
+                        fieldLabel: '违规照片',
+                        name: 'upload',
+                        buttonText: '选择...',
+                        width: 300,
+                        margin: '0 10 0 0',
+                    }]
+                }, {
+                    xtype: 'button',
+                    text: '上传',
+                    ui: 'orig-blue',
+                    handler: 'uploadAttachment'
                 }]
             }, {
-                xtype: 'button',
-                text: '上传',
-                ui: 'orig-blue',
-                handler: 'uploadAttachment'
+                items: [{
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '10 0 10 0',
+                    items: [{
+                        xtype: 'form',
+                        id: 'ss-fivesedit-upload2',
+                        items: [{
+                            xtype: 'fileuploadfield',
+                            fieldLabel: '整改照片',
+                            name: 'upload',
+                            buttonText: '选择...',
+                            width: 300,
+                            margin: '0 10 0 0',
+                        }]
+                    }, {
+                        xtype: 'button',
+                        text: '上传',
+                        ui: 'orig-blue',
+                        handler: 'uploadAttachment2'
+                    }]
+                }]
             }]
         }]
     },

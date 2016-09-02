@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.ss.bean.ViolateRegulation">
         INSERT INTO SsViolateRegulation
-        VALUES (#{id},#{date},#{time},#{riskLvl},#{code},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{training},#{trainingEff},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{issueDept},#{issuer})
+        VALUES (#{id},#{date},#{time},#{riskLvl},#{code},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{training},#{trainingEff},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{issueDept},#{issuer},#{rectifyAtt},#{content})
     </insert>
 
     <update id="update" parameterType="com.iflat.ss.bean.ViolateRegulation">
@@ -46,6 +46,8 @@
             <if test="comment!=null">comment=#{comment},</if>
             <if test="issueDept!=null">issueDept=#{issueDept},</if>
             <if test="issuer!=null">issuer=#{issuer},</if>
+            <if test="rectifyAtt!=null">rectifyAtt=#{rectifyAtt},</if>
+            <if test="content!=null">content=#{content},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -56,7 +58,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.ss.bean.ViolateRegulation" resultMap="SsViolateRegulationResult">
-        SELECT id,date，time,riskLvl,code,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,training,trainingEff,attachment,comment,creatorDept,creatorAcc,creatorName,createTime,issueDept,issuer
+        SELECT id,date,time,riskLvl,code,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,training,trainingEff,attachment,comment,creatorDept,creatorAcc,creatorName,createTime,issueDept,issuer,rectifyAtt,content
         FROM SsViolateRegulation
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -133,5 +135,7 @@
         <result property="createTime" column="createTime" jdbcType="DATE"/>
         <result property="issueDept" column="issueDept" jdbcType="VARCHAR"/>
         <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
+        <result property="rectifyAtt" column="rectifyAtt" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

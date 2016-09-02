@@ -140,11 +140,23 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 fieldLabel: '隐患代码',
                 change: function (cb, newV, oldV, opt) {
                     var model = cb.getStore().findRecord('phCode.code', newV);
-                    var amount = model.get('phCode.amount');
+                    if (model) {
+                        var content = model.get('phCode.description');
+                        cb.up('form').down('textfield[name=potentialHazard.content]').setValue(content);
+                    }
+                    /*var amount = model.get('phCode.amount');
                     var score = model.get('phCode.score');
                     cb.up('form').down('textfield[name=potentialHazard.amount]').setValue(amount);
-                    cb.up('form').down('textfield[name=potentialHazard.score]').setValue(score);
+                    cb.up('form').down('textfield[name=potentialHazard.score]').setValue(score);*/
                 }
+            }]
+        },{
+            items: [{
+                xtype: 'textfield',
+                name: 'potentialHazard.content',
+                fieldLabel: '隐患内容',
+                width: '99%',
+                editable: false
             }]
         },{
             items: [{

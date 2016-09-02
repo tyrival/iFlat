@@ -114,8 +114,8 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                         fieldLabel: '所属部门',
                         listeners: {
                             change: function(cb, newV, oldV, opts) {
-                                ssFiveSRegionPersonNameStore.getProxy().extraParams['employee.deptName'] = newV;
-                                ssFiveSRegionPersonNameStore.reload();
+                                ssFiveSDstrRegionPersonNameStore.getProxy().extraParams['employee.deptName'] = newV;
+                                ssFiveSDstrRegionPersonNameStore.reload();
                             }
                         }
                     },{
@@ -172,6 +172,13 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                         width: '66%',
                         editable: false,
                         fieldLabel: '违规内容',
+                    }]
+                },{
+                    items: [{
+                        xtype: 'textarea',
+                        name: 'fiveS.description',
+                        fieldLabel: '描述',
+                        width: '99%',
                     }]
                 },{
                     items: [{
@@ -259,7 +266,7 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                     valueField: 'name',
                     width: '33%',
                     fieldLabel: '区域负责人',
-                    store: ssFiveSRegionPersonNameStore = Ext.create('iFlat.store.code.Employee'),
+                    store: ssFiveSDstrRegionPersonNameStore = Ext.create('iFlat.store.code.Employee'),
                     /*listeners: {
                         select: function (cb, record, opt) {
                             var v = record.get('employee.account');
@@ -289,8 +296,8 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                     fieldLabel: '责任部门',
                     listeners: {
                         change: function(cb, newV, oldV, opts) {
-                            ssFiveSEmployeeStore.getProxy().extraParams['employee.deptName'] = newV;
-                            ssFiveSEmployeeStore.reload();
+                            ssFiveSDstrEmployeeStore.getProxy().extraParams['employee.deptName'] = newV;
+                            ssFiveSDstrEmployeeStore.reload();
                         }
                     }
                 },{
@@ -306,7 +313,7 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                     valueField: 'name',
                     width: '33%',
                     fieldLabel: '责任人',
-                    store: ssFiveSEmployeeStore = Ext.create('iFlat.store.code.Employee', {
+                    store: ssFiveSDstrEmployeeStore = Ext.create('iFlat.store.code.Employee', {
                         autoLoad: true
                     }),
                     listeners: {

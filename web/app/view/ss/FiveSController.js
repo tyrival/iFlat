@@ -11,7 +11,9 @@ Ext.define('iFlat.view.ss.FiveSController', {
                 if(btn=="yes") {
                     Ext.Ajax.request({
                         url: 'ss_deleteFiveS.action',
-                        params: record.data,
+                        params: {
+                            'fiveS.id': id
+                        },
                         success: function (response, opts) {
                             var data = Ext.JSON.decode(response.responseText);
                             if(data.success) {
@@ -48,8 +50,9 @@ Ext.define('iFlat.view.ss.FiveSController', {
         if (form.isValid()) {
             form.submit({
                 url :'ss_saveFiveS.action',
+
             });
-        }
+        };
     },
 
     uploadAttachment: function(btn) {
@@ -92,6 +95,50 @@ Ext.define('iFlat.view.ss.FiveSController', {
         } else {
             Ext.getCmp('ss-fivesedit-att').hide();
             Ext.getCmp('ss-fivesedit-link').setHref('');
+        }
+    },
+
+
+    uploadAttachment2: function(btn) {
+        var form = Ext.getCmp('ss-fivesedit-upload2');
+        if (form.isValid()) {
+            form.submit({
+                url: 'ss_uploadFiveS.action',
+                method: 'POST',
+                waitMsg: '正在上传......',
+                success: function (fp, o) {
+                    var path = (Ext.JSON.decode(o.response.responseText)).object;
+                    Ext.getCmp('ss-fivesedit-attachment2').setValue(path);
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    deleteAttachment2: function(btn) {
+        Ext.Msg.confirm("提示!","确定要删除附件吗?",function(btn) {
+            if(btn=="yes") {
+                Ext.Ajax.request({
+                    url: 'ss_deleteFile.action?filePath=' + Ext.getCmp('ss-fivesedit-attachment2').getValue(),
+                    success: function (response, opts) {
+                        Flat.util.tip(response.responseText);
+                    },
+                })
+                Ext.getCmp('ss-fivesedit-attachment2').setValue('');
+
+            };
+        })
+    },
+
+    onAttachmentChange2: function(field, newValue, oldValue, eOpts) {
+        if (newValue && newValue != '') {
+            Ext.getCmp('ss-fivesedit-att2').show();
+            Ext.getCmp('ss-fivesedit-link2').setHref(newValue);
+        } else {
+            Ext.getCmp('ss-fivesedit-att2').hide();
+            Ext.getCmp('ss-fivesedit-link2').setHref('');
         }
     },
 })

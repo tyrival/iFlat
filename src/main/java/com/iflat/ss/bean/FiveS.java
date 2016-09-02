@@ -24,6 +24,7 @@ public class FiveS {
     private String fsType;
     private String fsDescription;
     private String attachment;
+    private String description;
 
     private String dept;  // 责任部门
     private String team;
@@ -46,6 +47,14 @@ public class FiveS {
     private double amount;
     private String issueDept;
     private String issuer;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getIssuer() {
         return issuer;

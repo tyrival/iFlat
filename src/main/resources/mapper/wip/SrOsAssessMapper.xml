@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Wip.SrOsAssess">
+
+<insert id="insert" parameterType="com.iflat.wip.bean.SrOsAssess">
+    INSERT INTO WipSrOsAssess
+    VALUES (#{id},#{pid},#{description},#{fineAmount},#{creatorAcc},#{creatorName},#{creatorRole},#{createTime})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO WipSrOsAssess
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.description},#{item.fineAmount},#{item.creatorAcc},#{item.creatorName},#{item.creatorRole},#{item.createTime}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.wip.bean.SrOsAssess">
+    UPDATE WipSrOsAssess
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="pid!=null">pid=#{pid},</if>
+        <if test="description!=null">description=#{description},</if>
+        <if test="fineAmount!=null">fineAmount=#{fineAmount},</if>
+        <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+        <if test="creatorName!=null">creatorName=#{creatorName},</if>
+        <if test="creatorRole!=null">creatorRole=#{creatorRole},</if>
+        <if test="createTime!=null">createTime=#{createTime},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE WipSrOsAssess SET id=a.id,pid=a.pid,description=a.description,fineAmount=a.fineAmount,creatorAcc=a.creatorAcc,creatorName=a.creatorName,creatorRole=a.creatorRole,createTime=a.createTime
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.pid} as pid,#{item.description} as description,#{item.fineAmount} as fineAmount,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.creatorRole} as creatorRole,#{item.createTime} as createTime
+    </foreach>
+    ) AS a
+    WHERE WipSrOsAssess.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE WipSrOsAssess
+    <where>
+        <if test="id!=null">id=#{id}</if>
+        <if test="pid!=null">AND pid=#{pid}</if>
+    </where>
+</delete>
+
+<select id="list" parameterType="com.iflat.wip.bean.SrOsAssess" resultMap="WipSrOsAssessResult">
+    SELECT id,pid,description,fineAmount,creatorAcc,creatorName,creatorRole,createTime
+    FROM WipSrOsAssess
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">AND pid=#{pid}</if>
+        <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description=#{description}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+        <if test="creatorRole!=null and !&quot;&quot;.equals(creatorRole.trim())">AND creatorRole=#{creatorRole}</if>
+    </where>
+    ORDER BY createTime DESC
+</select>
+
+<resultMap type="com.iflat.wip.bean.SrOsAssess" id="WipSrOsAssessResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="pid" column="pid" jdbcType="VARCHAR"/>
+    <result property="description" column="description" jdbcType="VARCHAR"/>
+    <result property="fineAmount" column="fineAmount" jdbcType="DOUBLE"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="creatorRole" column="creatorRole" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

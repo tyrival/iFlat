@@ -67,6 +67,7 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
     @Override
     protected void beforeStartProcess() throws Exception {
         // 将工号置入流程变量，用于后续查询修船总管
+        processMap.put("id", reflectProcessObj.getMethodValue("id").toString());
         processMap.put("projNo", reflectProcessObj.getMethodValue("projNo").toString());
         processMap.put("deptName", reflectProcessObj.getMethodValue("deptName").toString());
 

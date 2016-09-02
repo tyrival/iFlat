@@ -11,7 +11,9 @@ Ext.define('iFlat.view.ss.ViolateRegulationController', {
                 if(btn=="yes") {
                     Ext.Ajax.request({
                         url: 'ss_deleteViolateRegulation.action',
-                        params: record.data,
+                        params: {
+                            'violateRegulation.id': id
+                        },
                         success: function (response, opts) {
                             var data = Ext.JSON.decode(response.responseText);
                             if(data.success) {
@@ -92,6 +94,49 @@ Ext.define('iFlat.view.ss.ViolateRegulationController', {
         } else {
             Ext.getCmp('ss-violateregulationedit-att').hide();
             Ext.getCmp('ss-violateregulationedit-link').setHref('');
+        }
+    },
+
+    uploadAttachment2: function(btn) {
+        var form = Ext.getCmp('ss-violateregulationedit-upload2');
+        if (form.isValid()) {
+            form.submit({
+                url: 'ss_uploadViolateRegulation.action',
+                method: 'POST',
+                waitMsg: '正在上传......',
+                success: function (fp, o) {
+                    var path = (Ext.JSON.decode(o.response.responseText)).object;
+                    Ext.getCmp('ss-violateregulationedit-attachment2').setValue(path);
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    deleteAttachment2: function(btn) {
+        Ext.Msg.confirm("提示!","确定要删除隐患照片吗?",function(btn) {
+            if(btn=="yes") {
+                Ext.Ajax.request({
+                    url: 'ss_deleteFile.action?filePath=' + Ext.getCmp('ss-violateregulationedit-attachment2').getValue(),
+                    success: function (response, opts) {
+                        Flat.util.tip(response.responseText);
+                    },
+                })
+                Ext.getCmp('ss-violateregulationedit-attachment2').setValue('');
+
+            };
+        })
+    },
+
+    onAttachmentChange2: function(field, newValue, oldValue, eOpts) {
+        if (newValue && newValue != '') {
+            Ext.getCmp('ss-violateregulationedit-att2').show();
+            Ext.getCmp('ss-violateregulationedit-link2').setHref(newValue);
+        } else {
+            Ext.getCmp('ss-violateregulationedit-att2').hide();
+            Ext.getCmp('ss-violateregulationedit-link2').setHref('');
         }
     },
 

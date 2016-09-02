@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.ss.bean.FiveS">
         INSERT INTO SsFiveS
-        VALUES (#{id},#{date},#{time},#{funcDept},#{areaType},#{area},#{code},#{otherArea},#{projNo},#{projName},#{region},#{belongDept},#{regionPersonAcc},#{regionPersonName},#{fsType},#{fsDescription},#{attachment},#{dept},#{team},#{personAcc},#{personName},#{feedback},#{rectifyTime},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{score},#{amount},#{issueDept},#{issuer})
+        VALUES (#{id},#{date},#{time},#{funcDept},#{areaType},#{area},#{code},#{otherArea},#{projNo},#{projName},#{region},#{belongDept},#{regionPersonAcc},#{regionPersonName},#{fsType},#{fsDescription},#{attachment},#{dept},#{team},#{personAcc},#{personName},#{feedback},#{rectifyTime},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{score},#{amount},#{issueDept},#{issuer},#{description})
     </insert>
 
     <update id="update" parameterType="com.iflat.ss.bean.FiveS">
@@ -40,6 +40,7 @@
             <if test="amount!=null">amount=#{amount},</if>
             <if test="issuer!=null">issuer=#{issuer},</if>
             <if test="issueDept!=null">issueDept=#{issueDept},</if>
+            <if test="description!=null">description=#{description},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -50,7 +51,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.ss.bean.FiveS" resultMap="SsFiveSResult">
-        SELECT id,date,time,funcDept,areaType,area,code,otherArea,projNo,projName,region,belongDept,regionPersonAcc,regionPersonName,fsType,fsDescription,attachment,dept,team,personAcc,personName,feedback,rectifyTime,rectifyAtt,comment,creatorAcc,creatorName,creatorDept,createTime,score,amount,issueDept,issuer
+        SELECT id,date,time,funcDept,areaType,area,code,otherArea,projNo,projName,region,belongDept,regionPersonAcc,regionPersonName,fsType,fsDescription,attachment,dept,team,personAcc,personName,feedback,rectifyTime,rectifyAtt,comment,creatorAcc,creatorName,creatorDept,createTime,score,amount,issueDept,issuer,description
         FROM SsFiveS
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -117,5 +118,6 @@
         <result property="amount" column="amount" jdbcType="DOUBLE"/>
         <result property="issueDept" column="issueDept" jdbcType="VARCHAR"/>
         <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

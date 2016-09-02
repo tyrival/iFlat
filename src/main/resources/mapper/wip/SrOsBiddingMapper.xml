@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Wip.SrOsBidding">
+
+<insert id="insert" parameterType="com.iflat.wip.bean.SrOsBidding">
+    INSERT INTO WipSrOsBidding
+    VALUES (#{id},#{pid},#{vendor},#{vendorType},#{amount},#{amountAdj},#{comment},#{creatorAcc},#{creatorName},#{createTime})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO WipSrOsBidding
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.vendor},#{item.vendorType},#{item.amount},#{item.amountAdj},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.wip.bean.SrOsBidding">
+    UPDATE WipSrOsBidding
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="pid!=null">pid=#{pid},</if>
+        <if test="vendor!=null">vendor=#{vendor},</if>
+        <if test="vendorType!=null">vendorType=#{vendorType},</if>
+        <if test="amount!=null">amount=#{amount},</if>
+        <if test="amountAdj!=null">amountAdj=#{amountAdj},</if>
+        <if test="comment!=null">comment=#{comment},</if>
+        <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+        <if test="creatorName!=null">creatorName=#{creatorName},</if>
+        <if test="createTime!=null">createTime=#{createTime},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE WipSrOsBidding SET id=a.id,pid=a.pid,vendor=a.vendor,vendorType=a.vendorType,amount=a.amount,amountAdj=a.amountAdj,comment=a.comment,creatorAcc=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.pid} as pid,#{item.vendor} as vendor,#{item.vendorType} as vendorType,#{item.amount} as amount,#{item.amountAdj} as amountAdj,#{item.comment} as comment,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime
+    </foreach>
+    ) AS a
+    WHERE WipSrOsBidding.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE WipSrOsBidding
+    <where>
+        <if test="id!=null">id=#{id}</if>
+        <if test="pid!=null">AND pid=#{pid}</if>
+    </where>
+</delete>
+
+<select id="list" parameterType="com.iflat.wip.bean.SrOsBidding" resultMap="WipSrOsBiddingResult">
+    SELECT id,pid,vendor,vendorType,amount,amountAdj,comment,creatorAcc,creatorName,createTime
+    FROM WipSrOsBidding
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">AND pid=#{pid}</if>
+        <if test="vendor!=null and !&quot;&quot;.equals(vendor.trim())">AND vendor=#{vendor}</if>
+        <if test="vendorType!=null and !&quot;&quot;.equals(vendorType.trim())">AND vendorType=#{vendorType}</if>
+        <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment=#{comment}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+        <if test="createTime!=null and !&quot;&quot;.equals(createTime.trim())">AND createTime=#{createTime}</if>
+    </where>
+    ORDER BY createTime DESC
+</select>
+
+<resultMap type="com.iflat.wip.bean.SrOsBidding" id="WipSrOsBiddingResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="pid" column="pid" jdbcType="VARCHAR"/>
+    <result property="vendor" column="vendor" jdbcType="VARCHAR"/>
+    <result property="vendorType" column="vendorType" jdbcType="VARCHAR"/>
+    <result property="amount" column="amount" jdbcType="DOUBLE"/>
+    <result property="amountAdj" column="amountAdj" jdbcType="DOUBLE"/>
+    <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

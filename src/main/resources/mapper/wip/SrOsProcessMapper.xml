@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Wip.SrOsProcess">
+
+<insert id="insert" parameterType="com.iflat.wip.bean.SrOsProcess">
+    INSERT INTO WipSrOsProcess
+    VALUES (#{id},#{pid},#{date},#{description},#{creatorAcc},#{creatorName},#{createTime})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO WipSrOsProcess
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.date},#{item.description},#{item.creatorAcc},#{item.creatorName},#{item.createTime}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.wip.bean.SrOsProcess">
+    UPDATE WipSrOsProcess
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="pid!=null">pid=#{pid},</if>
+        <if test="date!=null">date=#{date},</if>
+        <if test="description!=null">description=#{description},</if>
+        <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+        <if test="creatorName!=null">creatorName=#{creatorName},</if>
+        <if test="createTime!=null">createTime=#{createTime},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE WipSrOsProcess SET id=a.id,pid=a.pid,date=a.date,description=a.description,creatorAcc=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.pid} as pid,#{item.date} as date,#{item.description} as description,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime
+    </foreach>
+    ) AS a
+    WHERE WipSrOsProcess.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE WipSrOsProcess
+    <where>
+        <if test="id!=null">id=#{id}</if>
+        <if test="pid!=null">AND pid=#{pid}</if>
+    </where>
+</delete>
+
+<select id="list" parameterType="com.iflat.wip.bean.SrOsProcess" resultMap="WipSrOsProcessResult">
+    SELECT id,pid,date,description,creatorAcc,creatorName,createTime
+    FROM WipSrOsProcess
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">AND pid=#{pid}</if>
+        <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description=#{description}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+        <if test="createTime!=null and !&quot;&quot;.equals(createTime.trim())">AND createTime=#{createTime}</if>
+    </where>
+    ORDER BY createTime DESC
+</select>
+
+<resultMap type="com.iflat.wip.bean.SrOsProcess" id="WipSrOsProcessResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="pid" column="pid" jdbcType="VARCHAR"/>
+    <result property="date" column="date" jdbcType="DATE"/>
+    <result property="description" column="description" jdbcType="VARCHAR"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

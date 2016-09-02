@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Wip.SrOutsource">
+
+<insert id="insert" parameterType="com.iflat.wip.bean.SrOutsource">
+    INSERT INTO WipSrOutsource
+    VALUES (#{id},#{projNo},#{projName},#{projType},#{dept},#{type},#{capitalSource},#{matSource},#{tod},#{hasBluePrint},#{hasSample},#{ownerAppoint},#{aplAtt},#{aplComment},#{bidNo},#{bidType},#{bidAtt},#{vendor},#{vendorType},#{bidAmountFirst},#{bidAmountSecond},#{bidComment},#{saleOpinion},#{contNo},#{contDate},#{contAmount},#{contAtt},#{conComment},#{finishTime},#{otReason},#{inspResult},#{inspComment},#{inspAtt},#{settAmountFirst},#{settAmountSecond},#{settComment},#{settAtt},#{saleComment},#{creatorAcc},#{creatorName},#{createTime},#{auditorAcc},#{auditorName},#{signorAcc},#{signorName},#{operatorAcc},#{operatorName},#{saleAcc},#{saleName},#{qcAcc},#{qcName},#{bdDirectorAcc},#{bdDirectorName},#{completeTime},#{status})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO WipSrOutsource
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.projNo},#{item.projName},#{item.projType},#{item.dept},#{item.type},#{item.capitalSource},#{item.matSource},#{item.tod},#{item.hasBluePrint},#{item.hasSample},#{item.ownerAppoint},#{item.aplAtt},#{item.aplComment},#{item.bidNo},#{item.bidType},#{item.bidAtt},#{item.vendor},#{item.vendorType},#{item.bidAmountFirst},#{item.bidAmountSecond},#{item.bidComment},#{item.saleOpinion},#{item.contNo},#{item.contDate},#{item.contAmount},#{item.contAtt},#{item.conComment},#{item.finishTime},#{item.otReason},#{item.inspResult},#{item.inspComment},#{item.inspAtt},#{item.settAmountFirst},#{item.settAmountSecond},#{item.settComment},#{item.settAtt},#{item.saleComment},#{item.creatorAcc},#{item.creatorName},#{item.createTime},#{item.auditorAcc},#{item.auditorName},#{item.signorAcc},#{item.signorName},#{item.operatorAcc},#{item.operatorName},#{item.saleAcc},#{item.saleName},#{item.qcAcc},#{item.qcName},#{item.bdDirectorAcc},#{item.bdDirectorName},#{item.completeTime},#{item.status}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.wip.bean.SrOutsource">
+    UPDATE WipSrOutsource
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="projNo!=null">projNo=#{projNo},</if>
+        <if test="projName!=null">projName=#{projName},</if>
+        <if test="projType!=null">projType=#{projType},</if>
+        <if test="dept!=null">dept=#{dept},</if>
+        <if test="type!=null">type=#{type},</if>
+        <if test="capitalSource!=null">capitalSource=#{capitalSource},</if>
+        <if test="matSource!=null">matSource=#{matSource},</if>
+        <if test="tod!=null">tod=#{tod},</if>
+        <if test="hasBluePrint!=null">hasBluePrint=#{hasBluePrint},</if>
+        <if test="hasSample!=null">hasSample=#{hasSample},</if>
+        <if test="ownerAppoint!=null">ownerAppoint=#{ownerAppoint},</if>
+        <if test="aplAtt!=null">aplAtt=#{aplAtt},</if>
+        <if test="aplComment!=null">aplComment=#{aplComment},</if>
+        <if test="bidNo!=null">bidNo=#{bidNo},</if>
+        <if test="bidType!=null">bidType=#{bidType},</if>
+        <if test="bidAtt!=null">bidAtt=#{bidAtt},</if>
+        <if test="vendor!=null">vendor=#{vendor},</if>
+        <if test="vendorType!=null">vendorType=#{vendorType},</if>
+        <if test="bidAmountFirst!=null">bidAmountFirst=#{bidAmountFirst},</if>
+        <if test="bidAmountSecond!=null">bidAmountSecond=#{bidAmountSecond},</if>
+        <if test="bidComment!=null">bidComment=#{bidComment},</if>
+        <if test="saleOpinion!=null">saleOpinion=#{saleOpinion},</if>
+        <if test="contNo!=null">contNo=#{contNo},</if>
+        <if test="contDate!=null">contDate=#{contDate},</if>
+        <if test="contAmount!=null">contAmount=#{contAmount},</if>
+        <if test="contAtt!=null">contAtt=#{contAtt},</if>
+        <if test="conComment!=null">conComment=#{conComment},</if>
+        <if test="finishTime!=null">finishTime=#{finishTime},</if>
+        <if test="otReason!=null">otReason=#{otReason},</if>
+        <if test="inspResult!=null">inspResult=#{inspResult},</if>
+        <if test="inspComment!=null">inspComment=#{inspComment},</if>
+        <if test="inspAtt!=null">inspAtt=#{inspAtt},</if>
+        <if test="settAmountFirst!=null">settAmountFirst=#{settAmountFirst},</if>
+        <if test="settAmountSecond!=null">settAmountSecond=#{settAmountSecond},</if>
+        <if test="settComment!=null">settComment=#{settComment},</if>
+        <if test="settAtt!=null">settAtt=#{settAtt},</if>
+        <if test="saleComment!=null">saleComment=#{saleComment},</if>
+        <if test="creatorAcc!=null">creatorAcc=#{creatorAcc},</if>
+        <if test="creatorName!=null">creatorName=#{creatorName},</if>
+        <if test="createTime!=null">createTime=#{createTime},</if>
+        <if test="auditorAcc!=null">auditorAcc=#{auditorAcc},</if>
+        <if test="auditorName!=null">auditorName=#{auditorName},</if>
+        <if test="signorAcc!=null">signorAcc=#{signorAcc},</if>
+        <if test="signorName!=null">signorName=#{signorName},</if>
+        <if test="operatorAcc!=null">operatorAcc=#{operatorAcc},</if>
+        <if test="operatorName!=null">operatorName=#{operatorName},</if>
+        <if test="saleAcc!=null">saleAcc=#{saleAcc},</if>
+        <if test="saleName!=null">saleName=#{saleName},</if>
+        <if test="qcAcc!=null">qcAcc=#{qcAcc},</if>
+        <if test="qcName!=null">qcName=#{qcName},</if>
+        <if test="bdDirectorAcc!=null">bdDirectorAcc=#{bdDirectorAcc},</if>
+        <if test="bdDirectorName!=null">bdDirectorName=#{bdDirectorName},</if>
+        <if test="completeTime!=null">completeTime=#{completeTime},</if>
+        <if test="status!=null">status=#{status},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE WipSrOutsource SET id=a.id,projNo=a.projNo,projName=a.projName,projType=a.projType,dept=a.dept,type=a.type,capitalSource=a.capitalSource,matSource=a.matSource,tod=a.tod,hasBluePrint=a.hasBluePrint,hasSample=a.hasSample,ownerAppoint=a.ownerAppoint,aplAtt=a.aplAtt,aplComment=a.aplComment,bidNo=a.bidNo,bidType=a.bidType,bidAtt=a.bidAtt,vendor=a.vendor,vendorType=a.vendorType,bidAmountFirst=a.bidAmountFirst,bidAmountSecond=a.bidAmountSecond,bidComment=a.bidComment,saleOpinion=a.saleOpinion,contNo=a.contNo,contDate=a.contDate,contAmount=a.contAmount,contAtt=a.contAtt,conComment=a.conComment,finishTime=a.finishTime,otReason=a.otReason,inspResult=a.inspResult,inspComment=a.inspComment,inspAtt=a.inspAtt,settAmountFirst=a.settAmountFirst,settAmountSecond=a.settAmountSecond,settComment=a.settComment,settAtt=a.settAtt,saleComment=a.saleComment,creatorAcc=a.creatorAcc,creatorName=a.creatorName,createTime=a.createTime,auditorAcc=a.auditorAcc,auditorName=a.auditorName,signorAcc=a.signorAcc,signorName=a.signorName,operatorAcc=a.operatorAcc,operatorName=a.operatorName,saleAcc=a.saleAcc,saleName=a.saleName,qcAcc=a.qcAcc,qcName=a.qcName,bdDirectorAcc=a.bdDirectorAcc,bdDirectorName=a.bdDirectorName,completeTime=a.completeTime,status
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.projNo} as projNo,#{item.projName} as projName,#{item.projType} as projType,#{item.dept} as dept,#{item.type} as type,#{item.capitalSource} as capitalSource,#{item.matSource} as matSource,#{item.tod} as tod,#{item.hasBluePrint} as hasBluePrint,#{item.hasSample} as hasSample,#{item.ownerAppoint} as ownerAppoint,#{item.aplAtt} as aplAtt,#{item.aplComment} as aplComment,#{item.bidNo} as bidNo,#{item.bidType} as bidType,#{item.bidAtt} as bidAtt,#{item.vendor} as vendor,#{item.vendorType} as vendorType,#{item.bidAmountFirst} as bidAmountFirst,#{item.bidAmountSecond} as bidAmountSecond,#{item.bidComment} as bidComment,#{item.saleOpinion} as saleOpinion,#{item.contNo} as contNo,#{item.contDate} as contDate,#{item.contAmount} as contAmount,#{item.contAtt} as contAtt,#{item.conComment} as conComment,#{item.finishTime} as finishTime,#{item.otReason} as otReason,#{item.inspResult} as inspResult,#{item.inspComment} as inspComment,#{item.inspAtt} as inspAtt,#{item.settAmountFirst} as settAmountFirst,#{item.settAmountSecond} as settAmountSecond,#{item.settComment} as settComment,#{item.settAtt} as settAtt,#{item.saleComment} as saleComment,#{item.creatorAcc} as creatorAcc,#{item.creatorName} as creatorName,#{item.createTime} as createTime,#{item.auditorAcc} as auditorAcc,#{item.auditorName} as auditorName,#{item.signorAcc} as signorAcc,#{item.signorName} as signorName,#{item.operatorAcc} as operatorAcc,#{item.operatorName} as operatorName,#{item.saleAcc} as saleAcc,#{item.saleName} as saleName,#{item.qcAcc} as qcAcc,#{item.qcName} as qcName,#{item.bdDirectorAcc} as bdDirectorAcc,#{item.bdDirectorName} as bdDirectorName,#{item.completeTime} as completeTime,#{item.status} as status
+    </foreach>
+    ) AS a
+    WHERE WipSrOutsource.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE WipSrOutsource
+    WHERE id=#{id}
+</delete>
+
+<select id="list" parameterType="com.iflat.wip.bean.SrOutsource" resultMap="WipSrOutsourceResult">
+    SELECT id,projNo,projName,projType,dept,type,capitalSource,matSource,tod,hasBluePrint,hasSample,ownerAppoint,aplAtt,aplComment,bidNo,bidType,bidAtt,vendor,vendorType,bidAmountFirst,bidAmountSecond,bidComment,saleOpinion,contNo,contDate,contAmount,contAtt,conComment,finishTime,otReason,inspResult,inspComment,inspAtt,settAmountFirst,settAmountSecond,settComment,settAtt,saleComment,creatorAcc,creatorName,createTime,auditorAcc,auditorName,signorAcc,signorName,operatorAcc,operatorName,saleAcc,saleName,qcAcc,qcName,bdDirectorAcc,bdDirectorName,completeTime,status
+    FROM WipSrOutsource
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+        <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+        <if test="projType!=null and !&quot;&quot;.equals(projType.trim())">AND projType=#{projType}</if>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+        <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+        <if test="capitalSource!=null and !&quot;&quot;.equals(capitalSource.trim())">AND capitalSource=#{capitalSource}</if>
+        <if test="matSource!=null and !&quot;&quot;.equals(matSource.trim())">AND matSource=#{matSource}</if>
+        <if test="aplAtt!=null and !&quot;&quot;.equals(aplAtt.trim())">AND aplAtt=#{aplAtt}</if>
+        <if test="aplComment!=null and !&quot;&quot;.equals(aplComment.trim())">AND aplComment=#{aplComment}</if>
+        <if test="bidNo!=null and !&quot;&quot;.equals(bidNo.trim())">AND bidNo=#{bidNo}</if>
+        <if test="bidType!=null and !&quot;&quot;.equals(bidType.trim())">AND bidType=#{bidType}</if>
+        <if test="bidAtt!=null and !&quot;&quot;.equals(bidAtt.trim())">AND bidAtt=#{bidAtt}</if>
+        <if test="vendor!=null and !&quot;&quot;.equals(vendor.trim())">AND vendor=#{vendor}</if>
+        <if test="vendorType!=null and !&quot;&quot;.equals(vendorType.trim())">AND vendorType=#{vendorType}</if>
+        <if test="bidComment!=null and !&quot;&quot;.equals(bidComment.trim())">AND bidComment=#{bidComment}</if>
+        <if test="saleOpinion!=null and !&quot;&quot;.equals(saleOpinion.trim())">AND saleOpinion=#{saleOpinion}</if>
+        <if test="contNo!=null and !&quot;&quot;.equals(contNo.trim())">AND contNo=#{contNo}</if>
+        <if test="contDate!=null and !&quot;&quot;.equals(contDate.trim())">AND contDate=#{contDate}</if>
+        <if test="contAtt!=null and !&quot;&quot;.equals(contAtt.trim())">AND contAtt=#{contAtt}</if>
+        <if test="conComment!=null and !&quot;&quot;.equals(conComment.trim())">AND conComment=#{conComment}</if>
+        <if test="otReason!=null and !&quot;&quot;.equals(otReason.trim())">AND otReason=#{otReason}</if>
+        <if test="inspResult!=null and !&quot;&quot;.equals(inspResult.trim())">AND inspResult=#{inspResult}</if>
+        <if test="inspComment!=null and !&quot;&quot;.equals(inspComment.trim())">AND inspComment=#{inspComment}</if>
+        <if test="inspAtt!=null and !&quot;&quot;.equals(inspAtt.trim())">AND inspAtt=#{inspAtt}</if>
+        <if test="settComment!=null and !&quot;&quot;.equals(settComment.trim())">AND settComment=#{settComment}</if>
+        <if test="settAtt!=null and !&quot;&quot;.equals(settAtt.trim())">AND settAtt=#{settAtt}</if>
+        <if test="saleComment!=null and !&quot;&quot;.equals(saleComment.trim())">AND saleComment=#{saleComment}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+        <if test="auditorAcc!=null and !&quot;&quot;.equals(auditorAcc.trim())">AND auditorAcc=#{auditorAcc}</if>
+        <if test="auditorName!=null and !&quot;&quot;.equals(auditorName.trim())">AND auditorName=#{auditorName}</if>
+        <if test="signorAcc!=null and !&quot;&quot;.equals(signorAcc.trim())">AND signorAcc=#{signorAcc}</if>
+        <if test="signorName!=null and !&quot;&quot;.equals(signorName.trim())">AND signorName=#{signorName}</if>
+        <if test="operatorAcc!=null and !&quot;&quot;.equals(operatorAcc.trim())">AND operatorAcc=#{operatorAcc}</if>
+        <if test="operatorName!=null and !&quot;&quot;.equals(operatorName.trim())">AND operatorName=#{operatorName}</if>
+        <if test="saleAcc!=null and !&quot;&quot;.equals(saleAcc.trim())">AND saleAcc=#{saleAcc}</if>
+        <if test="saleName!=null and !&quot;&quot;.equals(saleName.trim())">AND saleName=#{saleName}</if>
+        <if test="qcAcc!=null and !&quot;&quot;.equals(qcAcc.trim())">AND qcAcc=#{qcAcc}</if>
+        <if test="qcName!=null and !&quot;&quot;.equals(qcName.trim())">AND qcName=#{qcName}</if>
+        <if test="bdDirectorAcc!=null and !&quot;&quot;.equals(bdDirectorAcc.trim())">AND bdDirectorAcc=#{bdDirectorAcc}</if>
+        <if test="bdDirectorName!=null and !&quot;&quot;.equals(bdDirectorName.trim())">AND bdDirectorName=#{bdDirectorName}</if>
+        <if test="status!=null and !&quot;&quot;.equals(status.trim())">AND status=#{status}</if>
+        <if test="fromDate!=null">AND date &gt;= #{fromDate}</if>
+        <if test="toDate!=null">AND date &lt; DATEADD(day,1,#{toDate})</if>
+    </where>
+    ORDER BY createTime DESC
+</select>
+
+<resultMap type="com.iflat.wip.bean.SrOutsource" id="WipSrOutsourceResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="projName" column="projName" jdbcType="VARCHAR"/>
+    <result property="projType" column="projType" jdbcType="VARCHAR"/>
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="type" column="type" jdbcType="VARCHAR"/>
+    <result property="capitalSource" column="capitalSource" jdbcType="VARCHAR"/>
+    <result property="matSource" column="matSource" jdbcType="VARCHAR"/>
+    <result property="tod" column="tod" jdbcType="DATE"/>
+    <result property="hasBluePrint" column="hasBluePrint" jdbcType="BIT"/>
+    <result property="hasSample" column="hasSample" jdbcType="BIT"/>
+    <result property="ownerAppoint" column="ownerAppoint" jdbcType="BIT"/>
+    <result property="aplAtt" column="aplAtt" jdbcType="VARCHAR"/>
+    <result property="aplComment" column="aplComment" jdbcType="VARCHAR"/>
+    <result property="bidNo" column="bidNo" jdbcType="VARCHAR"/>
+    <result property="bidType" column="bidType" jdbcType="VARCHAR"/>
+    <result property="bidAtt" column="bidAtt" jdbcType="VARCHAR"/>
+    <result property="vendor" column="vendor" jdbcType="VARCHAR"/>
+    <result property="vendorType" column="vendorType" jdbcType="VARCHAR"/>
+    <result property="bidAmountFirst" column="bidAmountFirst" jdbcType="DOUBLE"/>
+    <result property="bidAmountSecond" column="bidAmountSecond" jdbcType="DOUBLE"/>
+    <result property="bidComment" column="bidComment" jdbcType="VARCHAR"/>
+    <result property="saleOpinion" column="saleOpinion" jdbcType="VARCHAR"/>
+    <result property="contNo" column="contNo" jdbcType="VARCHAR"/>
+    <result property="contDate" column="contDate" jdbcType="VARCHAR"/>
+    <result property="contAmount" column="contAmount" jdbcType="DOUBLE"/>
+    <result property="contAtt" column="contAtt" jdbcType="VARCHAR"/>
+    <result property="conComment" column="conComment" jdbcType="VARCHAR"/>
+    <result property="finishTime" column="finishTime" jdbcType="DATE"/>
+    <result property="otReason" column="otReason" jdbcType="VARCHAR"/>
+    <result property="inspResult" column="inspResult" jdbcType="VARCHAR"/>
+    <result property="inspComment" column="inspComment" jdbcType="VARCHAR"/>
+    <result property="inspAtt" column="inspAtt" jdbcType="VARCHAR"/>
+    <result property="settAmountFirst" column="settAmountFirst" jdbcType="DOUBLE"/>
+    <result property="settAmountSecond" column="settAmountSecond" jdbcType="DOUBLE"/>
+    <result property="settComment" column="settComment" jdbcType="VARCHAR"/>
+    <result property="settAtt" column="settAtt" jdbcType="VARCHAR"/>
+    <result property="saleComment" column="saleComment" jdbcType="VARCHAR"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+    <result property="auditorAcc" column="auditorAcc" jdbcType="VARCHAR"/>
+    <result property="auditorName" column="auditorName" jdbcType="VARCHAR"/>
+    <result property="signorAcc" column="signorAcc" jdbcType="VARCHAR"/>
+    <result property="signorName" column="signorName" jdbcType="VARCHAR"/>
+    <result property="operatorAcc" column="operatorAcc" jdbcType="VARCHAR"/>
+    <result property="operatorName" column="operatorName" jdbcType="VARCHAR"/>
+    <result property="saleAcc" column="saleAcc" jdbcType="VARCHAR"/>
+    <result property="saleName" column="saleName" jdbcType="VARCHAR"/>
+    <result property="qcAcc" column="qcAcc" jdbcType="VARCHAR"/>
+    <result property="qcName" column="qcName" jdbcType="VARCHAR"/>
+    <result property="bdDirectorAcc" column="bdDirectorAcc" jdbcType="VARCHAR"/>
+    <result property="bdDirectorName" column="bdDirectorName" jdbcType="VARCHAR"/>
+    <result property="status" column="status" jdbcType="VARCHAR"/>
+    <result property="completeTime" column="completeTime" jdbcType="DATE"/>
+</resultMap>
+</mapper>

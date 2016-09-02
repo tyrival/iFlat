@@ -25,6 +25,7 @@ public class ViolateRegulation {
     private String projName;
     private String area;
     private String position;
+    private String content;
     private String description;
     private String measure;  // 整改措施
     private String feedback;  // 整改情况：已整改/拒绝整改
@@ -40,6 +41,7 @@ public class ViolateRegulation {
     private double trainingEff;  // 培训分
     private String attachment;
     private String comment;
+    private String rectifyAtt;  // 整改后照片
 
     private String creatorDept;  // 创建部门
     private String creatorAcc;
@@ -51,6 +53,22 @@ public class ViolateRegulation {
 
     private String issueDept;
     private String issuer;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getRectifyAtt() {
+        return rectifyAtt;
+    }
+
+    public void setRectifyAtt(String rectifyAtt) {
+        this.rectifyAtt = rectifyAtt;
+    }
 
     public String getIssuer() {
         return issuer;

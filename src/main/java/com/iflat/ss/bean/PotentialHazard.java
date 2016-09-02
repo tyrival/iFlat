@@ -12,6 +12,7 @@ public class PotentialHazard {
     private String riskLvl;
     private String phType;
     private String phCode;
+    private String content;
     private String dept;
     private String team;
     private String groupName;
@@ -50,6 +51,14 @@ public class PotentialHazard {
 
     private String issueDept;
     private String issuer;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public String getIssuer() {
         return issuer;

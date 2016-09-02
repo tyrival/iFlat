@@ -44,6 +44,11 @@ public class TemporaryServiceImpl extends BaseServiceSupport implements Temporar
         }
     }
 
+    @Override
+    protected void beforeStartProcess() throws Exception {
+        processMap.put("id", reflectProcessObj.getMethodValue("id").toString());
+    }
+
     /**
      * 删除对象时，删除流程实例
      * @throws Exception

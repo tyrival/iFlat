@@ -12,7 +12,9 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
     }],
 
     controller: 'rpt-ss-potentialhazard',
-    store: rptSsPotentialHazardStore = Ext.create('iFlat.store.ss.PotentialHazardList'),
+    store: rptSsPotentialHazardStore = Ext.create('iFlat.store.ss.PotentialHazard', {
+        autoLoad: false,
+    }),
     dockedItems: [{
         xtype: 'toolbar',
         dock: 'top',
@@ -145,6 +147,15 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
     }, {
         header: '负面发现',
         dataIndex: 'potentialHazard.description',
+    }, {
+        header: '隐患类型',
+        dataIndex: 'potentialHazard.phType',
+    }, {
+        header: '隐患代码',
+        dataIndex: 'potentialHazard.phCode',
+    }, {
+        header: '隐患内容',
+        dataIndex: 'potentialHazard.content',
     }, {
         header: '整改措施',
         dataIndex: 'potentialHazard.measure',

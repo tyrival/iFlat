@@ -11,7 +11,9 @@ Ext.define('iFlat.view.ss.PotentialHazardController', {
                 if(btn=="yes") {
                     Ext.Ajax.request({
                         url: 'ss_deletePotentialHazard.action',
-                        params: record.data,
+                        params: {
+                            'potentialHazard.id': id,
+                        },
                         success: function (response, opts) {
                             var data = Ext.JSON.decode(response.responseText);
                             if(data.success) {

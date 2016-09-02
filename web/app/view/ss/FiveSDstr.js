@@ -77,6 +77,9 @@ Ext.define('iFlat.view.ss.FiveSDstr', {
         header: '违规内容',
         dataIndex: 'fiveS.fsDescription',
     }, {
+        header: '描述',
+        dataIndex: 'fiveS.description',
+    }, {
         text: '违规照片',
         dataIndex: 'fiveS.attachment',
         width: 60,

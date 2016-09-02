@@ -11,7 +11,9 @@ Ext.define('iFlat.view.ss.AccidentController', {
                 if(btn=="yes") {
                     Ext.Ajax.request({
                         url: 'ss_deleteAccident.action',
-                        params: record.data,
+                        params: {
+                            'accident.id': id
+                        },
                         success: function (response, opts) {
                             var data = Ext.JSON.decode(response.responseText);
                             if(data.success) {

@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.ss.bean.PotentialHazard">
         INSERT INTO SsPotentialHazard
-        VALUES (#{id},#{date},#{time},#{riskLvl},#{phType},#{phCode},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{deadline},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{attachment},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{issueDept},#{issuer})
+        VALUES (#{id},#{date},#{time},#{riskLvl},#{phType},#{phCode},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{deadline},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{attachment},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{issueDept},#{issuer},#{content})
     </insert>
 
     <update id="update" parameterType="com.iflat.ss.bean.PotentialHazard">
@@ -47,6 +47,7 @@
             <if test="comment!=null">comment=#{comment},</if>
             <if test="issuer!=null">issuer=#{issuer},</if>
             <if test="issueDept!=null">issueDept=#{issueDept},</if>
+            <if test="content!=null">content=#{content},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -57,7 +58,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.ss.bean.PotentialHazard" resultMap="SsPotentialHazardResult">
-        SELECT id,date,time,riskLvl,phType,phCode,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,deadline,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,attachment,rectifyAtt,comment,creatorDept,creatorAcc,creatorName,createTime,issueDept,issuer
+        SELECT id,date,time,riskLvl,phType,phCode,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,deadline,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,attachment,rectifyAtt,comment,creatorDept,creatorAcc,creatorName,createTime,issueDept,issuer,content
         FROM SsPotentialHazard
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -136,5 +137,6 @@
         <result property="createTime" column="createTime" jdbcType="DATE"/>
         <result property="issueDept" column="issueDept" jdbcType="VARCHAR"/>
         <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

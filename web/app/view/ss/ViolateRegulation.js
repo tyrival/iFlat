@@ -86,6 +86,15 @@ Ext.define('iFlat.view.ss.ViolateRegulation', {
         header: '负面发现',
         dataIndex: 'violateRegulation.description',
     }, {
+        header: '风险等级',
+        dataIndex: 'violateRegulation.riskLvl',
+    }, {
+        header: '违章代码',
+        dataIndex: 'violateRegulation.code',
+    }, {
+        header: '违章内容',
+        dataIndex: 'violateRegulation.content',
+    }, {
         header: '整改措施',
         dataIndex: 'violateRegulation.measure',
     }, {

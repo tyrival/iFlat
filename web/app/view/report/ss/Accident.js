@@ -12,7 +12,9 @@ Ext.define('iFlat.view.report.ss.Accident', {
     }],
 
     controller: 'rpt-ss-accident',
-    store: rptSsAccidentStore = Ext.create('iFlat.store.ss.AccidentList'),
+    store: rptSsAccidentStore = Ext.create('iFlat.store.ss.Accident', {
+        autoLoad: false,
+    }),
     dockedItems: [{
         xtype: 'toolbar',
         dock: 'top',
@@ -134,6 +136,9 @@ Ext.define('iFlat.view.report.ss.Accident', {
         header: '事故类型',
         dataIndex: 'accident.accType',
     }, {
+        header: '简要经过',
+        dataIndex: 'accident.description',
+    }, {
         header: '直接经济损失',
         dataIndex: 'accident.loss',
     }, {
@@ -156,7 +161,7 @@ Ext.define('iFlat.view.report.ss.Accident', {
         dataIndex: 'accident.posiMgr',
     }, {
         text: '事故报告',
-        dataIndex: 'accident.attachment',
+        dataIndex: 'accident.rptAtt',
         width: 60,
         renderer: function(v) {
             if(!v || v == '') {
@@ -167,7 +172,7 @@ Ext.define('iFlat.view.report.ss.Accident', {
         },
     }, {
         text: '事故照片',
-        dataIndex: 'accident.rectifyAtt',
+        dataIndex: 'accident.otherAtt',
         width: 60,
         renderer: function(v) {
             if(!v || v == '') {
@@ -182,14 +187,15 @@ Ext.define('iFlat.view.report.ss.Accident', {
     }, {
         header: '查处人',
         dataIndex: 'accident.issuer',
+        hidden: true
     }, {
         header: '创建人',
         dataIndex: 'accident.creatorName',
-        hidden: true,
+        //hidden: true,
     }, {
         header: '创建部门',
         dataIndex: 'accident.creatorDept',
-        hidden: true,
+        //hidden: true,
     }, ],
     bbar: {
         xtype: 'pagingtoolbar',

@@ -78,7 +78,7 @@ public class MsSqlCoding {
                     sqlType = "DATETIME";
                     break;
             }
-            if ("id".equals(name)) {
+            if ("id".equals(name) || "pid".equals(name)) {
                 sqlType = "CHAR(36)";
             }
             if (!StringUtil.isBlank(sqlType)) {

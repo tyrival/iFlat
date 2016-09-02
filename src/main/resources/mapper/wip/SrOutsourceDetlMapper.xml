@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Wip.SrOutsourceDetl">
+
+<insert id="insert" parameterType="com.iflat.wip.bean.SrOutsourceDetl">
+    INSERT INTO WipSrOutsourceDetl
+    VALUES (#{id},#{pid},#{content},#{specs},#{unit},#{qty},#{comment})
+</insert>
+
+<insert id="insertBatch" parameterType="java.util.List">
+    INSERT INTO WipSrOutsourceDetl
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.pid},#{item.content},#{item.specs},#{item.unit},#{item.qty},#{item.comment}
+        </foreach>
+</insert>
+
+<update id="update" parameterType="com.iflat.wip.bean.SrOutsourceDetl">
+    UPDATE WipSrOutsourceDetl
+    <set>
+        <if test="id!=null">id=#{id},</if>
+        <if test="pid!=null">pid=#{pid},</if>
+        <if test="content!=null">content=#{content},</if>
+        <if test="specs!=null">specs=#{specs},</if>
+        <if test="unit!=null">unit=#{unit},</if>
+        <if test="qty!=null">qty=#{qty},</if>
+        <if test="comment!=null">comment=#{comment},</if>
+    </set>
+    WHERE id=#{id}
+</update>
+
+<update id="updateBatch" parameterType="java.util.List">
+    UPDATE WipSrOutsourceDetl SET id=a.id,pid=a.pid,content=a.content,specs=a.specs,unit=a.unit,qty=a.qty,comment=a.comment
+    FROM (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+        SELECT #{item.id} as id,#{item.pid} as pid,#{item.content} as content,#{item.specs} as specs,#{item.unit} as unit,#{item.qty} as qty,#{item.comment} as comment
+    </foreach>
+    ) AS a
+    WHERE WipSrOutsourceDetl.id=a.id
+</update>
+
+<delete id="delete" parameterType="String">
+    DELETE WipSrOutsourceDetl
+    <where>
+        <if test="id!=null">id=#{id}</if>
+        <if test="pid!=null">AND pid=#{pid}</if>
+    </where>
+</delete>
+
+<select id="list" parameterType="com.iflat.wip.bean.SrOutsourceDetl" resultMap="WipSrOutsourceDetlResult">
+    SELECT id,pid,content,specs,unit,qty,comment
+    FROM WipSrOutsourceDetl
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">AND pid=#{pid}</if>
+        <if test="content!=null and !&quot;&quot;.equals(content.trim())">AND content=#{content}</if>
+        <if test="specs!=null and !&quot;&quot;.equals(specs.trim())">AND specs=#{specs}</if>
+        <if test="unit!=null and !&quot;&quot;.equals(unit.trim())">AND unit=#{unit}</if>
+        <if test="comment!=null and !&quot;&quot;.equals(comment.trim())">AND comment=#{comment}</if>
+    </where>
+    ORDER BY id
+</select>
+
+<resultMap type="com.iflat.wip.bean.SrOutsourceDetl" id="WipSrOutsourceDetlResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="pid" column="pid" jdbcType="VARCHAR"/>
+    <result property="content" column="content" jdbcType="VARCHAR"/>
+    <result property="specs" column="specs" jdbcType="VARCHAR"/>
+    <result property="unit" column="unit" jdbcType="VARCHAR"/>
+    <result property="qty" column="qty" jdbcType="DOUBLE"/>
+    <result property="comment" column="comment" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

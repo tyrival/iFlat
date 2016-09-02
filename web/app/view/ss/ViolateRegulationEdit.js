@@ -96,7 +96,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
         },{
             items: [{
                 xtype: 'combo',
-                name: 'violateRegulation.phType',
+                name: 'violateRegulation.riskLvl',
                 store: ssViolateRegulationPhTypeStore = Ext.create('iFlat.store.ss.VrCodeRiskLvl'),
                 queryMode: 'local',
                 allowBlank: true,
@@ -114,7 +114,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 }
             },{
                 xtype: 'combo',
-                name: 'violateRegulation.phCode',
+                name: 'violateRegulation.code',
                 store: ssViolateRegulationPhCodeStore = Ext.create('iFlat.store.ss.VrCode', {
                     autoLoad: false
                 }),
@@ -134,9 +134,17 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                             var score = model.get('vrCode.score');
                             cb.up('form').down('textfield[name=violateRegulation.amount]').setValue(amount);
                             cb.up('form').down('textfield[name=violateRegulation.score]').setValue(score);
+                            var content = model.get('vrCode.description');
+                            cb.up('form').down('textfield[name=violateRegulation.content]').setValue(content);
                         }
                     }
                 }
+            },{
+                xtype: 'textfield',
+                name: 'violateRegulation.content',
+                fieldLabel: '违章内容',
+                width: '33%',
+                editable: false
             }]
         },{
             items: [{
@@ -340,7 +348,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
         },{
             items: [{
                 xtype: 'combo',
-                name: 'violateRegulation.ssVrTraining',
+                name: 'violateRegulation.training',
                 queryMode: 'local',
                 allowBlank: true,
                 editable: false,
@@ -351,11 +359,18 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                     store: '{ssVrTraining}',
                 },
             }, {
-                xtype: 'textfield',
+                xtype: 'combo',
                 name: 'violateRegulation.trainingEff',
-                fieldLabel: '培训效果',
+                queryMode: 'local',
+                allowBlank: true,
+                editable: false,
+                forceSelection : false,
                 width: '49%',
-                regex: /^[+]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                fieldLabel: '培训效果',
+                bind: {
+                    store: '{ssVrTrainingEff}',
+                },
+                //regex: /^[+]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
             }]
         },{
             items: [{
@@ -368,7 +383,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 items: [{
                     xtype: 'button',
                     id: 'ss-violateregulationedit-link',
-                    text: '下载附件',
+                    text: '下载违章照片',
                     margin: '0 5 0 0',
                     width: 100,
                 }, {
@@ -386,8 +401,36 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 listeners: [{
                     change: 'onAttachmentChange'
                 }]
+            }, {
+                xtype: 'container',
+                layout: 'hbox',
+                id: 'ss-violateregulationedit-att2',
+                margin: '10 0 0 85',
+                width: '50%',
+                hidden: true,
+                items: [{
+                    xtype: 'button',
+                    id: 'ss-violateregulationedit-link2',
+                    text: '下载整改照片',
+                    margin: '0 5 0 0',
+                    width: 120,
+                }, {
+                    xtype: 'button',
+                    ui: 'gray',
+                    text: '删除',
+                    handler: 'deleteAttachment2'
+                }]
+            },{
+                xtype: 'textfield',
+                id: 'ss-violateregulationedit-attachment2',
+                name: 'violateRegulation.rectifyAtt',
+                fieldLabel: 'attachment',
+                hidden: true,
+                listeners: [{
+                    change: 'onAttachmentChange2'
+                }]
             }, ]
-        }, {
+        },{
             items: [{
                 xtype: 'container',
                 layout: 'hbox',
@@ -398,7 +441,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                     id: 'ss-violateregulationedit-upload',
                     items: [{
                         xtype: 'fileuploadfield',
-                        fieldLabel: '附件',
+                        fieldLabel: '违章照片',
                         name: 'upload',
                         buttonText: '选择...',
                         width: 300,
@@ -410,6 +453,29 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                     text: '上传',
                     ui: 'orig-blue',
                     handler: 'uploadAttachment'
+                }]
+            },{
+                xtype: 'container',
+                layout: 'hbox',
+                margin: '10 0 10 0',
+                width: '50%',
+                items: [{
+                    xtype: 'form',
+                    id: 'ss-violateregulationedit-upload2',
+                    items: [{
+                        xtype: 'fileuploadfield',
+                        fieldLabel: '整改照片',
+                        name: 'upload',
+                        buttonText: '选择...',
+                        width: 300,
+                        labelWidth: 80,
+                        margin: '0 10 0 0',
+                    }]
+                }, {
+                    xtype: 'button',
+                    text: '上传',
+                    ui: 'orig-blue',
+                    handler: 'uploadAttachment2'
                 }]
             }]
         }]

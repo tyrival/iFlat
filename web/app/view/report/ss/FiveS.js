@@ -12,7 +12,9 @@ Ext.define('iFlat.view.report.ss.FiveS', {
     }],
 
     controller: 'rpt-ss-fives',
-    store: rptSsFiveSStore = Ext.create('iFlat.store.ss.FiveSList'),
+    store: rptSsFiveSStore = Ext.create('iFlat.store.ss.FiveS', {
+        autoLoad: false,
+    }),
     dockedItems: [{
         xtype: 'toolbar',
         dock: 'top',
@@ -164,6 +166,9 @@ Ext.define('iFlat.view.report.ss.FiveS', {
         header: '违规内容',
         dataIndex: 'fiveS.fsDescription',
     }, {
+        header: '描述',
+        dataIndex: 'fiveS.description',
+    }, {
         text: '违规照片',
         dataIndex: 'fiveS.attachment',
         width: 60,
@@ -171,7 +176,7 @@ Ext.define('iFlat.view.report.ss.FiveS', {
             if(!v || v == '') {
                 return '';
             } else {
-                return "<a target='_blank' ssef='" + v + "'>下载</a>";
+                return "<a target='_blank' href='" + v + "'>下载</a>";
             }
         },
     }, {

@@ -89,7 +89,7 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     public String uploadViolateRegulation() throws Exception {
         this.result.setObject(this.violateRegulationService.uploadFile(upload, uploadFileName));
         return SUCCESS;
-    }    /* PotentialHazard */
+    }
 
     public String savePotentialHazard() throws Exception {
         this.result.setObject(this.potentialHazardService.save(this.potentialHazard));

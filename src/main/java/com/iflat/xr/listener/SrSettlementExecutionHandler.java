@@ -131,7 +131,7 @@ public class SrSettlementExecutionHandler extends WorkflowExecutionListener {
             if (!srSettlement.getIsOutwork() && SrStatus.STATUS_COMPLETE.equals(status)) {
                 srSettlement.setSettlementTime(new Date());
             }
-            srSettlement = (SrSettlement) srSettlementService.save(srSettlement);
+            srSettlement = (SrSettlement) getSrSettlementService().save(srSettlement);
             if (SrStatus.STATUS_COMPLETE.equals(status)) {
                 double diff = srSettlement.getAmountFirst() - srSettlement.getAmountSecond();
                 SrBalance balance = new SrBalance();

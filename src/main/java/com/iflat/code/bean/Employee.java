@@ -1,5 +1,7 @@
 package com.iflat.code.bean;
 
+import java.util.Date;
+
 /**
  * Created by tyriv on 2016/7/13.
  */
@@ -18,6 +20,20 @@ public class Employee {
     private String type;  // 类型
     private String property;  // 用工性质
     private String title;  // 职位
+
+    private Date birth;  // 生日
+    private String nation;  // 民族--
+    private String birthplace;  // 籍贯--
+    private Date joinParty;  // 入党时间
+    private Date becomeFullMember;  // 转正时间
+    private Date startWorking;  // 工作时间
+    private String idCardNo;  // 身份证
+    private String diploma;  // 学历--
+    private String degree;  // 学位--
+    private Date enrolment;  // 入学时间--
+    private Date graduation;  // 毕业时间--
+    private String partyType;  // 正式党员/预备党员
+
 
     public String getAccount() {
         return account;

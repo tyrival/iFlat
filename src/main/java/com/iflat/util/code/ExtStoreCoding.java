@@ -61,6 +61,7 @@ public class ExtStoreCoding {
         String extClassNamePage = "iFlat.store" + packageName + "." + shortClassName + "Page";
         StringBuilder sbPage = new StringBuilder();
         sbPage = sbPage.append("Ext.define('").append(extClassNamePage).append("', {\n")
+                .append("    extend: 'Ext.data.Store',\n")
                 .append("\n")
                 .append("    autoLoad: true,\n")
                 .append("    model: 'iFlat.model.").append(packageName).append(".").append(shortClassName).append("',\n")
