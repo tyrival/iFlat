@@ -6,6 +6,7 @@ Ext.define('iFlat.model.ss.ViolateRegulation', {
         {name: 'violateRegulation.time', mapping: 'time', type: 'string'},
         {name: 'violateRegulation.riskLvl', mapping: 'riskLvl', type: 'string'},
         {name: 'violateRegulation.code', mapping: 'code', type: 'string'},
+        {name: 'violateRegulation.content', mapping: 'content', type: 'string'},
         {name: 'violateRegulation.dept', mapping: 'dept', type: 'string'},
         {name: 'violateRegulation.team', mapping: 'team', type: 'string'},
         {name: 'violateRegulation.groupName', mapping: 'groupName', type: 'string'},
@@ -40,6 +41,7 @@ Ext.define('iFlat.model.ss.ViolateRegulation', {
         {name: 'violateRegulation.createTime', mapping: 'createTime', type: 'date'},
         {name: 'violateRegulation.issuer', mapping: 'issuer', type: 'string'},
         {name: 'violateRegulation.issueDept', mapping: 'issueDept', type: 'string'},
+        {name: 'violateRegulation.rectifyAtt', mapping: 'rectifyAtt', type: 'string'},
         {name: 'violateRegulation.fromDate', mapping: 'fromDate', type: 'date'},
         {name: 'violateRegulation.toDate', mapping: 'toDate', type: 'date'},
     ]
