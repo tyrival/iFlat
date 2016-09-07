@@ -1,4 +1,4 @@
-Ext.define('iFlat.storewip.SrOsProcessPage', {
+Ext.define('iFlat.store.wip.SrOsProcessPage', {
     extend: 'Ext.data.Store',
     autoLoad: false,
     model: 'iFlat.model.wip.SrOsProcess',

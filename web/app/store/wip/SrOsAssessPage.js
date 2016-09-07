@@ -1,4 +1,4 @@
-Ext.define('iFlat.storewip.SrOsAssessPage', {
+Ext.define('iFlat.store.wip.SrOsAssessPage', {
     extend: 'Ext.data.Store',
     autoLoad: false,
     model: 'iFlat.model.wip.SrOsAssess',

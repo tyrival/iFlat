@@ -116,11 +116,8 @@ public class SrOutsourceTaskHandler extends WorkflowTaskListener {
 
         setTaskInfo(delegateTask, SrOsStatus.STATUS_PROFESSIONAL_MANAGER_CONFIRM);
 
-        UserInfoVo assignee = new UserInfoVo();
-        assignee.setPorgName("修船事业部");
-        assignee.setRoleName("修船总管");
-        List<UserInfoVo> list = listAssignees(assignee);
-        delegateTask.addCandidateUsers(getCandidateUsers(list));
+        String account = (String) delegateTask.getVariable("creatorAcc");
+        delegateTask.setAssignee(account);
     }
 
     public void inspectChiefHandle(DelegateTask delegateTask) throws Exception {
@@ -183,6 +180,14 @@ public class SrOutsourceTaskHandler extends WorkflowTaskListener {
         delegateTask.addCandidateUsers(getSrProjectManagers(list));
     }
 
+    public void professionalManagerAssess(DelegateTask delegateTask) throws Exception {
+
+        setTaskInfo(delegateTask, SrOsStatus.STATUS_PROFESSIONAL_MANAGER_ASSESS);
+
+        String account = (String) delegateTask.getVariable("creatorAcc");
+        delegateTask.setAssignee(account);
+    }
+
     /**
      * 设置任务的名称和描述
      */
@@ -193,12 +198,12 @@ public class SrOutsourceTaskHandler extends WorkflowTaskListener {
 
     private static String DESCRIPTION;
     public String getDescription(DelegateTask delegateTask) throws Exception {
-        if ("".equals(DESCRIPTION)) {
+        if (DESCRIPTION == null || "".equals(DESCRIPTION)) {
             String id = (String) delegateTask.getVariable("id");
             SrOutsource srOutsource = new SrOutsource();
             srOutsource.setId(id);
             srOutsource = (SrOutsource) getSrOutsourceService().list(srOutsource).get(0);
-            DESCRIPTION = "(" + srOutsource.getProjNo() + ")" + srOutsource.getProjName() + ",施工部门：" + srOutsource.getDept();
+            DESCRIPTION = srOutsource.getProjName() + "，施工部门：" + srOutsource.getDept() + " ";
         }
         return DESCRIPTION;
     }

@@ -56,7 +56,7 @@
         <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
         <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
     </where>
-    ORDER BY type,name
+    ORDER BY name
 </select>
 
 <resultMap type="com.iflat.wip.bean.SrOsVendor" id="WipSrOsVendorResult">

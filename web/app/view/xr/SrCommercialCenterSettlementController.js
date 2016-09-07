@@ -74,9 +74,24 @@ Ext.define('iFlat.view.xr.SrCommercialCenterSettlementController', {
             var c = text === 'pass' ? '同意' : '不同意';
             comment.setValue(c);
         }
-        if (form.isValid()) {
+
+        var url = 'xr_approveSrSettlement.action';
+        if (text == 'pass') {
+            url = 'xr_approveSrSettlementWithSave.action';
+        }
+        var canSubmit = false;
+        if (form.isValid() || text != 'pass') {
+            canSubmit = true
+        }
+
+        var vali = true;
+        if (text != 'pass') {
+            vali = false;
+        }
+        if (canSubmit) {
             form.submit({
-                url: 'xr_approveSrSettlementWithSave.action',
+                clientValidation: vali,
+                url: url,
                 waitMsg: '提交中...',
                 method: 'POST',
                 params: param,

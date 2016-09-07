@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    
+
     <bean id="wipAction" class="com.iflat.wip.action.WipAction" scope="prototype">
         <property name="srOsAssessService" ref="srOsAssessService"/>
         <property name="srOsAssess" ref="srOsAssess"/>
@@ -38,7 +38,10 @@
     <bean id="srOsVendorService" class="com.iflat.wip.service.impl.SrOsVendorServiceImpl"/>
     <bean id="srOutsource" class="com.iflat.wip.bean.SrOutsource" scope="prototype"/>
     <bean id="srOutsourceDao" class="com.iflat.wip.dao.impl.SrOutsourceDaoImpl"/>
-    <bean id="srOutsourceService" class="com.iflat.wip.service.impl.SrOutsourceServiceImpl"/>
+    <bean id="srOutsourceService" class="com.iflat.wip.service.impl.SrOutsourceServiceImpl">
+        <property name="srOutsourceDetlService" ref="srOutsourceDetlService"/>
+        <property name="srProjectManagerService" ref="srProjectManagerService"/>
+    </bean>
     <bean id="srOutsourceDetl" class="com.iflat.wip.bean.SrOutsourceDetl" scope="prototype"/>
     <bean id="srOutsourceDetlDao" class="com.iflat.wip.dao.impl.SrOutsourceDetlDaoImpl"/>
     <bean id="srOutsourceDetlService" class="com.iflat.wip.service.impl.SrOutsourceDetlServiceImpl"/>

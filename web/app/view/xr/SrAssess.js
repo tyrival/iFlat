@@ -8,7 +8,6 @@ Ext.define('iFlat.view.xr.SrAssess', {
     id: 'xr-srassess',
     closeAction: 'hide',
     width: 800,
-    store: xrSrAssessStore = Ext.create('iFlat.store.xr.SrAssess'),
     maxHeight: 500,
     y: 20,
     items: [{
@@ -16,6 +15,7 @@ Ext.define('iFlat.view.xr.SrAssess', {
         id: 'xr-srassess-grid',
         border: true,
         columnLines: true,
+        store: xrSrAssessStore = Ext.create('iFlat.store.xr.SrAssess'),
         flex: 1,
         columns: [{
             text: '考核部门',

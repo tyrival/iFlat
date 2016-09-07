@@ -58,7 +58,7 @@ public class ExtStoreCoding {
                 System.out.println(e.getMessage());
             }
         }
-        String extClassNamePage = "iFlat.store" + packageName + "." + shortClassName + "Page";
+        String extClassNamePage = "iFlat.store." + packageName + "." + shortClassName + "Page";
         StringBuilder sbPage = new StringBuilder();
         sbPage = sbPage.append("Ext.define('").append(extClassNamePage).append("', {\n")
                 .append("    extend: 'Ext.data.Store',\n")

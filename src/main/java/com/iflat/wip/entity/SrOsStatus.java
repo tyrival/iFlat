@@ -15,12 +15,13 @@ public class SrOsStatus {
     public static final String STATUS_OUTSOURCE_CHIEF_AUDIT = "待外协科科长审核";
     public static final String STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE= "待修船事业部领导审批";
     public static final String STATUS_MANUFACTURE = "施工中";
-    public static final String STATUS_PROFESSIONAL_MANAGER_CONFIRM = "待修船总管验收";
+    public static final String STATUS_PROFESSIONAL_MANAGER_CONFIRM = "待主修验收";
     public static final String STATUS_INSPECT_CHIEF_HANDLE = "待质检科接收";
     public static final String STATUS_INSPECT = "待验收";
     public static final String STATUS_SETTLEMENT = "待结算";
     public static final String STATUS_SETTLEMENT_APPROVE= "待外协科科长审批";
     public static final String STATUS_SALESMAN_REAUDIT = "待经营代表确认";
     public static final String STATUS_PROJECT_MANAGER_ASSESS= "待单船总管考核";
+    public static final String STATUS_PROFESSIONAL_MANAGER_ASSESS= "待单船主管考核";
     public static final String STATUS_COMPLETE = "完成";
 }

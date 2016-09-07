@@ -40,6 +40,10 @@ public class SrOutsourceExecutionHandler extends WorkflowExecutionListener {
         setStatus(execution, SrOsStatus.STATUS_CONTRACT_HANDLE);
     }
 
+    public void outsourceChiefReceipt(DelegateExecution execution) throws Exception {
+        setStatus(execution, SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT);
+    }
+
     public void outsourceChiefAudit(DelegateExecution execution) throws Exception {
         setStatus(execution, SrOsStatus.STATUS_OUTSOURCE_CHIEF_AUDIT);
     }
@@ -52,7 +56,7 @@ public class SrOutsourceExecutionHandler extends WorkflowExecutionListener {
         setStatus(execution, SrOsStatus.STATUS_MANUFACTURE);
     }
 
-    public void professionManagerConfirm(DelegateExecution execution) throws Exception {
+    public void professionalManagerConfirm(DelegateExecution execution) throws Exception {
 
         setStatus(execution, SrOsStatus.STATUS_PROFESSIONAL_MANAGER_CONFIRM);
     }
@@ -80,7 +84,11 @@ public class SrOutsourceExecutionHandler extends WorkflowExecutionListener {
     public void projectManagerAssess(DelegateExecution execution) throws Exception {
         setStatus(execution, SrOsStatus.STATUS_PROJECT_MANAGER_ASSESS);
     }
-    
+
+    public void professionalManagerAssess(DelegateExecution execution) throws Exception {
+        setStatus(execution, SrOsStatus.STATUS_PROFESSIONAL_MANAGER_ASSESS);
+    }
+
     public void endEvent(DelegateExecution execution) throws Exception {
         setStatus(execution, SrOsStatus.STATUS_COMPLETE);
     }

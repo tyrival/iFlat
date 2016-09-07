@@ -9,7 +9,6 @@ Ext.define('iFlat.view.workflow.TaskController', {
     deal: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
         var formKey = record.get('formKey');
         var viewName = 'iFlat.view.' + formKey;
-        //debugger
         var id = 'win-' + formKey.replace(/\./g, '-').toLowerCase();
         var win = Ext.getCmp(id);
         if(!win) {
@@ -26,6 +25,7 @@ Ext.define('iFlat.view.workflow.TaskController', {
                 listeners: {
                     hide: function () {
                         workflowTaskStore.reload();
+                        win.down('form').reset();
                     }
                 }
             });

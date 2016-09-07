@@ -1,4 +1,4 @@
-Ext.define('iFlat.storewip.SrOsBiddingPage', {
+Ext.define('iFlat.store.wip.SrOsBiddingPage', {
     extend: 'Ext.data.Store',
     autoLoad: false,
     model: 'iFlat.model.wip.SrOsBidding',

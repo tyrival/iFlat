@@ -20,10 +20,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import org.apache.commons.collections.map.HashedMap;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class WipAction extends BaseAction implements ModelDriven<Page> {
     protected Page page;
@@ -343,15 +340,20 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
         return srOutsourceService;
     }
 
+    public String listSrOutsourceComment() throws Exception {
+        this.result.setList(this.srOutsourceService.listComment(this.srOutsource));
+        return SUCCESS;
+    }
+
     public String submitSrOutsource() throws Exception {
         srOutsourceService.submit(this.srOutsource);
         return SUCCESS;
     }
 
     public String saveAndSubmitSrOutsource() throws Exception {
-        SrOutsource srSettlement = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
+        SrOutsource srOutsource = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
         srOutsourceService.submit(this.srOutsource);
-        this.result.setObject(srSettlement);
+        this.result.setObject(srOutsource);
         return SUCCESS;
     }
 
@@ -369,38 +371,55 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveSrOutsourceWithAssess() throws Exception {
+
         this.srOsAssessService.save(this.srOsAssess);
+
         String businessKey = srOutsourceService.getBusinessKey(srOutsource);
-        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment, this.srOutsourceMap);
+        return SUCCESS;
+    }
+
+    public String approveSrOutsourceWithSaveAndAssess() throws Exception {
+
+        this.srOsAssessService.save(this.srOsAssess);
+        SrOutsource res = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
+        handleSrOutsourceMap(res);
+
+        String businessKey = srOutsourceService.getBusinessKey(srOutsource);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment, this.srOutsourceMap);
         return SUCCESS;
     }
 
     public String approveSrOutsourceWithSave() throws Exception {
+
         SrOutsource res = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
+        handleSrOutsourceMap(res);
 
-        if (SrOsStatus.STATUS_MANUFACTURE.equals(res.getStatus())) {
-            srOutsourceMap.put("overtime", res.isOvertime());
-        }
+        String businessKey = srOutsourceService.getBusinessKey(srOutsource);
+        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment, this.srOutsourceMap);
+        return SUCCESS;
+    }
 
-        if (SrOsStatus.STATUS_SETTLEMENT_APPROVE.equals(res.getStatus())) {
-            srOutsourceMap.put("saleReaudit", res.isSaleReaudit());
-        }
-
+    private void handleSrOutsourceMap (SrOutsource res) throws Exception {
         if (SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT.equals(res.getStatus())) {
             srOutsourceMap.put("operatorAcc", res.getOperatorAcc());
         }
 
         if (SrOsStatus.STATUS_INSPECT_CHIEF_HANDLE.equals(res.getStatus())) {
-            srOutsourceMap.put("qcAcc", res.getOperatorAcc());
+            srOutsourceMap.put("qcAcc", res.getQcAcc());
         }
 
         if (SrOsStatus.STATUS_BIDDING.equals(res.getStatus())) {
-            srOutsourceMap.put("saleAcc", res.getOperatorAcc());
+            srOutsourceMap.put("saleAcc", res.getSaleAcc());
         }
 
-        String businessKey = srOutsourceService.getBusinessKey(srOutsource);
-        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment, this.srOutsourceMap);
-        return SUCCESS;
+        if (SrOsStatus.STATUS_MANUFACTURE.equals(res.getStatus())) {
+            srOutsourceMap.put("overtime", res.isOvertime());
+        }
+        if (SrOsStatus.STATUS_SETTLEMENT.equals(res.getStatus())) {
+            srOutsourceMap.put("saleReaudit", res.isSaleReaudit());
+        }
+
     }
 
     public String approveSrOutsourceBatch() throws Exception {
@@ -466,6 +485,22 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
 
     public void setSrOutsourceDetl(SrOutsourceDetl srOutsourceDetl) {
         this.srOutsourceDetl = srOutsourceDetl;
+    }
+
+    public String createSrOutsourceDetl() throws Exception {
+        this.srOutsource = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
+        try {
+            this.srOutsourceDetl.setPid(this.srOutsource.getId());
+            this.srOutsourceDetl = (SrOutsourceDetl) this.srOutsourceDetlService.save(this.srOutsourceDetl);
+            Map<String, Object> map = new HashMap();
+            map.put("head", this.srOutsource);
+            map.put("detail", this.srOutsourceDetl);
+            this.result.setMap(map);
+        } catch (Exception e) {
+            this.srOutsourceService.delete(this.srOutsource);
+            throw new Exception(e.getMessage());
+        }
+        return SUCCESS;
     }
 
     public String saveSrOutsourceDetl() throws Exception {

@@ -26,11 +26,23 @@ Ext.define('iFlat.model.wip.SrOutsource', {
         {name: 'srOutsource.bidComment', mapping: 'bidComment', type: 'string'},
         {name: 'srOutsource.saleOpinion', mapping: 'saleOpinion', type: 'string'},
         {name: 'srOutsource.contNo', mapping: 'contNo', type: 'string'},
-        {name: 'srOutsource.contDate', mapping: 'contDate', type: 'string'},
+        {
+            name: 'srOutsource.contDate',
+            mapping: function (data) {
+                return Ext.Date.format(new Date(data['contDate']), 'Y-m-d');
+            },
+            type: 'string'
+        },
         {name: 'srOutsource.contAmount', mapping: 'contAmount', type: 'number'},
         {name: 'srOutsource.contAtt', mapping: 'contAtt', type: 'string'},
         {name: 'srOutsource.conComment', mapping: 'conComment', type: 'string'},
-        {name: 'srOutsource.finishTime', mapping: 'finishTime', type: 'date'},
+        {
+            name: 'srOutsource.finishTime',
+            mapping: function (data) {
+                return Ext.Date.format(new Date(data['finishTime']), 'Y-m-d');
+            },
+            type: 'string'
+        },
         {name: 'srOutsource.overtime', mapping: 'overtime', type: 'boolean'},
         {name: 'srOutsource.otReason', mapping: 'otReason', type: 'string'},
         {name: 'srOutsource.inspResult', mapping: 'inspResult', type: 'string'},
@@ -58,6 +70,7 @@ Ext.define('iFlat.model.wip.SrOutsource', {
         {name: 'srOutsource.qaName', mapping: 'qaName', type: 'string'},
         {name: 'srOutsource.bdDirectorAcc', mapping: 'bdDirectorAcc', type: 'string'},
         {name: 'srOutsource.bdDirectorName', mapping: 'bdDirectorName', type: 'string'},
+        {name: 'srOutsource.status', mapping: 'status', type: 'string'},
         {name: 'srOutsource.completeTime', mapping: 'completeTime', type: 'date'},
         {name: 'srOutsource.fromDate', mapping: 'fromDate', type: 'date'},
         {name: 'srOutsource.toDate', mapping: 'toDate', type: 'date'},

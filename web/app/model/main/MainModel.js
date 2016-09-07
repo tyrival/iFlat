@@ -45,6 +45,10 @@ Ext.define('iFlat.model.main.MainModel', {
 
         /* 生产管理 work in process */
         woType: ['结构', '舾装制作', '舾装安装', '工程', '修改', '杂项', '自测样管', '通用件'],
+        wipOutsourceType: ['外包','外协','外购'],
+        wipMatSource: ['公司供料加工','供方供料加工','船方供料加工','公司/船方部分供料，供方部分供料加工'],
+        wipBidType: ['封闭报价','招投标','客户指定','单一来源'],
+        wipVendorType: ['合格供方','准入供方','临时供方'],
 
         /* 问题 question */
         system: ['工时系统','物资系统','成本系统','质量系统','设计数据系统','报表中心','其他'],

@@ -1,4 +1,4 @@
-Ext.define('iFlat.storewip.SrOsVendorPage', {
+Ext.define('iFlat.store.wip.SrOsVendorPage', {
     extend: 'Ext.data.Store',
     autoLoad: true,
     model: 'iFlat.model.wip.SrOsVendor',

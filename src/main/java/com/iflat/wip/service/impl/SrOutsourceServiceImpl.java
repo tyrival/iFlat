@@ -11,7 +11,6 @@ import java.util.List;
 
 public class SrOutsourceServiceImpl extends BaseServiceSupport implements SrOutsourceService {
 
-    private SrOutsourceService srOutsourceService;
     private BaseService srOutsourceDetlService;
     private BaseService srProjectManagerService;
 
@@ -41,6 +40,7 @@ public class SrOutsourceServiceImpl extends BaseServiceSupport implements SrOuts
         processMap.put("id", reflectProcessObj.getMethodValue("id").toString());
         processMap.put("projNo", reflectProcessObj.getMethodValue("projNo").toString());
         processMap.put("dept", reflectProcessObj.getMethodValue("dept").toString());
+        processMap.put("creatorAcc", reflectProcessObj.getMethodValue("creatorAcc").toString());
     }
 
     @Override
@@ -79,15 +79,7 @@ public class SrOutsourceServiceImpl extends BaseServiceSupport implements SrOuts
             throw new Exception("此项目无法重复提交");
         }
 
-        workflowService.completeTaskByBusinessKey(this.getBusinessKey(srOutsource));
-    }
-
-    public SrOutsourceService getSrOutsourceService() {
-        return srOutsourceService;
-    }
-
-    public void setSrOutsourceService(SrOutsourceService srOutsourceService) {
-        this.srOutsourceService = srOutsourceService;
+        getWorkflowService().completeTaskByBusinessKey(this.getBusinessKey(srOutsource));
     }
 
     public BaseService getSrOutsourceDetlService() {

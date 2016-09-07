@@ -367,7 +367,7 @@ public class SrOutsource {
     }
 
     private void setOvertime() {
-        if (tod != null && finishTime != null && tod.after(finishTime)) {
+        if (tod != null && finishTime != null && finishTime.after(tod)) {
             this.overtime = true;
         } else {
             this.overtime = false;
