@@ -21,10 +21,6 @@ Ext.define('iFlat.view.wip.SrOsBiddingView', {
         border: true,
         columnLines: true,
         flex: 1,
-        tbar: ['->', {
-            text: '刷新',
-            handler: 'refreshView',
-        }],
         store: wipSrOsBiddingViewStore = Ext.create('iFlat.store.wip.SrOsBidding'),
 
         columns: [{

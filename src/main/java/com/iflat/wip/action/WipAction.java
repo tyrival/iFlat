@@ -1,5 +1,6 @@
 package com.iflat.wip.action;
 
+import com.iflat.wip.bean.SrOutsourceView;
 import com.iflat.base.entity.ExcelTemplate;
 import com.iflat.util.ExcelUtil;
 import com.iflat.wip.bean.SrOutsourceDetl;
@@ -8,7 +9,6 @@ import com.iflat.wip.bean.SrOsVendor;
 import com.iflat.wip.bean.SrOsProcess;
 import com.iflat.wip.bean.SrOsInspect;
 import com.iflat.wip.bean.SrOsBidding;
-import com.iflat.wip.bean.SrOsAssess;
 import com.iflat.wip.bean.SrOsAssess;
 import com.iflat.base.action.impl.BaseAction;
 import com.iflat.base.entity.Page;
@@ -371,55 +371,45 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String approveSrOutsourceWithAssess() throws Exception {
-
         this.srOsAssessService.save(this.srOsAssess);
-
         String businessKey = srOutsourceService.getBusinessKey(srOutsource);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment, this.srOutsourceMap);
         return SUCCESS;
     }
 
     public String approveSrOutsourceWithSaveAndAssess() throws Exception {
-
         this.srOsAssessService.save(this.srOsAssess);
         SrOutsource res = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
         handleSrOutsourceMap(res);
-
         String businessKey = srOutsourceService.getBusinessKey(srOutsource);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment, this.srOutsourceMap);
         return SUCCESS;
     }
 
     public String approveSrOutsourceWithSave() throws Exception {
-
         SrOutsource res = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
         handleSrOutsourceMap(res);
-
         String businessKey = srOutsourceService.getBusinessKey(srOutsource);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment, this.srOutsourceMap);
         return SUCCESS;
     }
 
-    private void handleSrOutsourceMap (SrOutsource res) throws Exception {
+    private void handleSrOutsourceMap(SrOutsource res) throws Exception {
         if (SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT.equals(res.getStatus())) {
             srOutsourceMap.put("operatorAcc", res.getOperatorAcc());
         }
-
         if (SrOsStatus.STATUS_INSPECT_CHIEF_HANDLE.equals(res.getStatus())) {
             srOutsourceMap.put("qcAcc", res.getQcAcc());
         }
-
         if (SrOsStatus.STATUS_BIDDING.equals(res.getStatus())) {
             srOutsourceMap.put("saleAcc", res.getSaleAcc());
         }
-
         if (SrOsStatus.STATUS_MANUFACTURE.equals(res.getStatus())) {
             srOutsourceMap.put("overtime", res.isOvertime());
         }
         if (SrOsStatus.STATUS_SETTLEMENT.equals(res.getStatus())) {
             srOutsourceMap.put("saleReaudit", res.isSaleReaudit());
         }
-
     }
 
     public String approveSrOutsourceBatch() throws Exception {
@@ -431,6 +421,7 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
         }
         return SUCCESS;
     }
+
     public void setSrOutsourceService(SrOutsourceService srOutsourceService) {
         this.srOutsourceService = srOutsourceService;
     }
@@ -525,6 +516,35 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
 
     public String uploadSrOutsourceDetl() throws Exception {
         this.result.setObject(this.srOutsourceDetlService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+    private BaseService srOutsourceViewService;
+    private SrOutsourceView srOutsourceView;
+
+    public BaseService getSrOutsourceViewService() {
+        return srOutsourceViewService;
+    }
+
+    public void setSrOutsourceViewService(BaseService srOutsourceViewService) {
+        this.srOutsourceViewService = srOutsourceViewService;
+    }
+
+    public SrOutsourceView getSrOutsourceView() {
+        return srOutsourceView;
+    }
+
+    public void setSrOutsourceView(SrOutsourceView srOutsourceView) {
+        this.srOutsourceView = srOutsourceView;
+    }
+
+    public String listSrOutsourceView() throws Exception {
+        this.result.setList(this.srOutsourceViewService.list(this.srOutsourceView));
+        return SUCCESS;
+    }
+
+    public String listPageSrOutsourceView() throws Exception {
+        this.result.setObject(this.srOutsourceViewService.listPage(this.srOutsourceView, this.page));
         return SUCCESS;
     }
 

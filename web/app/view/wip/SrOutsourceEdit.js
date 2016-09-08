@@ -50,7 +50,7 @@ Ext.define('iFlat.view.wip.SrOutsourceEdit', {
                     displayField: 'name',
                     valueField: 'projNo',
                     width: '30%',
-                    fieldLabel: '工程',
+                    fieldLabel: '船名',
                     labelWidth: 70,
                     listeners: {
                         select: 'onProjNoChange',
@@ -101,6 +101,17 @@ Ext.define('iFlat.view.wip.SrOutsourceEdit', {
                     fieldLabel: '工程类型',
                     hidden: true
                 }, ]
+            }, {
+                xtype: 'container',
+                layout: 'hbox',
+                margin: '10 0 0 0',
+                items: [{
+                    xtype: 'textfield',
+                    name: 'srOutsource.name',
+                    fieldLabel: '项目名称',
+                    labelWidth: 70,
+                    width: '100%'
+                }]
             }, {
                 xtype: 'container',
                 layout: 'hbox',

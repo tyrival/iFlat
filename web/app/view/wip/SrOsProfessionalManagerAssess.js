@@ -92,6 +92,18 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerAssess', {
                     xtype: 'container',
                     layout: 'hbox',
                     margin: '0 0 10 0',
+                    width: '100%',
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'srOutsource.name',
+                        fieldLabel: '项目名称',
+                        editable: false,
+                        width: '99%',
+                    }]
+                }, {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '0 0 10 0',
                     items: [{
                         xtype: 'textfield',
                         name: 'srOutsource.capitalSource',
@@ -276,21 +288,52 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerAssess', {
                     width: '100%',
                     items: [{
                         xtype: 'textfield',
+                        name: 'srOutsource.targetCst',
+                        fieldLabel: '目标成本',
+                        width: '20%',
+                        editable: false,
+                    }, {
+                        xtype: 'textfield',
                         name: 'srOutsource.bidAmountFirst',
                         fieldLabel: '报价金额',
-                        width: '25%',
+                        width: '20%',
                         editable: false,
                     }, {
                         xtype: 'textfield',
                         name: 'srOutsource.bidAmountSecond',
-                        fieldLabel: '谈价金额',
-                        width: '25%',
+                        fieldLabel: '结算金额',
+                        width: '20%',
                         editable: false,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srOutsource.bidLowest',
+                        hidden: true,
+                        listeners: {
+                            change: 'loadCheckbox'
+                        }
+                    }, {
+                        xtype: 'checkbox',
+                        fieldLabel: '最低价中标',
+                        labelWidth: 100,
+                        inputValue: true,
+                        width: '19%',
                     }, {
                         xtype: 'button',
                         text: '报价详情',
                         margin: '0 0 0 20',
                         handler: 'showBidding',
+                    }]
+                },  {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '10 0 0 0',
+                    width: '100%',
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'srOutsource.bidComment',
+                        fieldLabel: '备注',
+                        width: '85%',
+                        editable: false,
                     }, {
                         xtype: 'textfield',
                         name: 'srOutsource.bidAtt',
@@ -305,20 +348,6 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerAssess', {
                         margin: '0 0 0 20',
                         hidden: true,
                         id: 'wip-srosprofessionalmanagerassess-down2',
-                        width: 100,
-                    }, ]
-
-                },  {
-                    xtype: 'container',
-                    layout: 'hbox',
-                    margin: '10 0 0 0',
-                    width: '100%',
-                    items: [{
-                        xtype: 'textfield',
-                        name: 'srOutsource.bidComment',
-                        fieldLabel: '备注',
-                        width: '99%',
-                        editable: false,
                     }]
                 }, ]
             }, {
@@ -470,7 +499,7 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerAssess', {
                         xtype: 'textfield',
                         name: 'srOutsource.settAmountSecond',
                         width: '33%',
-                        fieldLabel: '谈价金额',
+                        fieldLabel: '结算金额',
                         editable: false,
                     }, {
                         xtype: 'textfield',

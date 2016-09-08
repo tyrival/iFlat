@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Wip.SrOutsourceView">
+
+<select id="list" parameterType="com.iflat.wip.bean.SrOutsourceView" resultMap="WipSrOutsourceViewResult">
+    SELECT id,projNo,projName,projType,dept,type,capitalSource,matSource,tod,hasBluePrint,hasSample,ownerAppoint,aplAtt,aplComment,bidNo,bidType,bidAtt,vendor,vendorType,bidAmountFirst,bidAmountSecond,bidComment,saleOpinion,contNo,contDate,contAmount,contAtt,conComment,finishTime,otReason,inspResult,inspComment,inspAtt,settAmountFirst,settAmountSecond,settComment,settAtt,saleComment,creatorAcc,creatorName,createTime,auditorAcc,auditorName,signorAcc,signorName,operatorAcc,operatorName,saleAcc,saleName,qcAcc,qcName,bdDirectorAcc,bdDirectorName,completeTime,status,pid,content,specs,unit,qty,detlComment,targetCst,bidLowest,name
+    FROM V_WipSrOutsourceView
+    <where>
+        <if test="id!=null and !&quot;&quot;.equals(id.trim())">AND id=#{id}</if>
+        <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
+        <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName=#{projName}</if>
+        <if test="projType!=null and !&quot;&quot;.equals(projType.trim())">AND projType=#{projType}</if>
+        <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
+        <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+        <if test="capitalSource!=null and !&quot;&quot;.equals(capitalSource.trim())">AND capitalSource=#{capitalSource}</if>
+        <if test="matSource!=null and !&quot;&quot;.equals(matSource.trim())">AND matSource=#{matSource}</if>
+        <if test="aplAtt!=null and !&quot;&quot;.equals(aplAtt.trim())">AND aplAtt=#{aplAtt}</if>
+        <if test="aplComment!=null and !&quot;&quot;.equals(aplComment.trim())">AND aplComment=#{aplComment}</if>
+        <if test="bidNo!=null and !&quot;&quot;.equals(bidNo.trim())">AND bidNo=#{bidNo}</if>
+        <if test="bidType!=null and !&quot;&quot;.equals(bidType.trim())">AND bidType=#{bidType}</if>
+        <if test="bidAtt!=null and !&quot;&quot;.equals(bidAtt.trim())">AND bidAtt=#{bidAtt}</if>
+        <if test="vendor!=null and !&quot;&quot;.equals(vendor.trim())">AND vendor=#{vendor}</if>
+        <if test="vendorType!=null and !&quot;&quot;.equals(vendorType.trim())">AND vendorType=#{vendorType}</if>
+        <if test="bidComment!=null and !&quot;&quot;.equals(bidComment.trim())">AND bidComment=#{bidComment}</if>
+        <if test="saleOpinion!=null and !&quot;&quot;.equals(saleOpinion.trim())">AND saleOpinion=#{saleOpinion}</if>
+        <if test="contNo!=null and !&quot;&quot;.equals(contNo.trim())">AND contNo=#{contNo}</if>
+        <if test="contAtt!=null and !&quot;&quot;.equals(contAtt.trim())">AND contAtt=#{contAtt}</if>
+        <if test="conComment!=null and !&quot;&quot;.equals(conComment.trim())">AND conComment=#{conComment}</if>
+        <if test="otReason!=null and !&quot;&quot;.equals(otReason.trim())">AND otReason=#{otReason}</if>
+        <if test="inspResult!=null and !&quot;&quot;.equals(inspResult.trim())">AND inspResult=#{inspResult}</if>
+        <if test="inspComment!=null and !&quot;&quot;.equals(inspComment.trim())">AND inspComment=#{inspComment}</if>
+        <if test="inspAtt!=null and !&quot;&quot;.equals(inspAtt.trim())">AND inspAtt=#{inspAtt}</if>
+        <if test="settComment!=null and !&quot;&quot;.equals(settComment.trim())">AND settComment=#{settComment}</if>
+        <if test="settAtt!=null and !&quot;&quot;.equals(settAtt.trim())">AND settAtt=#{settAtt}</if>
+        <if test="saleComment!=null and !&quot;&quot;.equals(saleComment.trim())">AND saleComment=#{saleComment}</if>
+        <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
+        <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
+        <if test="auditorAcc!=null and !&quot;&quot;.equals(auditorAcc.trim())">AND auditorAcc=#{auditorAcc}</if>
+        <if test="auditorName!=null and !&quot;&quot;.equals(auditorName.trim())">AND auditorName=#{auditorName}</if>
+        <if test="signorAcc!=null and !&quot;&quot;.equals(signorAcc.trim())">AND signorAcc=#{signorAcc}</if>
+        <if test="signorName!=null and !&quot;&quot;.equals(signorName.trim())">AND signorName=#{signorName}</if>
+        <if test="operatorAcc!=null and !&quot;&quot;.equals(operatorAcc.trim())">AND operatorAcc=#{operatorAcc}</if>
+        <if test="operatorName!=null and !&quot;&quot;.equals(operatorName.trim())">AND operatorName=#{operatorName}</if>
+        <if test="saleAcc!=null and !&quot;&quot;.equals(saleAcc.trim())">AND saleAcc=#{saleAcc}</if>
+        <if test="saleName!=null and !&quot;&quot;.equals(saleName.trim())">AND saleName=#{saleName}</if>
+        <if test="qcAcc!=null and !&quot;&quot;.equals(qcAcc.trim())">AND qcAcc=#{qcAcc}</if>
+        <if test="qcName!=null and !&quot;&quot;.equals(qcName.trim())">AND qcName=#{qcName}</if>
+        <if test="bdDirectorAcc!=null and !&quot;&quot;.equals(bdDirectorAcc.trim())">AND bdDirectorAcc=#{bdDirectorAcc}</if>
+        <if test="bdDirectorName!=null and !&quot;&quot;.equals(bdDirectorName.trim())">AND bdDirectorName=#{bdDirectorName}</if>
+        <if test="status!=null and !&quot;&quot;.equals(status.trim())">AND status=#{status}</if>
+        <if test="pid!=null and !&quot;&quot;.equals(pid.trim())">AND pid=#{pid}</if>
+        <if test="content!=null and !&quot;&quot;.equals(content.trim())">AND content=#{content}</if>
+        <if test="specs!=null and !&quot;&quot;.equals(specs.trim())">AND specs=#{specs}</if>
+        <if test="unit!=null and !&quot;&quot;.equals(unit.trim())">AND unit=#{unit}</if>
+        <if test="detlComment!=null and !&quot;&quot;.equals(detlComment.trim())">AND detlComment=#{detlComment}</if>
+        <if test="fromDate!=null">AND completeTime &gt;= #{fromDate}</if>
+        <if test="toDate!=null">AND completeTime &lt; DATEADD(day,1,#{toDate})</if>
+    </where>
+    ORDER BY createTime DESC
+</select>
+
+<resultMap type="com.iflat.wip.bean.SrOutsourceView" id="WipSrOutsourceViewResult">
+    <result property="id" column="id" jdbcType="VARCHAR"/>
+    <result property="name" column="name" jdbcType="VARCHAR"/>
+    <result property="projNo" column="projNo" jdbcType="VARCHAR"/>
+    <result property="projName" column="projName" jdbcType="VARCHAR"/>
+    <result property="projType" column="projType" jdbcType="VARCHAR"/>
+    <result property="dept" column="dept" jdbcType="VARCHAR"/>
+    <result property="type" column="type" jdbcType="VARCHAR"/>
+    <result property="capitalSource" column="capitalSource" jdbcType="VARCHAR"/>
+    <result property="matSource" column="matSource" jdbcType="VARCHAR"/>
+    <result property="tod" column="tod" jdbcType="DATE"/>
+    <result property="hasBluePrint" column="hasBluePrint" jdbcType="BIT"/>
+    <result property="hasSample" column="hasSample" jdbcType="BIT"/>
+    <result property="ownerAppoint" column="ownerAppoint" jdbcType="BIT"/>
+    <result property="aplAtt" column="aplAtt" jdbcType="VARCHAR"/>
+    <result property="aplComment" column="aplComment" jdbcType="VARCHAR"/>
+    <result property="bidNo" column="bidNo" jdbcType="VARCHAR"/>
+    <result property="bidType" column="bidType" jdbcType="VARCHAR"/>
+    <result property="bidAtt" column="bidAtt" jdbcType="VARCHAR"/>
+    <result property="vendor" column="vendor" jdbcType="VARCHAR"/>
+    <result property="vendorType" column="vendorType" jdbcType="VARCHAR"/>
+    <result property="bidAmountFirst" column="bidAmountFirst" jdbcType="DOUBLE"/>
+    <result property="bidAmountSecond" column="bidAmountSecond" jdbcType="DOUBLE"/>
+    <result property="bidComment" column="bidComment" jdbcType="VARCHAR"/>
+    <result property="saleOpinion" column="saleOpinion" jdbcType="VARCHAR"/>
+    <result property="contNo" column="contNo" jdbcType="VARCHAR"/>
+    <result property="contDate" column="contDate" jdbcType="DATE"/>
+    <result property="contAmount" column="contAmount" jdbcType="DOUBLE"/>
+    <result property="contAtt" column="contAtt" jdbcType="VARCHAR"/>
+    <result property="conComment" column="conComment" jdbcType="VARCHAR"/>
+    <result property="finishTime" column="finishTime" jdbcType="DATE"/>
+    <result property="otReason" column="otReason" jdbcType="VARCHAR"/>
+    <result property="inspResult" column="inspResult" jdbcType="VARCHAR"/>
+    <result property="inspComment" column="inspComment" jdbcType="VARCHAR"/>
+    <result property="inspAtt" column="inspAtt" jdbcType="VARCHAR"/>
+    <result property="settAmountFirst" column="settAmountFirst" jdbcType="DOUBLE"/>
+    <result property="settAmountSecond" column="settAmountSecond" jdbcType="DOUBLE"/>
+    <result property="settComment" column="settComment" jdbcType="VARCHAR"/>
+    <result property="settAtt" column="settAtt" jdbcType="VARCHAR"/>
+    <result property="saleComment" column="saleComment" jdbcType="VARCHAR"/>
+    <result property="creatorAcc" column="creatorAcc" jdbcType="VARCHAR"/>
+    <result property="creatorName" column="creatorName" jdbcType="VARCHAR"/>
+    <result property="createTime" column="createTime" jdbcType="DATE"/>
+    <result property="auditorAcc" column="auditorAcc" jdbcType="VARCHAR"/>
+    <result property="auditorName" column="auditorName" jdbcType="VARCHAR"/>
+    <result property="signorAcc" column="signorAcc" jdbcType="VARCHAR"/>
+    <result property="signorName" column="signorName" jdbcType="VARCHAR"/>
+    <result property="operatorAcc" column="operatorAcc" jdbcType="VARCHAR"/>
+    <result property="operatorName" column="operatorName" jdbcType="VARCHAR"/>
+    <result property="saleAcc" column="saleAcc" jdbcType="VARCHAR"/>
+    <result property="saleName" column="saleName" jdbcType="VARCHAR"/>
+    <result property="qcAcc" column="qcAcc" jdbcType="VARCHAR"/>
+    <result property="qcName" column="qcName" jdbcType="VARCHAR"/>
+    <result property="bdDirectorAcc" column="bdDirectorAcc" jdbcType="VARCHAR"/>
+    <result property="bdDirectorName" column="bdDirectorName" jdbcType="VARCHAR"/>
+    <result property="completeTime" column="completeTime" jdbcType="DATE"/>
+    <result property="status" column="status" jdbcType="VARCHAR"/>
+    <result property="pid" column="pid" jdbcType="VARCHAR"/>
+    <result property="content" column="content" jdbcType="VARCHAR"/>
+    <result property="specs" column="specs" jdbcType="VARCHAR"/>
+    <result property="unit" column="unit" jdbcType="VARCHAR"/>
+    <result property="qty" column="qty" jdbcType="DOUBLE"/>
+    <result property="detlComment" column="detlComment" jdbcType="VARCHAR"/>
+    <result property="targetCst" column="targetCst" jdbcType="DOUBLE"/>
+    <result property="bidLowest" column="bidLowest" jdbcType="BIT"/>
+</resultMap>
+</mapper>

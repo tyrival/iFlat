@@ -87,6 +87,18 @@ Ext.define('iFlat.view.wip.SrOsBidding', {
                     xtype: 'container',
                     layout: 'hbox',
                     margin: '0 0 10 0',
+                    width: '100%',
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'srOutsource.name',
+                        fieldLabel: '项目名称',
+                        editable: false,
+                        width: '99%',
+                    }]
+                }, {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '0 0 10 0',
                     items: [{
                         xtype: 'textfield',
                         name: 'srOutsource.capitalSource',
@@ -304,18 +316,32 @@ Ext.define('iFlat.view.wip.SrOsBidding', {
                 width: '100%',
                 items: [{
                     xtype: 'textfield',
+                    name: 'srOutsource.targetCst',
+                    fieldLabel: '目标成本',
+                    width: '20%',
+                    allowBlank: false,
+                    regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                }, {
+                    xtype: 'textfield',
                     name: 'srOutsource.bidAmountFirst',
                     fieldLabel: '报价金额',
-                    width: '25%',
+                    width: '20%',
                     allowBlank: false,
                     regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
                 }, {
                     xtype: 'textfield',
                     name: 'srOutsource.bidAmountSecond',
-                    fieldLabel: '谈价金额',
-                    width: '25%',
+                    fieldLabel: '结算金额',
+                    width: '20%',
                     allowBlank: false,
                     regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                }, {
+                    xtype: 'checkbox',
+                    name: 'srOutsource.bidLowest',
+                    fieldLabel: '最低价中标',
+                    inputValue: true,
+                    labelWidth: 80,
+                    width: '19%',
                 }, {
                     xtype: 'combo',
                     name: 'srOutsource.saleAcc',
@@ -326,7 +352,7 @@ Ext.define('iFlat.view.wip.SrOsBidding', {
                     minChars: 0,
                     displayField: 'userName',
                     valueField: 'account',
-                    width: '30%',
+                    width: '20%',
                     fieldLabel: '经营代表',
                     store: Ext.create('iFlat.store.system.UserRoleVo', {
                         proxy: {

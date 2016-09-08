@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="wipAction" class="com.iflat.wip.action.WipAction" scope="prototype">
-        <property name="srOsAssessService" ref="srOsAssessService"/>
-        <property name="srOsAssess" ref="srOsAssess"/>
-        <property name="srOsBiddingService" ref="srOsBiddingService"/>
-        <property name="srOsBidding" ref="srOsBidding"/>
-        <property name="srOsInspectService" ref="srOsInspectService"/>
-        <property name="srOsInspect" ref="srOsInspect"/>
-        <property name="srOsProcessService" ref="srOsProcessService"/>
-        <property name="srOsProcess" ref="srOsProcess"/>
-        <property name="srOsVendorService" ref="srOsVendorService"/>
-        <property name="srOsVendor" ref="srOsVendor"/>
-        <property name="srOutsourceService" ref="srOutsourceService"/>
-        <property name="srOutsource" ref="srOutsource"/>
-        <property name="srOutsourceDetlService" ref="srOutsourceDetlService"/>
-        <property name="srOutsourceDetl" ref="srOutsourceDetl"/>
-        <property name="workflowService" ref="workflowService"/>
-    </bean>
-    <bean id="srOsAssess" class="com.iflat.wip.bean.SrOsAssess" scope="prototype"/>
-    <bean id="srOsAssessDao" class="com.iflat.wip.dao.impl.SrOsAssessDaoImpl"/>
-    <bean id="srOsAssessService" class="com.iflat.wip.service.impl.SrOsAssessServiceImpl"/>
-    <bean id="srOsBidding" class="com.iflat.wip.bean.SrOsBidding" scope="prototype"/>
-    <bean id="srOsBiddingDao" class="com.iflat.wip.dao.impl.SrOsBiddingDaoImpl"/>
-    <bean id="srOsBiddingService" class="com.iflat.wip.service.impl.SrOsBiddingServiceImpl"/>
-    <bean id="srOsInspect" class="com.iflat.wip.bean.SrOsInspect" scope="prototype"/>
-    <bean id="srOsInspectDao" class="com.iflat.wip.dao.impl.SrOsInspectDaoImpl"/>
-    <bean id="srOsInspectService" class="com.iflat.wip.service.impl.SrOsInspectServiceImpl"/>
-    <bean id="srOsProcess" class="com.iflat.wip.bean.SrOsProcess" scope="prototype"/>
-    <bean id="srOsProcessDao" class="com.iflat.wip.dao.impl.SrOsProcessDaoImpl"/>
-    <bean id="srOsProcessService" class="com.iflat.wip.service.impl.SrOsProcessServiceImpl"/>
-    <bean id="srOsVendor" class="com.iflat.wip.bean.SrOsVendor" scope="prototype"/>
-    <bean id="srOsVendorDao" class="com.iflat.wip.dao.impl.SrOsVendorDaoImpl"/>
-    <bean id="srOsVendorService" class="com.iflat.wip.service.impl.SrOsVendorServiceImpl"/>
-    <bean id="srOutsource" class="com.iflat.wip.bean.SrOutsource" scope="prototype"/>
-    <bean id="srOutsourceDao" class="com.iflat.wip.dao.impl.SrOutsourceDaoImpl"/>
-    <bean id="srOutsourceService" class="com.iflat.wip.service.impl.SrOutsourceServiceImpl">
-        <property name="srOutsourceDetlService" ref="srOutsourceDetlService"/>
-        <property name="srProjectManagerService" ref="srProjectManagerService"/>
-    </bean>
-    <bean id="srOutsourceDetl" class="com.iflat.wip.bean.SrOutsourceDetl" scope="prototype"/>
-    <bean id="srOutsourceDetlDao" class="com.iflat.wip.dao.impl.SrOutsourceDetlDaoImpl"/>
-    <bean id="srOutsourceDetlService" class="com.iflat.wip.service.impl.SrOutsourceDetlServiceImpl"/>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <bean id="wipAction" class="com.iflat.wip.action.WipAction" scope="prototype">
+    <property name="srOsAssessService" ref="srOsAssessService" />
+    <property name="srOsAssess" ref="srOsAssess" />
+    <property name="srOsBiddingService" ref="srOsBiddingService" />
+    <property name="srOsBidding" ref="srOsBidding" />
+    <property name="srOsInspectService" ref="srOsInspectService" />
+    <property name="srOsInspect" ref="srOsInspect" />
+    <property name="srOsProcessService" ref="srOsProcessService" />
+    <property name="srOsProcess" ref="srOsProcess" />
+    <property name="srOsVendorService" ref="srOsVendorService" />
+    <property name="srOsVendor" ref="srOsVendor" />
+    <property name="srOutsourceService" ref="srOutsourceService" />
+    <property name="srOutsource" ref="srOutsource" />
+    <property name="srOutsourceDetlService" ref="srOutsourceDetlService" />
+    <property name="srOutsourceDetl" ref="srOutsourceDetl" />
+    <property name="workflowService" ref="workflowService" />
+    <property name="srOutsourceViewService" ref="srOutsourceViewService" />
+    <property name="srOutsourceView" ref="srOutsourceList" />
+  </bean>
+  <bean id="srOsAssess" class="com.iflat.wip.bean.SrOsAssess" scope="prototype" />
+  <bean id="srOsAssessDao" class="com.iflat.wip.dao.impl.SrOsAssessDaoImpl" />
+  <bean id="srOsAssessService" class="com.iflat.wip.service.impl.SrOsAssessServiceImpl" />
+  <bean id="srOsBidding" class="com.iflat.wip.bean.SrOsBidding" scope="prototype" />
+  <bean id="srOsBiddingDao" class="com.iflat.wip.dao.impl.SrOsBiddingDaoImpl" />
+  <bean id="srOsBiddingService" class="com.iflat.wip.service.impl.SrOsBiddingServiceImpl" />
+  <bean id="srOsInspect" class="com.iflat.wip.bean.SrOsInspect" scope="prototype" />
+  <bean id="srOsInspectDao" class="com.iflat.wip.dao.impl.SrOsInspectDaoImpl" />
+  <bean id="srOsInspectService" class="com.iflat.wip.service.impl.SrOsInspectServiceImpl" />
+  <bean id="srOsProcess" class="com.iflat.wip.bean.SrOsProcess" scope="prototype" />
+  <bean id="srOsProcessDao" class="com.iflat.wip.dao.impl.SrOsProcessDaoImpl" />
+  <bean id="srOsProcessService" class="com.iflat.wip.service.impl.SrOsProcessServiceImpl" />
+  <bean id="srOsVendor" class="com.iflat.wip.bean.SrOsVendor" scope="prototype" />
+  <bean id="srOsVendorDao" class="com.iflat.wip.dao.impl.SrOsVendorDaoImpl" />
+  <bean id="srOsVendorService" class="com.iflat.wip.service.impl.SrOsVendorServiceImpl" />
+  <bean id="srOutsource" class="com.iflat.wip.bean.SrOutsource" scope="prototype" />
+  <bean id="srOutsourceDao" class="com.iflat.wip.dao.impl.SrOutsourceDaoImpl" />
+  <bean id="srOutsourceService" class="com.iflat.wip.service.impl.SrOutsourceServiceImpl">
+    <property name="srOutsourceDetlService" ref="srOutsourceDetlService" />
+    <property name="srProjectManagerService" ref="srProjectManagerService" />
+  </bean>
+  <bean id="srOutsourceDetl" class="com.iflat.wip.bean.SrOutsourceDetl" scope="prototype" />
+  <bean id="srOutsourceDetlDao" class="com.iflat.wip.dao.impl.SrOutsourceDetlDaoImpl" />
+  <bean id="srOutsourceDetlService" class="com.iflat.wip.service.impl.SrOutsourceDetlServiceImpl" />
+  <bean id="srOutsourceView" class="com.iflat.wip.bean.SrOutsourceView" scope="prototype" />
+  <bean id="srOutsourceViewDao" class="com.iflat.wip.dao.impl.SrOutsourceViewDaoImpl" />
+  <bean id="srOutsourceViewService" class="com.iflat.wip.service.impl.SrOutsourceViewServiceImpl" />
 </beans>
 

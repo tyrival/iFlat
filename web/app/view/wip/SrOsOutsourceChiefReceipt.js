@@ -86,6 +86,18 @@ Ext.define('iFlat.view.wip.SrOsOutsourceChiefReceipt', {
                     xtype: 'container',
                     layout: 'hbox',
                     margin: '0 0 10 0',
+                    width: '100%',
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'srOutsource.name',
+                        fieldLabel: '项目名称',
+                        editable: false,
+                        width: '99%',
+                    }]
+                }, {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '0 0 10 0',
                     items: [{
                         xtype: 'textfield',
                         name: 'srOutsource.capitalSource',

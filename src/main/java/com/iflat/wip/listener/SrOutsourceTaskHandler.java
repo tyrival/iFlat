@@ -193,7 +193,7 @@ public class SrOutsourceTaskHandler extends WorkflowTaskListener {
      */
     private void setTaskInfo(DelegateTask delegateTask, String status) throws Exception {
 
-        this.setTaskInfo(delegateTask, SrOsStatus.TASK_NAME, getDescription(delegateTask) + "[" + status + "]");
+        this.setTaskInfo(delegateTask, SrOsStatus.TASK_NAME, getDescription(delegateTask) + "<" + status + ">");
     }
 
     private static String DESCRIPTION;
@@ -203,7 +203,7 @@ public class SrOutsourceTaskHandler extends WorkflowTaskListener {
             SrOutsource srOutsource = new SrOutsource();
             srOutsource.setId(id);
             srOutsource = (SrOutsource) getSrOutsourceService().list(srOutsource).get(0);
-            DESCRIPTION = srOutsource.getProjName() + "，施工部门：" + srOutsource.getDept() + " ";
+            DESCRIPTION = "[" + srOutsource.getProjName() + "] " + srOutsource.getName() + " ";
         }
         return DESCRIPTION;
     }

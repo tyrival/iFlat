@@ -1,11 +1,13 @@
 package com.iflat.wip.bean;
 
+import com.iflat.util.code.CodeUtil;
+
 import java.util.Date;
 
 /**
- * Created by tyriv on 2016/9/1.
+ * Created by tyriv on 2016/9/8.
  */
-public class SrOutsource {
+public class SrOutsourceView {
 
     private String id;
     private String name;
@@ -14,6 +16,11 @@ public class SrOutsource {
     private String projType;
     private String dept;
     private String type;  // 外包/外协/外购
+
+    private boolean type1;
+    private boolean type2;
+    private boolean type3;
+
     private String capitalSource;  // 资金来源
     private String matSource;  // 原料来源：公司供料加工|供方供料加工|船方供料加工|公司/船方部分供料，供方部分供料加工
     private Date tod;  // time of delivery 交货期
@@ -26,14 +33,25 @@ public class SrOutsource {
     /* 比价 */
     private String bidNo;  // 开标编号
     private String bidType;  // 竞价方式：封闭报价/招投标/客户指定/单一来源
+
+    private boolean bidType1;
+    private boolean bidType2;
+    private boolean bidType3;
+    private boolean bidType4;
+    private boolean bidType5;
+
     private String bidAtt;  // 开标报告、议标报告、报价单等
     private String vendor;  // 推荐供方
     private String vendorType;  // 供应商性质：合格供方/准入供方/临时供方
+
+    private boolean vendorType1;
+    private boolean vendorType2;
+    private boolean vendorType3;
+
     private double bidAmountFirst;  // 报价金额
     private double bidAmountSecond;  // 谈价金额
     private double bidAmountDiff;  // 差价
-    private String bidComment;
-
+    private String bidComment;  // 单一供方说明
     private double targetCst;
     private boolean bidLowest;
 
@@ -83,8 +101,14 @@ public class SrOutsource {
     private String bdDirectorName;
 
     private Date completeTime;  // 完成时间
-
     private String status;
+
+    private String pid;
+    private String content;
+    private String specs;
+    private String unit;
+    private double qty;
+    private String detlComment;
 
     private Date fromDate;
     private Date toDate;
@@ -97,8 +121,48 @@ public class SrOutsource {
         this.name = name;
     }
 
-    public SrOutsource() {
-        bidLowest = true;
+    public boolean isType1() {
+        return type1;
+    }
+
+    public boolean isType2() {
+        return type2;
+    }
+
+    public boolean isType3() {
+        return type3;
+    }
+
+    public boolean isBidType1() {
+        return bidType1;
+    }
+
+    public boolean isBidType2() {
+        return bidType2;
+    }
+
+    public boolean isBidType3() {
+        return bidType3;
+    }
+
+    public boolean isBidType4() {
+        return bidType4;
+    }
+
+    public boolean isBidType5() {
+        return bidType5;
+    }
+
+    public boolean isVendorType1() {
+        return vendorType1;
+    }
+
+    public boolean isVendorType2() {
+        return vendorType2;
+    }
+
+    public boolean isVendorType3() {
+        return vendorType3;
     }
 
     public double getTargetCst() {
@@ -203,6 +267,17 @@ public class SrOutsource {
 
     public void setType(String type) {
         this.type = type;
+        switch (this.type) {
+            case "外包":
+                this.type1 = true;
+                break;
+            case "外协":
+                this.type2 = true;
+                break;
+            case "外购":
+                this.type3 = true;
+                break;
+        }
     }
 
     public String getCapitalSource() {
@@ -284,6 +359,23 @@ public class SrOutsource {
 
     public void setBidType(String bidType) {
         this.bidType = bidType;
+        switch (this.bidType) {
+            case "封闭报价":
+                this.bidType1 = true;
+                break;
+            case "招投标":
+                this.bidType2 = true;
+                break;
+            case "客户指定":
+                this.bidType3 = true;
+                break;
+            case "单一来源":
+                this.bidType4 = true;
+                break;
+            case "传真比价":
+                this.bidType5 = true;
+                break;
+        }
     }
 
     public String getBidAtt() {
@@ -308,6 +400,17 @@ public class SrOutsource {
 
     public void setVendorType(String vendorType) {
         this.vendorType = vendorType;
+        switch (this.vendorType) {
+            case "合格供方":
+                this.vendorType1 = true;
+                break;
+            case "准入供方":
+                this.vendorType2 = true;
+                break;
+            case "临时供方":
+                this.vendorType3 = true;
+                break;
+        }
     }
 
     public double getBidAmountFirst() {
@@ -619,5 +722,53 @@ public class SrOutsource {
 
     public void setCompleteTime(Date completeTime) {
         this.completeTime = completeTime;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getSpecs() {
+        return specs;
+    }
+
+    public void setSpecs(String specs) {
+        this.specs = specs;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public double getQty() {
+        return qty;
+    }
+
+    public void setQty(double qty) {
+        this.qty = qty;
+    }
+
+    public String getDetlComment() {
+        return detlComment;
+    }
+
+    public void setDetlComment(String detlComment) {
+        this.detlComment = detlComment;
     }
 }

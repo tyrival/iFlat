@@ -29,7 +29,9 @@ Ext.define('iFlat.model.wip.SrOutsource', {
         {
             name: 'srOutsource.contDate',
             mapping: function (data) {
-                return Ext.Date.format(new Date(data['contDate']), 'Y-m-d');
+                if (data['contDate']) {
+                    return Ext.Date.format(new Date(data['contDate']), 'Y-m-d');
+                }
             },
             type: 'string'
         },
@@ -39,7 +41,9 @@ Ext.define('iFlat.model.wip.SrOutsource', {
         {
             name: 'srOutsource.finishTime',
             mapping: function (data) {
-                return Ext.Date.format(new Date(data['finishTime']), 'Y-m-d');
+                if (data['finishTime']) {
+                    return Ext.Date.format(new Date(data['finishTime']), 'Y-m-d');
+                }
             },
             type: 'string'
         },
@@ -74,5 +78,8 @@ Ext.define('iFlat.model.wip.SrOutsource', {
         {name: 'srOutsource.completeTime', mapping: 'completeTime', type: 'date'},
         {name: 'srOutsource.fromDate', mapping: 'fromDate', type: 'date'},
         {name: 'srOutsource.toDate', mapping: 'toDate', type: 'date'},
+        {name: 'srOutsource.targetCst', mapping: 'targetCst', type: 'number'},
+        {name: 'srOutsource.bidLowest', mapping: 'bidLowest', type: 'boolean'},
+        {name: 'srOutsource.name', mapping: 'name', type: 'string'},
     ]
 });

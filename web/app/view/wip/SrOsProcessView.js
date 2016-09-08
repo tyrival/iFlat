@@ -22,10 +22,6 @@ Ext.define('iFlat.view.wip.SrOsProcessView', {
         columnLines: true,
         scrollable: true,
         flex: 1,
-        tbar: ['->', {
-            text: '刷新',
-            handler: 'refreshList',
-        }],
         store: wipSrOsProcessViewStore = Ext.create('iFlat.store.wip.SrOsProcess'),
 
         columns: [{

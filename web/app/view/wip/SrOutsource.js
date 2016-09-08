@@ -71,6 +71,10 @@ Ext.define('iFlat.view.wip.SrOutsource', {
         width: 150,
         dataIndex: 'srOutsource.projName',
     }, {
+        header: '项目名称',
+        width: 150,
+        dataIndex: 'srOutsource.name',
+    }, {
         header: '工程类型',
         width: 150,
         dataIndex: 'srOutsource.projType',

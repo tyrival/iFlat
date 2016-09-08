@@ -87,6 +87,18 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAudit', {
                     xtype: 'container',
                     layout: 'hbox',
                     margin: '0 0 10 0',
+                    width: '100%',
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'srOutsource.name',
+                        fieldLabel: '项目名称',
+                        editable: false,
+                        width: '99%',
+                    }]
+                }, {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '0 0 10 0',
                     items: [{
                         xtype: 'textfield',
                         name: 'srOutsource.capitalSource',
@@ -271,30 +283,37 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAudit', {
                     width: '100%',
                     items: [{
                         xtype: 'textfield',
+                        name: 'srOutsource.targetCst',
+                        fieldLabel: '目标成本',
+                        width: '20%',
+                        editable: false,
+                    }, {
+                        xtype: 'textfield',
                         name: 'srOutsource.bidAmountFirst',
                         fieldLabel: '报价金额',
-                        width: '25%',
+                        width: '20%',
                         editable: false,
                     }, {
                         xtype: 'textfield',
                         name: 'srOutsource.bidAmountSecond',
-                        fieldLabel: '谈价金额',
-                        width: '25%',
+                        fieldLabel: '结算金额',
+                        width: '20%',
                         editable: false,
-                    },]
-
-                }, {
-                    xtype: 'container',
-                    layout: 'hbox',
-                    margin: '0 0 0 0',
-                    width: '100%',
-                    items: [{
+                    }, {
                         xtype: 'textfield',
-                        name: 'srOutsource.saleOpinion',
-                        fieldLabel: '经营代表意见',
+                        name: 'srOutsource.bidLowest',
                         hidden: true,
+                        listeners: {
+                            change: 'loadCheckbox'
+                        }
+                    }, {
+                        xtype: 'checkbox',
+                        fieldLabel: '最低价中标',
+                        labelWidth: 100,
+                        inputValue: true,
+                        width: '19%',
                     }]
-                }, {
+                },  {
                     xtype: 'container',
                     layout: 'hbox',
                     margin: '10 0 0 0',
@@ -303,23 +322,9 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAudit', {
                         xtype: 'textfield',
                         name: 'srOutsource.bidComment',
                         fieldLabel: '备注',
-                        width: '89%',
+                        width: '99%',
                         editable: false,
-                    }, {
-                        xtype: 'textfield',
-                        name: 'srOutsource.bidAtt',
-                        hidden: true,
-                        editable: false,
-                        listeners: {
-                            change: 'onAttachmentChange2'
-                        },
-                    }, {
-                        xtype: 'button',
-                        text: '下载报价附件',
-                        margin: '0 0 0 10',
-                        hidden: true,
-                        id: 'wip-srossalesmanaudit-down2',
-                    }, ]
+                    }]
                 }, ]
             }, {
                 xtype: 'textarea',
