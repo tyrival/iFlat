@@ -12,7 +12,6 @@
     <update id="update" parameterType="com.iflat.ss.bean.FsCode">
         UPDATE SsFsCode
         <set>
-            <if test="time!=null">time=#{time},</if>
             <if test="type!=null">type=#{type},</if>
             <if test="code!=null">code=#{code},</if>
             <if test="description!=null">description=#{description},</if>

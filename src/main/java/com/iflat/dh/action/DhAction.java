@@ -15,16 +15,13 @@ import java.io.File;
  * Created by tyriv on 2016/6/18.
  */
 public class DhAction extends BaseAction implements ModelDriven<Page> {
-
     protected Page page;
     private File upload;
     private String uploadFileName;
-
     private PostService postService;
     private Post post;
     private BaseService replyService;
     private Reply reply;
-    
     private WorkflowService workflowService;
     private String taskId;
     private String outGoingName;
@@ -67,8 +64,7 @@ public class DhAction extends BaseAction implements ModelDriven<Page> {
     }
 
     public String saveAndSubmitPost() throws Exception {
-        Post post
-                = (Post) this.postService.save(this.post);
+        Post post = (Post) this.postService.save(this.post);
         postService.submit(this.post);
         this.result.setObject(post);
         return SUCCESS;
@@ -184,9 +180,10 @@ public class DhAction extends BaseAction implements ModelDriven<Page> {
 
     @Override
     public Page getModel() {
-        if(page == null){
+        if (page == null) {
             page = new Page();
         }
         return page;
     }
+
 }

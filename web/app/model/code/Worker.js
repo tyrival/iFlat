@@ -1,18 +1,19 @@
 Ext.define('iFlat.model.code.Worker', {
     extend: 'Ext.data.Model',
     fields: [
-        {name: 'id', mapping: 'id', type: 'string'},
-        {name: 'account', mapping: 'account', type: 'string'},
-        {name: 'name', mapping: 'name', type: 'string'},
-        {name: 'sex', mapping: 'sex', type: 'string'},
-        {name: 'workType', mapping: 'workType', type: 'string'},
-        {name: 'deptCode', mapping: 'deptCode', type: 'string'},
-        {name: 'deptName', mapping: 'deptName', type: 'string'},
-        {name: 'teamCode', mapping: 'teamCode', type: 'string'},
-        {name: 'teamName', mapping: 'teamName', type: 'string'},
-        {name: 'groupCode', mapping: 'groupCode', type: 'string'},
-        {name: 'groupName', mapping: 'groupName', type: 'string'},
-        {name: 'category', mapping: 'category', type: 'string'},
-        {name: 'property', mapping: 'property', type: 'string'}
+        {name: 'worker.id', mapping: 'id', type: 'string'},
+        {name: 'worker.account', mapping: 'account', type: 'string'},
+        {name: 'worker.name', mapping: 'name', type: 'string'},
+        {name: 'worker.fullName', mapping: 'fullName', type: 'string'},
+        {name: 'worker.sex', mapping: 'sex', type: 'string'},
+        {name: 'worker.workType', mapping: 'workType', type: 'string'},
+        {name: 'worker.deptCode', mapping: 'deptCode', type: 'string'},
+        {name: 'worker.deptName', mapping: 'deptName', type: 'string'},
+        {name: 'worker.teamCode', mapping: 'teamCode', type: 'string'},
+        {name: 'worker.teamName', mapping: 'teamName', type: 'string'},
+        {name: 'worker.groupCode', mapping: 'groupCode', type: 'string'},
+        {name: 'worker.groupName', mapping: 'groupName', type: 'string'},
+        {name: 'worker.category', mapping: 'category', type: 'string'},
+        {name: 'worker.property', mapping: 'property', type: 'string'}
     ]
 });

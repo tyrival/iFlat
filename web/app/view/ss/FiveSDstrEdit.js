@@ -261,18 +261,19 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                     editable: true,
                     forceSelection : true,
                     typeAhead: true,
+                    anyMatch: true,
                     minChars: 0,
-                    displayField: 'name',
+                    displayField: 'fullName',
                     valueField: 'name',
                     width: '33%',
                     fieldLabel: '区域负责人',
                     store: ssFiveSDstrRegionPersonNameStore = Ext.create('iFlat.store.code.Employee'),
-                    /*listeners: {
+                    listeners: {
                         select: function (cb, record, opt) {
                             var v = record.get('employee.account');
                             cb.up('form').down('textfield[name=fiveS.regionPersonAcc]').setValue(v);
                         },
-                    }*/
+                    }
                 },{
                     xtype: 'textfield',
                     name: 'fiveS.regionPersonAcc',
@@ -308,10 +309,11 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                     editable: true,
                     forceSelection : true,
                     typeAhead: true,
+                    anyMatch: true,
                     minChars: 0,
-                    displayField: 'name',
+                    displayField: 'fullName',
                     valueField: 'name',
-                    width: '33%',
+                    width: '66%',
                     fieldLabel: '责任人',
                     store: ssFiveSDstrEmployeeStore = Ext.create('iFlat.store.code.Employee', {
                         autoLoad: true
@@ -333,6 +335,7 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                     name: 'fiveS.personAcc',
                     fieldLabel: '工号',
                     width: '33%',
+                    hidden: true,
                     editable: false
                 },]
             }, {

@@ -187,10 +187,11 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 editable: true,
                 forceSelection : true,
                 typeAhead: true,
+                anyMatch: true,
                 minChars: 0,
-                displayField: 'name',
+                displayField: 'fullName',
                 valueField: 'name',
-                width: '20%',
+                width: '40%',
                 fieldLabel: '责任人',
                 store: ssViolateRegulationEmployeeStore = Ext.create('iFlat.store.code.Employee', {
                     autoLoad: true
@@ -203,6 +204,8 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                         cb.up('window').down('textfield[name=violateRegulation.groupName]').setValue(groupName);
                         var account = record.get('employee.account');
                         cb.up('window').down('textfield[name=violateRegulation.personAcc]').setValue(account);
+                        var title = record.get('employee.title');
+                        cb.up('window').down('textfield[name=violateRegulation.title]').setValue(title);
                         // 年龄，工龄，性别
 
                     },
@@ -212,6 +215,7 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                 name: 'violateRegulation.personAcc',
                 fieldLabel: '工号',
                 width: '20%',
+                hidden: true,
                 editable: false
             },{
                 xtype: 'textfield',

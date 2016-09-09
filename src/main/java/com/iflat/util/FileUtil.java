@@ -32,7 +32,7 @@ public class FileUtil {
 
             // 循环读取文件的每一行, 对需要修改的行进行修改, 放入缓冲对象中
             while ((line = br.readLine()) != null) {
-                buf.append(line);
+                buf.append(line).append("\n");
                 /*// 此处根据实际需要修改某些行的内容
                 if (line.startsWith("a")) {
                     buf.append(line).append(" start with a");

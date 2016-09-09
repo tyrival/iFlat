@@ -3,6 +3,7 @@ Ext.define('iFlat.model.code.Employee', {
     fields: [
         {name: 'employee.account', mapping: 'account', type: 'string'},
         {name: 'employee.name', mapping: 'name', type: 'string'},
+        {name: 'employee.fullName', mapping: 'fullName', type: 'string'},
         {name: 'employee.sex', mapping: 'sex', type: 'string'},
         {name: 'employee.deptCode', mapping: 'deptCode', type: 'string'},
         {name: 'employee.deptName', mapping: 'deptName', type: 'string'},

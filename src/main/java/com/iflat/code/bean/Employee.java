@@ -21,6 +21,8 @@ public class Employee {
     private String property;  // 用工性质
     private String title;  // 职位
 
+    private String fullName;
+
     private Date birth;  // 生日
     private String nation;  // 民族--
     private String birthplace;  // 籍贯--
@@ -34,6 +36,13 @@ public class Employee {
     private Date graduation;  // 毕业时间--
     private String partyType;  // 正式党员/预备党员
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    private void setFullName() {
+        this.fullName = this.account + " " + this.name;
+    }
 
     public String getAccount() {
         return account;
@@ -41,6 +50,7 @@ public class Employee {
 
     public void setAccount(String account) {
         this.account = account;
+        setFullName();
     }
 
     public String getName() {
@@ -49,6 +59,7 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+        setFullName();
     }
 
     public String getSex() {

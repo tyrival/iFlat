@@ -1,5 +1,7 @@
 package com.iflat.dh.bean;
 
+import com.iflat.util.code.CodeUtil;
+
 import java.util.Date;
 
 /**

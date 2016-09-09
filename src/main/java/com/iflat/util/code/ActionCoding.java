@@ -11,6 +11,7 @@ import java.io.IOException;
  */
 public class ActionCoding {
 
+    //com.iflat.report.entity.bi.Test
     public static void generate(String className, String path) throws IOException {
         String temp = className.replace(".bean.", ".action.")
                 .replace(".entity.", ".action.");
@@ -22,6 +23,11 @@ public class ActionCoding {
         String variableName = StringUtil.lowerCaseFirstChar(shortClassName);
         String actionClassName = StringUtil.upperCaseFirstChar(moduleName) + "Action";
         String actionFilePath = path + temp.replace(shortClassName, StringUtil.upperCaseFirstChar(moduleName) + "Action").replace(".", "\\") + ".java";
+
+        String servicePkg = className.replace(".bean.", ".service.")
+                .replace(".entity.", ".service.")
+                + "Service";
+        String serviceInterface = shortClassName + "Service";
 
         File file = new File(actionFilePath);
         if (!file.exists()) {
@@ -65,21 +71,22 @@ public class ActionCoding {
 
         String head = orig.substring(0, orig.indexOf("import"));
         String body = orig.replace(head, "");
-        body = body.substring(0, body.length() - 1);
+        body = body.substring(0, body.length() - 2);
         
         StringBuilder sbHead = new StringBuilder(head);
         StringBuilder sbBody = new StringBuilder(body);
         /* import */
         sbHead.append("import ").append(className).append(";").append("\n");
+        sbHead.append("import ").append(servicePkg).append(";").append("\n");
 
         /* 变量 Service getter setter*/
         sbBody.append("\n")
-                .append("    private BaseService ").append(variableName).append("Service;").append("\n")
+                .append("    private ").append(serviceInterface).append(" ").append(variableName).append("Service;").append("\n")
                 .append("    private ").append(shortClassName).append(" ").append(variableName).append(";").append("\n")
                 .append("\n")
-                .append("    public BaseService get").append(shortClassName).append("Service() { return ").append(variableName).append("Service; }").append("\n")
+                .append("    public ").append(serviceInterface).append(" get").append(shortClassName).append("Service() { return ").append(variableName).append("Service; }").append("\n")
                 .append("\n")
-                .append("    public void set").append(shortClassName).append("Service(BaseService ").append(variableName).append("Service) { this.").append(variableName).append("Service = ").append(variableName).append("Service; }")
+                .append("    public void set").append(shortClassName).append("Service(").append(serviceInterface).append(" ").append(variableName).append("Service) { this.").append(variableName).append("Service = ").append(variableName).append("Service; }")
                 .append("\n")
                 .append("    public ").append(shortClassName).append(" get").append(shortClassName).append("() { return ").append(variableName).append("; }")
                 .append("\n")

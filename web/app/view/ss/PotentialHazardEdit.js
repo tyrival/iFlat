@@ -125,8 +125,16 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                     }
                 }
             },{
-                xtype: 'combo',
+                xtype: 'textfield',
                 name: 'potentialHazard.phCode',
+                editable: false,
+                fieldLabel: '隐患代码',
+                width: '33%',
+            }]
+        },{
+            items: [{
+                xtype: 'combo',
+                name: 'potentialHazard.content',
                 store: ssPotentialHazardPhCodeStore = Ext.create('iFlat.store.ss.PhCode', {
                     autoLoad: false
                 }),
@@ -134,29 +142,19 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 allowBlank: true,
                 editable: false,
                 forceSelection : false,
-                displayField: 'code',
-                valueField: 'code',
-                width: '33%',
-                fieldLabel: '隐患代码',
-                change: function (cb, newV, oldV, opt) {
-                    var model = cb.getStore().findRecord('phCode.code', newV);
-                    if (model) {
-                        var content = model.get('phCode.description');
-                        cb.up('form').down('textfield[name=potentialHazard.content]').setValue(content);
-                    }
-                    /*var amount = model.get('phCode.amount');
-                    var score = model.get('phCode.score');
-                    cb.up('form').down('textfield[name=potentialHazard.amount]').setValue(amount);
-                    cb.up('form').down('textfield[name=potentialHazard.score]').setValue(score);*/
-                }
-            }]
-        },{
-            items: [{
-                xtype: 'textfield',
-                name: 'potentialHazard.content',
-                fieldLabel: '隐患内容',
+                displayField: 'description',
+                valueField: 'description',
                 width: '99%',
-                editable: false
+                fieldLabel: '隐患内容',
+                listeners: {
+                    change: function (cb, newV, oldV, opt) {
+                        var model = cb.getStore().findRecord('phCode.description', newV);
+                        if (model) {
+                            var code = model.get('phCode.code');
+                            cb.up('form').down('textfield[name=potentialHazard.phCode]').setValue(code);
+                        }
+                    }
+                }
             }]
         },{
             items: [{
@@ -200,9 +198,10 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 forceSelection : true,
                 typeAhead: true,
                 minChars: 0,
-                displayField: 'name',
+                anyMatch: true,
+                displayField: 'fullName',
                 valueField: 'name',
-                width: '20%',
+                width: '40%',
                 fieldLabel: '责任人',
                 store: ssPotentialHazardEmployeeStore = Ext.create('iFlat.store.code.Employee', {
                     autoLoad: true
@@ -215,6 +214,8 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                         cb.up('window').down('textfield[name=potentialHazard.groupName]').setValue(groupName);
                         var account = record.get('employee.account');
                         cb.up('window').down('textfield[name=potentialHazard.personAcc]').setValue(account);
+                        var title = record.get('employee.title');
+                        cb.up('window').down('textfield[name=potentialHazard.title]').setValue(title);
                         // 年龄，工龄，性别
 
                     },
@@ -224,6 +225,7 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 name: 'potentialHazard.personAcc',
                 fieldLabel: '工号',
                 width: '20%',
+                hidden: true,
                 editable: false
             },{
                 xtype: 'textfield',
