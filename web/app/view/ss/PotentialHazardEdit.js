@@ -216,7 +216,12 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                         cb.up('window').down('textfield[name=potentialHazard.personAcc]').setValue(account);
                         var title = record.get('employee.title');
                         cb.up('window').down('textfield[name=potentialHazard.title]').setValue(title);
-                        // 年龄，工龄，性别
+                        var sex = record.get('employee.sex');
+                        cb.up('window').down('textfield[name=potentialHazard.sex]').setValue(sex);
+                        var birth = record.get('employee.birth');
+                        var age = Flat.util.calcAge(birth);
+                        cb.up('window').down('textfield[name=potentialHazard.age]').setValue(age);
+                        cb.up('window').down('textfield[name=potentialHazard.seniority]').setValue(Flat.util.calcSeniority(account));
 
                     },
                 }

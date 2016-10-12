@@ -5,7 +5,7 @@
 <mapper namespace="Code.Employee">
 
     <select id="list" parameterType="com.iflat.code.bean.Employee" resultMap="codeEmployeeResult">
-        SELECT account,name,sex,deptCode,deptName,teamCode,teamName,groupCode,groupName,category,type,property,title
+        SELECT account,name,sex,deptCode,deptName,teamCode,teamName,groupCode,groupName,category,type,property,title,idCardNo,birth,nation,birthplace,startWorking,becomeFullMember,enrolment,graduation,joinParty
         FROM code.dbo.V_Employee
         <where>
             <if test="account!=null">AND account=#{account}</if>
@@ -37,5 +37,14 @@
         <result property="type" column="type" jdbcType="VARCHAR"/>
         <result property="property" column="property" jdbcType="VARCHAR"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="idCardNo" column="idCardNo" jdbcType="VARCHAR"/>
+        <result property="birth" column="birth" jdbcType="DATE"/>
+        <result property="nation" column="nation" jdbcType="VARCHAR"/>
+        <result property="birthplace" column="birthplace" jdbcType="VARCHAR"/>
+        <result property="startWorking" column="startWorking" jdbcType="DATE"/>
+        <result property="becomeFullMember" column="becomeFullMember" jdbcType="DATE"/>
+        <result property="enrolment" column="enrolment" jdbcType="DATE"/>
+        <result property="graduation" column="graduation" jdbcType="DATE"/>
+        <result property="joinParty" column="joinParty" jdbcType="DATE"/>
     </resultMap>
 </mapper>

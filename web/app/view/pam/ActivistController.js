@@ -54,7 +54,9 @@ Ext.define('iFlat.view.pam.ActivistController', {
 
     addActivistRecord: function() {
         pamActivistRowEditing.cancelEdit();
-        var activist = Ext.create('iFlat.model.pam.Activist');
+        var activist = Ext.create('iFlat.model.pam.Activist', {
+            'activist.pbName': pamActivistStore.getProxy().extraParams['activist.pbName']
+        });
         pamActivistStore.insert(0, activist);
         pamActivistRowEditing.startEdit(0, 0);
     },

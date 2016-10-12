@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="fiveS" code="fiveS" name="5S">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+        <col index="G" width='17em'></col>
+        <col index="H" width='17em'></col>
+        <col index="I" width='17em'></col>
+        <col index="J" width='17em'></col>
+        <col index="K" width='17em'></col>
+        <col index="L" width='17em'></col>
+        <col index="M" width='17em'></col>
+        <col index="N" width='17em'></col>
+        <col index="O" width='17em'></col>
+        <col index="P" width='17em'></col>
+        <col index="Q" width='17em'></col>
+        <col index="R" width='17em'></col>
+        <col index="S" width='17em'></col>
+        <col index="T" width='17em'></col>
+        <col index="U" width='17em'></col>
+        <col index="V" width='17em'></col>
+        <col index="W" width='17em'></col>
+        <col index="X" width='17em'></col>
+        <col index="Y" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="25" value="5S" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="日期" />
+            <th value="时间" />
+            <th value="职能部门" />
+            <th value="区域类型" />
+            <th value="区域代码" />
+            <th value="区域" />
+            <th value="其他区域" />
+            <th value="工程" />
+            <th value="工程名称" />
+            <th value="违规部位" />
+            <th value="所属部门" />
+            <th value="区域/项目负责人" />
+            <th value="区域/项目负责人一卡通" />
+            <th value="违规项目" />
+            <th value="违规内容" />
+            <th value="描述" />
+            <th value="罚款" />
+            <th value="扣分" />
+            <th value="责任部门" />
+            <th value="施工队/班组" />
+            <th value="责任人" />
+            <th value="责任人一卡通" />
+            <th value="整改情况" />
+            <th value="整改时间" />
+            <th value="备注" />
+            <th value="查处人" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="1">
+            <td type="date" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="date" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+        </tr>
+    </tbody>
+</excel>

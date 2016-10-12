@@ -207,6 +207,12 @@ Ext.define('iFlat.view.ss.ViolateRegulationEdit', {
                         var title = record.get('employee.title');
                         cb.up('window').down('textfield[name=violateRegulation.title]').setValue(title);
                         // 年龄，工龄，性别
+                        var sex = record.get('employee.sex');
+                        cb.up('window').down('textfield[name=violateRegulation.sex]').setValue(sex);
+                        var birth = record.get('employee.birth');
+                        var age = Flat.util.calcAge(birth);
+                        cb.up('window').down('textfield[name=violateRegulation.age]').setValue(age);
+                        cb.up('window').down('textfield[name=violateRegulation.seniority]').setValue(Flat.util.calcSeniority(account));
 
                     },
                 }

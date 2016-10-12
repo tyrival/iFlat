@@ -6,6 +6,7 @@ import com.iflat.sm.service.TecSettlementService;
 import com.iflat.system.entity.UserInfoVo;
 import com.iflat.util.Session;
 import com.iflat.workflow.service.WorkflowService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -64,6 +65,7 @@ public class TecSettlementServiceImpl extends BaseServiceSupport implements TecS
      * @throws Exception
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void submit(TecSettlement tecSettlement) throws Exception {
 
         TecSettlement param = new TecSettlement();

@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.interceptor.PreResultListener;
  */
 public class UserListener implements PreResultListener {
 
+
     /*
     * (1) 在Interceptor中加入以下属性：
     *     private UserListener listener;

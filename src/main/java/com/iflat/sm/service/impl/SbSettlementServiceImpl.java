@@ -11,16 +11,12 @@ import com.iflat.sm.bean.TargetCostAccount;
 import com.iflat.sm.service.SbSettlementDetailService;
 import com.iflat.sm.service.SbSettlementService;
 import com.iflat.system.entity.UserInfoVo;
-import com.iflat.system.service.UserService;
 import com.iflat.util.ExcelUtil;
 import com.iflat.util.Session;
 import com.iflat.util.StringUtil;
 import com.iflat.workflow.service.WorkflowService;
-import org.activiti.engine.TaskService;
-import org.activiti.engine.runtime.ProcessInstance;
-import org.activiti.engine.task.Task;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
 import java.util.*;
 
 /**
@@ -88,6 +84,7 @@ public class SbSettlementServiceImpl extends BaseServiceSupport implements SbSet
      * @throws Exception
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void submit(SbSettlement sbSettlement) throws Exception {
 
         SbSettlement param = new SbSettlement();
@@ -97,6 +94,7 @@ public class SbSettlementServiceImpl extends BaseServiceSupport implements SbSet
             throw new Exception("此项目无法重复提交");
         }
         workflowService.completeTaskByBusinessKey(this.getBusinessKey(sbSettlement));
+
     }
 
     @Override

@@ -63,7 +63,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 xtype: 'combo',
                 name: 'fiveS.funcDept',
                 queryMode: 'local',
-                allowBlank: false,
+                allowBlank: true,
                 editable: true,
                 typeAhead: true,
                 minChars: 0,
@@ -372,8 +372,6 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                         cb.up('window').down('textfield[name=fiveS.groupName]').setValue(groupName);
                         var account = record.get('employee.account');
                         cb.up('window').down('textfield[name=fiveS.personAcc]').setValue(account);
-                        // 年龄，工龄，性别
-
                     },
                 }
             },{

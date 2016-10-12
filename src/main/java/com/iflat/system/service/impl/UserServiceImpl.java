@@ -59,6 +59,7 @@ public class UserServiceImpl implements UserService {
     public UserInfoVo switchRole(String roleId) throws Exception {
         UserInfoVo user = Session.getUserInfo();
         user.setRoleId(roleId);
+        user.setRoleName(null);
         List<UserInfoVo> list = this.userDao.listVoByVo(user);
         if(list != null && list.size() > 0) {
             Date loginTime = user.getLoginTime();

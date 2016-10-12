@@ -23,18 +23,94 @@ public class Employee {
 
     private String fullName;
 
+    private String idCardNo;  // 身份证
     private Date birth;  // 生日
     private String nation;  // 民族--
     private String birthplace;  // 籍贯--
-    private Date joinParty;  // 入党时间
-    private Date becomeFullMember;  // 转正时间
     private Date startWorking;  // 工作时间
-    private String idCardNo;  // 身份证
-    private String diploma;  // 学历--
-    private String degree;  // 学位--
+    private Date becomeFullMember;  // 转正时间
     private Date enrolment;  // 入学时间--
     private Date graduation;  // 毕业时间--
-    private String partyType;  // 正式党员/预备党员
+    private Date joinParty;  // 入党时间
+    //private String diploma;  // 学历--
+    //private String degree;  // 学位--
+    //private String partyType;  // 正式党员/预备党员
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getIdCardNo() {
+        return idCardNo;
+    }
+
+    public void setIdCardNo(String idCardNo) {
+        this.idCardNo = idCardNo;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getBirthplace() {
+        return birthplace;
+    }
+
+    public void setBirthplace(String birthplace) {
+        this.birthplace = birthplace;
+    }
+
+    public Date getStartWorking() {
+        return startWorking;
+    }
+
+    public void setStartWorking(Date startWorking) {
+        this.startWorking = startWorking;
+    }
+
+    public Date getBecomeFullMember() {
+        return becomeFullMember;
+    }
+
+    public void setBecomeFullMember(Date becomeFullMember) {
+        this.becomeFullMember = becomeFullMember;
+    }
+
+    public Date getEnrolment() {
+        return enrolment;
+    }
+
+    public void setEnrolment(Date enrolment) {
+        this.enrolment = enrolment;
+    }
+
+    public Date getGraduation() {
+        return graduation;
+    }
+
+    public void setGraduation(Date graduation) {
+        this.graduation = graduation;
+    }
+
+    public Date getJoinParty() {
+        return joinParty;
+    }
+
+    public void setJoinParty(Date joinParty) {
+        this.joinParty = joinParty;
+    }
 
     public String getFullName() {
         return fullName;

@@ -12,6 +12,7 @@ import com.iflat.system.service.ModuleService;
 import com.iflat.util.ExtTreeUtil;
 import com.iflat.util.ListSort;
 import com.iflat.util.Session;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -26,9 +27,10 @@ public class ModuleServiceImpl implements ModuleService {
     private AuthDataService authDataService;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Module save(Module module) throws Exception {
 
-        if(module.getNodeId() != null && !"".equals(module.getNodeId())) {
+        if (module.getNodeId() != null && !"".equals(module.getNodeId())) {
 
             Module old = moduleDao.get(module.getNodeId());
             if (isKeyChanged(old, module)) {
@@ -38,7 +40,6 @@ public class ModuleServiceImpl implements ModuleService {
             }
 
             module = this.moduleDao.update(module);
-
         } else {
             module.setNodeId(UUID.randomUUID().toString());
             module.setCreateTime(new Date());

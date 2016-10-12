@@ -11,6 +11,7 @@ import com.iflat.workflow.service.WorkflowService;
 import com.iflat.xr.bean.*;
 import com.iflat.xr.service.TrSettlementService;
 import org.apache.commons.collections.map.HashedMap;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.util.*;
@@ -97,6 +98,7 @@ public class TrSettlementServiceImpl extends BaseServiceSupport implements TrSet
      * @throws Exception
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void submit(TrSettlement trSettlement) throws Exception {
 
         TrSettlement param = new TrSettlement();

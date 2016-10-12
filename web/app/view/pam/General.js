@@ -27,15 +27,15 @@ Ext.define('iFlat.view.pam.General', {
                         });
                     }
                     if (!Flat.util.isEmpty(info[0])) {
-                        form.down('textfield[name=pamGeneral.deptMemberNum]').setValue(info['deptMemberNum']);
-                        form.down('textfield[name=pamGeneral.partyMemberNum]').setValue(info['partyMemberNum']);
-                        form.down('textfield[name=pamGeneral.partyGroupNum]').setValue(info['partyGroupNum']);
-                        form.down('textfield[name=pamGeneral.malePartyMember]').setValue(info['malePartyMember']);
-                        form.down('textfield[name=pamGeneral.femalePartyMember]').setValue(info['femalePartyMember']);
-                        form.down('textfield[name=pamGeneral.groupWithoutParty]').setValue(info['groupWithoutParty']);
-                        form.down('textfield[name=pamGeneral.comsomol]').setValue(info['comsomol']);
-                        form.down('textfield[name=pamGeneral.contact]').setValue(info['contact']);
-                        form.down('textfield[name=pamGeneral.phoneNum]').setValue(info['phoneNum']);
+                        form.down('textfield[name=pamGeneral.deptMemberNum]').setValue(info[0]['deptMemberNum']);
+                        form.down('textfield[name=pamGeneral.partyMemberNum]').setValue(info[0]['partyMemberNum']);
+                        form.down('textfield[name=pamGeneral.partyGroupNum]').setValue(info[0]['partyGroupNum']);
+                        form.down('textfield[name=pamGeneral.malePartyMember]').setValue(info[0]['malePartyMember']);
+                        form.down('textfield[name=pamGeneral.femalePartyMember]').setValue(info[0]['femalePartyMember']);
+                        form.down('textfield[name=pamGeneral.groupWithoutParty]').setValue(info[0]['groupWithoutParty']);
+                        form.down('textfield[name=pamGeneral.comsomol]').setValue(info[0]['comsomol']);
+                        form.down('textfield[name=pamGeneral.contact]').setValue(info[0]['contact']);
+                        form.down('textfield[name=pamGeneral.phoneNum]').setValue(info[0]['phoneNum']);
                     }
                 },
                 failure: function(response, opts) {

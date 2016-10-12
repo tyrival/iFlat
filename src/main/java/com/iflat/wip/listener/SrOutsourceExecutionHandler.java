@@ -24,10 +24,6 @@ public class SrOutsourceExecutionHandler extends WorkflowExecutionListener {
         setStatus(execution, SrOsStatus.STATUS_PROJECT_MANAGER_APPROVE);
     }
 
-    public void OutsourceChiefReceipt(DelegateExecution execution) throws Exception {
-        setStatus(execution, SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT);
-    }
-
     public void bidding(DelegateExecution execution) throws Exception {
         setStatus(execution, SrOsStatus.STATUS_BIDDING);
     }

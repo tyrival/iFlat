@@ -44,6 +44,21 @@ Ext.define('iFlat.view.pam.YearWorkEdit', {
                 name: 'yearWork.status',
                 fieldLabel: '状态',
                 hidden: true,
+                listeners: {
+                    change: function (field, newValue, oldValue, eOpts) {
+                        if (newValue === '0') {
+                            Ext.getCmp('pam-yearworkedit-toolbar').show();
+                            Ext.getCmp('pam-yearworkedit-upload').show();
+                            Ext.getCmp('pam-yearworkedit-uploadbtn').show();
+                            Ext.getCmp('pam-yearworkedit-delete').show();
+                        } else {
+                            Ext.getCmp('pam-yearworkedit-toolbar').hide();
+                            Ext.getCmp('pam-yearworkedit-upload').hide();
+                            Ext.getCmp('pam-yearworkedit-uploadbtn').hide();
+                            Ext.getCmp('pam-yearworkedit-delete').hide();
+                        }
+                    }
+                }
             }, {
                 xtype: 'textfield',
                 name: 'yearWork.id',
@@ -104,6 +119,7 @@ Ext.define('iFlat.view.pam.YearWorkEdit', {
                 }]
             }, {
                 xtype: 'button',
+                id: 'pam-yearworkedit-uploadbtn',
                 text: '上传',
                 ui: 'orig-blue',
                 handler: 'uploadAttachment'
@@ -123,6 +139,7 @@ Ext.define('iFlat.view.pam.YearWorkEdit', {
                     xtype: 'button',
                     ui: 'gray',
                     text: '删除',
+                    id: 'pam-yearworkedit-delete',
                     handler: 'deleteAttachment'
                 }]
             }, {
@@ -150,14 +167,20 @@ Ext.define('iFlat.view.pam.YearWorkEdit', {
             }]
         }]
     },
-    buttons: [
-        {
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'bottom',
+        ui: 'footer',
+        id: 'pam-yearworkedit-toolbar',
+        disabled: true,
+        items: [{
+            xtype: 'button',
             text: '提交',
             handler: 'submitYearWorkEdit',
         }, '->', {
+            xtype: 'button',
             text: '保存',
             handler: 'saveYearWorkEdit',
-        },
-
-    ],
+        }]
+    }],
 });

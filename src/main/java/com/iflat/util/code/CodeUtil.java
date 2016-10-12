@@ -39,6 +39,7 @@ public class CodeUtil {
         boolean struts = true;
         boolean extmodel = true;
         boolean extstore = true;
+        boolean extview = true;
         boolean mssql = true;
 
         if (exclude != null) {
@@ -63,14 +64,17 @@ public class CodeUtil {
                 if ("struts".equals(ex)) {
                     struts = false;
                 }
+                if ("mssql".equals(ex)) {
+                    mssql = false;
+                }
                 if ("extmodel".equals(ex) || "model".equals(ex)) {
                     extmodel = false;
                 }
                 if ("extstore".equals(ex) || "store".equals(ex)) {
                     extstore = false;
                 }
-                if ("mssql".equals(ex)) {
-                    mssql = false;
+                if ("extview".equals(ex) || "view".equals(ex)) {
+                    extview = false;
                 }
             }
         }
@@ -112,6 +116,11 @@ public class CodeUtil {
             if (extstore) {
                 // 生成Ext Store
                 ExtStoreCoding.generate(main.getClassName(), extjsRoot);
+            }
+
+            if (extview) {
+                // 生成Ext Store
+                ExtViewCoding.generate(main.getClassName(), extjsRoot);
             }
 
             if (mssql) {

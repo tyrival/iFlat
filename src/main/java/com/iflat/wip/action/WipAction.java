@@ -18,6 +18,7 @@ import com.iflat.wip.service.SrOutsourceService;
 import com.iflat.workflow.service.WorkflowService;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.commons.collections.map.HashedMap;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.util.*;
@@ -364,12 +365,14 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrOutsource() throws Exception {
         String businessKey = srOutsourceService.getBusinessKey(srOutsource);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrOutsourceWithAssess() throws Exception {
         this.srOsAssessService.save(this.srOsAssess);
         String businessKey = srOutsourceService.getBusinessKey(srOutsource);
@@ -377,6 +380,7 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrOutsourceWithSaveAndAssess() throws Exception {
         this.srOsAssessService.save(this.srOsAssess);
         SrOutsource res = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
@@ -386,6 +390,7 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrOutsourceWithSave() throws Exception {
         SrOutsource res = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
         handleSrOutsourceMap(res);
@@ -412,6 +417,7 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
         }
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrOutsourceBatch() throws Exception {
         if (srOutsourceList != null && srOutsourceList.size() > 0) {
             for (int i = 0; i < srOutsourceList.size(); i++) {
@@ -478,6 +484,7 @@ public class WipAction extends BaseAction implements ModelDriven<Page> {
         this.srOutsourceDetl = srOutsourceDetl;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String createSrOutsourceDetl() throws Exception {
         this.srOutsource = (SrOutsource) this.srOutsourceService.save(this.srOutsource);
         try {

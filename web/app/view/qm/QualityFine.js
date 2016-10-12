@@ -84,7 +84,8 @@ Ext.define('iFlat.view.qm.QualityFine', {
         align: 'center',
         iconCls: 'x-fa fa-print',
         handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-            Print.fine(record.getData());
+            var m = record.getData();
+            Print.fine(m);
         },
         editor: {
             xtype: 'label',

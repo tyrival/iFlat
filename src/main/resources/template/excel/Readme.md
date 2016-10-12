@@ -1,0 +1,4 @@
+com.iflat.util.ExcelUtil类根据此处的xml文件，生成可用于导入的excel模板；
+简单导入代码可参考com.iflat.ss.FiveSServiceImpl中的Override；
+较为复杂的对象导入，例如工费结算的SbSettlement的导入，包含头信息和明细行同时导入，可具体参考com.iflat.base.service.BaseServiceSupport
+和com.iflat.sm.service.SbSettlementServiceImpl中的代码

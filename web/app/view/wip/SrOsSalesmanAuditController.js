@@ -127,4 +127,56 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAuditController', {
         }
     },
 
+    completeProcess: function (btn) {
+
+        var firstTip = "结束流程将使流程不再向后流转，表示经营代表不同意此工程委外，是否结束？";
+        Ext.Msg.confirm("提示!", firstTip, function(btn) {
+
+            if (btn == 'no') {
+                return;
+            }
+
+            Ext.Msg.confirm (
+                "提示!", "结束流程操作为单向操作，不可恢复，是否继续？", function (btn) {
+
+                if (btn == "no") {
+                    return;
+                }
+
+                var panel = btn.up('wip-srossalesmanaudit');
+                var form = panel.down('form');
+                var comment = form.down('textarea[name=comment]');
+                var param = {
+                    'outGoingName': 'finish'
+                }
+                var opinion = comment.getValue();
+                if (Flat.util.isEmpty(opinion)) {
+                    var c = '经营代表不同意此工程委外。';
+                    opinion = c;
+                    comment.setValue(c);
+                }
+                form.down('textfield[name=srOutsource.saleOpinion]').setValue(opinion);
+                if (form.isValid()) {
+                    form.submit({
+                        url: 'wip_approveSrOutsourceWithSave.action',
+                        waitMsg: '正在结束流程...',
+                        method: 'POST',
+                        params: param,
+                        success: function (fp, o) {
+                            Flat.util.tip(o.response.responseText);
+                            form.down('textarea[name=comment]').setValue('');
+                            form.up('window').hide()
+                            workflowTaskStore.reload();
+                        },
+                        failure: function (fp, o) {
+                            Flat.util.tip(o.response.responseText);
+                            form.down('textarea[name=comment]').setValue('');
+                            form.up('window').hide()
+                            workflowTaskStore.reload();
+                        }
+                    })
+                }
+            })
+        })
+    },
 });

@@ -1,0 +1,1 @@
+创建表的sql语句，可由com.iflat.util.code.CodeUtil自动生成，需要自行调整VARCHAR长度

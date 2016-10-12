@@ -6,6 +6,7 @@ import com.iflat.wip.bean.SrOutsource;
 import com.iflat.wip.bean.SrOutsourceDetl;
 import com.iflat.wip.service.SrOutsourceService;
 import com.iflat.sm.bean.SrProjectManager;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -70,6 +71,7 @@ public class SrOutsourceServiceImpl extends BaseServiceSupport implements SrOuts
      * @throws Exception
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void submit(SrOutsource srOutsource) throws Exception {
 
         SrOutsource param = new SrOutsource();

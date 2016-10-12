@@ -251,7 +251,7 @@ Ext.define('iFlat.view.wip.SrOsSalesmanReaudit', {
             }, {
                 xtype: 'fieldset',
                 title: '比价信息',
-                items: [{
+                items: [/*{
                     xtype: 'container',
                     layout: 'hbox',
                     width: '100%',
@@ -281,7 +281,7 @@ Ext.define('iFlat.view.wip.SrOsSalesmanReaudit', {
                         editable: false
                     }, ]
 
-                }, {
+                }, */{
                     xtype: 'container',
                     layout: 'hbox',
                     margin: '10 0 0 0',
@@ -346,7 +346,7 @@ Ext.define('iFlat.view.wip.SrOsSalesmanReaudit', {
                         editable: false,
                     }, ]
                 }, ]
-            }, {
+            }, /*{
                 xtype: 'fieldset',
                 title: '资料信息',
                 items: [{
@@ -376,7 +376,7 @@ Ext.define('iFlat.view.wip.SrOsSalesmanReaudit', {
                     }, ]
 
                 }]
-            }, {
+            }, */{
                 xtype: 'fieldset',
                 title: '完工信息',
                 items: [{

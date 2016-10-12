@@ -8,6 +8,16 @@ Ext.define('iFlat.view.pam.PartyWorkView', {
 
     id: 'pam-partyworkview',
     controller: 'pam-partyworkview',
+
+    listeners: {
+        render: function () {
+            var role = Ext.getCmp('global-panel').getViewModel().get('user')['roleName']
+            Ext.getCmp('pam-partyworkview-reject1').setHidden(role != '党群信息管理员');
+            Ext.getCmp('pam-partyworkview-reject2').setHidden(role != '党群信息管理员');
+            Ext.getCmp('pam-partyworkview-reject3').setHidden(role != '党群信息管理员');
+        }
+    },
+
     items: [{
         xtype: 'treepanel',
         store: pamPartyWorkPbViewNodeStore = Ext.create('iFlat.store.pam.PartyBranchTree'),
@@ -60,6 +70,8 @@ Ext.define('iFlat.view.pam.PartyWorkView', {
                     xtype: 'panel',
                     tbar: [{
                         text: '退回',
+                        hidden: true,
+                        id: 'pam-partyworkview-reject1',
                         handler: 'rejectMonthlyWork'
                     }],
                     layout: {
@@ -554,6 +566,8 @@ Ext.define('iFlat.view.pam.PartyWorkView', {
                     },
                     tbar: [{
                         text: '退回',
+                        hidden: true,
+                        id: 'pam-partyworkview-reject2',
                         handler: 'rejectYearWorkPlan'
                     }],
                     scrollable: true,
@@ -670,6 +684,8 @@ Ext.define('iFlat.view.pam.PartyWorkView', {
                     xtype: 'panel',
                     tbar: [{
                         text: '退回',
+                        hidden: true,
+                        id: 'pam-partyworkview-reject3',
                         handler: 'rejectYearWorkSum'
                     }],
                     layout: {

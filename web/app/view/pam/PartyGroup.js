@@ -22,6 +22,7 @@ Ext.define('iFlat.view.pam.PartyGroup', {
                         pbName = info[0]['pbName'];
                         pamPartyGroupStore.getProxy().extraParams['partyGroup.pbName'] = pbName;
                         pamPartyGroupStore.reload();
+                        Ext.getCmp('pam-partygroup-pbname').setValue(pbName);
                     } else {
                         Ext.getCmp('pam-partygroup-add').hide();
                         Ext.Msg.show({
@@ -61,6 +62,10 @@ Ext.define('iFlat.view.pam.PartyGroup', {
         }, '->', {
             text: '刷新',
             handler: 'refreshList',
+        }, {
+            xtype: 'textfield',
+            id: 'pam-partygroup-pbname',
+            hidden: true
         }],
     }],
 

@@ -139,4 +139,32 @@ Ext.define('iFlat.view.ss.PotentialHazardController', {
             Ext.getCmp('ss-potentialhazardedit-link2').setHref('');
         }
     },
+
+    uploadFile: function(btn) {
+        var form = btn.previousSibling('form');
+        if (form.isValid()) {
+            form.submit({
+                url: 'ss_importPotentialHazard.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    ssPotentialHazardStore.reload();
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        Ext.Ajax.request({
+            url: 'ss_templatePotentialHazard.action',
+            method: 'post',
+            success: function(response, opts) {
+                window.open(Ext.JSON.decode(response.responseText)['object']);
+            },
+        });
+    },
 })

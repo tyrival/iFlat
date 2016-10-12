@@ -31,13 +31,13 @@ public class PotentialHazard {
     private String deadline;  // 整改期限：立即整改/限期整改
     private String feedback;  // 整改情况：已整改/空白
     private double amount;  // 罚款
+    private double score;
     private String busiDivision;  // 事业部
     private String projMgr;  // 总管
     private String profMgr;  // 主管
     private String workMgr;  // 作业张
     private String teamLeader;  // 班组长
     private String posiMgr;  // 档长
-    private double score;
     private String attachment;
     private String rectifyAtt;  // 整改后照片
     private String comment;

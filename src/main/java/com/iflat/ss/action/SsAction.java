@@ -1,5 +1,6 @@
 package com.iflat.ss.action;
 
+import com.iflat.base.entity.ExcelTemplate;
 import com.iflat.ss.entity.VrCodeRiskLvl;
 import com.iflat.ss.entity.PhCodeType;
 import com.iflat.ss.entity.FsAreaDept;
@@ -8,6 +9,7 @@ import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
 import com.iflat.ss.bean.*;
 import com.iflat.ss.entity.SafetyFineVo;
+import com.iflat.util.ExcelUtil;
 import com.iflat.util.FileUtil;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -39,8 +41,46 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
     private ViolateRegulation violateRegulation;
     private BaseService violateRegulationService;
     private VrCode vrCode;
-    private BaseService vrCodeService;    /* VrCode */
+    private BaseService vrCodeService;
 
+    public String templatePotentialHazard() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("ss", "PotentialHazard");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String templateViolateRegulation() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("ss", "ViolateRegulation");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String templateFiveS() throws Exception {
+        ExcelTemplate excelTemplate = new ExcelTemplate("ss", "FiveS");
+        excelTemplate = ExcelUtil.template(excelTemplate);
+        this.result.setObject(excelTemplate.getSavePath());
+        return SUCCESS;
+    }
+
+    public String importPotentialHazard() throws Exception {
+        this.result.setList(this.potentialHazardService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    public String importViolateRegulation() throws Exception {
+        this.result.setList(this.violateRegulationService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+    public String importFiveS() throws Exception {
+        this.result.setList(this.fiveSService.importExcel(this.upload, this.uploadFileName));
+        return SUCCESS;
+    }
+
+
+    /* VrCode */
     public String saveVrCode() throws Exception {
         this.result.setObject(this.vrCodeService.save(this.vrCode));
         return SUCCESS;

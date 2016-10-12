@@ -4,7 +4,9 @@ Ext.define('iFlat.view.pam.PartyInfoViewController', {
 
     onPartyBranchClick: function(tree, record, tr, rowIndex, e, eOpts) {
         var pb = record.get('text');
-        Ext.getCmp('pam-partyinfoview-general-form').down('textfield[name=pamGeneral.pbName]').setValue(pb);
+        var form = Ext.getCmp('pam-partyinfoview-general-form');
+        form.reset();
+        form.down('textfield[name=pamGeneral.pbName]').setValue(pb);
         pamPartyInfoCommitteeStore.getProxy().extraParams['committee.pbName'] = pb;
         pamPartyInfoCommitteeStore.reload();
         pamPartyInfoPartyGroupStore.getProxy().extraParams['partyGroup.pbName'] = pb;
@@ -20,9 +22,13 @@ Ext.define('iFlat.view.pam.PartyInfoViewController', {
     },
 
     onGeneralPbNameChange: function (tf, newV, oldV, op) {
-        if (Flat.util.isEmpty(newV)) {
+        if (!Flat.util.isEmpty(newV)) {
             var store = Ext.create('iFlat.store.pam.General', {
-                'pamGeneral.pbName': newV
+                proxy: {
+                    extraParams: {
+                        'pamGeneral.pbName': newV
+                    }
+                }
             });
             store.reload({
                 callback: function (records, operation, success) {

@@ -140,4 +140,31 @@ Ext.define('iFlat.view.ss.ViolateRegulationController', {
         }
     },
 
+    uploadFile: function(btn) {
+        var form = btn.previousSibling('form');
+        if (form.isValid()) {
+            form.submit({
+                url: 'ss_importViolateRegulation.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    ssViolateRegulationStore.reload();
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        Ext.Ajax.request({
+            url: 'ss_templateViolateRegulation.action',
+            method: 'post',
+            success: function(response, opts) {
+                window.open(Ext.JSON.decode(response.responseText)['object']);
+            },
+        });
+    },
 })

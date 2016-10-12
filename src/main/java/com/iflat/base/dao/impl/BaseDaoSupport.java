@@ -4,6 +4,7 @@ import com.iflat.base.dao.BaseDao;
 import com.iflat.util.StringUtil;
 import org.mybatis.spring.SqlSessionTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,8 +24,31 @@ public class BaseDaoSupport implements BaseDao {
 
     @Override
     public int insertBatch(List list) throws Exception {
-        Object o = list != null && list.size() > 0 ? list.get(0) : null;
-        return o != null ? this.sqlSessionTemplate.insert(getNameSpace(o) + ".insertBatch", list) : null;
+
+        if (list != null && list.size() > 0) {
+
+            Object o = list.get(0);
+            int fieldCount = o.getClass().getDeclaredFields().length;
+            int batchSize = 2000 / fieldCount;
+            int batchCount = list.size() / batchSize + 1;
+            int result = 0;
+            for (int i = 0; i < batchCount; i++) {
+                List temp = new ArrayList();
+                int beginIndex = i * batchSize;
+                int lastIndex = (i + 1) * batchSize - 1;
+                if (i == batchCount - 1) {
+                    lastIndex = list.size() - 1;
+                }
+                for (int j = beginIndex; j <= lastIndex; j++) {
+                    temp.add(list.get(j));
+                }
+                result += this.sqlSessionTemplate.insert(getNameSpace(o) + ".insertBatch", temp);
+            }
+            return result;
+
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -34,8 +58,30 @@ public class BaseDaoSupport implements BaseDao {
 
     @Override
     public int updateBatch(List list) throws Exception {
-        Object o = list != null && list.size() > 0 ? list.get(0) : null;
-        return o != null ? this.sqlSessionTemplate.update(getNameSpace(o) + ".updateBatch", list) : null;
+        if (list != null && list.size() > 0) {
+
+            Object o = list.get(0);
+            int fieldCount = o.getClass().getDeclaredFields().length;
+            int batchSize = 2000 / fieldCount;
+            int batchCount = list.size() / batchSize + 1;
+            int result = 0;
+            for (int i = 0; i < batchCount; i++) {
+                List temp = new ArrayList();
+                int beginIndex = i * batchSize;
+                int lastIndex = (i + 1) * batchSize - 1;
+                if (i == batchCount - 1) {
+                    lastIndex = list.size() - 1;
+                }
+                for (int j = beginIndex; j <= lastIndex; j++) {
+                    temp.add(list.get(j));
+                }
+                result += this.sqlSessionTemplate.update(getNameSpace(o) + ".updateBatch", temp);
+            }
+            return result;
+
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -45,8 +91,30 @@ public class BaseDaoSupport implements BaseDao {
 
     @Override
     public int deleteBatch(List list) throws Exception {
-        Object o = list != null && list.size() > 0 ? list.get(0) : null;
-        return o != null ? this.sqlSessionTemplate.delete(getNameSpace(o) + ".deleteBatch", list) : null;
+        if (list != null && list.size() > 0) {
+
+            Object o = list.get(0);
+            int fieldCount = o.getClass().getDeclaredFields().length;
+            int batchSize = 2000 / fieldCount;
+            int batchCount = list.size() / batchSize + 1;
+            int result = 0;
+            for (int i = 0; i < batchCount; i++) {
+                List temp = new ArrayList();
+                int beginIndex = i * batchSize;
+                int lastIndex = (i + 1) * batchSize - 1;
+                if (i == batchCount - 1) {
+                    lastIndex = list.size() - 1;
+                }
+                for (int j = beginIndex; j <= lastIndex; j++) {
+                    temp.add(list.get(j));
+                }
+                result += this.sqlSessionTemplate.delete(getNameSpace(o) + ".deleteBatch", temp);
+            }
+            return result;
+
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -56,8 +124,27 @@ public class BaseDaoSupport implements BaseDao {
 
     @Override
     public List listBatch(List list) throws Exception {
-        Object o = list != null && list.size() > 0 ? list.get(0) : null;
-        return o != null ? this.sqlSessionTemplate.selectList(getNameSpace(o) + ".listBatch", list) : null;
+        List<Object> result = new ArrayList();
+        if (list != null && list.size() > 0) {
+
+            Object o = list.get(0);
+            int fieldCount = o.getClass().getDeclaredFields().length;
+            int batchSize = 2000 / fieldCount;
+            int batchCount = list.size() / batchSize + 1;
+            for (int i = 0; i < batchCount; i++) {
+                List temp = new ArrayList();
+                int beginIndex = i * batchSize;
+                int lastIndex = (i + 1) * batchSize - 1;
+                if (i == batchCount - 1) {
+                    lastIndex = list.size() - 1;
+                }
+                for (int j = beginIndex; j <= lastIndex; j++) {
+                    temp.add(list.get(j));
+                }
+                result.add(this.sqlSessionTemplate.selectList(getNameSpace(o) + ".listBatch", temp));
+            }
+        }
+        return result;
     }
 
     public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {

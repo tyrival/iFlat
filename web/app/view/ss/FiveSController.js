@@ -141,4 +141,32 @@ Ext.define('iFlat.view.ss.FiveSController', {
             Ext.getCmp('ss-fivesedit-link2').setHref('');
         }
     },
+    
+    uploadFile: function(btn) {
+        var form = btn.previousSibling('form');
+        if (form.isValid()) {
+            form.submit({
+                url: 'ss_importFiveS.action',
+                method: 'POST',
+                waitMsg: '正在导入......',
+                success: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                    ssFiveSStore.reload();
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    downloadTemplate: function(btn) {
+        Ext.Ajax.request({
+            url: 'ss_templateFiveS.action',
+            method: 'post',
+            success: function(response, opts) {
+                window.open(Ext.JSON.decode(response.responseText)['object']);
+            },
+        });
+    },
 })

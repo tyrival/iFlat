@@ -9,6 +9,7 @@ import com.iflat.system.entity.UserInfoVo;
 import com.iflat.system.service.AuthOperatingService;
 import com.iflat.util.JSONUtil;
 import com.iflat.util.Session;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class AuthOperatingServiceImpl implements AuthOperatingService {
     private AuthOperatingDao authOperatingDao;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int saveBatch(String authOperatingVoList) throws Exception {
 
         //获取所有前台传递的数据

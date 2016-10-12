@@ -46,9 +46,9 @@ Ext.define('iFlat.view.pam.News', {
         editor: {
             xtype: 'label',
         },
-        isDisabled: function(view, rowIdx, colIdx, item, record) {
+        /*isDisabled: function(view, rowIdx, colIdx, item, record) {
             return record.get('news.isSubmit') == '1';
-        },
+        },*/
     }, {
         text: '提交',
         width: 60,

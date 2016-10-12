@@ -10,6 +10,7 @@ import com.iflat.system.entity.AuthDuplicateVo;
 import com.iflat.system.entity.AuthModuleVo;
 import com.iflat.system.service.AuthModuleService;
 import com.iflat.util.JSONUtil;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -35,22 +36,23 @@ public class AuthModuleServiceImpl implements AuthModuleService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int saveBatch(String authModuleVoList) throws Exception {
 
+        int result = 0;
         //获取所有前台传递的数据
         List<AuthModuleVo> list = (List<AuthModuleVo>) JSONUtil.jsonToList(authModuleVoList, "com.iflat.system.entity.AuthModuleVo");
         List<AuthModuleVo> createList = new ArrayList<AuthModuleVo>();
         List<AuthModuleVo> updateList = new ArrayList<AuthModuleVo>();
         //将数据按照amId是否为空，分为新增或修改两个list
-        for(int i = 0; i < list.size(); i++) {
-            if("".equals(list.get(i).getAmId()) || list.get(i).getAmId() == null) {
+        for (int i = 0; i < list.size(); i++) {
+            if ("".equals(list.get(i).getAmId()) || list.get(i).getAmId() == null) {
                 list.get(i).setAmId(UUID.randomUUID().toString());
                 createList.add(list.get(i));
             } else {
                 updateList.add(list.get(i));
             }
-        }
-        int result = 0;
+            }
         //对两个list分别执行批量新增和修改操作
         result = createList.size() != 0 ? result + this.authModuleDao.insertBatchVo(createList) : result;
         result = updateList.size() != 0 ? result + this.authModuleDao.updateBatchVo(updateList) : result;
@@ -64,6 +66,7 @@ public class AuthModuleServiceImpl implements AuthModuleService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int duplicateAuthority(String authDuplicateList) throws Exception {
         List<AuthDuplicateVo> list = (List<AuthDuplicateVo>) JSONUtil.jsonToList(authDuplicateList, "com.iflat.system.entity.AuthDuplicateVo");
         this.authModuleDao.deleteByDuplicate(list);
@@ -77,6 +80,7 @@ public class AuthModuleServiceImpl implements AuthModuleService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int clearAuthority(String authClearList) throws Exception {
         List<AuthClearVo> list = (List<AuthClearVo>) JSONUtil.jsonToList(authClearList, "com.iflat.system.entity.AuthClearVo");
         int result = 0;
@@ -84,6 +88,7 @@ public class AuthModuleServiceImpl implements AuthModuleService {
         result += this.authDataDao.deleteByClear(list);
         result += this.authDataDao.deleteByClear(list);
         return result;
+
     }
 
     @Override

@@ -405,7 +405,7 @@ public class PamAction extends BaseAction implements ModelDriven<Page> {
         orig.setIsAdopt(this.news.getIsAdopt());
         orig.setSecApprv(this.news.getSecApprv());
         orig.setStatus(this.news.getStatus());
-        if (this.news.getIsAdopt() == "1") {
+        if ("1".equals(this.news.getIsAdopt())) {
             orig.setAmount(5);
         }
         this.result.setObject(this.newsService.save(orig));

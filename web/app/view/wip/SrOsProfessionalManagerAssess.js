@@ -248,7 +248,7 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerAssess', {
                         },],
                     }]
                 }, ]
-            }, {
+            }, /*{
                 xtype: 'fieldset',
                 title: '比价信息',
                 items: [{
@@ -395,7 +395,7 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerAssess', {
                     }, ]
 
                 }]
-            }, {
+            }, */{
                 xtype: 'fieldset',
                 title: '完工信息',
                 items: [{

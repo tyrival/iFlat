@@ -9,6 +9,13 @@
         VALUES (#{id},#{date},#{time},#{riskLvl},#{code},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{training},#{trainingEff},#{attachment},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{issueDept},#{issuer},#{rectifyAtt},#{content})
     </insert>
 
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SsViolateRegulation
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.date},#{item.time},#{item.riskLvl},#{item.code},#{item.dept},#{item.team},#{item.groupName},#{item.title},#{item.personAcc},#{item.personName},#{item.age},#{item.seniority},#{item.sex},#{item.projNo},#{item.projName},#{item.area},#{item.position},#{item.description},#{item.measure},#{item.feedback},#{item.amount},#{item.busiDivision},#{item.projMgr},#{item.profMgr},#{item.workMgr},#{item.teamLeader},#{item.posiMgr},#{item.score},#{item.training},#{item.trainingEff},#{item.attachment},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.creatorDept},#{item.createTime},#{item.issueDept},#{item.issuer},#{item.rectifyAtt},#{item.content}
+        </foreach>
+    </insert>
+
     <update id="update" parameterType="com.iflat.ss.bean.ViolateRegulation">
         UPDATE SsViolateRegulation
         <set>

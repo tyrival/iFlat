@@ -192,104 +192,106 @@ public class ExcelUtil {
             for(int j = startCol; j < lastCellNum; j++) {
                 HSSFCell cell = row.getCell(j);
 
-                //cell为空则抛出异常
+                /*//cell为空则抛出异常
                 if(cell == null) {
                     throw new DataFormatException("ExcelHelper错误：第" + (i + 1) + "行第" + (j + 1) + "列不可为空");
-                }
+                }*/
 
-                String propType = cls.getDeclaredField(props[j]).getType().toString();
                 Object value = null;
-                try {
-                    switch(propType) {
-                        case "class java.util.Date" :
-                            try {
-                                value = cell.getDateCellValue();
-                            } catch (Exception e) {
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                                String str = cell.getStringCellValue().trim();
-                                if (str.length() <= 7) {
-                                    str += "-01";
+                if (cell != null) {
+                    String propType = cls.getDeclaredField(props[j]).getType().toString();
+                    try {
+                        switch(propType) {
+                            case "class java.util.Date" :
+                                try {
+                                    value = cell.getDateCellValue();
+                                } catch (Exception e) {
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                    String str = cell.getStringCellValue().trim();
+                                    if (str.length() <= 7) {
+                                        str += "-01";
+                                    }
+                                    value = sdf.parse(str);
                                 }
-                                value = sdf.parse(str);
-                            }
-                            break;
-                        case "class java.lang.String":
-                            try {
-                                value = cell.getStringCellValue().trim();
-                            } catch (Exception e) {
-                                value = Double.toString(cell.getNumericCellValue());
-                            }
-                            break;
-                        case "string":
-                            try {
-                                value = cell.getStringCellValue().trim();
-                            } catch (Exception e) {
-                                value = Double.toString(cell.getNumericCellValue());
-                            }
-                            break;
-                        case "boolean":
-                            try {
-                                value = cell.getBooleanCellValue();
-                            } catch (Exception e) {
-                                String v = cell.getStringCellValue().trim().toLowerCase();
-                                if ("1".equals(v) || "true".equals(v) || "yes".equals(v) || "y".equals(v)) {
-                                    value = true;
-                                } else {
-                                    value = false;
+                                break;
+                            case "class java.lang.String":
+                                try {
+                                    value = cell.getStringCellValue().trim();
+                                } catch (Exception e) {
+                                    value = Double.toString(cell.getNumericCellValue());
                                 }
-                            }
+                                break;
+                            case "string":
+                                try {
+                                    value = cell.getStringCellValue().trim();
+                                } catch (Exception e) {
+                                    value = Double.toString(cell.getNumericCellValue());
+                                }
+                                break;
+                            case "boolean":
+                                try {
+                                    value = cell.getBooleanCellValue();
+                                } catch (Exception e) {
+                                    String v = cell.getStringCellValue().trim().toLowerCase();
+                                    if ("1".equals(v) || "true".equals(v) || "yes".equals(v) || "y".equals(v)) {
+                                        value = true;
+                                    } else {
+                                        value = false;
+                                    }
+                                }
 
-                            break;
-                        case "class java.lang.Double":
-                            try {
-                                value = cell.getNumericCellValue();
-                            } catch (Exception e) {
-                                value = Double.parseDouble(cell.getStringCellValue());
-                            }
-                            break;
-                        case "double":
-                            try {
-                                value = cell.getNumericCellValue();
-                            } catch (Exception e) {
-                                value = Double.parseDouble(cell.getStringCellValue());
-                            }
-                            break;
-                        case "class java.lang.Float":
-                            try {
-                                value = cell.getNumericCellValue();
-                            } catch (Exception e) {
-                                value = Float.parseFloat(cell.getStringCellValue());
-                            }
-                            break;
-                        case "float":
-                            try {
-                                value = cell.getNumericCellValue();
-                            } catch (Exception e) {
-                                value = Float.parseFloat(cell.getStringCellValue());
-                            }
-                            break;
-                        case "class java.lang.Integer":
-                            try {
-                                value = cell.getNumericCellValue();
-                            } catch (Exception e) {
-                                value = Integer.parseInt(cell.getStringCellValue());
-                            }
-                            break;
-                        case "int":
-                            try {
-                                value = cell.getNumericCellValue();
-                            } catch (Exception e) {
-                                value = Integer.parseInt(cell.getStringCellValue());
-                            }
-                            break;
-                        case "class java.lang.Byte":
-                            value = cell.getErrorCellValue();
-                            break;
+                                break;
+                            case "class java.lang.Double":
+                                try {
+                                    value = cell.getNumericCellValue();
+                                } catch (Exception e) {
+                                    value = Double.parseDouble(cell.getStringCellValue());
+                                }
+                                break;
+                            case "double":
+                                try {
+                                    value = cell.getNumericCellValue();
+                                } catch (Exception e) {
+                                    value = Double.parseDouble(cell.getStringCellValue());
+                                }
+                                break;
+                            case "class java.lang.Float":
+                                try {
+                                    value = cell.getNumericCellValue();
+                                } catch (Exception e) {
+                                    value = Float.parseFloat(cell.getStringCellValue());
+                                }
+                                break;
+                            case "float":
+                                try {
+                                    value = cell.getNumericCellValue();
+                                } catch (Exception e) {
+                                    value = Float.parseFloat(cell.getStringCellValue());
+                                }
+                                break;
+                            case "class java.lang.Integer":
+                                try {
+                                    value = (int) cell.getNumericCellValue();
+                                } catch (Exception e) {
+                                    value = Integer.parseInt(cell.getStringCellValue());
+                                }
+                                break;
+                            case "int":
+                                try {
+                                    value = (int) cell.getNumericCellValue();
+                                } catch (Exception e) {
+                                    value = Integer.parseInt(cell.getStringCellValue());
+                                }
+                                break;
+                            case "class java.lang.Byte":
+                                value = cell.getErrorCellValue();
+                                break;
+                        }
+                    } catch (Exception e) {
+                        throw new ReflectionException("第" + (i + 1) + "行第" + (j + 1) + "列数据类型错误");
                     }
-                } catch (Exception e) {
-                    throw new ReflectionException("第" + (i + 1) + "行第" + (j + 1) + "列数据类型错误");
+                    gsReflectHelper.setMethodValue(props[j], value);
                 }
-                gsReflectHelper.setMethodValue(props[j], value);
             }
             result.add(obj);
         }

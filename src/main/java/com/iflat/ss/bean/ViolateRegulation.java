@@ -30,15 +30,15 @@ public class ViolateRegulation {
     private String measure;  // 整改措施
     private String feedback;  // 整改情况：已整改/拒绝整改
     private double amount;  // 罚款
+    private double score;
     private String busiDivision;  // 事业部
     private String projMgr;  // 总管
     private String profMgr;  // 主管
     private String workMgr;  // 作业张
     private String teamLeader;  // 班组长
     private String posiMgr;  // 档长
-    private double score;
     private String training;  // 是否培训
-    private double trainingEff;  // 培训分
+    private String trainingEff;  // 培训分
     private String attachment;
     private String comment;
     private String rectifyAtt;  // 整改后照片
@@ -350,11 +350,11 @@ public class ViolateRegulation {
         this.training = training;
     }
 
-    public double getTrainingEff() {
+    public String getTrainingEff() {
         return trainingEff;
     }
 
-    public void setTrainingEff(double trainingEff) {
+    public void setTrainingEff(String trainingEff) {
         this.trainingEff = trainingEff;
     }
 

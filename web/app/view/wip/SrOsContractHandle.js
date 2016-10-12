@@ -246,7 +246,7 @@ Ext.define('iFlat.view.wip.SrOsContractHandle', {
             }, {
                 xtype: 'fieldset',
                 title: '比价信息',
-                items: [{
+                items: [/*{
                     xtype: 'container',
                     layout: 'hbox',
                     width: '100%',
@@ -318,7 +318,7 @@ Ext.define('iFlat.view.wip.SrOsContractHandle', {
                         margin: '0 0 0 20',
                         handler: 'showBidding',
                     }]
-                },  {
+                },  */{
                     xtype: 'container',
                     layout: 'hbox',
                     margin: '10 0 0 0',
@@ -360,6 +360,97 @@ Ext.define('iFlat.view.wip.SrOsContractHandle', {
                         editable: false,
                     }, ]
                 }, ]
+            }, {
+                xtype: 'container',
+                layout: 'hbox',
+                margin: '20 0 0 0',
+                width: '100%',
+                items: [{
+                    xtype: 'textfield',
+                    name: 'srOutsource.bidNo',
+                    fieldLabel: '开标编号',
+                    width: '25%',
+                    allowBlank: false,
+                }, {
+                    xtype: 'combo',
+                    name: 'srOutsource.bidType',
+                    fieldLabel: '竞价方式',
+                    allowBlank: false,
+                    editable: false,
+                    bind: {
+                        store: '{wipBidType}'
+                    },
+                    width: '25%',
+                }, {
+                    xtype: 'combo',
+                    name: 'srOutsource.vendor',
+                    fieldLabel: '推荐供方',
+                    store: wipSrOsBiddingVendorComboStore = Ext.create('iFlat.store.wip.SrOsVendor'),
+                    queryMode: 'local',
+                    allowBlank: false,
+                    editable: true,
+                    typeAhead: true,
+                    minChars: 0,
+                    forceSelection : true,
+                    anyMatch: true,
+                    displayField: 'name',
+                    valueField: 'name',
+                    width: '30%',
+                    labelWidth: 70,
+                    listeners: {
+                        select: function (cb, record) {
+                            cb.nextSibling('textfield').setValue(record.get('srOsVendor.type'))
+                        }
+                    }
+                }, {
+                    xtype: 'textfield',
+                    name: 'srOutsource.vendorType',
+                    fieldLabel: '供方性质',
+                    width: '19%',
+                    allowBlank: false,
+                    editable: false
+                }, ]
+
+            }, {
+                xtype: 'container',
+                layout: 'hbox',
+                margin: '20 0 0 0',
+                width: '100%',
+                items: [{
+                    xtype: 'textfield',
+                    name: 'srOutsource.targetCst',
+                    fieldLabel: '目标成本',
+                    width: '20%',
+                    allowBlank: false,
+                    regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                }, {
+                    xtype: 'textfield',
+                    name: 'srOutsource.bidAmountFirst',
+                    fieldLabel: '报价金额',
+                    width: '20%',
+                    allowBlank: false,
+                    regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                }, {
+                    xtype: 'textfield',
+                    name: 'srOutsource.bidAmountSecond',
+                    fieldLabel: '结算金额',
+                    width: '20%',
+                    allowBlank: false,
+                    regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                }, {
+                    xtype: 'checkbox',
+                    name: 'srOutsource.bidLowest',
+                    fieldLabel: '最低价中标',
+                    inputValue: true,
+                    labelWidth: 80,
+                    width: '19%',
+                }, {
+                    xtype: 'button',
+                    text: '报价详情',
+                    margin: '0 0 0 20',
+                    handler: 'editBidding',
+                }]
+
             }, {
                 xtype: 'container',
                 layout: 'hbox',

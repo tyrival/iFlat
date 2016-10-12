@@ -185,7 +185,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     @Override
     public void deleteProcess(String deploymentId) {
         // 正式发布时改为false
-        repositoryService.deleteDeployment(deploymentId, true);
+        repositoryService.deleteDeployment(deploymentId, false);
     }
 
     @Override

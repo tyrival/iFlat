@@ -19,7 +19,24 @@ Ext.define('iFlat.view.ss.ViolateRegulation', {
             text: '新增',
             ui: 'orig-blue',
             handler: 'showViolateRegulationEdit',
+        }, {
+            xtype: 'form',
+            items: [{
+                xtype: 'fileuploadfield',
+                name: 'upload',
+                buttonText: '选择...',
+                width: 140,
+                margin: '0 0 0 0',
+            }, ]
+        }, {
+            xtype: 'button',
+            text: '导入',
+            ui: 'orig-blue',
+            handler: 'uploadFile'
         }, '->', {
+            text: '下载模板',
+            handler: 'downloadTemplate'
+        }, {
             text: '刷新',
             handler: 'refreshList',
         }],

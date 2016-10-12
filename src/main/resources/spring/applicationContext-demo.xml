@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="demoAction" class="com.iflat.demo.action.DemoAction" scope="prototype">
+    <property name="bookService" ref="bookService" />
+    <property name="book" ref="book" />
+  </bean>
+  <bean id="book" class="com.iflat.demo.bean.Book" scope="prototype" />
+  <bean id="bookDao" class="com.iflat.demo.dao.impl.BookDaoImpl" />
+  <bean id="bookService" class="com.iflat.demo.service.impl.BookServiceImpl" />
+</beans>
+

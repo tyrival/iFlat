@@ -74,9 +74,9 @@ Ext.define('iFlat.view.pam.YearWork', {
         editor: {
             xtype: 'label',
         },
-        isDisabled: function(view, rowIdx, colIdx, item, record) {
+        /*isDisabled: function(view, rowIdx, colIdx, item, record) {
             return record.get('yearWork.status') == '1';
-        },
+        },*/
     }, {
         text: '提交',
         width: 60,

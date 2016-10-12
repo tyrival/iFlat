@@ -38,6 +38,26 @@ Ext.define('iFlat.view.pam.NewsEdit', {
                 allowBlank: true,
                 fieldLabel: '标题',
                 width: 750
+            }, {
+                xtype: 'textfield',
+                name: 'news.status',
+                fieldLabel: '状态',
+                hidden: true,
+                listeners: {
+                    change: function (field, newValue, oldValue, eOpts) {
+                        if (newValue == '未提交') {
+                            Ext.getCmp('pam-newsedit-toolbar').show();
+                            Ext.getCmp('pam-newsedit-upload').show();
+                            Ext.getCmp('pam-newsedit-uploadbtn').show();
+                            Ext.getCmp('pam-newsedit-delete').show();
+                        } else {
+                            Ext.getCmp('pam-newsedit-toolbar').hide();
+                            Ext.getCmp('pam-newsedit-upload').hide();
+                            Ext.getCmp('pam-newsedit-uploadbtn').hide();
+                            Ext.getCmp('pam-newsedit-delete').hide();
+                        }
+                    }
+                }
             },{
                 xtype: 'textfield',
                 name: 'news.id',
@@ -88,6 +108,7 @@ Ext.define('iFlat.view.pam.NewsEdit', {
                 width: 100,
             }, {
                 xtype: 'button',
+                id: 'pam-newsedit-delete',
                 ui: 'gray',
                 text: '删除',
                 handler: 'deleteAttachment'
@@ -119,20 +140,26 @@ Ext.define('iFlat.view.pam.NewsEdit', {
                 }]
             }, {
                 xtype: 'button',
+                id: 'pam-newsedit-uploadbtn',
                 text: '上传',
                 ui: 'orig-blue',
                 handler: 'uploadAttachment'
             }]
         }]
     },
-    buttons: [
-        {
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'bottom',
+        ui: 'footer',
+        id: 'pam-newsedit-toolbar',
+        items: [{
+            xtype: 'button',
             text: '提交',
             handler: 'submitNewsEdit',
         }, '->', {
+            xtype: 'button',
             text: '保存',
             handler: 'saveNewsEdit',
-        },
-        
-    ],
+        }]
+    }],
 });

@@ -258,7 +258,7 @@ Ext.define('iFlat.view.wip.SrOsBidding', {
                         editable: false,
                     }, ]
                 }, ]
-            }, {
+            }, /*{
                 xtype: 'container',
                 layout: 'hbox',
                 margin: '20 0 0 0',
@@ -309,12 +309,12 @@ Ext.define('iFlat.view.wip.SrOsBidding', {
                     editable: false
                 }, ]
 
-            }, {
+            }, */{
                 xtype: 'container',
                 layout: 'hbox',
                 margin: '20 0 0 0',
                 width: '100%',
-                items: [{
+                items: [/*{
                     xtype: 'textfield',
                     name: 'srOutsource.targetCst',
                     fieldLabel: '目标成本',
@@ -342,7 +342,7 @@ Ext.define('iFlat.view.wip.SrOsBidding', {
                     inputValue: true,
                     labelWidth: 80,
                     width: '19%',
-                }, {
+                }, */{
                     xtype: 'combo',
                     name: 'srOutsource.saleAcc',
                     queryMode: 'local',
@@ -390,13 +390,13 @@ Ext.define('iFlat.view.wip.SrOsBidding', {
                     xtype: 'textfield',
                     name: 'srOutsource.bidComment',
                     fieldLabel: '备注',
-                    width: '80%',
-                }, {
+                    width: '99%',
+                }/*, {
                     xtype: 'button',
                     text: '报价详情',
                     margin: '0 0 0 20',
                     handler: 'editBidding',
-                }]
+                }*/]
 
             }, {
                 xtype: 'container',

@@ -67,6 +67,11 @@ public class StrutsCoding {
             param2.setText("true");
             result.addContent(param2);
 
+            Element param3 = new Element("param");
+            param3.setAttribute("name", "contentType");
+            param3.setText("text/html");
+            result.addContent(param3);
+
             XMLOutputter out = new XMLOutputter();
             Format fm = Format.getPrettyFormat();
             fm.setEncoding("UTF-8");

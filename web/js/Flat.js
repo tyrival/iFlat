@@ -1,5 +1,22 @@
 var Flat = {
     util: {
+        calcSeniority: function (account) {
+            if (account) {
+                var startWorkingYear = parseInt(account.substring(1, 5));
+                return new Date().getFullYear() - startWorkingYear;
+            } else {
+                return 0;
+            }
+        },
+
+        calcAge: function (birth) {
+            if (birth) {
+                return new Date().getFullYear() - birth.getFullYear();
+            } else {
+                return 0;
+            }
+        },
+
         printPage: function (html) {
             var win = window.open('/print.html');
             win.document.open();

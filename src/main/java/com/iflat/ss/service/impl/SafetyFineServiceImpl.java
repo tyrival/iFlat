@@ -24,7 +24,7 @@ public class SafetyFineServiceImpl extends BaseServiceSupport {
 
     @Override
     public void setImportExcelReader() throws Exception {
-        super.getExcelReader().setClassName("com.iflat.sm.bean.SafetyFine");
+        super.getExcelReader().setClassName("com.iflat.ss.bean.SafetyFine");
         super.getExcelReader().setProps(new String[]{"projNo","dept","team","group","person", "date", "type", "position", "description", "measure", "deadline", "manager", "mgrDept", "dangerType", "damageType", "riskLevel", "inspectType", "comment", "issuer"});
     }
 

@@ -54,7 +54,9 @@ Ext.define('iFlat.view.pam.ApplicantController', {
 
     addApplicantRecord: function() {
         pamApplicantRowEditing.cancelEdit();
-        var applicant = Ext.create('iFlat.model.pam.Applicant');
+        var applicant = Ext.create('iFlat.model.pam.Applicant', {
+            'applicant.pbName': pamApplicantStore.getProxy().extraParams['applicant.pbName']
+        });
         pamApplicantStore.insert(0, applicant);
         pamApplicantRowEditing.startEdit(0, 0);
     },

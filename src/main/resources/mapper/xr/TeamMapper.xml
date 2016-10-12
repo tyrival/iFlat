@@ -5,7 +5,7 @@
 <mapper namespace="Xr.Team">
 
 <select id="list" parameterType="com.iflat.xr.bean.Team" resultMap="XrTeamResult">
-    SELECT deptCode.dept,teamCode.team,type
+    SELECT deptCode,dept,teamCode,team,type
     FROM V_XrTeam
     <where>
         <if test="deptCode!=null and !&quot;&quot;.equals(deptCode.trim())">deptCode=#{deptCode}</if>

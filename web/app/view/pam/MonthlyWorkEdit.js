@@ -39,6 +39,21 @@ Ext.define('iFlat.view.pam.MonthlyWorkEdit', {
                 name: 'monthlyWork.status',
                 fieldLabel: '状态',
                 hidden: true,
+                listeners: {
+                    change: function (field, newValue, oldValue, eOpts) {
+                        if (newValue === '0') {
+                            Ext.getCmp('pam-monthlyworkedit-toolbar').show();
+                            Ext.getCmp('pam-monthlyworkedit-upload').show();
+                            Ext.getCmp('pam-monthlyworkedit-uploadbtn').show();
+                            Ext.getCmp('pam-monthlyworkedit-delete').show();
+                        } else {
+                            Ext.getCmp('pam-monthlyworkedit-toolbar').hide();
+                            Ext.getCmp('pam-monthlyworkedit-upload').hide();
+                            Ext.getCmp('pam-monthlyworkedit-delete').hide();
+                            Ext.getCmp('pam-monthlyworkedit-uploadbtn').hide();
+                        }
+                    }
+                }
             }, {
                 xtype: 'textfield',
                 name: 'monthlyWork.id',
@@ -105,6 +120,7 @@ Ext.define('iFlat.view.pam.MonthlyWorkEdit', {
                 xtype: 'button',
                 text: '上传',
                 ui: 'orig-blue',
+                id: 'pam-monthlyworkedit-uploadbtn',
                 handler: 'uploadAttachment'
             }, {
                 xtype: 'container',
@@ -121,6 +137,7 @@ Ext.define('iFlat.view.pam.MonthlyWorkEdit', {
                 }, {
                     xtype: 'button',
                     ui: 'gray',
+                    id: 'pam-monthlyworkedit-delete',
                     text: '删除',
                     handler: 'deleteAttachment'
                 }]
@@ -522,14 +539,20 @@ Ext.define('iFlat.view.pam.MonthlyWorkEdit', {
             }]
         }, ]
     },
-    buttons: [
-        {
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'bottom',
+        ui: 'footer',
+        id: 'pam-monthlyworkedit-toolbar',
+        disabled: true,
+        items: [{
+            xtype: 'button',
             text: '提交',
             handler: 'submitMonthlyWorkEdit',
         }, '->', {
+            xtype: 'button',
             text: '保存',
             handler: 'saveMonthlyWorkEdit',
-        },
-
-    ],
+        }]
+    }],
 });

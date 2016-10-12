@@ -62,7 +62,7 @@
                 seEffect=#{seEffect},</if>
             <if test="mpWork!=null">
                 mpWork=#{mpWork},</if>
-            <if test="wiLightspot!=null)">
+            <if test="wiLightspot!=null">
                 wiLightspot=#{wiLightspot},</if>
             <if test="attachment!=null">
                 attachment=#{attachment},</if>

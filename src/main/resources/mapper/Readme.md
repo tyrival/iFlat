@@ -1,0 +1,1 @@
+Mybatis的sql脚本包，可由com.iflat.util.code.CodeUtil自动生成

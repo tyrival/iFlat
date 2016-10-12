@@ -56,6 +56,20 @@ Ext.define('iFlat.view.wip.SrOsContractHandleController', {
         }
     },
 
+    editBidding: function () {
+        var id = Ext.getCmp('wip-sroscontracthandle-id').getValue();
+        if (!Flat.util.isEmpty(id)) {
+            var win = Ext.getCmp('wip-srosbiddinglist');
+            if (!win) {
+                win = Ext.create('iFlat.view.wip.SrOsBiddingList');
+            }
+            win.down('textfield[name=srOutsource.id]').setValue(id);
+            wipSrOsBiddingListStore.getProxy().extraParams['srOsBidding.pid'] = id;
+            wipSrOsBiddingListStore.reload();
+            win.show();
+        }
+    },
+
     completeTask: function (btn) {
         var panel = btn.up('wip-sroscontracthandle');
         var form = panel.down('form');

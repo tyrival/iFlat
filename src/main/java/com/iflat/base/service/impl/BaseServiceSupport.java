@@ -17,6 +17,7 @@ import org.apache.struts2.ServletActionContext;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.oxm.ValidationFailureException;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import java.io.File;
@@ -25,6 +26,9 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
+ * 具体各模块的Dao、Service实现类的设计模式为装饰模式和适配器模式：
+ * 装饰模式：继承这个模板类，对模板类中的protected装饰方法进行实现；
+ * 适配器模式：同时实现各自的特殊方法；
  * Created by tyriv on 2015/11/27.
  */
 public class BaseServiceSupport implements BaseService {
@@ -122,6 +126,7 @@ public class BaseServiceSupport implements BaseService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void startProcess(Object object) throws Exception {
 
         object = this.list(object).get(0);
@@ -181,6 +186,7 @@ public class BaseServiceSupport implements BaseService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Object generate(Object o) throws Exception {
 
         this.saveObj = o;
@@ -190,13 +196,14 @@ public class BaseServiceSupport implements BaseService {
         result = executeMethod(this.saveObj, "generate");
         this.afterGenerate();
 
-        if(result instanceof Integer) {
-            result = (int)result > 0 ? this.saveObj : null;
+        if (result instanceof Integer) {
+            result = (int) result > 0 ? this.saveObj : null;
         }
         return result;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Object save(Object o) throws Exception {
 
         this.saveObj = o;
@@ -207,7 +214,7 @@ public class BaseServiceSupport implements BaseService {
         Object id = obj.getMethodValue("id");
         Object result;
 
-        if(id == null || "".equals(id.toString())) {
+        if (id == null || "".equals(id.toString())) {
 
             obj.setMethodValue("id", UUID.randomUUID().toString());
 
@@ -237,13 +244,14 @@ public class BaseServiceSupport implements BaseService {
         this.afterSave();
 
         //如果是增删改，dao层返回的是数值，此时改为返回参数对象
-        if(result instanceof Integer) {
-            result = (int)result > 0 ? this.saveObj : null;
+        if (result instanceof Integer) {
+            result = (int) result > 0 ? this.saveObj : null;
         }
         return result;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public List insertBatch(List list) throws Exception {
 
         this.insertBatchList = list;
@@ -254,13 +262,14 @@ public class BaseServiceSupport implements BaseService {
         this.afterInsertBatch();
 
         //如果是增删改，dao层返回的是数值，此时改为返回参数对象
-        if(result instanceof Integer) {
-            this.insertBatchList = (int)result == this.insertBatchList.size() ? this.insertBatchList : null;
+        if (result instanceof Integer) {
+            this.insertBatchList = (int) result == this.insertBatchList.size() ? this.insertBatchList : null;
         }
         return this.insertBatchList;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public List updateBatch(List list) throws Exception {
 
         this.updateBatchList = list;
@@ -270,13 +279,14 @@ public class BaseServiceSupport implements BaseService {
         result = executeMethod(this.updateBatchList, "updateBatch");
         this.afterUpdateBatch();
 
-        if(result instanceof Integer) {
-            this.updateBatchList = (int)result == this.updateBatchList.size() ? this.updateBatchList : null;
+        if (result instanceof Integer) {
+            this.updateBatchList = (int) result == this.updateBatchList.size() ? this.updateBatchList : null;
         }
         return this.updateBatchList;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Object delete(Object o) throws Exception {
 
         this.deleteObj = o;
@@ -285,13 +295,14 @@ public class BaseServiceSupport implements BaseService {
         Object result = executeMethod(this.deleteObj, "delete");
         this.afterDelete();
 
-        if(result instanceof Integer) {
-            result = (int)result > 0 ? this.deleteObj : null;
+        if (result instanceof Integer) {
+            result = (int) result > 0 ? this.deleteObj : null;
         }
         return result;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public List deleteBatch(List list) throws Exception {
 
         this.deleteBatchList = list;
@@ -302,8 +313,8 @@ public class BaseServiceSupport implements BaseService {
         this.afterDeleteBatch();
 
         //如果是增删改，dao层返回的是数值，此时改为返回参数对象
-        if(result instanceof Integer) {
-            this.deleteBatchList = (int)result == this.deleteBatchList.size() ? this.deleteBatchList : null;
+        if (result instanceof Integer) {
+            this.deleteBatchList = (int) result == this.deleteBatchList.size() ? this.deleteBatchList : null;
         }
         return this.deleteBatchList;
     }
@@ -365,6 +376,7 @@ public class BaseServiceSupport implements BaseService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public List importExcel(File file, String fileName) throws Exception {
 
         String filePath = FileUtil.upload(file, fileName, "temp/");
@@ -374,7 +386,7 @@ public class BaseServiceSupport implements BaseService {
 
         //由子类设置excelReader的属性
         this.setImportExcelReader();
-        if(this.excelReader.getClassName() == null || this.excelReader.getProps() == null){
+        if (this.excelReader.getClassName() == null || this.excelReader.getProps() == null) {
             throw new ClassNotFoundException("BaseServiceSupport错误：未找到文件内容对应的类，或未定义列与属性的对应关系");
         }
 
@@ -384,7 +396,7 @@ public class BaseServiceSupport implements BaseService {
         this.setImportProps();
 
         //数据校验
-        try{
+        try {
             this.importValidate();
         } catch (Exception e) {
             throw new ValidationFailureException("BaseServiceSupport未通过数据校验：" + e.getMessage());
@@ -394,11 +406,11 @@ public class BaseServiceSupport implements BaseService {
         List result = null;
         Object res = null;
         this.beforeImportData();
-        if(this.importList.size() > 0) {
+        if (this.importList.size() > 0) {
             res = executeMethod(this.importList, "insertBatch");
         }
-        if(res instanceof Integer) {
-            result = (int)res > 0 ? importList : null;
+        if (res instanceof Integer) {
+            result = (int) res > 0 ? importList : null;
         }
         this.afterImportData();
         //删除excel文件
@@ -466,18 +478,19 @@ public class BaseServiceSupport implements BaseService {
 
         } catch (Exception e) {
             if(e instanceof InvocationTargetException) {
-                throw new Exception(((InvocationTargetException) e)
+                throw new RuntimeException(((InvocationTargetException) e)
                         .getTargetException().toString());
             }
             if(e instanceof InstantiationException
                     || e instanceof IllegalAccessException
                     || e instanceof IllegalAccessException
                     || e instanceof IllegalArgumentException) {
-                throw new Exception("BaseServiceSupport错误：未能成功执行JavaBean < "
+                throw new RuntimeException("BaseServiceSupport错误：未能成功执行JavaBean < "
                         + name + " > 对应的 < " + dao + "> 类的 [ "
                         + methodName + " ] 方法，请联系管理员。错误信息："
                         + e.getMessage());
             }
+            throw new RuntimeException(e.getMessage());
         }
         return result;
     }

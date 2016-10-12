@@ -28,6 +28,7 @@ import com.iflat.base.service.BaseService;
 import com.iflat.xr.service.SrSettlementService;
 import com.iflat.xr.service.TrSettlementService;
 import com.opensymphony.xwork2.ModelDriven;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.util.*;
@@ -457,12 +458,14 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlement() throws Exception {
         String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlementWithAssess() throws Exception {
         this.srAssessService.save(this.srAssess);
         String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);
@@ -470,6 +473,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlementWithSave() throws Exception {
         this.xrSrSettlementService.save(this.xrSrSettlement);
         String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);
@@ -477,6 +481,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlementBatch() throws Exception {
         if (xrSrSettlementList != null && xrSrSettlementList.size() > 0) {
             for (int i = 0; i < xrSrSettlementList.size(); i++) {
@@ -485,7 +490,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
             }
         }
         return SUCCESS;
-    }/*    public String approveSrSettlementFirst() throws Exception {        if ("pass".equals(outGoingName)) {            SrSettlement orig = new SrSettlement();            orig.setId(this.xrSrSettlement.getId());            orig = (SrSettlement) this.xrSrSettlementService.list(orig).get(0);            Double adjust = this.xrSrSettlement.getAmountFirst() - orig.getAmountFirst();            if (adjust != 0) {                SrBalance balance = new SrBalance();                balance.setDept(orig.getDept());                balance.setAdjustment(adjust);                this.srBalanceService.save(balance);            }            UserInfoVo userInfoVo = Session.getUserInfo();            this.xrSrSettlement.setSettFirstAcc(userInfoVo.getAccount());            this.xrSrSettlement.setSettFirstName(userInfoVo.getUserName());            this.xrSrSettlement.setSettFirstTime(new Date());            this.result.setObject(this.xrSrSettlementService.save(this.xrSrSettlement));        }        String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);        return SUCCESS;    }    public String approveSrSettlementSecond() throws Exception {        if ("pass".equals(outGoingName)) {            SrSettlement orig = new SrSettlement();            orig.setId(this.xrSrSettlement.getId());            orig = (SrSettlement) this.xrSrSettlementService.list(orig).get(0);            Double adjust = this.xrSrSettlement.getAmountSecond() - orig.getAmountSecond();            if (adjust != 0) {                SrBalance balance = new SrBalance();                balance.setDept(orig.getDept());                balance.setAdjustment(0 - adjust);                this.srBalanceService.save(balance);            }        }        String businessKey = xrSrSettlementService.getBusinessKey(xrSrSettlement);        workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);        return SUCCESS;    }*/
+    }
 
     private BaseService srSettlementDetlService;
     private SrSettlementDetl srSettlementDetl;
@@ -506,6 +511,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         this.srSettlementDetl = srSettlementDetl;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String createSrSettlementDetl() throws Exception {
         this.xrSrSettlement = (SrSettlement) this.xrSrSettlementService.save(this.xrSrSettlement);
         try {
@@ -732,6 +738,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveTrSettlementWithSave() throws Exception {
         this.trSettlementService.save(this.trSettlement);
         String businessKey = trSettlementService.getBusinessKey(trSettlement);
@@ -739,6 +746,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveTrSettlementBatch() throws Exception {
         if (trSettlementList != null && trSettlementList.size() > 0) {
             for (int i = 0; i < trSettlementList.size(); i++) {
@@ -771,6 +779,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveTrSettlement() throws Exception {
         String businessKey = trSettlementService.getBusinessKey(trSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -865,6 +874,7 @@ public class XrAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String createTrSettlementDetl() throws Exception {
         this.trSettlement = (TrSettlement) this.trSettlementService.save(this.trSettlement);
         try {

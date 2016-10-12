@@ -9,6 +9,13 @@
         VALUES (#{id},#{date},#{time},#{funcDept},#{areaType},#{area},#{code},#{otherArea},#{projNo},#{projName},#{region},#{belongDept},#{regionPersonAcc},#{regionPersonName},#{fsType},#{fsDescription},#{attachment},#{dept},#{team},#{personAcc},#{personName},#{feedback},#{rectifyTime},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{score},#{amount},#{issueDept},#{issuer},#{description})
     </insert>
 
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO SsFiveS
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.id},#{item.date},#{item.time},#{item.funcDept},#{item.areaType},#{item.area},#{item.code},#{item.otherArea},#{item.projNo},#{item.projName},#{item.region},#{item.belongDept},#{item.regionPersonAcc},#{item.regionPersonName},#{item.fsType},#{item.fsDescription},#{item.attachment},#{item.dept},#{item.team},#{item.personAcc},#{item.personName},#{item.feedback},#{item.rectifyTime},#{item.rectifyAtt},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.creatorDept},#{item.createTime},#{item.score},#{item.amount},#{item.issueDept},#{item.issuer},#{item.description}
+        </foreach>
+    </insert>
+
     <update id="update" parameterType="com.iflat.ss.bean.FiveS">
         UPDATE SsFiveS
         <set>

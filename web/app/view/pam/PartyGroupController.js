@@ -54,7 +54,9 @@ Ext.define('iFlat.view.pam.PartyGroupController', {
 
     addPartyGroupRecord: function() {
         pamPartyGroupRowEditing.cancelEdit();
-        var partyGroup = Ext.create('iFlat.model.pam.PartyGroup');
+        var partyGroup = Ext.create('iFlat.model.pam.PartyGroup', {
+            'partyGroup.pbName' : Ext.getCmp('pam-partygroup-pbname').getValue()
+        });
         pamPartyGroupStore.insert(0, partyGroup);
         pamPartyGroupRowEditing.startEdit(0, 0);
     },

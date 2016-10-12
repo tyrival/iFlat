@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel id="potentialHazard" code="potentialHazard" name="隐患">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+        <col index="G" width='17em'></col>
+        <col index="H" width='17em'></col>
+        <col index="I" width='17em'></col>
+        <col index="J" width='17em'></col>
+        <col index="K" width='17em'></col>
+        <col index="L" width='17em'></col>
+        <col index="M" width='17em'></col>
+        <col index="N" width='17em'></col>
+        <col index="O" width='17em'></col>
+        <col index="P" width='17em'></col>
+        <col index="Q" width='17em'></col>
+        <col index="R" width='17em'></col>
+        <col index="S" width='17em'></col>
+        <col index="T" width='17em'></col>
+        <col index="U" width='17em'></col>
+        <col index="V" width='17em'></col>
+        <col index="W" width='17em'></col>
+        <col index="X" width='17em'></col>
+        <col index="Y" width='17em'></col>
+        <col index="Z" width='17em'></col>
+        <col index="AA" width='17em'></col>
+        <col index="AB" width='17em'></col>
+        <col index="AC" width='17em'></col>
+        <col index="AD" width='17em'></col>
+        <col index="AE" width='17em'></col>
+        <col index="AF" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="34" value="隐患" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+            <th value="日期" />
+            <th value="时间" />
+            <th value="部门" />
+            <th value="施工队" />
+            <th value="班组" />
+            <th value="岗位" />
+            <th value="责任人一卡通" />
+            <th value="责任人" />
+            <th value="年龄" />
+            <th value="性别" />
+            <th value="工程号" />
+            <th value="工程名" />
+            <th value="区域" />
+            <th value="位置" />
+            <th value="风险等级" />
+            <th value="隐患类型" />
+            <th value="隐患代码" />
+            <th value="隐患内容" />
+            <th value="负面发现" />
+            <th value="整改措施" />
+            <th value="整改期限" />
+            <th value="整改情况" />
+            <th value="罚款" />
+            <th value="扣分" />
+            <th value="事业部" />
+            <th value="总管" />
+            <th value="主管" />
+            <th value="作业长" />
+            <th value="班组长" />
+            <th value="档长" />
+            <th value="备注" />
+            <th value="查处人" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="1">
+            <td type="date" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="date" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="numeric" format="##0" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+            <td type="string" isnullable="false" />
+        </tr>
+    </tbody>
+</excel>

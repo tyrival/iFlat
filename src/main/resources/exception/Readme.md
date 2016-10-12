@@ -1,0 +1,3 @@
+后台向前台抛出异常时，com.iflat.system.interceptor.AjaxExceptionInterceptor中的AjaxExceptionListener，会根据当前所在模块的包名，
+自动检索此处的同名properties文件，按照文件中列出的键值对，当左边的Key包含在异常信息中时，将异常信息替换为Value值，然后向前端抛出，从而实现
+前端异常信息的通俗可读。

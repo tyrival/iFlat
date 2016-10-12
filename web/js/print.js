@@ -1,19 +1,20 @@
 var Print = {
 
     fineHtml: function (m) {
-        var type = m['type'];
-        if (!type) {
-            type = '施工质量';
-        }
-        if (type != '计划执行' && type != '设备能源' && type != '其他' && type != '施工质量') {
-            type = '安全5S';
-        }
         var issuer = m['issuer'];
         if (Flat.util.isEmpty(issuer)) {
             issuer = m['creatorName'];
         }
         if (Flat.util.isEmpty(issuer)) {
             issuer = m['creator'];
+        }
+        var type = m['type'];
+        if (!type) {
+            type = '施工质量';
+            issuer = m['qc'];
+        }
+        if (type != '计划执行' && type != '设备能源' && type != '其他' && type != '施工质量') {
+            type = '安全5S';
         }
         var h = '<h1 style="text-align: center">船体车间工程考核单</h1>'
             + '<table class="am-table am-table-bordered am-table-centered" style="margin-bottom: 0;margin-top: 0;">'

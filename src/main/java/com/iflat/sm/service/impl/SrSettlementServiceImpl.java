@@ -18,6 +18,7 @@ import com.iflat.util.Session;
 import com.iflat.util.StringUtil;
 import com.iflat.workflow.service.WorkflowService;
 import org.apache.commons.collections.map.HashedMap;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.util.*;
@@ -105,6 +106,7 @@ public class SrSettlementServiceImpl extends BaseServiceSupport implements SrSet
      * @throws Exception
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void submit(SrSettlement srSettlement) throws Exception {
 
         SrSettlement param = new SrSettlement();

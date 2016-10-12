@@ -67,9 +67,9 @@ Ext.define('iFlat.view.pam.MonthlyWork', {
         editor: {
             xtype: 'label',
         },
-        isDisabled: function(view, rowIdx, colIdx, item, record) {
+        /*isDisabled: function(view, rowIdx, colIdx, item, record) {
             return record.get('monthlyWork.status') == '1';
-        },
+        },*/
     }, {
         text: '提交',
         width: 60,

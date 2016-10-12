@@ -246,7 +246,7 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAudit', {
             }, {
                 xtype: 'fieldset',
                 title: '比价信息',
-                items: [{
+                items: [/*{
                     xtype: 'container',
                     layout: 'hbox',
                     width: '100%',
@@ -313,7 +313,7 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAudit', {
                         inputValue: true,
                         width: '19%',
                     }]
-                },  {
+                },  */{
                     xtype: 'container',
                     layout: 'hbox',
                     margin: '10 0 0 0',
@@ -326,6 +326,13 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAudit', {
                         editable: false,
                     }]
                 }, ]
+            }, {
+                xtype: 'textfield',
+                name: 'srOutsource.saleOpinion',
+                fieldLabel: '经营代表意见',
+                width: '100%',
+                editable: false,
+                hidden: true,
             }, {
                 xtype: 'textarea',
                 name: 'comment',
@@ -348,6 +355,14 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAudit', {
             text: '历史意见',
             ui: 'gray',
             handler: 'showComment',
+        }, {
+            xtype: 'button',
+            name: 'completeProcess',
+            ui: 'soft-purple',
+            text: '结束流程',
+            width: 100,
+            hidden: true,
+            handler: 'completeProcess',
         }, '->', {
             xtype: 'button',
             text: '通过',

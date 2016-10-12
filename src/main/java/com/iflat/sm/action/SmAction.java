@@ -13,6 +13,7 @@ import com.iflat.util.ExcelUtil;
 import com.iflat.util.Session;
 import com.iflat.workflow.service.WorkflowService;
 import com.opensymphony.xwork2.ModelDriven;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.util.*;
@@ -104,6 +105,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     /* 造船结算 SbSettlement */
     // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
+    @Transactional(rollbackFor = Exception.class)
     public String createSbSettlementDetail() throws Exception {
 
         this.sbSettlement
@@ -127,6 +129,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSbSettlementBatch() throws Exception {
         if (sbSettlementList != null && sbSettlementList.size() > 0) {
             for (int i = 0; i < sbSettlementList.size(); i++) {
@@ -137,6 +140,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSbSettlement() throws Exception {
         String businessKey = sbSettlementService.getBusinessKey(sbSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -224,6 +228,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
     /* 钢结构结算 ScSettlement */
     // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
+    @Transactional(rollbackFor = Exception.class)
     public String createScSettlementDetail() throws Exception {
 
         this.scSettlement
@@ -248,6 +253,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveScSettlementBatch() throws Exception {
         if (scSettlementList != null && scSettlementList.size() > 0) {
             for (int i = 0; i < scSettlementList.size(); i++) {
@@ -258,6 +264,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveScSettlement() throws Exception {
         String businessKey = scSettlementService.getBusinessKey(scSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -476,6 +483,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlement() throws Exception {
         if ("修船总管审核".equals(srSettlement.getStatus())) {
             this.srSettlementService.save(this.srSettlement);
@@ -485,6 +493,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlementBatch() throws Exception {
         if (srSettlementList != null && srSettlementList.size() > 0) {
             for (int i = 0; i < srSettlementList.size(); i++) {
@@ -495,6 +504,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlementSecondBatch() throws Exception {
         if (srSettlementSecondList != null && srSettlementSecondList.size() > 0) {
             for (int i = 0; i < srSettlementSecondList.size(); i++) {
@@ -508,6 +518,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlementFirst() throws Exception {
 
         /*// 如果是审批通过，则更新余额
@@ -594,6 +605,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
+    @Transactional(rollbackFor = Exception.class)
     public String createSrSettlementDetlFirst() throws Exception {
         this.srSettlement = (SrSettlement) this.srSettlementService.save(this.srSettlement);
         try {
@@ -641,6 +653,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveSrSettlementSecond() throws Exception {
         //this.srSettlementSecond.setPid(this.srSettlement.getId());
         this.srSettlementSecondService.saveWithValidateBalance(this.srSettlementSecond);
@@ -723,6 +736,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
     }
 
     // 创建行信息之前，先创建头信息，再将头信息id置入行信息的pid中
+    @Transactional(rollbackFor = Exception.class)
     public String createSrSettlementDetlSecond() throws Exception {
 
         this.srSettlementSecond
@@ -748,6 +762,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
 
     /* 技措技改/大修理/108 TecSettlement */
+    @Transactional(rollbackFor = Exception.class)
     public String createTecSettlementDetail() throws Exception {
 
         this.tecSettlement
@@ -771,6 +786,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveTecSettlementBatch() throws Exception {
         if (tecSettlementList != null && tecSettlementList.size() > 0) {
             for (int i = 0; i < tecSettlementList.size(); i++) {
@@ -781,6 +797,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveTecSettlement() throws Exception {
         String businessKey = tecSettlementService.getBusinessKey(tecSettlement);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);
@@ -976,6 +993,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
 
 
     /* 技措技改/大修理/108 Temporary */
+    @Transactional(rollbackFor = Exception.class)
     public String createTemporaryDetail() throws Exception {
 
         this.temporary
@@ -1000,6 +1018,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveTemporaryBatch() throws Exception {
         if (temporaryList != null && temporaryList.size() > 0) {
             for (int i = 0; i < temporaryList.size(); i++) {
@@ -1010,6 +1029,7 @@ public class SmAction extends BaseAction implements ModelDriven<Page> {
         return SUCCESS;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public String approveTemporary() throws Exception {
         String businessKey = temporaryService.getBusinessKey(temporary);
         workflowService.completeTaskByBusinessKey(businessKey, outGoingName, comment);

@@ -7,6 +7,7 @@ import com.iflat.system.entity.UserRoleNode;
 import com.iflat.system.entity.UserRoleVo;
 import com.iflat.system.service.UserRoleService;
 import com.iflat.util.Session;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -18,16 +19,17 @@ public class UserRoleServiceImpl implements UserRoleService {
     private UserRoleDao userRoleDao;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String saveUserRole(UserRole userRole, String itemselector) throws Exception {
 
-        List<UserRole> list = new ArrayList<UserRole>();
         int result = 0;
+        List<UserRole> list = new ArrayList<UserRole>();
         String[] array = itemselector.equals("") ? null : itemselector.split(",");
 
-        if(userRole.getAccount() != null) {
+        if (userRole.getAccount() != null) {
             this.userRoleDao.deleteByAccount(userRole.getAccount());
-            if(array != null) {
-                for(int i = 0; i < array.length; i++) {
+            if (array != null) {
+                for (int i = 0; i < array.length; i++) {
                     UserRole userRole1 = new UserRole();
                     userRole1.setAccount(userRole.getAccount());
                     userRole1.setRoleId(array[i]);
@@ -36,10 +38,10 @@ public class UserRoleServiceImpl implements UserRoleService {
                 }
                 result = this.userRoleDao.insertBatch(list);
             }
-        } else if(userRole.getRoleId() != null) {
+        } else if (userRole.getRoleId() != null) {
             this.userRoleDao.deleteByRoleId(userRole.getRoleId());
-            if(array != null) {
-                for(int i = 0; i < array.length; i++) {
+            if (array != null) {
+                for (int i = 0; i < array.length; i++) {
                     UserRole userRole1 = new UserRole();
                     userRole1.setAccount(array[i]);
                     userRole1.setRoleId(userRole.getRoleId());
@@ -58,22 +60,23 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean saveDefaultRole(UserRole userRole) throws Exception {
-        boolean flag = false;
+
         int result = 0;
 
         UserInfoVo userInfoVo = Session.getUserInfo();
         userRole.setAccount(userInfoVo.getAccount());
         userRole = this.userRoleDao.getByUR(userRole);
 
-        if(userRole == null) {
+        if (userRole == null) {
             throw new Exception("您可能已不再拥有该角色，请联系管理员。");
         }
 
         List<UserRoleVo> list = listVoByAccount();
-        if(list != null && list.size() > 0) {
+        if (list != null && list.size() > 0) {
             //如果保存的角色和原默认角色相同，则不修改
-            if(list.get(0).getRoleId().equals(userRole.getRoleId())) {
+            if (list.get(0).getRoleId().equals(userRole.getRoleId())) {
                 return true;
             }
 
@@ -82,7 +85,7 @@ public class UserRoleServiceImpl implements UserRoleService {
             orig.setRoleId(list.get(0).getRoleId());
             orig.setSequence(userRole.getSequence());
             result = this.userRoleDao.update(orig);
-            if(result <= 0) {
+            if (result <= 0) {
                 throw new Exception("默认角色修改失败，您的角色可能已被删除，请联系管理员。");
             }
         } else {
@@ -90,7 +93,7 @@ public class UserRoleServiceImpl implements UserRoleService {
         }
         userRole.setSequence(0);
         result = this.userRoleDao.update(userRole);
-        if(result <= 0) {
+        if (result <= 0) {
             throw new Exception("默认角色修改失败，您的角色可能已被删除，请联系管理员。");
         }
         return true;

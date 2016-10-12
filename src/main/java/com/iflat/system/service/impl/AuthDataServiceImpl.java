@@ -12,6 +12,7 @@ import com.iflat.system.entity.UserInfoVo;
 import com.iflat.system.service.AuthDataService;
 import com.iflat.util.JSONUtil;
 import com.iflat.util.Session;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -36,10 +37,13 @@ public class AuthDataServiceImpl implements AuthDataService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public List<AuthDataFieldVo> listAuthDataFieldStatus(AuthData authData) throws Exception {
 
+        List<AuthDataFieldVo> result = new ArrayList<AuthDataFieldVo>();
         //获取此角色/用户对此报表的权限记录
-        AuthData model = this.authDataDao.get(authData);
+        AuthData model = null;
+        model = this.authDataDao.get(authData);
         String field = model != null ? model.getField() : "";
         //获取此表/视图的字段列表
         DataDictionary dataDictionary = new DataDictionary();
@@ -49,8 +53,8 @@ public class AuthDataServiceImpl implements AuthDataService {
         List<DataDictionary> dataDictionaryList = this.dataDictionaryDao.list(dataDictionary);
         HashMap map = new HashMap();
         //遍历字段列表
-        if(dataDictionaryList != null && dataDictionaryList.size() != 0) {
-            for(int i = 0; i < dataDictionaryList.size(); i++) {
+        if (dataDictionaryList != null && dataDictionaryList.size() != 0) {
+            for (int i = 0; i < dataDictionaryList.size(); i++) {
                 //设置字段相关的信息
                 AuthDataFieldVo authDataFieldVo = new AuthDataFieldVo();
                 authDataFieldVo.setFieldName(dataDictionaryList.get(i).getFieldName());
@@ -58,24 +62,23 @@ public class AuthDataServiceImpl implements AuthDataService {
                 //存入hashmao，key为字段名
                 map.put(authDataFieldVo.getFieldName(), authDataFieldVo);
             }
-            if(!"".equals(field)) {
+            if (!"".equals(field)) {
                 //将权限信息由String转为List
                 List<AuthFieldVo> authFieldVoList = (List<AuthFieldVo>) JSONUtil.jsonToList(field, "com.iflat.system.entity.AuthFieldVo");
                 //遍历列表
-                if(authFieldVoList != null && authFieldVoList.size() != 0) {
-                    for(int m = 0; m < authFieldVoList.size(); m++) {
+                if (authFieldVoList != null && authFieldVoList.size() != 0) {
+                    for (int m = 0; m < authFieldVoList.size(); m++) {
                         //将hashmap中对应字段的状态设置为相应的信息
-                        ((AuthDataFieldVo)map.get(authFieldVoList.get(m).getField())).setStatus(authFieldVoList.get(m).getStatus());
+                        ((AuthDataFieldVo) map.get(authFieldVoList.get(m).getField())).setStatus(authFieldVoList.get(m).getStatus());
                     }
                 }
+                }
             }
-        }
         //遍历hashmap，将每个对象都存入列表并返回
-        List<AuthDataFieldVo> result = new ArrayList<AuthDataFieldVo>();
         Set entrySet = map.entrySet();
-        for (Iterator it = entrySet.iterator(); it.hasNext();) {
+        for (Iterator it = entrySet.iterator(); it.hasNext(); ) {
             AuthDataFieldVo vo = (AuthDataFieldVo) ((Map.Entry) it.next()).getValue();
-            if(model != null) {
+            if (model != null) {
                 vo.setFilter(model.getFilter());
                 vo.setAdId(model.getAdId());
             }

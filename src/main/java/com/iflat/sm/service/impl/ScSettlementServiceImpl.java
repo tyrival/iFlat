@@ -15,6 +15,7 @@ import com.iflat.util.ExcelUtil;
 import com.iflat.util.Session;
 import com.iflat.util.StringUtil;
 import com.iflat.workflow.service.WorkflowService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -87,6 +88,7 @@ public class ScSettlementServiceImpl extends BaseServiceSupport implements ScSet
      * @throws Exception
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void submit(ScSettlement scSettlement) throws Exception {
 
         ScSettlement param = new ScSettlement();
