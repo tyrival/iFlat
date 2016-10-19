@@ -12,7 +12,7 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
     }],
 
     controller: 'rpt-ss-violateregulation',
-    store: rptSsViolateRegulationStore = Ext.create('iFlat.store.ss.ViolateRegulation', {
+    store: rptSsViolateRegulationStore = Ext.create('iFlat.store.ss.ViolateRegulationList', {
         autoLoad: false,
     }),
     dockedItems: [{
@@ -37,7 +37,7 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
             xtype: 'combo',
             id: 'rpt-ss-violateregulation-dept',
             bind: {
-                store: '{ssViolateRegulationFuncDept}'
+                store: '{ssFiveSFuncDept}'
             },
             queryMode: 'local',
             allowBlank: false,
@@ -46,6 +46,13 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
             width: 200,
             fieldLabel: '责任部门',
             labelWidth: 60,
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-person',
+            width: 200,
+            fieldLabel: '责任人',
+            labelWidth: 60,
+            labelAlign: 'right',
         }, ],
     }, {
         xtype: 'toolbar',
@@ -86,6 +93,18 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
         }],
     }],
     columns: [{
+        text: '详情',
+        width: 60,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        tooltip: '详情',
+        align: 'center',
+        iconCls: 'x-fa fa-info',
+        handler: 'showViolateRegulationInfo',
+        editor: {
+            xtype: 'label',
+        },
+    }, {
         header: '日期',
         dataIndex: 'violateRegulation.date',
         formatter: 'date("Y-m-d")'
@@ -203,11 +222,11 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
         header: '创建部门',
         dataIndex: 'violateRegulation.creatorDept',
     }],
-    bbar: {
+    /*bbar: {
         xtype: 'pagingtoolbar',
         pageIndex: 5,
         store: rptSsViolateRegulationStore,
         displayInfo: true,
-    }
+    }*/
 
 });

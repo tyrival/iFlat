@@ -15,6 +15,7 @@ import com.iflat.base.entity.Page;
 import com.iflat.base.service.BaseService;
 import com.iflat.wip.entity.SrOsStatus;
 import com.iflat.wip.service.SrOutsourceService;
+import com.iflat.wip.service.impl.SrOsAssessServiceImpl;
 import com.iflat.workflow.service.WorkflowService;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.commons.collections.map.HashedMap;
@@ -24,6 +25,7 @@ import java.io.File;
 import java.util.*;
 
 public class WipAction extends BaseAction implements ModelDriven<Page> {
+
     protected Page page;
     private File upload;
     private String uploadFileName;

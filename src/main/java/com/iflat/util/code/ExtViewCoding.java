@@ -35,7 +35,7 @@ public class ExtViewCoding {
         String insClassName = StringUtil.lowerCaseFirstChar(shortClassName);
         String lowerFullClassName = moduleName.toLowerCase() + "-" + shortClassName.toLowerCase();
 
-        String extClassName = "iFlat.view" + moduleName + "." + shortClassName;
+        String extClassName = "iFlat.view." + moduleName + "." + shortClassName;
         StringBuilder sb = new StringBuilder();
         sb = sb.append("Ext.define('").append(extClassName).append("', {").append("\n")
                 .append("    extend: 'Ext.grid.Panel',").append("\n")
@@ -86,8 +86,9 @@ public class ExtViewCoding {
                 sb.append("{").append("\n");
 
                 String name = field[j].getName();
-                sb.append("        header: '").append(shortClassName).append("',").append("\n")
-                        .append("        dataIndex: '").append(insClassName).append(".").append(name).append("',").append("\n");
+                sb.append("        header: '").append(name).append("',").append("\n")
+                        .append("        dataIndex: '").append(insClassName).append(".").append(name).append("',").append("\n")
+                        .append("        flex: true,").append("\n");
 
                 String type = field[j].getGenericType().toString(); //获取属性的类型
                 String other = "";
@@ -96,12 +97,15 @@ public class ExtViewCoding {
                         other = "        formatter: 'date(\"Y-m-d\")',\n";
                         break;
                 }
+                if ("id".equals(name)) {
+                    sb.append("        hidden: true,").append("\n");
+                }
                 sb.append(other)
                         .append("    }, ");
 
             }
             sb.append("{").append("\n")
-                    .append("  text: '删除',").append("\n")
+                    .append("        text: '删除',").append("\n")
                     .append("        width: 60,").append("\n")
                     .append("        menuDisabled: true,").append("\n")
                     .append("        xtype: 'actioncolumn',").append("\n")
@@ -138,7 +142,7 @@ public class ExtViewCoding {
         String insClassName = StringUtil.lowerCaseFirstChar(shortClassName);
         String lowerFullClassName = moduleName.toLowerCase() + "-" + shortClassName.toLowerCase();
 
-        String extClassName = "iFlat.view" + moduleName + "." + shortClassName + "Controller";
+        String extClassName = "iFlat.view." + moduleName + "." + shortClassName + "Controller";
         StringBuilder sb = new StringBuilder();
         sb = sb.append("Ext.define('").append(extClassName).append("', {").append("\n")
                 .append("    extend: 'Ext.app.ViewController',").append("\n")
@@ -198,7 +202,8 @@ public class ExtViewCoding {
                 .append("                    var obj = Ext.JSON.decode(action.response.responseText)['object'];").append("\n")
                 .append("                    if (!Flat.util.isEmpty(obj)) {").append("\n")
                 .append("                        var id = obj['id'];").append("\n")
-                .append("                        form.down('textfield[name=").append(insClassName).append(".id]').setValue(id);").append("\n")
+                .append("                        win.down('textfield[name=").append(insClassName).append(".id]').setValue(id);").append("\n")
+                .append("                        win.close();").append("\n")
                 .append("                    }").append("\n")
                 .append("                },").append("\n")
                 .append("                failure: function (form, action) {").append("\n")
@@ -315,16 +320,16 @@ public class ExtViewCoding {
 
     public static void generateViewEdit(String className, String moduleName, String shortClassName, String extRootPath) {
 
-        String filePath = extRootPath + "view\\" + moduleName.replace(".", "\\") + "\\" + shortClassName + "Controller.js";
+        String filePath = extRootPath + "view\\" + moduleName.replace(".", "\\") + "\\" + shortClassName + "Edit.js";
         createFile(filePath);
 
         String lowerClassName = shortClassName.toLowerCase();
         String insClassName = StringUtil.lowerCaseFirstChar(shortClassName);
         String lowerFullClassName = moduleName.toLowerCase() + "-" + shortClassName.toLowerCase();
 
-        String extClassName = "iFlat.view" + moduleName + "." + shortClassName + "Edit";
+        String extClassName = "iFlat.view." + moduleName + "." + shortClassName + "Edit";
         StringBuilder sb = new StringBuilder();
-        sb = sb.append("Ext.define('").append(extClassName).append("', {").append("\n")
+        sb.append("Ext.define('").append(extClassName).append("', {").append("\n")
                 .append("    extend: 'Ext.window.Window',").append("\n")
                 .append("    alias: 'widget.").append(moduleName).append("-").append(lowerClassName).append("edit',").append("\n")
                 .append("    title: '").append(shortClassName).append("',").append("\n")
@@ -356,16 +361,38 @@ public class ExtViewCoding {
                 .append("                xtype: 'container',").append("\n")
                 .append("                layout: 'hbox',").append("\n")
                 .append("                margin: '10 0 0 0',").append("\n")
-                .append("                width: '100%'").append("\n")
+                .append("                width: '100%',").append("\n")
                 .append("                items: [{").append("\n")
                 .append("                    xtype: 'textfield',").append("\n")
                 .append("                    name: '").append(insClassName).append(".id',").append("\n")//
                 .append("                    id: '").append(moduleName).append("-").append(lowerClassName).append("-id',").append("\n")
                 .append("                    fieldLabel: 'ID',").append("\n")
                 .append("                    labelWidth: 50,").append("\n")
-                .append("                    width: '33%',").append("\n")
+                .append("                    width: '50%',").append("\n")
                 .append("                    hidden: true").append("\n")
-                .append("                }]").append("\n")
+                .append("                }, ");
+
+        try {
+            Field[] field = Class.forName(className).getDeclaredFields();
+            for (int j = 0; j < field.length; j++) {
+
+                String name = field[j].getName();
+                if ("id".equals(name)) {
+                    continue;
+                }
+                sb.append("{").append("\n")
+                        .append("                    xtype: 'textfield',").append("\n")
+                        .append("                    name: '").append(insClassName).append(".").append(name).append("',").append("\n")
+                        .append("                    fieldLabel: '").append(name).append("',").append("\n")
+                        .append("                    labelWidth: 50,").append("\n")
+                        .append("                    width: '50%',").append("\n")
+                        .append("                }, ");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        sb.append("]").append("\n")
                 .append("            }]").append("\n")
                 .append("        }, {").append("\n")
                 .append("            xtype: 'container',").append("\n")
@@ -394,7 +421,7 @@ public class ExtViewCoding {
                 .append("                ui: 'orig-blue',").append("\n")
                 .append("                handler: 'uploadAttachment'").append("\n")
                 .append("            }]").append("\n")
-                .append("        }, {").append("\n")
+                .append("        }, /*{").append("\n")
                 .append("            xtype: 'panel',").append("\n")
                 .append("            minHeight: 300,").append("\n")
                 .append("            flex: 1,").append("\n")
@@ -451,7 +478,7 @@ public class ExtViewCoding {
                 .append("                    }").append("\n")
                 .append("                }],").append("\n")
                 .append("            }]").append("\n")
-                .append("        }],").append("\n")
+                .append("        }*/],").append("\n")
                 .append("    }],").append("\n")
                 .append("\n")
                 .append("    dockedItems: [{").append("\n")
@@ -459,7 +486,6 @@ public class ExtViewCoding {
                 .append("        dock: 'bottom',").append("\n")
                 .append("        ui: 'footer',").append("\n")
                 .append("        id: '").append(moduleName).append("-").append(lowerClassName).append("edit-toolbar',").append("\n")
-                .append("        disabled: true,").append("\n")
                 .append("        items: ['->', {").append("\n")
                 .append("            xtype: 'button',").append("\n")
                 .append("            text: '保 存',").append("\n")

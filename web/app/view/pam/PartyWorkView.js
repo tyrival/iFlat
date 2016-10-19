@@ -366,6 +366,18 @@ Ext.define('iFlat.view.pam.PartyWorkView', {
                                 items: [{
                                     xtype: 'textarea',
                                     labelAlign: 'top',
+                                    fieldLabel: '员工思想动态和队伍稳定情况',
+                                    name: 'monthlyWork.mbStableMeasure',
+                                    width: '100%',
+                                }]
+                            }, /*{
+                                xtype: 'container',
+                                layout: 'hbox',
+                                margin: '0 0 5 0',
+                                width: '100%',
+                                items: [{
+                                    xtype: 'textarea',
+                                    labelAlign: 'top',
                                     fieldLabel: '本月支部维护员工队伍稳定举措',
                                     name: 'monthlyWork.mbStableMeasure',
                                     width: '100%',
@@ -392,7 +404,7 @@ Ext.define('iFlat.view.pam.PartyWorkView', {
                                     name: 'monthlyWork.mbProblem',
                                     width: '100%',
                                 }]
-                            }, ]
+                            }, */]
                         }, {
                             xtype: 'fieldset',
                             title: '精神文化建设',
@@ -433,7 +445,7 @@ Ext.define('iFlat.view.pam.PartyWorkView', {
                                     width: '100%',
                                 }]
                             }]
-                        }, {
+                        }/*, {
                             xtype: 'fieldset',
                             title: '分工会/团支部工作',
                             layout: 'vbox',
@@ -453,7 +465,7 @@ Ext.define('iFlat.view.pam.PartyWorkView', {
                                     width: '100%',
                                 }]
                             }]
-                        }, {
+                        }*/, {
                             xtype: 'fieldset',
                             title: '主题教育活动',
                             layout: 'vbox',

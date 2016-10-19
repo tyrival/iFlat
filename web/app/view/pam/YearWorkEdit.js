@@ -172,7 +172,6 @@ Ext.define('iFlat.view.pam.YearWorkEdit', {
         dock: 'bottom',
         ui: 'footer',
         id: 'pam-yearworkedit-toolbar',
-        disabled: true,
         items: [{
             xtype: 'button',
             text: '提交',

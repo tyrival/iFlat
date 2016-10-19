@@ -23,7 +23,10 @@ Ext.define('iFlat.view.workflow.Comment', {
             align: 'center',
             dataIndex: 'comment.time',
             renderer: function(value, summaryData) {
-                value = Ext.Date.add(value, Ext.Date.HOUR, -8);
+            	if (!Ext.isIE) {
+                	value = Ext.Date.add(value, Ext.Date.HOUR, -8);
+            	}
+                return Ext.Date.format(value, "Y-m-d H:i");
                 return Ext.Date.format(value, "Y-m-d H:i");
             },
             //formatter: 'date("Y-m-d H:i")'

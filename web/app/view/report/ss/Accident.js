@@ -12,7 +12,7 @@ Ext.define('iFlat.view.report.ss.Accident', {
     }],
 
     controller: 'rpt-ss-accident',
-    store: rptSsAccidentStore = Ext.create('iFlat.store.ss.Accident', {
+    store: rptSsAccidentStore = Ext.create('iFlat.store.ss.AccidentList', {
         autoLoad: false,
     }),
     dockedItems: [{
@@ -50,7 +50,7 @@ Ext.define('iFlat.view.report.ss.Accident', {
             xtype: 'combo',
             id: 'rpt-ss-accident-dept',
             bind: {
-                store: '{ssAccidentFuncDept}'
+                store: '{ssFiveSFuncDept}'
             },
             queryMode: 'local',
             allowBlank: false,
@@ -59,6 +59,13 @@ Ext.define('iFlat.view.report.ss.Accident', {
             width: 200,
             fieldLabel: '责任部门',
             labelWidth: 60,
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-accident-person',
+            width: 200,
+            fieldLabel: '责任人',
+            labelWidth: 60,
+            labelAlign: 'right',
         }, ],
     }, {
         xtype: 'toolbar',
@@ -99,13 +106,25 @@ Ext.define('iFlat.view.report.ss.Accident', {
         }],
     }],
     columns: [{
+        text: '详情',
+        width: 60,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        tooltip: '详情',
+        align: 'center',
+        iconCls: 'x-fa fa-info',
+        handler: 'showAccidentInfo',
+        editor: {
+            xtype: 'label',
+        },
+    }, {
         text: '相关人员',
         width: 60,
         menuDisabled: true,
         xtype: 'actioncolumn',
         tooltip: '相关人员',
         align: 'center',
-        iconCls: 'x-fa fa-edit',
+        iconCls: 'x-fa fa-group',
         handler: 'showAccPartyList',
         editor: {
             xtype: 'label',
@@ -197,11 +216,11 @@ Ext.define('iFlat.view.report.ss.Accident', {
         dataIndex: 'accident.creatorDept',
         //hidden: true,
     }, ],
-    bbar: {
+    /*bbar: {
         xtype: 'pagingtoolbar',
         pageIndex: 5,
         store: rptSsAccidentStore,
         displayInfo: true,
-    }
+    }*/
 
 });

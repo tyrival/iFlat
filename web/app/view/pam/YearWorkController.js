@@ -30,13 +30,13 @@ Ext.define('iFlat.view.pam.YearWorkController', {
     },
 
     showYearWorkEdit: function(cmp, rowIndex, colIndex, actionItem, event, record, row) {
-        var text = cmp.getText();
-        var t = text.substring(2, 4);
         var win = Ext.getCmp('pam-yearworkedit');
         if(!win) {
             win = Ext.create('iFlat.view.pam.YearWorkEdit');
         }
         if(!record) {
+	        var text = cmp.getText();
+	        var t = text.substring(2, 4);
             record = Ext.create('iFlat.model.pam.YearWork', {
                 'yearWork.pbName' : pamYearWorkStore.getProxy().extraParams['yearWork.pbName'],
                 'yearWork.type' : t,

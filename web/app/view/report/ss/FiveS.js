@@ -12,7 +12,7 @@ Ext.define('iFlat.view.report.ss.FiveS', {
     }],
 
     controller: 'rpt-ss-fives',
-    store: rptSsFiveSStore = Ext.create('iFlat.store.ss.FiveS', {
+    store: rptSsFiveSStore = Ext.create('iFlat.store.ss.FiveSList', {
         autoLoad: false,
     }),
     dockedItems: [{
@@ -89,6 +89,13 @@ Ext.define('iFlat.view.report.ss.FiveS', {
         dock: 'top',
         overflowHandler: 'scroller',
         items: [{
+            xtype: 'textfield',
+            id: 'rpt-ss-fives-person',
+            width: 200,
+            fieldLabel: '责任人',
+            labelWidth: 60,
+            labelAlign: 'right',
+        }, {
             xtype: 'datefield',
             id: 'rpt-ss-fives-from',
             allowBlank: true,
@@ -123,6 +130,18 @@ Ext.define('iFlat.view.report.ss.FiveS', {
         }],
     }],
     columns: [{
+        text: '详情',
+        width: 60,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        tooltip: '详情',
+        align: 'center',
+        iconCls: 'x-fa fa-info',
+        handler: 'showFiveSInfo',
+        editor: {
+            xtype: 'label',
+        },
+    }, {
         header: '日期',
         dataIndex: 'fiveS.date',
         formatter: 'date("Y-m-d")'
@@ -222,11 +241,11 @@ Ext.define('iFlat.view.report.ss.FiveS', {
         header: '创建部门',
         dataIndex: 'fiveS.creatorDept',
     }],
-    bbar: {
+    /*bbar: {
         xtype: 'pagingtoolbar',
         pageIndex: 5,
         store: rptSsFiveSStore,
         displayInfo: true,
-    }
+    }*/
 
 });

@@ -322,9 +322,24 @@ Ext.define('iFlat.view.wip.SrOsSalesmanAudit', {
                         xtype: 'textfield',
                         name: 'srOutsource.bidComment',
                         fieldLabel: '备注',
-                        width: '99%',
+                        width: '70%',
                         editable: false,
-                    }]
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srOutsource.bidAtt',
+                        hidden: true,
+                        editable: false,
+                        listeners: {
+                            change: 'onAttachmentChange2'
+                        },
+                    }, {
+                        xtype: 'button',
+                        text: '下载比价附件',
+                        margin: '0 0 0 10',
+                        hidden: true,
+                        id: 'wip-srossalesmanaudit-down2',
+                        width: 100,
+                    }, ]
                 }, ]
             }, {
                 xtype: 'textfield',

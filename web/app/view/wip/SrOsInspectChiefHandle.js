@@ -243,9 +243,10 @@ Ext.define('iFlat.view.wip.SrOsInspectChiefHandle', {
                         },],
                     }]
                 }, ]
-            }, /*{
+            }, {
                 xtype: 'fieldset',
                 title: '比价信息',
+                hidden: true,
                 items: [{
                     xtype: 'container',
                     layout: 'hbox',
@@ -348,6 +349,7 @@ Ext.define('iFlat.view.wip.SrOsInspectChiefHandle', {
             }, {
                 xtype: 'fieldset',
                 title: '经营代表意见',
+                hidden: true,
                 items: [{
                     xtype: 'container',
                     layout: 'hbox',
@@ -363,6 +365,7 @@ Ext.define('iFlat.view.wip.SrOsInspectChiefHandle', {
             }, {
                 xtype: 'fieldset',
                 title: '资料信息',
+                hidden: true,
                 items: [{
                     xtype: 'container',
                     layout: 'hbox',
@@ -390,7 +393,7 @@ Ext.define('iFlat.view.wip.SrOsInspectChiefHandle', {
                     }, ]
 
                 }]
-            }, */{
+            }, {
                 xtype: 'fieldset',
                 title: '完工信息',
                 items: [{

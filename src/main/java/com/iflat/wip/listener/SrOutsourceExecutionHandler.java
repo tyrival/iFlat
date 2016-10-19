@@ -106,17 +106,17 @@ public class SrOutsourceExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (srOutsource != null) {
             srOutsource.setStatus(status);
-            if (SrOsStatus.STATUS_PROJECT_MANAGER_APPROVE.equals(status)) {
+            if (SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT.equals(status)) {
                 UserInfoVo userInfoVo = Session.getUserInfo();
                 srOutsource.setAuditorAcc(userInfoVo.getAccount());
                 srOutsource.setAuditorName(userInfoVo.getUserName());
             }
-            if (SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT.equals(status)) {
+            if (SrOsStatus.STATUS_BIDDING.equals(status)) {
                 UserInfoVo userInfoVo = Session.getUserInfo();
                 srOutsource.setSignorAcc(userInfoVo.getAccount());
                 srOutsource.setSignorName(userInfoVo.getUserName());
             }
-            if (SrOsStatus.STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE.equals(status)) {
+            if (SrOsStatus.STATUS_MANUFACTURE.equals(status)) {
                 UserInfoVo userInfoVo = Session.getUserInfo();
                 srOutsource.setBdDirectorAcc(userInfoVo.getAccount());
                 srOutsource.setBdDirectorName(userInfoVo.getUserName());

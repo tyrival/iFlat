@@ -35,6 +35,7 @@ public class DemoAction extends BaseAction implements ModelDriven<Page> {
         }
         return page;
     }
+
     private BookService bookService;
     private Book book;
 

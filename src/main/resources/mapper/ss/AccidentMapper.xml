@@ -65,6 +65,14 @@
             <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">AND issuer=#{issuer}</if>
             <if test="fromDate!=null">AND date &gt;= #{fromDate}</if>
             <if test="toDate!=null">AND date &lt; DATEADD(day,1,#{toDate})</if>
+            <if test="person!=null and !&quot;&quot;.equals(person.trim())">
+                id IN
+                (
+                    SELECT DISTINCT accId
+                    FROM SsAccParty
+                    WHERE personName = #{person} AND type!='受害人'
+                )
+            </if>
         </where>
         ORDER BY date DESC
     </select>

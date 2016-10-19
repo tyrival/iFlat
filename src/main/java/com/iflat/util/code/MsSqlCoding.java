@@ -85,6 +85,7 @@ public class MsSqlCoding {
                 sb.append("    ").append(name).append(" ").append(sqlType).append(",").append("\n");
             }
         }
+        sb.substring(0, sb.length() - 1);
         sb.append(")");
 
         FileUtil.write(filePath, sb.toString());

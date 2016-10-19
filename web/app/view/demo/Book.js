@@ -39,13 +39,15 @@ Ext.define('iFlat.view.demo.Book', {
             xtype: 'label',
         },
     }, {
-        header: 'Book',
+        header: 'id',
         dataIndex: 'book.id',
+        hidden: true,
     }, {
-        header: 'Book',
+        header: '书名',
         dataIndex: 'book.name',
+        flex: true,
     }, {
-  text: '删除',
+        text: '删除',
         width: 60,
         menuDisabled: true,
         xtype: 'actioncolumn',

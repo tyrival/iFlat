@@ -38,7 +38,6 @@ Ext.define('iFlat.view.system.UserController', {
     },
 
     updateUserRecord: function(editor, context, eOpts) {
-        debugger;
         var record = context.record;
         Ext.Ajax.request({
             url: 'system_saveUser.action',

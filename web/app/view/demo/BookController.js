@@ -1,147 +1,171 @@
-Ext.define('iFlat.view.demo.BookEdit', {
-    extend: 'Ext.window.Window',
-    alias: 'widget..demo-bookedit',
-    title: 'Book',
-    layout: 'fit',
-    modal: true,
+Ext.define('iFlat.view.demo.BookController', {
+    extend: 'Ext.app.ViewController',
+    alias: 'controller.demo-book',
 
-    height: '95%',
-    width: '95%',
-    id: '.demo-bookedit',
-    controller: '.demo-book',
-    closeAction: 'hide',
+    showBookEdit: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+        var win = Ext.getCmp('demo-bookedit');
+        if(!win) {
+            win = Ext.create('iFlat.view.demo.BookEdit');
+        }
+        if(!record) {
+            record = Ext.create('iFlat.model.demo.Book');
+        }
+        var form = win.down('form[id=demo-bookedit-form]');
+        form.loadRecord(record);
+        win.show();
+    },
 
-    items: [{
-        xtype: 'container',
-        padding: '15 15 0 15',
-        scrollable: 'y',
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
-        items: [{
-            xtype: 'form',
-            id: '.demo-bookedit-form',
-            fieldDefaults: {
-                labelAlign: 'right',
-                labelWidth: 70,
-            },
-            items: [{
-                xtype: 'container',
-                layout: 'hbox',
-                margin: '10 0 0 0',
-                width: '100%'
-                items: [{
-                    xtype: 'textfield',
-                    name: 'book.id',
-                    id: '.demo-book-id',
-                    fieldLabel: 'ID',
-                    labelWidth: 50,
-                    width: '33%',
-                    hidden: true
-                }]
-            }]
-        }, {
-            xtype: 'container',
-            layout: 'hbox',
-            margin: '10 0 0 0',
-            hidden: true,
-            id: '.demo-bookedit-uploadatt',
-            items: [{
-                xtype: 'form',
-                id: '.demo-bookedit-upload',
-                fieldDefaults: {
-                    labelAlign: 'right',
-                    labelWidth: 70,
-                },
-                items: [{
-                    xtype: 'fileuploadfield',
-                    fieldLabel: '附件',
-                    name: 'upload',
-                    buttonText: '选择...',
-                    width: 300,
-                    margin: '0 10 0 0',
-                }]
-            }, {
-                xtype: 'button',
-                text: '上传',
-                ui: 'orig-blue',
-                handler: 'uploadAttachment'
-            }]
-        }, {
-            xtype: 'panel',
-            minHeight: 300,
-            flex: 1,
-            border: false,
-            margin: '30 0 5 0',
-            layout: {
-                type: 'hbox',
-                align: 'stretch'
-            },
-            items: [{
-                xtype: 'gridpanel',
-                width: '100%',
-                scrollable: true,
-                store: .demoBookDetlStore = Ext.create('iFlat.store..demo.BookDetl'),
-                border: true,
-                columnLines: true,
-                plugins: [
-                    .demoBookDetlRowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
-                        pluginId: '.demo-bookedit-detl-edit',
-                        clicksToMoveEditor: 1,
-                        autoCancel: true,
-                        listeners: {
-                            edit: 'updateDetl',
-                            cancelEdit: 'deleteEmptyRecord',
-                        }
+    deleteBook: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+        var id = record.data['book.id'];
+        if(id == undefined || id == '') {
+            demoBookStore.remove(record);
+        } else {
+            Ext.Msg.confirm("提示!","确定要删除这条记录吗?",function(btn) {
+                if(btn=="yes") {
+                    Ext.Ajax.request({
+                        url: 'demo_deleteBook.action',
+                        params: {
+                            'book.id': id
+                        },
+                        success: function (response, opts) {
+                            var data = Ext.JSON.decode(response.responseText);
+                            if(data.success) {
+
+                                demoBookStore.remove(record);
+                            }
+                            Flat.util.tip(response.responseText);
+                        },
                     })
-                ],
-                tbar: [{
-                    xtype: 'button',
-                    text: '新增',
-                    ui: 'orig-blue',
-                    handler: 'addDetail'
-                }],
-                columns: [{
-                    text: '删除',
-                    width: 50,
-                    menuDisabled: true,
-                    xtype: 'actioncolumn',
-                    align: 'center',
-                    iconCls: 'x-fa fa-close',
-                    handler: 'deleteDetail',
-                    editor: {
-                        xtype: 'label'
-                    }
-                }, {
-                    header: 'id',
-                    width: 100,
-                    dataIndex: 'bookDetl.id',
-                    cellWrap: true,
-                    hidden: true,
-                    editor: {
-                        xtype: 'textarea',
-                        allowBlank: true,
-                    }
-                }],
-            }]
-        }],
-    }],
+                };
+            })
+        }
 
-    dockedItems: [{
-        xtype: 'toolbar',
-        dock: 'bottom',
-        ui: 'footer',
-        id: '.demo-bookedit-toolbar',
-        disabled: true,
-        items: ['->', {
-            xtype: 'button',
-            text: '保 存',
-            handler: 'saveBookEdit',
-        }]
-    }],
+    },
 
-    listeners: {
-        close: 'editClose'
-    }
-});
+    refreshList: function(btn) {
+        btn.up('grid').getStore().reload();
+    },
+
+    saveBookEdit: function(button) {
+        var win = button.up('window');
+        var form = win.down('form[id=demo-bookedit-form]');
+        if (form.isValid()) {
+            form.submit({
+                url :'demo_saveBook.action',
+                success: function (form, action) {
+                    Flat.util.tip(action.response.responseText);
+                    var obj = Ext.JSON.decode(action.response.responseText)['object'];
+                    if (!Flat.util.isEmpty(obj)) {
+                        var id = obj['id'];
+                        win.down('textfield[name=book.id]').setValue(id);
+                        win.close();
+                    }
+                },
+                failure: function (form, action) {
+                    Flat.util.tip(action.response.responseText);
+                }
+            });
+        }
+    },
+
+    uploadAttachment: function(btn) {
+        var form = Ext.getCmp('demo-bookedit-upload');
+        if (form.isValid()) {
+            form.submit({
+                url: 'demo_uploadBook.action',
+                method: 'POST',
+                waitMsg: '正在上传......',
+                success: function (fp, o) {
+                    var path = (Ext.JSON.decode(o.response.responseText)).object;
+                    Ext.getCmp('demo-bookedit-attachment').setValue(path);
+                },
+                failure: function (fp, o) {
+                    Flat.util.tip(o.response.responseText);
+                }
+            })
+        }
+    },
+
+    deleteAttachment: function(btn) {
+        Ext.Msg.confirm("提示!","确定要删除附件吗?",function(btn) {
+            if(btn=="yes") {
+                Ext.Ajax.request({
+                    url: 'demo_deleteFile.action?filePath=' + Ext.getCmp('demo-bookedit-attachment').getValue(),
+                    success: function (response, opts) {
+                        Flat.util.tip(response.responseText);
+                    },
+                })
+                Ext.getCmp('demo-bookedit-attachment').setValue('');
+            };
+        })
+    },
+
+    onAttachmentChange: function(field, newValue, oldValue, eOpts) {
+        if (newValue && newValue != '') {
+            Ext.getCmp('demo-bookedit-att').show();
+            Ext.getCmp('demo-bookedit-link').setHref(newValue);
+        } else {
+            Ext.getCmp('demo-bookedit-att').hide();
+            Ext.getCmp('demo-bookedit-link').setHref('');
+        }
+    },
+
+    addDetail: function(btn) {
+        demoBookDetlRowEditing.cancelEdit();
+        var rec = Ext.create('iFlat.model.demo.BookDetl',{
+            'bookDetl.pid': Ext.getCmp('demo-book-id').getValue(),
+        });
+        demoBookDetlStore.insert(0, book);
+        demoBookDetlRowEditing.startEdit(0, 0);
+    },
+
+    updateDetail: function(editor, context, eOpts) {
+        Ext.Ajax.request({
+            url: 'demo_saveBookDetl.action',
+            method: 'post',
+            params: context.record.getData(),
+            success: function(response, opts) {
+                demoBookDetlStore.reload();
+                Flat.util.tip(response.responseText);
+            },
+            failure: function(response, opts) {
+                demoBookDetlStore.reload();
+                Flat.util.tip(response.responseText);
+            }
+        });
+    },
+
+    deleteDetail: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+        var id = record.get('bookDetl.id');
+        if(id == undefined || id == '') {
+            demoBookDetlStore.remove(record);
+        } else {
+            Ext.Msg.confirm("提示!","确定要删除这条记录吗?",function(btn) {
+                if(btn=="yes") {
+                    Ext.Ajax.request({
+                        url: 'demo_deleteBookDetl.action',
+                        params: record.data,
+                        success: function (response, opts) {
+                            var data = Ext.JSON.decode(response.responseText);
+                            if(data.success) {
+                                demoBookDetlStore.remove(record);
+                            }
+                            Flat.util.tip(response.responseText);
+                        },
+                    })
+                };
+            })
+        }
+    },
+
+    deleteEmptyRecord: function(editor, context, eOpts) {
+        var id = context.record.data["bookDetl.id"];
+        if(id == "") {
+            demoBookDetlStore.remove(context.record);
+        }
+    },
+
+    editClose: function () {
+        demoBookStore.reload();
+    },
+})

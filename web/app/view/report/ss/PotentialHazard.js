@@ -12,7 +12,7 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
     }],
 
     controller: 'rpt-ss-potentialhazard',
-    store: rptSsPotentialHazardStore = Ext.create('iFlat.store.ss.PotentialHazard', {
+    store: rptSsPotentialHazardStore = Ext.create('iFlat.store.ss.PotentialHazardList', {
         autoLoad: false,
     }),
     dockedItems: [{
@@ -50,7 +50,7 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
             xtype: 'combo',
             id: 'rpt-ss-potentialhazard-dept',
             bind: {
-                store: '{ssPotentialHazardFuncDept}'
+                store: '{ssFiveSFuncDept}'
             },
             queryMode: 'local',
             allowBlank: false,
@@ -59,6 +59,13 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
             width: 200,
             fieldLabel: '责任部门',
             labelWidth: 60,
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-person',
+            width: 200,
+            fieldLabel: '责任人',
+            labelWidth: 60,
+            labelAlign: 'right',
         }, ],
     }, {
         xtype: 'toolbar',
@@ -99,6 +106,18 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
         }],
     }],
     columns: [{
+        text: '详情',
+        width: 60,
+        menuDisabled: true,
+        xtype: 'actioncolumn',
+        tooltip: '详情',
+        align: 'center',
+        iconCls: 'x-fa fa-info',
+        handler: 'showPotentialHazardInfo',
+        editor: {
+            xtype: 'label',
+        },
+    }, {
         header: '日期',
         dataIndex: 'potentialHazard.date',
         formatter: 'date("Y-m-d")'
@@ -227,11 +246,11 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
         header: '创建部门',
         dataIndex: 'potentialHazard.creatorDept',
     }, ],
-    bbar: {
+    /*bbar: {
         xtype: 'pagingtoolbar',
         pageIndex: 5,
         store: rptSsPotentialHazardStore,
         displayInfo: true,
-    }
+    }*/
 
 });

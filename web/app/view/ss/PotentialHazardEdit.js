@@ -106,6 +106,26 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 bind: {
                     store: '{ssPhRiskLvl}',
                 },
+                listeners: {
+                    change: function (cb, newV, oldV, opt) {
+                        var s = 0;
+                        switch (newV) {
+                            case '轻微':
+                                s = 1;
+                                break;
+                            case '严重':
+                                s = 3;
+                                break;
+                            case '较大':
+                                s = 6;
+                                break;
+                            case '重大':
+                                s = 10;
+                                break;
+                        }
+                        cb.up('window').down('textfield[name=potentialHazard.score]').setValue(s);
+                    }
+                }
             },{
                 xtype: 'combo',
                 name: 'potentialHazard.phType',

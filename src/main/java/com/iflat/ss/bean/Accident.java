@@ -39,6 +39,16 @@ public class Accident {
     private String issueDept;
     private String issuer;
 
+    private String person;
+
+    public String getPerson() {
+        return person;
+    }
+
+    public void setPerson(String person) {
+        this.person = person;
+    }
+
     public String getIssuer() {
         return issuer;
     }

@@ -70,6 +70,65 @@ Ext.define('iFlat.view.report.wip.sr.SrOutsource', {
     columns: [{
         text: '申请信息',
         columns: [{
+            text: '打印申请',
+            width: 80,
+            menuDisabled: true,
+            xtype: 'actioncolumn',
+            tooltip: '打印申请',
+            align: 'center',
+            iconCls: 'x-fa fa-print',
+            isDisabled: function () {
+                var role = Ext.getCmp('global-panel').getViewModel().get('user')['roleName'];
+                return role != '修船外协员' && role != '修船外协科科长';
+            },
+            handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+                var m = record.getData();
+                var id = record.get('srOutsource.id');
+                if (!Flat.util.isEmpty(id)) {
+                    var store = Ext.create('iFlat.store.wip.SrOutsourceDetl');
+                    store.getProxy().extraParams['srOutsourceDetl.pid'] = id;
+                    store.reload({
+                        callback: function(records, option, success) {
+                            Print.outsource(m, records);
+                        }
+                    });
+                }
+
+            },
+        }, {
+            text: '打印审批',
+            width: 80,
+            menuDisabled: true,
+            xtype: 'actioncolumn',
+            tooltip: '打印审批',
+            align: 'center',
+            iconCls: 'x-fa fa-print',
+            isDisabled: function () {
+                var role = Ext.getCmp('global-panel').getViewModel().get('user')['roleName'];
+                return role != '修船外协员' && role != '修船外协科科长';
+            },
+            handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+                var m = record.getData();
+                var id = record.get('srOutsource.id');
+                if (!Flat.util.isEmpty(id)) {
+                    var store = Ext.create('iFlat.store.wip.SrOsBidding');
+                    store.getProxy().extraParams['srOsBidding.pid'] = id;
+                    store.reload({
+                        callback: function(records, option, success) {
+                            var bidding = records;
+                            var store = Ext.create('iFlat.store.wip.SrOsProcess');
+                            store.getProxy().extraParams['srOsProcess.pid'] = id;
+                            store.reload({
+                                callback: function(recs, option, success) {
+                                    var process = recs;
+                                    Print.outsourceAppr(m, bidding, process);
+                                }
+                            });
+                        }
+                    });
+                }
+            },
+        }, {
             text: '施工内容',
             width: 80,
             menuDisabled: true,
@@ -80,7 +139,7 @@ Ext.define('iFlat.view.report.wip.sr.SrOutsource', {
             handler: 'showDetail',
         }, {
             text: '考核',
-            width: 80,
+            width: 60,
             menuDisabled: true,
             xtype: 'actioncolumn',
             tooltip: '考核',
