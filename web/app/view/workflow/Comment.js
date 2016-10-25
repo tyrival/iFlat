@@ -5,14 +5,32 @@ Ext.define('iFlat.view.workflow.Comment', {
     layout: 'fit',
     modal: true,
 
+    requires: [
+        'Ext.grid.plugin.Exporter'
+    ],
+
     id: 'workflow-comment',
     closeAction: 'hide',
     width: 800,
     store: workflowCommentStore = Ext.create('iFlat.store.workflow.Comment'),
     maxHeight: 500,
     y: 20,
+
+    tbar: ['->', {
+        text: '导出',
+        handler: function(btn) {
+            var grid = Ext.getCmp('workflow-comment-grid');
+            grid.saveDocumentAs({
+                title: '批注',
+                fileName: '批注.xls',
+            })
+        }
+    }],
     items: [{
         xtype: 'grid',
+        plugins: [{
+            ptype: 'gridexporter'
+        }],
         id: 'workflow-comment-grid',
         border: true,
         columnLines: true,

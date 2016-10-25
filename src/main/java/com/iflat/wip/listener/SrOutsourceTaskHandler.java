@@ -196,16 +196,12 @@ public class SrOutsourceTaskHandler extends WorkflowTaskListener {
         this.setTaskInfo(delegateTask, SrOsStatus.TASK_NAME, getDescription(delegateTask) + "<" + status + ">");
     }
 
-    private static String DESCRIPTION;
     public String getDescription(DelegateTask delegateTask) throws Exception {
-        if (DESCRIPTION == null || "".equals(DESCRIPTION)) {
-            String id = (String) delegateTask.getVariable("id");
-            SrOutsource srOutsource = new SrOutsource();
-            srOutsource.setId(id);
-            srOutsource = (SrOutsource) getSrOutsourceService().list(srOutsource).get(0);
-            DESCRIPTION = "[" + srOutsource.getProjName() + "] " + srOutsource.getName() + " ";
-        }
-        return DESCRIPTION;
+        String id = (String) delegateTask.getVariable("id");
+        SrOutsource srOutsource = new SrOutsource();
+        srOutsource.setId(id);
+        srOutsource = (SrOutsource) getSrOutsourceService().list(srOutsource).get(0);
+        return "[" + srOutsource.getProjName() + "] " + srOutsource.getName() + " ";
     }
 
     private SrOutsourceService srOutsourceService;

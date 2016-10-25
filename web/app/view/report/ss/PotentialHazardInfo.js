@@ -186,6 +186,8 @@ Ext.define('iFlat.view.report.ss.PotentialHazardInfo', {
                 name: 'potentialHazard.amount',
                 fieldLabel: '罚款金额',
                 width: '25%',
+                id: 'rpt-ss-potentialhazardinfo-amount',
+                hidden: true,
             },{
                 xtype: 'textfield',
                 name: 'potentialHazard.score',
@@ -237,6 +239,8 @@ Ext.define('iFlat.view.report.ss.PotentialHazardInfo', {
                 name: 'potentialHazard.issuer',
                 fieldLabel: '查处人',
                 width: '33%',
+                id: 'rpt-ss-potentialhazardinfo-issuer',
+                hidden: true,
             }]
         },{
             items: [{

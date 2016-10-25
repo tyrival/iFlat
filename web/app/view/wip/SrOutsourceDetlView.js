@@ -32,6 +32,10 @@ Ext.define('iFlat.view.wip.SrOutsourceDetlView', {
             width: 200,
             dataIndex: 'srOutsourceDetl.qty',
         }, {
+            header: '单位',
+            width: 100,
+            dataIndex: 'srOutsourceDetl.unit',
+        }, {
             header: '备注',
             flex: 1,
             dataIndex: 'srOutsourceDetl.comment',

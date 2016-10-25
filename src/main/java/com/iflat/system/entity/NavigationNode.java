@@ -39,6 +39,16 @@ public class NavigationNode {
     //是否为叶子节点
     private boolean leaf;
 
+    private String rowCls;
+
+    public String getRowCls() {
+        return rowCls;
+    }
+
+    public void setRowCls(String rowCls) {
+        this.rowCls = rowCls;
+    }
+
     public String getModuleName() {
         return moduleName;
     }

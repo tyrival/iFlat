@@ -1,5 +1,6 @@
 package com.iflat.workflow.service;
 
+import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -51,6 +52,13 @@ public interface WorkflowService {
      * @return
      */
     ProcessInstance getProcessInstanceByBusinessKey(String businessKey);
+
+    /**
+     * 通过BusinessKey查找流程实例
+     * @param businessKey
+     * @return
+     */
+    HistoricProcessInstance getHistoricProcessInstanceByBusinessKey(String businessKey);
 
     /**
      * 获取用户任务清单

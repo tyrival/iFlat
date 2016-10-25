@@ -144,52 +144,68 @@ Ext.define('iFlat.view.report.ss.FiveS', {
     }, {
         header: '日期',
         dataIndex: 'fiveS.date',
-        formatter: 'date("Y-m-d")'
+        formatter: 'date("Y-m-d")',
+        menuDisabled: true,
     }, {
         header: '时间',
         dataIndex: 'fiveS.time',
+        menuDisabled: true,
     }, {
         header: '职能部门',
         dataIndex: 'fiveS.funcDept',
+        menuDisabled: true,
     }, {
         header: '区域类型',
         dataIndex: 'fiveS.areaType',
+        menuDisabled: true,
     }, {
         header: '区域代码',
         dataIndex: 'fiveS.code',
+        menuDisabled: true,
     }, {
         header: '区域',
         dataIndex: 'fiveS.area',
+        menuDisabled: true,
     }, {
         header: '其他区域',
         dataIndex: 'fiveS.otherArea',
+        menuDisabled: true,
     }, {
         header: '项目名称',
         dataIndex: 'fiveS.projName',
+        menuDisabled: true,
     }, {
         header: '违规部位',
         dataIndex: 'fiveS.region',
+        menuDisabled: true,
     }, {
         header: '所属部门',
         dataIndex: 'fiveS.belongDept',
+        menuDisabled: true,
     }, {
         header: '区域/项目负责人',
         dataIndex: 'fiveS.regionPersonName',
+        menuDisabled: true,
     }, {
         header: '区域/项目负责人一卡通',
+        menuDisabled: true,
         dataIndex: 'fiveS.regionPersonAcc',
     }, {
         header: '违规项目',
+        menuDisabled: true,
         dataIndex: 'fiveS.fsType',
     }, {
         header: '违规内容',
         dataIndex: 'fiveS.fsDescription',
+        menuDisabled: true,
     }, {
         header: '描述',
         dataIndex: 'fiveS.description',
+        menuDisabled: true,
     }, {
         text: '违规照片',
         dataIndex: 'fiveS.attachment',
+        menuDisabled: true,
         width: 60,
         renderer: function(v) {
             if(!v || v == '') {
@@ -201,25 +217,32 @@ Ext.define('iFlat.view.report.ss.FiveS', {
     }, {
         header: '责任部门',
         dataIndex: 'fiveS.dept',
+        menuDisabled: true,
     }, {
         header: '施工队/班组',
         dataIndex: 'fiveS.team',
+        menuDisabled: true,
     }, {
         header: '责任人',
         dataIndex: 'fiveS.personName',
+        menuDisabled: true,
     }, {
         header: '责任人一卡通',
         dataIndex: 'fiveS.personAcc',
+        menuDisabled: true,
     }, {
         header: '整改情况',
         dataIndex: 'fiveS.feedback',
+        menuDisabled: true,
     }, {
         header: '整改时间',
         dataIndex: 'fiveS.rectifyTime',
+        menuDisabled: true,
         formatter: 'date("Y-m-d")'
     }, {
         header: '整改照片',
         dataIndex: 'fiveS.rectifyAtt',
+        menuDisabled: true,
         width: 60,
         renderer: function(v) {
             if(!v || v == '') {
@@ -231,15 +254,23 @@ Ext.define('iFlat.view.report.ss.FiveS', {
     }, {
         header: '查处人',
         dataIndex: 'fiveS.issuer',
+        menuDisabled: true,
+        id: 'rpt-ss-fives-issuer',
+        hidden: true,
     }, {
         header: '备注',
         dataIndex: 'fiveS.comment',
+        menuDisabled: true,
     }, {
         header: '创建人',
         dataIndex: 'fiveS.creatorName',
+        menuDisabled: true,
+        id: 'rpt-ss-fives-creator',
+        hidden: true,
     }, {
         header: '创建部门',
         dataIndex: 'fiveS.creatorDept',
+        menuDisabled: true,
     }],
     /*bbar: {
         xtype: 'pagingtoolbar',

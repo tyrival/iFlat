@@ -131,56 +131,73 @@ Ext.define('iFlat.view.report.ss.Accident', {
         },
     }, {
         header: '日期',
+        menuDisabled: true,
         dataIndex: 'accident.date',
         formatter: 'date("Y-m-d")'
     }, {
         header: '时间',
         dataIndex: 'accident.time',
+        menuDisabled: true,
     }, {
         header: '工号',
         dataIndex: 'accident.projNo',
+        menuDisabled: true,
     }, {
         header: '项目名',
         dataIndex: 'accident.projName',
+        menuDisabled: true,
     }, {
         header: '区域',
         dataIndex: 'accident.area',
+        menuDisabled: true,
     }, {
         header: '位置',
         dataIndex: 'accident.position',
+        menuDisabled: true,
     }, {
         header: '事故等级',
         dataIndex: 'accident.accLvl',
+        menuDisabled: true,
     }, {
         header: '事故类型',
         dataIndex: 'accident.accType',
+        menuDisabled: true,
     }, {
         header: '简要经过',
         dataIndex: 'accident.description',
+        menuDisabled: true,
     }, {
         header: '直接经济损失',
         dataIndex: 'accident.loss',
+        menuDisabled: true,
     }, {
         header: '事业部',
         dataIndex: 'accident.busiDivision',
+        menuDisabled: true,
     }, {
         header: '总管',
         dataIndex: 'accident.projMgr',
+        menuDisabled: true,
     }, {
         header: '主管',
         dataIndex: 'accident.profMgr',
+        menuDisabled: true,
     }, {
         header: '作业长',
         dataIndex: 'accident.workMgr',
+        menuDisabled: true,
     }, {
         header: '班组长',
         dataIndex: 'accident.teamLeader',
+        menuDisabled: true,
     }, {
         header: '档长',
         dataIndex: 'accident.posiMgr',
+        menuDisabled: true,
     }, {
         text: '事故报告',
         dataIndex: 'accident.rptAtt',
+        menuDisabled: true,
         width: 60,
         renderer: function(v) {
             if(!v || v == '') {
@@ -192,6 +209,7 @@ Ext.define('iFlat.view.report.ss.Accident', {
     }, {
         text: '事故照片',
         dataIndex: 'accident.otherAtt',
+        menuDisabled: true,
         width: 60,
         renderer: function(v) {
             if(!v || v == '') {
@@ -203,17 +221,21 @@ Ext.define('iFlat.view.report.ss.Accident', {
     }, {
         header: '备注',
         dataIndex: 'accident.comment',
+        menuDisabled: true,
     }, {
         header: '查处人',
         dataIndex: 'accident.issuer',
+        menuDisabled: true,
         hidden: true
     }, {
         header: '创建人',
         dataIndex: 'accident.creatorName',
+        menuDisabled: true,
         //hidden: true,
     }, {
         header: '创建部门',
         dataIndex: 'accident.creatorDept',
+        menuDisabled: true,
         //hidden: true,
     }, ],
     /*bbar: {

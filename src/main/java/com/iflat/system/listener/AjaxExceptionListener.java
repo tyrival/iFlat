@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 public class AjaxExceptionListener implements PreResultListener {
 
     private final String logDoc = "logs/exception";
+
     @Override
     public void beforeResult(ActionInvocation actionInvocation, String s) {
 

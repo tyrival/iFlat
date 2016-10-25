@@ -107,100 +107,134 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
     }, {
         header: '日期',
         dataIndex: 'violateRegulation.date',
+        menuDisabled: true,
         formatter: 'date("Y-m-d")'
     }, {
         header: '时间',
         dataIndex: 'violateRegulation.time',
+        menuDisabled: true,
     }, {
         header: '部门',
         dataIndex: 'violateRegulation.dept',
+        menuDisabled: true,
     }, {
         header: '施工队',
         dataIndex: 'violateRegulation.team',
+        menuDisabled: true,
     }, {
         header: '班组',
         dataIndex: 'violateRegulation.groupName',
+        menuDisabled: true,
     }, {
         header: '责任人一卡通',
         dataIndex: 'violateRegulation.personAcc',
+        menuDisabled: true,
     }, {
         header: '责任人',
         dataIndex: 'violateRegulation.personName',
+        menuDisabled: true,
     }, {
         header: '岗位',
         dataIndex: 'violateRegulation.title',
+        menuDisabled: true,
     }, {
         header: '年龄',
         dataIndex: 'violateRegulation.age',
+        menuDisabled: true,
     }, {
         header: '工龄',
         dataIndex: 'violateRegulation.seniority',
+        menuDisabled: true,
     }, {
         header: '性别',
         dataIndex: 'violateRegulation.sex',
+        menuDisabled: true,
     }, {
         header: '工号',
         dataIndex: 'violateRegulation.projNo',
+        menuDisabled: true,
     }, {
         header: '工程名',
         dataIndex: 'violateRegulation.projName',
+        menuDisabled: true,
     }, {
         header: '区域',
         dataIndex: 'violateRegulation.area',
+        menuDisabled: true,
     }, {
         header: '位置',
         dataIndex: 'violateRegulation.position',
+        menuDisabled: true,
     }, {
         header: '负面发现',
         dataIndex: 'violateRegulation.description',
+        menuDisabled: true,
     }, {
         header: '风险等级',
         dataIndex: 'violateRegulation.riskLvl',
+        menuDisabled: true,
     }, {
         header: '违章代码',
         dataIndex: 'violateRegulation.code',
+        menuDisabled: true,
     }, {
         header: '违章内容',
         dataIndex: 'violateRegulation.content',
+        menuDisabled: true,
     }, {
         header: '整改措施',
         dataIndex: 'violateRegulation.measure',
+        menuDisabled: true,
     }, {
         header: '整改情况',
         dataIndex: 'violateRegulation.feedback',
+        menuDisabled: true,
     }, {
         header: '扣款',
         dataIndex: 'violateRegulation.amount',
+        menuDisabled: true,
+        id: 'rpt-ss-violateregulation-amount',
+        hidden: true,
     }, {
         header: '扣分',
         dataIndex: 'violateRegulation.score',
+        menuDisabled: true,
     }, {
         header: '事业部',
         dataIndex: 'violateRegulation.busiDivision',
+        menuDisabled: true,
     }, {
         header: '总管',
         dataIndex: 'violateRegulation.projMgr',
+        menuDisabled: true,
     }, {
         header: '主管',
         dataIndex: 'violateRegulation.profMgr',
+        menuDisabled: true,
     }, {
         header: '作业长',
         dataIndex: 'violateRegulation.workMgr',
+        menuDisabled: true,
     }, {
         header: '班组长',
         dataIndex: 'violateRegulation.teamLeader',
+        menuDisabled: true,
     }, {
         header: '档长',
         dataIndex: 'violateRegulation.posiMgr',
+        menuDisabled: true,
     }, {
         header: '培训',
         dataIndex: 'violateRegulation.training',
+        menuDisabled: true,
     }, {
         header: '培训效果',
         dataIndex: 'violateRegulation.trainingEff',
+        menuDisabled: true,
     }, {
         text: '附件',
         dataIndex: 'violateRegulation.attachment',
+        menuDisabled: true,
         width: 60,
         renderer: function(v) {
             if(!v || v == '') {
@@ -212,15 +246,23 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
     }, {
         header: '备注',
         dataIndex: 'violateRegulation.comment',
+        menuDisabled: true,
     }, {
         header: '查处人',
         dataIndex: 'violateRegulation.issuer',
+        menuDisabled: true,
+        id: 'rpt-ss-violateregulation-issuer',
+        hidden: true,
     }, {
         header: '创建人',
         dataIndex: 'violateRegulation.creatorName',
+        menuDisabled: true,
+        id: 'rpt-ss-violateregulation-creator',
+        hidden: true,
     }, {
         header: '创建部门',
         dataIndex: 'violateRegulation.creatorDept',
+        menuDisabled: true,
     }],
     /*bbar: {
         xtype: 'pagingtoolbar',

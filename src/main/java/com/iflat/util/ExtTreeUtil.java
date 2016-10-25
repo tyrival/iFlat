@@ -41,6 +41,7 @@ public class ExtTreeUtil {
                 node.setController(list.get(i).getController());
                 node.setStatus(list.get(i).getStatus());
                 node.setSequence(list.get(i).getSequence());
+                //node.setRowCls("nav-tree-badge nav-tree-badge-new");
                 //默认展开
                 node.setExpanded(false);
                 //默认leaf为true，后面遍历时，如果有子节点，则设置为false

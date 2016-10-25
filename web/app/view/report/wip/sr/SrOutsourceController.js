@@ -2,8 +2,89 @@ Ext.define('iFlat.view.report.wip.sr.SrOutsourceController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.rpt-wip-sr-sroutsource',
 
+    showComment: function (grid, rowIndex, colIndex, item, e, record, row) {
+        var win = Ext.getCmp('workflow-comment');
+        if (!win) {
+            win = Ext.create('iFlat.view.workflow.Comment');
+        }
+        win.down('grid').setStore(Ext.create('iFlat.store.workflow.Comment', {
+            proxy: {
+                url: 'wip_listSrOutsourceComment.action',
+                extraParams: {
+                    'srOutsource.id': record.get('srOutsource.id')
+                }
+            }
+        }))
+        win.show();
+    },
+
+    showInfo: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+        var win = Ext.getCmp('rpt-wip-sr-sroutsourceinfo');
+        if(!win) {
+            win = Ext.create('iFlat.view.report.wip.sr.SrOutsourceInfo');
+        }
+        var form = win.down('form');
+        form.loadRecord(record);
+        win.show();
+    },
+
+    onAttachmentChange: function(field, newValue, oldValue, eOpts) {
+        var btnDown = Ext.getCmp('rpt-wip-sr-sroutsourceinfo-down');
+        btnDown.setHref(newValue);
+        if (!Flat.util.isEmpty(newValue)) {
+            btnDown.show();
+        } else {
+            btnDown.hide();
+        }
+    },
+
+    onAttachmentChange2: function(field, newValue, oldValue, eOpts) {
+        var btnDown = Ext.getCmp('rpt-wip-sr-sroutsourceinfo-down2');
+        btnDown.setHref(newValue);
+        if (!Flat.util.isEmpty(newValue)) {
+            btnDown.show();
+        } else {
+            btnDown.hide();
+        }
+    },
+
+    onAttachmentChange3: function(field, newValue, oldValue, eOpts) {
+        var btnDown = Ext.getCmp('rpt-wip-sr-sroutsourceinfo-down3');
+        btnDown.setHref(newValue);
+        if (!Flat.util.isEmpty(newValue)) {
+            btnDown.show();
+        } else {
+            btnDown.hide();
+        }
+    },
+
+    onAttachmentChange4: function(field, newValue, oldValue, eOpts) {
+        var btnDown = Ext.getCmp('rpt-wip-sr-sroutsourceinfo-down4');
+        btnDown.setHref(newValue);
+        if (!Flat.util.isEmpty(newValue)) {
+            btnDown.show();
+        } else {
+            btnDown.hide();
+        }
+    },
+
+    onAttachmentChange5: function(field, newValue, oldValue, eOpts) {
+        var btnDown = Ext.getCmp('rpt-wip-sr-sroutsourceinfo-down5');
+        btnDown.setHref(newValue);
+        if (!Flat.util.isEmpty(newValue)) {
+            btnDown.show();
+        } else {
+            btnDown.hide();
+        }
+    },
+
+    loadCheckbox: function (tf, newV, oldV) {
+        tf.nextSibling('checkbox').setValue(newV);
+    },
+
     refresh: function() {
 
+        Ext.getCmp('rpt-wip-sr-sroutsource-projno').setValue(null);
         Ext.getCmp('rpt-wip-sr-sroutsource-status').setValue(null);
         Ext.getCmp('rpt-wip-sr-sroutsource-from').setValue(null);
         Ext.getCmp('rpt-wip-sr-sroutsource-to').setValue(null);
@@ -11,6 +92,24 @@ Ext.define('iFlat.view.report.wip.sr.SrOutsourceController', {
     },
 
     search: function(btn) {
+        var role = Ext.getCmp('global-panel').getViewModel().get('user')['roleName'];
+        if (role == '修船外协员' || role == '修船外协科科长' || role == '修船事业部部长') {
+            Ext.getCmp('rpt-wip-sr-sroutsource-info').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-printreq').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-printappr').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-biddinginfo').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-biddinginfo2').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-biddingdetl').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-cont').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-cont2').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-sett').setHidden(false);
+            Ext.getCmp('rpt-wip-sr-sroutsource-sett2').setHidden(false);
+        }
+        if (role == '修船总管' || role == '修船主修') {
+            Ext.getCmp('rpt-wip-sr-sroutsource-printreq').setHidden(false);
+        }
+
+        var projno = Ext.getCmp('rpt-wip-sr-sroutsource-projno').getValue();
         var status = Ext.getCmp('rpt-wip-sr-sroutsource-status').getValue();
         var from = Ext.getCmp('rpt-wip-sr-sroutsource-from').getValue();
         var to = Ext.getCmp('rpt-wip-sr-sroutsource-to').getValue();
@@ -18,7 +117,9 @@ Ext.define('iFlat.view.report.wip.sr.SrOutsourceController', {
         rptWipSrOutsourceStore.getProxy().extraParams['srOutsource.status'] = status;
         rptWipSrOutsourceStore.getProxy().extraParams['srOutsource.fromDate'] = from;
         rptWipSrOutsourceStore.getProxy().extraParams['srOutsource.toDate'] = to;
+        rptWipSrOutsourceStore.getProxy().extraParams['srOutsource.projNo'] = projno;
         rptWipSrOutsourceStore.reload();
+
     },
 
     columnRenderer: function(v) {

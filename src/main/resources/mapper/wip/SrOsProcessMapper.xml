@@ -59,7 +59,7 @@
         <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
         <if test="createTime!=null and !&quot;&quot;.equals(createTime.trim())">AND createTime=#{createTime}</if>
     </where>
-    ORDER BY createTime DESC
+    ORDER BY createTime
 </select>
 
 <resultMap type="com.iflat.wip.bean.SrOsProcess" id="WipSrOsProcessResult">

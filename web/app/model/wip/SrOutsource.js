@@ -12,6 +12,7 @@ Ext.define('iFlat.model.wip.SrOutsource', {
         {name: 'srOutsource.tod', mapping: 'tod', type: 'date'},
         {name: 'srOutsource.hasBluePrint', mapping: 'hasBluePrint', type: 'boolean'},
         {name: 'srOutsource.hasSample', mapping: 'hasSample', type: 'boolean'},
+        {name: 'srOutsource.hasList', mapping: 'hasList', type: 'boolean'},
         {name: 'srOutsource.ownerAppoint', mapping: 'ownerAppoint', type: 'boolean'},
         {name: 'srOutsource.aplAtt', mapping: 'aplAtt', type: 'string'},
         {name: 'srOutsource.aplComment', mapping: 'aplComment', type: 'string'},

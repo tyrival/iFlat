@@ -13,6 +13,16 @@ Ext.define('iFlat.view.report.ss.ViolateRegulationController', {
     },
 
     search: function(btn) {
+
+        var org = Ext.getCmp('global-panel').getViewModel().get('user')['porgName'];
+        if (org == '安环保卫部') {
+            Ext.getCmp('rpt-ss-violateregulation-issuer').setHidden(false);
+            Ext.getCmp('rpt-ss-violateregulationinfo-issuer').setHidden(false);
+            Ext.getCmp('rpt-ss-violateregulation-creator').setHidden(false);
+            Ext.getCmp('rpt-ss-violateregulation-amount').setHidden(false);
+            Ext.getCmp('rpt-ss-violateregulationinfo-amount').setHidden(false);
+        }
+
         var from = Ext.getCmp('rpt-ss-violateregulation-from').getValue();
         var to = Ext.getCmp('rpt-ss-violateregulation-to').getValue();
         var risklvl = Ext.getCmp('rpt-ss-violateregulation-risklvl').getValue();

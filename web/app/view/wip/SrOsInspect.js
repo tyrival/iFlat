@@ -195,6 +195,18 @@ Ext.define('iFlat.view.wip.SrOsInspect', {
                         fieldLabel: '船东指定',
                         inputValue: true,
                         width: 130,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srOutsource.hasList',
+                        hidden: true,
+                        listeners: {
+                            change: 'loadCheckbox'
+                        }
+                    }, {
+                        xtype: 'checkbox',
+                        fieldLabel: '附清单',
+                        inputValue: true,
+                        width: 130,
                     }]
                 }, {
                     xtype: 'container',
@@ -240,6 +252,10 @@ Ext.define('iFlat.view.wip.SrOsInspect', {
                             header: '数量',
                             width: 200,
                             dataIndex: 'srOutsourceDetl.qty',
+                        }, {
+                            header: '单位',
+                            width: 100,
+                            dataIndex: 'srOutsourceDetl.unit',
                         }, {
                             header: '备注',
                             flex: 1,
@@ -332,7 +348,7 @@ Ext.define('iFlat.view.wip.SrOsInspect', {
                     items: [{
                         xtype: 'textfield',
                         name: 'srOutsource.bidComment',
-                        fieldLabel: '备注',
+                        fieldLabel: '报价信息',
                         width: '85%',
                         editable: false,
                     }, {
@@ -441,7 +457,7 @@ Ext.define('iFlat.view.wip.SrOsInspect', {
                     name: 'srOutsource.inspComment',
                     width: '79%',
                     fieldLabel: '意见',
-                    allowBlank: false,
+                    allowBlank: true,
                 }, {
                     xtype: 'textfield',
                     id: 'wip-srosinspect-attachment4',

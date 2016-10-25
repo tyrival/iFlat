@@ -189,6 +189,18 @@ Ext.define('iFlat.view.wip.SrOsProjectManagerApprove', {
                         fieldLabel: '船东指定',
                         inputValue: true,
                         width: 130,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srOutsource.hasList',
+                        hidden: true,
+                        listeners: {
+                            change: 'loadCheckbox'
+                        }
+                    }, {
+                        xtype: 'checkbox',
+                        fieldLabel: '附清单',
+                        inputValue: true,
+                        width: 130,
                     }]
                 }, {
                     xtype: 'container',
@@ -234,6 +246,10 @@ Ext.define('iFlat.view.wip.SrOsProjectManagerApprove', {
                             header: '数量',
                             width: 200,
                             dataIndex: 'srOutsourceDetl.qty',
+                        }, {
+                            header: '单位',
+                            width: 100,
+                            dataIndex: 'srOutsourceDetl.unit',
                         }, {
                             header: '备注',
                             flex: 1,

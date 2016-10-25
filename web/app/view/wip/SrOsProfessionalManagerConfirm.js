@@ -190,6 +190,18 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerConfirm', {
                         fieldLabel: '船东指定',
                         inputValue: true,
                         width: 130,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srOutsource.hasList',
+                        hidden: true,
+                        listeners: {
+                            change: 'loadCheckbox'
+                        }
+                    }, {
+                        xtype: 'checkbox',
+                        fieldLabel: '附清单',
+                        inputValue: true,
+                        width: 130,
                     }]
                 }, {
                     xtype: 'container',
@@ -236,6 +248,10 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerConfirm', {
                             width: 200,
                             dataIndex: 'srOutsourceDetl.qty',
                         }, {
+                            header: '单位',
+                            width: 100,
+                            dataIndex: 'srOutsourceDetl.unit',
+                        }, {
                             header: '备注',
                             flex: 1,
                             dataIndex: 'srOutsourceDetl.comment',
@@ -243,9 +259,10 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerConfirm', {
                         },],
                     }]
                 }, ]
-            }, /*{
+            }, {
                 xtype: 'fieldset',
                 title: '比价信息',
+                hidden: true,
                 items: [{
                     xtype: 'container',
                     layout: 'hbox',
@@ -326,7 +343,7 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerConfirm', {
                     items: [{
                         xtype: 'textfield',
                         name: 'srOutsource.bidComment',
-                        fieldLabel: '备注',
+                        fieldLabel: '报价信息',
                         width: '85%',
                         editable: false,
                     }, {
@@ -348,6 +365,7 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerConfirm', {
             }, {
                 xtype: 'fieldset',
                 title: '经营代表意见',
+                hidden: true,
                 items: [{
                     xtype: 'container',
                     layout: 'hbox',
@@ -363,6 +381,7 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerConfirm', {
             }, {
                 xtype: 'fieldset',
                 title: '资料信息',
+                hidden: true,
                 items: [{
                     xtype: 'container',
                     layout: 'hbox',
@@ -390,7 +409,7 @@ Ext.define('iFlat.view.wip.SrOsProfessionalManagerConfirm', {
                     }, ]
 
                 }]
-            }, */{
+            }, {
                 xtype: 'fieldset',
                 title: '完工信息',
                 items: [{

@@ -14,6 +14,16 @@ Ext.define('iFlat.view.report.ss.PotentialHazardController', {
     },
 
     search: function(btn) {
+
+        var org = Ext.getCmp('global-panel').getViewModel().get('user')['porgName'];
+        if (org == '安环保卫部') {
+            Ext.getCmp('rpt-ss-potentialhazard-issuer').setHidden(false);
+            Ext.getCmp('rpt-ss-potentialhazardinfo-issuer').setHidden(false);
+            Ext.getCmp('rpt-ss-potentialhazard-creator').setHidden(false);
+            Ext.getCmp('rpt-ss-potentialhazard-amount').setHidden(false);
+            Ext.getCmp('rpt-ss-potentialhazardinfo-amount').setHidden(false);
+        }
+
         var from = Ext.getCmp('rpt-ss-potentialhazard-from').getValue();
         var to = Ext.getCmp('rpt-ss-potentialhazard-to').getValue();
         var risklvl = Ext.getCmp('rpt-ss-potentialhazard-risklvl').getValue();

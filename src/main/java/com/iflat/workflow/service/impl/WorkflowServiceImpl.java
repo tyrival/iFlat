@@ -8,6 +8,7 @@ import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.impl.identity.Authentication;
 import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntity;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.zip.ZipInputStream;
 
@@ -83,10 +85,12 @@ public class WorkflowServiceImpl implements WorkflowService {
 
     @Override
     public ProcessInstance getProcessInstanceByBusinessKey(String businessKey) {
-        return runtimeService
-                .createProcessInstanceQuery()
-                .processInstanceBusinessKey(businessKey)
-                .singleResult();
+        return runtimeService.createProcessInstanceQuery().processInstanceBusinessKey(businessKey).singleResult();
+    }
+
+    @Override
+    public HistoricProcessInstance getHistoricProcessInstanceByBusinessKey(String businessKey) {
+        return historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(businessKey).singleResult();
     }
 
     @Override
@@ -185,7 +189,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     @Override
     public void deleteProcess(String deploymentId) {
         // 正式发布时改为false
-        repositoryService.deleteDeployment(deploymentId, false);
+        repositoryService.deleteDeployment(deploymentId, true);
     }
 
     @Override
@@ -324,9 +328,14 @@ public class WorkflowServiceImpl implements WorkflowService {
 
     @Override
     public List<Comment> listProcessInstanceCommentsByBusinessKey(String businessKey) throws Exception {
-        String processInstanceId
-                = getProcessInstanceByBusinessKey(businessKey)
-                .getProcessInstanceId();
+        String processInstanceId;
+        try {
+            processInstanceId = getProcessInstanceByBusinessKey(businessKey)
+                    .getProcessInstanceId();
+        } catch (Exception e) {
+            processInstanceId = getHistoricProcessInstanceByBusinessKey(businessKey)
+                    .getId();
+        }
         return listProcessInstanceComments(processInstanceId);
     }
 

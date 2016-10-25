@@ -67,7 +67,7 @@ Ext.define('iFlat.view.wip.SrOsProjectManagerApproveController', {
         }
         if (form.isValid()) {
             form.submit({
-                url: 'wip_approveSrOutsource.action',
+                url: 'wip_approveSrOutsourceWithSave.action',
                 waitMsg: '提交中...',
                 method: 'POST',
                 params: param,

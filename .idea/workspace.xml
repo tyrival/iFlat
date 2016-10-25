@@ -11,52 +11,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74713467-0b7c-4f4c-936f-92777ce1281a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/demo/BookEdit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/ss/AccidentInfo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/ss/FiveSInfo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardInfo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationInfo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/system/entity/NavigationNode.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/system/entity/NavigationNode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/system/entity/NodeSequenceComparator.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/system/entity/NodeSequenceComparator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/system/listener/AjaxExceptionListener.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/system/listener/AjaxExceptionListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/demo/action/DemoAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/demo/action/DemoAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/demo/bean/AA.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/demo/bean/AA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/Accident.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/Accident.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/util/code/ExtViewCoding.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/util/code/ExtViewCoding.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/util/code/MsSqlCoding.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/util/code/MsSqlCoding.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/wip/action/WipAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/wip/action/WipAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/system/entity/NavigationNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/system/entity/NavigationNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/system/listener/AjaxExceptionListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/system/listener/AjaxExceptionListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/util/ExtTreeUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/util/ExtTreeUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/wip/bean/SrOutsource.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/wip/bean/SrOutsource.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/wip/listener/SrOutsourceExecutionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/wip/listener/SrOutsourceExecutionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/demo/BookMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/demo/BookMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ss/AccidentMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ss/AccidentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-wip.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-wip.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/demo-Book.sql" afterPath="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/demo-Book.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/struts.xml" afterPath="$PROJECT_DIR$/src/main/resources/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/spring/applicationContext-lib.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/spring/applicationContext-lib.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/struts.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/ss/Accident.js" afterPath="$PROJECT_DIR$/web/app/model/ss/Accident.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/demo/Book.js" afterPath="$PROJECT_DIR$/web/app/view/demo/Book.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/demo/BookController.js" afterPath="$PROJECT_DIR$/web/app/view/demo/BookController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/pam/MonthlyWorkEdit.js" afterPath="$PROJECT_DIR$/web/app/view/pam/MonthlyWorkEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/pam/PartyWorkView.js" afterPath="$PROJECT_DIR$/web/app/view/pam/PartyWorkView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/pam/YearWorkController.js" afterPath="$PROJECT_DIR$/web/app/view/pam/YearWorkController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/pam/YearWorkEdit.js" afterPath="$PROJECT_DIR$/web/app/view/pam/YearWorkEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/wip/listener/SrOutsourceTaskHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/wip/listener/SrOutsourceTaskHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/wip/service/impl/SrOutsourceServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/wip/service/impl/SrOutsourceServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/workflow/service/WorkflowService.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/workflow/service/WorkflowService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iflat/workflow/service/impl/WorkflowServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/iflat/workflow/service/impl/WorkflowServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/wip/SrOsProcessMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/wip/SrOsProcessMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/wip/SrOutsourceMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/wip/SrOutsourceMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/workflow/diagram/wip/SrOutsource.bpmn" afterPath="$PROJECT_DIR$/src/main/resources/workflow/diagram/wip/SrOutsource.bpmn" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/model/wip/SrOutsource.js" afterPath="$PROJECT_DIR$/web/app/model/wip/SrOutsource.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/Accident.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/Accident.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/AccidentController.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/AccidentController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/FiveS.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/FiveS.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/FiveSController.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/FiveSController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/FiveSInfo.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/FiveSInfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardController.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardInfo.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardInfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationController.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationInfo.js" afterPath="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationInfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsource.js" afterPath="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/ss/PotentialHazardEdit.js" afterPath="$PROJECT_DIR$/web/app/view/ss/PotentialHazardEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/system/UserController.js" afterPath="$PROJECT_DIR$/web/app/view/system/UserController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceController.js" afterPath="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceView.js" afterPath="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsBidding.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsBidding.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsBusinessDivisionDirectorApprove.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsBusinessDivisionDirectorApprove.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsBusinessDivisionDirectorApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsBusinessDivisionDirectorApproveController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsContractHandle.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsContractHandle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsInspect.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsInspect.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsInspectChiefHandle.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsInspectChiefHandle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsManufacture.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsManufacture.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefAudit.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefAudit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefReceipt.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefReceipt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefReceiptController.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefReceiptController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsProfessionalManagerAssess.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsProfessionalManagerAssess.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsProfessionalManagerConfirm.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsProfessionalManagerConfirm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerApprove.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerApprove.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerApproveController.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerApproveController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerAssess.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerAssess.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanAudit.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanAudit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanReaudit.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanReaudit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsSettlement.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsSettlement.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOsSettlementApprove.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOsSettlementApprove.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOutsource.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOutsource.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOutsourceDetlView.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOutsourceDetlView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/wip/SrOutsourceEdit.js" afterPath="$PROJECT_DIR$/web/app/view/wip/SrOutsourceEdit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/view/workflow/Comment.js" afterPath="$PROJECT_DIR$/web/app/view/workflow/Comment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/print.js" afterPath="$PROJECT_DIR$/web/js/print.js" />
     </list>
     <ignored path="iFlat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,31 +101,7 @@
     <favorites_list name="iFlat" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="applicationContext-pam.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-pam.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="struts.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/struts.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -125,13 +109,13 @@
         <option value="mybatis-config" />
         <option value="mybatis-generator-config" />
         <option value="JUnit4 Test Class" />
-        <option value="Jsp File" />
         <option value="Enum" />
         <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="BpmnFile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -149,57 +133,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/code/MybatisCoding.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/code/ServiceCoding.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/code/StrutsCoding.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-lib.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-demo.xml" />
-        <option value="$PROJECT_DIR$/web/app/view/pam/MonthlyWorkEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/pam/PartyWorkView.js" />
-        <option value="$PROJECT_DIR$/web/app/view/system/UserController.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/base/action/impl/BaseAction.java" />
-        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsContractHandleController.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/workflow/diagram/wip/SrOutsource.bpmn" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/wip/action/WipAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/wip/listener/SrOutsourceExecutionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/wip/service/impl/SrOutsourceServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerApproveController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefReceiptController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsBusinessDivisionDirectorApproveController.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/wip/bean/SrOutsource.java" />
+        <option value="$PROJECT_DIR$/web/app/model/wip/SrOutsource.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/wip/SrOutsourceMapper.xml" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOutsourceEdit.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsBidding.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsBusinessDivisionDirectorApprove.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsContractHandle.js" />
         <option value="$PROJECT_DIR$/web/app/view/wip/SrOsInspect.js" />
         <option value="$PROJECT_DIR$/web/app/view/wip/SrOsInspectChiefHandle.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsManufacture.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefAudit.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsOutsourceChiefReceipt.js" />
         <option value="$PROJECT_DIR$/web/app/view/wip/SrOsProfessionalManagerAssess.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsProfessionalManagerConfirm.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerApprove.js" />
         <option value="$PROJECT_DIR$/web/app/view/wip/SrOsProjectManagerAssess.js" />
-        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanReaudit.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/wip/action/WipAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/demo/action/DemoAction.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/struts.xml" />
-        <option value="$PROJECT_DIR$/web/app/view/ss/PotentialHazardEdit.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardInfo.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/FiveS.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/FiveSController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/AccidentInfo.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/FiveSInfo.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationInfo.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/ss/bean/Accident.java" />
-        <option value="$PROJECT_DIR$/web/app/model/ss/Accident.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/AccidentController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/report/ss/Accident.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/ss/AccidentMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/sqlscript/mssql/demo-Book.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/code/MsSqlCoding.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/code/ExtModelCoding.java" />
-        <option value="$PROJECT_DIR$/web/app/model/demo/Book.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/demo/bean/Book.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/demo/BookMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/code/ExtViewCoding.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/code/CodeUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/demo/bean/AA.java" />
-        <option value="$PROJECT_DIR$/web/app/view/demo/Book.js" />
-        <option value="$PROJECT_DIR$/web/app/view/demo/BookController.js" />
-        <option value="$PROJECT_DIR$/web/app/view/demo/BookEdit.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iflat/wip/listener/SrOutsourceExecutionHandler.java" />
         <option value="$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanAudit.js" />
-        <option value="$PROJECT_DIR$/web/js/print.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanReaudit.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsSettlement.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOsSettlementApprove.js" />
+        <option value="$PROJECT_DIR$/web/app/view/wip/SrOutsource.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/workflow/service/WorkflowService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/workflow/service/impl/WorkflowServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web/app/view/workflow/Comment.js" />
         <option value="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsource.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-wip.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/system/entity/NavigationNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/util/ExtTreeUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/demo/bean/Book.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/ABCXYZ.jsp" />
+        <option value="$PROJECT_DIR$/web/ABCXYZ.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/system/action/LoginAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iflat/system/listener/AjaxExceptionListener.java" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/Accident.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/FiveS.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/FiveSInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/FiveSController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardController.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationInfo.js" />
+        <option value="$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationController.js" />
       </list>
     </option>
   </component>
@@ -269,8 +253,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1040" />
-    <option name="height" value="1266" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -319,7 +303,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -362,6 +345,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iFlat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -381,73 +404,18 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iFlat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iflat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.20726307" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -514,11 +482,11 @@
       <recent name="D:\Workspace\iFlat\src\main\resources\template\excel" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Workspace\iFlat\web" />
       <recent name="D:\Workspace\iFlat\web\app\view\wip" />
       <recent name="D:\Workspace\iFlat\web\app\view\pam" />
       <recent name="D:\Workspace\iFlat\web\app\view\pam\temp" />
       <recent name="D:\Workspace\iFlat\web\app\model\pam" />
-      <recent name="D:\Workspace\iFlat\web\" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.iflat">
@@ -1667,14 +1635,22 @@
       <workItem from="1476753599158" duration="90000" />
       <workItem from="1476755311351" duration="452000" />
       <workItem from="1476866080629" duration="428000" />
-      <workItem from="1476866583938" duration="111000" />
-    </task>
-    <task id="LOCAL-00018" summary="权限管理：&#10;修复了bug">
-      <created>1458361879775</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1458361879775</updated>
+      <workItem from="1476866583938" duration="177000" />
+      <workItem from="1476932636911" duration="350000" />
+      <workItem from="1476933016561" duration="1426000" />
+      <workItem from="1476948906503" duration="758000" />
+      <workItem from="1476950795706" duration="2438000" />
+      <workItem from="1476960745789" duration="2867000" />
+      <workItem from="1477014442361" duration="3546000" />
+      <workItem from="1477027277821" duration="5811000" />
+      <workItem from="1477267217724" duration="1945000" />
+      <workItem from="1477269634431" duration="453000" />
+      <workItem from="1477297373486" duration="485000" />
+      <workItem from="1477353472293" duration="57000" />
+      <workItem from="1477357034015" duration="170000" />
+      <workItem from="1477358717626" duration="4055000" />
+      <workItem from="1477366753444" duration="1105000" />
+      <workItem from="1477391389885" duration="1229000" />
     </task>
     <task id="LOCAL-00019" summary="前端：&#10;将通用的方法封装如Flat类中">
       <created>1458693416569</created>
@@ -2012,7 +1988,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476239736888</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="&lt;系统&gt;&#10;1.修复bug">
+      <created>1476866716736</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1476866716737</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2048,7 +2031,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2442784000" />
+    <option name="totallyTimeSpent" value="2469545000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2060,46 +2043,46 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="1266" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285068" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27655986" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32760182" sideWeight="0.4969743" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27511314" sideWeight="0.5346939" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32669684" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32760182" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27058825" sideWeight="0.49394855" order="4" side_tool="false" content_ui="tabs" x="24" y="419" width="1322" height="245" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32760182" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820976" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27142859" sideWeight="0.44936708" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2677761" sideWeight="0.44936708" order="1" side_tool="false" content_ui="tabs" x="177" y="107" width="308" height="855" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26734695" sideWeight="0.5407895" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19081633" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19062027" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.18759455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="581" y="100" width="264" height="354" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22950819" sideWeight="0.5506329" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36762226" sideWeight="0.46530613" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="BPMN Editor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30769232" sideWeight="0.47142857" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="BPMN Editor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.306914" sideWeight="0.47142857" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30769232" sideWeight="0.46530613" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2769231" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27058825" sideWeight="0.49394855" order="4" side_tool="false" content_ui="tabs" x="24" y="419" width="1322" height="245" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37205386" sideWeight="0.50832075" order="16" side_tool="true" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26334843" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3167421" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3927602" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2116,7 +2099,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="&lt;工费结算&gt;&#10;修复二级结算导入的bug" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 加入了Grid打印功能，Flat.util.printGrid(grid)；&#10;2. excel导入时，增加了单元格格式的容错；&#10;3. 修复了部分bug；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加了奖惩登记，用于管理计划、能源、其他奖惩；" />
     <MESSAGE value="&lt;工费结算&gt;&#10;1. 增加了奖惩登记，用于管理计划、能源、其他奖惩；&#10;2. 增加了修船主体/机电结算申请的工种；&#10;3. 增加了修船主体/机电一级结算时自动计算工费和绩效；" />
@@ -2141,7 +2123,8 @@
     <MESSAGE value="&lt;安全信息&gt;&#10;1.进行了部分改进和bug修复。" />
     <MESSAGE value="&lt;系统&gt;&#10;1.进行了部分改进和bug修复。" />
     <MESSAGE value="&lt;系统&gt;&#10;1.修复bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;系统&gt;&#10;1.修复bug" />
+    <MESSAGE value="&lt;安全信息&gt;&#10;1.安保部之外的用户限制不准看到查处人、创建人、扣款信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;安全信息&gt;&#10;1.安保部之外的用户限制不准看到查处人、创建人、扣款信息" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2159,11 +2142,14 @@
           <option name="timeStamp" value="705" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="709" />
+      <option name="time" value="731" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
         <watch expression="&quot;1&quot;.equals(this.news.getIsAdopt())" language="JAVA" />
+        <watch expression="historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(businessKey).singleResult()" language="JAVA" />
+        <watch expression="runtimeService.createProcessInstanceQuery().processInstanceBusinessKey(businessKey).singleResult()" language="JAVA" />
+        <watch expression="flag.hashCode()" language="JAVA" />
       </configuration>
       <configuration name="Application">
         <watch expression="new File(actionFilePath).exists()" language="JAVA" custom="java.io.File" />
@@ -2179,406 +2165,374 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/FiveS.js">
+    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/ognl-3.0.6.jar!/ognl/OgnlRuntime.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1746">
-          <caret line="97" column="11" selection-start-line="90" selection-start-column="16" selection-end-line="97" selection-end-column="11" />
+        <state relative-caret-position="246">
+          <caret line="851" column="0" selection-start-line="851" selection-start-column="0" selection-end-line="851" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/JAVA/repository/org/activiti/activiti-engine/5.19.0.2/activiti-engine-5.19.0.2-sources.jar!/org/activiti/engine/history/HistoricProcessInstanceQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="57" column="2" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/workflow/service/impl/WorkflowServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="336" column="29" selection-start-line="336" selection-start-column="29" selection-end-line="336" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/JAVA/repository/org/activiti/activiti-engine/5.19.0.2/activiti-engine-5.19.0.2-sources.jar!/org/activiti/engine/history/HistoricProcessInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/workflow/service/WorkflowService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="136" column="14" selection-start-line="136" selection-start-column="14" selection-end-line="136" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/JAVA/repository/org/activiti/activiti-engine/5.19.0.2/activiti-engine-5.19.0.2-sources.jar!/org/activiti/engine/task/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/wip/SrOutsourceController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/wip/SrOutsource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/workflow/Task.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="5" selection-start-line="12" selection-start-column="11" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/AccidentController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="38" column="77" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
+        <state relative-caret-position="611">
+          <caret line="78" column="5" selection-start-line="71" selection-start-column="0" selection-end-line="78" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/Accident.js">
+    <entry file="file://$PROJECT_DIR$/web/app/view/workflow/Comment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2268">
-          <caret line="126" column="31" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
+        <state relative-caret-position="378">
+          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ss/AccPartyMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/dao/impl/ModuleDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/dao/ModuleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/entity/NavigationNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/service/impl/ModuleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="78" column="40" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/service/ModuleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/action/SystemAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="436" column="54" selection-start-line="436" selection-start-column="54" selection-end-line="436" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/store/main/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/jdk1.8.0_65/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="128" column="17" selection-start-line="128" selection-start-column="17" selection-end-line="128" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/util/ExtTreeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="53" column="60" selection-start-line="53" selection-start-column="60" selection-end-line="53" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/main/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="105" column="74" selection-start-line="105" selection-start-column="74" selection-end-line="105" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/main/MainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-270">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/classes/com/iflat/air/action/LibAction.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ss/AccidentMapper.xml">
+    <entry file="file://$PROJECT_DIR$/web/app/model/bi/AdditionalBill.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="72" column="62" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/util/code/MsSqlCoding.java">
+    <entry file="file://$PROJECT_DIR$/web/app/store/bi/AdditionalBill.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
+        <state relative-caret-position="72">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlscript/mssql/demo-Book.sql">
+    <entry file="file://$PROJECT_DIR$/web/app/view/bi/AdditionalBillController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        <state relative-caret-position="1098">
+          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/util/code/ExtStoreCoding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/store/demo/Book.js">
+    <entry file="file://$PROJECT_DIR$/web/app/view/bi/AdditionalBill.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="12" column="10" selection-start-line="5" selection-start-column="16" selection-end-line="12" selection-end-column="10" />
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/store/demo/BookPage.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/demo/action/DemoAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/util/code/ExtModelCoding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/model/demo/Book.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/demo/BookMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/util/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/util/code/ActionCoding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
+        <state relative-caret-position="72">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/util/code/ExtViewCoding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-763">
-          <caret line="375" column="28" selection-start-line="375" selection-start-column="28" selection-end-line="375" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/util/code/CodeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="60" column="51" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/demo/bean/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="288">
+          <caret line="24" column="5" selection-start-line="9" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/demo/bean/AA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="61" />
+        <state relative-caret-position="306">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/demo/Book.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/demo/BookController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="46" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/demo/BookEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="45" column="27" selection-start-line="37" selection-start-column="21" selection-end-line="45" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/hr/Fine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1944">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/hr/FineOfWorker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3132">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/Flat.js">
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/model/main/MainModel.js">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/FontAwesome.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="20" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/qm/QualityFine.js">
+    <entry file="file://$PROJECT_DIR$/web/ABCXYZ.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/struts.xml">
+      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="106" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="106" />
+        <state relative-caret-position="159">
+          <caret line="64" column="22" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceController.js">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="82" column="9" selection-start-line="73" selection-start-column="8" selection-end-line="82" selection-end-column="9" />
+        <state relative-caret-position="1025">
+          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/wip/SrOutsourceDetlView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="89" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/bi/ProjectCostController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="110" column="17" selection-start-line="108" selection-start-column="16" selection-end-line="110" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/wip/listener/SrOutsourceTaskHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3281">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/wip/entity/SrOsStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/wip/listener/SrOutsourceExecutionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="118" column="45" selection-start-line="118" selection-start-column="45" selection-end-line="118" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/wip/bean/SrOutsourceDetl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/pam/MemberFull.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="72" column="63" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/wip/bean/SrOsBidding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/wip/SrOsContractHandle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="460" column="49" selection-start-line="460" selection-start-column="39" selection-end-line="460" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/wip/bean/SrOsAssess.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/interceptor/AuthorityInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/wip/bean/SrOsProcess.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/action/LoginAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="414">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/wip/SrOsBidding.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="374" column="52" selection-start-line="374" selection-start-column="25" selection-end-line="374" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/wip/SrOsBiddingController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="168" column="59" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanAudit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="337" column="41" selection-start-line="337" selection-start-column="41" selection-end-line="337" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/view/wip/SrOsSalesmanAuditController.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/system/listener/AjaxExceptionListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="119" column="4" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="4" />
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iflat/wip/bean/SrOutsource.java">
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="82" column="33" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="33" />
+        <state relative-caret-position="106">
+          <caret line="367" column="53" selection-start-line="367" selection-start-column="53" selection-end-line="367" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/Accident.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="954">
+          <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsource.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="194" column="51" selection-start-line="194" selection-start-column="17" selection-end-line="194" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/wip/sr/SrOutsourceController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="94" column="85" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/PotentialHazard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="217" column="21" selection-start-line="215" selection-start-column="27" selection-end-line="217" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="259" column="45" selection-start-line="259" selection-start-column="45" selection-end-line="259" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/FiveS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="260" column="16" selection-start-line="260" selection-start-column="16" selection-end-line="260" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/FiveSController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/FiveSInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="138" column="29" selection-start-line="136" selection-start-column="34" selection-end-line="138" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="242" column="29" selection-start-line="240" selection-start-column="29" selection-end-line="242" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="225" column="52" selection-start-line="225" selection-start-column="52" selection-end-line="225" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/PotentialHazardController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/view/report/ss/ViolateRegulationController.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="108" column="14" selection-start-line="105" selection-start-column="12" selection-end-line="108" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-system.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="4" column="100" selection-start-line="4" selection-start-column="100" selection-end-line="4" selection-end-column="100" />
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-wip.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/print.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
-          <folding>
-            <marker date="1476693347267" expanded="true" signature="481:538" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="925:943" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="1043:1077" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3235:3262" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3303:3330" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3371:3398" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3442:3469" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3510:3537" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3578:3605" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3754:3771" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3825:3882" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="3956:4013" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="4085:4102" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="4173:4190" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="4260:4317" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="4454:4472" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="4574:4608" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="5375:5409" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="5682:5691" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="5758:5767" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="5833:5842" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="6029:6047" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="6149:6183" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="6962:6996" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="7269:7278" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="7348:7357" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="7427:7436" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="8209:8227" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="8327:8358" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="9198:9269" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="9519:9528" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="9863:9898" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="10002:10018" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="10689:10758" ph="..." />
-            <marker date="1476693347267" expanded="true" signature="10902:10971" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-demo.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-pam.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/struts.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
-        <state />
       </provider>
     </entry>
   </component>

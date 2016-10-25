@@ -190,6 +190,18 @@ Ext.define('iFlat.view.wip.SrOsContractHandle', {
                         fieldLabel: '船东指定',
                         inputValue: true,
                         width: 130,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srOutsource.hasList',
+                        hidden: true,
+                        listeners: {
+                            change: 'loadCheckbox'
+                        }
+                    }, {
+                        xtype: 'checkbox',
+                        fieldLabel: '附清单',
+                        inputValue: true,
+                        width: 130,
                     }]
                 }, {
                     xtype: 'container',
@@ -235,6 +247,10 @@ Ext.define('iFlat.view.wip.SrOsContractHandle', {
                             header: '数量',
                             width: 200,
                             dataIndex: 'srOutsourceDetl.qty',
+                        }, {
+                            header: '单位',
+                            width: 100,
+                            dataIndex: 'srOutsourceDetl.unit',
                         }, {
                             header: '备注',
                             flex: 1,
@@ -326,7 +342,7 @@ Ext.define('iFlat.view.wip.SrOsContractHandle', {
                     items: [{
                         xtype: 'textfield',
                         name: 'srOutsource.bidComment',
-                        fieldLabel: '备注',
+                        fieldLabel: '报价信息',
                         width: '85%',
                         editable: false,
                     }, {
@@ -370,7 +386,7 @@ Ext.define('iFlat.view.wip.SrOsContractHandle', {
                     name: 'srOutsource.bidNo',
                     fieldLabel: '开标编号',
                     width: '25%',
-                    allowBlank: false,
+                    allowBlank: true,
                 }, {
                     xtype: 'combo',
                     name: 'srOutsource.bidType',

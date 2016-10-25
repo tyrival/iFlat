@@ -54,7 +54,7 @@ Ext.define('iFlat.view.report.wip.sr.SrOutsourceView', {
     }],
     columns: [{
         header: '供应商单位名称',
-        dataIndex: 'srOutsourceView.vendorType',
+        dataIndex: 'srOutsourceView.vendor',
         width: 200,
     }, {
         text: '供方资质',
@@ -82,7 +82,7 @@ Ext.define('iFlat.view.report.wip.sr.SrOutsourceView', {
         dataIndex: 'srOutsourceView.projNo',
     }, {
         header: '项目名称',
-        dataIndex: 'srOutsourceView.name',
+        dataIndex: 'srOutsourceView.content',
     }, {
         header: '规格尺寸',
         dataIndex: 'srOutsourceView.specs',

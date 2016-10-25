@@ -135,6 +135,8 @@ Ext.define('iFlat.view.report.ss.FiveSInfo', {
                 name: 'fiveS.issuer',
                 width: '33%',
                 fieldLabel: '查处人',
+                id: 'rpt-ss-fivesinfo-issuer',
+                hidden: true,
             }]
         },{
             items: [{

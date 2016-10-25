@@ -56,9 +56,9 @@ Ext.define('iFlat.view.wip.SrOutsource', {
         align: 'center',
         iconCls: 'x-fa fa-tags',
         handler: 'info',
-        isDisabled: function(view, rowIdx, colIdx, item, record) {
+        /*isDisabled: function(view, rowIdx, colIdx, item, record) {
             return record.get('srOutsource.status') == '完成';
-        },
+        },*/
     }, {
         header: '状态',
         width: 150,
@@ -113,6 +113,12 @@ Ext.define('iFlat.view.wip.SrOutsource', {
         header: '船东指定',
         width: 100,
         dataIndex: 'srOutsource.ownerAppoint',
+    }, {
+        xtype: 'checkcolumn',
+        disabled: true,
+        header: '附清单',
+        width: 100,
+        dataIndex: 'srOutsource.hasList',
     }, {
         header: '附件',
         width: 50,

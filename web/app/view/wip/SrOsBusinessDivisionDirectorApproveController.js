@@ -69,7 +69,7 @@ Ext.define('iFlat.view.wip.SrOsBusinessDivisionDirectorApproveController', {
             var c = text === 'pass' ? '同意' : '不同意';
             comment.setValue(c);
         }
-        var url = 'wip_approveSrOutsource.action';
+        var url = 'wip_approveSrOutsourceWithSave.action';
         if (form.isValid()) {
             form.submit({
                 url: url,

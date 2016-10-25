@@ -195,6 +195,13 @@ Ext.define('iFlat.view.wip.SrOutsourceEdit', {
                     inputValue: true,
                     labelWidth: 70,
                     width: 130,
+                }, {
+                    xtype: 'checkbox',
+                    name: 'srOutsource.hasList',
+                    fieldLabel: '附清单',
+                    inputValue: true,
+                    labelWidth: 70,
+                    width: 130,
                 }]
             }, {
                 xtype: 'container',
@@ -328,6 +335,13 @@ Ext.define('iFlat.view.wip.SrOutsourceEdit', {
                     editor: {
                         allowBlank: false,
                         regex: /^[+]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
+                    },
+                }, {
+                    header: '单位',
+                    width: 100,
+                    dataIndex: 'srOutsourceDetl.unit',
+                    editor: {
+                        allowBlank: false,
                     },
                 }, {
                     header: '备注',

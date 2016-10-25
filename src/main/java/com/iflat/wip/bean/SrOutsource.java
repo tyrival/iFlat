@@ -19,6 +19,7 @@ public class SrOutsource {
     private Date tod;  // time of delivery 交货期
     private boolean hasBluePrint;
     private boolean hasSample;
+    private boolean hasList;
     private boolean ownerAppoint;
     private String aplAtt;
     private String aplComment;
@@ -88,6 +89,14 @@ public class SrOutsource {
 
     private Date fromDate;
     private Date toDate;
+
+    public boolean isHasList() {
+        return hasList;
+    }
+
+    public void setHasList(boolean hasList) {
+        this.hasList = hasList;
+    }
 
     public String getName() {
         return name;

@@ -106,7 +106,7 @@ public class SrOutsourceExecutionHandler extends WorkflowExecutionListener {
                 .list(param).get(0);
         if (srOutsource != null) {
             srOutsource.setStatus(status);
-            if (SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT.equals(status)) {
+            /*if (SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT.equals(status)) {
                 UserInfoVo userInfoVo = Session.getUserInfo();
                 srOutsource.setAuditorAcc(userInfoVo.getAccount());
                 srOutsource.setAuditorName(userInfoVo.getUserName());
@@ -120,7 +120,7 @@ public class SrOutsourceExecutionHandler extends WorkflowExecutionListener {
                 UserInfoVo userInfoVo = Session.getUserInfo();
                 srOutsource.setBdDirectorAcc(userInfoVo.getAccount());
                 srOutsource.setBdDirectorName(userInfoVo.getUserName());
-            }
+            }*/
             if (SrOsStatus.STATUS_COMPLETE.equals(status)) {
                 srOutsource.setCompleteTime(new Date());
             }

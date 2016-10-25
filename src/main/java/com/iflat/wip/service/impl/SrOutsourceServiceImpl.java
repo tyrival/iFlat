@@ -2,8 +2,11 @@ package com.iflat.wip.service.impl;
 
 import com.iflat.base.service.BaseService;
 import com.iflat.base.service.impl.BaseServiceSupport;
+import com.iflat.system.entity.UserInfoVo;
+import com.iflat.util.Session;
 import com.iflat.wip.bean.SrOutsource;
 import com.iflat.wip.bean.SrOutsourceDetl;
+import com.iflat.wip.entity.SrOsStatus;
 import com.iflat.wip.service.SrOutsourceService;
 import com.iflat.sm.bean.SrProjectManager;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +36,27 @@ public class SrOutsourceServiceImpl extends BaseServiceSupport implements SrOuts
     @Override
     protected void afterInsert() throws Exception {
         startProcess(this.saveObj);
+    }
+
+    @Override
+    protected void beforeUpdate() throws Exception {
+        SrOutsource o = ((SrOutsource) this.saveObj);
+        String status = o.getStatus();
+        if (SrOsStatus.STATUS_PROJECT_MANAGER_APPROVE.equals(status)) {
+            UserInfoVo userInfoVo = Session.getUserInfo();
+            o.setAuditorAcc(userInfoVo.getAccount());
+            o.setAuditorName(userInfoVo.getUserName());
+        }
+        if (SrOsStatus.STATUS_OUTSOURCE_CHIEF_RECEIPT.equals(status)) {
+            UserInfoVo userInfoVo = Session.getUserInfo();
+            o.setSignorAcc(userInfoVo.getAccount());
+            o.setSignorName(userInfoVo.getUserName());
+        }
+        if (SrOsStatus.STATUS_BUSINESS_DIVISION_DIRECTOR_APPROVE.equals(status)) {
+            UserInfoVo userInfoVo = Session.getUserInfo();
+            o.setBdDirectorAcc(userInfoVo.getAccount());
+            o.setBdDirectorName(userInfoVo.getUserName());
+        }
     }
 
     @Override

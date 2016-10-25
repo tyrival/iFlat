@@ -195,6 +195,18 @@ Ext.define('iFlat.view.wip.SrOsSettlement', {
                         fieldLabel: '船东指定',
                         inputValue: true,
                         width: 130,
+                    }, {
+                        xtype: 'textfield',
+                        name: 'srOutsource.hasList',
+                        hidden: true,
+                        listeners: {
+                            change: 'loadCheckbox'
+                        }
+                    }, {
+                        xtype: 'checkbox',
+                        fieldLabel: '附清单',
+                        inputValue: true,
+                        width: 130,
                     }]
                 }, {
                     xtype: 'container',
@@ -240,6 +252,10 @@ Ext.define('iFlat.view.wip.SrOsSettlement', {
                             header: '数量',
                             width: 200,
                             dataIndex: 'srOutsourceDetl.qty',
+                        }, {
+                            header: '单位',
+                            width: 100,
+                            dataIndex: 'srOutsourceDetl.unit',
                         }, {
                             header: '备注',
                             flex: 1,
@@ -331,7 +347,7 @@ Ext.define('iFlat.view.wip.SrOsSettlement', {
                     items: [{
                         xtype: 'textfield',
                         name: 'srOutsource.bidComment',
-                        fieldLabel: '备注',
+                        fieldLabel: '报价信息',
                         width: '85%',
                         editable: false,
                     }, {
@@ -468,21 +484,21 @@ Ext.define('iFlat.view.wip.SrOsSettlement', {
                     name: 'srOutsource.contNo',
                     fieldLabel: '合同编号',
                     width: '25%',
-                    allowBlank: false
+                    allowBlank: true
                 }, {
                     xtype: 'datefield',
                     name: 'srOutsource.contDate',
                     fieldLabel: '合同日期',
                     width: '25%',
                     format: 'Y-m-d',
-                    allowBlank: false
+                    allowBlank: true
                 }, {
                     xtype: 'textfield',
                     name: 'srOutsource.contAmount',
                     width: '25%',
                     fieldLabel: '合同金额',
                     regex: /^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/,
-                    allowBlank: false
+                    allowBlank: true
                 }]
 
             }, {

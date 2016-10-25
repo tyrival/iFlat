@@ -14,6 +14,14 @@ Ext.define('iFlat.view.report.ss.FiveSController', {
     },
 
     search: function(btn) {
+
+        var org = Ext.getCmp('global-panel').getViewModel().get('user')['porgName'];
+        if (org == '安环保卫部') {
+            Ext.getCmp('rpt-ss-fives-issuer').setHidden(false);
+            Ext.getCmp('rpt-ss-fivesinfo-issuer').setHidden(false);
+            Ext.getCmp('rpt-ss-fives-creator').setHidden(false);
+        }
+
         var from = Ext.getCmp('rpt-ss-fives-from').getValue();
         var to = Ext.getCmp('rpt-ss-fives-to').getValue();
         var fstype = Ext.getCmp('rpt-ss-fives-fstype').getValue();
