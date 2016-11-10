@@ -18,7 +18,6 @@ Ext.define('iFlat.view.report.ss.FiveSController', {
         var org = Ext.getCmp('global-panel').getViewModel().get('user')['porgName'];
         if (org == '安环保卫部') {
             Ext.getCmp('rpt-ss-fives-issuer').setHidden(false);
-            Ext.getCmp('rpt-ss-fivesinfo-issuer').setHidden(false);
             Ext.getCmp('rpt-ss-fives-creator').setHidden(false);
         }
 
@@ -38,11 +37,27 @@ Ext.define('iFlat.view.report.ss.FiveSController', {
         rptSsFiveSStore.reload();
     },
 
+
+    resetFilter: function () {
+        Ext.getCmp('rpt-ss-fives-from').reset();
+        Ext.getCmp('rpt-ss-fives-to').reset();
+        Ext.getCmp('rpt-ss-fives-fstype').reset();
+        Ext.getCmp('rpt-ss-fives-belongdept').reset();
+        Ext.getCmp('rpt-ss-fives-dept').reset();
+        Ext.getCmp('rpt-ss-fives-person').reset();
+    },
+
     showFiveSInfo: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
         var win = Ext.getCmp('ss-fivesinfo');
         if(!win) {
             win = Ext.create('iFlat.view.report.ss.FiveSInfo');
+            var org = Ext.getCmp('global-panel').getViewModel().get('user')['porgName'];
+            if (org == '安环保卫部') {
+                Ext.getCmp('rpt-ss-fivesinfo-issuer').setHidden(false);
+            }
+
         }
+
         var form = win.down('form');
         form.loadRecord(record);
         win.show();
@@ -66,6 +81,16 @@ Ext.define('iFlat.view.report.ss.FiveSController', {
             Ext.getCmp('ss-fivesinfo-att2').hide();
             Ext.getCmp('ss-fivesinfo-link2').setHref('');
         }
+    },
+
+    summaryRenderer: function(value, summaryData, dataIndex) {
+        if (dataIndex == 'fiveS.date') {
+            value = '合计';
+        }
+        if (dataIndex == 'fiveS.time') {
+            value = value + '条';
+        }
+        return '<span style="font-size:15px;font-weight:bold">' + value + '</span>';
     },
 
     exportToExcel: function(btn) {

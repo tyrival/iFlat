@@ -101,7 +101,7 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 allowBlank: false,
                 editable: false,
                 forceSelection : false,
-                width: '33%',
+                width: '24%',
                 fieldLabel: '风险等级',
                 bind: {
                     store: '{ssPhRiskLvl}',
@@ -128,6 +128,18 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 }
             },{
                 xtype: 'combo',
+                name: 'potentialHazard.dmgType',
+                queryMode: 'local',
+                allowBlank: false,
+                editable: false,
+                forceSelection : false,
+                width: '25%',
+                fieldLabel: '伤害类型',
+                bind: {
+                    store: '{ssPhDmgType}',
+                },
+            },{
+                xtype: 'combo',
                 name: 'potentialHazard.phType',
                 store: ssPotentialHazardPhTypeStore = Ext.create('iFlat.store.ss.PhCodeType'),
                 queryMode: 'local',
@@ -136,46 +148,76 @@ Ext.define('iFlat.view.ss.PotentialHazardEdit', {
                 forceSelection : false,
                 displayField: 'type',
                 valueField: 'type',
-                width: '33%',
+                width: '25%',
                 fieldLabel: '隐患类型',
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
-                        ssPotentialHazardPhCodeStore.getProxy().extraParams['phCode.type'] = newV;
+                        ssPotentialHazardPhCodeStore.getProxy().extraParams['phDetailType.type'] = newV;
                         ssPotentialHazardPhCodeStore.reload();
+                        ssPotentialHazardPhDetailStore.removeAll();
+                        ssPotentialHazardPhDetailStore.getProxy().extraParams['phCode.type'] = newV;
+                        Ext.getCmp('ss-potentialhazardedit-content').reset()
+                        Ext.getCmp('ss-potentialhazardedit-detail').reset()
+                        Ext.getCmp('ss-potentialhazardedit-phcode').reset()
                     }
                 }
             },{
                 xtype: 'textfield',
                 name: 'potentialHazard.phCode',
+                id: 'ss-potentialhazardedit-phcode',
                 editable: false,
                 fieldLabel: '隐患代码',
-                width: '33%',
+                width: '25%',
             }]
         },{
             items: [{
                 xtype: 'combo',
                 name: 'potentialHazard.content',
-                store: ssPotentialHazardPhCodeStore = Ext.create('iFlat.store.ss.PhCode', {
+                id: 'ss-potentialhazardedit-content',
+                store: ssPotentialHazardPhCodeStore = Ext.create('iFlat.store.ss.PhDetailType', {
                     autoLoad: false
                 }),
                 queryMode: 'local',
                 allowBlank: true,
                 editable: false,
                 forceSelection : false,
-                displayField: 'description',
+                displayField: 'detailType',
                 valueField: 'description',
-                width: '99%',
+                width: '33%',
                 fieldLabel: '隐患内容',
                 listeners: {
                     change: function (cb, newV, oldV, opt) {
-                        var model = cb.getStore().findRecord('phCode.description', newV);
-                        if (model) {
-                            var code = model.get('phCode.code');
-                            cb.up('form').down('textfield[name=potentialHazard.phCode]').setValue(code);
+                        ssPotentialHazardPhDetailStore.removeAll();
+                        Ext.getCmp('ss-potentialhazardedit-detail').reset()
+                        if (newV != null) {
+                            var code;
+                            var model = cb.getStore().findRecord('phDetailType.description', newV);
+                            if (model) {
+                                code = model.get('phDetailType.code');
+                                cb.up('form').down('textfield[name=potentialHazard.phCode]').setValue(code);
+                            }
+                            ssPotentialHazardPhDetailStore.getProxy().extraParams['phCode.description'] = newV;
+                            ssPotentialHazardPhDetailStore.getProxy().extraParams['phCode.code'] = code;
+                            ssPotentialHazardPhDetailStore.reload();
                         }
                     }
                 }
-            }]
+            }, {
+                xtype: 'combo',
+                name: 'potentialHazard.detail',
+                id: 'ss-potentialhazardedit-detail',
+                store: ssPotentialHazardPhDetailStore = Ext.create('iFlat.store.ss.PhCode', {
+                    autoLoad: false
+                }),
+                queryMode: 'local',
+                allowBlank: true,
+                editable: false,
+                forceSelection : false,
+                displayField: 'detail',
+                valueField: 'detail',
+                width: '66%',
+                fieldLabel: '隐患明细',
+            }, ]
         },{
             items: [{
                 xtype: 'combo',

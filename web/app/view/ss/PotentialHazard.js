@@ -112,8 +112,14 @@ Ext.define('iFlat.view.ss.PotentialHazard', {
         header: '隐患内容',
         dataIndex: 'potentialHazard.content',
     }, {
+        header: '隐患明细',
+        dataIndex: 'potentialHazard.detail',
+    }, {
         header: '风险等级',
         dataIndex: 'potentialHazard.riskLvl',
+    }, {
+        header: '伤害类型',
+        dataIndex: 'potentialHazard.dmgType',
     }, {
         header: '整改措施',
         dataIndex: 'potentialHazard.measure',

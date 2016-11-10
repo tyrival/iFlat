@@ -62,19 +62,25 @@ Ext.define('iFlat.view.report.ss.PotentialHazardInfo', {
                 name: 'potentialHazard.riskLvl',
                 editable: false,
                 fieldLabel: '风险等级',
-                width: '33%',
+                width: '24%',
+            },{
+                xtype: 'textfield',
+                name: 'potentialHazard.dmgType',
+                editable: false,
+                fieldLabel: '伤害类型',
+                width: '25%',
             },{
                 xtype: 'textfield',
                 name: 'potentialHazard.phType',
                 editable: false,
                 fieldLabel: '隐患类型',
-                width: '33%',
+                width: '25%',
             },{
                 xtype: 'textfield',
                 name: 'potentialHazard.phCode',
                 editable: false,
                 fieldLabel: '隐患代码',
-                width: '33%',
+                width: '25%',
             }]
         },{
             items: [{
@@ -82,6 +88,12 @@ Ext.define('iFlat.view.report.ss.PotentialHazardInfo', {
                 name: 'potentialHazard.content',
                 fieldLabel: '隐患内容',
                 width: '33%',
+                editable: false
+            },{
+                xtype: 'textfield',
+                name: 'potentialHazard.detail',
+                fieldLabel: '隐患明细',
+                width: '66%',
                 editable: false
             }]
         },{

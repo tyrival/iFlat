@@ -1,6 +1,7 @@
 Ext.define('iFlat.model.system.Organization', {
     extend: 'Ext.data.Model',
     fields: [
+        {name: 'organization.fullName', mapping: 'fullName', type: 'string'},
         {name: 'organization.orgId', mapping: 'orgId', type: 'string'},
         {name: 'organization.orgCode', mapping: 'orgCode', type: 'string'},
         {name: 'organization.parentOrgId', mapping: 'parentOrgId', type: 'string'},

@@ -11,6 +11,10 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
         ptype: 'gridexporter'
     }],
 
+    features: [{
+        ftype: 'summary',
+        dock: 'bottom'
+    }],
     controller: 'rpt-ss-violateregulation',
     store: rptSsViolateRegulationStore = Ext.create('iFlat.store.ss.ViolateRegulationList', {
         autoLoad: false,
@@ -34,6 +38,13 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
             labelWidth: 60,
             fieldLabel: '风险等级',
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'combo',
             id: 'rpt-ss-violateregulation-dept',
             bind: {
@@ -47,6 +58,20 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
             fieldLabel: '责任部门',
             labelWidth: 60,
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-content',
+            width: 200,
+            fieldLabel: '违章内容',
+            labelWidth: 60,
+            labelAlign: 'right',
+        }, {
             xtype: 'textfield',
             id: 'rpt-ss-violateregulation-person',
             width: 200,
@@ -59,6 +84,61 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
         dock: 'top',
         overflowHandler: 'scroller',
         items: [{
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-profmgr',
+            width: 200,
+            fieldLabel: '主管',
+            labelWidth: 60,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-projmgr',
+            width: 200,
+            fieldLabel: '总管',
+            labelWidth: 60,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-workmgr',
+            width: 200,
+            fieldLabel: '作业长',
+            labelWidth: 60,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-busi',
+            width: 200,
+            fieldLabel: '事业部',
+            labelWidth: 60,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-team',
+            width: 200,
+            fieldLabel: '施工队',
+            labelWidth: 60,
+            labelAlign: 'right',
+        }, ],
+    }, {
+        xtype: 'toolbar',
+        dock: 'top',
+        overflowHandler: 'scroller',
+        items: [{
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-projname',
+            width: 160,
+            fieldLabel: '工程名',
+            labelWidth: 50,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-violateregulation-issuer-search',
+            width: 160,
+            fieldLabel: '查处人',
+            labelWidth: 50,
+            labelAlign: 'right',
+            hidden: true,
+        }, {
             xtype: 'datefield',
             id: 'rpt-ss-violateregulation-from',
             allowBlank: true,
@@ -69,6 +149,13 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
             labelAlign: 'right',
             labelWidth: 60,
             format: 'Y-m-d'
+        }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
         }, {
             xtype: 'datefield',
             id: 'rpt-ss-violateregulation-to',
@@ -81,9 +168,19 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
             labelWidth: 60,
             format: 'Y-m-d'
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             text: '查询',
             ui: 'orig-blue',
             handler: 'search'
+        }, {
+            text: '重置',
+            handler: 'resetFilter'
         }, '->', {
             text: '导出',
             handler: 'exportToExcel'
@@ -92,7 +189,7 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
             handler: 'refresh'
         }],
     }],
-    columns: [{
+    columns: [{ xtype: "rownumberer", text: "序号", width:40 },{
         text: '详情',
         width: 60,
         menuDisabled: true,
@@ -108,11 +205,15 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
         header: '日期',
         dataIndex: 'violateRegulation.date',
         menuDisabled: true,
-        formatter: 'date("Y-m-d")'
+        formatter: 'date("Y-m-d")',
+        summaryType: 'count',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '时间',
         dataIndex: 'violateRegulation.time',
         menuDisabled: true,
+        summaryType: 'count',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '部门',
         dataIndex: 'violateRegulation.dept',
@@ -195,10 +296,14 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
         menuDisabled: true,
         id: 'rpt-ss-violateregulation-amount',
         hidden: true,
+        summaryType: 'sum',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '扣分',
         dataIndex: 'violateRegulation.score',
         menuDisabled: true,
+        summaryType: 'sum',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '事业部',
         dataIndex: 'violateRegulation.busiDivision',

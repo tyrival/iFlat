@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="com.iflat.ss.bean.PhCode">
         INSERT INTO SsPhCode
-        VALUES (#{id},#{type},#{code},#{description},#{amount},#{score})
+        VALUES (#{id},#{type},#{code},#{description},#{amount},#{score},#{detail})
     </insert>
 
     <update id="update" parameterType="com.iflat.ss.bean.PhCode">
@@ -17,6 +17,7 @@
             <if test="description!=null">description=#{description},</if>
             <if test="amount!=null">amount=#{amount},</if>
             <if test="score!=null">score=#{score},</if>
+            <if test="detail!=null">detail=#{detail},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -27,12 +28,13 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.ss.bean.PhCode" resultMap="SsPhCodeResult">
-        SELECT id,type,code,description,amount,score
+        SELECT id,type,code,description,amount,score,detail
         FROM SsPhCode
         <where>
             <if test="id!=null">id=#{id}</if>
             <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
             <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+            <if test="detail!=null and !&quot;&quot;.equals(detail.trim())">AND detail=#{detail}</if>
         </where>
         ORDER BY type,code
     </select>
@@ -42,6 +44,7 @@
         <result property="type" column="type" jdbcType="VARCHAR"/>
         <result property="code" column="code" jdbcType="VARCHAR"/>
         <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="detail" column="detail" jdbcType="VARCHAR"/>
         <result property="amount" column="amount" jdbcType="DOUBLE"/>
         <result property="score" column="score" jdbcType="DOUBLE"/>
     </resultMap>

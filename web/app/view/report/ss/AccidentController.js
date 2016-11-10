@@ -2,6 +2,16 @@ Ext.define('iFlat.view.report.ss.AccidentController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.rpt-ss-accident',
 
+    summaryRenderer: function(value, summaryData, dataIndex) {
+        if (dataIndex == 'accident.date') {
+            value = '合计';
+        }
+        if (dataIndex == 'accident.time') {
+            value = value + '条';
+        }
+        return '<span style="font-size:15px;font-weight:bold">' + value + '</span>';
+    },
+
     showAccPartyList: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
         var win = Ext.getCmp('ss-accpartyview');
         if(!win) {
@@ -21,6 +31,15 @@ Ext.define('iFlat.view.report.ss.AccidentController', {
         Ext.getCmp('rpt-ss-accident-dept').setValue('');
         Ext.getCmp('rpt-ss-accident-person').setValue('');
         rptSsAccidentStore.removeAll();
+    },
+
+    resetFilter: function () {
+        Ext.getCmp('rpt-ss-accident-from').reset();
+        Ext.getCmp('rpt-ss-accident-to').reset();
+        Ext.getCmp('rpt-ss-accident-acclvl').reset();
+        Ext.getCmp('rpt-ss-accident-acctype').reset();
+        Ext.getCmp('rpt-ss-accident-dept').reset();
+        Ext.getCmp('rpt-ss-accident-person').reset();
     },
 
     search: function(btn) {

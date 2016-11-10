@@ -26,7 +26,7 @@ Ext.define('iFlat.view.system.OrganizationController', {
     addOrgRecord: function() {
         sysOrganizationRowEditing.cancelEdit();
         var r = Ext.create('iFlat.model.system.Organization', {
-            'organization.parentOrgId': '00000000-0000-0000-0000-000000000000',
+            //'organization.parentOrgId': '00000000-0000-0000-0000-000000000000',
             'organization.status': true,
         });
         sysOrganizationStore.insert(0, r);
@@ -39,9 +39,11 @@ Ext.define('iFlat.view.system.OrganizationController', {
             method: 'post',
             params: context.record.data,
             success: function(response, opts) {
+                sysOrganizationStore.reload();
                 Flat.util.tip(response.responseText);
             },
             failure: function(response, opts) {
+                sysOrganizationStore.reload();
                 Flat.util.tip(response.responseText);
             }
         });
@@ -88,11 +90,7 @@ Ext.define('iFlat.view.system.OrganizationController', {
     },
     //重载下拉菜单数据
     reloadParentCombobox: function(editor, context, eOpts) {
-        //删除未保存记录
-        var id = context.record.data["organization.orgId"];
-        if(id == "") {
-            sysOrganizationStore.remove(context.record);
-        }
+        sysOrganizationStore.reload();
         Ext.getCmp('system-organization-select').getStore().reload();
     },
 })

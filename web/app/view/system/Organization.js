@@ -70,7 +70,7 @@ Ext.define('iFlat.view.system.Organization', {
             anyMatch: true,
             forceSelection : true,// 必须选择一个选项
             valueField : 'orgId',// 值,可选
-            displayField : 'orgName',// 显示文本 ，对应下面store里的'text'，
+            displayField : 'fullName',// 显示文本 ，对应下面store里的'text'，
             listeners : {
                 change: 'transmitValueToTextField',
             }

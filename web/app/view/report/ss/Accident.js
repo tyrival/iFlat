@@ -11,6 +11,10 @@ Ext.define('iFlat.view.report.ss.Accident', {
         ptype: 'gridexporter'
     }],
 
+    features: [{
+        ftype: 'summary',
+        dock: 'bottom'
+    }],
     controller: 'rpt-ss-accident',
     store: rptSsAccidentStore = Ext.create('iFlat.store.ss.AccidentList', {
         autoLoad: false,
@@ -34,6 +38,13 @@ Ext.define('iFlat.view.report.ss.Accident', {
                 store: '{ssAccLvl}',
             },
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'combo',
             id: 'rpt-ss-accident-acctype',
             queryMode: 'local',
@@ -47,6 +58,13 @@ Ext.define('iFlat.view.report.ss.Accident', {
                 store: '{ssAccType}',
             },
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'combo',
             id: 'rpt-ss-accident-dept',
             bind: {
@@ -59,6 +77,13 @@ Ext.define('iFlat.view.report.ss.Accident', {
             width: 200,
             fieldLabel: '责任部门',
             labelWidth: 60,
+        }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
         }, {
             xtype: 'textfield',
             id: 'rpt-ss-accident-person',
@@ -83,6 +108,13 @@ Ext.define('iFlat.view.report.ss.Accident', {
             labelWidth: 60,
             format: 'Y-m-d'
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'datefield',
             id: 'rpt-ss-accident-to',
             allowBlank: true,
@@ -94,9 +126,19 @@ Ext.define('iFlat.view.report.ss.Accident', {
             labelWidth: 60,
             format: 'Y-m-d'
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             text: '查询',
             ui: 'orig-blue',
             handler: 'search'
+        }, {
+            text: '重置',
+            handler: 'resetFilter'
         }, '->', {
             text: '导出',
             handler: 'exportToExcel'
@@ -105,7 +147,7 @@ Ext.define('iFlat.view.report.ss.Accident', {
             handler: 'refresh'
         }],
     }],
-    columns: [{
+    columns: [{ xtype: "rownumberer", text: "序号", width:40 },{
         text: '详情',
         width: 60,
         menuDisabled: true,
@@ -133,11 +175,15 @@ Ext.define('iFlat.view.report.ss.Accident', {
         header: '日期',
         menuDisabled: true,
         dataIndex: 'accident.date',
-        formatter: 'date("Y-m-d")'
+        formatter: 'date("Y-m-d")',
+        summaryType: 'count',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '时间',
         dataIndex: 'accident.time',
         menuDisabled: true,
+        summaryType: 'count',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '工号',
         dataIndex: 'accident.projNo',

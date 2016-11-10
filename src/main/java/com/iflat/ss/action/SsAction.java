@@ -1,5 +1,7 @@
 package com.iflat.ss.action;
 
+import com.iflat.ss.entity.PhDetailType;
+import com.iflat.ss.service.PhDetailTypeService;
 import com.iflat.base.entity.ExcelTemplate;
 import com.iflat.ss.entity.VrCodeRiskLvl;
 import com.iflat.ss.entity.PhCodeType;
@@ -689,6 +691,41 @@ public class SsAction extends BaseAction implements ModelDriven<Page> {
 
     public String uploadVrCodeRiskLvl() throws Exception {
         this.result.setObject(this.vrCodeRiskLvlService.uploadFile(upload, uploadFileName));
+        return SUCCESS;
+    }
+
+
+    private PhDetailTypeService phDetailTypeService;
+    private PhDetailType phDetailType;
+
+    public PhDetailTypeService getPhDetailTypeService() { return phDetailTypeService; }
+
+    public void setPhDetailTypeService(PhDetailTypeService phDetailTypeService) { this.phDetailTypeService = phDetailTypeService; }
+    public PhDetailType getPhDetailType() { return phDetailType; }
+    public void setPhDetailType(PhDetailType phDetailType) { this.phDetailType = phDetailType; }
+
+    public String savePhDetailType() throws Exception {
+        this.result.setObject(this.phDetailTypeService.save(this.phDetailType));
+        return SUCCESS;
+    }
+
+    public String deletePhDetailType() throws Exception {
+        this.result.setObject(this.phDetailTypeService.delete(this.phDetailType));
+        return SUCCESS;
+    }
+
+    public String listPhDetailType() throws Exception {
+        this.result.setList(this.phDetailTypeService.list(this.phDetailType));
+        return SUCCESS;
+    }
+
+    public String listPagePhDetailType() throws Exception {
+        this.result.setObject(this.phDetailTypeService.listPage(this.phDetailType, this.page));
+        return SUCCESS;
+    }
+
+    public String uploadPhDetailType() throws Exception {
+        this.result.setObject(this.phDetailTypeService.uploadFile(upload, uploadFileName));
         return SUCCESS;
     }
 

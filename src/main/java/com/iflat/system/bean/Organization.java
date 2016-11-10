@@ -21,6 +21,22 @@ public class Organization {
 
     private Date createTime;  //创建时间
 
+    private String fullName;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    private void setFullName() {
+        String c = orgCode;
+        if (c == null) {
+            c = "";
+        } else {
+            c = this.orgCode + " ";
+        }
+        this.fullName = c + this.orgName;
+    }
+
     public String getOrgId() {
         return orgId;
     }
@@ -35,6 +51,7 @@ public class Organization {
 
     public void setOrgCode(String orgCode) {
         this.orgCode = orgCode;
+        setFullName();
     }
 
     public String getParentOrgId() {
@@ -67,6 +84,7 @@ public class Organization {
 
     public void setOrgName(String orgName) {
         this.orgName = orgName;
+        setFullName();
     }
 
     public boolean getStatus() {

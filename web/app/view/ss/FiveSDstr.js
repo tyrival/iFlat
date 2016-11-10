@@ -114,6 +114,7 @@ Ext.define('iFlat.view.ss.FiveSDstr', {
     }, {
         header: '整改时间',
         dataIndex: 'fiveS.rectifyTime',
+        formatter: 'date("Y-m-d")'
     }, {
         header: '整改照片',
         dataIndex: 'fiveS.rectifyAtt',

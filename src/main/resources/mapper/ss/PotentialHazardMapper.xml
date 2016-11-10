@@ -6,13 +6,13 @@
 
     <insert id="insert" parameterType="com.iflat.ss.bean.PotentialHazard">
         INSERT INTO SsPotentialHazard
-        VALUES (#{id},#{date},#{time},#{riskLvl},#{phType},#{phCode},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{deadline},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{attachment},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{issueDept},#{issuer},#{content})
+        VALUES (#{id},#{date},#{time},#{riskLvl},#{phType},#{phCode},#{dept},#{team},#{groupName},#{title},#{personAcc},#{personName},#{age},#{seniority},#{sex},#{projNo},#{projName},#{area},#{position},#{description},#{measure},#{deadline},#{feedback},#{amount},#{busiDivision},#{projMgr},#{profMgr},#{workMgr},#{teamLeader},#{posiMgr},#{score},#{attachment},#{rectifyAtt},#{comment},#{creatorAcc},#{creatorName},#{creatorDept},#{createTime},#{issueDept},#{issuer},#{content},#{detail},#{dmgType})
     </insert>
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO SsPotentialHazard
         <foreach collection="list" item="item" index="index" separator="UNION ALL">
-            SELECT #{item.id},#{item.date},#{item.time},#{item.riskLvl},#{item.phType},#{item.phCode},#{item.dept},#{item.team},#{item.groupName},#{item.title},#{item.personAcc},#{item.personName},#{item.age},#{item.seniority},#{item.sex},#{item.projNo},#{item.projName},#{item.area},#{item.position},#{item.description},#{item.measure},#{item.deadline},#{item.feedback},#{item.amount},#{item.busiDivision},#{item.projMgr},#{item.profMgr},#{item.workMgr},#{item.teamLeader},#{item.posiMgr},#{item.score},#{item.attachment},#{item.rectifyAtt},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.creatorDept},#{item.createTime},#{item.issueDept},#{item.issuer},#{item.content}
+            SELECT #{item.id},#{item.date},#{item.time},#{item.riskLvl},#{item.phType},#{item.phCode},#{item.dept},#{item.team},#{item.groupName},#{item.title},#{item.personAcc},#{item.personName},#{item.age},#{item.seniority},#{item.sex},#{item.projNo},#{item.projName},#{item.area},#{item.position},#{item.description},#{item.measure},#{item.deadline},#{item.feedback},#{item.amount},#{item.busiDivision},#{item.projMgr},#{item.profMgr},#{item.workMgr},#{item.teamLeader},#{item.posiMgr},#{item.score},#{item.attachment},#{item.rectifyAtt},#{item.comment},#{item.creatorAcc},#{item.creatorName},#{item.creatorDept},#{item.createTime},#{item.issueDept},#{item.issuer},#{item.content},#{item.detail},#{item.dmgType}
         </foreach>
     </insert>
 
@@ -55,6 +55,8 @@
             <if test="issuer!=null">issuer=#{issuer},</if>
             <if test="issueDept!=null">issueDept=#{issueDept},</if>
             <if test="content!=null">content=#{content},</if>
+            <if test="detail!=null">detail=#{detail},</if>
+            <if test="dmgType!=null">dmgType=#{dmgType},</if>
         </set>
         WHERE id=#{id}
     </update>
@@ -65,7 +67,7 @@
     </delete>
 
     <select id="list" parameterType="com.iflat.ss.bean.PotentialHazard" resultMap="SsPotentialHazardResult">
-        SELECT id,date,time,riskLvl,phType,phCode,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,deadline,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,attachment,rectifyAtt,comment,creatorDept,creatorAcc,creatorName,createTime,issueDept,issuer,content
+        SELECT id,date,time,riskLvl,phType,phCode,dept,team,groupName,title,personAcc,personName,age,seniority,sex,projNo,projName,area,position,description,measure,deadline,feedback,amount,busiDivision,projMgr,profMgr,workMgr,teamLeader,posiMgr,score,attachment,rectifyAtt,comment,creatorDept,creatorAcc,creatorName,createTime,issueDept,issuer,content,detail,dmgType
         FROM SsPotentialHazard
         <where>
             <if test="id!=null">id=#{id}</if>
@@ -74,10 +76,11 @@
             <if test="phCode!=null and !&quot;&quot;.equals(phCode.trim())">AND phCode=#{phCode}</if>
             <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
             <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%'+#{team}+'%'</if>
+            <if test="content!=null and !&quot;&quot;.equals(content.trim())">AND content LIKE '%'+#{content}+'%'</if>
             <if test="groupName!=null and !&quot;&quot;.equals(groupName.trim())">AND groupName LIKE '%'+#{groupName}+'%'</if>
             <if test="title!=null and !&quot;&quot;.equals(title.trim())">AND title=#{title}</if>
             <if test="personAcc!=null and !&quot;&quot;.equals(personAcc.trim())">AND personAcc=#{personAcc}</if>
-            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName=#{personName}</if>
+            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName LIKE '%'+#{personName}+'%'</if>
             <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">AND sex=#{sex}</if>
             <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
             <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName LIKE '%'+#{projName}+'%'</if>
@@ -85,18 +88,19 @@
             <if test="position!=null and !&quot;&quot;.equals(position.trim())">AND position LIKE '%'+#{position}+'%'</if>
             <if test="feedback!=null and !&quot;&quot;.equals(feedback.trim())">AND feedback=#{feedback}</if>
             <if test="deadline!=null and !&quot;&quot;.equals(deadline.trim())">AND deadline=#{deadline}</if>
-            <if test="busiDivision!=null and !&quot;&quot;.equals(busiDivision.trim())">AND busiDivision=#{busiDivision}</if>
-            <if test="projMgr!=null and !&quot;&quot;.equals(projMgr.trim())">AND projMgr=#{projMgr}</if>
-            <if test="profMgr!=null and !&quot;&quot;.equals(profMgr.trim())">AND profMgr=#{profMgr}</if>
-            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr=#{workMgr}</if>
-            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr=#{workMgr}</if>
+            <if test="busiDivision!=null and !&quot;&quot;.equals(busiDivision.trim())">AND busiDivision LIKE '%'+#{busiDivision}+'%'</if>
+            <if test="projMgr!=null and !&quot;&quot;.equals(projMgr.trim())">AND projMgr LIKE '%'+#{projMgr}+'%'</if>
+            <if test="profMgr!=null and !&quot;&quot;.equals(profMgr.trim())">AND profMgr LIKE '%'+#{profMgr}+'%'</if>
+            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr LIKE '%'+#{workMgr}+'%'</if>
             <if test="teamLeader!=null and !&quot;&quot;.equals(teamLeader.trim())">AND teamLeader=#{teamLeader}</if>
             <if test="posiMgr!=null and !&quot;&quot;.equals(posiMgr.trim())">AND posiMgr=#{posiMgr}</if>
             <if test="creatorDept!=null and !&quot;&quot;.equals(creatorDept.trim())">AND creatorDept=#{creatorDept}</if>
             <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
             <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
             <if test="issueDept!=null and !&quot;&quot;.equals(issueDept.trim())">AND issueDept=#{issueDept}</if>
-            <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">AND issuer=#{issuer}</if>
+            <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">AND issuer LIKE '%'+#{issuer}+'%'</if>
+            <if test="detail!=null and !&quot;&quot;.equals(detail.trim())">AND detail=#{detail}</if>
+            <if test="dmgType!=null and !&quot;&quot;.equals(dmgType.trim())">AND dmgType=#{dmgType}</if>
             <if test="fromDate!=null">AND date &gt;= #{fromDate}</if>
             <if test="toDate!=null">AND date &lt; DATEADD(day,1,#{toDate})</if>
         </where>
@@ -145,5 +149,7 @@
         <result property="issueDept" column="issueDept" jdbcType="VARCHAR"/>
         <result property="issuer" column="issuer" jdbcType="VARCHAR"/>
         <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="detail" column="detail" jdbcType="VARCHAR"/>
+        <result property="dmgType" column="dmgType" jdbcType="VARCHAR"/>
     </resultMap>
 </mapper>

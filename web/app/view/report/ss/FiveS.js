@@ -15,6 +15,10 @@ Ext.define('iFlat.view.report.ss.FiveS', {
     store: rptSsFiveSStore = Ext.create('iFlat.store.ss.FiveSList', {
         autoLoad: false,
     }),
+    features: [{
+        ftype: 'summary',
+        dock: 'bottom'
+    }],
     dockedItems: [{
         xtype: 'toolbar',
         dock: 'top',
@@ -33,6 +37,13 @@ Ext.define('iFlat.view.report.ss.FiveS', {
             bind: {
                 store: '{ssFsCodeType}',
             },
+        }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
         }, {
             xtype: 'combo',
             id: 'rpt-ss-fives-belongdept',
@@ -54,6 +65,13 @@ Ext.define('iFlat.view.report.ss.FiveS', {
                 }
             }
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'combo',
             name: 'fiveS.area',
             store: rptSsFiveSFsAreaStore = Ext.create('iFlat.store.ss.FsArea'),
@@ -71,6 +89,13 @@ Ext.define('iFlat.view.report.ss.FiveS', {
             labelAlign: 'right',
             fieldLabel: '区域',
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'combo',
             id: 'rpt-ss-fives-dept',
             bind: {
@@ -83,6 +108,13 @@ Ext.define('iFlat.view.report.ss.FiveS', {
             width: 200,
             fieldLabel: '责任部门',
             labelWidth: 60,
+        }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
         }, ],
     }, {
         xtype: 'toolbar',
@@ -91,9 +123,9 @@ Ext.define('iFlat.view.report.ss.FiveS', {
         items: [{
             xtype: 'textfield',
             id: 'rpt-ss-fives-person',
-            width: 200,
+            width: 160,
             fieldLabel: '责任人',
-            labelWidth: 60,
+            labelWidth: 50,
             labelAlign: 'right',
         }, {
             xtype: 'datefield',
@@ -107,6 +139,13 @@ Ext.define('iFlat.view.report.ss.FiveS', {
             labelWidth: 60,
             format: 'Y-m-d'
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'datefield',
             id: 'rpt-ss-fives-to',
             allowBlank: true,
@@ -118,9 +157,19 @@ Ext.define('iFlat.view.report.ss.FiveS', {
             labelWidth: 60,
             format: 'Y-m-d'
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             text: '查询',
             ui: 'orig-blue',
             handler: 'search'
+        }, {
+            text: '重置',
+            handler: 'resetFilter'
         }, '->', {
             text: '导出',
             handler: 'exportToExcel'
@@ -129,7 +178,7 @@ Ext.define('iFlat.view.report.ss.FiveS', {
             handler: 'refresh'
         }],
     }],
-    columns: [{
+    columns: [{ xtype: "rownumberer", text: "序号", width:40 },{
         text: '详情',
         width: 60,
         menuDisabled: true,
@@ -146,10 +195,14 @@ Ext.define('iFlat.view.report.ss.FiveS', {
         dataIndex: 'fiveS.date',
         formatter: 'date("Y-m-d")',
         menuDisabled: true,
+        summaryType: 'count',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '时间',
         dataIndex: 'fiveS.time',
         menuDisabled: true,
+        summaryType: 'count',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '职能部门',
         dataIndex: 'fiveS.funcDept',
@@ -214,6 +267,16 @@ Ext.define('iFlat.view.report.ss.FiveS', {
                 return "<a target='_blank' href='" + v + "'>下载</a>";
             }
         },
+    }, {
+        header: '扣分',
+        dataIndex: 'fiveS.score',
+        summaryType: 'sum',
+        summaryRenderer: 'summaryRenderer'
+    }, {
+        header: '罚款',
+        dataIndex: 'fiveS.amount',
+        summaryType: 'sum',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '责任部门',
         dataIndex: 'fiveS.dept',

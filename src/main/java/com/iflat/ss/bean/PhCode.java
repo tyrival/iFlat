@@ -9,8 +9,17 @@ public class PhCode {
     private String type;
     private String code;
     private String description;
+    private String detail;
     private double amount;
     private double score;
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
 
     public String getId() {
         return id;

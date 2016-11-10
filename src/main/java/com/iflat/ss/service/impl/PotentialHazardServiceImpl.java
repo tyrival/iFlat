@@ -17,7 +17,7 @@ public class PotentialHazardServiceImpl extends BaseServiceSupport {
     @Override
     public void setImportExcelReader() throws Exception {
         super.getExcelReader().setClassName("com.iflat.ss.bean.PotentialHazard");
-        super.getExcelReader().setProps(new String[]{"date", "time", "dept", "team", "groupName", "title", "personAcc", "personName", "age", "sex", "projNo", "projName", "area", "position", "riskLvl", "phType", "phCode", "content", "description", "measure", "deadline", "feedback", "amount", "score", "busiDivision", "projMgr", "profMgr", "workMgr", "teamLeader", "posiMgr", "comment", "issuer"});
+        super.getExcelReader().setProps(new String[]{"date", "time", "dept", "team", "groupName", "title", "personAcc", "personName", "age", "sex", "projNo", "projName", "area", "position", "riskLvl", "phType", "phCode", "content", "detail", "description", "measure", "deadline", "feedback", "amount", "score", "busiDivision", "projMgr", "profMgr", "workMgr", "teamLeader", "posiMgr", "comment", "issuer"});
     }
 
     @Override

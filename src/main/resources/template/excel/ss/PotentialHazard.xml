@@ -33,6 +33,7 @@
         <col index="AD" width='17em'></col>
         <col index="AE" width='17em'></col>
         <col index="AF" width='17em'></col>
+        <col index="AG" width='17em'></col>
     </colgroup>
     <title>
         <tr height="16px">
@@ -58,6 +59,8 @@
             <th value="风险等级" />
             <th value="隐患类型" />
             <th value="隐患代码" />
+            <th value="隐患分类" />
+            <th value="隐患明细" />
             <th value="隐患内容" />
             <th value="负面发现" />
             <th value="整改措施" />
@@ -78,6 +81,7 @@
     <tbody>
         <tr height="16px" firstrow="2" firstcol="0" repeat="1">
             <td type="date" isnullable="false" />
+            <td type="string" isnullable="false" />
             <td type="string" isnullable="false" />
             <td type="string" isnullable="false" />
             <td type="string" isnullable="false" />

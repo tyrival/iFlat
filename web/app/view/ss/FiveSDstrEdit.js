@@ -183,6 +183,13 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                 },{
                     items: [{
                         xtype: 'textfield',
+                        name: 'fiveS.comment',
+                        fieldLabel: '备注',
+                        width: '99%',
+                    }]
+                },{
+                    items: [{
+                        xtype: 'textfield',
                         name: 'fiveS.score',
                         width: '33%',
                         editable: false,
@@ -305,7 +312,7 @@ Ext.define('iFlat.view.ss.FiveSDstrEdit', {
                     xtype: 'combo',
                     name: 'fiveS.personName',
                     queryMode: 'local',
-                    allowBlank: false,
+                    allowBlank: true,
                     editable: true,
                     forceSelection : true,
                     typeAhead: true,

@@ -11,6 +11,10 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
         ptype: 'gridexporter'
     }],
 
+    features: [{
+        ftype: 'summary',
+        dock: 'bottom'
+    }],
     controller: 'rpt-ss-potentialhazard',
     store: rptSsPotentialHazardStore = Ext.create('iFlat.store.ss.PotentialHazardList', {
         autoLoad: false,
@@ -26,13 +30,20 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
             allowBlank: false,
             editable: false,
             forceSelection: true,
-            width: 200,
+            width: 180,
             labelAlign: 'right',
             labelWidth: 60,
             fieldLabel: '风险等级',
             bind: {
                 store: '{ssPhRiskLvl}',
             },
+        }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
         }, {
             xtype: 'combo',
             id: 'rpt-ss-potentialhazard-phtype',
@@ -47,6 +58,13 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
             width: 200,
             fieldLabel: '隐患类型',
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'combo',
             id: 'rpt-ss-potentialhazard-dept',
             bind: {
@@ -60,10 +78,17 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
             fieldLabel: '责任部门',
             labelWidth: 60,
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             xtype: 'textfield',
-            id: 'rpt-ss-potentialhazard-person',
+            id: 'rpt-ss-potentialhazard-content',
             width: 200,
-            fieldLabel: '责任人',
+            fieldLabel: '隐患内容',
             labelWidth: 60,
             labelAlign: 'right',
         }, ],
@@ -72,31 +97,110 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
         dock: 'top',
         overflowHandler: 'scroller',
         items: [{
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-person',
+            width: 160,
+            fieldLabel: '责任人',
+            labelWidth: 50,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-profmgr',
+            width: 160,
+            fieldLabel: '主管',
+            labelWidth: 40,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-projmgr',
+            width: 160,
+            fieldLabel: '总管',
+            labelWidth: 40,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-workmgr',
+            width: 160,
+            fieldLabel: '作业长',
+            labelWidth: 50,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-busi',
+            width: 160,
+            fieldLabel: '事业部',
+            labelWidth: 50,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-team',
+            width: 160,
+            fieldLabel: '施工队',
+            labelWidth: 50,
+            labelAlign: 'right',
+        }, ],
+    }, {
+        xtype: 'toolbar',
+        dock: 'top',
+        overflowHandler: 'scroller',
+        items: [{
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-projname',
+            width: 160,
+            fieldLabel: '工程名',
+            labelWidth: 50,
+            labelAlign: 'right',
+        }, {
+            xtype: 'textfield',
+            id: 'rpt-ss-potentialhazard-issuer-search',
+            width: 160,
+            fieldLabel: '查处人',
+            labelWidth: 60,
+            labelAlign: 'right',
+            hidden: true,
+        }, {
             xtype: 'datefield',
             id: 'rpt-ss-potentialhazard-from',
             allowBlank: true,
             editable: false,
             forceSelection : true,
-            width: 200,
+            width: 180,
             fieldLabel: '起始时间',
             labelAlign: 'right',
             labelWidth: 60,
             format: 'Y-m-d'
+        }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
         }, {
             xtype: 'datefield',
             id: 'rpt-ss-potentialhazard-to',
             allowBlank: true,
             editable: false,
             forceSelection : true,
-            width: 200,
+            width: 180,
             fieldLabel: '截止时间',
             labelAlign: 'right',
             labelWidth: 60,
             format: 'Y-m-d'
         }, {
+            iconCls: 'x-fa fa-close',
+            xtype: 'button',
+            margin: '0 20 0 -10',
+            handler: function (btn) {
+                btn.previousSibling().reset();
+            }
+        }, {
             text: '查询',
             ui: 'orig-blue',
             handler: 'search'
+        }, {
+            text: '重置',
+            handler: 'resetFilter'
         }, '->', {
             text: '导出',
             handler: 'exportToExcel'
@@ -105,7 +209,7 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
             handler: 'refresh'
         }],
     }],
-    columns: [{
+    columns: [{ xtype: "rownumberer", text: "序号", width:40 },{
         text: '详情',
         width: 60,
         menuDisabled: true,
@@ -121,11 +225,15 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
         header: '日期',
         dataIndex: 'potentialHazard.date',
         menuDisabled: true,
-        formatter: 'date("Y-m-d")'
+        formatter: 'date("Y-m-d")',
+        summaryType: 'count',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '时间',
         dataIndex: 'potentialHazard.time',
         menuDisabled: true,
+        summaryType: 'count',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '部门',
         dataIndex: 'potentialHazard.dept',
@@ -195,8 +303,16 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
         dataIndex: 'potentialHazard.content',
         menuDisabled: true,
     }, {
+        header: '隐患明细',
+        dataIndex: 'potentialHazard.detail',
+        menuDisabled: true,
+    }, {
         header: '风险等级',
         dataIndex: 'potentialHazard.riskLvl',
+        menuDisabled: true,
+    }, {
+        header: '伤害类型',
+        dataIndex: 'potentialHazard.dmgType',
         menuDisabled: true,
     }, {
         header: '整改措施',
@@ -216,10 +332,14 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
         menuDisabled: true,
         id: 'rpt-ss-potentialhazard-amount',
         hidden: true,
+        summaryType: 'sum',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '扣分',
         menuDisabled: true,
         dataIndex: 'potentialHazard.score',
+        summaryType: 'sum',
+        summaryRenderer: 'summaryRenderer'
     }, {
         header: '事业部',
         menuDisabled: true,
@@ -276,17 +396,17 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
         header: '查处人',
         dataIndex: 'potentialHazard.issuer',
         menuDisabled: true,
+        id: 'rpt-ss-potentialhazard-issuer',
     }, {
         header: '创建人',
         dataIndex: 'potentialHazard.creatorName',
         menuDisabled: true,
-        id: 'rpt-ss-potentialhazard-issuer',
+        id: 'rpt-ss-potentialhazard-creator',
         hidden: true,
     }, {
         header: '创建部门',
         dataIndex: 'potentialHazard.creatorDept',
         menuDisabled: true,
-        id: 'rpt-ss-potentialhazard-issuer',
         hidden: true,
     }, ],
     /*bbar: {

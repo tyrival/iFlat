@@ -5,6 +5,7 @@ Ext.define('iFlat.model.ss.PhCode', {
         {name: 'phCode.type', mapping: 'type', type: 'string'},
         {name: 'phCode.code', mapping: 'code', type: 'string'},
         {name: 'phCode.description', mapping: 'description', type: 'string'},
+        {name: 'phCode.detail', mapping: 'detail', type: 'string'},
         {name: 'phCode.amount', mapping: 'amount', type: 'number'},
         {name: 'phCode.score', mapping: 'score', type: 'number'},
     ]

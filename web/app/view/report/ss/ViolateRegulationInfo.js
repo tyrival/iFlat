@@ -170,7 +170,7 @@ Ext.define('iFlat.view.report.ss.ViolateRegulationInfo', {
                 name: 'violateRegulation.amount',
                 fieldLabel: '罚款金额',
                 width: '33%',
-                id: 'rpt-ss-violateregulation-amount',
+                id: 'rpt-ss-violateregulationinfo-amount',
                 hidden: true,
             },{
                 xtype: 'textfield',

@@ -29,6 +29,8 @@
     <property name="phCodeType" ref="phCodeType" />
     <property name="vrCodeRiskLvlService" ref="vrCodeRiskLvlService" />
     <property name="vrCodeRiskLvl" ref="vrCodeRiskLvl" />
+    <property name="phDetailTypeService" ref="phDetailTypeService" />
+    <property name="phDetailType" ref="phDetailType" />
   </bean>
   <bean id="vrCodeService" class="com.iflat.ss.service.impl.VrCodeServiceImpl" />
   <bean id="vrCodeDao" class="com.iflat.ss.dao.impl.VrCodeDaoImpl" />
@@ -72,5 +74,8 @@
   <bean id="vrCodeRiskLvl" class="com.iflat.ss.entity.VrCodeRiskLvl" scope="prototype" />
   <bean id="vrCodeRiskLvlDao" class="com.iflat.ss.dao.impl.VrCodeRiskLvlDaoImpl" />
   <bean id="vrCodeRiskLvlService" class="com.iflat.ss.service.impl.VrCodeRiskLvlServiceImpl" />
+  <bean id="phDetailType" class="com.iflat.ss.entity.PhDetailType" scope="prototype" />
+  <bean id="phDetailTypeDao" class="com.iflat.ss.dao.impl.PhDetailTypeDaoImpl" />
+  <bean id="phDetailTypeService" class="com.iflat.ss.service.impl.PhDetailTypeServiceImpl" />
 </beans>
 

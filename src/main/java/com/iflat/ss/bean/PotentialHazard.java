@@ -51,6 +51,24 @@ public class PotentialHazard {
 
     private String issueDept;
     private String issuer;
+    private String detail;
+    private String dmgType;
+
+    public String getDmgType() {
+        return dmgType;
+    }
+
+    public void setDmgType(String dmgType) {
+        this.dmgType = dmgType;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
 
     public String getContent() {
         return content;

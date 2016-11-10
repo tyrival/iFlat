@@ -286,6 +286,13 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
         },{
             items: [{
                 xtype: 'textfield',
+                name: 'fiveS.comment',
+                fieldLabel: '备注',
+                width: '99%',
+            }]
+        },{
+            items: [{
+                xtype: 'textfield',
                 name: 'fiveS.score',
                 width: '33%',
                 fieldLabel: '扣分',
@@ -309,6 +316,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 editable: true,
                 forceSelection : true,
                 typeAhead: true,
+                anyMatch: true,
                 minChars: 0,
                 displayField: 'fullName',
                 valueField: 'name',
@@ -356,6 +364,7 @@ Ext.define('iFlat.view.ss.FiveSEdit', {
                 editable: true,
                 forceSelection : true,
                 typeAhead: true,
+                anyMatch: true,
                 minChars: 0,
                 displayField: 'fullName',
                 valueField: 'name',

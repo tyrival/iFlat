@@ -73,21 +73,21 @@
             <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
             <if test="dept!=null and !&quot;&quot;.equals(dept.trim())">AND dept=#{dept}</if>
             <if test="team!=null and !&quot;&quot;.equals(team.trim())">AND team LIKE '%'+#{team}+'%'</if>
+            <if test="content!=null and !&quot;&quot;.equals(content.trim())">AND content LIKE '%'+#{content}+'%'</if>
             <if test="groupName!=null and !&quot;&quot;.equals(groupName.trim())">AND groupName LIKE '%'+#{groupName}+'%'</if>
             <if test="title!=null and !&quot;&quot;.equals(title.trim())">AND title=#{title}</if>
             <if test="personAcc!=null and !&quot;&quot;.equals(personAcc.trim())">AND personAcc=#{personAcc}</if>
-            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName=#{personName}</if>
+            <if test="personName!=null and !&quot;&quot;.equals(personName.trim())">AND personName LIKE '%'+#{personName}+'%'</if>
             <if test="sex!=null and !&quot;&quot;.equals(sex.trim())">AND sex=#{sex}</if>
             <if test="projNo!=null and !&quot;&quot;.equals(projNo.trim())">AND projNo=#{projNo}</if>
             <if test="projName!=null and !&quot;&quot;.equals(projName.trim())">AND projName LIKE '%'+#{projName}+'%'</if>
             <if test="area!=null and !&quot;&quot;.equals(area.trim())">AND area LIKE '%'+#{area}+'%'</if>
             <if test="position!=null and !&quot;&quot;.equals(position.trim())">AND position LIKE '%'+#{position}+'%'</if>
             <if test="feedback!=null and !&quot;&quot;.equals(feedback.trim())">AND feedback=#{feedback}</if>
-            <if test="busiDivision!=null and !&quot;&quot;.equals(busiDivision.trim())">AND busiDivision=#{busiDivision}</if>
-            <if test="projMgr!=null and !&quot;&quot;.equals(projMgr.trim())">AND projMgr=#{projMgr}</if>
-            <if test="profMgr!=null and !&quot;&quot;.equals(profMgr.trim())">AND profMgr=#{profMgr}</if>
-            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr=#{workMgr}</if>
-            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr=#{workMgr}</if>
+            <if test="busiDivision!=null and !&quot;&quot;.equals(busiDivision.trim())">AND busiDivision LIKE '%'+#{busiDivision}+'%'</if>
+            <if test="projMgr!=null and !&quot;&quot;.equals(projMgr.trim())">AND projMgr LIKE '%'+#{projMgr}+'%'</if>
+            <if test="profMgr!=null and !&quot;&quot;.equals(profMgr.trim())">AND profMgr LIKE '%'+#{profMgr}+'%'</if>
+            <if test="workMgr!=null and !&quot;&quot;.equals(workMgr.trim())">AND workMgr LIKE '%'+#{workMgr}+'%'</if>
             <if test="teamLeader!=null and !&quot;&quot;.equals(teamLeader.trim())">AND teamLeader=#{teamLeader}</if>
             <if test="posiMgr!=null and !&quot;&quot;.equals(posiMgr.trim())">AND posiMgr=#{posiMgr}</if>
             <if test="training!=null and !&quot;&quot;.equals(training.trim())">AND training=#{training}</if>
@@ -95,7 +95,7 @@
             <if test="creatorAcc!=null and !&quot;&quot;.equals(creatorAcc.trim())">AND creatorAcc=#{creatorAcc}</if>
             <if test="creatorName!=null and !&quot;&quot;.equals(creatorName.trim())">AND creatorName=#{creatorName}</if>
             <if test="issueDept!=null and !&quot;&quot;.equals(issueDept.trim())">AND issueDept=#{issueDept}</if>
-            <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">AND issuer=#{issuer}</if>
+            <if test="issuer!=null and !&quot;&quot;.equals(issuer.trim())">AND issuer LIKE '%'+#{issuer}+'%'</if>
             <if test="fromDate!=null">AND date &gt;= #{fromDate}</if>
             <if test="toDate!=null">AND date &lt; DATEADD(day,1,#{toDate})</if>
         </where>

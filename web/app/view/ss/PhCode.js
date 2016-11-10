@@ -51,8 +51,15 @@ Ext.define('iFlat.view.ss.PhCode', {
         editor: {
         }
     }, {
-        header: '内容',
+        header: '分类',
         dataIndex: 'phCode.description',
+        flex: 1,
+        editor: {
+            allowBlank: false,
+        }
+    }, {
+        header: '隐患明细',
+        dataIndex: 'phCode.detail',
         flex: 1,
         editor: {
             allowBlank: false,

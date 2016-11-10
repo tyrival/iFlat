@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ss.PhDetailType">
+
+
+<select id="list" parameterType="com.iflat.ss.entity.PhDetailType" resultMap="SsPhDetailTypeResult">
+    SELECT DISTINCT type,code,description
+    FROM SsPhCode
+    <where>
+        <if test="type!=null and !&quot;&quot;.equals(type.trim())">AND type=#{type}</if>
+        <if test="code!=null and !&quot;&quot;.equals(code.trim())">AND code=#{code}</if>
+        <if test="description!=null and !&quot;&quot;.equals(description.trim())">AND description=#{description}</if>
+    </where>
+    ORDER BY type,code
+</select>
+
+<resultMap type="com.iflat.ss.entity.PhDetailType" id="SsPhDetailTypeResult">
+    <result property="type" column="type" jdbcType="VARCHAR"/>
+    <result property="code" column="code" jdbcType="VARCHAR"/>
+    <result property="description" column="description" jdbcType="VARCHAR"/>
+</resultMap>
+</mapper>

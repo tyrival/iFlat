@@ -37,5 +37,6 @@ Ext.define('iFlat.model.ss.FiveS', {
         {name: 'fiveS.description', mapping: 'description', type: 'string'},
         {name: 'fiveS.fromDate', mapping: 'fromDate', type: 'date'},
         {name: 'fiveS.toDate', mapping: 'toDate', type: 'date'},
+        {name: 'fiveS.commentCre', mapping: 'commentCre', type: 'string'},
     ]
 });

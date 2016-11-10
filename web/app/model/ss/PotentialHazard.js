@@ -42,6 +42,8 @@ Ext.define('iFlat.model.ss.PotentialHazard', {
         {name: 'potentialHazard.createTime', mapping: 'createTime', type: 'date'},
         {name: 'potentialHazard.issuer', mapping: 'issuer', type: 'string'},
         {name: 'potentialHazard.issueDept', mapping: 'issueDept', type: 'string'},
+        {name: 'potentialHazard.detail', mapping: 'detail', type: 'string'},
+        {name: 'potentialHazard.dmgType', mapping: 'dmgType', type: 'string'},
         {name: 'potentialHazard.fromDate', mapping: 'fromDate', type: 'date'},
         {name: 'potentialHazard.toDate', mapping: 'toDate', type: 'date'},
     ]
