@@ -9,14 +9,14 @@ Ext.define('iFlat.view.report.ss.ViolateRegulationController', {
         Ext.getCmp('rpt-ss-violateregulation-risklvl').setValue('');
         Ext.getCmp('rpt-ss-violateregulation-dept').setValue('');
         Ext.getCmp('rpt-ss-violateregulation-person').setValue('');
-        rptSsPotentialHazardStore.removeAll();
+        rptSsViolateRegulationStore.removeAll();
     },
 
     summaryRenderer: function(value, summaryData, dataIndex) {
-        if (dataIndex == 'potentialHazard.date') {
+        if (dataIndex == 'violateRegulation.date') {
             value = '合计';
         }
-        if (dataIndex == 'potentialHazard.time') {
+        if (dataIndex == 'violateRegulation.time') {
             value = value + '条';
         }
         return '<span style="font-size:15px;font-weight:bold">' + value + '</span>';
@@ -45,7 +45,7 @@ Ext.define('iFlat.view.report.ss.ViolateRegulationController', {
             Ext.getCmp('rpt-ss-violateregulation-issuer').setHidden(false);
             Ext.getCmp('rpt-ss-violateregulation-creator').setHidden(false);
             Ext.getCmp('rpt-ss-violateregulation-amount').setHidden(false);
-            Ext.getCmp('rpt-ss-potentialhazard-issuer-search').setHidden(false);
+            Ext.getCmp('rpt-ss-violateregulation-issuer-search').setHidden(false);
         }
 
         var from = Ext.getCmp('rpt-ss-violateregulation-from').getValue();
@@ -53,29 +53,29 @@ Ext.define('iFlat.view.report.ss.ViolateRegulationController', {
         var risklvl = Ext.getCmp('rpt-ss-violateregulation-risklvl').getValue();
         var dept = Ext.getCmp('rpt-ss-violateregulation-dept').getValue();
         var person = Ext.getCmp('rpt-ss-violateregulation-person').getValue();
-        var content = Ext.getCmp('rpt-ss-potentialhazard-content').getValue();
-        var profmgr = Ext.getCmp('rpt-ss-potentialhazard-profmgr').getValue();
-        var projmgr = Ext.getCmp('rpt-ss-potentialhazard-projmgr').getValue();
-        var workmgr = Ext.getCmp('rpt-ss-potentialhazard-workmgr').getValue();
-        var busi = Ext.getCmp('rpt-ss-potentialhazard-busi').getValue();
-        var team = Ext.getCmp('rpt-ss-potentialhazard-team').getValue();
-        var projname = Ext.getCmp('rpt-ss-potentialhazard-projname').getValue();
-        var issuer = Ext.getCmp('rpt-ss-potentialhazard-issuer-search').getValue();
+        var content = Ext.getCmp('rpt-ss-violateregulation-content').getValue();
+        var profmgr = Ext.getCmp('rpt-ss-violateregulation-profmgr').getValue();
+        var projmgr = Ext.getCmp('rpt-ss-violateregulation-projmgr').getValue();
+        var workmgr = Ext.getCmp('rpt-ss-violateregulation-workmgr').getValue();
+        var busi = Ext.getCmp('rpt-ss-violateregulation-busi').getValue();
+        var team = Ext.getCmp('rpt-ss-violateregulation-team').getValue();
+        var projname = Ext.getCmp('rpt-ss-violateregulation-projname').getValue();
+        var issuer = Ext.getCmp('rpt-ss-violateregulation-issuer-search').getValue();
 
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.riskLvl'] = risklvl;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.dept'] = dept;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.fromDate'] = from;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.toDate'] = to;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.personName'] = person;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.content'] = content;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.profMgr'] = profmgr;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.projMgr'] = projmgr;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.workMgr'] = workmgr;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.busiDivision'] = busi;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.team'] = team;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.projName'] = projname;
-        rptSsPotentialHazardStore.getProxy().extraParams['potentialHazard.issuer'] = issuer;
-        rptSsPotentialHazardStore.reload();
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.riskLvl'] = risklvl;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.dept'] = dept;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.fromDate'] = from;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.toDate'] = to;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.personName'] = person;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.content'] = content;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.profMgr'] = profmgr;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.projMgr'] = projmgr;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.workMgr'] = workmgr;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.busiDivision'] = busi;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.team'] = team;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.projName'] = projname;
+        rptSsViolateRegulationStore.getProxy().extraParams['violateRegulation.issuer'] = issuer;
+        rptSsViolateRegulationStore.reload();
     },
 
     showViolateRegulationInfo: function(grid, rowIndex, colIndex, actionItem, event, record, row) {

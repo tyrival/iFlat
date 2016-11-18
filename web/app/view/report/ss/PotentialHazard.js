@@ -27,7 +27,7 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
             xtype: 'combo',
             id: 'rpt-ss-potentialhazard-risklvl',
             queryMode: 'local',
-            allowBlank: false,
+            allowBlank: true,
             editable: false,
             forceSelection: true,
             width: 180,
@@ -71,7 +71,7 @@ Ext.define('iFlat.view.report.ss.PotentialHazard', {
                 store: '{ssFiveSFuncDept}'
             },
             queryMode: 'local',
-            allowBlank: false,
+            allowBlank: true,
             editable: false,
             forceSelection : false,
             width: 200,

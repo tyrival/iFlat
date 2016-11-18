@@ -51,7 +51,7 @@ Ext.define('iFlat.view.report.ss.ViolateRegulation', {
                 store: '{ssFiveSFuncDept}'
             },
             queryMode: 'local',
-            allowBlank: false,
+            allowBlank: true,
             editable: false,
             forceSelection : false,
             width: 200,
