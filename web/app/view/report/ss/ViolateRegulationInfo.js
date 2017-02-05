@@ -223,7 +223,7 @@ Ext.define('iFlat.view.report.ss.ViolateRegulationInfo', {
                 name: 'violateRegulation.issuer',
                 fieldLabel: '查处人',
                 width: '33%',
-                id: 'rpt-ss-violateregulation-issuer',
+                id: 'rpt-ss-violateregulationinfo-issuer',
                 hidden: true,
             }]
         },{

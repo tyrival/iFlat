@@ -17,6 +17,11 @@ Ext.define('iFlat.view.report.hr.Credit', {
         pageSize: 0,
         proxy: {
             enablePaging: true,
+            url: 'hr_listCredit.action',
+            reader: {
+                type: 'json',
+                rootProperty: 'list',
+            },
         },
     }),
 

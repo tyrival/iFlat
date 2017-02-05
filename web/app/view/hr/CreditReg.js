@@ -6,6 +6,11 @@ Ext.define('iFlat.view.hr.CreditReg', {
     controller: 'hr-creditreg',
     store: hrCreditRegStore = Ext.create('iFlat.store.hr.Credit', {
         proxy: {
+            url: 'hr_listCredit.action',
+            reader: {
+                type: 'json',
+                rootProperty: 'list',
+            },
             extraParams: {
                 'credit.creatorAcc': Ext.getCmp('global-panel').getViewModel().get('user')['account']
             }
